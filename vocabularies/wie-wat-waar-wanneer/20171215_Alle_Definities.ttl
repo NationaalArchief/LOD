@@ -1,0 +1,3359 @@
+# baseURI: <http://na.metamatter.nl/PoCNadereToegangen/>
+
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix nco: <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix bf: <http://bibframe.org/vocab/> .
+@prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix bgn: <http://biographynet.nl/schema/> .
+@prefix bgnExt: <http://na.metamatter.nl/NadereToegangen/ontology/Personen/> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix nt: <http://na.metamatter.nl/NadereToegangen/resource/Archive/> .
+@prefix ds: <http://na.metamatter.nl/NadereToegangen/resource/Dataset/> .
+@prefix def: <http://na.metamatter.nl/NadereToegangen/ontology/> .
+@prefix commBk: <http://na.metamatter.nl/NadereToegang/resource/Commissieboeken/> .
+@prefix filmK: <http://na.metamatter.nl/NadereToegang/resource/Filmkeuring/> .
+@prefix bewL: <http://na.metamatter.nl/NadereToegang/resource/Bewindslieden/> .
+@prefix ohRef: <http://na.metamatter.nl/NadereToegang/resource/Oranjehotel/ref/> .
+@prefix oh: <http://na.metamatter.nl/NadereToegang/resource/Oranjehotel/> .
+@prefix ob: <https://www.oorlogsbronnen.nl/data/pers/> .
+@prefix obRef: <https://www.oorlogsbronnen.nl/data/bron/> .
+@prefix wsb: <http://na.metamatter.nl/NadereToegang/resource/Waterstaatsbestekken/> .
+
+# === Entities en References ====
+
+# === An ArchivalEntity represents a Resource in the domain of non-information objects, like its EDM counterpart   ===
+# === An ArchivalReference represents an ArchivalEntity as mentioned in an archival document ===
+
+def:ArchivalEntity a owl:Class ;
+    rdfs:label "Entity in an Archives domain"^^xsd:string ;
+    owl:equivalentClass edm:NonInformationResource ;
+    rdfs:comment "An Archival entity represents entities referred to across the boundaries of archival records"^^xsd:string ;
+    owl:disjointWith def:ArchivalReference ;
+.
+def:ArchivalReference a owl:Class ;
+    rdfs:label "Reference in an Archives domain"^^xsd:string ;
+    owl:equivalentClass edm:InformationResource , dbo:Reference , dct:BibliographicResource ;
+    rdfs:comment "An Archival Reference is the document-bound stand-in for archival entities referred to in archival records. May also be a dataset"^^xsd:string ;
+    owl:disjointWith def:ArchivalEntity ;
+.
+def:PersonEntity a owl:Class  ;
+    rdfs:label "Person in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalEntity ;
+    owl:equivalentClass foaf:Person , bgn:Person ;
+    rdfs:comment "A Person Entity is a Person referred to across a set of archival records"^^xsd:string ;
+.
+def:CorporateEntity a owl:Class ;
+    rdfs:label "Corporation in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalEntity ;
+    owl:equivalentClass foaf:Agent ;
+    rdfs:comment "A Corporate Entity is a corporation referred to across a set of archival records"^^xsd:string ;
+.
+def:FilmEntity a owl:Class ;
+    rdfs:label "Entity representing a Film in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalEntity ;
+    owl:equivalentClass <http://www.movieontology.org/2009/11/09/Movie> , dbo:Film ;
+    rdfs:comment "A Film Entity is within the archival domain an information resource describing a movie independently of its references"^^xsd:string ;
+.
+def:ArchivalEvent a owl:Class ;
+    rdfs:label "Event in an Archives domain"^^xsd:string ;
+    owl:equivalentClass edm:Event , sem:Event ;
+    rdfs:subClassOf def:ArchivalEntity ;
+    rdfs:comment "An Archival Event is an Event referred to across a set of archival records, e.g., a war going on somewhere"^^xsd:string ;
+.
+def:PersonReference a owl:Class ;
+    rdfs:label "Reference to a Person in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalReference ;
+    owl:disjointWith def:PersonEntity ;
+    rdfs:comment "A Person Reference is the reference to a Person in a single archival record"^^xsd:string ;
+.
+def:CommissionReference a owl:Class ;
+    rdfs:label "Reference to a Commission in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalReference ;
+    rdfs:comment "A Commission Reference is the reference to a Commission in a single archival record"^^xsd:string ;
+.
+def:FilmReference a owl:Class ;
+    rdfs:label "Reference to a Film in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalReference ;
+    rdfs:comment "A Film Reference is the reference to a FilmEntity in a single archival record"^^xsd:string ;
+.
+def:PoliticianReference a owl:Class ;
+    rdfs:label "Reference to a Politician in an Archives domain"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalReference ;
+    rdfs:comment "A Person Reference is the reference to a Politician in a single archival record"^^xsd:string ;
+.
+def:ParticipatingPartyReference a owl:Class ;
+    rdfs:label "Reference to a Party (Person or Organisation)"^^xsd:string ;
+    rdfs:subClassOf def:ArchivalReference ;
+    rdfs:comment "An Participating Party is the stand-in in a single archival record for Parties involved in bringing about movies"^^xsd:string ;
+.
+def:PrisonRecordsEntry a owl:Class ;
+    rdfs:label "Document referring to a Person in an Entry of a Prison Record, still in the Archives domain"^^xsd:string ;
+    rdfs:subClassOf dct:BibliographicResource ;
+    rdfs:comment "An Prison Records Entry is the document referring to an inmate of Scheveningen prison during WW II, as being referenced in the Books of the Dead of Schevingen prison, the so-called 'Oranjehotel'."^^xsd:string ;
+.
+def:WarSourcesEntry a owl:Class ;
+    rdfs:label "A single reference to a person, place or event involved in the Second World War"^^xsd:string ;
+    rdfs:subClassOf dct:BibliographicResource ;
+    rdfs:comment "A War Sources Entry is the reference to a person, place or event within the War Sources aggregator"^^xsd:string ;
+.
+def:WebMemorialEntry a owl:Class ;
+    rdfs:label "Web document referring to a Person who is to be remembered"^^xsd:string ;
+    rdfs:subClassOf dct:BibliographicResource ;
+    rdfs:comment "A Web Memoral Entry is the reference to a person or an event to be remembered in the context the Web Memorial is dedicated to"^^xsd:string ;
+.
+
+
+# == Classes for Persons according to the BiographyNet model (partly still the same as BioDes) ==
+
+bgnExt:Gender rdf:type owl:Class ;
+  rdfs:label "Gender"^^xsd:string ;
+  owl:equivalentClass bgn:Sex ;
+  skos:prefLabel "Geslacht"@nl ;
+.
+bgnExt:Relation rdf:type owl:Class ;
+  rdfs:label "Relation"^^xsd:string ;
+  skos:prefLabel "Relatie"@nl ;
+.
+bgnExt:State rdf:type owl:Class ;
+  rdfs:label "State"^^xsd:string ;
+  skos:prefLabel "Toestand"@nl ;
+.
+bgnExt:ArchivalName rdf:type owl:Class ;
+  rdfs:label "Archival name"^^xsd:string ;
+  owl:disjointWith bgnExt:ArchivalEntity ;
+  owl:equivalentClass dbo:Name ;
+  rdfs:comment "A name in the archival domain"^^xsd:string ;
+  skos:prefLabel "Naam"@nl ;
+.
+bgnExt:CorporateName rdf:type owl:Class ;
+  rdfs:subClassOf bgnExt:ArchivalName ;
+  rdfs:label "Corporate name"^^xsd:string ;
+  owl:disjointWith bgnExt:CorporateEntity ;
+  owl:equivalentClass dbo:Name ;
+  skos:prefLabel "Bedrijfsnaam"@nl ;
+.
+bgnExt:PersonName rdf:type owl:Class ;
+  rdfs:subClassOf bgnExt:ArchivalName ;
+  rdfs:label "Person name"^^xsd:string ;
+  owl:disjointWith bgnExt:PersonEntity , def:PersonReference ;
+  owl:equivalentClass dbo:Name , bgn:Name ;
+  skos:prefLabel "Persoonsnaam"@nl ;
+.
+
+# == Commissions: Event types and reified Commissions ==
+
+def:Commission rdf:type owl:Class ; rdfs:subClassOf def:ArchivalEntity ;
+               rdfs:label "Commission"@en , "Opdracht of aanstelling"@nl ;
+               skos:prefLabel "Aanstelling"@nl ;
+               rdfs:comment "Apart from the Commission as a Career Event, we need a Commission as an Entity, since commissions can also be a thing connected to property rights - a source of financial claims"^^xsd:string ;
+.
+
+def:PersonalEvent rdf:type sem:Type ; sem:subTypeOf sem:EventType ; 
+                  rdfs:label "Personal event"@en , "Gebeurtenis in iemand zijn persoonlijk leven"@nl ;
+                  skos:prefLabel "Persoonlijke gebeurtenis"@nl ;
+.
+def:BirthEvent rdf:type sem:Type ; sem:subTypeOf def:PersonalEvent ;
+               rdfs:label "Birth"@en , "Geboorte"@nl ;
+               skos:prefLabel "Geboorte"@nl ;
+.
+def:DeathEvent rdf:type sem:Type ; sem:subTypeOf def:PersonalEvent ;
+               rdfs:label "Death"@en , "Dood"@nl ;
+               skos:prefLabel "Overlijden"@nl ;
+.
+def:ResurrectionEvent rdf:type sem:Type ; sem:subTypeOf def:PersonalEvent ;
+               rdfs:label "Resurrection"@en , "Herrijzenis"@nl ;
+               skos:prefLabel "Levendverklaring"@nl ;
+.
+def:MarriageEvent rdf:type sem:Type ; sem:subTypeOf def:PersonalEvent ;
+               rdfs:label "Marriage"@en , "Huwelijk"@nl ;
+               skos:prefLabel "Huwelijk"@nl ;
+.
+def:CareerEvent rdf:type sem:Type ; sem:subTypeOf def:PersonalEvent ;
+                rdfs:label "Career event"@en , "Gebeurtenis in iemand zijn loopbaan"@nl ;
+                skos:prefLabel "Gebeurtenis in loopbaan"@nl ;
+.
+def:CommissionEvent rdf:type sem:Type ; sem:subTypeOf def:CareerEvent ;
+               rdfs:label "Commission"@en , "Opdracht of aanstelling als gebeurtenis"@nl ;
+               skos:prefLabel "Aanstelling als gebeurtenis"@nl ;
+.
+
+def:SuccessionEvent rdf:type sem:Type ; sem:subTypeOf def:CareerEvent ;
+               rdfs:label "A succession in a professional careeer"@en , "Opvolging als gebeurtenis"@nl ;
+               skos:prefLabel "Opvolging als gebeurtenis"@nl ;
+.
+
+
+# == Individuals for Event Types ==
+
+def:commissionerRole rdf:type sem:RoleType ;
+                     rdfs:label "Commissioner-type"@en ; skos:prefLabel "Commissioner"@nl ;
+.
+def:commissioneeRole rdf:type sem:RoleType  ;
+                     rdfs:label "Commissioned-type"@en ; skos:prefLabel "Commissioned"@nl ;
+.
+def:childRole rdf:type sem:RoleType  ;
+                     rdfs:label "new-born child"@en ; skos:prefLabel "Child"@nl ;
+.
+def:husbandRole rdf:type sem:RoleType  ;
+                     rdfs:label "husband"@en ; skos:prefLabel "Husband"@nl ;
+.
+def:wifeRole rdf:type sem:RoleType  ;
+                     rdfs:label "wife"@en ; skos:prefLabel "Wife"@nl ;
+.
+def:witnessRole rdf:type sem:RoleType  ;
+                     rdfs:label "witness"@en ; skos:prefLabel "Witness"@nl ;
+.
+def:deceasedRole rdf:type sem:RoleType  ;
+                     rdfs:label "deceased"@en ; skos:prefLabel "Deceased"@nl ;
+.
+def:returnedToTheLivingRole rdf:type sem:RoleType  ;
+                     rdfs:label "resurrector"@en ; skos:prefLabel "Levend verklaard"@nl ;
+.
+def:successorRole rdf:type sem:RoleType  ;
+                     rdfs:label "successor"@en ; skos:prefLabel "Successor"@nl ;
+.
+def:successedRole rdf:type sem:RoleType  ;
+                     rdfs:label "successed"@en ; skos:prefLabel "Successed"@nl ;
+.
+
+
+# == Properties for Archival Entities == 
+
+def:hasCountry rdf:type owl:ObjectProperty ;
+  rdfs:domain bgnExt:PersonEntity, bgnExt:CorporateEntity ;
+  rdfs:range dbo:Country ;
+  rdfs:label "has its residence in country"^^xsd:string ;
+  owl:equivalentProperty dbo:country ;
+  skos:prefLabel "land"@nl ;
+.
+def:hasEvent rdf:type owl:ObjectProperty ;
+  rdfs:domain def:ArchivalEntity ;
+  rdfs:range def:ArchivalEvent ;
+  rdfs:label "has event"^^xsd:string ;
+  skos:prefLabel "heeft gebeurtenis"@nl ;
+  owl:equivalentProperty bgn:hasEvent ;
+.
+def:hasEventType rdf:type owl:ObjectProperty ;
+  rdfs:domain def:ArchivalEvent ;
+  rdfs:range def:EventType ;
+  rdfs:label "has event type"^^xsd:string ;
+  skos:prefLabel "heeft soort gebeurtenis"@nl ;
+  owl:equivalentProperty sem:eventType ;
+.
+bgnExt:when rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Event ;
+  rdfs:range xsd:Literal ;
+  rdfs:label "date/time of the event"^^xsd:string ;
+  skos:prefLabel "datum/tijd gebeurtenis"@nl ;
+.
+
+# == Properties for extension on BiographyNet == 
+
+bgnExt:hasIdentifier rdf:type owl:ObjectProperty ;
+  rdfs:domain def:PersonEntity, def:CorporateEntity ;
+  rdfs:range def:Identifier ;
+  rdfs:label "has identifier"^^xsd:string ;
+  skos:prefLabel "heeft identificator"@nl ;
+.
+bgnExt:hasRelation rdf:type owl:ObjectProperty ;
+  rdfs:domain def:PersonEntity ;
+  rdfs:range bgnExt:Relation ;
+  rdfs:label "has relation"^^xsd:string ;
+  skos:prefLabel "heeft relatie"@nl ;
+.
+bgnExt:hasState rdf:type owl:ObjectProperty ;
+  rdfs:domain bgnExt:ArchivalEntity ;
+  rdfs:range bgnExt:State ;
+  rdfs:label "has state"^^xsd:string ;
+  skos:prefLabel "heeft toestand"@nl ;
+.
+bgnExt:hasStateType rdf:type owl:ObjectProperty ;
+  rdfs:domain bgnExt:State ;
+  rdfs:range bgnExt:StateType ;
+  rdfs:label "has state type"^^xsd:string ;
+  skos:prefLabel "heeft soort toestand"@nl ;
+.
+bgnExt:hasName rdf:type owl:ObjectProperty ;
+  rdfs:domain def:ArchivalEntity ;
+  rdfs:label "has name"^^xsd:string ;
+  rdfs:range def:ArchivalName ;
+  skos:prefLabel "heeft naam"@nl ;
+.
+bgnExt:idnoValue rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Identifier ;
+  rdfs:label "identifier value"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "identificatie"@nl ;
+.
+bgnExt:idnoType rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Identifier ;
+  rdfs:range xsd:string ;
+  rdfs:label "identifier scheme"^^xsd:string ;
+  skos:prefLabel "identificatieschema"@nl ;
+.
+bgnExt:sex rdf:type owl:ObjectProperty ;
+  rdfs:domain def:PersonEntity ;
+  rdfs:label "sex"^^xsd:string ;
+  rdfs:range bgnExt:Gender ;
+  owl:equivalentProperty schema:gender , dbo:sex ;
+  skos:prefLabel "geslacht"@nl ;
+.
+bgnExt:fullname rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:ArchivalName ;
+  rdfs:label "full name"^^xsd:string ;
+  owl:equivalentProperty dbo:fullName ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "volledige naam"@nl ;
+.
+bgnExt:preposition rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:PersonName ;
+  rdfs:label "preposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "voorvoegsel"@nl ;
+.
+bgnExt:prepositionTitle rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "title"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:preposition ;
+  owl:equivalentProperty foaf:title ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "titel"@nl ;
+  owl:equivalentProperty schema:honorificPrefix ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+.
+bgnExt:prepositionName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "first name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:preposition ;
+  owl:equivalentProperty foaf:firstName , schema:givenName ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "voornaam"@nl ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+.
+bgnExt:prepositionInitials rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "initials as part of the first name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:preposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "initialen"@nl ;
+.
+bgnExt:prepositionPatronym rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "patronym in first name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:preposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "patroniem vooraan"@nl ;
+.
+bgnExt:postpositionPatronym rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "patronym after last name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:postposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "patroniem achteraan"@nl ;
+.
+bgnExt:intraposition rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "intraposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "tussenvoegsel"@nl ;
+.
+bgnExt:alternativeNamePosition rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "variant op naamelement"^^xsd:string ;
+  owl:equivalentProperty skos:altLabel , foaf:nickName , schema:alternateName ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "afwijkende benaming"@nl ;
+.
+bgnExt:intrapositionTitle rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "title"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:intraposition ;
+  owl:equivalentProperty foaf:title ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "titel bij tussenvoegsel"@nl ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+.
+bgnExt:intrapositionName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "middle name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:intraposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "tussenvoegsel"@nl ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+.
+bgnExt:intrapositionMaidenName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "intraposition maiden name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:intraposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "middelnaam van meisjesnaam"@nl ;
+.
+bgnExt:alternativeMaidenName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "variant to maiden name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:postpositionMaidenName , bgnExt:alternativeNamePosition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "variant van meisjesnaam"@nl ;
+.
+bgnExt:alternativeIntrapositionName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "middle name variant"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:intraposition , bgnExt:alternativeNamePosition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "tussenvoegsel (variant)"@nl ;
+.
+bgnExt:intrapositionInitials rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "initials as part of the middle name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:intraposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "initialen tussen voor- en achternaam"@nl ;
+.
+bgnExt:postposition rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "postposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+  owl:equivalentProperty foaf:familyName ;
+  skos:prefLabel "achtervoegsel"@nl ;
+.
+bgnExt:postpositionTitle rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "title after name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:postposition ;
+  owl:equivalentProperty foaf:title , schema:honorificSuffix ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "titel na de naam"@nl ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+.
+bgnExt:alternativePostpositionTitle rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "alternative title after name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:postposition , bgnExt:alternativeNamePosition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "titelvariant na de naam"@nl ;
+.
+bgnExt:postpositionName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "last name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:postposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "achternaam"@nl ;
+  skos:altLabel "geslachtsnaam"@nl ;
+  owl:equivalentProperty schema:familyName , foaf:lastName ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+.
+bgnExt:postpositionMaidenName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "postposition maiden name"^^xsd:string ;
+  rdfs:subPropertyOf bgnExt:postposition ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "achternaam van meisjesnaam"@nl ;
+.
+bgnExt:alternativeFirstName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:prepositionName , bgnExt:alternativeNamePosition ;
+  rdfs:label "alternative first name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "ook geheten"@nl ;
+.
+bgnExt:alternativeLastName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:postpositionName , bgnExt:alternativeNamePosition ;
+  rdfs:label "alternative last name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "ook geheten"@nl ;
+.
+bgnExt:postpositionAddition rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:postposition ;
+  rdfs:label "distinctive addition to last name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  owl:equivalentProperty schema:disambiguatingDescription ;
+  skos:prefLabel "naamstoevoeging"@nl ;
+.
+bgnExt:alternativePostpositionAddition rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:postposition , bgnExt:alternativeNamePosition ;
+  rdfs:label "alternative addition to last name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "variant op naamstoevoeging"@nl ;
+.
+bgnExt:alternativeFullname rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:fullname , bgnExt:alternativeNamePosition ;
+  rdfs:label "alternative full name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  owl:equivalentProperty schema:alternateName ;
+  skos:prefLabel "ook vermeld als"@nl ;
+.
+bgnExt:alternativeIntraposition rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:intraposition , bgnExt:alternativeNamePosition ;
+  rdfs:label "alternative intraposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "ook vermeld als"@nl ;
+  rdfs:comment "Komt voor in gevallen als wanneer iemand met het Franse equivalent van 'van' wordt aangeduid"^^xsd:string ;
+.
+bgnExt:alternativeIntrapositionTitle rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:alternativeIntraposition ;
+  rdfs:label "alternative title in intraposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "optionele titel in tussennaam"@nl ;
+.
+bgnExt:alternativeIntrapositionName rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:subPropertyOf bgnExt:alternativeIntraposition ;
+  rdfs:label "alternative name in intraposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "optioneel tussenvoegsel"@nl ;
+.
+bgnExt:alias rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "beroepsnaam (in het geval van artiesten)"^^xsd:string ;
+  rdfs:comment "equivalent property would be foaf:alias if there were such"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "beroepsnaam"@nl ;
+.
+bgnExt:nickname rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonName ;
+  rdfs:label "informal name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "roepnaam"@nl ;
+  owl:equivalentProperty foaf:nickname ;
+.
+bgnExt:birthdate rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Event , def:PersonEntity ;
+  rdfs:label "date of birth"@nl ;
+  owl:equivalentProperty dbo:birthdate , schema:birthDate ;
+  rdfs:range xsd:date ;
+  skos:prefLabel "geboortedatum"@nl ;
+.
+bgnExt:deathdate rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Event , def:PersonEntity ;
+  rdfs:label "date of death"@nl ;
+  owl:equivalentProperty dbo:deathdate , schema:deathDate ;
+  rdfs:range xsd:date ;
+  skos:prefLabel "sterfdatum"@nl ;
+.
+bgnExt:lifespan rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonEntity ;
+  rdfs:label "life span"@nl ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "leven van.. tot.."@nl ;
+.
+def:birthdateDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:PersonReference ;
+  rdfs:label "date of birth in references"@nl ;
+  rdfs:range xsd:string ;
+.
+def:deathdateDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:PersonReference ;
+  rdfs:label "date of death in references"@nl ;
+  rdfs:range xsd:string ;
+.
+bgnExt:birthPlaceDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:PersonReference ;
+  rdfs:label "place of birth in references"@nl ;
+  rdfs:range xsd:string ;
+.
+def:deathPlaceDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:PersonReference ;
+  rdfs:label "place of death in references"@nl ;
+  rdfs:range xsd:string ;
+.
+bgnExt:birthPlace rdf:type owl:ObjectProperty ;
+  rdfs:domain def:PersonEntity ;
+  rdfs:label "place of birth"@nl ;
+  owl:equivalentProperty dbo:birthPlace , schema:birthPlace ;
+  rdfs:range dbo:Place ;
+  skos:prefLabel "geboortedatum"@nl ;
+.
+bgnExt:deathPlace rdf:type owl:ObjectProperty ;
+  rdfs:domain def:PersonEntity ;
+  rdfs:label "place of death"@nl ;
+  owl:equivalentProperty dbo:deathPlace , schema:deathPlace ;
+  rdfs:range dbo:Place ;
+  skos:prefLabel "sterfdatum"@nl ;
+.
+bgnExt:notBefore rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Event ;
+  rdfs:label "Niet vóór"@nl ;
+  rdfs:range xsd:date ;
+  skos:prefLabel "niet vóór"@nl ;
+.
+bgnExt:notAfter rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:Event ;
+  rdfs:label "Niet na"@nl ;
+  rdfs:range xsd:date ;
+  skos:prefLabel "niet na"@nl ;
+.
+bgnExt:stateFrom rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:State ;
+  rdfs:label "tijd begin"@nl ;
+  rdfs:range xsd:Literal ;
+  skos:prefLabel "tijd begin"@nl ;
+.
+bgnExt:stateUntil rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:State ;
+  rdfs:label "tijd tot"@nl ;
+  rdfs:range xsd:Literal ;
+  skos:prefLabel "tijd tot"@nl ;
+.
+bgnExt:stateDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:State ;
+  rdfs:label "Kenmerk"@nl ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "Kenmerk"@nl ;
+.
+bgnExt:stateTypeDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:StateType ;
+  rdfs:label "Aard van het Statuskenmerk"@nl ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "Statuskenmerk"@nl ;
+.
+bgnExt:text rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:BiographicalDocument ;
+  rdfs:label "Biografische tekst"@nl ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "biografietekst"@nl ;
+.
+bgnExt:source rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:BiographicalDocument ;
+  rdfs:label "Bron"@nl ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "Bron"@nl ;
+  owl:equivalentProperty dc:source ;
+.
+
+# == Properties for extension on dct:references and dct:isReferencedBy == 
+# == The idea is, that a written source has a dct:references relation to the Reference its contains, and that the generated def:ArchivalEntity resource has a specialisation of dct:isReferencedBy, a def:isMentionedIn relation between written source and ArchivalEntity ==
+
+def:isMentionedIn rdf:type owl:ObjectProperty ;
+  rdfs:domain bgnExt:ArchivalEntity ;
+  rdfs:label "Geacht te worden vermeld in"@nl ;
+  rdfs:range def:ArchivalReference ;
+  skos:prefLabel "Bron"@nl ;
+  owl:equivalentProperty dct:isReferencedBy ;
+.
+
+# == Properties voor PersonReferences, in def: namespace since no direct Person domain ==
+
+def:fullNameDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonReference ;
+  rdfs:range xsd:string ;
+  rdfs:comment "String name in a reference to a person, to be converted into the 'full name' attribute of bgnExt:PersonName"^^xsd:string ;
+.
+def:firstNameDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonReference ;
+  rdfs:range xsd:string ;
+  rdfs:comment "String name in a reference to a person, to be converted into the 'preposition' attribute of bgnExt:PersonName"^^xsd:string ;
+.
+def:lastNameDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonReference ;
+  rdfs:range xsd:string ;
+  rdfs:comment "String name in a reference to a person, to be converted into the 'postposition' attribute of bgnExt:PersonName"^^xsd:string ;
+.
+def:middleNameDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:PersonReference ;
+  rdfs:range xsd:string ;
+  rdfs:comment "String name in a reference to a person, to be converted into the 'intraposition' attribute of bgnExt:PersonName"^^xsd:string ;
+.
+def:fullTitleDesignation rdf:type owl:DatatypeProperty ;
+  rdfs:domain bgnExt:FilmReference ;
+  rdfs:range xsd:string ;
+  rdfs:comment "String name in a reference to a movie, where complexities of the title have been subdued"^^xsd:string ;
+.
+
+# == Individuals voor BiographyNet and SEM ==
+
+bgnExt:Male rdf:type bgnExt:Gender , owl:NamedIndividual ;
+  rdfs:label "Male"@en , "Man"@nl ;
+  skos:prefLabel "man"@nl ;
+.
+bgnExt:Female rdf:type bgnExt:Gender , owl:NamedIndividual ;
+  rdfs:label "Female"@en , "Vrouw"@nl ;
+  skos:prefLabel "vrouw"@nl ;
+.
+bgnExt:GenderUnknown rdf:type bgnExt:Gender , owl:NamedIndividual ;
+  rdfs:label "Unknown"@en , "Niet bekend"@nl ;
+  skos:prefLabel "niet bekend"@nl ;
+.
+bgnExt:Occupation rdf:type bgnExt:StateType , owl:NamedIndividual ;
+  rdfs:label "Occupation"@en , "Beroep"@nl ;
+  skos:prefLabel "Beroep"@nl ;
+.
+bgnExt:Residence rdf:type bgnExt:StateType , owl:NamedIndividual ;
+  rdfs:label "Residence"@en , "Woonplaats"@nl ;
+  skos:prefLabel "Woonplaats"@nl 
+.
+bgnExt:ClaimToFame rdf:type bgnExt:StateType , owl:NamedIndividual ;
+  rdfs:label "Claim to Fame"@en , "Bekend van"@nl ;
+  owl:equivalentProperty dbo:knownFor ;
+  skos:prefLabel "Bekend van"@nl 
+.
+
+
+# == Ontology ==
+
+<http://na.metamatter.nl/PoCNadereToegangen/resource/> rdf:type owl:Ontology ;
+  rdfs:label "Ingang tot drie Nadere Toegangen en de daaraan gekoppelde datasets via dcat"^^xsd:string ;
+  skos:prefLabel "Ingang tot drie Nadere Toegangen en de daaraan gekoppelde datasets via dcat"^^xsd:string ;
+  owl:imports <http://bibframe.org/vocab/> ;
+  owl:imports <http://www.w3.org/ns/org#> ;
+  owl:imports <http://dbpedia.org/ontology/> ;
+  owl:imports <http://xmlns.com/foaf/0.1/> ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports <http://www.w3.org/ns/prov#> ;
+  owl:imports <http://www.w3.org/ns/dcat#> ;
+  owl:imports <http://topbraid.org/shacl/skos.shacl> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <http://rdfs.org/ns/void#> ;
+  owl:imports <http://www.w3.org/2001/XMLSchema#> ;
+  owl:imports <http://www.w3.org/2006/vcard/ns#> ;
+  owl:imports <http://www.movieontology.org/2009/11/09/> ;
+  owl:imports <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> ;
+  owl:imports <http://www3.iath.virginia.edu/eac/cpf/> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+  rdfs:comment "This ontology so far contains an inidividual dcat:CatalogRecord for each FindingAid. Such a dcat:CatalogRecord has void:Datasets that link directly to lists providing the content. As a short-hand, three rdf:seeAlsos are provided with this ontology resource."@en ;
+  rdfs:isDefinedBy <http://na.metamatter.nl/PoCNadereToegangen> ;
+  rdfs:seeAlso nt:NadereToegangCommissieboeken ;
+  rdfs:seeAlso nt:NadereToegangFilmrapporten ;
+  rdfs:seeAlso nt:BewindsliedenIndex ;
+.
+
+# == Classes for Finding Aids == 
+
+def:Identifier rdf:type owl:Class ;
+  rdfs:label "Identifier"^^xsd:string ;
+  skos:prefLabel "Identificator"@nl ;
+  rdfs:subClassOf bf:Identifier ;
+.
+def:ExternalIdentifier rdf:type owl:Class ;
+  rdfs:label "Identifier for references from outside to this resource"^^xsd:string ;
+  skos:prefLabel "Externe identificator "@nl ;
+  rdfs:subClassOf def:Identifier ;
+.
+def:GuideForTheUseOfArchives rdf:type owl:Class ;
+              rdfs:label "Abstracte klasse die zowel de zoekhulpen als de gebruikersgidsen omspant"^^xsd:string ;
+              rdfs:subClassOf dct:BibliographicResource ;
+.
+def:UsingAid rdf:type owl:Class ;
+              rdfs:label "Uitleg over de procedures voor het gebruik van archieven"^^xsd:string ;
+              rdfs:subClassOf def:GuideForTheUseOfArchives ;
+.
+def:FindingAid rdf:type owl:Class ;
+              rdfs:label "Toegang tot een of meer archieven"^^xsd:string ;
+              rdfs:subClassOf def:GuideForTheUseOfArchives ;
+.
+def:FormalFindingAid rdf:type owl:Class ;
+              rdfs:label "Methodische ontsluitng van één of meer archieven"^^xsd:string ;
+              rdfs:subClassOf def:FindingAid ;
+.
+def:AdditionalFindingAid rdf:type owl:Class ;
+              rdfs:label "Methodische ontsluiting van één of meer archieven"^^xsd:string ;
+              rdfs:subClassOf def:FindingAid ;
+.
+def:ArchivalDescription rdf:type owl:Class ;
+      rdfs:label "De minder specifieke klasse voor de Onderzoeksgidsen, Nadere Toegangen etc."^^xsd:string ;
+      rdfs:subClassOf def:FindingAid ;
+      rdfs:isDefinedBy def:AccessType ;
+.
+def:ArchivalInventory rdf:type owl:Class ;
+      rdfs:label "Inventaris op een archief,de meest omvattende toegang"^^xsd:string ;
+      rdfs:subClassOf def:FormalFindingAid ;
+      owl:disjointWith def:ArchivalInventoryElement ;
+      rdfs:isDefinedBy def:InventoryTypeAccess ;
+.
+def:ArchivalInventoryElement rdf:type owl:Class ;
+      rdfs:label "Onderdeel van een inventaris op een archief"^^xsd:string ;
+      rdfs:subClassOf def:FormalFindingAid ;
+      owl:disjointWith def:ArchivalInventory ;
+.
+def:ArchivalSection rdf:type owl:Class ;
+      rdfs:label "Rubriek in een Inventaris"^^xsd:string ;
+      rdfs:subClassOf def:ArchivalInventoryElement ;
+.
+def:ArchivalSubSection rdf:type owl:Class ;
+      rdfs:label "Sub-rubriek in een Inventaris"^^xsd:string ;
+      rdfs:subClassOf def:ArchivalInventoryElement ;
+.
+def:ArchivalSingleItemDescription rdf:type owl:Class ;
+      rdfs:label "Enkelvoudige beschrijving in een Inventaris"^^xsd:string ;
+      rdfs:subClassOf def:ArchivalInventoryElement ;
+.
+def:CreatorOfArchive rdf:type owl:Class ;
+      rdfs:label "Archiefvormer"^^xsd:string ;
+      skos:prefLabel "Archiefvormer"@nl ;
+      rdfs:subClassOf foaf:Agent ;
+.
+def:DetailedContentDescription rdf:type owl:Class ;
+      rdfs:label "Nadere Toegang"^^xsd:string ;
+      skos:prefLabel "Nadere Toegang"@nl ;
+      skos:definition "Een Nadere Toegang bevat verdiepende beschrijving (ofwel, een omschrijving van de stukken op een niveau dieper dan de beschrijving van het inventarisnummer). Nadere Toegangen zijn meer op de inhoud van de stukken gericht."@nl ;
+      rdfs:subClassOf def:AdditionalFindingAid ;
+      owl:disjointWith def:ArchivalInventory ;
+      def:modelsConceptOf def:DetailedInventoryTypeAccess ;
+.
+def:GuideToArchives rdf:type owl:Class ;
+      rdfs:label "Archiefgids"^^xsd:string ;
+      skos:prefLabel "Archiefgids"@nl ;
+      skos:definition "Een archiefgids/index is een verzameling beschrijvingen op thema samengesteld die verwijst naar materiaal uit meer dan één archief."@nl ;
+      rdfs:subClassOf def:AdditionalFindingAid ;
+      owl:disjointWith def:DetailedContentDescription ;
+      def:modelsConceptOf def:GuideToArchivesTypeAccess ;
+.
+def:ResearchersAid rdf:type owl:Class ;
+      rdfs:label "Researchers' aid"^^xsd:string ;
+      skos:prefLabel "Onderzoeksgids"@nl ;
+      skos:definition "Nader in te vullen"@nl ;
+      owl:disjointWith def:DetailedContentDescription ;
+      rdfs:subClassOf def:AdditionalFindingAid ;
+.
+def:DescriptionStatus rdf:type owl:Class ;
+     rdfs:label "Description status"^^xsd:string ;
+     skos:prefLabel "Aanduiding van de status van een archiefbeschrijving"@nl ;
+     rdfs:subClassOf skos:Concept ;
+.
+def:AccessType rdf:type owl:Class ;
+      rdfs:subClassOf skos:Concept ;
+      skos:prefLabel "Documentsoort in een toegang tot een archief"@nl ;
+.
+def:Archive rdf:type owl:Class ;
+   rdfs:label "Archive"^^xsd:string ;
+   skos:prefLabel "Archief"@nl ;
+   owl:equivalentClass dbo:Archive ;
+.
+def:ArchivalStandard rdf:type owl:Class ;
+   rdfs:label "Archival standard"^^xsd:string ;
+   skos:prefLabel "Archiefstandaard"@nl ;
+   owl:equivalentClass dbo:Standard ;
+.
+def:AccessibilityStatus rdf:type owl:Class ;
+   rdfs:label "Accessibility status"^^xsd:string ;
+   skos:prefLabel "Soort van toegankelijkheid"@nl ;
+   rdfs:subClassOf skos:Concept ;
+.
+def:ArchiveType rdf:type owl:Class ;
+   rdfs:label "Archive type"^^xsd:string ;
+   skos:prefLabel "Soort archief"@nl ;
+   rdfs:subClassOf skos:Concept ;
+.
+
+# == Properties == 
+
+def:modelsConceptOf rdf:type rdf:ObjectProperty ;
+  rdfs:domain owl:Class ;
+  rdfs:range skos:Concept ;
+  rdfs:label "models concept"^^xsd:string ;
+  skos:prefLabel "models concept of"@en ;
+  rdfs:comment "The idea is, that there is a distinction between a modeling structure and a findability structure, where SKOS is for findability"@en ;
+  owl:equivalentProperty dct:subject ;
+.
+def:externalIdentifier rdf:type rdf:ObjectProperty ;
+  rdfs:domain def:Commission , def:AdmissibilityReport , def:Cabinet , def:MovieReport , def:Movie ;
+  rdfs:range def:ExternalIdentifier ;
+  rdfs:label "identifier"^^xsd:string ;
+  skos:prefLabel "identificator"@nl ;
+  owl:equivalentProperty bf:identifier ;
+.
+def:localIdentifier a owl:DatatypeProperty ;
+                    rdfs:label "Identification according to the standard for local data"^^xsd:string ;
+                    rdfs:domain def:ArchivalReference ;
+                    rdfs:range xsd:string ;
+.
+def:persistentIdentifier a owl:DatatypeProperty ;
+                    rdfs:label "UUID identification"^^xsd:string ;
+                    rdfs:domain def:ArchivalReference ;
+                    rdfs:range xsd:anyURI ;
+.
+def:identifierScheme rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:ExternalIdentifier ;
+  rdfs:range xsd:string ;
+  rdfs:label "identifier scheme"^^xsd:string ;
+  skos:prefLabel "identificatorschema"@nl ;
+  owl:equivalentProperty bf:identifierScheme ;
+.
+def:identifierValue rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:ExternalIdentifier ;
+  rdfs:range xsd:string ;
+  rdfs:label "identificatorwaarde"^^xsd:string ;
+  skos:prefLabel "identificatorwaarde"@nl ;
+  owl:equivalentProperty bf:identifierValue ;
+.
+def:sourceDescription rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:ArchivalReference ;
+  schema:domainIncludes def:MovieReport , def:Commission ;
+  rdfs:range xsd:string ;
+  rdfs:label "signatuur bron"^^xsd:string ;
+  skos:prefLabel "signatuur"@nl ;
+.
+def:archiveCreator rdf:type rdf:ObjectProperty ;
+  rdfs:domain def:ArchivalInventory ;
+  rdfs:range def:CreatorOfArchive ;
+  rdfs:label "Archiefvormer"^^xsd:string ;
+  skos:prefLabel "Archiefvormer"@nl ;
+.
+def:isCreatorOfArchive rdf:type rdf:ObjectProperty ;
+  rdfs:domain def:CreatorOfArchive ;
+  rdfs:range def:Archive ;
+  rdfs:label "Archiefvormer van"^^xsd:string ;
+  skos:prefLabel "Archiefvormer van"@nl ;
+  owl:inverseOf def:archiveCreator ;
+.
+def:nextLowerElement rdf:type rdf:ObjectProperty ;
+   rdfs:label "Locatie-aanduiding van één niveau lager"^^xsd:string ;
+   rdfs:comment "Niet het classificatieniveau, maar het niveau van het eerstvolgende lagere element"^^xsd:string ;
+   rdfs:domain def:ArchivalInventoryElement ;
+   rdfs:range def:ArchivalInventoryElement ;
+   owl:inverseOf def:nextUpperElement ;
+.
+def:nextUpperElement rdf:type rdf:ObjectProperty ;
+   rdfs:label "Locatie-aanduiding van één niveau hoger"^^xsd:string ;
+   rdfs:comment "Niet het classificatieniveau, maar het niveau van het eerstvolgende hogere element"@nl ;
+   rdfs:domain def:ArchivalInventoryElement ;
+   rdfs:range def:ArchivalInventoryElement ;
+   owl:inverseOf def:nextLowerElement ;
+.
+def:conformingTo rdf:type owl:ObjectProperty ;
+  rdfs:domain def:ArchivalInventory ;
+  rdfs:range def:ArchivalStandard ;
+  rdfs:label "Conforming to"^^xsd:string ;
+  skos:prefLabel "Voldoet aan standaard"^^xsd:string ;
+.
+def:presentationLabel rdf:type owl:AnnotationProperty ;
+  rdfs:domain def:MovieTitle ;
+  rdfs:range rdf:XMLLiteral ;
+  rdfs:label "Label for strings correctly presenting a name in a web environment"^^xsd:string ;
+  skos:prefLabel "Presentation label"^^xsd:string ;
+  rdfs:subPropertyOf rdfs:label ;
+.
+def:fullMention rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:ArchivalInventory ;
+  rdfs:label "Volledige vermelding"@nl ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "volledige vermelding"@nl ;
+.
+def:shortMention rdf:type owl:DatatypeProperty ;
+  rdfs:domain def:ArchivalInventory ;
+  rdfs:label "Korte vermelding"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "korte vermelding"@nl ;
+.
+def:accessType rdf:type owl:ObjectProperty ;
+  rdfs:domain def:DetailedContentDescription ;
+  rdfs:label "Soort toegang"^^xsd:string ;
+  rdfs:range def:AccessType ;
+  skos:prefLabel "Soort toegang"@nl ;
+.
+def:refersToElement rdf:type owl:ObjectProperty ;
+  rdfs:domain def:DetailedContentDescription ;
+  rdfs:label "Betreft inventarisdeel"^^xsd:string ;
+  rdfs:range def:ArchivalInventoryElement ;
+  rdfs:comment "Verbindt de Nadere Toegang met het relevante inventarisnummer"@nl ;
+  skos:prefLabel "Betreft inventarisdeel"^^xsd:string ;
+.
+def:datasetClosestToSource rdf:type owl:ObjectProperty ;
+  rdfs:domain dcat:Dataset ;
+  rdfs:label "Dataset dichtst bij de bron"^^xsd:string ;
+  rdfs:range rdf:List ;
+  skos:prefLabel "Gegevensverzameling bron"@nl ;
+.
+def:datasetWithInterpretationLayer rdf:type owl:ObjectProperty ;
+  rdfs:domain dcat:Dataset ;
+  rdfs:label "Dataset met data uit bewerkingen op de (toegang tot de) bron"^^xsd:string ;
+  rdfs:range rdf:List ;
+  skos:prefLabel "Gegevensverzameling interpretatie"@nl ;
+.
+def:contentDescription rdf:type owl:ObjectProperty ;
+   rdfs:domain def:AccessType ;
+   rdfs:label "Documentsoort"^^xsd:string ;
+   rdfs:range skos:Concept ;
+   skos:prefLabel "Documentsoort"@nl ;
+.
+def:contentList rdf:type owl:ObjectProperty ;
+   rdfs:domain def:DetailedContentDescription ;
+   rdfs:label "Inhoudslijst geassocieerd met de Nadere Toegang"^^xsd:string ;
+   rdfs:range rdf:List ;
+   rdfs:comment "Er moet een SHACL constraint bij, die stelt dat een contentlist alleen maar een lijst mag zijn die aan de kant van de dcat:dataset de rol van closest to source heeft"^^xsd:string ;
+   skos:prefLabel "Inhoudslijst bij Nadere Toegang"@nl ;
+.
+def:hasMember rdf:type owl:ObjectProperty ;
+   rdfs:domain rdf:List ;
+   rdfs:label "Deel in verzameling"^^xsd:string ;
+   rdfs:comment "Extension meant to specify that the List individual is the rdfs:domain, whereas for the range, an indvidual Resource is the part of the list"@en ;
+   rdfs:range rdf:Resource ;
+   owl:inverseOf def:memberOf ;
+   skos:prefLabel "Deel in verzameling"@nl ;
+   rdfs:subPropertyOf rdfs:member ;
+.
+def:hasListItem rdf:type owl:DatatypeProperty ;
+   rdfs:domain rdf:List ;
+   rdfs:label "Item in verzameling"^^xsd:string ;
+   rdfs:range rdf:Literal ;
+   skos:prefLabel "Item in verzameling"@nl ;
+   rdfs:subPropertyOf rdfs:member ;
+   rdfs:comment "Deprecated, or rather, not being used any more"^^xsd:string ;
+.
+def:memberOf rdf:type owl:ObjectProperty ;
+   rdfs:domain rdf:Resource ;
+   rdfs:label "Deel van verzameling"^^xsd:string ;
+   rdfs:comment "Extension meant to specify that the Resource is the domain, whereas for the range, the List is the collection of which the Resource is part"@en ;
+   rdfs:range rdf:List ;
+   owl:inverseOf def:hasMember ;
+   skos:prefLabel "Deel van verzameling"@nl ;
+   rdfs:subPropertyOf rdfs:member ;
+.
+def:descriptionSource a owl:DatatypeProperty ;
+                        rdfs:label "bronbeschrijving"^^xsd:string ;
+		        rdfs:domain def:AdmissibilityReport, def:Commission ;
+			rdfs:range xsd:string ;
+.
+def:archiveName a owl:DatatypeProperty ;
+                        rdfs:label "naam archief"^^xsd:string ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:string ;
+.
+def:archiveAccessibility a owl:ObjectProperty ;
+                        rdfs:label "Toegankelijkheid archief"^^xsd:string ;
+		        rdfs:domain def:Archive ;
+			rdfs:range def:AccessibilityStatus ;
+.
+def:disclosureYear a owl:DatatypeProperty ;
+                        rdfs:label "jaar openbaarmaking"^^xsd:string ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:gYear ;
+.
+def:typeOfArchive a owl:ObjectProperty ;
+                        rdfs:label "soort archief"^^xsd:string ;
+		        rdfs:domain def:Archive ;
+			rdfs:range def:ArchiveType ;
+.
+def:lengthOfArchive a owl:DatatypeProperty ;
+                        rdfs:label "lengte archief"^^xsd:string ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:string ;
+.
+def:beginPeriodArchive a owl:DatatypeProperty ;
+                        rdfs:label "Begin van door archief bestreken periode (in jaren)"^^xsd:string ;
+                        skos:prefLabel "Begin van door archief bestreken periode"@nl ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:gYear ;
+.
+def:endPeriodArchive a owl:DatatypeProperty ;
+                        rdfs:label "Einde van door archief bestreken periode (in jaren)"^^xsd:string ;
+                        skos:prefLabel "Einde van door archief bestreken periode"@nl ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:gYear ;
+.
+def:firstMentionInArchive a owl:DatatypeProperty ;
+                        rdfs:label "Begin van door archief besproken periode"^^xsd:string ;
+                        skos:prefLabel "Begin van door archief besproken periode"@nl ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:string ;
+.
+def:lastMentionInArchive a owl:DatatypeProperty ;
+                        rdfs:label "Einde van door archief besproken periode"^^xsd:string ;
+                        skos:prefLabel "Einde van door archief besproken periode"@nl ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:string ;
+.
+def:accessNumber a owl:DatatypeProperty ;
+                        rdfs:label "Toegangsnummer"^^xsd:string ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:string ;
+.
+def:numberOfInventoryItems a owl:DatatypeProperty ;
+                        rdfs:label "Aantal inventarisnummers"^^xsd:string ;
+                        skos:prefLabel "Aantal inventarisnummers"@nl ;
+		        rdfs:domain def:ArchiveInventory ;
+			rdfs:range xsd:integer ;
+.
+def:archivalDepot a owl:ObjectProperty ;
+                        rdfs:label "Vindplaats archief"^^xsd:string ;
+                        skos:prefLabel "Vindplaats archief"@nl ;
+		        rdfs:domain def:Archive ;
+			rdfs:range org:FormalOrganization ;
+.
+def:ministersList a owl:DatatypeProperty ;
+                        rdfs:label "Lijst van bewindspersonen met archief"^^xsd:string ;
+                        skos:prefLabel "Lijst van bewindspersonen met archief"@nl ;
+		        rdfs:domain def:Archive ;
+			rdfs:range xsd:string ;
+.
+
+# == De domeinspecifieke definities voor de Commissieboeken == 
+
+def:assignedTo
+  rdf:type rdf:ObjectProperty ;
+  rdfs:domain def:Commission ;
+  rdfs:range bgnExt:PersonEntity ;
+  rdfs:label "to commissionnee"^^xsd:string ;
+  owl:inverseOf def:hasCommission ;
+  skos:prefLabel "aangewezen als uitvoerder"^^xsd:string ;
+.
+def:hasCommission
+  rdf:type rdf:ObjectProperty ;
+  rdfs:domain bgnExt:PersonEntity ;
+  rdfs:range def:CommissionReference ;
+  rdfs:label "commissionnee of"^^xsd:string ;
+  skos:prefLabel "is aangesteld - verwerver van opdracht"@nl ;
+.
+def:isReferredToIn
+  rdf:type rdf:ObjectProperty ;
+  rdfs:domain bgnExt:PersonEntity ;
+  rdfs:range def:CommissionReference ;
+  rdfs:label "referred to in commission annotation"^^xsd:string ;
+  skos:prefLabel "vermeld in aantekening bij commissie"@nl ;
+  owl:equivalentProperty dct:isReferencedBy ;
+.
+def:commissioner
+  rdf:type rdf:ObjectProperty ;
+  rdfs:domain def:Commission ;
+  rdfs:range foaf:Agent ;
+  rdfs:label "commissioner"^^xsd:string ;
+  skos:prefLabel "heeft als opdrachtgever"@nl ;
+  rdfs:comment "Deprecated since the introduction of events and roles therein"^^xsd:string ;
+.
+def:commissionDate
+  rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:CommissionReference ;
+  rdfs:range xsd:date ;
+  rdfs:label "commission date"^^xsd:string ;
+  skos:prefLabel "datum opdracht"@nl ;
+.
+def:shortDate
+  rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:CommissionReference ;
+  rdfs:range xsd:string ;
+  rdfs:label "short date"^^xsd:string ;
+  skos:prefLabel "korte datumomschrijving opdracht"@nl ;
+.
+def:commissionDescription
+  rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:CommissionReference ;
+  rdfs:range xsd:string ;
+  rdfs:label "commission description"^^xsd:string ;
+  skos:prefLabel "opdrachtomschrijving"@nl ;
+.
+def:commissionAnnotation
+  rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:CommissionReference ;
+  rdfs:range xsd:string ;
+  rdfs:label "has annotation"^^xsd:string ;
+  rdfs:comment "The annotator is the one recording the commission, this is an addition in the margin of the source text itself"^^xsd:string ;
+  skos:prefLabel "opmerking bij opdracht"@nl ;
+.
+def:sourceDescription
+  rdf:type rdf:DatatypeProperty ;
+  rdfs:domain def:CommissionReference , def:MovieReport , def:PersonEntity ;
+  rdfs:range xsd:string ;
+  rdfs:label "commission source"^^xsd:string ;
+  skos:prefLabel "bron opdrachtomschrijving"@nl ;
+  owl:equivalentProperty dct:source ;
+.
+
+# === De individuele archieven (2 stuks) plus archiefvormers ===
+
+commBk:RaadVanState a org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual , sem:Authority ;
+                    rdfs:label "Raad van State"@nl ;
+		    owl:sameAs <http://nl.dbpedia.org/resource/Raad_van_State_(historisch)> ,
+                               <http://nl.dbpedia.org/resource/Raad_van_State_(Nederland)>  ;
+.
+filmK:CentraleCommissieFilmkeuring a org:FormalOrganization , def:CreatorOfArchive , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    rdfs:label "Centrale Commissie voor de Filmkeuring"^^xsd:string ;
+                    def:isCreatorOfArchive filmK:ArchiefCentraleCommissieFilmkeuring ;
+		    owl:sameAs <http://nl.dbpedia.org/resource/Centrale_Commissie_voor_de_Filmkeuring> ;
+.
+commBk:ArchiefRaadVanState a def:Archive ; def:archiveName "Archief Raad van State , (1574) 1581-1795 (1801)"^^xsd:string ;
+        rdfs:label "Archief Raad van State 1581-1795"^^xsd:string ;
+        def:archiveCreator commBk:RaadVanState ;
+	def:typeOfArchive nt:StateDepartmentArchive ;
+	def:archiveAccessibility nt:StatusPublic ;
+	def:lengthOfArchive "268.05 meter"^^xsd:string ;
+	def:beginPeriodArchive "1574"^^xsd:gYear ;
+	def:firstMentionInArchive "1574"^^xsd:gYear ;
+	def:endPeriodArchive "1795"^^xsd:gYear ;
+	def:accessNumber "1.01.19"^^xsd:string ;
+        def:archivalDepot nt:NationaalArchief ;
+.
+filmK:ArchiefCentraleCommissieFilmkeuring a def:Archive ; def:archiveName "Archief van de Centrale Commissie voor de Filmkeuring, (1926) 1928-1977"^^xsd:string ;
+        rdfs:label "Archief van de Centrale Commissie voor de Filmkeuring 1928-1977"^^xsd:string ;
+        def:archiveCreator filmK:CentraleCommissieFilmkeuring ;
+	def:typeOfArchive nt:OfficialCommitteeArchive ;
+	def:archiveAccessibility nt:StatusPublic ;
+	def:lengthOfArchive "71.30 meter"^^xsd:string ;
+	def:beginPeriodArchive "1926"^^xsd:gYear ;
+	def:firstMentionInArchive "1926"^^xsd:gYear ;
+	def:endPeriodArchive "1977"^^xsd:gYear ;
+	def:lastMentionInArchive "1982"^^xsd:gYear ;
+	def:accessNumber "2.04.60"^^xsd:string ;
+        def:archivalDepot nt:NationaalArchief ;
+.
+wsb:ArchiefBestekkenRijkswaterstaat a def:Archive ; def:archiveName "Bestekken van Rijkswaterstaat en van de Dienst der Zuiderzeewerken, 1930-1961"^^xsd:string ;
+        rdfs:label "Bestekken van Rijkswaterstaat en van de Dienst der Zuiderzeewerken, 1930-1961"^^xsd:string ;
+        def:archiveCreator wsb:Rijkswaterstaat ;
+	def:typeOfArchive nt:StateDepartmentArchive ;
+	def:archiveAccessibility nt:StatusPublic ;
+	def:lengthOfArchive "24.00 meter"^^xsd:string ;
+	def:beginPeriodArchive "1920"^^xsd:gYear ;
+	def:endPeriodArchive "1980"^^xsd:gYear ;
+	def:lastMentionInArchive "1982"^^xsd:gYear ;
+	def:accessNumber "2.16.16"^^xsd:string ;
+        def:archivalDepot nt:NationaalArchief ;
+.
+
+
+# === De inventarissen (2 stuks) ===
+
+nt:NAInventaris_1-01-19_2623 rdf:type def:ArchivalInventory ;
+                                   dct:creator nt:WGvanOijen , nt:EAThMSchreuder , nt:HAJvanSchie ;
+                                   def:status nt:StatusFinal ;
+				   dcat:theme <http://nl.dbpedia.org/resource/Raad_van_State_(historisch)> ;
+				   dct:issued "2008"^^xsd:gYear ;
+                                   dc:subject "NL NA 1.01.19"^^xsd:string ;
+                                   dct:subject commBk:ArchiefRaadVanState ;
+                                   rdfs:label "Inventaris van het archief van de Raad van State 1581-1795"^^xsd:string ;
+                                   dct:title "Inventaris van het archief van de Raad van State, (1574) 1581-1795 (1801)"^^xsd:string ;
+                                   dct:alternative "Raad van State, 1581-1795"@nl ;
+                                   def:numberOfInventoryItems "2398"^^xsd:integer ;
+                                   dct:publisher nt:NationaalArchief ;
+                                   def:fullMention "Nationaal Archief, Den Haag, Raad van State, nummer toegang 1.01.19, inventarisnummer 2623"^^xsd:string ;
+				   def:shortMention "NL-HaNA, Raad van State, 1581-1795, 1.01.19, inv.nr. 2623"^^xsd:string ;
+				   dct:description "De Raad van State was oorspronkelijk gedacht als het centrale regeringsorgaan van de geünieerde provinciën, maar nam spoedig een aan de Staten-Generaal ondergeschikte functie in. De Raad had de zorg voor de het verdedigingsapparaat te land (leger, vestingen en magazijnen), voornamelijk in logistieke zin. In perioden van grote stadhouderlijke macht was de raad ook sterk betrokken bij operationele aangelegenheden. De Raad van State had tevens een belangrijke taak in het financiële beleid; hij maakte de begroting op die ter goedkeuring aan de Staten-Generaal en provinciale Staten werd voorgelegd. De raad had daarenboven een uitvoerende taak bij het bestuur van gebieden die op de vijand waren veroverd (de zgn. Generaliteitslanden: Staats-Brabant, Staats-Vlaanderen, Maastricht en de Landen van Overmaze, Wedde en Westerwoldingerland), in het bijzonder de financiële aangelegenheden. Voorts was de Raad van State het belangrijkste rechtscollege der Generaliteit. Naast rechtspraak in de aangelegenheden die tot de bijzondere taken van de Raad van State, had de raad ook de bevoegdheid om op te treden in zaken betreffende delicten tegen de Generaliteit. Het archief bevat resoluties met bijlagen (uit de 16e en 17e eeuw zijn de bijlagen slechts fragmentarisch bewaard), commissieboeken (aanstellingen), acteboeken (contracten) en verbalen (verslagen) van commissies betreffende fortificaties en betreffende de financiën van de Generaliteit en de Generaliteitslanden alsmede stukken betreffende voor de raad gevoerde processen."^^xsd:string ;
+.
+nt:NAInventaris_2-04-60 rdf:type def:ArchivalInventory ;
+                                   dct:creator nt:CentraleArchiefSelectiedienst ;
+                                   def:status nt:StatusFinal ;
+				   dcat:theme filmK:CentraleCommissieFilmkeuring ;
+				   dct:issued "1996"^^xsd:gYear ;
+                                   dc:subject "NL NA 2.04.60"^^xsd:string ;
+                                   dct:subject filmK:ArchiefCentraleCommissieFilmkeuring ;
+                                   rdfs:label "Inventaris van het archief van de Centrale Commissie voor de Filmkeuring 1928-1977"^^xsd:string ;
+                                   dct:title "Inventaris van het archief van de Centrale Commissie voor de Filmkeuring, (1926) 1928-1977"^^xsd:string ;
+                                   dct:alternative "Filmkeuringsrapporten 1928-1960"@nl ;
+                                   def:numberOfInventoryItems "1675"^^xsd:integer ;
+                                   dct:publisher nt:NationaalArchief ;
+                                   def:fullMention "Inventaris van het archief van de Centrale Commissie voor de Filmkeuring, (1926) 1928-1977"^^xsd:string ;
+				   def:shortMention "Archief Commissie Filmkeuring"^^xsd:string ;
+                                   def:nextLowerElement nt:FilmrapportenDeelA-20460  ;
+                                   def:nextLowerElement nt:FilmrapportenDeelB-20460  ;
+                                   def:nextLowerElement nt:FilmrapportenDeelC-20460  ;
+                                   def:nextLowerElement nt:FilmrapportenDeelD-20460  ;
+                                   def:nextLowerElement nt:FilmrapportenDeelE-20460  ;
+.
+
+nt:NAInventaris_2-16-16 rdf:type def:ArchivalInventory ;
+                                   dct:creator nt:CentraleArchiefSelectiedienst ;
+                                   def:status nt:StatusFinal ;
+				   dcat:theme wsb:Rijkswaterstaat ;
+				   dct:issued "2002"^^xsd:gYear ;
+                                   dc:subject "NL NA 2.16.16"^^xsd:string ;
+                                   dct:subject wsb:ArchiefBestekkenRijkswaterstaat ;
+                                   rdfs:label "Inventaris van bestekken van Rijkswaterstaat en van de Dienst der Zuiderzeewerken, 1930-1961"^^xsd:string ;
+                                   dct:title "Inventaris van bestekken van Rijkswaterstaat en van de Dienst der Zuiderzeewerken, 1930-1961"^^xsd:string ;
+                                   dct:alternative "Waterstaatsbestekken 1920-1980"@nl ;
+                                   def:numberOfInventoryItems "190"^^xsd:integer ;
+                                   dct:publisher nt:NationaalArchief ;
+                                   def:fullMention "Inventaris van bestekken van Rijkswaterstaat en van de Dienst der Zuiderzeewerken, 1930-1961"^^xsd:string ;
+				   def:shortMention "Bestekken Rijkswaterstaat"^^xsd:string ;
+                                   def:nextLowerElement nt:BestekkenRWS_1-152 ;
+                                   def:nextLowerElement nt:BestekkenDienstZuiderzeewerken_153-190 ;
+.
+
+# === De Nadere toegangen (5 stuks, waaronder één archiefgids ===
+
+nt:NadereToegangCommissieboeken a def:DetailedContentDescription , owl:NamedIndividual ;
+                   rdfs:label "Nadere Toegang Commissieboeken"^^xsd:string ;
+                   def:refersToElement nt:SubRubriekCommissieboeken-10119 ;
+                   dct:identifier "NT00194"^^xsd:string ;
+                   dcat:record ds:NT00194 ;
+                   def:accessType def:DetailedInventoryTypeAccess ;
+                   def:datasetWithInterpretationLayer commBk:PersonenLijst ;
+                   def:datasetWithInterpretationLayer commBk:GebeurtenissenLijst ;
+                   def:contentDescription nt:recordTypeRegistrationBook ;
+                   dct:creator nt:CentraleArchiefSelectiedienst ;
+                   def:contentList commBk:CommissieLijst ;
+.
+nt:NadereToegangFilmrapporten a def:DetailedContentDescription , owl:NamedIndividual ;
+                   rdfs:label "Nadere Toegang Rapporten Filmkeuring"@nl ;
+                   dct:identifier "NT00402"^^xsd:string ;
+                   def:refersToElement nt:FilmrapportenDeelE-20460 ;
+                   dcat:record ds:NT00204 ;
+                   def:contentList filmK:KeuringsrapportenLijst ;
+                   dct:creator nt:CentraleArchiefSelectiedienst ;
+		   dct:description "Het archief van de Centrale Commissie voor de Filmkeuring bevat notulen en correspondentie, waaronder die met film(verhuur)bedrijven. Daarnaast zijn er archiefbescheiden m.b.t. de organisatie van de commissie o.a. over benoemingen, financiën en personeel. Inzake de taakuitoefening - het keuringsbeleid - zijn er stukken over regelgeving, filmboeken en enige correspondentie (ook met plaatselijke commissies). De bulk van het materiaal in dit archief bestaat uit filmrapporten over de periode 1926-1977. Verder zijn er de gedeponeerde archieven van de voorzitters D. van Staveren en J.C. Schuller. Het archief bevat géén films."^^xsd:string ;
+.
+nt:BewindsliedenIndex a def:GuideToArchives , owl:NamedIndividual ;
+                   rdfs:label "Bewindslieden: Archieven van ministers en staatssecretarissen (1798-2010)"@nl ;
+                   dct:identifier "NT00334"^^xsd:string ;
+                   dcat:record ds:NT00334 ;
+                   def:datasetWithInterpretationLayer bewL:PartijenLijst ;
+                   def:datasetWithInterpretationLayer bewL:ArchievenLijstBewindspersonen ;
+                   def:datasetClosestToSource bewL:BewindsliedenLijst ;
+                   dct:creator nt:CentraleArchiefSelectiedienst ;
+                   dct:description "In deze zoekgids is informatie te vinden over uitsluitend de archieven van de bewindspersonen. Voor biografische informatie kan men terecht op de website van het Parlementair Documentatiecentrum (PDC). Op de website van het PDC is biografische informatie te vinden van ongeveer 3500 Nederlandse politici uit de 19e en 20e eeuw. Om het zoeken te vergemakkelijken zijn de websites van het Nationaal Archief en het PDC met elkaar verbonden via links. Het is mogelijk vanuit een lemma van de ene website naar het lemma op de andere website te gaan. Dat wil zeggen van het lemma met biografische informatie over bijvoorbeeld Colijn naar het lemma met informatie over zijn archieven en vice versa. Op die manier kan de gebruiker met één muisklik informatie over een bewindspersoon en over diens archieven bijeen brengen. Publicaties: Daarnaast zijn er talrijke naslagwerken met biografische informatie is te vinden. Belangrijke naslagwerken zijn: A.J. van der Aa, e.a., Biographisch woordenboek, (1842-1878), 21 delen. P.C. Molhuysen, P.J. Blok, Nederlandsch biografisch woordenboek, (Leiden 1911-1937), 10 delen. J. Charité (red.), Biografisch woordenboek van Nederland, ('s Gravenhage 1979-...). ANP, biografieën, (s.n. 1977-...), losbladig. P.J. Meertens e.a. (red.), Biografisch woordenboek van het socialisme en de arbeidersbeweging in Nederland, (Amsterdam 1986-2001), 8 delen. Biografisch archief van de Benelux, (München 1992-...), 756 microfiches met elk ongeveer 450 pagina 92's met biografische data overgenomen uit vele biografische naslagwerken uit Nederland, België en Luxemburg. Het Documentatiecentrum Nederlandse Politieke Partijen (DNPP, Groningen), het Centrum voor Parlementaire Geschiedenis (CPG, Nijmegen) en het Katholiek Documentatiecentrum (KDC, Nijmegen) onderhouden eigen databestanden waarin biografische informatie systematisch wordt verzameld. Mochten deze naslagwerken onvoldoende informatie opleveren dan kan nog de volgende literatuur worden geraadpleegd: W.J. van Welderen baron Rengers, Schets eener parlementaire geschiedenis van Nederland van 1849 tot 1901, ('s Gravenhage 1948-1956), 5 delen. P.J. Oud, Het jongste verleden: parlementaire geschiedenis van Nederland, 1918-1940, (Assen 1948-1951), 6 delen. F.J.F.M. Duynstee, e.a., Parlementaire geschiedenis van Nederland na 1945, (Assen 1977-85). E.H. Kossmann, De Lage Landen 1780-1980, (Amsterdam 2001 (Eerste druk 1986)), 2 delen. D.P. Blok, e.a. (red.), Algemene geschiedenis der Nederlanden, (Haarlem 1977-1983), 15 delen. P.J. Oud, J. Bosmans, Honderd jaren: een eeuw staatkundige vormgeving in Nederland, 1840-194, (Assen 1987). J. Bosmans, Staatkundige vormgeving in Nederland. Deel II: De tijd na 1940, (Assen 1999). Bibliografische informatie Voor literatuur van en over politici kan men het beste terecht bij enkele grote gespecialiseerde bibliotheken in Nederland. Op deze pagina zijn links geplaatst naar de catalogi van deze bibliotheken."^^xsd:string ; 
+		   rdfs:comment "Index van bewindslieden, hun functie in een kabinet sinds 1798 en de archieven die zij hebben nagelaten."^^xsd:string ;
+.
+nt:NadereToegangDodenboekenOranjehotel a def:DetailedContentDescription , owl:NamedIndividual ;
+                   owl:sameAs <http://www.gahetna.nl/collectie/index/nt00373/q/zoekterm/Oranjehotel/q/comments/1/q/ugc/1> ;
+                   rdfs:label "Nadere Toegang Dodenboeken Oranjehotel"@nl ;
+                   dct:identifier "NT00373"^^xsd:string ;
+                   dcat:record ds:NT00373 ;
+                   def:datasetWithInterpretationLayer oh:DodenboekenLijst ;
+                   dct:creator nt:CentraleArchiefSelectiedienst ;
+		   dct:description "De Dodenboeken bevatten de namen van de verzetsstrijders die tijdens de Tweede Wereldoorlog in het Oranjehotel hebben gezeten en zijn geëxecuteerd."^^xsd:string ;
+.
+nt:NadereToegangWaterstaatbestekken a def:DetailedContentDescription , owl:NamedIndividual ;
+                   rdfs:label "Nadere Toegang Rapporten Bestekken Rijkswaterstaat"@nl ;
+                   dct:identifier "NT00369"^^xsd:string ;
+                   def:refersToElement nt:BestekkenRWS_1-152 ;
+                   dcat:record ds:NT00369 ;
+                   def:contentList wsb:BestekbeschrijvingenLijst ;
+                   dct:creator nt:CentraleArchiefSelectiedienst ;
+		   dct:description "Waterstaatsbestekken 1930-1961"^^xsd:string ;
+.
+
+# === De datakant van de Nadere Toegangen. 1. De Catalogus ===
+
+ds:GeneralCatalog a dcat:Catalog , owl:NamedIndividual ;
+                  rdfs:label "Catalogus op de Nadere Toegangen van de Proof of Concept Nadere Toegangen"^^xsd:string ;
+                  dct:title "Catalogus op de Nadere Toegangen van de Proof of Concept Nadere Toegangen"^^xsd:string ;
+                  dct:description "Beschrijving op metadataniveau van inventarissen en Nadere Toegangen, en hoe deze in Linked Data worden omgezet"^^xsd:string ;
+                  dct:issued "2016-10-21"^^xsd:date ;
+                  dct:language <http://id.loc.gov/vocabulary/iso639-1/nl> ;
+                  dcat:record ds:NT00194 ;
+                  dcat:record ds:NT00204 ;
+                  dcat:record ds:NT00334 ;
+                  dcat:record ds:NT00369 ;
+                  dcat:record ds:NT00373 ;
+                  dct:creator nt:GerardKuys ;
+                  dct:publisher nt:NationaalArchief ;
+                  dct:spatial <http://www.geonames.org/2747373/the-hague.html> ;
+                  foaf:homepage <http://www.gahetna.nl/> ;
+                  dcat:themeTaxonomy nt:AccessToArchives ;
+.
+ds:NT00194 a dcat:CatalogRecord , owl:NamedIndividual ;
+           rdfs:label "Catalogus Record op de Nadere Toegang Commissieboeken Raad van State"^^xsd:string ;
+           dct:issued "2016-08"^^xsd:gYearMonth ;
+           foaf:primaryTopic ds:CommissieDataset ;
+           dct:title "Raad van State: Naamindex op de commissieboeken"@nl ;
+           dct:subject nt:NadereToegangCommissieboeken ;
+           dct:description "Data op de Nadere Toegang: Raad van State - Commissieboeken"@nl ;
+	   def:persistentIdentifier "http://www.gahetna.nl/collectie/index/nt00194/02b4f924-cd6d-102c-9f8b-005056a23d00"^^xsd:anyURI ;
+.                
+ds:NT00204 a dcat:CatalogRecord , owl:NamedIndividual ;
+           rdfs:label "Catalogus Record op de Nadere Toegang Archief Centrale Commissie Filmkeuring"^^xsd:string ;
+	   dct:issued "2016-10"^^xsd:gYearMonth ;
+           foaf:primaryTopic ds:FilmkeuringDataset ;
+           dcat:theme filmK:CentraleCommissieFilmkeuring ;
+           dct:title "Centrale Commissie voor de Filmkeuring: filmrapporten"@nl ;
+           dct:subject nt:NadereToegangFilmrapporten ;
+           dct:description "Data op de Nadere Toegang: Filmkeuringsrapporten 1928-1960"@nl ;
+	   def:persistentIdentifier "http://www.gahetna.nl/collectie/index/nt00402/c4fc0b0a-83e6-102d-972f-005056a23d00"^^xsd:anyURI ;
+. 
+ds:NT00334 a dcat:CatalogRecord, owl:NamedIndividual ;
+	   dct:issued "2016-10"^^xsd:gYearMonth ;
+           foaf:primaryTopic ds:BewindsliedenDataset ;
+           dc:subject "NL NA NT00334"^^xsd:string ;
+           dct:subject nt:BewindsliedenIndex ;
+           dct:title "Bewindslieden: Archieven van ministers en staatssecretarissen (1798-2010)"@nl ;
+           dct:description "Data op de Archiefgids: Bewindsliedenindex 1798-2010"@nl ;
+. 
+ds:NT00369 a dcat:CatalogRecord , owl:NamedIndividual ;
+	   dct:issued "2017-07"^^xsd:gYearMonth ;
+           foaf:primaryTopic ds:DatasetWaterstaatBestekken ;
+           dc:subject "NL NA NT00369"^^xsd:string ;
+           dct:subject nt:NadereToegangWaterstaatbestekken ;
+           dct:title "Waterstaatbestekken, 1930-1961"@nl ;
+           dct:description "Waterstaatsbestekken"@nl ;
+. 
+ds:NT00373 a dcat:CatalogRecord ;
+	   dct:issued "2017-04"^^xsd:gYearMonth ;
+           foaf:primaryTopic ds:DatasetOranjehotel ;
+           dc:subject "NL NA NT00373"^^xsd:string ;
+           dct:subject nt:NadereToegangDodenboekenOranjehotel ;
+           dct:title "Dodenboeken Oranjehotel Scheveningen, 1940-1945"@nl ;
+           dct:description "Erelijst Oranjehotel"@nl ;
+. 
+
+# === De datakant van de Nadere Toegangen. 2. De datasets en de distributies bij de Catalogus ===
+
+ds:CommissieDataset a dcat:Dataset , void:Dataset ;
+                     void:classPartition [ void:class bgn:Person ] ;
+                     void:propertyPartition [ void:property def:hasCommission ] ;
+                     void:sparqlEndpoint <http://na.metamatter.nl/sparql> ;
+                     void:exampleResource <http://na.metamatter.nl/NadereToegang/resource/Commissieboeken/NT00194Comm78> ;
+                     void:rootResource <http://na.metamatter.nl/NadereToegang/Commissieboeken/> ;
+                     void:uriSpace "http://na.metamatter.nl/NadereToegangen/" ;
+		     dcat:theme def:DetailedInventoryTypeAccess ;
+                     dcat:keyword "Raad van State"^^xsd:string , "Aanstellingen"^^xsd:string , "Commissieboeken"^^xsd:string  ;
+                     dcat:distribution ds:CommissieDistribution_1 ;
+                     def:datasetClosestToSource commBk:CommissieLijst ;
+                     def:datasetWithInterpretationLayer commBk:PersonenLijst ;
+.
+ds:FilmkeuringDataset a dcat:Dataset , void:Dataset ;
+                     void:classPartition [ void:class foaf:Agent ] ;
+                     void:propertyPartition [ void:property def:distributedBy ] ;
+                     void:propertyPartition [ void:property def:producedBy ] ;
+                     void:sparqlEndpoint <http://na.metamatter.nl/sparql> ;
+                     void:rootResource <http://na.metamatter.nl/NadereToegang/Filmkeuring/> ;
+                     void:uriSpace "http://na.metamatter.nl/NadereToegangen/" ;
+		     dcat:theme nt:DetailedInventoryTypeAccess ;
+                     dcat:keyword "Centrale Commissie voor de Filmkeuring"^^xsd:string , "Films"^^xsd:string , "Beoordeling"^^xsd:string ;
+                     def:contentList filmK:DistributeurenLijst ;  
+                     def:contentList filmK:ProducentenLijst ;
+                     dcat:distribution ds:FilmkeuringDistribution_1 ;
+                     def:datasetClosestToSource filmK:KeuringsrapportenLijst ;
+                     def:datasetWithInterpretationLayer filmK:DistributeurenLijst ;
+                     def:datasetWithInterpretationLayer filmK:ProducentenLijst ;
+                     def:datasetWithInterpretationLayer filmK:FilmLijst ;
+.
+ds:BewindsliedenDataset a dcat:Dataset , void:Dataset ;
+                     void:classPartition [ void:class foaf:Agent ] ;
+                     void:sparqlEndpoint <http://na.metamatter.nl/sparql> ;
+                     void:rootResource <http://na.metamatter.nl/NadereToegang/resource/Bewindslieden/> ;
+                     void:uriSpace "http://na.metamatter.nl/NadereToegangen/" ;
+		     dcat:theme nt:GuideToArchivesTypeAccess ;
+                     dcat:keyword "Bewindslieden"^^xsd:string , "Minister"^^xsd:string , "Staatssecretaris"^^xsd:string , "Kabinet"^^xsd:string , "Archief"^^xsd:string , "Archiefgids"^^xsd:string ;
+                     dcat:distribution ds:BewindsliedenDistribution_1 ;
+                     def:datasetClosestToSource bewL:BewindsliedenLijst ;
+                     def:datasetWithInterpretationLayer bewL:PartijenLijst ;
+                     def:datasetWithInterpretationLayer bewL:ArchievenLijstBewindspersonen ;
+.
+ds:DatasetOranjehotel a dcat:Dataset , void:Dataset ;
+                     void:classPartition [ void:class foaf:Agent ] ;
+                     void:sparqlEndpoint <http://na.metamatter.nl/sparql> ;
+                     void:rootResource <http://na.metamatter.nl/NadereToegang/resource/Oranjehotel/> ;
+                     void:uriSpace "http://na.metamatter.nl/NadereToegangen/" ;
+		     dcat:theme nt:GuideToArchivesTypeAccess ;
+                     dcat:keyword "Verzetslieden"^^xsd:string , "Oranjehotel"^^xsd:string ;
+                     dcat:distribution ds:DodenboekenDistribution_1 ;
+                     def:datasetClosestToSource oh:DodenboekenLijst ;
+                     def:datasetWithInterpretationLayer oh:ErelijstOranjehotel ;
+.
+ds:DatasetWaterstaatBestekken a dcat:Dataset , void:Dataset ;
+                     void:classPartition [ void:class foaf:Agent ] ;
+                     void:sparqlEndpoint <http://na.metamatter.nl/sparql> ;
+                     void:rootResource <http://na.metamatter.nl/NadereToegang/resource/Waterstaatbestekken/> ;
+                     void:uriSpace "http://na.metamatter.nl/NadereToegangen/" ;
+		     dcat:theme nt:GuideToArchivesTypeAccess ;
+                     dcat:keyword "Rijkswaterstaat"^^xsd:string , "Waterstaat"^^xsd:string , "Bestek"^^xsd:string , "Project"^^xsd:string ;
+                     dcat:distribution ds:RWSBestekkenDistribution_1 ;
+                     def:datasetClosestToSource wsb:BestekbeschrijvingenLijst ;
+                     def:datasetWithInterpretationLayer wsb:BestekkenLijst ;
+.
+
+ds:CommissieDistribution_1 a dcat:Distribution ;
+                     dcat:accessURL <http://na.metamatter.nl/sparql> ;
+                     dcat:downloadURL <http://metamatter.nl/NA/NadereToegangen/NT00194_Raad_van_State_Commissieboeken.ttl> ;
+                     dct:mediaType "text/Turtle";
+.
+ds:FilmkeuringDistribution_1 a dcat:Distribution ;
+                     dcat:accessURL <http://na.metamatter.nl/sparql> ;
+                     dcat:downloadURL <http://metamatter.nl/NA/NadereToegangen/NT00402_Filmkeuring_20161124_dl1.ttl> ;
+                     dcat:downloadURL <http://metamatter.nl/NA/NadereToegangen/NT00402_Filmkeuring_20161124_dl2.ttl> ;
+                     dct:mediaType "text/Turtle";
+.
+ds:BewindsliedenDistribution_1 a dcat:Distribution ;
+                     dcat:accessURL <http://na.metamatter.nl/sparql> ;
+                     dcat:downloadURL <http://metamatter.nl/NA/NadereToegangen/NT334_Bewindslieden_20161212.ttl> ;
+                     dct:mediaType "text/Turtle";
+.
+ds:RWSBestekkenDistribution_1 a dcat:Distribution ;
+                     dcat:accessURL <http://na.metamatter.nl/sparql> ;
+                     dcat:downloadURL <http://metamatter.nl/NA/NadereToegangen/NT00369_Waterstaatsbestekken_geharmoniseerd.ttl> ;
+                     dct:mediaType "text/Turtle";
+.
+
+
+# === De Inventariselementen (Rubrieken, subrubrieken) ===
+
+
+nt:RubriekCommissieboeken-10119 a def:ArchivalSubSection ;
+                   rdfs:label "A. Resoluties, brieven, akten en verbalen"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+                   def:nextLowerElement nt:SubRubriekCommissieboeken-10119  ;
+.
+nt:SubRubriekCommissieboeken-10119 a def:ArchivalSubSection ;
+                   rdfs:label "A.4 Akten, commissieboeken, instructieboeken en presentieboeken"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekUnie-10119 a def:ArchivalSubSection ;
+                   rdfs:label "B. Unie en Nadere Unie"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekDefensie-10119 a def:ArchivalSubSection ;
+                   rdfs:label "C. Defensie te lande"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekFinancienGeneraliteit-10119 a def:ArchivalSubSection ;
+                   rdfs:label "D. Financiën van de Generaliteit"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekGeneraliteitslanden-10119 a def:ArchivalSubSection ;
+                   rdfs:label "E. Beheer en Bestuur der Generaliteitslanden"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekRechtspraak-10119 a def:ArchivalSubSection ;
+                   rdfs:label "F. Militaire en Generaliteitsrechtspraak"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekArchiefbeheer-10119 a def:ArchivalSubSection ;
+                   rdfs:label "G. Archiefbeheer"^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekToegangOpFilmrapporten-20460 a def:ArchivalSubSection ;
+                   rdfs:label "1. Toegangen op Filmrapporten"@nl ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:RubriekFilmrapporten-20460 a def:ArchivalSubSection ;
+                   rdfs:label "2. Filmrapporten"@nl ;
+                   dct:isPartOf nt:NAInventaris_1-01-19_2623 ;
+.
+nt:SubRubriekFilmrapporten-20460-460-578 a def:ArchivalSubSection ;
+                   rdfs:label "Filmrapporten genummerd 00001-13100, 1928-1931 (119 dozen)"@nl ;
+                   dct:isPartOf nt:RubriekFilmrapporten ;
+.
+nt:SubRubriekFilmrapporten579-1140 a def:ArchivalSubSection ;
+                   rdfs:label "Filmrapporten genummerd A 00001- Z 02531, 1932-1957 (562 dozen)"@nl ;
+                   dct:isPartOf nt:RubriekFilmrapporten ;
+.
+nt:SubRubriekFilmrapporten-20460-1140-1675 a def:ArchivalSubSection ;
+                   rdfs:label "Filmrapporten genummerd A 00001- V 00357, 1958-1977 (535 dozen)"@nl ;
+                   dct:isPartOf nt:RubriekFilmrapporten ;
+.
+nt:FilmrapportenDeelA-20460 a def:ArchivalSection ;
+                   rdfs:label "A. Stukken van algemene aard"@nl ;
+                   dct:identifier "A."^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_2-04-60 ;
+.
+nt:FilmrapportenDeelB-20460 a def:ArchivalSection ;
+                   rdfs:label "B. Stukken betreffende bijzondere onderwerpen"@nl ;
+                   dct:identifier "B."^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_2-04-60 ;
+. 
+nt:FilmrapportenDeelC-20460 a def:ArchivalSection ;
+                   rdfs:label "C. Gedeponeerd archieven"@nl ;
+                   dct:identifier "C."^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_2-04-60 ;
+.
+nt:FilmrapportenDeelD-20460 a def:ArchivalSection ;
+                   rdfs:label "D. Documentatie"@nl ;
+                   dct:identifier "D."^^xsd:string ;
+                   dct:isPartOf nt:NAInventaris_2-04-60 ;
+.
+nt:FilmrapportenDeelE-20460 a def:ArchivalSection ;
+                   rdfs:label "E. Filmrapporten met toegangen"@nl ;
+                   dct:identifier "E."^^xsd:string ;
+                   dct:isPartOf  nt:NAInventaris_2-04-60 ;
+                   def:nextLowerElement nt:FilmrapportenDeelE1-20460  ;
+                   def:nextLowerElement nt:FilmrapportenDeelE2-20460  ;
+.
+nt:FilmrapportenDeelE1-20460 a def:ArchivalSubSection ;
+                   rdfs:label "1. Toegangen op filmrapporten"@nl ;
+                   dct:identifier "E1."^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE-20460 ;
+.
+nt:FilmrapportenDeelE2-20460 a def:ArchivalSubSection ;
+                   rdfs:label "2. Filmrapporten"@nl ;
+                   dct:identifier "E2."^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE-20460 ;
+.
+nt:FilmrapportDeelE2-460-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00001 - 00090 1928"^^xsd:string ;
+                   dct:identifier "E2-460"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-461-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00091 - 00190 1928"^^xsd:string ;
+                   dct:identifier "E2-461"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+. 
+nt:FilmrapportDeelE2-462-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00191 - 00339 1928"^^xsd:string ;
+                   dct:identifier "E2-462"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-463-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00340 - 00400 1928"^^xsd:string ;
+                   dct:identifier "E2-463"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-464-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00401 - 00506 1928"^^xsd:string ;
+                   dct:identifier "E2-464"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-465-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00507 - 00603 1928"^^xsd:string ;
+                   dct:identifier "E2-465"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-466-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00604 - 00696 1928"^^xsd:string ;
+                   dct:identifier "E2-466"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-467-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00697 - 00800 1928"^^xsd:string ;
+                   dct:identifier "E2-467"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-468-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00801 - 00907 1928"^^xsd:string ;
+                   dct:identifier "E2-468"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-469-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00908 - 00974 1928"^^xsd:string ;
+                   dct:identifier "E2-469"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+nt:FilmrapportDeelE2-470-20460 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "2. Filmrapporten. 00975 - 01036 1928"^^xsd:string ;
+                   dct:identifier "E2-470"^^xsd:string ;
+                   def:nextUpperElement nt:FilmrapportenDeelE2-20460 ;
+.
+
+nt:BestekkenRWS_1-152 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "Bestekken van Rijkswaterstaat, 1930-1961"^^xsd:string ;
+                   dct:identifier "1-152"^^xsd:string ;
+                   def:nextUpperElement nt:NAInventaris_2-16-16 ;
+.
+nt:BestekkenDienstZuiderzeewerken_153-190 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "Bestekken van Rijkswaterstaat, 1930-1961"^^xsd:string ;
+                   dct:identifier "1-152"^^xsd:string ;
+                   def:nextUpperElement nt:NAInventaris_2-16-16 ;
+.
+nt:Bestekkenserie_1930_nrs_1-72 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1930, nrs. 1 - 72"^^xsd:string ;
+                   dct:identifier "1930, 1-72"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1930_nrs_73-119 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1930, nrs. 73 - 119"^^xsd:string ;
+                   dct:identifier "1930, 73-119"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1930_nrs_120-199 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1930, nrs. 120 - 199"^^xsd:string ;
+                   dct:identifier "1930, 120-199"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1930_nrs_200-257 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1930, nrs. 200 - 257"^^xsd:string ;
+                   dct:identifier "1930, 200-257"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1930_nrs_258-289 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1930, nrs. 258 - 289"^^xsd:string ;
+                   dct:identifier "1930, 258-289"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1931_nrs_1-56 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1931, nrs. 1 - 56"^^xsd:string ;
+                   dct:identifier "1931, 1-56"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1931_nrs_57-102 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1931, nrs. 57 - 102"^^xsd:string ;
+                   dct:identifier "1931, 57-102"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1931_nrs_103-198 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1931, nrs. 103 - 198"^^xsd:string ;
+                   dct:identifier "1931, 103-198"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1931_nrs_199-250 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1931, nrs. 199 - 250"^^xsd:string ;
+                   dct:identifier "1931, 199-250"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+nt:Bestekkenserie_1931_nrs_251-291 a def:ArchivalSingleItemDescription ;
+                   rdfs:label "1931, nrs. 251 - 291"^^xsd:string ;
+                   dct:identifier "1931, 251-291"^^xsd:string ;
+                   def:nextUpperElement nt:BestekkenRWS_1-152 ;
+.
+
+# == Individuals, archiefinstellingen. Alle individuals in namespace nt: ==
+
+nt:NationaalArchief rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "NL-HaNA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Nationaal_Archief> ;
+                    skos:prefLabel "Nationaal Archief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Prins Willem Alexanderhof 20"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ;
+	                               vcard:hasTelephone "(070) 3315400"^^xsd:string ;
+	                               vcard:hasPostalCode "2595 BE"^^xsd:string ;
+                                       vcard:hasURL "http://www.nationaalarchief.nl"^^xsd:anyURI ] ;
+.
+nt:KatholiekDocumentatieCentrum rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "KDC"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Katholiek_Documentatie_Centrum> ;
+                    skos:prefLabel "Katholiek Documentatie Centrum"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Erasmuslaan 36"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Nijmegen"^^xsd:string ;
+	                               vcard:hasTelephone "(024) 3612412"^^xsd:string ;
+	                               vcard:hasPostalCode "6525 GG"^^xsd:string ;
+                                       vcard:hasURL "http://www.kdc.kun.nl"^^xsd:anyURI ] ;
+.
+nt:MinisterieVanOCenW rdf:type org:FormalOrganization ,  eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "Dep_OCW"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap> ;
+                    skos:prefLabel "Ministerie van Onderwijs, Cultuur en Wetenschappen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Zoetermeer"^^xsd:string ] ;
+.
+nt:MinisterieVanJustitie rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "Dep_Jus"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Ministerie_van_Justitie> ;
+                    skos:prefLabel "Ministerie van Justitie"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:Rijkswaterstaat rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "RWS"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Rijkswaterstaat> ;
+                    skos:prefLabel "Rijkswaterstaat"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Griffioenlaan 2"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Nieuwegein"^^xsd:string ;
+	                               vcard:hasTelephone "(088) 7971111"^^xsd:string ;
+	                               vcard:hasPostalCode "3526 LA"^^xsd:string ;
+                                       vcard:hasURL "https://www.rijkswaterstaat.nl/"^^xsd:anyURI ] ;
+                    org:hasUnit nt:RWSEersteInspectie , nt:RWSTweedeInspectie ,nt:RWSDerdeAfdeling ;
+.
+
+nt:Waterschap_De_Regge rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual , dbo:DistrictWaterBoard ;
+                    dct:identifier "WSDR"^^xsd:string ;
+                    skos:prefLabel "Waterschap De Regge"@nl ;
+                    dbo:successor nt:Waterschap_Vechtstromen .
+
+nt:Waterschap_Vechtstromen rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual , dbo:DistrictWaterBoard ;
+                    dct:identifier "WSVS"^^xsd:string ;
+                    skos:prefLabel "Waterschap Vechtstromen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Kooikersweg 1"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Almelo"^^xsd:string ;
+	                               vcard:hasTelephone "(088) 220 3333"^^xsd:string ;
+	                               vcard:hasPostalCode "7609 PZ"^^xsd:string ;
+                                       vcard:hasURL "https://www.vechtstromen.nl/"^^xsd:anyURI ] ;
+                    dbo:predecessor nt:Waterschap_De_Regge .
+nt:RWSArrondissementArnhem rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Arr_Arn"^^xsd:string ;
+                    skos:prefLabel "Arrondissement Arnhem"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieDrenthe rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Dr"^^xsd:string ;
+                    skos:prefLabel "Directie Drenthe"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieFriesland rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Fr"^^xsd:string ;
+                    skos:prefLabel "Directie Friesland"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieUtrecht rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Ut"^^xsd:string ;
+                    skos:prefLabel "Directie Utrecht"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieGroningen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Gr"^^xsd:string ;
+                    skos:prefLabel "Directie Groningen"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieOverijssel rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Ov"^^xsd:string ;
+                    skos:prefLabel "Directie Overijssel"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+
+nt:RWSStaatsvissershavenbedrijf rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "StVHb"^^xsd:string ;
+                    skos:prefLabel "Staatsvissershavenbedrijf"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+
+nt:RWSDirectieWegen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Wg"^^xsd:string ;
+                    skos:prefLabel "Directie Wegen"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieWegen_en_Benedenrivieren rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_WgBr"^^xsd:string ;
+                    skos:prefLabel "Directie Wegen en Benedenrivieren"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieBenedenrivieren rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Bnr"^^xsd:string ;
+                    skos:prefLabel "Directie Benedenrivieren"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieBovenrivieren rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Bvr"^^xsd:string ;
+                    skos:prefLabel "Directie Bovenrivieren"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieSluizen_en_Stuwen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_SlSt"^^xsd:string ;
+                    skos:prefLabel "Directie Sluizen en stuwen"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectieBruggen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "Dir_Brug"^^xsd:string ;
+                    skos:prefLabel "Directie Bruggen"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+
+nt:RWSEersteDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "1_Dis"^^xsd:string ;
+                    skos:prefLabel "1e District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSTweedeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "2_Dir"^^xsd:string ;
+                    skos:prefLabel "2de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSTweedeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "2_Dis"^^xsd:string ;
+                    skos:prefLabel "2de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSTweedeAfdeling rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "2_Afd"^^xsd:string ;
+                    skos:prefLabel "2de Afdeling"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDerdeAfdeling rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "3_Afd"^^xsd:string ;
+                    skos:prefLabel "3de Afdeling"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDerdeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "3_Dir"^^xsd:string ;
+                    skos:prefLabel "3de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDerdeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "3_Dis"^^xsd:string ;
+                    skos:prefLabel "3de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSVierdeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "4_Dir"^^xsd:string ;
+                    skos:prefLabel "4de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSVierdeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "4_Dis"^^xsd:string ;
+                    skos:prefLabel "4de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSVijfdeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "5_Dir"^^xsd:string ;
+                    skos:prefLabel "5de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSVijfdeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "5_Dis"^^xsd:string ;
+                    skos:prefLabel "5de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSZesdeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "6_Dir"^^xsd:string ;
+                    skos:prefLabel "6de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSZesdeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "6_Dis"^^xsd:string ;
+                    skos:prefLabel "6de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSZevendeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "7_Dir"^^xsd:string ;
+                    skos:prefLabel "7de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSZesdeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "6_Dis"^^xsd:string ;
+                    skos:prefLabel "6de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSZevendeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "7_Dis"^^xsd:string ;
+                    skos:prefLabel "7de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSAchtsteDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "8_Dir"^^xsd:string ;
+                    skos:prefLabel "8de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSAchtsteDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "8_Dis"^^xsd:string ;
+                    skos:prefLabel "8de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSNegendeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "9_Dir"^^xsd:string ;
+                    skos:prefLabel "9de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSNegendeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "9_Dis"^^xsd:string ;
+                    skos:prefLabel "9de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSTiendeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "10_Dir"^^xsd:string ;
+                    skos:prefLabel "10de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSTiendeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "10_Dis"^^xsd:string ;
+                    skos:prefLabel "10de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSElfdeDirectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "11_Dir"^^xsd:string ;
+                    skos:prefLabel "11de Directie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSElfdeDistrict rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "11_Dis"^^xsd:string ;
+                    skos:prefLabel "11de District"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+
+nt:RWSEersteInspectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "1_Insp"^^xsd:string ;
+                    skos:prefLabel "Eerste inspectie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSTweedeInspectie rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "2_Insp"^^xsd:string ;
+                    skos:prefLabel "Tweede inspectie"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+
+nt:RWSDirectie_Zeeland rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-DZ"^^xsd:string ;
+                    skos:prefLabel "Directie Zeeland"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Gelderland rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-GLD"^^xsd:string ;
+                    skos:prefLabel "Directie Gelderland"@nl ;
+                    org:unitOf nt:RWSTweedeInspectie .
+nt:RWSDirectie_Gelderland_en_Overijssel rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-GLDO"^^xsd:string ;
+                    skos:prefLabel "Directie Gelderland en Overijssel"@nl ;
+                    org:unitOf nt:RWSTweedeInspectie .
+nt:RWSDirectie_Friesland_en_Drenthe rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-FRD"^^xsd:string ;
+                    skos:prefLabel "Directie Friesland en Drenthe"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDistrict_Groningen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-GRDist"^^xsd:string ;
+                    skos:prefLabel "District Groningen"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Groningen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-GRDir"^^xsd:string ;
+                    skos:prefLabel "Directie Groningen"@nl ;
+                    skos:altLabel "District Groningen"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Groningen_en_Friesland rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-GF"^^xsd:string ;
+                    skos:prefLabel "Directie Groningen en Friesland"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Zuid-Holland_en_Utrecht rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-ZHU"^^xsd:string ;
+                    skos:prefLabel "Directie Zuid-Holland en Utrecht"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Zuid-Holland rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-ZH"^^xsd:string ;
+                    skos:prefLabel "Directie Zuid-Holland"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Noord-Holland rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-NH"^^xsd:string ;
+                    skos:prefLabel "Directie Noord-Holland"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Grote_Rivieren rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-GRV"^^xsd:string ;
+                    skos:prefLabel "Directie Grote Rivieren"@nl ;
+                    org:unitOf nt:RWSTweedeInspectie .
+nt:RWSDistrict_Maasverbetering rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-MV"^^xsd:string ;
+                    skos:prefLabel "District Maasverbetering"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDistrict_Nieuwe_Wegen_I rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-NWI"^^xsd:string ;
+                    skos:prefLabel "District Nieuwe Wegen I"@nl ;
+                    org:unitOf nt:Rijkswaterstaat .
+nt:RWSDirectie_Twenthekanalen rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-TWK"^^xsd:string ;
+                    skos:prefLabel "Directie Twenthekanalen"@nl ;
+                    skos:altLabel "District Twenthekanalen"@nl ;
+                    org:unitOf nt:RWSTweedeInspectie .
+nt:RWSDirectie_Sluisbouw_IJmuiden rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-SBIJ"^^xsd:string ;
+                    skos:prefLabel "Directie Sluisbouw IJmuiden"@nl ;
+                    org:unitOf nt:RWSEersteInspectie .
+nt:RWSDirectie_Noord-Brabant rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-NBR"^^xsd:string ;
+                    skos:prefLabel "Directie Noord-Brabant"@nl ;
+                    org:unitOf nt:RWSTweedeInspectie .
+nt:RWSDirectie_Limburg rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                    dct:identifier "RWS-LB"^^xsd:string ;
+                    skos:prefLabel "Directie Limburg"@nl ;
+                    org:unitOf nt:RWSTweedeInspectie .
+nt:RWSWegenfonds rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                 dct:identifier "RWS-WF"^^xsd:string ;
+                 skos:prefLabel "Wegenfonds"@nl ;
+                 skos:altLabel "Verkeersfonds"@nl ;
+                 rdfs:label "Wegenfonds"^^xsd:string .
+nt:RWSDienstStraatklinkercontrole rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                 dct:identifier "RWS-SKC"^^xsd:string ;
+                 skos:prefLabel "Dienst straatklinkercontrole"@nl ;
+                 skos:altLabel "Dienst straatklinkercontrôle"@nl ;
+                 rdfs:label "Straatklinkercotrole"^^xsd:string .
+nt:RWSZuiderzeefonds rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                 dct:identifier "RWS-ZZF"^^xsd:string ;
+                 skos:prefLabel "Zuiderzeefonds"@nl ;
+                 rdfs:label "Zuiderzeefonds"^^xsd:string .
+nt:Rijksbegroting rdf:type org:OrganizationalUnit , owl:NamedIndividual ;
+                  dct:identifier "RB"^^xsd:string ;
+                  skos:prefLabel "Rijksbegroting"@nl ;
+                  rdfs:label "Rijksbegroting"^^xsd:string .
+nt:IntInstSocialeGeschiedenis rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "IISG"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Internationaal_Instituut_voor_Sociale_Geschiedenis> ;
+                    rdfs:label "Internationaal Instituut voor Sociale Geschiedenis"^^xsd:string ;
+                    skos:prefLabel "Internationaal Instituut voor Sociale Geschiedenis"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Cruquiusweg 51"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ;
+	                               vcard:hasTelephone "(020) 6685866"^^xsd:string ;
+	                               vcard:hasPostalCode "1019 AT"^^xsd:string ] ;
+.
+nt:DocumentatiecentrumNedPolitiekePartijen rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "DCNPP"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Documentatiecentrum_Nederlandse_Politieke_Partijen> ;
+                    skos:prefLabel "Documentatiecentrum Nederlandse Politieke Partijen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Oude Boteringestraat 52"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Groningen"^^xsd:string ;
+	                               vcard:hasTelephone "(050) 3636830"^^xsd:string ;
+	                               vcard:hasPostalCode "9712 GL"^^xsd:string ] ;
+.
+nt:CentraalArchievenDepotDefensie rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "CAD"^^xsd:string ;
+                    skos:prefLabel "Centraal Archievendepot (CAD) (defensie)"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Rijswijk"^^xsd:string ] ;
+.
+nt:HetUtrechtsArchief rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "HUA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Het_Utrechts_Archief> ;
+                    skos:prefLabel "Het Utrechts Archief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Utrecht"^^xsd:string ] ;
+.
+nt:KoninklijkHuisarchief rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "KHA"^^xsd:string ;
+                    skos:prefLabel "Koninklijk Huisarchief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:ZeeuwsArchief rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "ZA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Zeeuws_Archief> ;
+                    skos:prefLabel "Zeeuws Archief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Middelburg"^^xsd:string ] ;
+.
+nt:HaagsGemeentearchief rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "HGA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Haags_Gemeentearchief> ;
+                    skos:prefLabel "Haags Gemeentearchief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:GemeentearchiefMaastricht rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GAM"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Regionaal_Historisch_Centrum_Limburg> ;
+                    skos:prefLabel "Gemeentearchief Maastricht"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Maastricht"^^xsd:string ] ;
+.
+nt:RijksarchiefFriesland rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "RAF"^^xsd:string ;
+                    skos:prefLabel "Rijksarchief in Fryslân/Friesland"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leeuwarden"^^xsd:string ] ;
+.
+nt:MinisterieVanBuZa rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "Dep_BuZa"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Ministerie_van_Buitenlandse_Zaken> ;
+                    skos:prefLabel "Ministerie van Buitenlandse Zaken"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:HistorischArchiefUnilever rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "HAU"^^xsd:string ;
+                    skos:prefLabel "Historisch Archief Unilever"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Rotterdam"^^xsd:string ] ;
+.
+
+nt:ABNAmroHistorischArchief rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "ABNAHA"^^xsd:string ;
+                    rdfs:label "ABN Amro Historisch Archief"^^xsd:string ;
+                    skos:prefLabel "ABN Amro Historisch Archief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Weesp"^^xsd:string ] ;
+.
+nt:StadsarchiefDordrecht rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SAD"^^xsd:string ;
+                    rdfs:label "Stadsarchief Dordrecht"^^xsd:string ;
+                    skos:prefLabel "Stadsarchief Dordrecht"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Dordrecht"^^xsd:string ] ;
+.
+nt:StadsarchiefHeerlen rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SAD"^^xsd:string ;
+                    rdfs:label "Stadsarchief Heerlen"^^xsd:string ;
+                    skos:prefLabel "Stadsarchief Heerlen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Heerlen"^^xsd:string ] ;
+.
+nt:HistorischDocumentatiecentrumNedProtestantisme rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "HDCNP"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Historisch_Documentatiecentrum_voor_het_Nederlands_Protestantisme_(1800-heden)> ;
+                    rdfs:label "Historisch Documentatiecentrum voor het Nederlands Protestantisme"^^xsd:string ;
+                    skos:prefLabel "Historisch Documentatiecentrum voor het Nederlands Protestantisme"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "De Boelelaan 1105"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ;
+	                               vcard:hasTelephone "(020) 4445270"^^xsd:string ;
+	                               vcard:hasPostalCode "1081 HV"^^xsd:string ;
+                                       vcard:hasURL "http://www.vu.nl/hdc"^^xsd:anyURI ;
+                                       vcard:hasEmail "jf.seijlhouwer@dienst.vu.nl"^^xsd:string ] ;
+.
+nt:NIOD rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "NIOD"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/NIOD_Instituut_voor_Oorlogs-,_Holocaust-_en_Genocidestudies> ;
+                    rdfs:label "Nederlands Instituut voor Oorlogsdocumentatie"^^xsd:string ;
+                    skos:prefLabel "Nederlands Instituut voor Oorlogsdocumentatie"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Herengracht 380"^^xsd:string ;
+	                               vcard:hasPostalCode "1016 CH"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ] ;
+.
+nt:GemeentearchiefRoermond rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GAR"^^xsd:string ;
+                    rdfs:label "Gemeentearchief Roermond"^^xsd:string ;
+                    skos:prefLabel "Gemeentearchief Roermond"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Roermond"^^xsd:string ] ;
+.
+nt:GemeentelijkeArchiefdienstBergenOpZoom rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GABOZ"^^xsd:string ;
+                    rdfs:label "Gemeentelijke archiefdienst Bergen op Zoom"^^xsd:string ;
+                    skos:prefLabel "Gemeentelijke archiefdienst Bergen op Zoom"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Bergen op Zoom"^^xsd:string ] ;
+.
+nt:InstituutTaalLandenVolkenkunde rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "KITLV"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Koninklijk_Instituut_voor_Taal-,_Land-_en_Volkenkunde> ;
+                    rdfs:label "Koninklijk Instituut voor Taal-, Land- en Volkenkunde"^^xsd:string ;
+                    skos:prefLabel "Koninklijk Instituut voor Taal-, Land- en Volkenkunde"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leiden"^^xsd:string ] ;
+.
+nt:CentraalBureauVoorGenealogie rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "CBG"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Centraal_Bureau_voor_Genealogie> ;
+                    rdfs:label "Centraal Bureau voor Genealogie"^^xsd:string ;
+                    skos:prefLabel "Centraal Bureau voor Genealogie"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:RHCTilburg rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "RHCT"^^xsd:string ;
+                    rdfs:label "Regionaal Historisch Centrum Tilburg"^^xsd:string ;
+                    skos:prefLabel "Regionaal Historisch Centrum Tilburg"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Tilburg"^^xsd:string ] ;
+.
+nt:GemeentearchiefNijmegen rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GAN"^^xsd:string ;
+                    rdfs:label "Gemeentearchief Nijmegen"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Regionaal_Archief_Nijmegen> ;
+                    skos:prefLabel "Gemeentearchief Nijmegen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Nijmegen"^^xsd:string ] ;
+.
+nt:UniversiteitsbibliotheekAmsterdam rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "UBA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Universiteitsbibliotheek_van_Amsterdam> ;
+                    rdfs:label "Universiteitsbibliotheek Amsterdam"^^xsd:string ;
+                    skos:prefLabel "Universiteitsbibliotheek Amsterdam"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Singel 425"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ;
+	                               vcard:hasTelephone "(020) 5252301"^^xsd:string ;
+	                               vcard:hasPostalCode "1012 WP"^^xsd:string ;
+                                       vcard:hasURL "http://www.uba.uva.nl"^^xsd:anyURI ;
+                                       vcard:hasEmail "secr@uba.uva.nl"^^xsd:string ] ;
+.
+
+nt:UniversiteitsbibliotheekLeiden rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "UBL"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Universiteitsbibliotheek_Leiden> ;
+                    rdfs:label "Universiteitsbibliotheek Leiden"^^xsd:string ;
+                    skos:prefLabel "Universiteitsbibliotheek Leiden"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Witte Singel 27"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leiden"^^xsd:string ;
+	                               vcard:hasTelephone "(071) 5272832"^^xsd:string ;
+	                               vcard:hasPostalCode "2311 BG"^^xsd:string ;
+                                       vcard:hasURL "http://ub.leidenuniv.nl"^^xsd:anyURI ;
+                                       vcard:hasEmail "secretariaat@library.leidenuniv.nl"^^xsd:string ] ;
+.
+nt:UniversiteitsbibliotheekGroningen rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "UBG"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Universiteitsbibliotheek_Groningen> ;
+                    rdfs:label "Universiteitsbibliotheek Groningen"^^xsd:string ;
+                    skos:prefLabel "Universiteitsbibliotheek Groningen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Broerstraat 4"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Groningen"^^xsd:string ;
+	                               vcard:hasTelephone "(050 3635020"^^xsd:string ;
+	                               vcard:hasPostalCode "9712 CP"^^xsd:string ;
+                                       vcard:hasURL "http://www.ub.rug.nl"^^xsd:anyURI ;
+                                       vcard:hasEmail "info@ub.rug.nl"^^xsd:string ] ;
+.
+
+nt:InstituutVoorDeTropen rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "KIT"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Koninklijk_Instituut_voor_de_Tropen> ;
+                    rdfs:label "Koninklijk Instituut voor de Tropen"^^xsd:string ;
+                    skos:prefLabel "Koninklijk Instituut voor de Tropen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ] ;
+.
+nt:InstituutVoorMilitaireGeschiedenis rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "IMH"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Nederlands_Instituut_voor_Militaire_Historie> ;
+                    rdfs:label "Instituut voor Militaire Geschiedenis"^^xsd:string ;
+                    skos:prefLabel "Instituut voor Militaire Geschiedenis"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:GeldersArchief rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Gelders_Archief> ;
+                    rdfs:label "Gelders Archief"^^xsd:string ;
+                    skos:prefLabel "Gelders Archief"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Arnhem"^^xsd:string ] ;
+.
+nt:HistorischeArchievenEU rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "HAEU"^^xsd:string ;
+                    rdfs:label "Historische archieven van de Europese Gemeenschappen"^^xsd:string ;
+                    skos:prefLabel "Historische archieven van de Europese Gemeenschappen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Italië"^^xsd:string ;
+	                               vcard:locality "Florence"^^xsd:string ] ;
+.
+nt:StadsarchiefEnAthenaeumbibliotheekDeventer rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SAAD"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Stadsarchief_en_Athenaeumbibliotheek> ;
+                    rdfs:label "Stadsarchief en Atheneumbibliotheek Deventer"^^xsd:string ;
+                    skos:prefLabel "Stadsarchief en Atheneumbibliotheek Deventer"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Deventer"^^xsd:string ] ;
+.
+nt:DeNederlandscheBank rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "DNB"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/De_Nederlandsche_Bank> ;
+                    rdfs:label "De Nederlandsche Bank"^^xsd:string ;
+                    skos:prefLabel "De Nederlandsche Bank"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Westeinde 1"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ;
+	                               vcard:hasTelephone "020-5249111"^^xsd:string ;
+	                               vcard:hasPostalCode "1017 ZN"^^xsd:string ] ;
+
+.
+nt:OrdeVrijmetselaren rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "OVMGON"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Grootoosten_der_Nederlanden> ;
+                    rdfs:label "Orde van Vrijmetselaren onder het Grootoosten der Nederlanden"^^xsd:string ;
+                    skos:prefLabel "Orde van Vrijmetselaren onder het Grootoosten der Nederlanden"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+
+.
+nt:GroningerArchieven rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GA"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Groninger_Archieven> ;
+                    rdfs:label "Groninger Archieven"^^xsd:string ;
+                    skos:prefLabel "Groninger Archieven"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Groningen"^^xsd:string ] ;
+.
+nt:HoogheemraadschapVanRijnland rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "HHR"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Hoogheemraadschap_van_Rijnland> ;
+                    rdfs:label "Hoogheemraadschap van Rijnland"^^xsd:string ;
+                    skos:prefLabel "Hoogheemraadschap van Rijnland"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leiden"^^xsd:string ] ;
+.
+nt:StadsarchiefHeerlen rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SAH"^^xsd:string ;
+                    rdfs:label "Stadsarchief Heerlen"^^xsd:string ;
+                    skos:prefLabel "Stadsarchief Heerlen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Heerlen"^^xsd:string ] ;
+.
+nt:AlgemeenRijksarchiefBrussel rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "ARAB"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Algemeen_Rijksarchief_(België)> ;
+                    rdfs:label "Algemeen Rijksarchief Brussel"^^xsd:string ;
+                    skos:prefLabel "Algemeen Rijksarchief Brussel"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "België"^^xsd:string ;
+	                               vcard:locality "Brussel"^^xsd:string ] ;
+.
+nt:GemeentearchiefRotterdam rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GAR"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Stadsarchief_Rotterdam> ;
+                    rdfs:label "Gemeentearchief Rotterdam"^^xsd:string ;
+                    skos:prefLabel "Gemeentearchief Rotterdam"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Rotterdam"^^xsd:string ] ;
+.
+nt:KoninklijkeBibliotheek rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "KB"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Koninklijke_Bibliotheek_(Nederland)> ;
+                    rdfs:label "Koninklijke Bibliotheek"^^xsd:string ;
+                    skos:prefLabel "Koninklijke Bibliotheek"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:GemeentearchiefAmsterdam rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GAA"^^xsd:string ;
+                    rdfs:label "Gemeentearchief Amsterdam"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Stadsarchief_Amsterdam> ;
+                    skos:prefLabel "Gemeentearchief Amsterdam"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ] ;
+.
+nt:KasteelTwickel rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "KTW"^^xsd:string ;
+                    rdfs:label "Kasteel Twickel"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Twickel> ;
+                    skos:prefLabel "Kasteel Twickel"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Delden"^^xsd:string ] ;
+.
+nt:StreekarchiefRegioEindhoven rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SRE"^^xsd:string ;
+                    rdfs:label "Streekarchief Regio Eindhoven"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Streekarchief_regio_Eindhoven> ;
+                    skos:prefLabel "Streekarchief Regio Eindhoven"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Eindhoven"^^xsd:string ] ;
+.
+nt:RijksarchiefInNoordBrabant rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "RANB"^^xsd:string ;
+                    rdfs:label "Rijksarchief in Noord-Brabant"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Brabants_Historisch_Informatie_Centrum> ;
+                    skos:prefLabel "Rijksarchief in Noord-Brabant"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Den Bosch"^^xsd:string ] ;
+.
+nt:GemeentearchiefLeeuwarden rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GAL"^^xsd:string ;
+                    rdfs:label "Gemeentearchief Leeuwarden"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Historisch_Centrum_Leeuwarden> ;
+                    skos:prefLabel "Gemeentearchief Leeuwarden"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leeuwarden"^^xsd:string ] ;
+.
+nt:SociaalHistorischCentrumFlevoland rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SHCF"^^xsd:string ;
+                    rdfs:label "Sociaal Historisch Centrum voor Flevoland"^^xsd:string ;
+                    skos:prefLabel "Sociaal Historisch Centrum voor Flevoland"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Lelystad"^^xsd:string ] ;
+.
+nt:GemeentearchiefLeiden rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "GALe"^^xsd:string ;
+                    rdfs:label "Gemeentearchief Leiden"^^xsd:string ;
+                    skos:prefLabel "Gemeentearchief Leiden"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leiden"^^xsd:string ] ;
+.
+nt:StadsarchiefZutphen rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "SAZ"^^xsd:string ;
+                    rdfs:label "Stadsarchief Zutphen"^^xsd:string ;
+                    skos:prefLabel "Stadsarchief Zutphen"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Zutphen"^^xsd:string ] ;
+.
+nt:EuropaInstituutLeiden rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "EIL"^^xsd:string ;
+                    rdfs:label "Europa Instituut, Faculteit der Rechtsgeleerdheid, Universiteit Leiden"^^xsd:string ;
+                    skos:prefLabel "Europa Instituut, Faculteit der Rechtsgeleerdheid, Universiteit Leiden"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Leiden"^^xsd:string ] ;
+.
+nt:CRPA rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "CRPA"^^xsd:string ;
+                    rdfs:label "Centraal Register Particuliere Archieven (CRPA)"^^xsd:string ;
+                    skos:prefLabel "Adres bij het Centraal Register Particuliere Archieven (CRPA) bekend"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Prins Willem Alexanderhof 20"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:hasTelephone "(070) 3315400"^^xsd:string ;
+	                               vcard:hasPostalCode "2595 BE"^^xsd:string ;
+                                       vcard:hasURL "http://www.nationaalarchief.nl"^^xsd:anyURI ;
+	                               vcard:locality "Den Haag"^^xsd:string ] ;
+.
+nt:HistorischCentrumOverijssel rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "HCO"^^xsd:string ;
+                    owl:sameAs <http://nl.dbpedia.org/resource/Historisch_Centrum_Overijssel> ;
+                    rdfs:label "Historisch Centrum Overijssel"^^xsd:string ;
+                    skos:prefLabel "Historisch Centrum Overijssel"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:street-address "Eikenstraat 20"^^xsd:string ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:hasPostalCode "8021 WX"^^xsd:string ;
+	                               vcard:hasTelephone "(038) 4266300"^^xsd:string ;
+                                       vcard:hasURL "https://www.historischcentrumoverijssel.nl/"^^xsd:anyURI ;
+	                               vcard:locality "Zwolle"^^xsd:string ] ;
+.
+nt:RijksarchiefInLimburg rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "RAL"^^xsd:string ;
+                    rdfs:label "Rijksarchief in Limburg"^^xsd:string ;
+                    skos:prefLabel "Rijksarchief in Limburg"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Maastricht"^^xsd:string ] ;
+.
+nt:IntArchiefVrouwenbeweging rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "IIAV"^^xsd:string ;
+                    rdfs:label "Internationaal Informatiecentrum en Archief voor de Vrouwenbeweging"^^xsd:string ;
+                    skos:prefLabel "Internationaal Informatiecentrum en Archief voor de Vrouwenbeweging"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Amsterdam"^^xsd:string ] ;
+.
+nt:SociaalHistorischCentrumVoorLimburg rdf:type org:FormalOrganization , eac-cpf:CorporateBody , owl:NamedIndividual ;
+                    dct:identifier "SHCL"^^xsd:string ;
+                    rdfs:label "Sociaal historisch centrum voor Limburg"^^xsd:string ;
+                    skos:prefLabel "Sociaal historisch centrum voor Limburg"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Maastricht"^^xsd:string ] ;
+.
+nt:RijksarchiefInNoordHolland rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "RANH"^^xsd:string ;
+                    rdfs:label "Rijksarchief in Noord-Holland"^^xsd:string ;
+                    skos:prefLabel "Rijksarchief in Noord-Holland"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Haarlem"^^xsd:string ] ;
+.
+nt:ArchiefJezuieten rdf:type org:FormalOrganization , owl:NamedIndividual ;
+                    dct:identifier "RANH"^^xsd:string ;
+                    rdfs:label "Archief der Jezuïeten"^^xsd:string ;
+                    skos:prefLabel "Archief der Jezuïeten"@nl ;
+                    vcard:hasAddress [ a vcard:Address ;
+	                               vcard:country-name "Nederland"^^xsd:string ;
+	                               vcard:locality "Nijmegen"^^xsd:string ] ;
+.
+
+# == Individuals, statussen van inventarissen ==
+
+nt:StatusFinal rdf:type def:DescriptionStatus , owl:NamedIndividual ;
+               rdfs:label "final"^^xsd:string ;
+               skos:prefLabel "eindstatus"@nl ;
+.
+nt:StatusUnfinished rdf:type def:DescriptionStatus , owl:NamedIndividual ;
+               rdfs:label "unfinished"^^xsd:string ;
+               skos:prefLabel "nog af te ronden"@nl ;
+.
+nt:StatusPublic rdf:type def:AccessibilityStatus , owl:NamedIndividual ;
+               rdfs:label "Openbaar"^^xsd:string ;
+               skos:prefLabel "openbaar"@nl ;
+.
+nt:StatusClassified rdf:type def:AccessibilityStatus , owl:NamedIndividual ;
+               rdfs:label "Niet openbaar"^^xsd:string ;
+               skos:prefLabel "niet openbaar"@nl ;
+.
+nt:ClassifiedUntil rdf:type def:AccessibilityStatus , owl:NamedIndividual ;
+               rdfs:label "Niet openbaar tot"^^xsd:string ;
+               skos:prefLabel "niet openbaar tot"@nl ;
+.
+nt:StatusLimitedAccessibility rdf:type def:AccessibilityStatus , owl:NamedIndividual ;
+               rdfs:label "Beperkt openbaar"^^xsd:string ;
+               skos:prefLabel "Beperkt openbaar"@nl ;
+.
+nt:StatusAccessibilityToBeDecided rdf:type def:AccessibilityStatus , owl:NamedIndividual ;
+               rdfs:label "Openbaarheid nog niet vastgesteld"^^xsd:string ;
+               skos:prefLabel "Openbaarheid nog niet vastgesteld"@nl ;
+.
+nt:OnlyMicrofilm rdf:type def:AccessibilityStatus , owl:NamedIndividual ;
+               rdfs:label "Enkel op microfilm raadpleegbaar"^^xsd:string ;
+               skos:prefLabel "Enkel op microfilm raadpleegbaar"@nl ;
+.
+
+# === Types of archives ===
+
+nt:PersonalArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Persoonlijk archief"^^xsd:string ;
+                   skos:prefLabel "Persoonlijk archief"@nl ;
+.
+nt:CivilServantsArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Werkarchief in overheidsarchief"^^xsd:string ;
+                   skos:prefLabel "Werkarchief in overheidsarchief"@nl ;
+.
+nt:StateDepartmentArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Overheidsarchief"^^xsd:string ;
+                   skos:prefLabel "Overheidsarchief"@nl ;
+.
+nt:OfficialCommitteeArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Archief ambtelijke commissie"^^xsd:string ;
+                   skos:prefLabel "Archief ambtelijke commissie"@nl ;
+.
+nt:PartyMembersArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Werkarchief in partijarchief"^^xsd:string ;
+                   skos:prefLabel "Werkarchief in partijarchief"@nl ;
+.
+nt:FamilyArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Familiearchief"^^xsd:string ;
+                   skos:prefLabel "Familiearchief"@nl ;
+.
+nt:EnterpriseArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Werkarchief in bedrijfsarchief"^^xsd:string ;
+                   skos:prefLabel "Werkarchief in bedrijfsarchief"@nl ;
+.
+nt:CollectedArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Verzameling"^^xsd:string ;
+                   skos:prefLabel "Verzameling"@nl ;
+.
+nt:SocietyArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Werkarchief in verenigingsarchief"^^xsd:string ;
+                   skos:prefLabel "Werkarchief in verenigingsarchief"@nl ;
+.
+nt:EstateArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Huisarchief"^^xsd:string ;
+                   skos:prefLabel "Huisarchief"@nl ;
+.
+nt:UniversityArchive a def:ArchiveType , owl:NamedIndividual ;
+                   rdfs:label "Werkarchief in universiteitsarchief"^^xsd:string ;
+                   skos:prefLabel "Werkarchief in universiteitsarchief"@nl ;
+.
+
+# === Authors of Inventories, DetailedContentDescriptions or the data model ===
+
+
+nt:WGvanOijen a  nco:Person , owl:NamedIndividual ;
+                  rdfs:label "W.G. van Oijen"^^xsd:string ;
+                  nco:hasPersonName [ a nco:PersonName ; nco:fullname "W.G. van Oijen"^^xsd:string ] ;
+                  nco:hasAffiliation nt:NationaalArchief ;
+                  prov:actedOnBehalfOf nt:CentraleArchiefSelectiedienst ;
+.
+nt:EAThMSchreuder a  nco:Person , owl:NamedIndividual ;
+                  rdfs:label "E.A.Th.M. Schreuder"^^xsd:string ;
+                  nco:hasPersonName [ a nco:PersonName ; nco:fullname "E.A.Th.M. Schreuder"^^xsd:string ] ;
+                  prov:actedOnBehalfOf nt:CentraleArchiefSelectiedienst ;
+                  nco:hasAffiliation nt:NationaalArchief ;
+.
+nt:HAJvanSchie a  nco:Person , owl:NamedIndividual ;
+                  rdfs:label "H.A.J. van Schie"^^xsd:string ;
+                  nco:hasPersonName [ a nco:PersonName ; nco:fullname "H.A.J. van Schie"^^xsd:string ] ;
+                  nco:hasAffiliation nt:NationaalArchief ;
+                  prov:actedOnBehalfOf nt:CentraleArchiefSelectiedienst ;
+.
+nt:CentraleArchiefSelectiedienst a org:FormalOrganization , owl:NamedIndividual ;
+                  org:subOrganizationOf nt:NationaalArchief ;
+                  rdfs:label "Centrale Archief Selectiedienst"^^xsd:string ;
+.
+nt:GerardKuys a bf:Person , foaf:Person , owl:NamedIndividual ;
+               bf:hasAuthority <http://isni.org/isni/0000000389538183> ;
+               bf:identifier [ a bf:Identifier ;
+                               bf:identifierScheme "VIAF"^^xsd:string ;
+                               bf:identifierValue "282949706"^^xsd:integer ] ;
+               rdfs:label "Gerard Kuys"^^xsd:string ;
+               foaf:gender "male"@en ;
+               foaf:firstName "Gerard"^^xsd:string ;
+               foaf:lastName "Kuys"^^xsd:string ;
+               prov:actedOnBehalfOf nt:NationaalArchief ;
+.
+nt:ElvinDechesne a bf:Person , foaf:Person , owl:NamedIndividual ;
+               rdfs:label "Elvin Dechesne"^^xsd:string ;
+               foaf:gender "male"@en ;
+               foaf:firstName "Elvin"^^xsd:string ;
+               foaf:lastName "Dechesne"^^xsd:string ;
+               prov:actedOnBehalfOf nt:NationaalArchief ;
+.
+nt:LizzyJongma a bf:Person , foaf:Person , owl:NamedIndividual ;
+               rdfs:label "Lizzy Jongma"^^xsd:string ;
+               foaf:gender "female"@en ;
+               foaf:firstName "Lizzy"^^xsd:string ;
+               foaf:lastName "Jongma"^^xsd:string ;
+               prov:actedOnBehalfOf nt:NIOD ;
+.
+
+
+# === Lijsten voor bij de datasets. Omwille van het versiebeheer zijn ze ook prov:Entity gemaakt ===
+
+commBk:PersonenLijst a rdf:List , owl:NamedIndividual , prov:Entity ;
+               rdfs:label "De lijst van unieke personen (resources met URI obv uniek gemaakte naam)"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-02-13T01:01:01Z"^^xsd:dateTime ] ; 
+.
+commBk:GebeurtenissenLijst a rdf:List , owl:NamedIndividual , prov:Entity ;
+               rdfs:label "De lijst van Gebeurtenissen, conform het SEM-vocabulaire"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-07-14T01:01:01Z"^^xsd:dateTime ] ; 
+.
+commBk:PersoonsnamenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van unieke persoonsnamen (literals)"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-02-13T01:01:01Z"^^xsd:dateTime ] ; 
+.
+commBk:CommissieLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van commissies zoals die gegeven is in de Commissieboeken"^^xsd:string ;
+.
+filmK:KeuringsrapportenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van keuringsrapporten zoals die gegeven is in de lijsten van de Centrale Cie. voor de Filmkeuring"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2016-12-11T22:04:01Z"^^xsd:dateTime ] ; 
+.
+filmK:FilmLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van gekeurde films, met distributeuren en producenten als resources"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-02-13T01:01:01Z"^^xsd:dateTime ] ; 
+.
+filmK:DistributeurenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van distributeuren"^^xsd:string ;
+               rdfs:comment "Opgezet als een skos:ConceptScheme vanwege de talrijke naamsvarianten van partijen, die tot één voorkeursnaam moeten worden teruggebracht"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-01-27T12:54:24Z"^^xsd:dateTime ] ; 
+.
+filmK:ProducentenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van producenten"^^xsd:string ;
+               rdfs:comment "Opgezet als een skos:ConceptScheme vanwege de talrijke naamsvarianten van partijen, die tot één voorkeursnaam moeten worden teruggebracht"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+.
+filmK:FilmInvesteerdersLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van producenten & distributeurs"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-01-27T13:47:38Z"^^xsd:dateTime ] ; 
+.
+bewL:BewindsliedenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van ministers en staatssecretarissen sinds 1798"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-02-13T01:01:01Z"^^xsd:dateTime ] ;
+.
+bewL:PartijenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van politieke partijen waartoe ministers en staatssecretarissen al dan niet behoorden."^^xsd:string ;
+               rdfs:comment "Opgezet als een skos:Conceptscheme vanwege lastige semantiek: partijen en individuele overtuigingen in de data op één hoop gegooid"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2016-12-14T01:01:01Z"^^xsd:dateTime ] ;
+.
+bewL:ArchievenLijstBewindspersonen a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van archieven van ministers en staatssecretarissen sinds 1798"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-05-01T01:01:01Z"^^xsd:dateTime ] ;
+.
+oh:LijstDodenboeken a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van vermeldingen van verzetsstrijders in de Dodenboeken van het Oranjehotel, 1940-1945"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-03-10T01:01:01Z"^^xsd:dateTime ] ;
+.
+oh:ErelijstOranjehotel a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van verzetsstrijders die in de Dodenboeken staan, maar beschreven zoals ze bekend zijn ook uit andere bronnen dan de Dodenboeken"^^xsd:string ;
+               prov:agent nt:GerardKuys ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys ; prov:startedAtTime "2017-09-05T13:08:08Z"^^xsd:dateTime ] ;
+.
+ob:LijstVermeldInOorlogsbronnen a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van vermeldingen van verzetsstrijders volgens Netwerk Oorlogsbronnen"^^xsd:string ;
+               prov:agent nt:LizzyJongma ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:LizzyJongma ; prov:startedAtTime "2017-12-15T16:01:01Z"^^xsd:dateTime ] ;
+.
+ob:LijstOorlogsbronnen a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van verzetsstrijders in Netwerk Oorlogsbronnen, maar beschreven zoals ze bekend zijn ook uit andere bronnen dan de Dodenboeken"^^xsd:string ;
+               prov:agent nt:LizzyJongma ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:LizzyJongma ; prov:startedAtTime "2017-12-15T13:08:08Z"^^xsd:dateTime ] ;
+.
+wsb:BestekbeschrijvingenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van bestekbeschrijvingen voor projecten van Rijkswaterstaat 1839-1961"^^xsd:string ;
+               prov:agent nt:GerardKuys , nt:ElvinDechesne ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys , nt:Elvin_Duchesne ; prov:startedAtTime "2017-07-27T14:05:10Z"^^xsd:dateTime ] ;
+.
+wsb:BestekkenLijst a rdf:List , owl:NamedIndividual, prov:Entity ;
+               rdfs:label "De lijst van bestekken voor projecten van Rijkswaterstaat 1839-1961"^^xsd:string ;
+               prov:agent nt:GerardKuys , nt:ElvinDechesne ;
+               prov:wasGeneratedBy [ a prov:Activity ; prov:wasAssociatedWith nt:GerardKuys , nt:ElvinDechesne ; prov:startedAtTime "2017-07-27T14:32:45Z"^^xsd:dateTime ] ;
+.
+
+# === Documentsoorten en toegankelijkheidstaxonomie ===
+
+nt:RecordTypeRegistrationBook a skos:Concept ;
+       rdfs:label "Benoemingenboek"@nl ;
+       skos:prefLabel "Benoemingenboek"^^xsd:string .
+
+nt:LibraryTypeAccess a def:AccessType , owl:NamedIndividual ;
+               rdfs:label "Library type access"^^xsd:string ;
+               skos:prefLabel "Bibliotheektoegang"@nl ;
+.
+nt:AccessToArchives a skos:ConceptScheme ;
+                      skos:prefLabel "Taxonomie van archiefbeschrijvingen"@nl ;
+                      rdfs:label "Inventory Structure as a Taxonomy"^^xsd:string ;
+.
+nt:FormalTypeAccess a def:AccessType , owl:NamedIndividual ;
+               skos:prefLabel "Ontsluiting van een archief volgens formele regels"@nl ;
+               skos:topConceptOf nt:AccessToArchives ;
+.
+nt:InventoryTypeAccess a def:AccessType , owl:NamedIndividual ;
+               rdfs:label "Ontsluiting van een archief volgens de regels van een inventaris"^^xsd:string ;
+               skos:prefLabel "Ontsluiting van een archief volgens de regels van een inventaris"@nl ;
+               skos:broader nt:FormalTypeAccess ;
+.
+nt:AdditionalTypeAccess a def:AccessType , owl:NamedIndividual ;
+               rdfs:label "Ontsluiting van een archief complementair aan een inventaris"^^xsd:string ;
+               skos:prefLabel "Ontsluiting van een archief complementair aan een inventaris"@nl ;
+               skos:topConceptOf nt:AccessToArchives ;
+.
+nt:DetailedInventoryTypeAccess a def:AccessType , owl:NamedIndividual ;
+               rdfs:label "Toegang ter verbijzondering van een (deel van een) inventaris"^^xsd:string ;
+               skos:prefLabel "Toegang ter verbijzondering van een (deel van een) inventaris"@nl ;
+               skos:altLabel "Toegang via een Nadere Toegang op een inventaris"@nl ;
+               skos:inScheme nt:AccessToArchives ;
+               skos:broader nt:AdditionalTypeAccess ;
+.
+nt:GuideToArchivesTypeAccess a def:AccessType , owl:NamedIndividual ;
+               rdfs:label "Toegang zonder verwijzing naar een inventaris"^^xsd:string ;
+               skos:prefLabel "Toegang zonder verwijzing naar een inventaris"@nl ;
+               skos:altLabel "Toegang via archiefgids"@nl ;
+               skos:inScheme nt:AccessToArchives ;
+               skos:broader nt:AdditionalTypeAccess ;
+.
+
+# == Domeinspecifieke definities voor de Filmkeuring, de klassen == 
+
+def:MovieDescriptionObject a owl:Class ;
+                         rdfs:label "Filmkeuringsobject"^^xsd:string , "Film"^^xsd:string ;
+                         rdfs:subClassOf def:ArchivalEntity ;
+.
+def:Movie a owl:Class ;
+            rdfs:label "Movie"^^xsd:string , "Film"^^xsd:string ;
+	    owl:equivalentClass dbo:Film ;
+            rdfs:subClassOf def:MovieDescriptionObject ;
+            rdfs:comment "deprecated"^^xsd:sring ;
+.
+def:MovieSubject a owl:CLass ;
+            rdfs:label "Onderwerp rolprent"^^xsd:string ;
+            rdfs:subClassOf def:MovieDescriptionObject ;
+.
+def:MovieTitle a owl:Class ;
+                 rdfs:label "Filmtitel"^^xsd:string ;
+		 owl:equivalentClass bf:Title ;
+                 rdfs:subClassOf def:MovieDescriptionObject ;
+.
+def:ParticipatingParty a owl:Class ;
+                 rdfs:label "Party involved in producing and distributin a movie"^^xsd:string ;
+                 rdfs:subClassOf foaf:Agent ;
+.  
+def:AdmissibilityReport a owl:Class ;
+                        rdfs:label "Censuurrapport"^^xsd:string ;
+                        rdfs:subClassOf def:MovieDescriptionObject ;
+.
+def:MovieReport a owl:Class ;
+                   rdfs:label "Filmkeuringsrapport"^^xsd:string ;
+		   rdfs:subClassOf def:AdmissibilityReport ;
+.
+def:FilmFormat a owl:Class ;
+                 rdfs:label "Fysiek soort film"^^xsd:string ;
+		 rdfs:subClassOf skos:Concept ;
+.
+def:MovieCategory a owl:Class ;
+                    rdfs:label "Genre film"^^xsd:string ;
+		    rdfs:subClassOf skos:Concept ;
+.
+def:AdmissibilityRating a owl:Class ;
+                   rdfs:label "Classificatie door Centrale Commissie Filmkeuring"^^xsd:string ;
+		   rdfs:subClassOf skos:Concept ;
+.
+
+# == Domeinspecifieke definities voor de Filmkeuring, de properties ==
+
+def:distributedBy a owl:DatatypeProperty ;
+                  rdfs:label "wordt gedistribueerd door"^^xsd:string ;
+	          rdfs:domain def:FilmReference ;
+		  rdfs:range xsd:string ;
+.
+def:producedBy a owl:DatatypeProperty ;
+                  rdfs:label "is geproduceerd door"^^xsd:string ;
+		  rdfs:domain def:FilmReference ;
+		  rdfs:range xsd:string ;
+.
+def:isDistributorOf a owl:ObjectProperty ;
+                  rdfs:label "is distributeur van"^^xsd:string ;
+	          rdfs:domain org:Agent ;
+		  rdfs:range def:FilmEntity ;
+.
+def:isProducerOf a owl:ObjectProperty ;
+                  rdfs:label "is producent van"^^xsd:string ;
+		  rdfs:domain org:Agent ;
+		  rdfs:range def:FilmEntity ;
+.
+def:producingAgent a owl:ObjectProperty ;
+                  rdfs:label "Productiemaatschappij van de film"^^xsd:string ;
+		  rdfs:domain def:FilmEntity ;
+		  rdfs:range def:CorporateEntity ;
+.
+def:distributingAgent a owl:ObjectProperty ;
+                  rdfs:label "Distributiemaatschappij van de film"^^xsd:string ;
+		  rdfs:domain def:FilmEntity ;
+		  rdfs:range def:CorporateEntity ;
+.
+
+def:mediumLength a owl:DatatypeProperty ;
+                  rdfs:label "Length of the medium in meters"^^xsd:string ;
+		  rdfs:domain def:FilmEntity , def:FilmReference ;
+		  rdfs:range xsd:string ;
+.
+def:mainTitle a owl:DatatypeProperty ;
+                  rdfs:label "Hoofdtitel"^^xsd:string ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:subtitle a owl:DatatypeProperty ;
+                  rdfs:label "Ondertitel"^^xsd:string ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:subSubtitle a owl:DatatypeProperty ;
+                  rdfs:label "Onder-ondertitel"^^xsd:string ;
+                  rdfs:subPropertyOf def:subtitle ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:subSubSubtitle a owl:DatatypeProperty ;
+                  rdfs:label "Onder-ondertitel"^^xsd:string ;
+                  rdfs:subPropertyOf def:subSubtitle ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:titleParticle a owl:DatatypeProperty ;
+                  rdfs:label "Eerste lidwoord"^^xsd:string ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:originalTitle a owl:DatatypeProperty ;
+                  rdfs:label "Oorspronkelijke titel"^^xsd:string ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:translatedTitle a owl:DatatypeProperty ;
+                  rdfs:label "Vertaalde titel"^^xsd:string ;
+		  rdfs:domain def:MovieTitle ;
+		  rdfs:range xsd:string ;
+.
+def:presentationTitle a owl:DatatypeProperty ;
+                  rdfs:label "presentatietitel"^^xsd:string ;
+		  rdfs:domain def:MovieTitle ;
+                  rdfs:comment "Title meant to be presented on a web site, using escapes for special characters"^^xsd:string ;
+		  rdfs:range xsd:string ;
+.
+def:movieMedium a owl:ObjectProperty ;
+                  rdfs:label "Opnamemedium"^^xsd:string ;
+	          rdfs:domain def:FilmEntity , def:MovieReference ;
+		  rdfs:range def:FilmFormat ;
+.
+def:movieTitle a owl:ObjectProperty ;
+                  rdfs:label "Titelblok"^^xsd:string ;
+		  rdfs:domain def:FilmEntity , def:MovieReference ;
+		  rdfs:range def:MovieTitle ;
+.
+def:movieCategory a owl:ObjectProperty ;
+                  rdfs:label "Filmcategorie"^^xsd:string ;
+		  rdfs:domain def:Entity , def:MovieReference ;
+		  rdfs:range def:MovieCategory ;
+.
+def:ratingDate a owl:DatatypeProperty ;
+                  rdfs:label "Datum keuring"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range xsd:date ;
+.
+def:reratingDate a owl:DatatypeProperty ;
+                  rdfs:label "Datum keuring"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range xsd:date ;
+.
+def:hasRating a owl:ObjectProperty ;
+                  rdfs:label "oordeel"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range def:AdmissibilityRating ;
+.
+def:ratedBy a owl:ObjectProperty ;
+                  rdfs:label "keuringsorgaan"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range org:Agent ;
+.
+def:reratedBy a owl:ObjectProperty ;
+                  rdfs:label "keuringsorgaan"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range org:Agent ;
+.
+def:hasRerating a owl:ObjectProperty ;
+                  rdfs:label "herkeuring"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range def:AdmissibilityRating ;
+.
+def:descriptionSource  a rdf:DatatypeProperty ;
+                         rdfs:domain def:Movie ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "link naar archiefverwijzing"^^xsd:string ;
+                         skos:prefLabel "archiefverwijzing"^^xsd:string ;
+                         owl:equivalentProperty dct:source ;
+.
+def:remarkOnCuts a owl:DatatypeProperty ;
+                  rdfs:label "Welke of hoeveel coupures"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range xsd:string ;
+.
+def:reratedRemarkOnCuts a owl:DatatypeProperty ;
+                  rdfs:label "Coupures herkeuring"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range xsd:string ;
+.
+def:numberListOfWeeks a owl:DatatypeProperty ;
+                  rdfs:label "weeklijstnummer"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range xsd:integer ;
+.
+def:reratedNumberListOfWeeks a owl:DatatypeProperty ;
+                  rdfs:label "weeklijstnummer herkeuring"^^xsd:string ;
+		  rdfs:domain def:AdmissibilityReport ;
+		  rdfs:range xsd:integer ;
+.
+def:narrowGaugeFilm a owl:DatatypeProperty  ;
+                     rdfs:label "Smalfilm ja/nee"^^xsd:string ;
+		     skos:prefLabel "Narrow gauge film"^^xsd:string ;
+                     rdfs:range xsd:string ;
+.
+# == Domeinspecifieke individuals voor de Filmkeuring (archiefvormer staat naast Raad van State) === 
+
+filmK:Fiction a def:MovieCategory , owl:NamedIndividual ;
+                     rdfs:label "Fictie"^^xsd:string ;
+                     skos:prefLabel "Fictie"@nl ;
+.
+filmK:NonFiction a def:MovieCategory , owl:NamedIndividual ;
+                     rdfs:label "Non-Fictie"^^xsd:string ;
+                     skos:prefLabel "Non-Fictie"@nl ;
+.
+filmK:OpenToAll a def:AdmissibilityRating , owl:NamedIndividual ;
+                   rdfs:label "Alle leeftijden"^^xsd:string ;
+                   skos:prefLabel "Alle leeftijden"@nl ;
+.
+filmK:From14Years a def:AdmissibilityRating , owl:NamedIndividual ;
+                   rdfs:label "Van 14 tot 18 jaar"^^xsd:string ;
+                   skos:prefLabel "Van 14 tot 18 jaar"@nl ;
+.
+filmK:From18Years a def:AdmissibilityRating , owl:NamedIndividual ;
+                   rdfs:label "18 jaar en ouder"^^xsd:string ;
+                   skos:prefLabel "18 jaar en ouder"@nl ;
+.
+filmK:NotAdmitted a def:AdmissibilityRating , owl:NamedIndividual ;
+                   rdfs:label "Niet toegelaten"^^xsd:string ;
+                   skos:prefLabel "Niet toegelaten"@nl ;
+.
+
+# == Domeinspecifieke definities voor Bewindslieden, de klassen == 
+
+def:Cabinet a owl:Class ;
+             rdfs:label "Kabinet"^^xsd:string ;
+	     owl:equivalentClass dbo:GovernmentCabinet ;
+.
+def:CabinetPortfolio a owl:Class ;
+                      rdfs:label "Post in kabinet"^^xsd:string ;
+	              owl:equivalentClass dbo:PersonFunction ;
+.
+def:MinisterInGovernment a owl:Class ;
+                         rdfs:label "Portfolio holder in cabinet"^^xsd:string ;
+	                 owl:equivalentClass dbo:Politician , bgn:Person ;
+.
+def:SecretaryOfState a owl:Class ;
+                         rdfs:label "Mid-level portfolio holder in cabinet"^^xsd:string ;
+	                 owl:equivalentClass dbo:Politician , bgn:Person ;
+.
+def:PoliticalParty a owl:Class ;
+                    rdfs:subClassOf skos:Concept ;
+                    rdfs:label "Politieke partij"^^xsd:string ;
+                    owl:equivalentClass dbo:PoliticalParty ;
+.
+def:PoliticalCurrent a owl:Class ;
+                    rdfs:subClassOf skos:Concept ;
+                    rdfs:label "Politieke stroming"^^xsd:string ;
+                    owl:disjointWith def:PoliticalParty ;
+.
+
+# == Because the source files have NOT been denormalized, there is no need to use Reference resources for ministers or for political parties ==
+# == Domeinspecifieke definities, de properties ==
+
+def:portfolioName a owl:DatetypeProperty ;
+     rdfs:label "Name of function or portfolio"^^xsd:string ;
+	 rdfs:domain def:CabinetPortfolio ;
+	 rdfs:range xsd:string ;
+.
+def:portfolioOwner a owl:ObjectProperty ;
+     rdfs:label "Owner of portfolio"^^xsd:string ;
+	 rdfs:domain def:CabinetPortfolio ;
+	 rdfs:range def:MinisterInGovernment , def:SecretaryOfState ;
+.
+def:fromDate a owl:DatetypeProperty ;
+     rdfs:label "Start date"^^xsd:string ;
+	 rdfs:domain def:CabinetPortfolio , def:Cabinet ; 
+	 rdfs:range xsd:date ;
+.
+def:birthYear a owl:DatetypeProperty ;
+     rdfs:label "Year of birth"^^xsd:string ;
+     rdfs:domain bgn:Person ;  
+     rdfs:range xsd:gYear ;
+     owl:equivalentProperty dbo:birthYear ;     
+.
+def:deathYear a owl:DatetypeProperty ;
+     rdfs:label "Year of death"^^xsd:string ;
+     rdfs:domain bgn:Person ; 
+     rdfs:range xsd:gYear ;
+     owl:equivalentProperty dbo:deathYear ;     
+.
+def:formationYear a owl:DatetypeProperty ;
+     rdfs:label "Year of formation"^^xsd:string ;
+	 rdfs:domain def:Cabinet ;  
+	 rdfs:range xsd:gYear ;
+.
+def:dissolutionYear a owl:DatetypeProperty ;
+     rdfs:label "Year of dissolution"^^xsd:string ;
+	 rdfs:domain def:Cabinet ; 
+	 rdfs:range xsd:gYear ;
+.
+def:toDate a owl:DatetypeProperty ;
+     rdfs:label "End date"^^xsd:string ;
+	 rdfs:domain def:CabinetPortfolio , def:Cabinet ; 
+	 rdfs:range xsd:date ;
+.
+def:hasPortfolio a owl:ObjectProperty ;
+     rdfs:label "Has portfolio"^^xsd:string ;
+	 rdfs:domain def:MinisterInGovernment , def:SecretaryOfState ;
+	 rdfs:range def:CabinetPortfolio ;
+         owl:inverseOf def:portfolioOwner ;
+.
+def:inCabinet a owl:ObjectProperty ;
+     rdfs:label "Is portfolio in Cabinet"^^xsd:string ;
+	 rdfs:domain def:CabinetPortfolio ;
+	 rdfs:range def:Cabinet ;
+.
+def:hasArchive a owl:ObjectProperty ;
+     rdfs:label "Has archive"^^xsd:string ;
+	 rdfs:domain def:MinisterInGovernment , def:SecretaryOfState ;
+	 rdfs:range def:Archive ;
+.
+def:politicalOrientation a owl:DatetypeProperty ;
+     rdfs:label "Has political orientation"^^xsd:string ;
+	 rdfs:domain def:CabinetPortfolio ;
+	 rdfs:range xsd:string ;
+.
+def:politicalParty a owl:ObjectProperty ;
+     rdfs:label "Is member of party"^^xsd:string ;
+	 rdfs:domain def:MinisterInGovernment , def:SecretaryOfState ;
+	 rdfs:range def:PoliticalParty ;
+.
+def:tendency a owl:DatatypeProperty ;
+     rdfs:label "Adheres to political tendency"^^xsd:string ;
+	 rdfs:domain def:MinisterInGovernment , def:SecretaryOfState ;
+	 rdfs:range xsd:string ;
+.
+def:politicalCurrent a owl:ObjectProperty ;
+     rdfs:label "Adheres to political current"^^xsd:string ;
+	 rdfs:domain def:MinisterInGovernment , def:SecretaryOfState ;
+	 rdfs:range def:PoliticalCurrent ;
+.
+def:cabinetName a owl:DatatypeProperty ;
+     rdfs:label "Cabinet name"^^xsd:string ;
+	 rdfs:domain bewL:Cabinet ;
+	 rdfs:range xsd:string ;
+.
+def:cabinetList a owl:DatatypeProperty ;
+     rdfs:label "List of Cabinets"^^xsd:string ;
+	 rdfs:domain bgn:Person ;
+	 rdfs:range xsd:string ;
+.
+def:functionList a owl:DatatypeProperty ;
+     rdfs:label "List of Functions"^^xsd:string ;
+	 rdfs:domain bgn:Person ;
+	 rdfs:range xsd:string ;
+.
+def:archiveList a owl:DatatypeProperty ;
+     rdfs:label "List of Archives"^^xsd:string ;
+	 rdfs:domain bgn:Person ;
+	 rdfs:range xsd:string ;
+.
+def:ministerList a owl:DatatypeProperty ;
+     rdfs:label "List of Ministers or Secretaries of State"^^xsd:string ;
+	 rdfs:domain def:Cabinet ;
+	 rdfs:range xsd:string ;
+.
+
+# == Domeinspecifieke definities voor de Dodenboeken, de properties ==
+
+def:codeListOfHonour a owl:DatetypeProperty ;
+     rdfs:label "Entry number in the Books of the Dead"^^xsd:string ;
+     rdfs:domain def:PrisonRecordsEntry ;
+     owl:equivalentProperty dbo:codeListOfHonour ;
+     rdfs:range xsd:string ;
+.
+def:categoryCode a owl:DatetypeProperty ;
+     rdfs:label "Category code in the Books of the Dead"^^xsd:string ;
+     rdfs:domain def:PrisonRecordsEntry ;
+     owl:equivalentProperty dbo:category ;
+     rdfs:range xsd:string ;
+.
+def:scanIndex a owl:DatetypeProperty ;
+     rdfs:label "Scan index of the page in the Books of the Dead, often with a portrait"^^xsd:string ;
+     rdfs:domain def:PrisonRecordsEntry ;
+     rdfs:range xsd:anyURI ;
+.
+
+# == Domeinspecifieke definities voor de Bestekken van Rijkswaterstaat, de klassen ==
+
+def:ProjectSpecificationReference a owl:Class ;
+                         rdfs:label "Project Specification Description"^^xsd:string ;
+                         rdfs:subClassOf def:ArchivalReference ;
+	                 owl:equivalentClass dct:Dataset ;
+.
+def:ProjectSpecification a owl:Class ;
+                         rdfs:label "Project Specification"^^xsd:string ;
+                         rdfs:subClassOf def:ArchivalEntity ;
+	                 owl:equivalentClass <http://ont.cbnl.org/top/def/Specificatie> ;
+.
+def:ConstructionWork a owl:Class ;
+                         rdfs:label "Object of a Building or Engineering Project"^^xsd:string ;
+                         skos:prefLabel "Kunstwerk"@nl ;
+                         rdfs:subClassOf def:ArchivalEntity ;
+	                 owl:equivalentClass dbo:Infrastructure ;
+.
+def:ProjectLocation a owl:Class ;
+                         rdfs:label "Location of a Building or Engineering Project"^^xsd:string ;
+                         rdfs:subClassOf def:ArchivalEntity ;
+	                 owl:equivalentClass dbo:Place , dbo:Municipality ;
+.
+
+
+# == Domeinspecifieke definities voor de Bestekken van Rijkswaterstaat, de properties ==
+
+
+def:constructionType a owl:ObjectProperty ;
+     rdfs:label "Type of the project object"^^xsd:string ;
+     rdfs:domain def:ConstructionWork ;
+     rdfs:range owl:Class ;
+.
+
+def:contractingDate a owl:DatetypeProperty ;
+     rdfs:label "Date of contracting the project out"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:date ;
+.
+def:projectDescription a owl:DatetypeProperty ;
+     rdfs:label "Project description"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:string ;
+     owl:equivalentProperty dct:description ;
+.
+def:projectNumberOfFloorPlans a owl:DatetypeProperty ;
+     rdfs:label "Aantal tekeningen"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:integer ;
+.
+def:specificationYear a owl:DatetypeProperty ;
+     rdfs:label "Year in which project specification has been completed"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:gYear ;
+.
+def:projectStartYear a owl:DatetypeProperty ;
+     rdfs:label "Year in which the project has started"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:gYear ;
+.
+def:projectEndYear a owl:DatetypeProperty ;
+     rdfs:label "Year in which the project has started"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:gYear ;
+.
+def:projectTypeOfWork a owl:ObjectProperty ;
+     rdfs:label "Type of work the project is about"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range wsb:TypeOfWork ;
+.
+def:projectLocation a owl:ObjectProperty ;
+     rdfs:label "Type of work the project is about"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range def:ProjectLocation ;
+     owl:equivalentProperty cidoc:P7_took_place_at ;
+.
+def:jurisdictionOf a owl:ObjectProperty ;
+     rdfs:label "is under jurisdiction of"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range org:OrganizationalUnit ;
+.
+def:projectAnnotation a owl:DatatypeProperty ;
+     rdfs:label "annotation"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range xsd:string ;
+.
+def:contractingParty a owl:ObjectProperty ;
+     rdfs:label "Party to which a project is contracted out"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range org:FormalOrganization ;
+.
+def:executive a owl:ObjectProperty ;
+     rdfs:label "Executive"^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range org:FormalOrganization ;
+.
+def:contractedObject a owl:ObjectProperty ;
+     rdfs:label "Object to be built, maintained, adjusted etc."^^xsd:string ;
+     rdfs:domain def:ProjectSpecification ;
+     rdfs:range def:ConstructionObject ;
+.
+def:objectName a owl:DatetypeProperty ;
+     rdfs:label "Name of the object at the time of reference"^^xsd:string ;
+     rdfs:domain def:ConstructionObject ;
+     rdfs:range xsd:string ;
+.
+def:alternativeObjectName a owl:DatetypeProperty ;
+     rdfs:label "Alternative name of the object"^^xsd:string ;
+     rdfs:domain def:ConstructionObject ;
+     rdfs:range xsd:string ;
+     owl:equivalentProperty dbo:alternativeName , skos:altLabel ;
+.
+def:amsterdamCode a owl:DatetypeProperty ;
+     rdfs:label "Amsterdamse Code"^^xsd:string ;
+     rdfs:domain def:ProjectLocation ;
+     rdfs:range xsd:string ;
+.
+def:gemeentegeschiedenisURI a owl:DatetypeProperty ;
+     rdfs:label "URI Gemeentegeschiedenis.nl"^^xsd:string ;
+     rdfs:domain def:ProjectLocation ;
+     rdfs:range xsd:anyURI ;
+.
+def:dbpediaURI a owl:DatetypeProperty ;
+     rdfs:label "URI Gemeentegeschiedenis.nl"^^xsd:string ;
+     rdfs:domain def:ProjectLocation ;
+     rdfs:range xsd:anyURI ;
+.
+def:cbsCode a owl:DatetypeProperty ;
+     rdfs:label "CBS Code"^^xsd:string ;
+     rdfs:domain def:ProjectLocation ;
+     rdfs:range xsd:string ;
+.
+
+
+# == Taxonomie van soorten aangenomen werk ==
+
+wsb:TypesOfWork rdf:type skos:ConceptScheme .
+
+wsb:TypeOfWork rdfs:subClassOf skos:Concept .
+
+wsb:Maintenance rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Onderhoud"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Construction_Infrastructure rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Aanleg"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Improvement rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Verbetering"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Repair rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Herstel"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Renewal rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Vernieuwing"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Delivery rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Levering"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Construction_Buildings rdf:type wsb:typeOfWork ;
+    skos:prefLabel "Bouw"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Rental rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Verhuur"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Demolition rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Sloop"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Sale rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Verkoop"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+wsb:Service rdf:type wsb:TypeOfWork ;
+    skos:prefLabel "Bediening"@nl ;
+    skos:inScheme wsb:TypesOfWork ;
+.
+
