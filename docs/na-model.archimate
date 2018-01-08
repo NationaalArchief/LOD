@@ -113,6 +113,7 @@ Bijvoorbeeld: https://bag.basisregistraties.overheid.nl/doc/begrip/RegistratiefG
           </element>
           <element xsi:type="archimate:DataObject" name="def:ArchivalEntity" id="22cf36e3-7965-4b9a-883c-09e2d7f718ed">
             <documentation>def:ArchivalEntity a owl:Class ;
+rdfs:subClassOf edm:ProvidedCHO;
     rdfs:label &quot;Entity in an Archives domain&quot;^^xsd:string ;
     owl:equivalentClass edm:NonInformationResource ;
     rdfs:comment &quot;An Archival entity represents entities referred to across the boundaries of archival records&quot;^^xsd:string ;
@@ -185,8 +186,8 @@ Bijvoorbeeld: https://bag.basisregistraties.overheid.nl/doc/begrip/RegistratiefG
           </element>
           <element xsi:type="archimate:DataObject" name="def:GraphicalRecord" id="2bf47a43-f35f-484f-a2fe-407e6d0fdb56">
             <documentation>def:GraphicalRecord a owl:Class;
-rdfs:subClassOf def:ArchivalReference;
-owl:equivalentClass ore:Aggregation;</documentation>
+rdfs:subClassOf ore:Aggregation;
+owl:equivalentClass def:ArchivalReference;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="def:GuideForTheUseOfArchives" id="db062d65-5034-4a2a-b183-a2bcfb39d019">
             <documentation>def:GuideForTheUseOfArchives rdf:type owl:Class ;
@@ -620,6 +621,14 @@ edm:ProvidedCHO rdf:type owl:Class ;
                 skos:example &quot;Mona Lisa, Winged Victory of Samothrace&quot;@en ;
                 skos:note &quot;This class has been mostly motivated by the need to assign a type to the “central node” in the EDM pattern, during the ingestion process, related to the XML expression of EDM at that stage. It was especially intended to fit the cases where edm:PhysicalThing  cannot be used as the type of the resource standing for the real-world object (independently of any specific data contributor perspective).&quot;@en ;
                 skos:scopeNote &quot;Rationale: This class is the range of edm:aggregatedCHO. A resource of type ProvidedCHO can be the subject of statements using edm:isRelatedTo or any more specific property.&quot;@en .</documentation>
+          </element>
+          <element xsi:type="archimate:DataObject" name="edm:WebResource" id="d939f9b3-69b0-483f-98b0-8a01e635cdd5">
+            <documentation>###  http://www.europeana.eu/schemas/edm/WebResource
+edm:WebResource rdf:type owl:Class ;
+                rdfs:subClassOf edm:InformationResource ;
+                rdfs:label &quot;Web Resource&quot;@en ;
+                skos:definition &quot;&quot;&quot;Information Resources that have at least one Web Representation and at least
+a URI.&quot;&quot;&quot;@en .</documentation>
           </element>
         </folder>
         <folder name="foaf (Friend of a Friend)" id="9755b96b-f380-4d9f-882f-afaa9663f58b">
@@ -1109,7 +1118,8 @@ rdfs:Resource rdf:type owl:Class ;
             <documentation>na_beeld:Photo1 a def:Photograph;
 edm:hasView https://files.nationaalarchief.nl/photo1.jpg
 hasRights downloadonly
-dctype: &quot;zwartwit&quot;</documentation>
+dctype: &quot;zwartwit&quot;
+dct:creator &quot;Willem vd Poll&quot;^^xsd:string ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="na_beeld:PhotoRecord01" id="113f77d1-583d-43c2-bc0a-ae7587f4f3fe">
             <documentation>na_beeld:PhotoRecord01 a def:GraphicalRecord;
@@ -1117,6 +1127,22 @@ edm:aggregatedCHO  na_beeld:Photo1;
 //dct:creator [a def:PersonReference ;
 //	def:fullNameDesignation &quot;Willem vd Poll&quot;^^xsd:string] ;
 dct:creator &quot;Willem vd Poll&quot;^^xsd:string ;</documentation>
+          </element>
+          <element xsi:type="archimate:DataObject" name="http://beeldbank.nationaalarchief.nl/iiif_zichtexemplaarUUID_ABC" id="b7d83d4e-b97d-4529-be74-91d1b52046f0">
+            <documentation>http://beeldbank.nationaalarchief.nl/iiif_zichtexemplaarUUID_ABC a edm:WebResource;
+dc:creator &quot;Nationaal Archief&quot;;
+dc:format &quot;image/jpg&quot;
+</documentation>
+          </element>
+        </folder>
+        <folder name="ore" id="9631fd12-438f-4d3d-a9cd-721263b0a3d7">
+          <element xsi:type="archimate:DataObject" name="ore:Aggregation" id="04c4696f-26e9-4d47-b4f0-3699e6051541">
+            <documentation>###  http://www.openarchives.org/ore/terms/Aggregation
+ore:Aggregation rdf:type owl:Class ;
+                rdfs:subClassOf dctype:Collection ;
+                rdfs:comment &quot;A set of related resources (Aggregated Resources), grouped together such that the set can be treated as a single resource. This is the entity described within the ORE interoperability framework by a Resource Map.&quot; ;
+                rdfs:isDefinedBy ore: ;
+                rdfs:label &quot;Aggregation&quot; .</documentation>
           </element>
         </folder>
         <element xsi:type="archimate:DataObject" name="url: .../sparql" id="c96899c4-843b-4d8d-a6bf-d433b9a27c0d">
@@ -1616,7 +1642,7 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" name="owl:disjointWith" id="cfc18ed0-dfeb-4dc1-af76-cefd84bf8bee" source="22cf36e3-7965-4b9a-883c-09e2d7f718ed" target="5eff7a6f-230a-44b9-87fc-27b87e194e0d"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:disjointWith" id="1e2b0e76-393f-421f-9a0f-728f63dfbde5" source="5eff7a6f-230a-44b9-87fc-27b87e194e0d" target="22cf36e3-7965-4b9a-883c-09e2d7f718ed"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="391ebd24-866c-452e-9c5e-5fbe019872fc" source="5eff7a6f-230a-44b9-87fc-27b87e194e0d" target="4e31ca50-b8e2-453f-af08-48f1aee133fe"/>
-    <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="f11cff74-9d3f-40c9-817d-10c670b6f8c3" source="2bf47a43-f35f-484f-a2fe-407e6d0fdb56" target="5eff7a6f-230a-44b9-87fc-27b87e194e0d"/>
+    <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="f11cff74-9d3f-40c9-817d-10c670b6f8c3" source="2bf47a43-f35f-484f-a2fe-407e6d0fdb56" target="5eff7a6f-230a-44b9-87fc-27b87e194e0d"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="5b7801ca-9326-44a6-bded-0406187e53fd" source="faafe8fd-a58f-468a-bb6f-53bda8d1fa62" target="22cf36e3-7965-4b9a-883c-09e2d7f718ed"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="b205932b-cc45-47f1-a575-ac3c9dc2e8b7" source="3ac58f24-f9f7-4c02-8595-c6b44fdc9e18" target="22cf36e3-7965-4b9a-883c-09e2d7f718ed"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="efe843dc-16d5-4fea-9ddb-8e1b55125107" source="d4e28347-29dd-447c-aaac-8a905268753f" target="22cf36e3-7965-4b9a-883c-09e2d7f718ed"/>
@@ -1652,6 +1678,9 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:domain" id="580fb4ba-2349-4a5f-b2f1-e3cdb7cc9442" source="9eb8a3d8-b0fd-4b8c-b4a8-26ab31643d24" target="d508ea4d-162b-48db-a138-01cd31eb7d75"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:range" id="2d295841-60ed-4432-bfcb-60c667b502b8" source="9eb8a3d8-b0fd-4b8c-b4a8-26ab31643d24" target="69234a3a-966f-4ce2-951e-22944d87c7fe"/>
     <element xsi:type="archimate:AggregationRelationship" name="def:memberOf" id="28ddebf0-a422-4894-ba68-b6e97fcfa4b5" source="113f77d1-583d-43c2-bc0a-ae7587f4f3fe" target="07d5564d-cc10-4773-8e9f-5351cf643d24"/>
+    <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="c2999410-eccf-47ba-8457-c62d23a20b38" source="2bf47a43-f35f-484f-a2fe-407e6d0fdb56" target="04c4696f-26e9-4d47-b4f0-3699e6051541"/>
+    <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="dbec9926-4870-4c08-8135-df44d6c0c932" source="22cf36e3-7965-4b9a-883c-09e2d7f718ed" target="8c843230-2458-4baa-989b-bce44d033359"/>
+    <element xsi:type="archimate:AggregationRelationship" name="edm:hasView" id="6d536e0e-0334-48ad-b301-3a2c7a6b9d61" source="32c7fce5-baf9-4a7a-b17f-0261b2ef573e" target="b7d83d4e-b97d-4529-be74-91d1b52046f0"/>
   </folder>
   <folder name="Views" id="1106c770-e13e-4b3d-b75c-8d72c67d5ead" type="diagrams">
     <folder name="Linked Data" id="9b434202-298c-47cc-a78d-ba4cc18702aa">
@@ -1921,6 +1950,7 @@ disjointWith	…the first class and second class have no members in common	:Man 
         <child xsi:type="archimate:DiagramObject" id="92e0930a-5164-4104-a521-ee170ab656a4" targetConnections="d85c4727-4f73-48bd-9643-f30684b3c4db" lineColor="#5c5c5c" fillColor="#7980ff" archimateElement="32c7fce5-baf9-4a7a-b17f-0261b2ef573e">
           <bounds x="144" y="243" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="12f8f06c-24a1-4b02-94ac-b3c17a1144c3" lineColor="#000000" source="92e0930a-5164-4104-a521-ee170ab656a4" target="39a5792c-5f60-40e2-8ee7-92ee97631d42" archimateRelationship="682e7fe1-97a9-40cc-b1b7-1f248f79198e"/>
+          <sourceConnection xsi:type="archimate:Connection" id="9c3771bd-900c-4da9-8f82-0769f5b69bd7" lineColor="#000000" source="92e0930a-5164-4104-a521-ee170ab656a4" target="610444a3-5cce-4f1e-84a0-ea04e4e50359" archimateRelationship="6d536e0e-0334-48ad-b301-3a2c7a6b9d61"/>
         </child>
         <child xsi:type="archimate:Note" id="fab79e99-6d42-4375-9f83-d3dcf438221b" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
           <bounds x="720" y="408" width="409" height="133"/>
@@ -1949,7 +1979,7 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
           <sourceConnection xsi:type="archimate:Connection" id="7c676499-9aef-474a-a2b5-49ce6557d72c" lineColor="#000000" source="c113aa45-f096-4a8f-9d8b-e57436eead44" target="880307c9-1ab5-4240-a661-07d4be947274" archimateRelationship="0ac8a455-edf3-45f1-913b-413852f32e3e"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="52968592-bb8a-422f-9266-a2a27cb0ed45" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="39efc361-5543-4397-b776-22885f7574a4">
-          <bounds x="396" y="447" width="120" height="55"/>
+          <bounds x="432" y="447" width="120" height="55"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="8dcf4ae1-d7c9-4b47-bb07-8f05396773cc" lineColor="#5c5c5c" fillColor="#7980ff" archimateElement="113f77d1-583d-43c2-bc0a-ae7587f4f3fe">
           <bounds x="144" y="360" width="120" height="55"/>
@@ -1959,6 +1989,9 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         </child>
         <child xsi:type="archimate:DiagramObject" id="9e777e91-6d0c-4d18-a872-8e56d778b97c" targetConnections="ad06fea4-af94-4d85-b471-de30e3b81e61" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="2bf47a43-f35f-484f-a2fe-407e6d0fdb56">
           <bounds x="-60" y="360" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="610444a3-5cce-4f1e-84a0-ea04e4e50359" targetConnections="9c3771bd-900c-4da9-8f82-0769f5b69bd7" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="b7d83d4e-b97d-4529-be74-91d1b52046f0">
+          <bounds x="192" y="60" width="120" height="73"/>
         </child>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" name="NT00194: RDF NT CommissieBoeken" id="c0b82c04-81e5-4dcc-88b2-c7542127855c">
@@ -2306,12 +2339,13 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
           <sourceConnection xsi:type="archimate:Connection" id="9dea6274-85c5-4c84-9186-825375c8df7f" lineColor="#000000" source="eb8f1fbf-8fb5-4a4b-959e-7478b02a2628" target="1d8ed8b3-d60c-4070-8d88-7b72ce5d22de" archimateRelationship="cfc18ed0-dfeb-4dc1-af76-cefd84bf8bee">
             <bendpoint startX="-120" startY="9" endX="132" endY="9"/>
           </sourceConnection>
+          <sourceConnection xsi:type="archimate:Connection" id="00e13aa8-769f-4b58-a3f7-534b09f8852d" lineColor="#000000" source="eb8f1fbf-8fb5-4a4b-959e-7478b02a2628" target="e1061a96-913b-4f2e-95e8-e68bb2f2cb62" archimateRelationship="dbec9926-4870-4c08-8135-df44d6c0c932"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="408e67bf-de0a-4101-b7da-87ec1ce69e59" targetConnections="8c858995-c9da-4feb-8450-82d7ed7ffec5" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="fd68b3d0-46fe-4eb3-a276-a05796e11c65">
           <bounds x="1320" y="-246" width="120" height="55"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="0143d810-acf3-4ce5-ab59-440f55321e82" targetConnections="1ac85af7-72e6-4e75-b847-b54513477bb9" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="e5dc33a7-6f8b-45de-8790-da1cc8fdd810">
-          <bounds x="1620" y="-528" width="120" height="55"/>
+          <bounds x="1536" y="-528" width="120" height="55"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="7c57e546-dc35-480a-804b-74d7ff792c78" targetConnections="9580888e-3b76-4e64-939f-c68a5fa9b47c" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="d27d8572-1a97-4eeb-bc5c-18617a80dee6">
           <bounds x="1188" y="-246" width="120" height="55"/>
@@ -2324,10 +2358,11 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
           </sourceConnection>
         </child>
         <child xsi:type="archimate:DiagramObject" id="5954a8af-91e5-4439-9209-3bd878903447" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="2bf47a43-f35f-484f-a2fe-407e6d0fdb56">
-          <bounds x="1439" y="-528" width="120" height="55"/>
+          <bounds x="1439" y="-624" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="9de8e610-81cf-472d-8e0d-a2a0cc942ea1" lineColor="#000000" source="5954a8af-91e5-4439-9209-3bd878903447" target="1d8ed8b3-d60c-4070-8d88-7b72ce5d22de" archimateRelationship="f11cff74-9d3f-40c9-817d-10c670b6f8c3">
-            <bendpoint startX="-215" startY="-3" endX="36" endY="-99"/>
+            <bendpoint startX="-215" startY="9" endX="36" endY="-183"/>
           </sourceConnection>
+          <sourceConnection xsi:type="archimate:Connection" id="762e954f-890c-4530-a8b0-dfd0afe0eddd" lineColor="#000000" source="5954a8af-91e5-4439-9209-3bd878903447" target="44bc4124-90c8-4e57-aedf-bf329124bfd3" archimateRelationship="c2999410-eccf-47ba-8457-c62d23a20b38"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="5dfbe322-51e5-4369-9f43-618d32408c19" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="3ac58f24-f9f7-4c02-8595-c6b44fdc9e18">
           <bounds x="1836" y="-180" width="120" height="55"/>
@@ -2358,6 +2393,12 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         </child>
         <child xsi:type="archimate:DiagramObject" id="6685b708-835a-4c72-a5e1-5858155c8e73" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="7eb0d744-e8e7-457a-b658-6e47f5a97bdd">
           <bounds x="697" y="-456" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="44bc4124-90c8-4e57-aedf-bf329124bfd3" targetConnections="762e954f-890c-4530-a8b0-dfd0afe0eddd" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="04c4696f-26e9-4d47-b4f0-3699e6051541">
+          <bounds x="1439" y="-744" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="e1061a96-913b-4f2e-95e8-e68bb2f2cb62" targetConnections="00e13aa8-769f-4b58-a3f7-534b09f8852d" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="8c843230-2458-4baa-989b-bce44d033359">
+          <bounds x="1691" y="-570" width="120" height="55"/>
         </child>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" name="DCAT" id="6fc7e80a-b296-45b4-87ec-b4fd22310efc">
