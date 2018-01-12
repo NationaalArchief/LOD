@@ -1299,7 +1299,11 @@ https://github.com/OpenRefine/OpenRefine/wiki</documentation>
     <element xsi:type="archimate:Node" name="IIIF Server" id="f358bc5a-8772-4ac8-9c1e-891d5773f358"/>
     <element xsi:type="archimate:Artifact" name="Aurielia.io" id="2f83cf22-b6ea-4fb6-8609-1d138d389415"/>
     <element xsi:type="archimate:Artifact" name="Handlebars" id="62d65ebc-792b-426c-a986-be18721b493a"/>
-    <element xsi:type="archimate:Artifact" name="Artifact" id="fd19f00b-601e-4045-91a6-2017490d13a1"/>
+    <element xsi:type="archimate:Artifact" name="jQuery" id="fd19f00b-601e-4045-91a6-2017490d13a1"/>
+    <element xsi:type="archimate:Artifact" name="Angular 2" id="806bfced-ccc1-402f-b67b-2b1998ec77c2"/>
+    <element xsi:type="archimate:Artifact" name="Vue.js" id="a3472462-9f0f-469a-8d78-f76e9263be4d"/>
+    <element xsi:type="archimate:Artifact" name="Bootstrap" id="d74cf246-32dc-40f8-a238-25d6f5023942"/>
+    <element xsi:type="archimate:Artifact" name="WebPack" id="0ee14379-2e4b-4d48-ab17-f58cdee97971"/>
   </folder>
   <folder name="Motivation" id="fb6f3216-e695-4271-ab61-d0690039e87d" type="motivation">
     <element xsi:type="archimate:Meaning" name="Het vergaarproces van de data: zelfstandig of geautomatiseerd" id="a30d8914-8b85-41a6-8fa9-3a21e4dcd631"/>
@@ -1357,6 +1361,7 @@ Denk iFrame / container &lt;div></documentation>
       <documentation>De API adapter spreekt de taal van de  GAF backend API en delegeert in- en uitkomende data</documentation>
     </element>
     <element xsi:type="archimate:Requirement" name="Overkoepelend raamwerk als drager van views" id="8928bb92-59b4-46ba-acae-86ba16344a41"/>
+    <element xsi:type="archimate:Requirement" name="Functie: eigen acties toewijzen aan bedieningselementen" id="8d3aae72-959b-40cd-8304-f5f339d8eb94"/>
   </folder>
   <folder name="Implementation &amp; Migration" id="78e070f4-8f70-4b08-b7ce-7fc0f193f7fd" type="implementation_migration"/>
   <folder name="Other" id="b27f5923-4ca7-439c-a94b-62da6d936709" type="other">
@@ -1751,6 +1756,7 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AssociationRelationship" id="a5ddd1c3-fada-408e-8322-25c27b4029ce" source="0ea20372-be44-4559-a2bb-30f8d60709ef" target="fa30838a-8d33-4e48-82fa-988020f2e719"/>
     <element xsi:type="archimate:AggregationRelationship" id="fb1783d5-e9e6-46fc-b479-eba8f6062bbe" source="62a14d78-b7ff-49f9-afbf-77509d9413da" target="9709e267-5bb3-4912-865a-0b3b7da81cbd"/>
     <element xsi:type="archimate:SpecializationRelationship" id="49190f74-c18f-4ce8-b090-ee95517fe709" source="e12e0f99-201d-46b8-94f9-cbb22f5ae559" target="323ad823-3e52-41cf-bc26-3b02e3f79b5e"/>
+    <element xsi:type="archimate:AssociationRelationship" id="2e35a3f1-eec5-492c-8bb0-884bf3cad916" source="56d4b723-9142-4e98-88d2-7bd4155ad0c5" target="8d3aae72-959b-40cd-8304-f5f339d8eb94"/>
   </folder>
   <folder name="Views" id="1106c770-e13e-4b3d-b75c-8d72c67d5ead" type="diagrams">
     <folder name="Linked Data" id="9b434202-298c-47cc-a78d-ba4cc18702aa">
@@ -3274,7 +3280,7 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         <bounds x="980" y="24" width="151" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="85434796-5807-4991-8f6a-144467b25d58" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="62a14d78-b7ff-49f9-afbf-77509d9413da">
-        <bounds x="528" y="336" width="493" height="265"/>
+        <bounds x="372" y="384" width="493" height="265"/>
         <sourceConnection xsi:type="archimate:Connection" id="03cb2841-0e87-4f89-af29-ff8e5641904f" source="85434796-5807-4991-8f6a-144467b25d58" target="541535f2-e395-43d1-9623-c84ef1e491e8" archimateRelationship="a4c850a5-0ebb-458e-bf95-355186b200b1"/>
         <sourceConnection xsi:type="archimate:Connection" id="3e0d855f-fcdf-40fd-a172-5d5e2e90119f" source="85434796-5807-4991-8f6a-144467b25d58" target="1bcebb45-ac65-4bf0-8bd2-d46fd635d402" archimateRelationship="fcf27b1e-993d-494d-a1b2-bbd00b98e7ca"/>
         <sourceConnection xsi:type="archimate:Connection" id="cacb72ec-8a59-4f98-b6d4-a452db02fb70" source="85434796-5807-4991-8f6a-144467b25d58" target="d39fbb5c-be1c-4eb3-bcf7-57cde03d13a0" archimateRelationship="75998040-4e45-40e6-9fbd-560d9be2b04e"/>
@@ -3322,20 +3328,21 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         <bounds y="192" width="151" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="35398306-259d-4e73-a302-2c2468574d3c" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="6f4d4208-b70a-4460-9cd9-b662cdd2a186">
-        <bounds x="720" y="24" width="193" height="85"/>
+        <bounds x="180" y="384" width="157" height="97"/>
         <sourceConnection xsi:type="archimate:Connection" id="16435de0-5b14-4e28-ba59-d31759eb7567" lineColor="#000000" source="35398306-259d-4e73-a302-2c2468574d3c" target="cc3c6d9e-8c56-4fd0-8ee4-6c9fc684c042" archimateRelationship="50b2c6d8-b36e-4723-b35c-f27ff2d2e6d3"/>
         <child xsi:type="archimate:DiagramObject" id="cc3c6d9e-8c56-4fd0-8ee4-6c9fc684c042" targetConnections="16435de0-5b14-4e28-ba59-d31759eb7567" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="6bc73b7f-ca47-485a-b057-a7c7de58b848">
-          <bounds x="12" y="24" width="145" height="49"/>
+          <bounds x="12" y="36" width="133" height="49"/>
         </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="5280ae65-04f2-4982-9fa9-e68816fe3073" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="0ea20372-be44-4559-a2bb-30f8d60709ef">
-        <bounds x="984" y="96" width="144" height="55"/>
+        <bounds x="354" y="111" width="144" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="a388d791-1e0b-4c8c-8da6-caedfaf4ad20" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="56d4b723-9142-4e98-88d2-7bd4155ad0c5">
-        <bounds x="720" y="120" width="193" height="85"/>
+        <bounds x="180" y="276" width="157" height="85"/>
         <sourceConnection xsi:type="archimate:Connection" id="8c354929-732a-4818-88dc-fb87dc4f6c8d" lineColor="#000000" source="a388d791-1e0b-4c8c-8da6-caedfaf4ad20" target="8649b80e-dfcd-45da-912b-8e71e65581ee" archimateRelationship="6b6e5331-eccf-4154-995f-a67eef3dd6a9"/>
+        <sourceConnection xsi:type="archimate:Connection" id="06a95520-20b2-479a-b1c0-481e71e9dd94" lineColor="#000000" source="a388d791-1e0b-4c8c-8da6-caedfaf4ad20" target="e5b27f7b-3e79-490b-9d7b-dfece8ebc747" archimateRelationship="2e35a3f1-eec5-492c-8bb0-884bf3cad916"/>
         <child xsi:type="archimate:DiagramObject" id="8649b80e-dfcd-45da-912b-8e71e65581ee" targetConnections="8c354929-732a-4818-88dc-fb87dc4f6c8d" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="a1bad3ee-b07b-4a77-9560-03231fd14477">
-          <bounds x="12" y="36" width="145" height="37"/>
+          <bounds x="12" y="36" width="133" height="37"/>
         </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="7f4818fe-720c-493d-aaa2-dfbbedb6a99a" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="e12e0f99-201d-46b8-94f9-cbb22f5ae559">
@@ -3343,13 +3350,13 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         <sourceConnection xsi:type="archimate:Connection" id="f8c84e15-05f9-4cf8-9203-9346f072336b" lineColor="#000000" source="7f4818fe-720c-493d-aaa2-dfbbedb6a99a" target="803d9e3a-9418-4329-a6b0-0156edfb69bd" archimateRelationship="49190f74-c18f-4ce8-b090-ee95517fe709"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="7da7fb80-b0e2-4208-a541-7695c09a6ef6" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="2f83cf22-b6ea-4fb6-8609-1d138d389415">
-        <bounds x="-12" y="600" width="120" height="55"/>
+        <bounds x="1056" y="447" width="120" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="3a13c9c4-3213-4d4b-8100-bca373625258" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="62d65ebc-792b-426c-a986-be18721b493a">
-        <bounds x="132" y="600" width="120" height="55"/>
+        <bounds x="1056" y="588" width="120" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="eac1e3a7-4c47-4904-83b9-0a878d4b29fb" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="5f8f0735-5add-462c-9de6-cfbbd1127223">
-        <bounds x="984" y="168" width="151" height="55"/>
+        <bounds x="980" y="93" width="151" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="cd166f9c-601a-4e0b-8fc0-13057a6e55d9" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="7eab9f0f-c071-4232-ab32-49042ca66f8b">
         <bounds y="39" width="151" height="55"/>
@@ -3361,7 +3368,7 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         <bounds y="348" width="151" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="882535b6-1089-49d1-bd26-42aa09674167" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="9ef38248-f6d1-4c04-875e-c46c62dadcfe">
-        <bounds x="984" y="246" width="147" height="55"/>
+        <bounds x="982" y="180" width="147" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="a324cd90-5605-453c-b3c1-f117872d0b3e" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="570942f3-ad86-4a79-82fd-26bb8e92be5b">
         <bounds x="180" y="39" width="145" height="55"/>
@@ -3370,15 +3377,37 @@ ds:FotoCollectieRecord-DVLCI is optioneel, alle datasets zouden ook onder na_col
         <bounds x="180" y="111" width="145" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="5276faa5-4c53-4e79-8d99-7ab867eac2f0" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="fd19f00b-601e-4045-91a6-2017490d13a1">
-        <bounds x="288" y="600" width="120" height="55"/>
+        <bounds x="1056" y="519" width="120" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="1db4d036-7a59-4aee-8f0f-c2a30781bb1e" targetConnections="2fb6e6e6-40d7-4513-9283-f7ba992f4f0d" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="8928bb92-59b4-46ba-acae-86ba16344a41">
         <bounds x="360" y="39" width="132" height="55"/>
       </child>
       <child xsi:type="archimate:Note" id="c6cd2cb8-cf06-43e8-bbc4-c7a3f393f685" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
-        <bounds x="516" y="39" width="185" height="55"/>
+        <bounds x="516" y="39" width="185" height="73"/>
         <sourceConnection id="2fb6e6e6-40d7-4513-9283-f7ba992f4f0d" lineColor="#000000" source="c6cd2cb8-cf06-43e8-bbc4-c7a3f393f685" target="1db4d036-7a59-4aee-8f0f-c2a30781bb1e"/>
-        <content>Een view is opgebouwd uit tenminste één bouwblok</content>
+        <content>Een view is opgebouwd uit tenminste één bouwblok. Het applicatie raamwerk ondersteund een modulaire opbouw van views / gedrag. Gebruik hiervoor een bestaand JS framework.</content>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="e5b27f7b-3e79-490b-9d7b-dfece8ebc747" targetConnections="254f3d63-10b3-4545-9099-c6ec2ae83130 06a95520-20b2-479a-b1c0-481e71e9dd94" lineColor="#5c5c5c" fillColor="#ccccff" archimateElement="8d3aae72-959b-40cd-8304-f5f339d8eb94">
+        <bounds x="180" y="192" width="145" height="55"/>
+      </child>
+      <child xsi:type="archimate:Note" id="88bf7e49-9e73-4118-a8cd-dfcd27e868d5" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
+        <bounds x="360" y="192" width="185" height="80"/>
+        <sourceConnection id="254f3d63-10b3-4545-9099-c6ec2ae83130" lineColor="#000000" source="88bf7e49-9e73-4118-a8cd-dfcd27e868d5" target="e5b27f7b-3e79-490b-9d7b-dfece8ebc747"/>
+        <content>Zie: https://trello.com/c/WGQdDgDX/33-b03-faciliteren-dat-getoonde-content-verder-kan-worden-opgepakt-bijv-reserveren-winkelwagentje-printen
+
+</content>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="9b26ba11-f862-4b2e-a57c-3a2c0ede953b" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="806bfced-ccc1-402f-b67b-2b1998ec77c2">
+        <bounds x="1056" y="660" width="120" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="72b96b06-08e8-493a-aa83-4a9f8bdf4ffe" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="a3472462-9f0f-469a-8d78-f76e9263be4d">
+        <bounds x="912" y="447" width="120" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="3bc4a3b8-55dc-460b-82c8-22a9d0a66d6b" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="d74cf246-32dc-40f8-a238-25d6f5023942">
+        <bounds x="1056" y="372" width="120" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="5c8da596-79e2-4505-8fe9-baa7f6f29a23" lineColor="#5c5c5c" fillColor="#c9e7b7" archimateElement="0ee14379-2e4b-4d48-ab17-f58cdee97971">
+        <bounds x="912" y="372" width="120" height="55"/>
       </child>
     </element>
   </folder>
