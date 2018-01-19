@@ -1,0 +1,111 @@
+@prefix : <http://archief.overheid.nl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix nadef: <http://archief.overheid.nl/def/> .
+@prefix nabeelddoc: <http://archief.overheid.nl/beeld/doc/> .
+@prefix nabeeldent: <http://archief.overheid.nl/beeld/id/> .
+@prefix nacollectie: <http://archief.overheid.nl/collectie/doc/> .
+@prefix napersoondoc: <http://archief.overheid.nl/persoon/doc/> .
+@prefix napersoonent: <http://archief.overheid.nl/persoon/id/> .
+@base <http://archief.overheid.nl/> .
+
+<http://archief.overheid.nl/> rdf:type owl:Ontology ;
+                               owl:imports :def ;
+                               rdfs:comment "Dit is een voorbeeld Foto collectie inclusief dcat:Dataset, een aantal Fotorecords en personen (fotografen)."@nl ,
+                                            """nadef: http://archief.overheid.nl/def/ (termen van het NA)
+nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
+nabeelddoc: http://archief.overheid.nl/beeld/doc/  +  {fotorecord-referentie} (alle informatie objecten, ook datasets)
+nabeeldent: http://archief.overheid.nl/beeld/id/  +  {entiteit-referentie} (entiteiten, \"fysieke\" objecten, niet informatie objecten)
+napersoonent: http://archief.overheid.nl/persoon/id/ +  {persoon-referentie}  (personen die voorkomen in de archieven, dus ook fotografen)
+napersoondoc: http://archief.overheid.nl/persoon/doc/ +  (datasets van personen)"""@nl .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#member
+rdfs:member rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/dcat#dataset
+dcat:dataset rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://archief.overheid.nl/def/GrafischRecord
+nadef:GrafischRecord rdf:type owl:Class .
+
+
+###  http://archief.overheid.nl/def/PersoonEntiteit
+nadef:PersoonEntiteit rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dcat#Catalog
+dcat:Catalog rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dcat#Dataset
+dcat:Dataset rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
+nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
+                                         dcat:Dataset ;
+                                rdfs:comment "Een set foto's als voorbeeld. Deze set is inderdeel van de Fotocollectie."@nl .
+
+
+###  http://archief.overheid.nl/beeld/doc/FotoRecord01
+nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
+                                 nadef:GrafischRecord ;
+                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld .
+
+
+###  http://archief.overheid.nl/beeld/id/Foto1
+nabeeldent:Foto1 rdf:type owl:NamedIndividual , nadef:Foto .
+
+
+###  http://archief.overheid.nl/collectie/doc/FotoCollectie
+nacollectie:FotoCollectie rdf:type owl:NamedIndividual ,
+                                   dcat:Catalog ;
+                          dcat:dataset nabeelddoc:DatasetFotoVoorbeeld ;
+                          rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
+
+
+###  http://archief.overheid.nl/collectie/doc/PersoonsCollectie
+nacollectie:PersoonsCollectie rdf:type owl:NamedIndividual ,
+                                       dcat:Catalog ;
+                              dcat:dataset napersoondoc:DatasetAllePersonen ;
+                              rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
+
+
+###  http://archief.overheid.nl/persoon/doc/DatasetAllePersonen
+napersoondoc:DatasetAllePersonen rdf:type owl:NamedIndividual ,
+                                          dcat:Dataset ;
+                                 rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
+
+
+###  http://archief.overheid.nl/persoon/doc/DatasetFotografen
+napersoondoc:DatasetFotografen rdf:type owl:NamedIndividual ,
+                                        dcat:Dataset ;
+                               rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
+
+
+###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
+napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
+                                     nadef:PersoonEntiteit ;
+                            rdfs:member napersoondoc:DatasetAllePersonen ,
+                                        napersoondoc:DatasetFotografen .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
