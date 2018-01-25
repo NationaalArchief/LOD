@@ -1,4 +1,5 @@
 @prefix : <http://archief.overheid.nl/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -24,6 +25,14 @@ napersoonent: http://archief.overheid.nl/persoon/id/ +  {persoon-referentie}  (p
 napersoondoc: http://archief.overheid.nl/persoon/doc/ +  (datasets van personen)"""@nl .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.europeana.eu/schemas/edm/aggregatedCHO
+edm:aggregatedCHO rdf:type owl:AnnotationProperty .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -38,6 +47,10 @@ dcat:dataset rdf:type owl:ObjectProperty .
 #################################################################
 #    Classes
 #################################################################
+
+###  http://archief.overheid.nl/def/Foto
+nadef:Foto rdf:type owl:Class .
+
 
 ###  http://archief.overheid.nl/def/GrafischRecord
 nadef:GrafischRecord rdf:type owl:Class .
@@ -68,11 +81,13 @@ nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
 ###  http://archief.overheid.nl/beeld/doc/FotoRecord01
 nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
                                  nadef:GrafischRecord ;
-                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld .
+                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld ;
+                        edm:aggregatedCHO nabeeldent:Foto1 .
 
 
 ###  http://archief.overheid.nl/beeld/id/Foto1
-nabeeldent:Foto1 rdf:type owl:NamedIndividual , nadef:Foto .
+nabeeldent:Foto1 rdf:type owl:NamedIndividual ,
+                          nadef:Foto .
 
 
 ###  http://archief.overheid.nl/collectie/doc/FotoCollectie

@@ -65,6 +65,16 @@ ore:similarTo rdf:type owl:AnnotationProperty ;
 ###  http://purl.org/dc/terms/isPartOf
 dcterms:isPartOf rdf:type owl:ObjectProperty .
 
+###  http://www.europeana.eu/schemas/edm/aggregatedCHO
+edm:aggregatedCHO rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dc:subject ,
+                                     <http://www.cidoc-crm.org/cidoc-crm/P129_is_about> ,
+                                     ore:aggregates ;
+                  rdfs:domain ore:Aggregation ;
+                  rdfs:range edm:ProvidedCHO ;
+                  rdfs:label "Aggregated Cultural Heritage Object"@en ;
+                  skos:definition "This property associates an ORE aggregation with the cultural heritage object(s) (CHO for short) it is about."@en .
+
 
 ###  http://www.openarchives.org/ore/terms/aggregates
 ore:aggregates rdf:type owl:ObjectProperty ;
@@ -191,6 +201,13 @@ edm:NonInformationResource rdf:type owl:Class .
 
 ###  http://www.europeana.eu/schemas/edm/ProvidedCHO
 edm:ProvidedCHO rdf:type owl:Class .
+
+###  http://www.europeana.eu/schemas/edm/WebResource
+edm:WebResource rdf:type owl:Class ;
+                rdfs:subClassOf edm:InformationResource ;
+                rdfs:label "Web Resource"@en ;
+                skos:definition """Information Resources that have at least one Web Representation and at least
+a URI."""@en .
 
 
 ###  http://www.openarchives.org/ore/terms/AggregatedResource
