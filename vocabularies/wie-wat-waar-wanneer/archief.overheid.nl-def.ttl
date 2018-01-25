@@ -4,6 +4,8 @@
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -16,7 +18,7 @@
 @prefix nadef: <http://archief.overheid.nl/def/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix cidoc-crm: <http://www.cidoc-crm.org/rdfs/cidoc-crm#> .
+@prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @base <http://archief.overheid.nl/def/> .
 
 <http://archief.overheid.nl/def/> rdf:type owl:Ontology ;
@@ -44,12 +46,6 @@ dcterms:publisher rdf:type owl:AnnotationProperty .
 dcterms:title rdf:type owl:AnnotationProperty .
 
 
-###  http://www.openarchives.org/ore/terms/aggregates
-ore:aggregates rdf:type owl:AnnotationProperty ;
-               rdfs:subPropertyOf dcterms:hasPart ;
-               rdfs:range ore:AggregatedResource .
-
-
 ###  http://www.openarchives.org/ore/terms/similarTo
 ore:similarTo rdf:type owl:AnnotationProperty ;
               rdfs:comment "The subject of this relationship MUST be an Aggregation.  This Aggregation should be considered an expression within the ORE context of the object of the relationship, as it is broadly equivalent to the resource. For example, the Aggregation may consist of the resources which, together, make up a journal article which has a DOI assigned to it. The Aggregation is not the article to which the DOI was assigned, but is a representation of it in some manner." ;
@@ -58,17 +54,99 @@ ore:similarTo rdf:type owl:AnnotationProperty ;
               rdfs:domain ore:Aggregation .
 
 
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Object Properties
 #################################################################
 
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:ObjectProperty .
+
+
 ###  http://purl.org/dc/terms/isPartOf
 dcterms:isPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P129_is_about
+cidoc-crm:P129_is_about rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
+cidoc-crm:P12_occurred_in_the_presence_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at
+cidoc-crm:P12i_was_present_at rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P92_brought_into_existence
+cidoc-crm:P92_brought_into_existence rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf cidoc-crm:P12_occurred_in_the_presence_of ;
+                                     rdfs:domain cidoc-crm:E63_Beginning_of_Existence ;
+                                     rdfs:range cidoc-crm:E77_Persistent_Item ;
+                                     rdfs:comment """This property allows an E63 Beginning of Existence event to be linked to the E77 Persistent Item brought into existence by it.
+It allows a “start” to be attached to any Persistent Item being documented i.e. E70 Thing, E72 Legal Object, E39 Actor, E41 Appellation, E51 Contact Point and E55 Type"""@en ;
+                                     rdfs:label "a fait exister"@fr ,
+                                                "brachte in Existenz"@de ,
+                                                "brought into existence"@en ,
+                                                "trouxe à existência"@pt ,
+                                                "γέννησε"@el ,
+                                                "создал"@ru ,
+                                                "开始了"@zh .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P92i_was_brought_into_existence_by
+cidoc-crm:P92i_was_brought_into_existence_by rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf cidoc-crm:P12i_was_present_at ;
+                                             rdfs:domain cidoc-crm:E77_Persistent_Item ;
+                                             rdfs:range cidoc-crm:E63_Beginning_of_Existence ;
+                                             rdfs:label "a commencé à exister du fait de"@fr ,
+                                                        "passou a existir por"@pt ,
+                                                        "was brought into existence by"@en ,
+                                                        "wurde in Existenz gebracht durch"@de ,
+                                                        "γεννήθηκε από"@el ,
+                                                        "был создан посредством"@ru ,
+                                                        "被开始於"@zh .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P94_has_created
+cidoc-crm:P94_has_created rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf cidoc-crm:P92_brought_into_existence ;
+                          rdfs:domain cidoc-crm:E65_Creation ;
+                          rdfs:range cidoc-crm:E28_Conceptual_Object ;
+                          rdfs:comment """This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it. 
+It represents the act of conceiving the intellectual content of the E28 Conceptual Object. It does not represent the act of creating the first physical carrier of the E28 Conceptual Object. As an example, this is the composition of a poem, not its commitment to paper.
+"""@en ;
+                          rdfs:label "a créé"@fr ,
+                                     "criou"@pt ,
+                                     "has created"@en ,
+                                     "hat erschaffen"@de ,
+                                     "δημιούργησε"@el ,
+                                     "создал"@ru ,
+                                     "创造了"@zh .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P94i_was_created_by
+cidoc-crm:P94i_was_created_by rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf cidoc-crm:P92i_was_brought_into_existence_by ;
+                              rdfs:domain cidoc-crm:E28_Conceptual_Object ;
+                              rdfs:range cidoc-crm:E65_Creation ;
+                              rdfs:label "a été créé par"@fr ,
+                                         "foi criado por"@pt ,
+                                         "was created by"@en ,
+                                         "wurde erschaffen durch"@de ,
+                                         "δημιουργήθηκε από"@el ,
+                                         "был создан посредством"@ru ,
+                                         "被创造於"@zh .
+
 
 ###  http://www.europeana.eu/schemas/edm/aggregatedCHO
 edm:aggregatedCHO rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf dc:subject ,
-                                     <http://www.cidoc-crm.org/cidoc-crm/P129_is_about> ,
+                                     cidoc-crm:P129_is_about ,
                                      ore:aggregates ;
                   rdfs:domain ore:Aggregation ;
                   rdfs:range edm:ProvidedCHO ;
@@ -79,7 +157,10 @@ edm:aggregatedCHO rdf:type owl:ObjectProperty ;
 ###  http://www.openarchives.org/ore/terms/aggregates
 ore:aggregates rdf:type owl:ObjectProperty ;
                owl:inverseOf ore:isAggregatedBy ;
-               rdfs:domain ore:Aggregation .
+               rdfs:domain ore:Aggregation ;
+               rdfs:comment "Aggregations, by definition, aggregate resources. The ore:aggregates relationship expresses that the object resource is a member of the set of Aggregated Resources of the subject (the Aggregation). This relationship between the Aggregation and its Aggregated Resources is thus more specific than a simple part/whole relationship, as expressed by dcterms:hasPart for example." ;
+               rdfs:isDefinedBy ore: ;
+               rdfs:label "Aggregates" .
 
 
 ###  http://www.openarchives.org/ore/terms/describes
@@ -150,7 +231,8 @@ rdfs:member rdf:type owl:ObjectProperty .
 nadef:ArchiefEntiteit rdf:type owl:Class ;
                       owl:equivalentClass edm:NonInformationResource ;
                       rdfs:subClassOf edm:ProvidedCHO ;
-                      owl:disjointWith nadef:ArchiefHulpbron .
+                      owl:disjointWith nadef:ArchiefHulpbron ;
+                      rdfs:comment "Een archief entiteit staat voor entiteiten waar naar verwezen wordt in de verzamelingen  archief records."@nl .
 
 
 ###  http://archief.overheid.nl/def/ArchiefHulpbron
@@ -163,44 +245,176 @@ nadef:ArchiefHulpbron rdf:type owl:Class ;
 
 ###  http://archief.overheid.nl/def/GrafischRecord
 nadef:GrafischRecord rdf:type owl:Class ;
-                     rdfs:subClassOf nadef:ArchiefHulpbron ,
-                                     ore:Aggregation .
+rdfs:subClassOf nadef:ArchiefHulpbron , ore:Aggregation ;
+rdfs:comment "Een record van een grafisch object. Bevat beschrijving en de verwijzing naar het fysieke object en de eventuele zichtexemplaren."@nl ;
+rdfs:label "Grafisch record"@nl ;
+skos:prefLabel "Grafisch record"@nl .
 
 
 ###  http://archief.overheid.nl/def/PersoonEntiteit
 nadef:PersoonEntiteit rdf:type owl:Class ;
-                      owl:equivalentClass bgn:Person ,
-                                          foaf:Person ;
-                      rdfs:subClassOf nadef:ArchiefEntiteit ;
-                      rdfs:label "Fysiek persoon in het domein van archieven."@nl .
+owl:equivalentClass bgn:Person ,
+foaf:Person ;
+rdfs:subClassOf nadef:ArchiefEntiteit ;
+rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
+
+###  http://archief.overheid.nl/def/HistorischeNaam
+nadef:HistorischeNaam rdf:type owl:Class ;
+rdfs:comment "Een naam van een persoon uit de geschiedenis, niet de persoon zelf."@nl ;
+rdfs:label "Naam van een persoon uit de geschiedenis"@nl ;
+skos:prefLabel "Historische naam"@nl .
+
+###  http://archief.overheid.nl/def/PersoonsNaam
+nadef:PersoonsNaam rdf:type owl:Class ;
+rdfs:subClassOf nadef:HistorischeNaam ;
+rdfs:comment "Een naam van een persoon, niet de persoon zelf."@nl ;
+rdfs:label "Persoonsnaam"@nl ;
+skos:prefLabel "Persoonsnaam"@nl .
 
 
 ###  http://biographynet.nl/schema/Person
-bgn:Person rdf:type owl:Class .
-
+bgn:Person rdf:type owl:Class ;
+owl:equivalentClass nadef:PersoonEntiteit ,
+foaf:Person ;
+owl:disjointWith nadef:HistorischeNaam ,
+nadef:PersoonsNaam ;
+rdfs:comment "In all National Archives' Linked Data sets referring to Persons, nadef:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person"@en .
 
 ###  http://dbpedia.org/ontology/Reference
 dbo:Reference rdf:type owl:Class .
 
-
 ###  http://purl.org/dc/dcmitype/Collection
 <http://purl.org/dc/dcmitype/Collection> rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Agent
+dcterms:Agent rdf:type owl:Class ;
+              owl:equivalentClass foaf:Agent .
 
 
 ###  http://purl.org/dc/terms/BibliographicResource
 dcterms:BibliographicResource rdf:type owl:Class .
 
 
+###  http://schema.org/CreativeWork
+schema:CreativeWork rdf:type owl:Class ;
+                    owl:equivalentClass foaf:Document .
+
+
+###  http://schema.org/ImageObject
+schema:ImageObject rdf:type owl:Class ;
+                   owl:equivalentClass foaf:Image .
+
+
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class ;
+              owl:equivalentClass foaf:Person .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E28_Conceptual_Object
+cidoc-crm:E28_Conceptual_Object rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E4_Period
+cidoc-crm:E4_Period rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E5_Event
+cidoc-crm:E5_Event rdf:type owl:Class ;
+                   rdfs:subClassOf cidoc-crm:E4_Period ;
+                   rdfs:comment """This class comprises changes of states in cultural, social or physical systems, regardless of scale, brought about by a series or group of coherent physical, cultural, technological or legal phenomena. Such changes of state will affect instances of E77 Persistent Item or its subclasses.
+The distinction between an E5 Event and an E4 Period is partly a question of the scale of observation. Viewed at a coarse level of detail, an E5 Event is an ‘instantaneous’ change of state. At a fine level, the E5 Event can be analysed into its component phenomena within a space and time frame, and as such can be seen as an E4 Period. The reverse is not necessarily the case: not all instances of E4 Period give rise to a noteworthy change of state.
+"""@en ;
+                   rdfs:label "Ereignis"@de ,
+                              "Event"@en ,
+                              "Evento"@pt ,
+                              "Événement"@fr ,
+                              "Συμβάν"@el ,
+                              "Событие"@ru ,
+                              "事件"@zh .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E63_Beginning_of_Existence
+cidoc-crm:E63_Beginning_of_Existence rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E65_Creation
+cidoc-crm:E65_Creation rdf:type owl:Class ;
+                       rdfs:subClassOf cidoc-crm:E63_Beginning_of_Existence ,
+                                       cidoc-crm:E7_Activity ;
+                       rdfs:comment """This class comprises events that result in the creation of conceptual items or immaterial products, such as legends, poems, texts, music, images, movies, laws, types etc.
+"""@en ;
+                       rdfs:label "Begriffliche Schöpfung"@de ,
+                                  "Creation"@en ,
+                                  "Criação"@pt ,
+                                  "Création"@fr ,
+                                  "Δημιουργία"@el ,
+                                  "Событие Творения"@ru ,
+                                  "创造"@zh .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E77_Persistent_Item
+cidoc-crm:E77_Persistent_Item rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E7_Activity
+cidoc-crm:E7_Activity rdf:type owl:Class ;
+                      rdfs:subClassOf cidoc-crm:E5_Event ;
+                      rdfs:comment """This class comprises actions intentionally carried out by instances of E39 Actor that result in changes of state in the cultural, social, or physical systems documented. 
+This notion includes complex, composite and long-lasting actions such as the building of a settlement or a war, as well as simple, short-lived actions such as the opening of a door.
+"""@en ;
+                      rdfs:label "Activity"@en ,
+                                 "Activité"@fr ,
+                                 "Atividade"@pt ,
+                                 "Handlung"@de ,
+                                 "Δράση"@el ,
+                                 "Деятельность"@ru ,
+                                 "活动"@zh .
+
+
 ###  http://www.europeana.eu/schemas/edm/InformationResource
-edm:InformationResource rdf:type owl:Class .
+edm:InformationResource rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Class ;
+                                              owl:unionOf ( frbroo:F1_Work
+                                                            frbroo:F2_Expression
+                                                            frbroo:F3_Manifestation_Product_Type
+                                                            frbroo:F4_Manifestation_Singleton
+                                                          )
+                                            ] ,
+                                            [ rdf:type owl:Class ;
+                                              owl:unionOf ( frbr_core:Expression
+                                                            frbr_core:Manifestation
+                                                            frbr_core:Work
+                                                          )
+                                            ] ;
+                        rdfs:label "Information Resource"@en ;
+                        skos:definition "An information resource is a resource whose essential characteristics can be conveyed in a single message. It can be associated with a URI, it can have a representation, for example: a text is an InformationResource."@en .
+
 
 
 ###  http://www.europeana.eu/schemas/edm/NonInformationResource
-edm:NonInformationResource rdf:type owl:Class .
+edm:NonInformationResource rdf:type owl:Class ;
+                           owl:equivalentClass [ rdf:type owl:Class ;
+                                                 owl:complementOf edm:InformationResource
+                                               ] ;
+                           rdfs:label "Non-Information Resource"@en ;
+                           skos:definition "All resources that are not information resources."@en .
 
 
 ###  http://www.europeana.eu/schemas/edm/ProvidedCHO
-edm:ProvidedCHO rdf:type owl:Class .
+edm:ProvidedCHO rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf edm:aggregatedCHO
+                                                 ] ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ;
+                rdfs:label "Provided CHO"@en ;
+                skos:definition "This class comprises the Cultural Heritage objects that Europeana collects descriptions about."@en ;
+                skos:example "Mona Lisa, Winged Victory of Samothrace"@en ;
+                skos:note "This class has been mostly motivated by the need to assign a type to the “central node” in the EDM pattern, during the ingestion process, related to the XML expression of EDM at that stage. It was especially intended to fit the cases where edm:PhysicalThing  cannot be used as the type of the resource standing for the real-world object (independently of any specific data contributor perspective)."@en ;
+                skos:scopeNote "Rationale: This class is the range of edm:aggregatedCHO. A resource of type ProvidedCHO can be the subject of statements using edm:isRelatedTo or any more specific property."@en .
+
+
 
 ###  http://www.europeana.eu/schemas/edm/WebResource
 edm:WebResource rdf:type owl:Class ;
@@ -244,25 +458,52 @@ ore:ResourceMap rdf:type owl:Class ;
 <http://www.w3.org/2004/03/trix/rdfg-1/Graph> rdf:type owl:Class .
 
 
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+           rdfs:label "Agent" .
+
+
+###  http://xmlns.com/foaf/0.1/Document
+foaf:Document rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Image
+foaf:Image rdf:type owl:Class .
+
+
 ###  http://xmlns.com/foaf/0.1/Person
-foaf:Person rdf:type owl:Class .
+foaf:Person rdf:type owl:Class ;
+            rdfs:subClassOf foaf:Agent ;
+            owl:disjointWith foaf:Project ;
+            rdfs:comment "A person." ;
+            rdfs:isDefinedBy foaf: ;
+            rdfs:label "Person" .
+
+
+###  http://xmlns.com/foaf/0.1/Project
+foaf:Project rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.overheid.nl/def/FotoCreatie
+nadef:FotoCreatie rdf:type owl:NamedIndividual ,
+                           cidoc-crm:E65_Creation .
 
 
 #################################################################
 #    Annotations
 #################################################################
 
-ore:aggregates rdfs:label "Aggregates" ;
-               rdfs:isDefinedBy ore: ;
-               rdfs:comment "Aggregations, by definition, aggregate resources. The ore:aggregates relationship expresses that the object resource is a member of the set of Aggregated Resources of the subject (the Aggregation). This relationship between the Aggregation and its Aggregated Resources is thus more specific than a simple part/whole relationship, as expressed by dcterms:hasPart for example." .
-
-
 ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
+        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
         dcterms:title "The OAI ORE terms vocabulary" ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
-        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 

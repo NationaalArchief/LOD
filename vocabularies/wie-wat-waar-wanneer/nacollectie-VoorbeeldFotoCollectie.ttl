@@ -1,4 +1,5 @@
 @prefix : <http://archief.overheid.nl/> .
+@prefix ao: <http://archief.overheid.nl/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -15,26 +16,23 @@
 @base <http://archief.overheid.nl/> .
 
 <http://archief.overheid.nl/> rdf:type owl:Ontology ;
-                               owl:imports :def ;
-                               rdfs:comment "Dit is een voorbeeld Foto collectie inclusief dcat:Dataset, een aantal Fotorecords en personen (fotografen)."@nl ,
-                                            """nadef: http://archief.overheid.nl/def/ (termen van het NA)
+                               owl:imports ao:def ;
+                               rdfs:comment """ao:http://archief.overheid.nl/ (de collectie items van het Rijksarchief)
+nadef: http://archief.overheid.nl/def/ (termen van het NA)
 nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
 nabeelddoc: http://archief.overheid.nl/beeld/doc/  +  {fotorecord-referentie} (alle informatie objecten, ook datasets)
 nabeeldent: http://archief.overheid.nl/beeld/id/  +  {entiteit-referentie} (entiteiten, \"fysieke\" objecten, niet informatie objecten)
 napersoonent: http://archief.overheid.nl/persoon/id/ +  {persoon-referentie}  (personen die voorkomen in de archieven, dus ook fotografen)
-napersoondoc: http://archief.overheid.nl/persoon/doc/ +  (datasets van personen)"""@nl .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://www.europeana.eu/schemas/edm/aggregatedCHO
-edm:aggregatedCHO rdf:type owl:AnnotationProperty .
-
+napersoondoc: http://archief.overheid.nl/persoon/doc/ +  (datasets van personen)"""@nl ,
+                                            "Dit is een voorbeeld Foto collectie inclusief dcat:Dataset, een aantal Fotorecords en personen (fotografen)."@nl .
 
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.europeana.eu/schemas/edm/aggregatedCHO
+edm:aggregatedCHO rdf:type owl:ObjectProperty .
+
 
 ###  http://www.w3.org/2000/01/rdf-schema#member
 rdfs:member rdf:type owl:ObjectProperty .
@@ -81,8 +79,8 @@ nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
 ###  http://archief.overheid.nl/beeld/doc/FotoRecord01
 nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
                                  nadef:GrafischRecord ;
-                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld ;
-                        edm:aggregatedCHO nabeeldent:Foto1 .
+                        edm:aggregatedCHO nabeeldent:Foto1 ;
+                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld .
 
 
 ###  http://archief.overheid.nl/beeld/id/Foto1
