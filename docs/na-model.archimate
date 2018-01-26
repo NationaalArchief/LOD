@@ -1125,12 +1125,13 @@ dctype: &quot;zwartwit&quot;
 dct:creator napersoonent:Willem_vd_Poll .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nabeelddoc:FotoRecord01" id="113f77d1-583d-43c2-bc0a-ae7587f4f3fe">
-            <documentation>nabeelddoc:GrafischRecord a nadef:GrafischRecord;
-edm:aggregatedCHO  nabeeldent:Foto1;
-dct:creator [a def:PersoonsBeschrijving ;
-		def:fullNameDesignation &quot;Willem vd Poll&quot;^^xsd:string
-] ;
- dct:creator &quot;Willem vd Poll&quot;^^xsd:string .</documentation>
+            <documentation>###  http://archief.overheid.nl/beeld/doc/FotoRecord01
+nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
+      nadef:GrafischRecord ;
+  edm:aggregatedCHO nabeeldent:Foto1 ;
+  dcterms:creator [ a nadef:PersoonsBeschrijving ;
+  nadef:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;
+  rdfs:member nabeelddoc:DatasetFotoVoorbeeld .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="&lt;beeldbank.nationaalarchief.nl/UUID_ABC.jpg>" id="b7d83d4e-b97d-4529-be74-91d1b52046f0">
             <documentation>&lt;beeldbank.nationaalarchief.nl/UUID_ABC.jpg> a edm:WebResource;
@@ -1189,6 +1190,14 @@ rdfs:comment &quot;Fysiek persoon in het domein van archieven.&quot;@nl .</docum
             <documentation>###  http://archief.overheid.nl/def/FotoCreatie
 nadef:FotoCreatie rdf:type owl:NamedIndividual ,
                            cidoc-crm:E65_Creation .</documentation>
+          </element>
+          <element xsi:type="archimate:DataObject" name="nadef:PersoonsBeschrijving" id="bf19e9bf-3501-4211-86b4-6afda06de363">
+            <documentation>###  http://archief.overheid.nl/def/PersoonsBeschrijving
+nadef:PersoonsBeschrijving rdf:type owl:Class ;
+rdfs:subClassOf nadef:ArchiefHulpbron ,
+ nadef:PersoonsNaam ;
+rdfs:comment &quot;Beschrijving van een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven.&quot;@nl ;
+rdfs:label &quot;Persoonsbeschrijving&quot;@nl .</documentation>
           </element>
         </folder>
         <folder name="ore" id="9631fd12-438f-4d3d-a9cd-721263b0a3d7">
@@ -1690,6 +1699,10 @@ If you would like an overlay to point to a specific point in the image, you can 
     <element xsi:type="archimate:Grouping" name="Blanknode: fotocreatie van Willem_vd_Poll" id="289c3d97-e906-4913-8ed9-1130c3918a46">
       <documentation> nadef:heeftUitgevoerd [ a nadef:FotoCreatie ;
     nadef:heeftGeproduceerd nabeeldent:Foto1 ];</documentation>
+    </element>
+    <element xsi:type="archimate:Grouping" name="Blanknode: persoonsbeschrijving van Willem" id="e351a86d-3ab8-4fda-b5c1-4b71d5576b90">
+      <documentation>[ a nadef:PersoonsBeschrijving ;
+  nadef:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
     </element>
   </folder>
   <folder name="Relations" id="0080213c-2d96-4ef8-8a8a-d24707e33193" type="relations">
@@ -2313,6 +2326,8 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" name="nadef:heeftUitgevoerd" id="4a9a2898-d8c8-41d9-8711-e5636a8aa7e7" source="39efc361-5543-4397-b776-22885f7574a4" target="289c3d97-e906-4913-8ed9-1130c3918a46"/>
     <element xsi:type="archimate:AggregationRelationship" name="nadef:heeftGeproduceerd" id="77004b3b-179b-45ae-a963-bed898e66b41" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="32c7fce5-baf9-4a7a-b17f-0261b2ef573e"/>
     <element xsi:type="archimate:AggregationRelationship" name="dct:creator" id="570dc379-7500-4356-97da-bd9de6f8dace" source="32c7fce5-baf9-4a7a-b17f-0261b2ef573e" target="39efc361-5543-4397-b776-22885f7574a4"/>
+    <element xsi:type="archimate:AggregationRelationship" id="764d519e-c596-4e99-9d55-47571ea4eada" source="e351a86d-3ab8-4fda-b5c1-4b71d5576b90" target="bf19e9bf-3501-4211-86b4-6afda06de363"/>
+    <element xsi:type="archimate:AggregationRelationship" name="dcterms:creator" id="07e55e77-e059-43c7-9687-143674887ca4" source="113f77d1-583d-43c2-bc0a-ae7587f4f3fe" target="e351a86d-3ab8-4fda-b5c1-4b71d5576b90"/>
   </folder>
   <folder name="Views" id="1106c770-e13e-4b3d-b75c-8d72c67d5ead" type="diagrams">
     <folder name="Linked Data" id="9b434202-298c-47cc-a78d-ba4cc18702aa">
@@ -2651,6 +2666,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
             <bendpoint startX="288" startY="9" endY="69"/>
           </sourceConnection>
           <sourceConnection xsi:type="archimate:Connection" id="ad06fea4-af94-4d85-b471-de30e3b81e61" lineColor="#000000" source="8dcf4ae1-d7c9-4b47-bb07-8f05396773cc" target="3a8ce2dc-9751-4571-ac80-01a527062ce4" archimateRelationship="1932d112-dc0a-4722-a12e-d43a2fe0cf0a"/>
+          <sourceConnection xsi:type="archimate:Connection" id="f9edf3fb-b525-477e-8b47-02dca03e99b0" lineColor="#000000" source="8dcf4ae1-d7c9-4b47-bb07-8f05396773cc" target="82bc1000-5d13-49a9-a2c6-27930a9de43d" archimateRelationship="07e55e77-e059-43c7-9687-143674887ca4"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="610444a3-5cce-4f1e-84a0-ea04e4e50359" targetConnections="9c3771bd-900c-4da9-8f82-0769f5b69bd7" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="b7d83d4e-b97d-4529-be74-91d1b52046f0">
           <bounds x="120" y="585" width="120" height="67"/>
@@ -2672,6 +2688,18 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         </child>
         <child xsi:type="archimate:DiagramObject" id="35251d6c-33ab-45be-b02f-f93b7b6eda41" targetConnections="d56af93a-f892-4fdd-bb8a-60d5f5362765 55148639-3336-457b-8a69-acec4e70fbab" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="789686bc-2f94-4cc4-b2a2-dac95986bf37">
           <bounds x="780" y="240" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="82bc1000-5d13-49a9-a2c6-27930a9de43d" targetConnections="f9edf3fb-b525-477e-8b47-02dca03e99b0 014f3ffb-295e-47a4-bec7-4b20506fcd20" lineColor="#5c5c5c" fillColor="#ffffff" archimateElement="e351a86d-3ab8-4fda-b5c1-4b71d5576b90">
+          <bounds x="101" y="120" width="157" height="109"/>
+          <sourceConnection xsi:type="archimate:Connection" id="99280403-e32c-485f-8f47-e8f6c7b09738" source="82bc1000-5d13-49a9-a2c6-27930a9de43d" target="ea7a586d-6629-42bc-af12-00dca67365e2" archimateRelationship="764d519e-c596-4e99-9d55-47571ea4eada"/>
+          <child xsi:type="archimate:DiagramObject" id="ea7a586d-6629-42bc-af12-00dca67365e2" targetConnections="99280403-e32c-485f-8f47-e8f6c7b09738" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="bf19e9bf-3501-4211-86b4-6afda06de363">
+            <bounds x="12" y="36" width="120" height="55"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Note" id="ef51348f-2de6-4312-a5dc-c75c3bb357f2" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
+          <bounds x="119" y="12" width="121" height="49"/>
+          <sourceConnection id="014f3ffb-295e-47a4-bec7-4b20506fcd20" name="nadef:volledige_naam" lineColor="#000000" source="ef51348f-2de6-4312-a5dc-c75c3bb357f2" target="82bc1000-5d13-49a9-a2c6-27930a9de43d"/>
+          <content>&quot;Willem van der Poll&quot;^^xsd:string </content>
         </child>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" name="NT00194: RDF NT CommissieBoeken" id="c0b82c04-81e5-4dcc-88b2-c7542127855c">
