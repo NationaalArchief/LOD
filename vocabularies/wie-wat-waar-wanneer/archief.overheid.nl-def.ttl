@@ -277,6 +277,114 @@ rdfs:member rdf:type owl:ObjectProperty .
 
 
 #################################################################
+#    Data properties
+#################################################################
+
+###  http://archief.overheid.nl/def/achternaam
+nadef:achternaam rdf:type owl:DatatypeProperty ;
+rdfs:range xsd:string ;
+rdfs:domain nadef:HistorischeNaam ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+  rdfs:label "last name"@en ;
+  rdfs:label "achternaam"@nl ;
+  skos:altLabel "geslachtsnaam"@nl ;
+  skos:prefLabel "achternaam"@nl .
+
+
+###  http://archief.overheid.nl/def/achtervoegsel
+nadef:achtervoegsel rdf:type owl:DatatypeProperty ;
+                    rdfs:domain nadef:HistorischeNaam ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "achtervoegsel"@nl;
+                    rdfs:label "postposition"@en .
+
+###  http://archief.overheid.nl/def/naamstoevoeging
+nadef:naamstoevoeging rdf:type owl:DatatypeProperty ;
+                    rdfs:domain nadef:HistorischeNaam ;
+rdfs:comment "distinctive addition to last name"@en ;
+rdfs:comment "onderscheidende toevoeging aan de achternaam"@nl ;
+rdfs:label "naamstoevoeging"@nl ;
+rdfs:label "postpositionAddition"@en;
+skos:prefLabel "naamstoevoeging"@nl .
+
+###  http://archief.overheid.nl/def/achternaam_van_meisjesnaam
+nadef:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
+rdfs:subPropertyOf nadef:achtervoegsel ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:label "achternaam van meisjesnaam"@nl ;
+skos:prefLabel "achternaam van meisjesnaam"@nl ;
+rdfs:comment "maiden name as the last part of a person's name"@en ;
+rdfs:range xsd:string .
+
+###  http://archief.overheid.nl/def/patroniem_na_achternaam
+nadef:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
+rdfs:subPropertyOf nadef:achtervoegsel ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:range xsd:string ;
+skos:label "patroniem na achternaam"@nl ;
+rdfs:label "patronym after last name"@en ;
+skos:prefLabel "patroniem na achternaam"@nl .
+
+###http://archief.overheid.nl/def/titel_na_naam
+nadef:titel_na_naam rdf:type owl:DatatypeProperty ;
+rdfs:subPropertyOf nadef:achtervoegsel ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:range xsd:string ;
+rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@nl ;
+rdfs:label "title after name"@en ;
+rdfs:label "titel na naam"@nl ;
+skos:prefLabel "titel na naam"@nl .
+
+###http://archief.overheid.nl/def/voorvoegsel
+nadef:voorvoegsel rdf:type owl:DatatypeProperty ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:range xsd:string ;
+rdfs:label "preposition"@en ;
+rdfs:label "voorvoegsel"@nl ;
+skos:prefLabel "voorvoegsel"@nl .
+
+
+###http://archief.overheid.nl/def/initialen
+nadef:initialen rdf:type owl:DatatypeProperty ;
+rdfs:subPropertyOf nadef:voorvoegsel ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:range xsd:string ;
+rdfs:comment "initials as part of the first name"@en ;
+rdfs:label "initials"@en ;
+rdfs:label "initialen"@nl .
+
+###http://archief.overheid.nl/def/voornaam
+nadef:voornaam rdf:type owl:DatatypeProperty ;
+rdfs:subPropertyOf nadef:voorvoegsel ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:range xsd:string ;
+rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+rdfs:label "first name"@en ;
+rdfs:label "voornaam"@nl ;
+skos:prefLabel "voornaam"@nl .
+
+
+###http://archief.overheid.nl/def/patroniem_voor_naam
+nadef:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
+rdfs:subPropertyOf nadef:voorvoegsel ;
+rdfs:domain nadef:HistorischeNaam ;
+rdfs:range xsd:string ;
+rdfs:label "patronym in first name"@en ;
+rdfs:label "patroniem vóór naam"@en ;
+skos:prefLabel "patroniem vóór naam"@nl .
+
+
+###http://archief.overheid.nl/def/titel
+nadef:titel rdf:type owl:DatatypeProperty ;
+ rdfs:subPropertyOf nadef:voorvoegsel ;
+ rdfs:domain nadef:HistorischeNaam ;
+ rdfs:range xsd:string ;
+ rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en;
+ rdfs:label "title"@en ;
+ rdfs:label "titel"@nl ;
+ skos:prefLabel "titel"@nl .
+
+#################################################################
 #    Classes
 #################################################################
 

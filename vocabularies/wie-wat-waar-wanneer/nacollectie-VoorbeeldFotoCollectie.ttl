@@ -13,10 +13,12 @@
 @prefix nacollectie: <http://archief.overheid.nl/collectie/doc/> .
 @prefix napersoondoc: <http://archief.overheid.nl/persoon/doc/> .
 @prefix napersoonent: <http://archief.overheid.nl/persoon/id/> .
+@prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix bgn: <http://biographynet.nl/schema/> .
 @base <http://archief.overheid.nl/> .
 
 <http://archief.overheid.nl/> rdf:type owl:Ontology ;
-                               owl:imports ao:def ;
+                               owl:imports <http://archief.overheid.nl/def/> ;
                                rdfs:comment """ao:http://archief.overheid.nl/ (de collectie items van het Rijksarchief)
 nadef: http://archief.overheid.nl/def/ (termen van het NA)
 nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
@@ -30,8 +32,19 @@ napersoondoc: http://archief.overheid.nl/persoon/doc/ +  (datasets van personen)
 #    Object Properties
 #################################################################
 
+###  http://archief.overheid.nl/def/heeftGeproduceerd
+nadef:heeftGeproduceerd rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf cidoc-crm:P94_has_created ;
+                        rdfs:range nadef:ArchiefEntiteit ;
+                        rdfs:comment "Het resultaat van een actie, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn."@nl ;
+                        rdfs:label "heeft geproduceerd" .
+
+
 ###  http://archief.overheid.nl/def/heeftUitgevoerd
-nadef:heeftUitgevoerd rdf:type owl:ObjectProperty .
+nadef:heeftUitgevoerd rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
+                      rdfs:domain bgn:Person ;
+                      rdfs:range cidoc-crm:E65_Creation .
 
 
 ###  http://www.europeana.eu/schemas/edm/aggregatedCHO
@@ -45,6 +58,26 @@ rdfs:member rdf:type owl:ObjectProperty .
 ###  http://www.w3.org/ns/dcat#dataset
 dcat:dataset rdf:type owl:ObjectProperty .
 
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://archief.overheid.nl/def/achternaam
+nadef:achternaam rdf:type owl:DatatypeProperty ;
+rdfs:range xsd:string ;
+rdfs:domain nadef:HistorischeNaam ;
+  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+  rdfs:label "last name"@en ;
+  rdfs:label "achternaam"@nl ;
+  skos:altLabel "geslachtsnaam"@nl ;
+  skos:prefLabel "achternaam"@nl .
+
+
+###  http://archief.overheid.nl/def/achtervoegsel
+nadef:achtervoegsel rdf:type owl:DatatypeProperty ;
+                    rdfs:domain nadef:HistorischeNaam ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "postposition"@en .
 
 #################################################################
 #    Classes
@@ -52,6 +85,10 @@ dcat:dataset rdf:type owl:ObjectProperty .
 
 ###  http://archief.overheid.nl/def/Foto
 nadef:Foto rdf:type owl:Class .
+
+
+###  http://archief.overheid.nl/def/FotoCreatie
+nadef:FotoCreatie rdf:type owl:Class .
 
 
 ###  http://archief.overheid.nl/def/GrafischRecord
@@ -70,9 +107,16 @@ dcat:Catalog rdf:type owl:Class .
 dcat:Dataset rdf:type owl:Class .
 
 
+
+
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://archief.overheid.nl/willem_vd_poll_naam
+ao:willem_vd_poll_naam rdf:type owl:NamedIndividual, nadef:HistorischeNaam ;
+nadef:achternaam "Willem van der Poll"^^xsd:string .
+
 
 ###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
 nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
@@ -124,11 +168,14 @@ napersoondoc:DatasetFotografen rdf:type owl:NamedIndividual ,
 
 ###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
 napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
-    nadef:PersoonEntiteit ; 
-    nadef:heeftUitgevoerd [ a nadef:FotoCreatie ;
-    nadef:heeftGeproduceerd nabeeldent:Foto1 ];
-    rdfs:member napersoondoc:DatasetAllePersonen ,
-    napersoondoc:DatasetFotografen .
+                                     nadef:PersoonEntiteit ;
+                            nadef:heeftUitgevoerd _:genid1 ;
+                            rdfs:member napersoondoc:DatasetAllePersonen ,
+                                        napersoondoc:DatasetFotografen ;
+                            rdfs:comment "Het is nu mogelijk om een actor te verbinden met een “productie” zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dct:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsBeschrijving voor."@nl .
+
+_:genid1 rdf:type nadef:FotoCreatie ;
+          nadef:heeftGeproduceerd nabeeldent:Foto1 .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
