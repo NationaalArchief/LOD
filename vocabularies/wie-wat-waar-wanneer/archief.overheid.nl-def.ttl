@@ -1,4 +1,5 @@
 @prefix : <http://archief.overheid.nl/def/> .
+@prefix ao: <http://archief.overheid.nl/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix bgn: <http://biographynet.nl/schema/> .
@@ -14,6 +15,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix nadef: <http://archief.overheid.nl/def/> .
+@prefix nabeelddoc: <http://archief.overheid.nl/beeld/doc/> .
+@prefix nabeeldent: <http://archief.overheid.nl/beeld/id/> .
+@prefix nacollectie: <http://archief.overheid.nl/collectie/doc/> .
+@prefix napersoondoc: <http://archief.overheid.nl/persoon/doc/> .
+@prefix napersoonent: <http://archief.overheid.nl/persoon/id/> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -734,6 +740,71 @@ foaf:Project rdf:type owl:Class .
 ###  http://archief.overheid.nl/def/FotoCreatie
 nadef:FotoCreatie rdf:type owl:NamedIndividual ,
                            cidoc-crm:E65_Creation .
+
+#################################################################
+#    Individuals for testing data output
+#################################################################
+
+###  http://archief.overheid.nl/willem_vd_poll_naam
+ao:willem_vd_poll_naam rdf:type owl:NamedIndividual, nadef:HistorischeNaam ;
+nadef:achternaam "Willem van der Poll"^^xsd:string .
+
+
+###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
+nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
+                                         dcat:Dataset ;
+                                rdfs:comment "Een set foto's als voorbeeld. Deze set is inderdeel van de Fotocollectie."@nl .
+
+
+###  http://archief.overheid.nl/beeld/doc/FotoRecord01
+nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
+                                 nadef:GrafischRecord ;
+                        edm:aggregatedCHO nabeeldent:Foto1 ;
+                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld .
+
+
+###  http://archief.overheid.nl/beeld/id/Foto1
+nabeeldent:Foto1 rdf:type owl:NamedIndividual ,
+                          nadef:Foto .
+
+
+###  http://archief.overheid.nl/collectie/doc/FotoCollectie
+nacollectie:FotoCollectie rdf:type owl:NamedIndividual ,
+                                   dcat:Catalog ;
+                          dcat:dataset nabeelddoc:DatasetFotoVoorbeeld ;
+                          rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
+
+
+###  http://archief.overheid.nl/collectie/doc/PersoonsCollectie
+nacollectie:PersoonsCollectie rdf:type owl:NamedIndividual ,
+                                       dcat:Catalog ;
+                              dcat:dataset napersoondoc:DatasetAllePersonen ;
+                              rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
+
+
+###  http://archief.overheid.nl/persoon/doc/DatasetAllePersonen
+napersoondoc:DatasetAllePersonen rdf:type owl:NamedIndividual ,
+                                          dcat:Dataset ;
+                                 rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
+
+
+###  http://archief.overheid.nl/persoon/doc/DatasetFotografen
+napersoondoc:DatasetFotografen rdf:type owl:NamedIndividual ,
+                                        dcat:Dataset ;
+                               rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
+
+
+###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
+napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
+                                     nadef:PersoonEntiteit ;
+                            nadef:heeftUitgevoerd _:genid1 ;
+                            rdfs:member napersoondoc:DatasetAllePersonen ,
+                                        napersoondoc:DatasetFotografen ;
+                            rdfs:comment "Het is nu mogelijk om een actor te verbinden met een “productie” zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dct:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsBeschrijving voor."@nl .
+
+_:genid1 rdf:type nadef:FotoCreatie ;
+          nadef:heeftGeproduceerd nabeeldent:Foto1 .
+
 
 
 #################################################################
