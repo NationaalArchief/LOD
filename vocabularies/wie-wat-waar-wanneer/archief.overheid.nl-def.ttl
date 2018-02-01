@@ -30,7 +30,7 @@
 <http://archief.overheid.nl/def/> rdf:type owl:Ontology ;
                                    rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
-Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de typeaanduiding “def”."""@nl .
+Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de typeaanduiding 'def'."""@nl .
 
 #################################################################
 #    Annotation properties
@@ -100,19 +100,19 @@ dcat:dataset rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://archief.overheid.nl/def/heeftGeproduceerd
-nadef:heeftGeproduceerd rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf cidoc-crm:P94_has_created ;
-                        rdfs:range nadef:ArchiefEntiteit ;
-                        rdfs:comment "Het resultaat van een actie, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn."@nl ;
-                        rdfs:label "heeft geproduceerd" .
-
-
 ###  http://archief.overheid.nl/def/heeftUitgevoerd
 nadef:heeftUitgevoerd rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
                       rdfs:domain bgn:Person ;
                       rdfs:range cidoc-crm:E65_Creation .
+
+
+###  http://archief.overheid.nl/def/resultaatVanActiviteit
+nadef:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf cidoc-crm:P94_has_created ;
+                             rdfs:range nadef:ArchiefEntiteit ;
+                             rdfs:comment "Het resultaat van een activiteit, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn."@nl ;
+                             rdfs:label "resultaat van activiteit" .
 
 
 ###  http://purl.org/dc/elements/1.1/subject
@@ -426,7 +426,8 @@ nadef:voorvoegsel rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/ArchiefEntiteit
 nadef:ArchiefEntiteit rdf:type owl:Class ;
-                      owl:equivalentClass edm:NonInformationResource ;
+                      owl:equivalentClass cidoc-crm:E1_CRM_Entity ,
+                                          edm:NonInformationResource ;
                       rdfs:subClassOf edm:ProvidedCHO ;
                       owl:disjointWith nadef:ArchiefHulpbron ;
                       rdfs:comment "Een archief entiteit staat voor entiteiten waar naar verwezen wordt in de verzamelingen  archief records."@nl .
@@ -567,6 +568,25 @@ schema:Person rdf:type owl:Class ;
               owl:equivalentClass foaf:Person .
 
 
+###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
+cidoc-crm:E1_CRM_Entity rdf:type owl:Class ;
+                        owl:equivalentClass edm:NonInformationResource ;
+                        rdfs:comment """This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model. 
+It is an abstract concept providing for three general properties:
+1.	Identification by name or appellation, and in particular by a preferred identifier
+2.	Classification by type, allowing further refinement of the specific subclass an instance belongs to 
+3.	Attachment of free text for the expression of anything not captured by formal properties
+With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity. 
+"""@en ;
+                        rdfs:label "CRM Entity"@en ,
+                                   "CRM Entität"@de ,
+                                   "CRM Сущность"@ru ,
+                                   "CRM实体"@zh ,
+                                   "Entidade CRM"@pt ,
+                                   "Entité CRM"@fr ,
+                                   "Οντότητα CIDOC CRM"@el .
+
+
 ###  http://www.cidoc-crm.org/cidoc-crm/E28_Conceptual_Object
 cidoc-crm:E28_Conceptual_Object rdf:type owl:Class .
 
@@ -642,7 +662,19 @@ Instances of E73 Information Object of a linguistic nature should be declared as
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/E77_Persistent_Item
-cidoc-crm:E77_Persistent_Item rdf:type owl:Class .
+cidoc-crm:E77_Persistent_Item rdf:type owl:Class ;
+                              rdfs:subClassOf cidoc-crm:E1_CRM_Entity ;
+                              rdfs:comment """This class comprises items that have a persistent identity, sometimes known as “endurants” in philosophy. 
+They can be repeatedly recognized within the duration of their existence by identity criteria rather than by continuity or observation. Persistent Items can be either physical entities, such as people, animals or things, or conceptual entities such as ideas, concepts, products of the imagination or common names.
+The criteria that determine the identity of an item are often difficult to establish -; the decision depends largely on the judgement of the observer. For example, a building is regarded as no longer existing if it is dismantled and the materials reused in a different configuration. On the other hand, human beings go through radical and profound changes during their life-span, affecting both material composition and form, yet preserve their identity by other criteria. Similarly, inanimate objects may be subject to exchange of parts and matter. The class E77 Persistent Item does not take any position about the nature of the applicable identity criteria and if actual knowledge about identity of an instance of this class exists. There may be cases, where the identity of an E77 Persistent Item is not decidable by a certain state of knowledge.
+The main classes of objects that fall outside the scope the E77 Persistent Item class are temporal objects such as periods, events and acts, and descriptive properties. """@en ;
+                              rdfs:label "Entidade Persistente"@pt ,
+                                         "Entité persistante"@fr ,
+                                         "Persistent Item"@en ,
+                                         "Seiendes"@de ,
+                                         "Ον"@el ,
+                                         "Постоянная Сущность"@ru ,
+                                         "持续性项目"@zh .
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/E7_Activity
@@ -800,7 +832,7 @@ ao:willem_vd_poll_naam rdf:type owl:NamedIndividual ,
 ###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
 nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
                                          dcat:Dataset ;
-                                rdfs:comment "Een set foto's als voorbeeld. Deze set is inderdeel van de Fotocollectie."@nl .
+                                rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
 
 
 ###  http://archief.overheid.nl/beeld/doc/FotoRecord01
@@ -856,10 +888,10 @@ napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
                             nadef:heeftUitgevoerd _:genid14 ;
                             rdfs:member napersoondoc:DatasetAllePersonen ,
                                         napersoondoc:DatasetFotografen ;
-                            rdfs:comment "Het is nu mogelijk om een actor te verbinden met een “productie” zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsBeschrijving voor."@nl .
+                            rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsBeschrijving voor."@nl .
 
 _:genid14 rdf:type nadef:FotoCreatie ;
-           nadef:heeftGeproduceerd nabeeldent:Foto1 .
+           nadef:resultaatVanActiviteit nabeeldent:Foto1 .
 
 
 #################################################################
@@ -867,11 +899,11 @@ _:genid14 rdf:type nadef:FotoCreatie ;
 #################################################################
 
 ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
-        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
         dcterms:title "The OAI ORE terms vocabulary" ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
+        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 
