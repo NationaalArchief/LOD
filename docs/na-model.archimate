@@ -259,10 +259,11 @@ rdfs:subClassOf def:ArchivalEntity;</documentation>
           <element xsi:type="archimate:DataObject" name="def:modelsConceptOf" id="eb837398-db0c-4d57-b259-f2d6c6be79ac"/>
           <element xsi:type="archimate:DataObject" name="nadef:DetailRecord" id="1b2d84af-1753-4d6b-8f3a-92acd154107e">
             <documentation>###  http://archief.overheid.nl/def/DetailRecord
-nadef:NTRecord rdf:type owl:Class ;
-rdfs:subClassOf nadef:ArchiefHulpbron , ore:Aggregation ;
+nadef:DetailRecord rdf:type owl:Class ;
+rdfs:subClassOf nadef:ArchiefVerwijzing , ore:Aggregation ;
 rdfs:comment &quot;Gebruik DetailRecord als basis voor de records uit de archieven. Hier kunnen de originele velden toegewezen worden. Conceptuele of &quot;echte&quot; entiteiten die geinterpreteerd zijn op basis van de inhoud kunnen terug verwijzen naar dit record om de authenticiteit te waarborgen. De records zelf bevatten geen interpretaties.&quot;@nl .</documentation>
           </element>
+          <element xsi:type="archimate:DataObject" name="nadef:PersoonsVerwijzing" id="c9372cd9-4b12-4f62-aae0-54ee11f77731"/>
         </folder>
         <folder name="commBk (CommissieBoeken)" id="db55c60f-e4bf-4bc1-8bd3-b116a929641b">
           <element xsi:type="archimate:DataObject" name="commBk:ArchiefRaadVanState" id="5927c808-fe73-44bf-bb50-2b9c3a3e2c83">
@@ -1131,7 +1132,7 @@ napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
 edm:hasView https://files.nationaalarchief.nl/photo1.jpg
 hasRights downloadonly
 dctype: &quot;zwartwit&quot;
-dcterms:creator [ a nadef:PersoonsBeschrijving ;
+dcterms:creator [ a nadef:PersoonsVerwijzing ;
  nadef:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nabeelddoc:FotoRecord01" id="113f77d1-583d-43c2-bc0a-ae7587f4f3fe">
@@ -1148,9 +1149,9 @@ dc:creator &quot;Nationaal Archief&quot;;
 dc:format &quot;image/jpg&quot;
 </documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:ArchiefHulpbron" id="eb18859d-a852-46fd-8c71-9ad3324c3183">
-            <documentation>###  http://archief.overheid.nl/def/ArchiefHulpbron
-nadef:ArchiefHulpbron rdf:type owl:Class ;
+          <element xsi:type="archimate:DataObject" name="nadef:ArchiefVerwijzing" id="eb18859d-a852-46fd-8c71-9ad3324c3183">
+            <documentation>###  http://archief.overheid.nl/def/ArchiefVerwijzing
+nadef:ArchiefVerwijzing rdf:type owl:Class ;
 owl:equivalentClass dbo:Reference , dcterms:BibliographicResource , edm:InformationResource , cidoc-crm:E73_Information_Object ;
 rdfs:label &quot;ArchiefHulpbron&quot;@nl .</documentation>
           </element>
@@ -2407,6 +2408,7 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" id="92e83c0d-620f-4044-88c1-ea27a694c886" source="85c51fed-ea24-41d9-8e82-40ac5db8bdb4" target="466eca92-fd79-4972-910a-98055f7ecea3"/>
     <element xsi:type="archimate:AggregationRelationship" id="fdf3e116-7a56-4c43-9afe-128c4695608b" source="85c51fed-ea24-41d9-8e82-40ac5db8bdb4" target="c4a49a84-c6aa-47b4-bff4-c30f3c44c6ad"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="baab5735-57e9-4f8a-908c-94dd2088608f" source="cb3974a6-47e9-4920-a6fa-b19f98d76fc0" target="d711f22c-3d6d-46e2-b646-96a692de8b91"/>
+    <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="273405dd-d87f-4bae-ba5f-8824f6182c10" source="c9372cd9-4b12-4f62-aae0-54ee11f77731" target="eb18859d-a852-46fd-8c71-9ad3324c3183"/>
   </folder>
   <folder name="Views" id="1106c770-e13e-4b3d-b75c-8d72c67d5ead" type="diagrams">
     <folder name="Linked Data" id="9b434202-298c-47cc-a78d-ba4cc18702aa">
@@ -3370,7 +3372,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
             <bounds x="36" y="336" width="120" height="55"/>
           </child>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" targetConnections="7756fa42-75ac-4f49-acb9-8c858a47bf28 440ac28f-bb51-4fc0-bba4-bbe64735d946" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="eb18859d-a852-46fd-8c71-9ad3324c3183">
+        <child xsi:type="archimate:DiagramObject" id="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" targetConnections="7756fa42-75ac-4f49-acb9-8c858a47bf28 440ac28f-bb51-4fc0-bba4-bbe64735d946 7b6689bf-dbdc-4dd2-b8dc-a6a3bcb29fc2" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="eb18859d-a852-46fd-8c71-9ad3324c3183">
           <bounds x="-36" y="264" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="a9b208d0-1001-42d2-b455-cd4f7858b983" lineColor="#000000" source="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" target="16eabc1f-99b6-4625-83c5-c06087e1e343" archimateRelationship="9ef8c4ed-fa20-44a4-9cb0-00f24f35b4d5"/>
           <sourceConnection xsi:type="archimate:Connection" id="49d8d89b-1c99-4292-b45c-a2914405448f" lineColor="#000000" source="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" target="37ef3905-840a-4f66-87c3-9f73bbd240e4" archimateRelationship="325a6269-6d09-4246-ae02-002ac92d7eb0">
@@ -3456,6 +3458,10 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         </child>
         <child xsi:type="archimate:DiagramObject" id="072c94da-78c2-4777-a61f-8b6732c7b7b5" targetConnections="b298d7ad-30d8-469d-b211-9ebdd714d438" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="d711f22c-3d6d-46e2-b646-96a692de8b91">
           <bounds x="588" y="24" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="6526eda3-eb62-49b9-b157-7aea876dd778" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="c9372cd9-4b12-4f62-aae0-54ee11f77731">
+          <bounds x="108" y="372" width="120" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="7b6689bf-dbdc-4dd2-b8dc-a6a3bcb29fc2" lineColor="#000000" source="6526eda3-eb62-49b9-b157-7aea876dd778" target="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" archimateRelationship="273405dd-d87f-4bae-ba5f-8824f6182c10"/>
         </child>
       </element>
     </folder>

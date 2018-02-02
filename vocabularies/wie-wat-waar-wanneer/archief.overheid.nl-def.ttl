@@ -1,5 +1,4 @@
 @prefix : <http://archief.overheid.nl/def/> .
-@prefix ao: <http://archief.overheid.nl/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix bgn: <http://biographynet.nl/schema/> .
@@ -20,11 +19,6 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
-@prefix nabeelddoc: <http://archief.overheid.nl/beeld/doc/> .
-@prefix nabeeldent: <http://archief.overheid.nl/beeld/id/> .
-@prefix nacollectie: <http://archief.overheid.nl/collectie/doc/> .
-@prefix napersoondoc: <http://archief.overheid.nl/persoon/doc/> .
-@prefix napersoonent: <http://archief.overheid.nl/persoon/id/> .
 @base <http://archief.overheid.nl/def/> .
 
 <http://archief.overheid.nl/def/> rdf:type owl:Ontology ;
@@ -304,7 +298,8 @@ rdfs:member rdf:type owl:ObjectProperty .
 
 ###  http://archief.overheid.nl/def/achternaam
 nadef:achternaam rdf:type owl:DatatypeProperty ;
-                 rdfs:domain nadef:HistorischeNaam ;
+                 rdfs:domain nadef:HistorischeNaam ,
+                             nadef:PersoonsVerwijzing ;
                  rdfs:range xsd:string ;
                  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
                  rdfs:label "achternaam"@nl ,
@@ -325,7 +320,8 @@ nadef:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/achtervoegsel
 nadef:achtervoegsel rdf:type owl:DatatypeProperty ;
-                    rdfs:domain nadef:HistorischeNaam ;
+                    rdfs:domain nadef:HistorischeNaam ,
+                                nadef:PersoonsVerwijzing ;
                     rdfs:range xsd:string ;
                     rdfs:label "achtervoegsel"@nl ,
                                "postposition"@en .
@@ -334,7 +330,8 @@ nadef:achtervoegsel rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/initialen
 nadef:initialen rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf nadef:voorvoegsel ;
-                rdfs:domain nadef:HistorischeNaam ;
+                rdfs:domain nadef:HistorischeNaam ,
+                            nadef:PersoonsVerwijzing ;
                 rdfs:range xsd:string ;
                 rdfs:comment "initials as part of the first name"@en ;
                 rdfs:label "initialen"@nl ,
@@ -343,7 +340,8 @@ nadef:initialen rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/naamstoevoeging
 nadef:naamstoevoeging rdf:type owl:DatatypeProperty ;
-                      rdfs:domain nadef:HistorischeNaam ;
+                      rdfs:domain nadef:HistorischeNaam ,
+                                  nadef:PersoonsVerwijzing ;
                       rdfs:comment "distinctive addition to last name"@en ,
                                    "onderscheidende toevoeging aan de achternaam"@nl ;
                       rdfs:label "naamstoevoeging"@nl ,
@@ -364,7 +362,8 @@ nadef:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/patroniem_voor_naam
 nadef:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf nadef:voorvoegsel ;
-                          rdfs:domain nadef:HistorischeNaam ;
+                          rdfs:domain nadef:HistorischeNaam ,
+                                      nadef:PersoonsVerwijzing ;
                           rdfs:range xsd:string ;
                           rdfs:label "patroniem vóór naam"@en ,
                                      "patronym in first name"@en ;
@@ -374,7 +373,8 @@ nadef:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/titel
 nadef:titel rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf nadef:voorvoegsel ;
-            rdfs:domain nadef:HistorischeNaam ;
+            rdfs:domain nadef:HistorischeNaam ,
+                        nadef:PersoonsVerwijzing ;
             rdfs:range xsd:string ;
             rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
             rdfs:label "titel"@nl ,
@@ -395,7 +395,7 @@ nadef:titel_na_naam rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/volledige_naam
 nadef:volledige_naam rdf:type owl:DatatypeProperty ;
-                     rdfs:domain nadef:PersoonsBeschrijving ;
+                     rdfs:domain nadef:PersoonsVerwijzing ;
                      rdfs:range xsd:string ;
                      rdfs:comment "De volledige naam zoals bekend in de originele records uit het archief."@nl .
 
@@ -403,7 +403,8 @@ nadef:volledige_naam rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/voornaam
 nadef:voornaam rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf nadef:voorvoegsel ;
-               rdfs:domain nadef:HistorischeNaam ;
+               rdfs:domain nadef:HistorischeNaam ,
+                           nadef:PersoonsVerwijzing ;
                rdfs:range xsd:string ;
                rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
                rdfs:label "first name"@en ,
@@ -413,7 +414,8 @@ nadef:voornaam rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/voorvoegsel
 nadef:voorvoegsel rdf:type owl:DatatypeProperty ;
-                  rdfs:domain nadef:HistorischeNaam ;
+                  rdfs:domain nadef:HistorischeNaam ,
+                              nadef:PersoonsVerwijzing ;
                   rdfs:range xsd:string ;
                   rdfs:label "preposition"@en ,
                              "voorvoegsel"@nl ;
@@ -429,22 +431,39 @@ nadef:ArchiefEntiteit rdf:type owl:Class ;
                       owl:equivalentClass cidoc-crm:E1_CRM_Entity ,
                                           edm:NonInformationResource ;
                       rdfs:subClassOf edm:ProvidedCHO ;
-                      owl:disjointWith nadef:ArchiefHulpbron ;
+                      owl:disjointWith nadef:ArchiefNaam ,
+                                       nadef:ArchiefVerwijzing ;
                       rdfs:comment "Een archief entiteit staat voor entiteiten waar naar verwezen wordt in de verzamelingen  archief records."@nl .
 
 
-###  http://archief.overheid.nl/def/ArchiefHulpbron
-nadef:ArchiefHulpbron rdf:type owl:Class ;
-                      owl:equivalentClass dbo:Reference ,
-                                          dcterms:BibliographicResource ,
-                                          cidoc-crm:E73_Information_Object ,
-                                          edm:InformationResource ;
-                      rdfs:label "ArchiefHulpbron"@nl .
+###  http://archief.overheid.nl/def/ArchiefNaam
+nadef:ArchiefNaam rdf:type owl:Class ;
+                  owl:equivalentClass dbo:Name ;
+                  rdfs:comment "A name in the archival domain"@en ,
+                               "Een naam in het archiefdomein"@nl ;
+                  rdfs:label "Archief naam"@nl ,
+                             "Archival name"@en ;
+                  skos:prefLabel "Naam"@nl .
+
+
+###  http://archief.overheid.nl/def/ArchiefVerwijzing
+nadef:ArchiefVerwijzing rdf:type owl:Class ;
+                        owl:equivalentClass dbo:Reference ,
+                                            dcterms:BibliographicResource ,
+                                            cidoc-crm:E73_Information_Object ,
+                                            edm:InformationResource ;
+                        rdfs:label "Archief verwijzing"@nl ,
+                                   "Archival reference"@en .
+
+
+###  http://archief.overheid.nl/def/Bladzijde
+nadef:Bladzijde rdf:type owl:Class ;
+                rdfs:subClassOf nadef:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/DetailRecord
 nadef:DetailRecord rdf:type owl:Class ;
-                   rdfs:subClassOf nadef:ArchiefHulpbron ,
+                   rdfs:subClassOf nadef:ArchiefVerwijzing ,
                                    ore:Aggregation ;
                    rdfs:comment "Gebruik DetailRecord als basis voor de records uit de archieven. Hier kunnen de originele velden toegewezen worden. Conceptuele of \"echte\" entiteiten die geinterpreteerd zijn op basis van de inhoud kunnen terug verwijzen naar dit record om de authenticiteit te waarborgen. De records zelf bevatten geen interpretaties."@nl ;
                    rdfs:label "Record uit een Nadere Toegang"@nl ;
@@ -452,11 +471,22 @@ nadef:DetailRecord rdf:type owl:Class ;
 
 
 ###  http://archief.overheid.nl/def/Foto
-nadef:Foto rdf:type owl:Class .
+nadef:Foto rdf:type owl:Class ;
+           rdfs:subClassOf nadef:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/FotoCreatie
 nadef:FotoCreatie rdf:type owl:Class .
+
+
+###  http://archief.overheid.nl/def/FotoNegatief
+nadef:FotoNegatief rdf:type owl:Class ;
+                   rdfs:subClassOf nadef:ArchiefEntiteit .
+
+
+###  http://archief.overheid.nl/def/GeluidsOpname
+nadef:GeluidsOpname rdf:type owl:Class ;
+                    rdfs:subClassOf nadef:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/GrafischRecord
@@ -469,10 +499,26 @@ nadef:GrafischRecord rdf:type owl:Class ;
 
 ###  http://archief.overheid.nl/def/HistorischeNaam
 nadef:HistorischeNaam rdf:type owl:Class ;
-                      owl:disjointWith bgn:Person ;
+                      rdfs:subClassOf nadef:ArchiefNaam ;
+                      owl:disjointWith nadef:PersoonEntiteit ;
                       rdfs:comment "Een naam van een persoon uit de geschiedenis, niet de persoon zelf."@nl ;
                       rdfs:label "Naam van een persoon uit de geschiedenis"@nl ;
                       skos:prefLabel "Historische naam"@nl .
+
+
+###  http://archief.overheid.nl/def/Illustratie
+nadef:Illustratie rdf:type owl:Class ;
+                  rdfs:subClassOf nadef:ArchiefEntiteit .
+
+
+###  http://archief.overheid.nl/def/Kaart
+nadef:Kaart rdf:type owl:Class ;
+            rdfs:subClassOf nadef:ArchiefEntiteit .
+
+
+###  http://archief.overheid.nl/def/LandKaart
+nadef:LandKaart rdf:type owl:Class ;
+                rdfs:subClassOf nadef:Kaart .
 
 
 ###  http://archief.overheid.nl/def/PersoonEntiteit
@@ -481,31 +527,48 @@ nadef:PersoonEntiteit rdf:type owl:Class ;
                                           cidoc-crm:E39_Actor ,
                                           foaf:Person ;
                       rdfs:subClassOf nadef:ArchiefEntiteit ;
-                      owl:disjointWith nadef:PersoonsBeschrijving ;
+                      owl:disjointWith nadef:PersoonsNaam ,
+                                       nadef:PersoonsVerwijzing ;
                       rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
-
-
-###  http://archief.overheid.nl/def/PersoonsBeschrijving
-nadef:PersoonsBeschrijving rdf:type owl:Class ;
-                           rdfs:subClassOf nadef:ArchiefHulpbron ,
-                                           nadef:PersoonsNaam ;
-                           rdfs:comment "Beschrijving van een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven."@nl ;
-                           rdfs:label "Persoonsbeschrijving"@nl .
 
 
 ###  http://archief.overheid.nl/def/PersoonsNaam
 nadef:PersoonsNaam rdf:type owl:Class ;
                    rdfs:subClassOf nadef:HistorischeNaam ;
-                   owl:disjointWith bgn:Person ;
                    rdfs:comment "Een naam van een persoon, niet de persoon zelf."@nl ;
                    rdfs:label "Persoonsnaam"@nl ;
                    skos:prefLabel "Persoonsnaam"@nl .
+
+
+###  http://archief.overheid.nl/def/PersoonsVerwijzing
+nadef:PersoonsVerwijzing rdf:type owl:Class ;
+                         rdfs:subClassOf nadef:ArchiefVerwijzing ;
+                         rdfs:comment "A Person Reference is the reference to a Person in a single archival record."@en ,
+                                      "Verwijzing naar een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven."@nl ;
+                         rdfs:label "PersoonsVerwijzing"@nl .
+
+
+###  http://archief.overheid.nl/def/VideoOpname
+nadef:VideoOpname rdf:type owl:Class ;
+                  rdfs:subClassOf nadef:ArchiefEntiteit ;
+                  rdfs:comment "Een videopname"@nl ;
+                  rdfs:label "Video opname"@nl ;
+                  skos:prefLabel "Video opname"@nl .
+
+
+###  http://archief.overheid.nl/def/ZeeKaart
+nadef:ZeeKaart rdf:type owl:Class ;
+               rdfs:subClassOf nadef:Kaart .
 
 
 ###  http://biographynet.nl/schema/Person
 bgn:Person rdf:type owl:Class ;
            owl:equivalentClass foaf:Person ;
            rdfs:comment "In all National Archives' Linked Data sets referring to Persons, nadef:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person"@en .
+
+
+###  http://dbpedia.org/ontology/Name
+dbo:Name rdf:type owl:Class .
 
 
 ###  http://dbpedia.org/ontology/Reference
@@ -823,46 +886,40 @@ foaf:Project rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://archief.overheid.nl/willem_vd_poll_naam
-ao:willem_vd_poll_naam rdf:type owl:NamedIndividual ,
-                                nadef:HistorischeNaam ;
-                       nadef:volledige_naam "Willem van der Poll"^^xsd:string .
-
-
 ###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
-nabeelddoc:DatasetFotoVoorbeeld rdf:type owl:NamedIndividual ,
-                                         dcat:Dataset ;
-                                rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
+<http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                                     dcat:Dataset ;
+                                                            rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
 
 
 ###  http://archief.overheid.nl/beeld/doc/FotoRecord01
-nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
-                                 nadef:GrafischRecord ;
-                        edm:aggregatedCHO nabeeldent:Foto1 ;
-                        rdfs:member nabeelddoc:DatasetFotoVoorbeeld ;
-                        dcterms:creator "Nationaal Archief"@nl .
+<http://archief.overheid.nl/beeld/doc/FotoRecord01> rdf:type owl:NamedIndividual ,
+                                                             nadef:GrafischRecord ;
+                                                    edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto1> ;
+                                                    rdfs:member <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
+                                                    dcterms:creator "Nationaal Archief"@nl .
 
 
 ###  http://archief.overheid.nl/beeld/id/Foto1
-nabeeldent:Foto1 rdf:type owl:NamedIndividual ,
-                          nadef:Foto ;
-                 dcterms:creator [ rdf:type nadef:PersoonsBeschrijving ;
-                                   nadef:volledige_naam "Willem van der Poll"^^xsd:string
-                                 ] .
+<http://archief.overheid.nl/beeld/id/Foto1> rdf:type owl:NamedIndividual ,
+                                                     nadef:Foto ;
+                                            dcterms:creator [ rdf:type nadef:PersoonsVerwijzing ;
+                                                              nadef:volledige_naam "Willem van der Poll"^^xsd:string
+                                                            ] .
 
 
 ###  http://archief.overheid.nl/collectie/doc/FotoCollectie
-nacollectie:FotoCollectie rdf:type owl:NamedIndividual ,
-                                   dcat:Catalog ;
-                          rdfs:label "De Fotocollectie van het Rijks Archief."@nl ;
-                          dcat:dataset nabeelddoc:DatasetFotoVoorbeeld .
+<http://archief.overheid.nl/collectie/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
+                                                                  dcat:Catalog ;
+                                                         rdfs:label "De Fotocollectie van het Rijks Archief."@nl ;
+                                                         dcat:dataset <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> .
 
 
 ###  http://archief.overheid.nl/collectie/doc/PersoonsCollectie
-nacollectie:PersoonsCollectie rdf:type owl:NamedIndividual ,
-                                       dcat:Catalog ;
-                              rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl ;
-                              dcat:dataset napersoondoc:DatasetAllePersonen .
+<http://archief.overheid.nl/collectie/doc/PersoonsCollectie> rdf:type owl:NamedIndividual ,
+                                                                      dcat:Catalog ;
+                                                             rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl ;
+                                                             dcat:dataset <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> .
 
 
 ###  http://archief.overheid.nl/def/FotoCreatie
@@ -870,28 +927,34 @@ nadef:FotoCreatie rdf:type owl:NamedIndividual ,
                            cidoc-crm:E65_Creation .
 
 
+###  http://archief.overheid.nl/naam/doc/willem_vd_poll_naam
+<http://archief.overheid.nl/naam/doc/willem_vd_poll_naam> rdf:type owl:NamedIndividual ,
+                                                                   nadef:PersoonsNaam ;
+                                                          nadef:volledige_naam "Willem van der Poll"^^xsd:string .
+
+
 ###  http://archief.overheid.nl/persoon/doc/DatasetAllePersonen
-napersoondoc:DatasetAllePersonen rdf:type owl:NamedIndividual ,
-                                          dcat:Dataset ;
-                                 rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
+<http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> rdf:type owl:NamedIndividual ,
+                                                                      dcat:Dataset ;
+                                                             rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
 
 
 ###  http://archief.overheid.nl/persoon/doc/DatasetFotografen
-napersoondoc:DatasetFotografen rdf:type owl:NamedIndividual ,
-                                        dcat:Dataset ;
-                               rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
+<http://archief.overheid.nl/persoon/doc/DatasetFotografen> rdf:type owl:NamedIndividual ,
+                                                                    dcat:Dataset ;
+                                                           rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
 
 
 ###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
-napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
-                                     nadef:PersoonEntiteit ;
-                            nadef:heeftUitgevoerd _:genid14 ;
-                            rdfs:member napersoondoc:DatasetAllePersonen ,
-                                        napersoondoc:DatasetFotografen ;
-                            rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsBeschrijving voor."@nl .
+<http://archief.overheid.nl/persoon/id/Willem_vd_Poll> rdf:type owl:NamedIndividual ,
+                                                                nadef:PersoonEntiteit ;
+                                                       nadef:heeftUitgevoerd _:genid14 ;
+                                                       rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ,
+                                                                   <http://archief.overheid.nl/persoon/doc/DatasetFotografen> ;
+                                                       rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
 
 _:genid14 rdf:type nadef:FotoCreatie ;
-           nadef:resultaatVanActiviteit nabeeldent:Foto1 .
+           nadef:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto1> .
 
 
 #################################################################
