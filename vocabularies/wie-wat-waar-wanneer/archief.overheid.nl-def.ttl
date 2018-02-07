@@ -1,19 +1,24 @@
 @prefix : <http://archief.overheid.nl/def/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix hg: <http://rdf.histograph.io/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix aod: <http://archief.overheid.nl/def/> .
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix nadef: <http://archief.overheid.nl/def/> .
+@prefix void: <http://rdfs.org/ns/void#> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -30,24 +35,117 @@ Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld a
 #    Annotation properties
 #################################################################
 
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/
+dcterms: rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/creator
 dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/hasPart
 dcterms:hasPart rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/license
 dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/publisher
 dcterms:publisher rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:AnnotationProperty ;
+                 dcterms:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en ;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relationT-001> ;
+                 dcterms:issued "2008-01-14"^^xsd:date ;
+                 dcterms:modified "2008-01-14"^^xsd:date ;
+                 rdfs:comment "A related resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Relation"@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dc:relation .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty ;
+               dcterms:description "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#sourceT-001> ;
+               dcterms:issued "2008-01-14"^^xsd:date ;
+               dcterms:modified "2008-01-14"^^xsd:date ;
+               rdfs:comment "A related resource from which the described resource is derived."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:label "Source"@en ;
+               skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+               rdfs:subPropertyOf dc:source ,
+                                  dcterms:relation .
+
+
 ###  http://purl.org/dc/terms/title
 dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/ns/void#rootResource
+void:rootResource rdf:type owl:AnnotationProperty ;
+                  rdfs:comment "A top concept or entry point for a void:Dataset that is structured in a tree-like fashion. All resources in a dataset can be reached by following links from its root resources in a small number of steps." ;
+                  rdfs:label "root resource" ;
+                  rdfs:domain void:Dataset .
+
+
+###  http://rdfs.org/ns/void#sparqlEndpoint
+void:sparqlEndpoint rdf:type owl:AnnotationProperty ;
+                    rdfs:label "has a SPARQL endpoint at" ;
+                    rdfs:domain void:Dataset .
+
+
+###  http://rdfs.org/ns/void#uriLookupEndpoint
+void:uriLookupEndpoint rdf:type owl:AnnotationProperty ;
+                       rdfs:comment "Defines a simple URI look-up protocol for accessing a dataset." ;
+                       rdfs:label "has an URI look-up endpoint at" ;
+                       rdfs:domain void:Dataset .
+
+
+###  http://rdfs.org/ns/void#uriRegexPattern
+void:uriRegexPattern rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "Defines a regular expression pattern matching URIs in the dataset." ;
+                     rdfs:label "has URI regular expression pattern" ;
+                     rdfs:domain void:Dataset .
+
+
+###  http://rdfs.org/ns/void#vocabulary
+void:vocabulary rdf:type owl:AnnotationProperty ;
+                rdfs:comment "A vocabulary that is used in the dataset." ;
+                rdfs:label "vocabulary" ;
+                rdfs:domain void:Dataset .
 
 
 ###  http://www.openarchives.org/ore/terms/similarTo
@@ -58,8 +156,16 @@ ore:similarTo rdf:type owl:AnnotationProperty ;
               rdfs:domain ore:Aggregation .
 
 
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+vs:term_status rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#altLabel
 skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+skos:closeMatch rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#definition
@@ -86,27 +192,62 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 skos:scopeNote rdf:type owl:AnnotationProperty .
 
 
-###  http://www.w3.org/ns/dcat#dataset
-dcat:dataset rdf:type owl:AnnotationProperty .
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
 
 
 #################################################################
 #    Object Properties
 #################################################################
 
+###  http://archief.overheid.nl/def/heeftNaam
+aod:heeftNaam rdf:type owl:ObjectProperty .
+
+
 ###  http://archief.overheid.nl/def/heeftUitgevoerd
-nadef:heeftUitgevoerd rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
-                      rdfs:domain bgn:Person ;
-                      rdfs:range cidoc-crm:E65_Creation .
+aod:heeftUitgevoerd rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
+                    rdfs:domain bgn:Person ;
+                    rdfs:range cidoc-crm:E65_Creation .
+
+
+###  http://archief.overheid.nl/def/isOpvolgerVan
+aod:isOpvolgerVan rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  owl:inverseOf aod:isVoorgangerVan ;
+                  rdfs:domain aod:PersoonEntiteit ,
+                              aod:PersoonsVerwijzing ;
+                  rdfs:range aod:PersoonEntiteit ,
+                             aod:PersoonsVerwijzing .
+
+
+###  http://archief.overheid.nl/def/isRecordType
+aod:isRecordType rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf dc:subject ;
+                 rdfs:domain aod:DetailRecord ;
+                 rdfs:range aod:DetailRecordType ;
+                 rdfs:comment "Optioneel: specificeert dat een DetailRecord van een bepaald type is. Een record uit een NT kan een benoeming zijn, gebruik dan DetailRecord en maak een nieuw type DetailRecordType: TypeBenoeming. Dit voorkomt dat je voor elk \"bijzonder\" NT record een subclass moet maken."@nl .
+
+
+###  http://archief.overheid.nl/def/isVoorgangerVan
+aod:isVoorgangerVan rdf:type owl:ObjectProperty ;
+                    rdfs:domain aod:PersoonEntiteit ,
+                                aod:PersoonsVerwijzing ;
+                    rdfs:range aod:PersoonEntiteit ,
+                               aod:PersoonsVerwijzing ;
+                    rdfs:comment "Geeft aan dat iemand (beschreven of echt persoon) voor gegaan is aan een ander iemand zonder context van de activiteit."@nl .
 
 
 ###  http://archief.overheid.nl/def/resultaatVanActiviteit
-nadef:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf cidoc-crm:P94_has_created ;
-                             rdfs:range nadef:ArchiefEntiteit ;
-                             rdfs:comment "Het resultaat van een activiteit, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn."@nl ;
-                             rdfs:label "resultaat van activiteit" .
+aod:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf cidoc-crm:P94_has_created ;
+                           rdfs:range aod:ArchiefEntiteit ;
+                           rdfs:comment "Het resultaat van een activiteit, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn."@nl ;
+                           rdfs:label "resultaat van activiteit" .
 
 
 ###  http://purl.org/dc/elements/1.1/subject
@@ -115,6 +256,122 @@ dc:subject rdf:type owl:ObjectProperty .
 
 ###  http://purl.org/dc/terms/isPartOf
 dcterms:isPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://rdfs.org/ns/void#class
+void:class rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain void:Dataset ;
+           rdfs:range rdfs:Class ;
+           rdfs:comment "The rdfs:Class that is the rdf:type of all entities in a class-based partition." ;
+           rdfs:label "class" .
+
+
+###  http://rdfs.org/ns/void#classPartition
+void:classPartition rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf void:subset ;
+                    rdfs:domain void:Dataset ;
+                    rdfs:range void:Dataset ;
+                    rdfs:comment "A subset of a void:Dataset that contains only the entities of a certain rdfs:Class." ;
+                    rdfs:label "class partition" .
+
+
+###  http://rdfs.org/ns/void#dataDump
+void:dataDump rdf:type owl:ObjectProperty ;
+              rdfs:domain void:Dataset ;
+              rdfs:range rdfs:Resource ;
+              rdfs:comment "An RDF dump, partial or complete, of a void:Dataset." ;
+              rdfs:label "Data Dump" .
+
+
+###  http://rdfs.org/ns/void#exampleResource
+void:exampleResource rdf:type owl:ObjectProperty ;
+                     rdfs:domain void:Dataset ;
+                     rdfs:range rdfs:Resource ;
+                     rdfs:label "example resource of dataset" .
+
+
+###  http://rdfs.org/ns/void#feature
+void:feature rdf:type owl:ObjectProperty ;
+             rdfs:domain void:Dataset ;
+             rdfs:range void:TechnicalFeature ;
+             rdfs:label "feature" .
+
+
+###  http://rdfs.org/ns/void#inDataset
+void:inDataset rdf:type owl:ObjectProperty ;
+               rdfs:domain foaf:Document ;
+               rdfs:range void:Dataset ;
+               rdfs:comment "Points to the void:Dataset that a document is a part of." ;
+               rdfs:label "in dataset" .
+
+
+###  http://rdfs.org/ns/void#linkPredicate
+void:linkPredicate rdf:type owl:ObjectProperty ;
+                   rdfs:domain void:Linkset ;
+                   rdfs:range rdf:Property ;
+                   rdfs:label "a link predicate" .
+
+
+###  http://rdfs.org/ns/void#objectsTarget
+void:objectsTarget rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf void:target ;
+                   rdf:type owl:FunctionalProperty ;
+                   rdfs:domain void:Linkset ;
+                   rdfs:range void:Dataset ;
+                   rdfs:comment "The dataset describing the objects of the triples contained in the Linkset." ;
+                   rdfs:label "Objects Target" .
+
+
+###  http://rdfs.org/ns/void#openSearchDescription
+void:openSearchDescription rdf:type owl:ObjectProperty ;
+                           rdfs:domain void:Dataset ;
+                           rdfs:range foaf:Document ;
+                           rdfs:comment "An OpenSearch description document for a free-text search service over a void:Dataset." ;
+                           rdfs:label "open search description" .
+
+
+###  http://rdfs.org/ns/void#property
+void:property rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain void:Dataset ;
+              rdfs:range rdf:Property ;
+              rdfs:comment "The rdf:Property that is the predicate of all triples in a property-based partition." ;
+              rdfs:label "property" .
+
+
+###  http://rdfs.org/ns/void#propertyPartition
+void:propertyPartition rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf void:subset ;
+                       rdfs:domain void:Dataset ;
+                       rdfs:range void:Dataset ;
+                       rdfs:comment "A subset of a void:Dataset that contains only the triples of a certain rdf:Property." ;
+                       rdfs:label "property partition" .
+
+
+###  http://rdfs.org/ns/void#subjectsTarget
+void:subjectsTarget rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf void:target ;
+                    rdf:type owl:FunctionalProperty ;
+                    rdfs:domain void:Linkset ;
+                    rdfs:range void:Dataset ;
+                    rdfs:comment "The dataset describing the subjects of triples contained in the Linkset." ;
+                    rdfs:label "Subjects Target" .
+
+
+###  http://rdfs.org/ns/void#subset
+void:subset rdf:type owl:ObjectProperty ;
+            rdfs:domain void:Dataset ;
+            rdfs:range void:Dataset ;
+            rdfs:label "has subset" .
+
+
+###  http://rdfs.org/ns/void#target
+void:target rdf:type owl:ObjectProperty ;
+            rdfs:domain void:Linkset ;
+            rdfs:range void:Dataset ;
+            rdfs:comment "One of the two datasets linked by the Linkset." ;
+            rdfs:label "Target" .
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/P11i_participated_in
@@ -292,134 +549,281 @@ ore:proxyIn rdf:type owl:ObjectProperty ;
 rdfs:member rdf:type owl:ObjectProperty .
 
 
+###  http://www.w3.org/ns/dcat#dataset
+dcat:dataset rdf:type owl:ObjectProperty ;
+             rdfs:domain dcat:Catalog ;
+             rdfs:range dcat:Dataset ;
+             rdfs:comment "Links a catalog to a dataset that is part of the catalog."@en ;
+             rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
+             rdfs:label "conjunto de datos"@es ,
+                        "dataset"@en ,
+                        "jeu de données"@fr ,
+                        "σύνολο δεδομένων"@el ,
+                        "قائمة بيانات"@ar ,
+                        "データセット"@ja .
+
+
+###  http://www.w3.org/ns/dcat#record
+dcat:record rdf:type owl:ObjectProperty ;
+            rdfs:domain dcat:Catalog ;
+            rdfs:range dcat:CatalogRecord ;
+            rdfs:comment "Enlaza un catálogo a sus registros."@es ,
+                         "Links a catalog to its records."@en ,
+                         "Relie un catalogue à ses registres"@fr ,
+                         "Συνδέει έναν κατάλογο με τις καταγραφές του."@el ,
+                         "تربط الفهرس بسجل ضمنه"@ar ,
+                         "カタログの一部であるカタログ・レコード。"@ja ;
+            rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
+            rdfs:label "record"@en ,
+                       "registre"@fr ,
+                       "registro"@es ,
+                       "καταγραφή"@el ,
+                       "سجل"@ar ,
+                       "カタログ・レコード"@ja .
+
+
+###  http://xmlns.com/foaf/0.1/primaryTopic
+foaf:primaryTopic rdf:type owl:ObjectProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain foaf:Document ;
+                  rdfs:range owl:Thing ;
+                  rdfs:comment "The primary topic of some page or document." ;
+                  rdfs:isDefinedBy foaf: ;
+                  rdfs:label "primary topic" ;
+                  vs:term_status "stable" .
+
+
 #################################################################
 #    Data properties
 #################################################################
 
 ###  http://archief.overheid.nl/def/achternaam
-nadef:achternaam rdf:type owl:DatatypeProperty ;
-                 rdfs:domain nadef:HistorischeNaam ,
-                             nadef:PersoonsVerwijzing ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
-                 rdfs:label "achternaam"@nl ,
-                            "last name"@en ;
-                 skos:altLabel "geslachtsnaam"@nl ;
-                 skos:prefLabel "achternaam"@nl .
+aod:achternaam rdf:type owl:DatatypeProperty ;
+               rdfs:domain aod:HistorischeNaam ,
+                           aod:PersoonsVerwijzing ;
+               rdfs:range xsd:string ;
+               rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+               rdfs:label "achternaam"@nl ,
+                          "last name"@en ;
+               skos:altLabel "geslachtsnaam"@nl ;
+               skos:prefLabel "achternaam"@nl .
 
 
 ###  http://archief.overheid.nl/def/achternaam_van_meisjesnaam
-nadef:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
-                                 rdfs:subPropertyOf nadef:achtervoegsel ;
-                                 rdfs:domain nadef:HistorischeNaam ;
-                                 rdfs:range xsd:string ;
-                                 rdfs:comment "maiden name as the last part of a person's name"@en ;
-                                 rdfs:label "achternaam van meisjesnaam"@nl ;
-                                 skos:prefLabel "achternaam van meisjesnaam"@nl .
+aod:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf aod:achtervoegsel ;
+                               rdfs:domain aod:HistorischeNaam ;
+                               rdfs:range xsd:string ;
+                               rdfs:comment "maiden name as the last part of a person's name"@en ;
+                               rdfs:label "achternaam van meisjesnaam"@nl ;
+                               skos:prefLabel "achternaam van meisjesnaam"@nl .
 
 
 ###  http://archief.overheid.nl/def/achtervoegsel
-nadef:achtervoegsel rdf:type owl:DatatypeProperty ;
-                    rdfs:domain nadef:HistorischeNaam ,
-                                nadef:PersoonsVerwijzing ;
-                    rdfs:range xsd:string ;
-                    rdfs:label "achtervoegsel"@nl ,
-                               "postposition"@en .
+aod:achtervoegsel rdf:type owl:DatatypeProperty ;
+                  rdfs:domain aod:HistorischeNaam ,
+                              aod:PersoonsVerwijzing ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "achtervoegsel"@nl ,
+                             "postposition"@en .
+
+
+###  http://archief.overheid.nl/def/beroepsbeschrijving
+aod:beroepsbeschrijving rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf aod:functiebeschrijving ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Beschrijving van het beroep."@nl .
+
+
+###  http://archief.overheid.nl/def/functiebeschrijving
+aod:functiebeschrijving rdf:type owl:DatatypeProperty ;
+                        rdfs:domain aod:PersoonsVerwijzing ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Beschrijving van een functie die iemand heeft uitgeoefend of vervuld. Kan ook een activiteit geweest zijn."@nl .
 
 
 ###  http://archief.overheid.nl/def/initialen
-nadef:initialen rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf nadef:voorvoegsel ;
-                rdfs:domain nadef:HistorischeNaam ,
-                            nadef:PersoonsVerwijzing ;
-                rdfs:range xsd:string ;
-                rdfs:comment "initials as part of the first name"@en ;
-                rdfs:label "initialen"@nl ,
-                           "initials"@en .
+aod:initialen rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf aod:voorvoegsel ;
+              rdfs:domain aod:HistorischeNaam ,
+                          aod:PersoonsVerwijzing ;
+              rdfs:range xsd:string ;
+              rdfs:comment "initials as part of the first name"@en ;
+              rdfs:label "initialen"@nl ,
+                         "initials"@en .
 
 
 ###  http://archief.overheid.nl/def/naamstoevoeging
-nadef:naamstoevoeging rdf:type owl:DatatypeProperty ;
-                      rdfs:domain nadef:HistorischeNaam ,
-                                  nadef:PersoonsVerwijzing ;
-                      rdfs:comment "distinctive addition to last name"@en ,
-                                   "onderscheidende toevoeging aan de achternaam"@nl ;
-                      rdfs:label "naamstoevoeging"@nl ,
-                                 "postpositionAddition"@en ;
-                      skos:prefLabel "naamstoevoeging"@nl .
+aod:naamstoevoeging rdf:type owl:DatatypeProperty ;
+                    rdfs:domain aod:HistorischeNaam ,
+                                aod:PersoonsVerwijzing ;
+                    rdfs:comment "distinctive addition to last name"@en ,
+                                 "onderscheidende toevoeging aan de achternaam"@nl ;
+                    rdfs:label "naamstoevoeging"@nl ,
+                               "postpositionAddition"@en ;
+                    skos:prefLabel "naamstoevoeging"@nl .
 
 
 ###  http://archief.overheid.nl/def/patroniem_na_achternaam
-nadef:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
-                              rdfs:subPropertyOf nadef:achtervoegsel ;
-                              rdfs:domain nadef:HistorischeNaam ;
-                              rdfs:range xsd:string ;
-                              rdfs:label "patronym after last name"@en ;
-                              skos:label "patroniem na achternaam"@nl ;
-                              skos:prefLabel "patroniem na achternaam"@nl .
+aod:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf aod:achtervoegsel ;
+                            rdfs:domain aod:HistorischeNaam ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "patronym after last name"@en ;
+                            skos:label "patroniem na achternaam"@nl ;
+                            skos:prefLabel "patroniem na achternaam"@nl .
 
 
 ###  http://archief.overheid.nl/def/patroniem_voor_naam
-nadef:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
-                          rdfs:subPropertyOf nadef:voorvoegsel ;
-                          rdfs:domain nadef:HistorischeNaam ,
-                                      nadef:PersoonsVerwijzing ;
-                          rdfs:range xsd:string ;
-                          rdfs:label "patroniem vóór naam"@en ,
-                                     "patronym in first name"@en ;
-                          skos:prefLabel "patroniem vóór naam"@nl .
+aod:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf aod:voorvoegsel ;
+                        rdfs:domain aod:HistorischeNaam ,
+                                    aod:PersoonsVerwijzing ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "patroniem vóór naam"@en ,
+                                   "patronym in first name"@en ;
+                        skos:prefLabel "patroniem vóór naam"@nl .
+
+
+###  http://archief.overheid.nl/def/periodebeschrijving
+aod:periodebeschrijving rdf:type owl:DatatypeProperty ;
+                        rdfs:domain aod:ArchiefVerwijzing ;
+                        rdfs:comment "Beschrijft een periode waar de archiefverwijzing betrekking op heeft."@nl .
 
 
 ###  http://archief.overheid.nl/def/titel
-nadef:titel rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf nadef:voorvoegsel ;
-            rdfs:domain nadef:HistorischeNaam ,
-                        nadef:PersoonsVerwijzing ;
-            rdfs:range xsd:string ;
-            rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
-            rdfs:label "titel"@nl ,
-                       "title"@en ;
-            skos:prefLabel "titel"@nl .
+aod:titel rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf aod:voorvoegsel ;
+          rdfs:domain aod:HistorischeNaam ,
+                      aod:PersoonsVerwijzing ;
+          rdfs:range xsd:string ;
+          rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+          rdfs:label "titel"@nl ,
+                     "title"@en ;
+          skos:prefLabel "titel"@nl .
 
 
 ###  http://archief.overheid.nl/def/titel_na_naam
-nadef:titel_na_naam rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf nadef:achtervoegsel ;
-                    rdfs:domain nadef:HistorischeNaam ;
-                    rdfs:range xsd:string ;
-                    rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@nl ;
-                    rdfs:label "titel na naam"@nl ,
-                               "title after name"@en ;
-                    skos:prefLabel "titel na naam"@nl .
+aod:titel_na_naam rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf aod:achtervoegsel ;
+                  rdfs:domain aod:HistorischeNaam ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@nl ;
+                  rdfs:label "titel na naam"@nl ,
+                             "title after name"@en ;
+                  skos:prefLabel "titel na naam"@nl .
 
 
 ###  http://archief.overheid.nl/def/volledige_naam
-nadef:volledige_naam rdf:type owl:DatatypeProperty ;
-                     rdfs:domain nadef:PersoonsVerwijzing ;
-                     rdfs:range xsd:string ;
-                     rdfs:comment "De volledige naam zoals bekend in de originele records uit het archief."@nl .
+aod:volledige_naam rdf:type owl:DatatypeProperty ;
+                   rdfs:domain aod:PersoonsVerwijzing ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "De volledige naam zoals bekend in de originele records uit het archief."@nl .
 
 
 ###  http://archief.overheid.nl/def/voornaam
-nadef:voornaam rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf nadef:voorvoegsel ;
-               rdfs:domain nadef:HistorischeNaam ,
-                           nadef:PersoonsVerwijzing ;
-               rdfs:range xsd:string ;
-               rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
-               rdfs:label "first name"@en ,
-                          "voornaam"@nl ;
-               skos:prefLabel "voornaam"@nl .
+aod:voornaam rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf aod:voorvoegsel ;
+             rdfs:domain aod:HistorischeNaam ,
+                         aod:PersoonsVerwijzing ;
+             rdfs:range xsd:string ;
+             rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+             rdfs:label "first name"@en ,
+                        "voornaam"@nl ;
+             skos:prefLabel "voornaam"@nl .
 
 
 ###  http://archief.overheid.nl/def/voorvoegsel
-nadef:voorvoegsel rdf:type owl:DatatypeProperty ;
-                  rdfs:domain nadef:HistorischeNaam ,
-                              nadef:PersoonsVerwijzing ;
-                  rdfs:range xsd:string ;
-                  rdfs:label "preposition"@en ,
-                             "voorvoegsel"@nl ;
-                  skos:prefLabel "voorvoegsel"@nl .
+aod:voorvoegsel rdf:type owl:DatatypeProperty ;
+                rdfs:domain aod:HistorischeNaam ,
+                            aod:PersoonsVerwijzing ;
+                rdfs:range xsd:string ;
+                rdfs:label "preposition"@en ,
+                           "voorvoegsel"@nl ;
+                skos:prefLabel "voorvoegsel"@nl .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:DatatypeProperty ;
+                   rdfs:range rdfs:Literal ;
+                   dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001> ;
+                   dcterms:issued "2008-01-14"^^xsd:date ;
+                   dcterms:modified "2008-01-14"^^xsd:date ;
+                   rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Identifier"@en .
+
+
+###  http://rdfs.org/ns/void#classes
+void:classes rdf:type owl:DatatypeProperty ;
+             rdfs:domain void:Dataset ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "The total number of distinct classes in a void:Dataset. In other words, the number of distinct resources occuring as objects of rdf:type triples in the dataset." ;
+             rdfs:label "classes" .
+
+
+###  http://rdfs.org/ns/void#distinctObjects
+void:distinctObjects rdf:type owl:DatatypeProperty ;
+                     rdfs:domain void:Dataset ;
+                     rdfs:range xsd:integer ;
+                     rdfs:comment "The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count." ;
+                     rdfs:label "distinct objects" .
+
+
+###  http://rdfs.org/ns/void#distinctSubjects
+void:distinctSubjects rdf:type owl:DatatypeProperty ;
+                      rdfs:domain void:Dataset ;
+                      rdfs:range xsd:integer ;
+                      rdfs:comment "The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset." ;
+                      rdfs:label "distinct subjects" .
+
+
+###  http://rdfs.org/ns/void#documents
+void:documents rdf:type owl:DatatypeProperty ;
+               rdfs:domain void:Dataset ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "The total number of documents, for datasets that are published as a set of individual documents, such as RDF/XML documents or RDFa-annotated web pages. Non-RDF documents, such as web pages in HTML or images, are usually not included in this count. This property is intended for datasets where the total number of triples or entities is hard to determine. void:triples or void:entities should be preferred where practical." ;
+               rdfs:label "number of documents" .
+
+
+###  http://rdfs.org/ns/void#entities
+void:entities rdf:type owl:DatatypeProperty ;
+              rdfs:domain void:Dataset ;
+              rdfs:range xsd:integer ;
+              rdfs:comment "The total number of entities that are described in a void:Dataset." ;
+              rdfs:label "number of entities" .
+
+
+###  http://rdfs.org/ns/void#properties
+void:properties rdf:type owl:DatatypeProperty ;
+                rdfs:domain void:Dataset ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset." ;
+                rdfs:label "number of properties" .
+
+
+###  http://rdfs.org/ns/void#triples
+void:triples rdf:type owl:DatatypeProperty ;
+             rdfs:domain void:Dataset ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "The total number of triples contained in a void:Dataset." ;
+             rdfs:label "number of triples" .
+
+
+###  http://rdfs.org/ns/void#uriSpace
+void:uriSpace rdf:type owl:DatatypeProperty ;
+              rdfs:domain void:Dataset ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "A URI that is a common string prefix of all the entity URIs in a void:Dataset." ;
+              rdfs:label "URI space" .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/hasTimeStamp
+sem:hasTimeStamp rdf:type owl:DatatypeProperty ;
+                 rdfs:comment "Has timestamp is used to put time indicators on any individual. It is the most common way to state when an Event took place. There are subproperties of hasTimeStamp to represent time intervals and uncertain time intervals. If the exact moment is not known, but it is necessary to specify a certain time, use hasTime instead. All of these properties are also used to indicate the time at which a property under the Temporary Constraint is valid." ;
+                 rdfs:label "has timestamp" ;
+                 skos:closeMatch cs:time .
 
 
 #################################################################
@@ -427,144 +831,148 @@ nadef:voorvoegsel rdf:type owl:DatatypeProperty ;
 #################################################################
 
 ###  http://archief.overheid.nl/def/ArchiefEntiteit
-nadef:ArchiefEntiteit rdf:type owl:Class ;
-                      owl:equivalentClass cidoc-crm:E1_CRM_Entity ,
-                                          edm:NonInformationResource ;
-                      rdfs:subClassOf edm:ProvidedCHO ;
-                      owl:disjointWith nadef:ArchiefNaam ,
-                                       nadef:ArchiefVerwijzing ;
-                      rdfs:comment "Een archief entiteit staat voor entiteiten waar naar verwezen wordt in de verzamelingen  archief records."@nl .
+aod:ArchiefEntiteit rdf:type owl:Class ;
+                    owl:equivalentClass cidoc-crm:E1_CRM_Entity ,
+                                        edm:NonInformationResource ;
+                    rdfs:subClassOf edm:ProvidedCHO ;
+                    owl:disjointWith aod:ArchiefNaam ,
+                                     aod:ArchiefVerwijzing ;
+                    rdfs:comment "Een archief entiteit staat voor entiteiten waar naar verwezen wordt in de verzamelingen  archief records."@nl .
 
 
 ###  http://archief.overheid.nl/def/ArchiefNaam
-nadef:ArchiefNaam rdf:type owl:Class ;
-                  owl:equivalentClass dbo:Name ;
-                  rdfs:comment "A name in the archival domain"@en ,
-                               "Een naam in het archiefdomein"@nl ;
-                  rdfs:label "Archief naam"@nl ,
-                             "Archival name"@en ;
-                  skos:prefLabel "Naam"@nl .
+aod:ArchiefNaam rdf:type owl:Class ;
+                owl:equivalentClass dbo:Name ;
+                rdfs:comment "A name in the archival domain"@en ,
+                             "Een naam in het archiefdomein"@nl ;
+                rdfs:label "Archief naam"@nl ,
+                           "Archival name"@en ;
+                skos:prefLabel "Naam"@nl .
 
 
 ###  http://archief.overheid.nl/def/ArchiefVerwijzing
-nadef:ArchiefVerwijzing rdf:type owl:Class ;
-                        owl:equivalentClass dbo:Reference ,
-                                            dcterms:BibliographicResource ,
-                                            cidoc-crm:E73_Information_Object ,
-                                            edm:InformationResource ;
-                        rdfs:label "Archief verwijzing"@nl ,
-                                   "Archival reference"@en .
+aod:ArchiefVerwijzing rdf:type owl:Class ;
+                      owl:equivalentClass dbo:Reference ,
+                                          dcterms:BibliographicResource ,
+                                          cidoc-crm:E73_Information_Object ,
+                                          edm:InformationResource ;
+                      rdfs:label "Archief verwijzing"@nl ,
+                                 "Archival reference"@en .
 
 
 ###  http://archief.overheid.nl/def/Bladzijde
-nadef:Bladzijde rdf:type owl:Class ;
-                rdfs:subClassOf nadef:ArchiefEntiteit .
+aod:Bladzijde rdf:type owl:Class ;
+              rdfs:subClassOf aod:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/DetailRecord
-nadef:DetailRecord rdf:type owl:Class ;
-                   rdfs:subClassOf nadef:ArchiefVerwijzing ,
-                                   ore:Aggregation ;
-                   rdfs:comment "Gebruik DetailRecord als basis voor de records uit de archieven. Hier kunnen de originele velden toegewezen worden. Conceptuele of \"echte\" entiteiten die geinterpreteerd zijn op basis van de inhoud kunnen terug verwijzen naar dit record om de authenticiteit te waarborgen. De records zelf bevatten geen interpretaties."@nl ;
-                   rdfs:label "Record uit een Nadere Toegang"@nl ;
-                   skos:prefLabel "Record uit een Nadere Toegang"@nl .
+aod:DetailRecord rdf:type owl:Class ;
+                 rdfs:subClassOf aod:ArchiefVerwijzing ,
+                                 ore:Aggregation ;
+                 rdfs:comment "Gebruik DetailRecord als basis voor de records uit de archieven. Hier kunnen de originele velden toegewezen worden. Conceptuele of \"echte\" entiteiten die geinterpreteerd zijn op basis van de inhoud kunnen terug verwijzen naar dit record om de authenticiteit te waarborgen. De records zelf bevatten geen interpretaties."@nl ;
+                 rdfs:label "Record uit een Nadere Toegang"@nl ;
+                 skos:prefLabel "Record uit een Nadere Toegang"@nl .
+
+
+###  http://archief.overheid.nl/def/DetailRecordType
+aod:DetailRecordType rdf:type owl:Class .
 
 
 ###  http://archief.overheid.nl/def/Foto
-nadef:Foto rdf:type owl:Class ;
-           rdfs:subClassOf nadef:ArchiefEntiteit .
+aod:Foto rdf:type owl:Class ;
+         rdfs:subClassOf aod:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/FotoCreatie
-nadef:FotoCreatie rdf:type owl:Class .
+aod:FotoCreatie rdf:type owl:Class .
 
 
 ###  http://archief.overheid.nl/def/FotoNegatief
-nadef:FotoNegatief rdf:type owl:Class ;
-                   rdfs:subClassOf nadef:ArchiefEntiteit .
+aod:FotoNegatief rdf:type owl:Class ;
+                 rdfs:subClassOf aod:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/GeluidsOpname
-nadef:GeluidsOpname rdf:type owl:Class ;
-                    rdfs:subClassOf nadef:ArchiefEntiteit .
+aod:GeluidsOpname rdf:type owl:Class ;
+                  rdfs:subClassOf aod:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/GrafischRecord
-nadef:GrafischRecord rdf:type owl:Class ;
-                     rdfs:subClassOf nadef:DetailRecord ;
-                     rdfs:comment "Een record van een grafisch object. Bevat beschrijving en de verwijzing naar het fysieke object en de eventuele zichtexemplaren."@nl ;
-                     rdfs:label "Grafisch record"@nl ;
-                     skos:prefLabel "Grafisch record"@nl .
+aod:GrafischRecord rdf:type owl:Class ;
+                   rdfs:subClassOf aod:DetailRecord ;
+                   rdfs:comment "Een record van een grafisch object. Bevat beschrijving en de verwijzing naar het fysieke object en de eventuele zichtexemplaren."@nl ;
+                   rdfs:label "Grafisch record"@nl ;
+                   skos:prefLabel "Grafisch record"@nl .
 
 
 ###  http://archief.overheid.nl/def/HistorischeNaam
-nadef:HistorischeNaam rdf:type owl:Class ;
-                      rdfs:subClassOf nadef:ArchiefNaam ;
-                      owl:disjointWith nadef:PersoonEntiteit ;
-                      rdfs:comment "Een naam van een persoon uit de geschiedenis, niet de persoon zelf."@nl ;
-                      rdfs:label "Naam van een persoon uit de geschiedenis"@nl ;
-                      skos:prefLabel "Historische naam"@nl .
+aod:HistorischeNaam rdf:type owl:Class ;
+                    rdfs:subClassOf aod:ArchiefNaam ;
+                    owl:disjointWith aod:PersoonEntiteit ;
+                    rdfs:comment "Een naam van een persoon uit de geschiedenis, niet de persoon zelf."@nl ;
+                    rdfs:label "Naam van een persoon uit de geschiedenis"@nl ;
+                    skos:prefLabel "Historische naam"@nl .
 
 
 ###  http://archief.overheid.nl/def/Illustratie
-nadef:Illustratie rdf:type owl:Class ;
-                  rdfs:subClassOf nadef:ArchiefEntiteit .
+aod:Illustratie rdf:type owl:Class ;
+                rdfs:subClassOf aod:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/Kaart
-nadef:Kaart rdf:type owl:Class ;
-            rdfs:subClassOf nadef:ArchiefEntiteit .
+aod:Kaart rdf:type owl:Class ;
+          rdfs:subClassOf aod:ArchiefEntiteit .
 
 
 ###  http://archief.overheid.nl/def/LandKaart
-nadef:LandKaart rdf:type owl:Class ;
-                rdfs:subClassOf nadef:Kaart .
+aod:LandKaart rdf:type owl:Class ;
+              rdfs:subClassOf aod:Kaart .
 
 
 ###  http://archief.overheid.nl/def/PersoonEntiteit
-nadef:PersoonEntiteit rdf:type owl:Class ;
-                      owl:equivalentClass bgn:Person ,
-                                          cidoc-crm:E39_Actor ,
-                                          foaf:Person ;
-                      rdfs:subClassOf nadef:ArchiefEntiteit ;
-                      owl:disjointWith nadef:PersoonsNaam ,
-                                       nadef:PersoonsVerwijzing ;
-                      rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
+aod:PersoonEntiteit rdf:type owl:Class ;
+                    owl:equivalentClass bgn:Person ,
+                                        cidoc-crm:E39_Actor ;
+                    rdfs:subClassOf aod:ArchiefEntiteit ;
+                    owl:disjointWith aod:PersoonsNaam ,
+                                     aod:PersoonsVerwijzing ;
+                    rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
 
 
 ###  http://archief.overheid.nl/def/PersoonsNaam
-nadef:PersoonsNaam rdf:type owl:Class ;
-                   rdfs:subClassOf nadef:HistorischeNaam ;
-                   rdfs:comment "Een naam van een persoon, niet de persoon zelf."@nl ;
-                   rdfs:label "Persoonsnaam"@nl ;
-                   skos:prefLabel "Persoonsnaam"@nl .
+aod:PersoonsNaam rdf:type owl:Class ;
+                 rdfs:subClassOf aod:HistorischeNaam ;
+                 rdfs:comment "Een naam van een persoon, niet de persoon zelf."@nl ;
+                 rdfs:label "Persoonsnaam"@nl ;
+                 skos:prefLabel "Persoonsnaam"@nl .
 
 
 ###  http://archief.overheid.nl/def/PersoonsVerwijzing
-nadef:PersoonsVerwijzing rdf:type owl:Class ;
-                         rdfs:subClassOf nadef:ArchiefVerwijzing ;
-                         rdfs:comment "A Person Reference is the reference to a Person in a single archival record."@en ,
-                                      "Verwijzing naar een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven."@nl ;
-                         rdfs:label "PersoonsVerwijzing"@nl .
+aod:PersoonsVerwijzing rdf:type owl:Class ;
+                       rdfs:subClassOf aod:ArchiefVerwijzing ;
+                       rdfs:comment "A Person Reference is the reference to a Person in a single archival record."@en ,
+                                    "Verwijzing naar een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven."@nl ;
+                       rdfs:label "PersoonsVerwijzing"@nl ;
+                       skos:altLabel "Persoonsbeschrijving"@nl .
 
 
 ###  http://archief.overheid.nl/def/VideoOpname
-nadef:VideoOpname rdf:type owl:Class ;
-                  rdfs:subClassOf nadef:ArchiefEntiteit ;
-                  rdfs:comment "Een videopname"@nl ;
-                  rdfs:label "Video opname"@nl ;
-                  skos:prefLabel "Video opname"@nl .
+aod:VideoOpname rdf:type owl:Class ;
+                rdfs:subClassOf aod:ArchiefEntiteit ;
+                rdfs:comment "Een videopname"@nl ;
+                rdfs:label "Video opname"@nl ;
+                skos:prefLabel "Video opname"@nl .
 
 
 ###  http://archief.overheid.nl/def/ZeeKaart
-nadef:ZeeKaart rdf:type owl:Class ;
-               rdfs:subClassOf nadef:Kaart .
+aod:ZeeKaart rdf:type owl:Class ;
+             rdfs:subClassOf aod:Kaart .
 
 
 ###  http://biographynet.nl/schema/Person
 bgn:Person rdf:type owl:Class ;
            owl:equivalentClass foaf:Person ;
-           rdfs:comment "In all National Archives' Linked Data sets referring to Persons, nadef:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person"@en .
+           rdfs:comment "In all National Archives' Linked Data sets referring to Persons, aod:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person"@en .
 
 
 ###  http://dbpedia.org/ontology/Name
@@ -595,13 +1003,29 @@ frbroo:F4_Manifestation_Singleton rdf:type owl:Class .
 <http://purl.org/dc/dcmitype/Collection> rdf:type owl:Class .
 
 
-###  http://purl.org/dc/terms/Agent
-dcterms:Agent rdf:type owl:Class ;
-              owl:equivalentClass foaf:Agent .
+###  http://purl.org/dc/dcmitype/Dataset
+<http://purl.org/dc/dcmitype/Dataset> rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/AgentClass
+dcterms:AgentClass rdf:type owl:Class ;
+                   rdfs:subClassOf rdfs:Class ;
+                   dcterms:description "Examples of Agent Class include groups seen as classes, such as students, women, charities, lecturers."@en ;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#AgentClass-003> ;
+                   dcterms:issued "2008-01-14"^^xsd:date ;
+                   dcterms:modified "2012-06-14"^^xsd:date ;
+                   rdfs:comment "A group of agents."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Agent Class"@en .
 
 
 ###  http://purl.org/dc/terms/BibliographicResource
-dcterms:BibliographicResource rdf:type owl:Class .
+dcterms:BibliographicResource rdf:type owl:Class ;
+                              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#BibliographicResource-001> ;
+                              dcterms:issued "2008-01-14"^^xsd:date ;
+                              rdfs:comment "A book, article, or other documentary resource."@en ;
+                              rdfs:isDefinedBy dcterms: ;
+                              rdfs:label "Bibliographic Resource"@en .
 
 
 ###  http://purl.org/vocab/frbr/core#Expression
@@ -614,6 +1038,32 @@ frbr_core:Manifestation rdf:type owl:Class .
 
 ###  http://purl.org/vocab/frbr/core#Work
 frbr_core:Work rdf:type owl:Class .
+
+
+###  http://rdfs.org/ns/void#Dataset
+void:Dataset rdf:type owl:Class ;
+             rdfs:comment "A set of RDF triples that are published, maintained or aggregated by a single provider." ;
+             rdfs:label "dataset" .
+
+
+###  http://rdfs.org/ns/void#DatasetDescription
+void:DatasetDescription rdf:type owl:Class ;
+                        rdfs:subClassOf foaf:Document ;
+                        rdfs:comment "A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets." ;
+                        rdfs:label "dataset description" .
+
+
+###  http://rdfs.org/ns/void#Linkset
+void:Linkset rdf:type owl:Class ;
+             rdfs:subClassOf void:Dataset ;
+             rdfs:comment "A collection of RDF links between two void:Datasets." ;
+             rdfs:label "linkset" .
+
+
+###  http://rdfs.org/ns/void#TechnicalFeature
+void:TechnicalFeature rdf:type owl:Class ;
+                      rdfs:comment "A technical feature of a void:Dataset, such as a supported RDF serialization format." ;
+                      rdfs:label "technical feature" .
 
 
 ###  http://schema.org/CreativeWork
@@ -843,16 +1293,79 @@ ore:ResourceMap rdf:type owl:Class ;
                 rdfs:label "Resource Map" .
 
 
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
+rdf:Property rdf:type owl:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Class
+rdfs:Class rdf:type owl:Class ;
+           rdfs:subClassOf rdfs:Resource ;
+           rdfs:comment "The class of classes." ;
+           rdfs:isDefinedBy rdfs: ;
+           rdfs:label "Class" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type owl:Class ;
+              rdfs:comment "The class resource, everything." ;
+              rdfs:isDefinedBy rdfs: ;
+              rdfs:label "Resource" .
+
+
 ###  http://www.w3.org/2004/03/trix/rdfg-1/Graph
 <http://www.w3.org/2004/03/trix/rdfg-1/Graph> rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/dcat#Catalog
-dcat:Catalog rdf:type owl:Class .
+dcat:Catalog rdf:type owl:Class ;
+             rdfs:comment "A curated collection of metadata about datasets"@en ,
+                          "Typically, a web-based data catalog is represented as a single instance of this class."@en ;
+             rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
+             rdfs:label "Catalog"@en ,
+                        "Catalogue"@fr ,
+                        "Catálogo"@es ,
+                        "Κατάλογος"@el ,
+                        "فهرس قوائم البيانات"@ar ,
+                        "カタログ"@ja .
+
+
+###  http://www.w3.org/ns/dcat#CatalogRecord
+dcat:CatalogRecord rdf:type owl:Class ;
+                   rdfs:comment "A record in a data catalog, describing a single dataset."@en ,
+                                """This class is optional and not all catalogs will use it. It exists for 
+            catalogs where a distinction is made between metadata about a dataset and 
+            metadata about the dataset's entry in the catalog. For example, the publication 
+            date property of the dataset reflects the date when the information was originally 
+            made available by the publishing agency, while the publication date of the catalog 
+            record is the date when the dataset was added to the catalog. In cases where both
+            dates differ, or where only the latter is known, the publication date should only 
+            be specified for the catalog record. Notice that the W3C PROV Ontology allows 
+            describing further provenance information such as the details of the process and the 
+            agent involved in a particular change to a dataset."""@en ;
+                   rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
+                   rdfs:label "Catalog Record"@en ,
+                              "Registre du catalogue"@fr ,
+                              "Registro de catálogo"@es ,
+                              "Καταγραφή καταλόγου"@el ,
+                              "سجل"@ar ,
+                              "カタログ・レコード"@ja .
 
 
 ###  http://www.w3.org/ns/dcat#Dataset
-dcat:Dataset rdf:type owl:Class .
+dcat:Dataset rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/dc/dcmitype/Dataset> ;
+             rdfs:comment "A collection of data, published or curated by a single source, and available for access or download in one or more formats"@en ,
+                          """This class represents the actual dataset as published by the dataset publisher. In 
+          cases where a distinction between the actual dataset and its entry in the catalog is 
+          necessary (because metadata such as modification date and maintainer might differ), the 
+          catalog record class can be used for the latter."""@en ;
+             rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
+             rdfs:label "Conjunto de datos"@es ,
+                        "Dataset"@en ,
+                        "Jeu de données"@fr ,
+                        "Σύνολο Δεδομένων"@el ,
+                        "قائمة بيانات"@ar ,
+                        "データセット"@ja .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
@@ -879,7 +1392,11 @@ foaf:Person rdf:type owl:Class ;
 
 
 ###  http://xmlns.com/foaf/0.1/Project
-foaf:Project rdf:type owl:Class .
+foaf:Project rdf:type owl:Class ;
+             rdfs:comment "A project (a collective endeavour of some kind)." ;
+             rdfs:isDefinedBy foaf: ;
+             rdfs:label "Project" ;
+             vs:term_status "testing" .
 
 
 #################################################################
@@ -888,85 +1405,163 @@ foaf:Project rdf:type owl:Class .
 
 ###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
 <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                                     void:Dataset ,
                                                                      dcat:Dataset ;
                                                             rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
 
 
-###  http://archief.overheid.nl/beeld/doc/FotoRecord01
-<http://archief.overheid.nl/beeld/doc/FotoRecord01> rdf:type owl:NamedIndividual ,
-                                                             nadef:GrafischRecord ;
-                                                    edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto1> ;
-                                                    rdfs:member <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
-                                                    dcterms:creator "Nationaal Archief"@nl .
-
-
 ###  http://archief.overheid.nl/beeld/id/Foto1
 <http://archief.overheid.nl/beeld/id/Foto1> rdf:type owl:NamedIndividual ,
-                                                     nadef:Foto ;
-                                            dcterms:creator [ rdf:type nadef:PersoonsVerwijzing ;
-                                                              nadef:volledige_naam "Willem van der Poll"^^xsd:string
+                                                     aod:Foto ;
+                                            dcterms:creator [ rdf:type aod:PersoonsVerwijzing ;
+                                                              aod:volledige_naam "Willem van der Poll"^^xsd:string
                                                             ] .
+
+
+###  http://archief.overheid.nl/collectie/doc/DatasetNT00194
+<http://archief.overheid.nl/collectie/doc/DatasetNT00194> rdf:type owl:NamedIndividual ,
+                                                                   void:Dataset ,
+                                                                   dcat:Dataset ;
+                                                          dcterms:identifier "nt00194" ;
+                                                          dcterms:source <http://www.gahetna.nl/collectie/index/nt00194> ;
+                                                          rdfs:comment """Achtergrond
+Deze index verwijst naar de Commissieboeken van het archief van de Raad van State. In deze commissieboeken zijn de aanstellingsbesluiten opgenomen van militairen in de rang van kapitein en hoger. Het gaat om aanstellingen in de periode 1581-1790. De commissieboeken bevinden zich in in het archief van de Raad van State (1581-1795) 1.01.19. in de inventarisnummers 1523-1543. In totaal zijn in de index 27141 inschrijvingen opgenomen.
+
+Digitaal?
+Deze index is digitaal en op afstand raadpleegbaar. De pensioenregisters zijn dat niet. Deze kunt u reserveren voor inzage op de studiezaal van het Nationaal Archief. U kunt ook meteen scans bestellen via de Winkelwagen.
+
+Commissieboeken
+De commissieboeken van de Raad van State bevatten de inschrijvingen van aanstellingen van militairen in de rang van kapitein of hoger in het Staatse Leger. Deze aanstellingen werden chronologisch ingeschreven. In een inschrijving wordt omschreven wie er voor welke functie werd aangesteld en per wanneer. De meeste inschrijvingen omvatten niet meer dan een paar regels. 
+Wanneer het een zeer hoge functie betrof, zoals gouverneur of generaal, is de inschrijving uitgebreider.
+
+Volledigheid van de index
+Alle namen voorkomende in de commissieboeken van de Raad van State die beschreven staan in de inventarisnummers 1523-1543 van het archief van de Raad van State (1581-1795) 1.01.19 zijn in deze index opgenomen. De commissieboeken zelf zijn echter deels verloren gegaan. Zo ontbreken de boeken uit de periode 1600-1640, 1664-1672, 1700-1704 en 1793- april 1794. Voor meer informatie raadpleegt u de onderzoekgids Op zoek naar officieren van de Generaliteitslanden.
+
+Geschiedenis van de archiefvormer: 
+De Raad van State
+De Raad van State heeft een geschiedenis die teruggaat tot 1531. Vanaf 1581 functioneerde de Raad als centraal regeringscollege met taken op het gebied van oorlog, militie, financiën en bestuur. Eén van de taken van de Raad van State was het in bedrijf houden van het militaire apparaat. Daartoe werd in 1575 het Staatse Leger in het leven geroepen. De personeelsadministratie hiervan werd door de Raad van State bijgehouden. In 1788 werd er voor gekozen het leger vooral te laten bestaan uit beroepskrachten. Met de instelling van de Bataafse Republiek in 1795 werd het Staatse Leger echter opgeheven."""@nl .
+
+
+###  http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd
+<http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                                      aod:DetailRecord ;
+                                                                                             aod:isRecordType aod:TypeAanstelling ;
+                                                                                             rdfs:member <http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
+                                                                                             aod:periodebeschrijving "1735-1748"@nl ;
+                                                                                             dcterms:identifier "30a08a16-ae58-102d-8e23-0050569c51dd" ;
+                                                                                             dcterms:relation _:genid14 ;
+                                                                                             dcterms:source "NL-HaNA/1.01.19/1527//219v//" .
+
+_:genid14 rdf:type aod:PersoonsVerwijzing ;
+           aod:isOpvolgerVan [ rdf:type aod:PersoonsVerwijzing ;
+                               aod:volledige_naam "[ipv wijlen graaf Willem van Nassau]"^^xsd:string
+                             ] ;
+           aod:achternaam "Nassau"^^xsd:string ;
+           aod:functiebeschrijving "Kapitein"@nl ;
+           sem:hasTimeStamp "1647-09-16"^^xsd:string .
 
 
 ###  http://archief.overheid.nl/collectie/doc/FotoCollectie
 <http://archief.overheid.nl/collectie/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
                                                                   dcat:Catalog ;
-                                                         rdfs:label "De Fotocollectie van het Rijks Archief."@nl ;
-                                                         dcat:dataset <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> .
+                                                         dcat:dataset <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
+                                                         rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
+
+
+###  http://archief.overheid.nl/collectie/doc/FotoRecord01
+<http://archief.overheid.nl/collectie/doc/FotoRecord01> rdf:type owl:NamedIndividual ,
+                                                                 aod:GrafischRecord ;
+                                                        edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto1> ;
+                                                        rdfs:member <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
+                                                        dcterms:creator "Nationaal Archief"@nl .
+
+
+###  http://archief.overheid.nl/collectie/doc/IndexCollectie
+<http://archief.overheid.nl/collectie/doc/IndexCollectie> rdf:type owl:NamedIndividual ,
+                                                                   dcat:Catalog ;
+                                                          dcat:dataset <http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
+                                                          dcat:record <http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194> ;
+                                                          dcterms:description """Wat is een index?
+Een index gaat over de inhoud van een specifiek archief of archiefstukken en is daarmee vergelijkbaar met een index achterin een boek. Vaak zijn in een index persoons- of geografische namen opgenomen die in de originele documenten voorkomen."""@nl ;
+                                                          rdfs:label "Indexen"@nl .
 
 
 ###  http://archief.overheid.nl/collectie/doc/PersoonsCollectie
 <http://archief.overheid.nl/collectie/doc/PersoonsCollectie> rdf:type owl:NamedIndividual ,
                                                                       dcat:Catalog ;
-                                                             rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl ;
-                                                             dcat:dataset <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> .
+                                                             dcat:dataset <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ;
+                                                             rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
 
 
 ###  http://archief.overheid.nl/def/FotoCreatie
-nadef:FotoCreatie rdf:type owl:NamedIndividual ,
-                           cidoc-crm:E65_Creation .
+aod:FotoCreatie rdf:type owl:NamedIndividual ,
+                         cidoc-crm:E65_Creation .
+
+
+###  http://archief.overheid.nl/def/TypeAanstelling
+aod:TypeAanstelling rdf:type owl:NamedIndividual ,
+                             aod:DetailRecordType .
 
 
 ###  http://archief.overheid.nl/naam/doc/willem_vd_poll_naam
 <http://archief.overheid.nl/naam/doc/willem_vd_poll_naam> rdf:type owl:NamedIndividual ,
-                                                                   nadef:PersoonsNaam ;
-                                                          nadef:volledige_naam "Willem van der Poll"^^xsd:string .
+                                                                   aod:PersoonsNaam ;
+                                                          aod:volledige_naam "Willem van der Poll"^^xsd:string .
+
+
+###  http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194
+<http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194> rdf:type owl:NamedIndividual ,
+                                                                         dcat:CatalogRecord ;
+                                                                foaf:primaryTopic <http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
+                                                                dcterms:issued "7-2-2018"^^xsd:date ;
+                                                                dcterms:modified "7-2-2018"^^xsd:date .
 
 
 ###  http://archief.overheid.nl/persoon/doc/DatasetAllePersonen
 <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> rdf:type owl:NamedIndividual ,
+                                                                      void:Dataset ,
                                                                       dcat:Dataset ;
                                                              rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
 
 
 ###  http://archief.overheid.nl/persoon/doc/DatasetFotografen
 <http://archief.overheid.nl/persoon/doc/DatasetFotografen> rdf:type owl:NamedIndividual ,
+                                                                    void:Dataset ,
                                                                     dcat:Dataset ;
                                                            rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
 
 
 ###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
 <http://archief.overheid.nl/persoon/id/Willem_vd_Poll> rdf:type owl:NamedIndividual ,
-                                                                nadef:PersoonEntiteit ;
-                                                       nadef:heeftUitgevoerd _:genid14 ;
+                                                                aod:PersoonEntiteit ;
+                                                       aod:heeftUitgevoerd _:genid16 ;
                                                        rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ,
                                                                    <http://archief.overheid.nl/persoon/doc/DatasetFotografen> ;
                                                        rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
 
-_:genid14 rdf:type nadef:FotoCreatie ;
-           nadef:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto1> .
+_:genid16 rdf:type aod:FotoCreatie ;
+           aod:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto1> .
 
 
 #################################################################
 #    Annotations
 #################################################################
 
+dcterms:Agent rdfs:label "Agent"@en ;
+              rdfs:isDefinedBy dcterms: ;
+              rdfs:comment "A resource that acts or has the power to act."@en ;
+              dcterms:issued "2008-01-14"^^xsd:date ;
+              dcterms:description "Examples of Agent include person, organization, and software agent."@en ;
+              rdfs:comment "Een hulpbron die iets doet of de mogelijkheid heeft om iets te doen."@nl ;
+              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Agent-001> .
+
+
 ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
         dcterms:title "The OAI ORE terms vocabulary" ;
-        dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
-        rdfs:label "The OAI ORE terms vocabulary" ;
         dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
                           ] ;
+        dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
+        rdfs:label "The OAI ORE terms vocabulary" ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 

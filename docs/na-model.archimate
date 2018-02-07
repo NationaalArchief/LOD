@@ -257,13 +257,13 @@ rdfs:subClassOf def:ArchivalEntity;</documentation>
    rdfs:subPropertyOf rdfs:member ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="def:modelsConceptOf" id="eb837398-db0c-4d57-b259-f2d6c6be79ac"/>
-          <element xsi:type="archimate:DataObject" name="nadef:DetailRecord" id="1b2d84af-1753-4d6b-8f3a-92acd154107e">
+          <element xsi:type="archimate:DataObject" name="aod:DetailRecord" id="1b2d84af-1753-4d6b-8f3a-92acd154107e">
             <documentation>###  http://archief.overheid.nl/def/DetailRecord
-nadef:DetailRecord rdf:type owl:Class ;
-rdfs:subClassOf nadef:ArchiefVerwijzing , ore:Aggregation ;
+aod:DetailRecord rdf:type owl:Class ;
+rdfs:subClassOf aod:ArchiefVerwijzing , ore:Aggregation ;
 rdfs:comment &quot;Gebruik DetailRecord als basis voor de records uit de archieven. Hier kunnen de originele velden toegewezen worden. Conceptuele of &quot;echte&quot; entiteiten die geinterpreteerd zijn op basis van de inhoud kunnen terug verwijzen naar dit record om de authenticiteit te waarborgen. De records zelf bevatten geen interpretaties.&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:PersoonsVerwijzing" id="c9372cd9-4b12-4f62-aae0-54ee11f77731"/>
+          <element xsi:type="archimate:DataObject" name="aod:PersoonsVerwijzing" id="c9372cd9-4b12-4f62-aae0-54ee11f77731"/>
         </folder>
         <folder name="commBk (CommissieBoeken)" id="db55c60f-e4bf-4bc1-8bd3-b116a929641b">
           <element xsi:type="archimate:DataObject" name="commBk:ArchiefRaadVanState" id="5927c808-fe73-44bf-bb50-2b9c3a3e2c83">
@@ -495,11 +495,11 @@ dcat:record rdf:type owl:ObjectProperty ;
           <element xsi:type="archimate:DataObject" name="bgn:Person" id="3b4aa45f-cff7-49ca-a2b1-a468ffdb37c8">
             <documentation>###  http://biographynet.nl/schema/Person
 bgn:Person rdf:type owl:Class ;
-owl:equivalentClass nadef:PersoonEntiteit ,
+owl:equivalentClass aod:PersoonEntiteit ,
 foaf:Person ;
-owl:disjointWith nadef:HistorischeNaam ,
-nadef:PersoonsNaam ;
-rdfs:comment &quot;In all National Archives' Linked Data sets referring to Persons, nadef:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person&quot;@en .</documentation>
+owl:disjointWith aod:HistorischeNaam ,
+aod:PersoonsNaam ;
+rdfs:comment &quot;In all National Archives' Linked Data sets referring to Persons, aod:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person&quot;@en .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="bgnExt:Male" id="ecfb74fe-b9e8-407f-b231-1cd0ffdb944b"/>
           <element xsi:type="archimate:DataObject" name="bgnExt:PersonName" id="1870fbf1-6883-4414-8732-5772b247c015">
@@ -1112,33 +1112,35 @@ The void:uriSpace property can be used to state that all entity URIs in a datase
 Note: The value of void:uriSpace is an RDF literal. That is, in Turtle it is written like &quot;http://dbpedia.org/resource/&quot;, not &lt;http://dbpedia.org/resource/>.</documentation>
           </element>
         </folder>
-        <folder name="na (Nationaal Archief)" id="2fd20e51-95e1-449d-a5cd-b5d93573e160">
+        <folder name="aod (archief.overheid.nl/def)" id="2fd20e51-95e1-449d-a5cd-b5d93573e160">
           <element xsi:type="archimate:DataObject" name="nacollectie:FotoCollectie" id="74599d56-79b2-4f2b-9c8a-cea0466e9d14">
-            <documentation>nacollectie:FotoCollectie a dcat:Catalog;
-rdfs:label &quot;Catalogus van de fotocollecties van het NA&quot;^^xsd:string ;
-dcat:dataset nabeelddoc:DatasetFotoVoorbeeld;</documentation>
+            <documentation>###  http://archief.overheid.nl/collectie/doc/FotoCollectie
+&lt;http://archief.overheid.nl/collectie/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
+                                                                  dcat:Catalog ;
+                                                         rdfs:label &quot;De Fotocollectie van het Rijks Archief.&quot;@nl ;
+                                                         dcat:dataset &lt;http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="napersoonent:Willem_vd_Poll" id="39efc361-5543-4397-b776-22885f7574a4">
             <documentation>###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
 napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
-    nadef:PersoonEntiteit ; 
-    nadef:heeftUitgevoerd [ a nadef:FotoCreatie ;
-    nadef:heeftGeproduceerd nabeelddoc:FotoRecord01 ];
+    aod:PersoonEntiteit ; 
+    aod:heeftUitgevoerd [ a aod:FotoCreatie ;
+    aod:heeftGeproduceerd nabeelddoc:FotoRecord01 ];
     rdfs:member napersoondoc:DatasetAllePersonen ,
     napersoondoc:DatasetFotografen .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nabeeldent:Foto1" id="32c7fce5-baf9-4a7a-b17f-0261b2ef573e">
-            <documentation>nabeeldent:Photo1 a nadef:Foto
+            <documentation>nabeeldent:Photo1 a aod:Foto
 edm:hasView https://files.nationaalarchief.nl/photo1.jpg
 hasRights downloadonly
 dctype: &quot;zwartwit&quot;
-dcterms:creator [ a nadef:PersoonsVerwijzing ;
- nadef:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
+dcterms:creator [ a aod:PersoonsVerwijzing ;
+ aod:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nabeelddoc:FotoRecord01" id="113f77d1-583d-43c2-bc0a-ae7587f4f3fe">
             <documentation>###  http://archief.overheid.nl/beeld/doc/FotoRecord01
 nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
-      nadef:GrafischRecord ;
+      aod:GrafischRecord ;
   edm:aggregatedCHO nabeeldent:Foto1 ;
 dcterms:creator &quot;Nationaal Archief&quot;@nl ;
 rdfs:member nabeelddoc:DatasetFotoVoorbeeld .</documentation>
@@ -1149,9 +1151,9 @@ dc:creator &quot;Nationaal Archief&quot;;
 dc:format &quot;image/jpg&quot;
 </documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:ArchiefVerwijzing" id="eb18859d-a852-46fd-8c71-9ad3324c3183">
+          <element xsi:type="archimate:DataObject" name="aod:ArchiefVerwijzing" id="eb18859d-a852-46fd-8c71-9ad3324c3183">
             <documentation>###  http://archief.overheid.nl/def/ArchiefVerwijzing
-nadef:ArchiefVerwijzing rdf:type owl:Class ;
+aod:ArchiefVerwijzing rdf:type owl:Class ;
 owl:equivalentClass dbo:Reference , dcterms:BibliographicResource , edm:InformationResource , cidoc-crm:E73_Information_Object ;
 rdfs:label &quot;ArchiefHulpbron&quot;@nl .</documentation>
           </element>
@@ -1161,68 +1163,91 @@ rdfs:label &quot;Catalogus van de persoonscollectie van het NA&quot;^^xsd:string
 dcat:dataset napersoondoc:DatasetAllePersonen;
 dcat:dataset napersoondoc:DatasetFotografen;</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:ArchiefEntiteit" id="cb3974a6-47e9-4920-a6fa-b19f98d76fc0">
+          <element xsi:type="archimate:DataObject" name="aod:ArchiefEntiteit" id="cb3974a6-47e9-4920-a6fa-b19f98d76fc0">
             <documentation>###  http://archief.overheid.nl/def/ArchiefEntiteit
-nadef:ArchiefEntiteit rdf:type owl:Class ;
+aod:ArchiefEntiteit rdf:type owl:Class ;
                       rdfs:subClassOf edm:ProvidedCHO ;
-                      owl:disjointWith nadef:ArchiefHulpbron .</documentation>
+                      owl:disjointWith aod:ArchiefHulpbron .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:Bladzijde" id="59e3bb11-9b71-4c82-bc54-09b82e0011fa"/>
-          <element xsi:type="archimate:DataObject" name="nadef:FilmOpname" id="27cc3cdc-3cc7-4521-8dbf-08a6aa026031"/>
-          <element xsi:type="archimate:DataObject" name="nadef:Foto" id="ac77137d-556f-440b-bee2-d95dbe67cea9">
-            <documentation>nadef:Foto rdf:type owl:Class;
-rdfs:subClassOf nadef:ArchiefEntiteit;</documentation>
+          <element xsi:type="archimate:DataObject" name="aod:Bladzijde" id="59e3bb11-9b71-4c82-bc54-09b82e0011fa"/>
+          <element xsi:type="archimate:DataObject" name="aod:FilmOpname" id="27cc3cdc-3cc7-4521-8dbf-08a6aa026031"/>
+          <element xsi:type="archimate:DataObject" name="aod:Foto" id="ac77137d-556f-440b-bee2-d95dbe67cea9">
+            <documentation>aod:Foto rdf:type owl:Class;
+rdfs:subClassOf aod:ArchiefEntiteit;</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:FotoNegatief" id="4fdbc608-b8e9-4b7e-9d54-6098f875a14a"/>
-          <element xsi:type="archimate:DataObject" name="nadef:GeluidsOpname" id="bc0e780c-71f6-4ffc-8bd4-bb7c713155e0"/>
-          <element xsi:type="archimate:DataObject" name="nadef:GrafischRecord" id="1bf4f72c-11da-498b-b319-6314b3277aac">
+          <element xsi:type="archimate:DataObject" name="aod:FotoNegatief" id="4fdbc608-b8e9-4b7e-9d54-6098f875a14a"/>
+          <element xsi:type="archimate:DataObject" name="aod:GeluidsOpname" id="bc0e780c-71f6-4ffc-8bd4-bb7c713155e0"/>
+          <element xsi:type="archimate:DataObject" name="aod:GrafischRecord" id="1bf4f72c-11da-498b-b319-6314b3277aac">
             <documentation>###  http://archief.overheid.nl/def/GrafischRecord
-nadef:GrafischRecord rdf:type owl:Class ;
-rdfs:subClassOf nadef:DetailRecord  ;
+aod:GrafischRecord rdf:type owl:Class ;
+rdfs:subClassOf aod:DetailRecord  ;
 rdfs:comment &quot;Een record van een grafisch object. Bevat beschrijving en de verwijzing naar het fysieke object en de eventuele zichtexemplaren.&quot;@nl ;
 rdfs:label &quot;Grafisch record&quot;@nl ;
 skos:prefLabel &quot;Grafisch record&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:Illustratie" id="c1fdd966-a9ff-493c-8c61-5335e29d0c61"/>
-          <element xsi:type="archimate:DataObject" name="nadef:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
-          <element xsi:type="archimate:DataObject" name="nadef:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
-          <element xsi:type="archimate:DataObject" name="nadef:PersoonEntiteit" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
+          <element xsi:type="archimate:DataObject" name="aod:Illustratie" id="c1fdd966-a9ff-493c-8c61-5335e29d0c61"/>
+          <element xsi:type="archimate:DataObject" name="aod:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
+          <element xsi:type="archimate:DataObject" name="aod:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
+          <element xsi:type="archimate:DataObject" name="aod:PersoonEntiteit" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
             <documentation>###  http://archief.overheid.nl/def/PersoonEntiteit
-nadef:PersoonEntiteit rdf:type owl:Class ;
+aod:PersoonEntiteit rdf:type owl:Class ;
 owl:equivalentClass bgn:Person , foaf:Person, cidoc-crm:E39_Actor ;
-rdfs:subClassOf nadef:ArchiefEntiteit ;
+rdfs:subClassOf aod:ArchiefEntiteit ;
 rdfs:comment &quot;Fysiek persoon in het domein van archieven.&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:ZeeKaart" id="83d7a993-b6ae-4ac4-b9a2-0c069df29fe9"/>
+          <element xsi:type="archimate:DataObject" name="aod:ZeeKaart" id="83d7a993-b6ae-4ac4-b9a2-0c069df29fe9"/>
           <element xsi:type="archimate:DataObject" name="napersoondoc:DatasetAllePersonen" id="5022489a-2a8a-447f-bc9e-926e37de5fd1"/>
           <element xsi:type="archimate:DataObject" name="napersoondoc:DatasetFotografen" id="789686bc-2f94-4cc4-b2a2-dac95986bf37"/>
-          <element xsi:type="archimate:DataObject" name="nadef:FotoCreatie" id="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130">
+          <element xsi:type="archimate:DataObject" name="aod:FotoCreatie" id="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130">
             <documentation>###  http://archief.overheid.nl/def/FotoCreatie
-nadef:FotoCreatie rdf:type owl:NamedIndividual ,
+aod:FotoCreatie rdf:type owl:NamedIndividual ,
                            cidoc-crm:E65_Creation .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:PersoonsBeschrijving" id="bf19e9bf-3501-4211-86b4-6afda06de363">
+          <element xsi:type="archimate:DataObject" name="aod:PersoonsBeschrijving" id="bf19e9bf-3501-4211-86b4-6afda06de363">
             <documentation>###  http://archief.overheid.nl/def/PersoonsBeschrijving
-nadef:PersoonsBeschrijving rdf:type owl:Class ;
-rdfs:subClassOf nadef:ArchiefHulpbron ,
- nadef:PersoonsNaam ;
+aod:PersoonsBeschrijving rdf:type owl:Class ;
+rdfs:subClassOf aod:ArchiefHulpbron ,
+ aod:PersoonsNaam ;
 rdfs:comment &quot;Beschrijving van een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven.&quot;@nl ;
 rdfs:label &quot;Persoonsbeschrijving&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:resultaatVanActiviteit" id="5bddf005-beef-45a1-94f3-8bda8fec6803">
+          <element xsi:type="archimate:DataObject" name="aod:resultaatVanActiviteit" id="5bddf005-beef-45a1-94f3-8bda8fec6803">
             <documentation>###  http://archief.overheid.nl/def/resultaatVanActiviteit
-nadef:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
+aod:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf cidoc-crm:P94_has_created ;
-                             rdfs:range nadef:ArchiefEntiteit ;
+                             rdfs:range aod:ArchiefEntiteit ;
                              rdfs:comment &quot;Het resultaat van een activiteit, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn.&quot;@nl ;
                              rdfs:label &quot;resultaat van activiteit&quot; .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="nadef:heeftUitgevoerd" id="c4a49a84-c6aa-47b4-bff4-c30f3c44c6ad">
+          <element xsi:type="archimate:DataObject" name="aod:heeftUitgevoerd" id="c4a49a84-c6aa-47b4-bff4-c30f3c44c6ad">
             <documentation>###  http://archief.overheid.nl/def/heeftUitgevoerd
-nadef:heeftUitgevoerd rdf:type owl:ObjectProperty ;
+aod:heeftUitgevoerd rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
                       rdfs:domain bgn:Person ;
                       rdfs:range cidoc-crm:E65_Creation .</documentation>
+          </element>
+          <element xsi:type="archimate:DataObject" name="nadoc:IndexCollectie" id="49e80716-e251-4260-b7a9-e7e4ac5eb4f6">
+            <documentation>###  http://archief.overheid.nl/collectie/doc/IndexCollectie
+&lt;http://archief.overheid.nl/collectie/doc/IndexCollectie> rdf:type owl:NamedIndividual ,
+                                                                   dcat:Catalog ;
+                                                          dcterms:description &quot;&quot;&quot;Wat is een index?
+Een index gaat over de inhoud van een specifiek archief of archiefstukken en is daarmee vergelijkbaar met een index achterin een boek. Vaak zijn in een index persoons- of geografische namen opgenomen die in de originele documenten voorkomen.&quot;&quot;&quot;@nl ;
+                                                          rdfs:label &quot;Indexen&quot;@nl .</documentation>
+          </element>
+          <element xsi:type="archimate:DataObject" name="nadoc:DatasetNT00194" id="a762d0eb-04c4-496c-9b3e-88f2a8582117">
+            <documentation>###  http://archief.overheid.nl/collectie/doc/DatasetNT00194
+&lt;http://archief.overheid.nl/collectie/doc/DatasetNT00194> rdf:type owl:NamedIndividual ,
+                                                                   void:Dataset ,
+                                                                   dcat:Dataset ;</documentation>
+          </element>
+          <element xsi:type="archimate:DataObject" name="nadoc:DetailRecord-UUID[n]" id="388ace7c-3c8a-49dc-951f-acaaad3fba98"/>
+          <element xsi:type="archimate:DataObject" name="nadoc:CatalogusRecordNT00194" id="fc325332-63e3-4cf4-ba89-d5851fc493f3">
+            <documentation>###  http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194
+&lt;http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194> rdf:type owl:NamedIndividual ,
+                                                                         dcat:CatalogRecord ;
+                                                                foaf:primaryTopic &lt;http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
+                                                                dcterms:issued &quot;7-2-2018&quot;^^xsd:date ;
+                                                                dcterms:modified &quot;7-2-2018&quot;^^xsd:date .</documentation>
           </element>
         </folder>
         <folder name="ore" id="9631fd12-438f-4d3d-a9cd-721263b0a3d7">
@@ -1758,12 +1783,12 @@ If you would like an overlay to point to a specific point in the image, you can 
     <element xsi:type="archimate:Grouping" name="Niet MVP: Niet aanwezig of niet werkend gezien" id="92aa9b5e-c506-4ca2-ab0a-3892405ab998"/>
     <element xsi:type="archimate:Junction" name="Junction" id="15ef597f-382a-4fa3-be51-048506eb67fd"/>
     <element xsi:type="archimate:Grouping" name="Blanknode: fotocreatie van Willem_vd_Poll" id="289c3d97-e906-4913-8ed9-1130c3918a46">
-      <documentation> nadef:heeftUitgevoerd [ a nadef:FotoCreatie ;
-    nadef:resultaatVanActiviteit nabeeldent:Foto1 ];</documentation>
+      <documentation> aod:heeftUitgevoerd [ a aod:FotoCreatie ;
+    aod:resultaatVanActiviteit nabeeldent:Foto1 ];</documentation>
     </element>
     <element xsi:type="archimate:Grouping" name="Blanknode: persoonsbeschrijving van Willem" id="e351a86d-3ab8-4fda-b5c1-4b71d5576b90">
-      <documentation>[ a nadef:PersoonsBeschrijving ;
-  nadef:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
+      <documentation>[ a aod:PersoonsBeschrijving ;
+  aod:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
     </element>
     <element xsi:type="archimate:Grouping" name="Gebeurtenissen of activiteiten" id="85c51fed-ea24-41d9-8e82-40ac5db8bdb4"/>
     <element xsi:type="archimate:Grouping" name="Legenda" id="10edc1e8-cb12-41c7-aba0-d27e77c22558"/>
@@ -2381,11 +2406,11 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="13aaf85f-af8b-43a3-8ed6-0dbcb5eba1b6" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="aac74a56-45b5-4af9-b714-64ca60f1cfff"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="bbb7ab21-9c06-4b7d-ad86-45314baad2ad" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="9875ee2a-3478-47ca-b21d-673832503845"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="c3647027-2a8b-40ea-bf8b-23c0ff8f5e9b" source="eb18859d-a852-46fd-8c71-9ad3324c3183" target="0772c580-625e-4c6e-b0b0-82ec126f119b"/>
-    <element xsi:type="archimate:AssociationRelationship" name="nadef:heeftUitgevoerd" id="8b51cb4e-1c0d-40d8-95fc-8ef6f5f9cd90" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130"/>
+    <element xsi:type="archimate:AssociationRelationship" name="aod:heeftUitgevoerd" id="8b51cb4e-1c0d-40d8-95fc-8ef6f5f9cd90" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130"/>
     <element xsi:type="archimate:SpecializationRelationship" name="a (rdf:type)" id="f5bb6653-510c-4a54-b9a2-56585e455f59" source="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130" target="4f6540b0-5539-4d40-abd1-c89b1b9993de"/>
     <element xsi:type="archimate:AggregationRelationship" id="0f5188f0-251b-4cca-a8a3-1766db1dccef" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130"/>
-    <element xsi:type="archimate:AggregationRelationship" name="nadef:heeftUitgevoerd" id="4a9a2898-d8c8-41d9-8711-e5636a8aa7e7" source="39efc361-5543-4397-b776-22885f7574a4" target="289c3d97-e906-4913-8ed9-1130c3918a46"/>
-    <element xsi:type="archimate:AggregationRelationship" name="nadef:resultaatVanActiviteit" id="77004b3b-179b-45ae-a963-bed898e66b41" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="32c7fce5-baf9-4a7a-b17f-0261b2ef573e"/>
+    <element xsi:type="archimate:AggregationRelationship" name="aod:heeftUitgevoerd" id="4a9a2898-d8c8-41d9-8711-e5636a8aa7e7" source="39efc361-5543-4397-b776-22885f7574a4" target="289c3d97-e906-4913-8ed9-1130c3918a46"/>
+    <element xsi:type="archimate:AggregationRelationship" name="aod:resultaatVanActiviteit" id="77004b3b-179b-45ae-a963-bed898e66b41" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="32c7fce5-baf9-4a7a-b17f-0261b2ef573e"/>
     <element xsi:type="archimate:AggregationRelationship" name="dct:creator" id="570dc379-7500-4356-97da-bd9de6f8dace" source="32c7fce5-baf9-4a7a-b17f-0261b2ef573e" target="e351a86d-3ab8-4fda-b5c1-4b71d5576b90"/>
     <element xsi:type="archimate:AggregationRelationship" id="764d519e-c596-4e99-9d55-47571ea4eada" source="e351a86d-3ab8-4fda-b5c1-4b71d5576b90" target="bf19e9bf-3501-4211-86b4-6afda06de363"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="e317bdee-b36d-44e0-bc1f-46a5cc59e0a8" source="1b2d84af-1753-4d6b-8f3a-92acd154107e" target="eb18859d-a852-46fd-8c71-9ad3324c3183"/>
@@ -2409,6 +2434,11 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" id="fdf3e116-7a56-4c43-9afe-128c4695608b" source="85c51fed-ea24-41d9-8e82-40ac5db8bdb4" target="c4a49a84-c6aa-47b4-bff4-c30f3c44c6ad"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="baab5735-57e9-4f8a-908c-94dd2088608f" source="cb3974a6-47e9-4920-a6fa-b19f98d76fc0" target="d711f22c-3d6d-46e2-b646-96a692de8b91"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="273405dd-d87f-4bae-ba5f-8824f6182c10" source="c9372cd9-4b12-4f62-aae0-54ee11f77731" target="eb18859d-a852-46fd-8c71-9ad3324c3183"/>
+    <element xsi:type="archimate:SpecializationRelationship" name="rdf:type(a)" id="7c8e1ed4-1ebc-4b45-ab07-34d6c08f8828" source="49e80716-e251-4260-b7a9-e7e4ac5eb4f6" target="d508ea4d-162b-48db-a138-01cd31eb7d75"/>
+    <element xsi:type="archimate:AggregationRelationship" name="dcat:dataset" id="557de2da-4978-4e92-9bd2-c13f668ad252" source="49e80716-e251-4260-b7a9-e7e4ac5eb4f6" target="a762d0eb-04c4-496c-9b3e-88f2a8582117"/>
+    <element xsi:type="archimate:AggregationRelationship" name="rdfs:member" id="44574858-3ec1-4ce5-a9ed-5b9dfe35f735" source="388ace7c-3c8a-49dc-951f-acaaad3fba98" target="a762d0eb-04c4-496c-9b3e-88f2a8582117"/>
+    <element xsi:type="archimate:AggregationRelationship" name="dcat:record" id="154d5bbf-b252-49e6-b735-107ce8906334" source="49e80716-e251-4260-b7a9-e7e4ac5eb4f6" target="fc325332-63e3-4cf4-ba89-d5851fc493f3"/>
+    <element xsi:type="archimate:AggregationRelationship" name=" foaf:primaryTopic" id="0b978582-49fd-4e70-b6e8-2bea58fc25a3" source="fc325332-63e3-4cf4-ba89-d5851fc493f3" target="a762d0eb-04c4-496c-9b3e-88f2a8582117"/>
   </folder>
   <folder name="Views" id="1106c770-e13e-4b3d-b75c-8d72c67d5ead" type="diagrams">
     <folder name="Linked Data" id="9b434202-298c-47cc-a78d-ba4cc18702aa">
@@ -2714,7 +2744,7 @@ disjointWith	…the first class and second class have no members in common	:Man 
 Bijvoorbeeld “wie” —> /persoon/ of /organisatie/
 /beeld/ zou bij “wat” kunnen horen, maar het hoeft niet zo nauw vastgelegd te worden in de URI door overal “wat” voor te plakken.
  
-nadef: http://archief.overheid.nl/def/ (termen van het NA)
+aod: http://archief.overheid.nl/def/ (termen van de RijksCollectie)
 nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
 nabeelddoc: http://archief.overheid.nl/beeld/doc/  +  {fotorecord-referentie} (alle informatie objecten, ook datasets)
 nabeeldent: http://archief.overheid.nl/beeld/id/  +  {entiteit-referentie} (entiteiten, &quot;fysieke&quot; objecten, niet informatie objecten)
@@ -2797,7 +2827,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         </child>
         <child xsi:type="archimate:Note" id="ef51348f-2de6-4312-a5dc-c75c3bb357f2" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
           <bounds x="-54" y="720" width="121" height="49"/>
-          <sourceConnection id="014f3ffb-295e-47a4-bec7-4b20506fcd20" name="nadef:volledige_naam" lineColor="#000000" source="ef51348f-2de6-4312-a5dc-c75c3bb357f2" target="82bc1000-5d13-49a9-a2c6-27930a9de43d"/>
+          <sourceConnection id="014f3ffb-295e-47a4-bec7-4b20506fcd20" name="aod:volledige_naam" lineColor="#000000" source="ef51348f-2de6-4312-a5dc-c75c3bb357f2" target="82bc1000-5d13-49a9-a2c6-27930a9de43d"/>
           <content>&quot;Willem van der Poll&quot;^^xsd:string </content>
         </child>
       </element>
@@ -2817,6 +2847,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         <child xsi:type="archimate:DiagramObject" id="e3441df1-36a3-42c3-b01c-2f0f1d434771" targetConnections="23be92e8-e141-4e4f-ba80-e04f88b33dc8" lineColor="#5c5c5c" fillColor="#3b99fc" archimateElement="346ae25d-adfb-47c7-a082-3bd2984fe625">
           <bounds x="744" y="192" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="417b8c3e-f5d1-472c-b5bb-362840b996e7" lineColor="#000000" textPosition="2" source="e3441df1-36a3-42c3-b01c-2f0f1d434771" target="aca0906c-8ab0-4203-b0ca-e7d21fa1dfb4" archimateRelationship="9812926e-039e-4fc0-84dd-3c5e74a4b647"/>
+          <sourceConnection xsi:type="archimate:Connection" id="4ee1ad20-367a-4a28-9177-6c5b19c5410c" lineColor="#000000" source="e3441df1-36a3-42c3-b01c-2f0f1d434771" target="38901c4a-1de8-4244-baf3-32da7832cafe" archimateRelationship="041bc8e5-892f-476e-8291-d55f05528c4e"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="aca0906c-8ab0-4203-b0ca-e7d21fa1dfb4" targetConnections="417b8c3e-f5d1-472c-b5bb-362840b996e7 dd5a6bdf-95a7-41c7-b20e-49657a12bf54 b7e6c552-9e71-4c4b-98d9-692401e821ab" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="19b6fa86-85b5-4e04-91ac-eb2f31091a5e">
           <bounds x="502" y="192" width="120" height="55"/>
@@ -2876,6 +2907,9 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
           <bounds x="1500" y="288" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="a2993595-bf90-4e71-8103-c859ff555db8" lineColor="#000000" source="c448fbaf-7d3e-4265-ba37-999062feaf3f" target="b2f709cc-3f0d-48ed-8752-77c898206bcd" archimateRelationship="23e98ee7-e073-48de-9f9e-ec6ae18849df"/>
           <sourceConnection xsi:type="archimate:Connection" id="30b824a7-8baa-49ad-a6a0-65b8368097c8" lineColor="#000000" source="c448fbaf-7d3e-4265-ba37-999062feaf3f" target="8d6f76e3-4a91-42c7-9fdc-483982a2b871" archimateRelationship="75febd73-1dfb-4489-b88d-5d0b95ff83cf"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="38901c4a-1de8-4244-baf3-32da7832cafe" targetConnections="4ee1ad20-367a-4a28-9177-6c5b19c5410c" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="5ac04ad2-e7b6-427c-84b5-62be68cd9618">
+          <bounds x="741" y="91" width="120" height="55"/>
         </child>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" name="NT00334: RDF NT Bewindslieden" id="adb8a019-3b8e-452d-a9fa-ab464572f43f">
@@ -3462,6 +3496,87 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         <child xsi:type="archimate:DiagramObject" id="6526eda3-eb62-49b9-b157-7aea876dd778" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="c9372cd9-4b12-4f62-aae0-54ee11f77731">
           <bounds x="108" y="372" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="7b6689bf-dbdc-4dd2-b8dc-a6a3bcb29fc2" lineColor="#000000" source="6526eda3-eb62-49b9-b157-7aea876dd778" target="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" archimateRelationship="273405dd-d87f-4bae-ba5f-8824f6182c10"/>
+        </child>
+      </element>
+      <element xsi:type="archimate:ArchimateDiagramModel" name="NA NadereToegang Voorbeeld Commissieboeken (NT00194)" id="011f662a-65f5-4e62-bddf-2b73b3147116">
+        <child xsi:type="archimate:DiagramObject" id="b3f3ef44-7dfd-46a4-a8d4-19030214373a" lineColor="#5c5c5c" fillColor="#ffffff" archimateElement="10edc1e8-cb12-41c7-aba0-d27e77c22558">
+          <bounds x="-72" y="24" width="181" height="241"/>
+          <sourceConnection xsi:type="archimate:Connection" id="4107524d-402e-443b-934f-a6c7dd996207" source="b3f3ef44-7dfd-46a4-a8d4-19030214373a" target="c4e31e30-2ada-4c5c-a8da-4d1ee99a60ac" archimateRelationship="3e8a1dbd-0e70-43a1-9230-62e047f37392"/>
+          <sourceConnection xsi:type="archimate:Connection" id="5da355b4-c10b-48f7-9419-302209c25e38" source="b3f3ef44-7dfd-46a4-a8d4-19030214373a" target="f86e11f6-5fbb-4e6f-8e64-e1208a9603ab" archimateRelationship="02826fb4-6f55-413b-bbc4-5c483bcbb171"/>
+          <sourceConnection xsi:type="archimate:Connection" id="8826e575-5ab4-4a95-84b8-784c6aecea0d" source="b3f3ef44-7dfd-46a4-a8d4-19030214373a" target="913478aa-3c48-4765-911a-ac3db274f74e" archimateRelationship="f3351561-bca6-470a-a3b0-1b356fa38030"/>
+          <child xsi:type="archimate:DiagramObject" id="c4e31e30-2ada-4c5c-a8da-4d1ee99a60ac" targetConnections="4107524d-402e-443b-934f-a6c7dd996207" lineColor="#5c5c5c" fillColor="#d783ff" archimateElement="45f4b885-8f21-45cd-a7d4-b63b738a6191">
+            <bounds x="24" y="108" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="f86e11f6-5fbb-4e6f-8e64-e1208a9603ab" targetConnections="5da355b4-c10b-48f7-9419-302209c25e38" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="c7aa225f-8a77-4476-afc3-d623f4a356f8">
+            <bounds x="24" y="48" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="913478aa-3c48-4765-911a-ac3db274f74e" targetConnections="8826e575-5ab4-4a95-84b8-784c6aecea0d" lineColor="#5c5c5c" fillColor="#0096ff" archimateElement="a04d9397-9c90-49b0-8904-2d949b926b17">
+            <bounds x="24" y="168" width="120" height="55"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Note" id="51ffde5d-cebe-4b79-9b2e-ea9376b06c95" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
+          <bounds x="924" y="120" width="661" height="361"/>
+          <content>Opmerking: we gebruiken niet de letterlijke woorden “wie” “wat” “waar” “wanneer” in de URI, we gebruiken wel woorden die iets zeggen over het wie wat waar wanneer.
+Bijvoorbeeld “wie” —> /persoon/ of /organisatie/
+/beeld/ zou bij “wat” kunnen horen, maar het hoeft niet zo nauw vastgelegd te worden in de URI door overal “wat” voor te plakken.
+ 
+aod: http://archief.overheid.nl/def/ (termen van het NA)
+nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
+nabeelddoc: http://archief.overheid.nl/beeld/doc/  +  {fotorecord-referentie} (alle informatie objecten, ook datasets)
+nabeeldent: http://archief.overheid.nl/beeld/id/  +  {entiteit-referentie} (entiteiten, &quot;fysieke&quot; objecten, niet informatie objecten)
+napersoonent: http://archief.overheid.nl/persoon/id/ +  {persoon-referentie}  (personen die voorkomen in de archieven, dus ook fotografen)
+napersoondoc: http://archief.overheid.nl/persoon/doc/ +  (datasets van personen)
+
+Alternatief:
+ipv na arcov, dus: arcovdef ipv nadef
+
+Prullenbak:
+nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-referentie}  (verzameling informatie objecten, datasets van foto's)
+</content>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="4e990738-4399-4471-b3d9-5792621d68f6" targetConnections="d897ac4b-02a2-426d-b4e8-0b0e6f70912c 9b341093-05fa-4dff-a868-61e1c07324da" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="d508ea4d-162b-48db-a138-01cd31eb7d75">
+          <bounds x="432" y="36" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="f760f4c6-a66d-4d14-8d0c-0bc36bcf82c4" lineColor="#5c5c5c" fillColor="#d783ff" archimateElement="d773cbf6-ffe1-472a-80f8-19dd945a1d0e">
+          <bounds x="624" y="135" width="120" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="d897ac4b-02a2-426d-b4e8-0b0e6f70912c" lineColor="#000000" source="f760f4c6-a66d-4d14-8d0c-0bc36bcf82c4" target="4e990738-4399-4471-b3d9-5792621d68f6" archimateRelationship="6c33e18b-e566-479f-82a4-5672c5e24dc9"/>
+          <sourceConnection xsi:type="archimate:Connection" id="a63f4355-ef26-4dd3-8794-ad82d1750c6f" lineColor="#000000" source="f760f4c6-a66d-4d14-8d0c-0bc36bcf82c4" target="6fdbdfe2-bcf5-433f-8460-a594fc24f64a" archimateRelationship="b5089662-e418-4c5d-b28c-39fc1861b8cd"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="6fdbdfe2-bcf5-433f-8460-a594fc24f64a" targetConnections="a63f4355-ef26-4dd3-8794-ad82d1750c6f" lineColor="#5c5c5c" fillColor="#d783ff" archimateElement="5022489a-2a8a-447f-bc9e-926e37de5fd1">
+          <bounds x="624" y="240" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="e6c00685-5e2f-4a90-9aee-cd5b36355154" targetConnections="798416e2-e38a-464b-b830-17f5c75ef195" lineColor="#5c5c5c" fillColor="#ffffff" archimateElement="e351a86d-3ab8-4fda-b5c1-4b71d5576b90">
+          <bounds x="-72" y="564" width="157" height="109"/>
+          <sourceConnection xsi:type="archimate:Connection" id="b51ba3bd-dca0-4856-bc7e-0fe6f5d43065" source="e6c00685-5e2f-4a90-9aee-cd5b36355154" target="7252a478-0c3b-4840-b229-c7efa5818e34" archimateRelationship="764d519e-c596-4e99-9d55-47571ea4eada"/>
+          <child xsi:type="archimate:DiagramObject" id="7252a478-0c3b-4840-b229-c7efa5818e34" targetConnections="b51ba3bd-dca0-4856-bc7e-0fe6f5d43065" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="bf19e9bf-3501-4211-86b4-6afda06de363">
+            <bounds x="12" y="36" width="120" height="55"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Note" id="519967e6-5288-4256-a97c-d676745d2998" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
+          <bounds x="-54" y="720" width="121" height="49"/>
+          <sourceConnection id="798416e2-e38a-464b-b830-17f5c75ef195" name="aod:volledige_naam" lineColor="#000000" source="519967e6-5288-4256-a97c-d676745d2998" target="e6c00685-5e2f-4a90-9aee-cd5b36355154"/>
+          <content>&quot;Willem van der Poll&quot;^^xsd:string </content>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="f43dee12-6901-4149-91e9-9f1089d58a17" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="49e80716-e251-4260-b7a9-e7e4ac5eb4f6">
+          <bounds x="432" y="135" width="120" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="9b341093-05fa-4dff-a868-61e1c07324da" lineColor="#000000" source="f43dee12-6901-4149-91e9-9f1089d58a17" target="4e990738-4399-4471-b3d9-5792621d68f6" archimateRelationship="7c8e1ed4-1ebc-4b45-ab07-34d6c08f8828"/>
+          <sourceConnection xsi:type="archimate:Connection" id="75c0b1b8-48f9-4141-a828-23ab12b8680e" lineColor="#000000" source="f43dee12-6901-4149-91e9-9f1089d58a17" target="6ddc6d82-12cf-4dd2-8e38-dd54b86b60ae" archimateRelationship="557de2da-4978-4e92-9bd2-c13f668ad252"/>
+          <sourceConnection xsi:type="archimate:Connection" id="b9c97af8-da85-47b2-858e-519bd1727f67" lineColor="#000000" textPosition="0" source="f43dee12-6901-4149-91e9-9f1089d58a17" target="ae8e2b70-b6ff-4ea9-921e-9f3dae97c9d1" archimateRelationship="154d5bbf-b252-49e6-b735-107ce8906334">
+            <bendpoint startX="-48" startY="78" endX="180" endY="3"/>
+          </sourceConnection>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="6ddc6d82-12cf-4dd2-8e38-dd54b86b60ae" targetConnections="75c0b1b8-48f9-4141-a828-23ab12b8680e d2b226c8-537e-444c-a09f-5a0fc7e2f4fc 231b91db-8650-419b-a5b2-0410e750b1bf" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="a762d0eb-04c4-496c-9b3e-88f2a8582117">
+          <bounds x="432" y="300" width="120" height="55"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="dd6c2a05-3c74-4c65-b158-01e34359b416" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="388ace7c-3c8a-49dc-951f-acaaad3fba98">
+          <bounds x="168" y="408" width="120" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="d2b226c8-537e-444c-a09f-5a0fc7e2f4fc" lineColor="#000000" source="dd6c2a05-3c74-4c65-b158-01e34359b416" target="6ddc6d82-12cf-4dd2-8e38-dd54b86b60ae" archimateRelationship="44574858-3ec1-4ce5-a9ed-5b9dfe35f735"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="ae8e2b70-b6ff-4ea9-921e-9f3dae97c9d1" targetConnections="b9c97af8-da85-47b2-858e-519bd1727f67" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="fc325332-63e3-4cf4-ba89-d5851fc493f3">
+          <bounds x="204" y="210" width="120" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="231b91db-8650-419b-a5b2-0410e750b1bf" lineColor="#000000" textPosition="0" source="ae8e2b70-b6ff-4ea9-921e-9f3dae97c9d1" target="6ddc6d82-12cf-4dd2-8e38-dd54b86b60ae" archimateRelationship="0b978582-49fd-4e70-b6e8-2bea58fc25a3">
+            <bendpoint startY="87" endX="-228" endY="-3"/>
+          </sourceConnection>
         </child>
       </element>
     </folder>
