@@ -219,9 +219,9 @@ aod:heeftUitgevoerd rdf:type owl:ObjectProperty ;
 aod:isOpvolgerVan rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   owl:inverseOf aod:isVoorgangerVan ;
-                  rdfs:domain aod:PersoonEntiteit ,
+                  rdfs:domain aod:Persoon ,
                               aod:PersoonsVerwijzing ;
-                  rdfs:range aod:PersoonEntiteit ,
+                  rdfs:range aod:Persoon ,
                              aod:PersoonsVerwijzing .
 
 
@@ -235,9 +235,9 @@ aod:isRecordType rdf:type owl:ObjectProperty ;
 
 ###  http://archief.overheid.nl/def/isVoorgangerVan
 aod:isVoorgangerVan rdf:type owl:ObjectProperty ;
-                    rdfs:domain aod:PersoonEntiteit ,
+                    rdfs:domain aod:Persoon ,
                                 aod:PersoonsVerwijzing ;
-                    rdfs:range aod:PersoonEntiteit ,
+                    rdfs:range aod:Persoon ,
                                aod:PersoonsVerwijzing ;
                     rdfs:comment "Geeft aan dat iemand (beschreven of echt persoon) voor gegaan is aan een ander iemand zonder context van de activiteit."@nl .
 
@@ -611,21 +611,12 @@ aod:achternaam rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/achternaam_van_meisjesnaam
 aod:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
-                               rdfs:subPropertyOf aod:achtervoegsel ;
+                               rdfs:subPropertyOf aod:postpositie ;
                                rdfs:domain aod:HistorischeNaam ;
                                rdfs:range xsd:string ;
                                rdfs:comment "maiden name as the last part of a person's name"@en ;
                                rdfs:label "achternaam van meisjesnaam"@nl ;
                                skos:prefLabel "achternaam van meisjesnaam"@nl .
-
-
-###  http://archief.overheid.nl/def/achtervoegsel
-aod:achtervoegsel rdf:type owl:DatatypeProperty ;
-                  rdfs:domain aod:HistorischeNaam ,
-                              aod:PersoonsVerwijzing ;
-                  rdfs:range xsd:string ;
-                  rdfs:label "achtervoegsel"@nl ,
-                             "postposition"@en .
 
 
 ###  http://archief.overheid.nl/def/beroepsbeschrijving
@@ -644,7 +635,7 @@ aod:functiebeschrijving rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/initialen
 aod:initialen rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf aod:voorvoegsel ;
+              rdfs:subPropertyOf aod:prepositie ;
               rdfs:domain aod:HistorischeNaam ,
                           aod:PersoonsVerwijzing ;
               rdfs:range xsd:string ;
@@ -666,7 +657,7 @@ aod:naamstoevoeging rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/patroniem_na_achternaam
 aod:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
-                            rdfs:subPropertyOf aod:achtervoegsel ;
+                            rdfs:subPropertyOf aod:postpositie ;
                             rdfs:domain aod:HistorischeNaam ;
                             rdfs:range xsd:string ;
                             rdfs:label "patronym after last name"@en ;
@@ -676,7 +667,7 @@ aod:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/patroniem_voor_naam
 aod:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
-                        rdfs:subPropertyOf aod:voorvoegsel ;
+                        rdfs:subPropertyOf aod:prepositie ;
                         rdfs:domain aod:HistorischeNaam ,
                                     aod:PersoonsVerwijzing ;
                         rdfs:range xsd:string ;
@@ -691,9 +682,33 @@ aod:periodebeschrijving rdf:type owl:DatatypeProperty ;
                         rdfs:comment "Beschrijft een periode waar de archiefverwijzing betrekking op heeft."@nl .
 
 
+###  http://archief.overheid.nl/def/postpositie
+aod:postpositie rdf:type owl:DatatypeProperty ;
+                rdfs:domain aod:HistorischeNaam ,
+                            aod:PersoonsVerwijzing ;
+                rdfs:range xsd:string ;
+                rdfs:label "achtervoegsel"@nl ,
+                           "postposition"@en .
+
+
+###  http://archief.overheid.nl/def/prepositie
+aod:prepositie rdf:type owl:DatatypeProperty ;
+               rdfs:domain aod:HistorischeNaam ,
+                           aod:PersoonsVerwijzing ;
+               rdfs:range xsd:string ;
+               rdfs:label "preposition"@en ,
+                          "voorvoegsel"@nl ;
+               skos:prefLabel "voorvoegsel"@nl .
+
+
+###  http://archief.overheid.nl/def/prepositie_naam
+aod:prepositie_naam rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf aod:prepositie .
+
+
 ###  http://archief.overheid.nl/def/titel
 aod:titel rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf aod:voorvoegsel ;
+          rdfs:subPropertyOf aod:prepositie ;
           rdfs:domain aod:HistorischeNaam ,
                       aod:PersoonsVerwijzing ;
           rdfs:range xsd:string ;
@@ -705,7 +720,7 @@ aod:titel rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/titel_na_naam
 aod:titel_na_naam rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf aod:achtervoegsel ;
+                  rdfs:subPropertyOf aod:postpositie ;
                   rdfs:domain aod:HistorischeNaam ;
                   rdfs:range xsd:string ;
                   rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@nl ;
@@ -723,7 +738,7 @@ aod:volledige_naam rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.overheid.nl/def/voornaam
 aod:voornaam rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf aod:voorvoegsel ;
+             rdfs:subPropertyOf aod:prepositie ;
              rdfs:domain aod:HistorischeNaam ,
                          aod:PersoonsVerwijzing ;
              rdfs:range xsd:string ;
@@ -731,16 +746,6 @@ aod:voornaam rdf:type owl:DatatypeProperty ;
              rdfs:label "first name"@en ,
                         "voornaam"@nl ;
              skos:prefLabel "voornaam"@nl .
-
-
-###  http://archief.overheid.nl/def/voorvoegsel
-aod:voorvoegsel rdf:type owl:DatatypeProperty ;
-                rdfs:domain aod:HistorischeNaam ,
-                            aod:PersoonsVerwijzing ;
-                rdfs:range xsd:string ;
-                rdfs:label "preposition"@en ,
-                           "voorvoegsel"@nl ;
-                skos:prefLabel "voorvoegsel"@nl .
 
 
 ###  http://purl.org/dc/terms/identifier
@@ -908,7 +913,7 @@ aod:GrafischRecord rdf:type owl:Class ;
 ###  http://archief.overheid.nl/def/HistorischeNaam
 aod:HistorischeNaam rdf:type owl:Class ;
                     rdfs:subClassOf aod:ArchiefNaam ;
-                    owl:disjointWith aod:PersoonEntiteit ;
+                    owl:disjointWith aod:Persoon ;
                     rdfs:comment "Een naam van een persoon uit de geschiedenis, niet de persoon zelf."@nl ;
                     rdfs:label "Naam van een persoon uit de geschiedenis"@nl ;
                     skos:prefLabel "Historische naam"@nl .
@@ -929,14 +934,14 @@ aod:LandKaart rdf:type owl:Class ;
               rdfs:subClassOf aod:Kaart .
 
 
-###  http://archief.overheid.nl/def/PersoonEntiteit
-aod:PersoonEntiteit rdf:type owl:Class ;
-                    owl:equivalentClass bgn:Person ,
-                                        cidoc-crm:E39_Actor ;
-                    rdfs:subClassOf aod:ArchiefEntiteit ;
-                    owl:disjointWith aod:PersoonsNaam ,
-                                     aod:PersoonsVerwijzing ;
-                    rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
+###  http://archief.overheid.nl/def/Persoon
+aod:Persoon rdf:type owl:Class ;
+            owl:equivalentClass bgn:Person ,
+                                cidoc-crm:E39_Actor ;
+            rdfs:subClassOf aod:ArchiefEntiteit ;
+            owl:disjointWith aod:PersoonsNaam ,
+                             aod:PersoonsVerwijzing ;
+            rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
 
 
 ###  http://archief.overheid.nl/def/PersoonsNaam
@@ -1533,7 +1538,7 @@ aod:TypeAanstelling rdf:type owl:NamedIndividual ,
 
 ###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
 <http://archief.overheid.nl/persoon/id/Willem_vd_Poll> rdf:type owl:NamedIndividual ,
-                                                                aod:PersoonEntiteit ;
+                                                                aod:Persoon ;
                                                        aod:heeftUitgevoerd _:genid16 ;
                                                        rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ,
                                                                    <http://archief.overheid.nl/persoon/doc/DatasetFotografen> ;

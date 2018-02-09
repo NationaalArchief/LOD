@@ -1112,7 +1112,7 @@ The void:uriSpace property can be used to state that all entity URIs in a datase
 Note: The value of void:uriSpace is an RDF literal. That is, in Turtle it is written like &quot;http://dbpedia.org/resource/&quot;, not &lt;http://dbpedia.org/resource/>.</documentation>
           </element>
         </folder>
-        <folder name="aod (archief.overheid.nl/def)" id="2fd20e51-95e1-449d-a5cd-b5d93573e160">
+        <folder name="naa (archief.overheid.nl/def)" id="2fd20e51-95e1-449d-a5cd-b5d93573e160">
           <element xsi:type="archimate:DataObject" name="nacollectie:FotoCollectie" id="74599d56-79b2-4f2b-9c8a-cea0466e9d14">
             <documentation>###  http://archief.overheid.nl/collectie/doc/FotoCollectie
 &lt;http://archief.overheid.nl/collectie/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
@@ -1188,7 +1188,7 @@ skos:prefLabel &quot;Grafisch record&quot;@nl .</documentation>
           <element xsi:type="archimate:DataObject" name="aod:Illustratie" id="c1fdd966-a9ff-493c-8c61-5335e29d0c61"/>
           <element xsi:type="archimate:DataObject" name="aod:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
           <element xsi:type="archimate:DataObject" name="aod:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
-          <element xsi:type="archimate:DataObject" name="aod:PersoonEntiteit" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
+          <element xsi:type="archimate:DataObject" name="aod:Persoon" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
             <documentation>###  http://archief.overheid.nl/def/PersoonEntiteit
 aod:PersoonEntiteit rdf:type owl:Class ;
 owl:equivalentClass bgn:Person , foaf:Person, cidoc-crm:E39_Actor ;
