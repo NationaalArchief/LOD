@@ -1076,6 +1076,15 @@ schema:Person rdf:type owl:Class ;
               owl:equivalentClass foaf:Person .
 
 
+###  http://semanticweb.cs.vu.nl/2009/11/sem/RoleType
+sem:RoleType rdf:type owl:Class ;
+             rdfs:subClassOf sem:Type .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Type
+sem:Type rdf:type owl:Class .
+
+
 ###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
 cidoc-crm:E1_CRM_Entity rdf:type owl:Class ;
                         owl:equivalentClass edm:NonInformationResource ;
@@ -1488,6 +1497,12 @@ Een index gaat over de inhoud van een specifiek archief of archiefstukken en is 
                                                              rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
 
 
+###  http://archief.overheid.nl/def/Benoemde
+naa:Benoemde rdf:type owl:NamedIndividual ,
+                      sem:RoleType ;
+             rdfs:comment "De rol van iemand of iets waarbij deze benoemd is tot iets."@nl .
+
+
 ###  http://archief.overheid.nl/def/FotoCreatie
 naa:FotoCreatie rdf:type owl:NamedIndividual ,
                          cidoc-crm:E65_Creation .
@@ -1496,6 +1511,12 @@ naa:FotoCreatie rdf:type owl:NamedIndividual ,
 ###  http://archief.overheid.nl/def/TypeAanstelling
 naa:TypeAanstelling rdf:type owl:NamedIndividual ,
                              naa:DetailRecordType .
+
+
+###  http://archief.overheid.nl/def/Voorganger
+naa:Voorganger rdf:type owl:NamedIndividual ,
+                        sem:RoleType ;
+               rdfs:comment "De rol van voorganger als iemand, of iets die een ander of iets anders is voorgegaan."@nl .
 
 
 ###  http://archief.overheid.nl/naam/doc/willem_vd_poll_naam
