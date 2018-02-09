@@ -1188,7 +1188,7 @@ skos:prefLabel &quot;Grafisch record&quot;@nl .</documentation>
           <element xsi:type="archimate:DataObject" name="naa:Illustratie" id="c1fdd966-a9ff-493c-8c61-5335e29d0c61"/>
           <element xsi:type="archimate:DataObject" name="naa:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
           <element xsi:type="archimate:DataObject" name="naa:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
-          <element xsi:type="archimate:DataObject" name="naa:PersoonEntiteit" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
+          <element xsi:type="archimate:DataObject" name="naa:Persoon" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
             <documentation>###  http://archief.overheid.nl/def/PersoonEntiteit
 naa:PersoonEntiteit rdf:type owl:Class ;
 owl:equivalentClass bgn:Person , foaf:Person, cidoc-crm:E39_Actor ;
