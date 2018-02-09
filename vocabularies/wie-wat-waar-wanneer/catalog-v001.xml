@@ -3,11 +3,11 @@
     <uri id="Imports Wizard Entry" name="http://www.europeana.eu/schemas/edm/" uri="edm.owl"/>
     <uri id="Imports Wizard Entry" name="http://archief.overheid.nl/def" uri="archief.overheid.nl-def.ttl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1518170273612" name="http://data.nationaalarchief.nl/terms/" uri="wiewatwaarwanneer-lite.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1518170273612" name="http://id.loc.gov/ontologies/bibframe/" uri="bibframe.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1518170273612" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v5.0.4_official_release.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1518170273612" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v6.2-draft-2015August.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1518170273612" name="http://www.w3.org/2002/07/owl" uri="owl.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1518170273612" name="http://www.w3.org/ns/dcat" uri="dcat.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1518184007208" name="http://data.nationaalarchief.nl/terms/" uri="imports/wiewatwaarwanneer-lite.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1518184007208" name="http://id.loc.gov/ontologies/bibframe/" uri="imports/bibframe.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518184007208" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="imports/cidoc_crm_v6.2-draft-2015August.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518184007208" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="imports/cidoc_crm_v5.0.4_official_release.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518184007208" name="http://www.w3.org/2002/07/owl" uri="imports/owl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1518184007208" name="http://www.w3.org/ns/dcat" uri="imports/dcat.owl"/>
     </group>
 </catalog>
