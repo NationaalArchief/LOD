@@ -4,10 +4,10 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix hg: <http://rdf.histograph.io/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix naa: <http://archief.overheid.nl/def/> .
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix naa: <http://archief.overheid.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1542,6 +1542,9 @@ _:genid16 rdf:type naa:FotoCreatie ;
 #    Annotations
 #################################################################
 
+naa:FotoCreatie rdfs:comment "Een fotocreatie is van het type \"Creation\" (Cidoc CRM) volgens het model: actie --> consequentie, of resultaat. Het resultaat van deze actie is een fysieke foto."@nl .
+
+
 dcterms:Agent rdfs:label "Agent"@en ;
               rdfs:isDefinedBy dcterms: ;
               rdfs:comment "A resource that acts or has the power to act."@en ;
@@ -1553,10 +1556,10 @@ dcterms:Agent rdfs:label "Agent"@en ;
 
 ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
         dcterms:title "The OAI ORE terms vocabulary" ;
-        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
+        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 
