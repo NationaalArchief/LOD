@@ -257,13 +257,13 @@ rdfs:subClassOf def:ArchivalEntity;</documentation>
    rdfs:subPropertyOf rdfs:member ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="def:modelsConceptOf" id="eb837398-db0c-4d57-b259-f2d6c6be79ac"/>
-          <element xsi:type="archimate:DataObject" name="aod:DetailRecord" id="1b2d84af-1753-4d6b-8f3a-92acd154107e">
+          <element xsi:type="archimate:DataObject" name="naa:DetailRecord" id="1b2d84af-1753-4d6b-8f3a-92acd154107e">
             <documentation>###  http://archief.overheid.nl/def/DetailRecord
-aod:DetailRecord rdf:type owl:Class ;
-rdfs:subClassOf aod:ArchiefVerwijzing , ore:Aggregation ;
+naa:DetailRecord rdf:type owl:Class ;
+rdfs:subClassOf naa:ArchiefVerwijzing , ore:Aggregation ;
 rdfs:comment &quot;Gebruik DetailRecord als basis voor de records uit de archieven. Hier kunnen de originele velden toegewezen worden. Conceptuele of &quot;echte&quot; entiteiten die geinterpreteerd zijn op basis van de inhoud kunnen terug verwijzen naar dit record om de authenticiteit te waarborgen. De records zelf bevatten geen interpretaties.&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:PersoonsVerwijzing" id="c9372cd9-4b12-4f62-aae0-54ee11f77731"/>
+          <element xsi:type="archimate:DataObject" name="naa:PersoonsVerwijzing" id="c9372cd9-4b12-4f62-aae0-54ee11f77731"/>
         </folder>
         <folder name="commBk (CommissieBoeken)" id="db55c60f-e4bf-4bc1-8bd3-b116a929641b">
           <element xsi:type="archimate:DataObject" name="commBk:ArchiefRaadVanState" id="5927c808-fe73-44bf-bb50-2b9c3a3e2c83">
@@ -331,15 +331,15 @@ rdfs:comment &quot;Gebruik DetailRecord als basis voor de records uit de archiev
           <element xsi:type="archimate:DataObject" name="dcat:CatalogRecord" id="b64a1f66-9f6a-46fd-a0b6-00d137f06d02">
             <documentation>###  http://www.w3.org/ns/dcat#CatalogRecord
 dcat:CatalogRecord rdf:type owl:Class ;
-                   vann:usageNote &quot;&quot;&quot;This class is optional and not all catalogs will use it. It exists for 
-            catalogs where a distinction is made between metadata about a dataset and 
-            metadata about the dataset's entry in the catalog. For example, the publication 
-            date property of the dataset reflects the date when the information was originally 
-            made available by the publishing agency, while the publication date of the catalog 
+                   vann:usageNote &quot;&quot;&quot;This class is optional and not all catalogs will use it. It exists for
+            catalogs where a distinction is made between metadata about a dataset and
+            metadata about the dataset's entry in the catalog. For example, the publication
+            date property of the dataset reflects the date when the information was originally
+            made available by the publishing agency, while the publication date of the catalog
             record is the date when the dataset was added to the catalog. In cases where both
-            dates differ, or where only the latter is known, the publication date should only 
-            be specified for the catalog record. Notice that the W3C PROV Ontology allows 
-            describing further provenance information such as the details of the process and the 
+            dates differ, or where only the latter is known, the publication date should only
+            be specified for the catalog record. Notice that the W3C PROV Ontology allows
+            describing further provenance information such as the details of the process and the
             agent involved in a particular change to a dataset.&quot;&quot;&quot;@en ,
                             rdfs:comment &quot;A record in a data catalog, describing a single dataset.&quot;@en;
                    rdfs:isDefinedBy &lt;http://www.w3.org/TR/vocab-dcat/> ;
@@ -358,7 +358,7 @@ dcat:Dataset rdf:type owl:Class ;
              vann:usageNote &quot;&quot;&quot;This class represents the actual dataset as published by the dataset publisher. In cases where a distinction between the actual dataset and its entry in the catalog is necessary (because metadata such as modification date and maintainer might differ), the catalog record class can be used for the latter.&quot;&quot;&quot;@en;
 			rdfs:comment &quot;A collection of data, published or curated by a single source, and available for access or download in one or more formats&quot;@en;
              rdfs:isDefinedBy &lt;http://www.w3.org/TR/vocab-dcat/> ;
-             rdfs:label &quot;Dataset&quot;@en.                        
+             rdfs:label &quot;Dataset&quot;@en.
 
 Definition: A collection of data, published or curated by a single agent, and available for access or download in one or more formats.
 
@@ -416,12 +416,12 @@ https://www.w3.org/TR/vocab-dcat/</documentation>
           <element xsi:type="archimate:DataObject" name="dcat:Distribution" id="1051a810-328f-4143-93a9-ae2af058a5c6">
             <documentation>###  http://www.w3.org/ns/dcat#Distribution
 dcat:Distribution rdf:type owl:Class ;
-                  vann:usageNote &quot;&quot;&quot;This represents a general availability of a dataset it implies no information about the 
-          actual access method of the data, i.e. whether it is a direct download, API, or some 
+                  vann:usageNote &quot;&quot;&quot;This represents a general availability of a dataset it implies no information about the
+          actual access method of the data, i.e. whether it is a direct download, API, or some
           through Web page. The use of dcat:downloadURL property indicates directly downloadable distributions.&quot;&quot;&quot;@en ,
-                                 
-                  rdfs:comment &quot;&quot;&quot;Represents a specific available form of a dataset. Each dataset might be available in 
-          different forms, these forms might represent different formats of the dataset or different 
+
+                  rdfs:comment &quot;&quot;&quot;Represents a specific available form of a dataset. Each dataset might be available in
+          different forms, these forms might represent different formats of the dataset or different
           endpoints. Examples of distributions include a downloadable CSV file, an API or an RSS feed&quot;&quot;&quot;@en ,
                   rdfs:isDefinedBy &lt;http://www.w3.org/TR/vocab-dcat/> ;
                   rdfs:label &quot;Distribution&quot;@en</documentation>
@@ -433,10 +433,10 @@ dcat:accessURL rdf:type owl:ObjectProperty ;
                rdfs:range rdfs:Resource ;
                vann:usageNote &quot;&quot;&quot;
                               &quot;&quot;&quot;The value is a URL.
-          If the distribution(s) are accessible only through a landing page (i.e. direct download URLs are 
+          If the distribution(s) are accessible only through a landing page (i.e. direct download URLs are
           not known), then the landing page link should be duplicated as accessURL on a distribution.&quot;&quot;&quot;@en;
-               rdfs:comment  &quot;&quot;&quot;Could be any kind of URL that gives access to a distribution of the dataset. E.g. landing page, 
-          download, feed URL, SPARQL endpoint. Use when your catalog does not have information on which it 
+               rdfs:comment  &quot;&quot;&quot;Could be any kind of URL that gives access to a distribution of the dataset. E.g. landing page,
+          download, feed URL, SPARQL endpoint. Use when your catalog does not have information on which it
           is or when it is definitely not a download.&quot;&quot;&quot;@en;
                rdfs:isDefinedBy &lt;http://www.w3.org/TR/vocab-dcat/> ;
                rdfs:label &quot;access URL&quot;@en</documentation>
@@ -495,11 +495,11 @@ dcat:record rdf:type owl:ObjectProperty ;
           <element xsi:type="archimate:DataObject" name="bgn:Person" id="3b4aa45f-cff7-49ca-a2b1-a468ffdb37c8">
             <documentation>###  http://biographynet.nl/schema/Person
 bgn:Person rdf:type owl:Class ;
-owl:equivalentClass aod:PersoonEntiteit ,
+owl:equivalentClass naa:PersoonEntiteit ,
 foaf:Person ;
-owl:disjointWith aod:HistorischeNaam ,
-aod:PersoonsNaam ;
-rdfs:comment &quot;In all National Archives' Linked Data sets referring to Persons, aod:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person&quot;@en .</documentation>
+owl:disjointWith naa:HistorischeNaam ,
+naa:PersoonsNaam ;
+rdfs:comment &quot;In all National Archives' Linked Data sets referring to Persons, naa:PersoonEntiteit is used because of the distinction between a Reference and a real-world Person&quot;@en .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="bgnExt:Male" id="ecfb74fe-b9e8-407f-b231-1cd0ffdb944b"/>
           <element xsi:type="archimate:DataObject" name="bgnExt:PersonName" id="1870fbf1-6883-4414-8732-5772b247c015">
@@ -645,7 +645,7 @@ a URI.&quot;&quot;&quot;@en .</documentation>
           <element xsi:type="archimate:DataObject" name="foaf:Agent" id="460df47e-cf59-401a-8412-717c133e0b08">
             <documentation>Class: foaf:Agent
 
-Agent - An agent (eg. person, group, software or physical artifact). 
+Agent - An agent (eg. person, group, software or physical artifact).
 Status:	stable
 Properties include:	gender yahooChatID account birthday icqChatID aimChatID jabberID made mbox interest tipjar skypeID topic_interest age mbox_sha1sum status msnChatID openid holdsAccount weblog
 Used with:	maker member
@@ -660,7 +660,7 @@ http://xmlns.com/foaf/spec/</documentation>
           <element xsi:type="archimate:DataObject" name="foaf:primaryTopic" id="41876d42-cd76-4d4c-a329-4497b6cb48bf">
             <documentation>Property: foaf:primaryTopic
 
-primary topic - The primary topic of some page or document. 
+primary topic - The primary topic of some page or document.
 Status:	stable
 Domain:	having this property implies being a Document
 Range:	every value of this property is a Thing
@@ -694,7 +694,7 @@ http://xmlns.com/foaf/spec/</documentation>
                    def:datasetWithInterpretationLayer bewL:ArchievenLijstBewindspersonen ;
                    def:datasetClosestToSource bewL:BewindsliedenLijst ;
                    dct:creator nt:CentraleArchiefSelectiedienst ;
-                   dct:description &quot;In deze zoekgids is informatie te vinden over uitsluitend de archieven van de bewindspersonen. &quot;^^xsd:string ; 
+                   dct:description &quot;In deze zoekgids is informatie te vinden over uitsluitend de archieven van de bewindspersonen. &quot;^^xsd:string ;
 		   rdfs:comment &quot;Index van bewindslieden, hun functie in een kabinet sinds 1798 en de archieven die zij hebben nagelaten.&quot;^^xsd:string ;
 </documentation>
           </element>
@@ -900,7 +900,7 @@ In retrospect there typically only needs to be one attribute to specify a URI, s
 
 &lt;ex:Foo ...> - subject
   &lt;ex:prop> - property
-    &lt;ex:Bar ... /> - subject (and implictly an object chaining from previous) 
+    &lt;ex:Bar ... /> - subject (and implictly an object chaining from previous)
 ...
 (rule of thumb: odd lines rdf:about, even lines, rdf:resource)
 
@@ -1123,24 +1123,24 @@ Note: The value of void:uriSpace is an RDF literal. That is, in Turtle it is wri
           <element xsi:type="archimate:DataObject" name="napersoonent:Willem_vd_Poll" id="39efc361-5543-4397-b776-22885f7574a4">
             <documentation>###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
 napersoonent:Willem_vd_Poll rdf:type owl:NamedIndividual ,
-    aod:PersoonEntiteit ; 
-    aod:heeftUitgevoerd [ a aod:FotoCreatie ;
-    aod:heeftGeproduceerd nabeelddoc:FotoRecord01 ];
+    naa:PersoonEntiteit ;
+    naa:heeftUitgevoerd [ a naa:FotoCreatie ;
+    naa:heeftGeproduceerd nabeelddoc:FotoRecord01 ];
     rdfs:member napersoondoc:DatasetAllePersonen ,
     napersoondoc:DatasetFotografen .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nabeeldent:Foto1" id="32c7fce5-baf9-4a7a-b17f-0261b2ef573e">
-            <documentation>nabeeldent:Photo1 a aod:Foto
+            <documentation>nabeeldent:Photo1 a naa:Foto
 edm:hasView https://files.nationaalarchief.nl/photo1.jpg
 hasRights downloadonly
 dctype: &quot;zwartwit&quot;
-dcterms:creator [ a aod:PersoonsVerwijzing ;
- aod:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
+dcterms:creator [ a naa:PersoonsVerwijzing ;
+ naa:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nabeelddoc:FotoRecord01" id="113f77d1-583d-43c2-bc0a-ae7587f4f3fe">
             <documentation>###  http://archief.overheid.nl/beeld/doc/FotoRecord01
 nabeelddoc:FotoRecord01 rdf:type owl:NamedIndividual ,
-      aod:GrafischRecord ;
+      naa:GrafischRecord ;
   edm:aggregatedCHO nabeeldent:Foto1 ;
 dcterms:creator &quot;Nationaal Archief&quot;@nl ;
 rdfs:member nabeelddoc:DatasetFotoVoorbeeld .</documentation>
@@ -1151,9 +1151,9 @@ dc:creator &quot;Nationaal Archief&quot;;
 dc:format &quot;image/jpg&quot;
 </documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:ArchiefVerwijzing" id="eb18859d-a852-46fd-8c71-9ad3324c3183">
+          <element xsi:type="archimate:DataObject" name="naa:ArchiefVerwijzing" id="eb18859d-a852-46fd-8c71-9ad3324c3183">
             <documentation>###  http://archief.overheid.nl/def/ArchiefVerwijzing
-aod:ArchiefVerwijzing rdf:type owl:Class ;
+naa:ArchiefVerwijzing rdf:type owl:Class ;
 owl:equivalentClass dbo:Reference , dcterms:BibliographicResource , edm:InformationResource , cidoc-crm:E73_Information_Object ;
 rdfs:label &quot;ArchiefHulpbron&quot;@nl .</documentation>
           </element>
@@ -1163,65 +1163,65 @@ rdfs:label &quot;Catalogus van de persoonscollectie van het NA&quot;^^xsd:string
 dcat:dataset napersoondoc:DatasetAllePersonen;
 dcat:dataset napersoondoc:DatasetFotografen;</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:ArchiefEntiteit" id="cb3974a6-47e9-4920-a6fa-b19f98d76fc0">
+          <element xsi:type="archimate:DataObject" name="naa:ArchiefEntiteit" id="cb3974a6-47e9-4920-a6fa-b19f98d76fc0">
             <documentation>###  http://archief.overheid.nl/def/ArchiefEntiteit
-aod:ArchiefEntiteit rdf:type owl:Class ;
+naa:ArchiefEntiteit rdf:type owl:Class ;
                       rdfs:subClassOf edm:ProvidedCHO ;
-                      owl:disjointWith aod:ArchiefHulpbron .</documentation>
+                      owl:disjointWith naa:ArchiefHulpbron .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:Bladzijde" id="59e3bb11-9b71-4c82-bc54-09b82e0011fa"/>
-          <element xsi:type="archimate:DataObject" name="aod:FilmOpname" id="27cc3cdc-3cc7-4521-8dbf-08a6aa026031"/>
-          <element xsi:type="archimate:DataObject" name="aod:Foto" id="ac77137d-556f-440b-bee2-d95dbe67cea9">
-            <documentation>aod:Foto rdf:type owl:Class;
-rdfs:subClassOf aod:ArchiefEntiteit;</documentation>
+          <element xsi:type="archimate:DataObject" name="naa:Bladzijde" id="59e3bb11-9b71-4c82-bc54-09b82e0011fa"/>
+          <element xsi:type="archimate:DataObject" name="naa:FilmOpname" id="27cc3cdc-3cc7-4521-8dbf-08a6aa026031"/>
+          <element xsi:type="archimate:DataObject" name="naa:Foto" id="ac77137d-556f-440b-bee2-d95dbe67cea9">
+            <documentation>naa:Foto rdf:type owl:Class;
+rdfs:subClassOf naa:ArchiefEntiteit;</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:FotoNegatief" id="4fdbc608-b8e9-4b7e-9d54-6098f875a14a"/>
-          <element xsi:type="archimate:DataObject" name="aod:GeluidsOpname" id="bc0e780c-71f6-4ffc-8bd4-bb7c713155e0"/>
-          <element xsi:type="archimate:DataObject" name="aod:GrafischRecord" id="1bf4f72c-11da-498b-b319-6314b3277aac">
+          <element xsi:type="archimate:DataObject" name="naa:FotoNegatief" id="4fdbc608-b8e9-4b7e-9d54-6098f875a14a"/>
+          <element xsi:type="archimate:DataObject" name="naa:GeluidsOpname" id="bc0e780c-71f6-4ffc-8bd4-bb7c713155e0"/>
+          <element xsi:type="archimate:DataObject" name="naa:GrafischRecord" id="1bf4f72c-11da-498b-b319-6314b3277aac">
             <documentation>###  http://archief.overheid.nl/def/GrafischRecord
-aod:GrafischRecord rdf:type owl:Class ;
-rdfs:subClassOf aod:DetailRecord  ;
+naa:GrafischRecord rdf:type owl:Class ;
+rdfs:subClassOf naa:DetailRecord  ;
 rdfs:comment &quot;Een record van een grafisch object. Bevat beschrijving en de verwijzing naar het fysieke object en de eventuele zichtexemplaren.&quot;@nl ;
 rdfs:label &quot;Grafisch record&quot;@nl ;
 skos:prefLabel &quot;Grafisch record&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:Illustratie" id="c1fdd966-a9ff-493c-8c61-5335e29d0c61"/>
-          <element xsi:type="archimate:DataObject" name="aod:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
-          <element xsi:type="archimate:DataObject" name="aod:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
-          <element xsi:type="archimate:DataObject" name="aod:PersoonEntiteit" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
+          <element xsi:type="archimate:DataObject" name="naa:Illustratie" id="c1fdd966-a9ff-493c-8c61-5335e29d0c61"/>
+          <element xsi:type="archimate:DataObject" name="naa:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
+          <element xsi:type="archimate:DataObject" name="naa:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
+          <element xsi:type="archimate:DataObject" name="naa:PersoonEntiteit" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
             <documentation>###  http://archief.overheid.nl/def/PersoonEntiteit
-aod:PersoonEntiteit rdf:type owl:Class ;
+naa:PersoonEntiteit rdf:type owl:Class ;
 owl:equivalentClass bgn:Person , foaf:Person, cidoc-crm:E39_Actor ;
-rdfs:subClassOf aod:ArchiefEntiteit ;
+rdfs:subClassOf naa:ArchiefEntiteit ;
 rdfs:comment &quot;Fysiek persoon in het domein van archieven.&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:ZeeKaart" id="83d7a993-b6ae-4ac4-b9a2-0c069df29fe9"/>
+          <element xsi:type="archimate:DataObject" name="naa:ZeeKaart" id="83d7a993-b6ae-4ac4-b9a2-0c069df29fe9"/>
           <element xsi:type="archimate:DataObject" name="napersoondoc:DatasetAllePersonen" id="5022489a-2a8a-447f-bc9e-926e37de5fd1"/>
           <element xsi:type="archimate:DataObject" name="napersoondoc:DatasetFotografen" id="789686bc-2f94-4cc4-b2a2-dac95986bf37"/>
-          <element xsi:type="archimate:DataObject" name="aod:FotoCreatie" id="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130">
+          <element xsi:type="archimate:DataObject" name="naa:FotoCreatie" id="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130">
             <documentation>###  http://archief.overheid.nl/def/FotoCreatie
-aod:FotoCreatie rdf:type owl:NamedIndividual ,
+naa:FotoCreatie rdf:type owl:NamedIndividual ,
                            cidoc-crm:E65_Creation .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:PersoonsBeschrijving" id="bf19e9bf-3501-4211-86b4-6afda06de363">
+          <element xsi:type="archimate:DataObject" name="naa:PersoonsBeschrijving" id="bf19e9bf-3501-4211-86b4-6afda06de363">
             <documentation>###  http://archief.overheid.nl/def/PersoonsBeschrijving
-aod:PersoonsBeschrijving rdf:type owl:Class ;
-rdfs:subClassOf aod:ArchiefHulpbron ,
- aod:PersoonsNaam ;
+naa:PersoonsBeschrijving rdf:type owl:Class ;
+rdfs:subClassOf naa:ArchiefHulpbron ,
+ naa:PersoonsNaam ;
 rdfs:comment &quot;Beschrijving van een persoon in de context van archieven. Gebruik dit om originele data over personen te borgen uit de records van archieven.&quot;@nl ;
 rdfs:label &quot;Persoonsbeschrijving&quot;@nl .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:resultaatVanActiviteit" id="5bddf005-beef-45a1-94f3-8bda8fec6803">
+          <element xsi:type="archimate:DataObject" name="naa:resultaatVanActiviteit" id="5bddf005-beef-45a1-94f3-8bda8fec6803">
             <documentation>###  http://archief.overheid.nl/def/resultaatVanActiviteit
-aod:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
+naa:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf cidoc-crm:P94_has_created ;
-                             rdfs:range aod:ArchiefEntiteit ;
+                             rdfs:range naa:ArchiefEntiteit ;
                              rdfs:comment &quot;Het resultaat van een activiteit, onderneming of gebeurtenis waarbij een persoon, organisatie of Agent een rol gespeeld heeft. Het resultaat kan fysiek zijn, maar dat hoeft niet. Een idee, lied of andere niet fysieke zaken kunnen ook het resultaat zijn.&quot;@nl ;
                              rdfs:label &quot;resultaat van activiteit&quot; .</documentation>
           </element>
-          <element xsi:type="archimate:DataObject" name="aod:heeftUitgevoerd" id="c4a49a84-c6aa-47b4-bff4-c30f3c44c6ad">
+          <element xsi:type="archimate:DataObject" name="naa:heeftUitgevoerd" id="c4a49a84-c6aa-47b4-bff4-c30f3c44c6ad">
             <documentation>###  http://archief.overheid.nl/def/heeftUitgevoerd
-aod:heeftUitgevoerd rdf:type owl:ObjectProperty ;
+naa:heeftUitgevoerd rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
                       rdfs:domain bgn:Person ;
                       rdfs:range cidoc-crm:E65_Creation .</documentation>
@@ -1243,20 +1243,20 @@ Een index gaat over de inhoud van een specifiek archief of archiefstukken en is 
           <element xsi:type="archimate:DataObject" name="nadoc:DetailRecord-UUID[n]" id="388ace7c-3c8a-49dc-951f-acaaad3fba98">
             <documentation>###  http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd
 &lt;http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
-                                                                                                      aod:DetailRecord ;
-                                                                                             aod:isRecordType aod:TypeAanstelling ;
+                                                                                                      naa:DetailRecord ;
+                                                                                             naa:isRecordType naa:TypeAanstelling ;
                                                                                              rdfs:member &lt;http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
-                                                                                             aod:periodebeschrijving &quot;1735-1748&quot;@nl ;
+                                                                                             naa:periodebeschrijving &quot;1735-1748&quot;@nl ;
                                                                                              dcterms:identifier &quot;30a08a16-ae58-102d-8e23-0050569c51dd&quot; ;
                                                                                              dcterms:relation _:genid14 ;
                                                                                              dcterms:source &quot;NL-HaNA/1.01.19/1527//219v//&quot; .
 
-_:genid14 rdf:type aod:PersoonsVerwijzing ;
-           aod:isOpvolgerVan [ rdf:type aod:PersoonsVerwijzing ;
-                               aod:volledige_naam &quot;[ipv wijlen graaf Willem van Nassau]&quot;^^xsd:string
+_:genid14 rdf:type naa:PersoonsVerwijzing ;
+           naa:isOpvolgerVan [ rdf:type naa:PersoonsVerwijzing ;
+                               naa:volledige_naam &quot;[ipv wijlen graaf Willem van Nassau]&quot;^^xsd:string
                              ] ;
-           aod:achternaam &quot;Nassau&quot;^^xsd:string ;
-           aod:functiebeschrijving &quot;Kapitein&quot;@nl ;
+           naa:achternaam &quot;Nassau&quot;^^xsd:string ;
+           naa:functiebeschrijving &quot;Kapitein&quot;@nl ;
            sem:hasTimeStamp &quot;1647-09-16&quot;^^xsd:string .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="nadoc:CatalogusRecordNT00194" id="fc325332-63e3-4cf4-ba89-d5851fc493f3">
@@ -1283,9 +1283,9 @@ ore:Aggregation rdf:type owl:Class ;
             <documentation>&lt;http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> rdf:type owl:Class ;
                                                             rdfs:subClassOf &lt;http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object> ,
                                                                             &lt;http://www.cidoc-crm.org/cidoc-crm/E90_Symbolic_Object> ;
-                                                            rdfs:comment &quot;&quot;&quot;This class comprises identifiable immaterial items, such as a poems, jokes, data sets, images, texts, multimedia objects, procedural prescriptions, computer program code, algorithm or mathematical formulae, that have an objectively recognizable structure and are documented as single units. The encoding structure known as a \&quot;named graph\&quot; also falls under this class, so that each \&quot;named graph\&quot; is an instance of an E73 Information Object. 
-An E73 Information Object does not depend on a specific physical carrier, which can include human memory, and it can exist on one or more carriers simultaneously. 
-Instances of E73 Information Object of a linguistic nature should be declared as instances of the E33 Linguistic Object subclass. Instances of E73 Information Object of a documentary nature should be declared as instances of the E31 Document subclass. Conceptual items such as types and classes are not instances of E73 Information Object, nor are ideas without a reproducible expression. 
+                                                            rdfs:comment &quot;&quot;&quot;This class comprises identifiable immaterial items, such as a poems, jokes, data sets, images, texts, multimedia objects, procedural prescriptions, computer program code, algorithm or mathematical formulae, that have an objectively recognizable structure and are documented as single units. The encoding structure known as a \&quot;named graph\&quot; also falls under this class, so that each \&quot;named graph\&quot; is an instance of an E73 Information Object.
+An E73 Information Object does not depend on a specific physical carrier, which can include human memory, and it can exist on one or more carriers simultaneously.
+Instances of E73 Information Object of a linguistic nature should be declared as instances of the E33 Linguistic Object subclass. Instances of E73 Information Object of a documentary nature should be declared as instances of the E31 Document subclass. Conceptual items such as types and classes are not instances of E73 Information Object, nor are ideas without a reproducible expression.
  &quot;&quot;&quot;@en ;</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="cidoc-crm:E39_Actor" id="9875ee2a-3478-47ca-b21d-673832503845">
@@ -1317,7 +1317,7 @@ cidoc-crm:P94_has_created rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf cidoc-crm:P92_brought_into_existence ;
                           rdfs:domain cidoc-crm:E65_Creation ;
                           rdfs:range cidoc-crm:E28_Conceptual_Object ;
-                          rdfs:comment &quot;&quot;&quot;This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it. 
+                          rdfs:comment &quot;&quot;&quot;This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it.
 It represents the act of conceiving the intellectual content of the E28 Conceptual Object. It does not represent the act of creating the first physical carrier of the E28 Conceptual Object. As an example, this is the composition of a poem, not its commitment to paper.
 &quot;&quot;&quot;@en ;</documentation>
           </element>
@@ -1332,12 +1332,12 @@ cidoc-crm:P11i_participated_in rdf:type owl:ObjectProperty ;
             <documentation>###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
 cidoc-crm:E1_CRM_Entity rdf:type owl:Class ;
                         owl:equivalentClass edm:NonInformationResource ;
-                        rdfs:comment &quot;&quot;&quot;This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model. 
+                        rdfs:comment &quot;&quot;&quot;This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model.
 It is an abstract concept providing for three general properties:
 1.	Identification by name or appellation, and in particular by a preferred identifier
-2.	Classification by type, allowing further refinement of the specific subclass an instance belongs to 
+2.	Classification by type, allowing further refinement of the specific subclass an instance belongs to
 3.	Attachment of free text for the expression of anything not captured by formal properties
-With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity. 
+With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity.
 &quot;&quot;&quot;@en ;</documentation>
           </element>
         </folder>
@@ -1801,12 +1801,12 @@ If you would like an overlay to point to a specific point in the image, you can 
     <element xsi:type="archimate:Grouping" name="Niet MVP: Niet aanwezig of niet werkend gezien" id="92aa9b5e-c506-4ca2-ab0a-3892405ab998"/>
     <element xsi:type="archimate:Junction" name="Junction" id="15ef597f-382a-4fa3-be51-048506eb67fd"/>
     <element xsi:type="archimate:Grouping" name="Blanknode: fotocreatie van Willem_vd_Poll" id="289c3d97-e906-4913-8ed9-1130c3918a46">
-      <documentation> aod:heeftUitgevoerd [ a aod:FotoCreatie ;
-    aod:resultaatVanActiviteit nabeeldent:Foto1 ];</documentation>
+      <documentation> naa:heeftUitgevoerd [ a naa:FotoCreatie ;
+    naa:resultaatVanActiviteit nabeeldent:Foto1 ];</documentation>
     </element>
     <element xsi:type="archimate:Grouping" name="Blanknode: persoonsbeschrijving van Willem" id="e351a86d-3ab8-4fda-b5c1-4b71d5576b90">
-      <documentation>[ a aod:PersoonsBeschrijving ;
-  aod:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
+      <documentation>[ a naa:PersoonsBeschrijving ;
+  naa:volledige_naam &quot;Willem van der Poll&quot;^^xsd:string ] ;</documentation>
     </element>
     <element xsi:type="archimate:Grouping" name="Gebeurtenissen of activiteiten" id="85c51fed-ea24-41d9-8e82-40ac5db8bdb4"/>
     <element xsi:type="archimate:Grouping" name="Legenda" id="10edc1e8-cb12-41c7-aba0-d27e77c22558"/>
@@ -2424,11 +2424,11 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="13aaf85f-af8b-43a3-8ed6-0dbcb5eba1b6" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="aac74a56-45b5-4af9-b714-64ca60f1cfff"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="bbb7ab21-9c06-4b7d-ad86-45314baad2ad" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="9875ee2a-3478-47ca-b21d-673832503845"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="c3647027-2a8b-40ea-bf8b-23c0ff8f5e9b" source="eb18859d-a852-46fd-8c71-9ad3324c3183" target="0772c580-625e-4c6e-b0b0-82ec126f119b"/>
-    <element xsi:type="archimate:AssociationRelationship" name="aod:heeftUitgevoerd" id="8b51cb4e-1c0d-40d8-95fc-8ef6f5f9cd90" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130"/>
+    <element xsi:type="archimate:AssociationRelationship" name="naa:heeftUitgevoerd" id="8b51cb4e-1c0d-40d8-95fc-8ef6f5f9cd90" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130"/>
     <element xsi:type="archimate:SpecializationRelationship" name="a (rdf:type)" id="f5bb6653-510c-4a54-b9a2-56585e455f59" source="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130" target="4f6540b0-5539-4d40-abd1-c89b1b9993de"/>
     <element xsi:type="archimate:AggregationRelationship" id="0f5188f0-251b-4cca-a8a3-1766db1dccef" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="8da77d78-d1e7-4d4e-b2fc-c7b17a2a5130"/>
-    <element xsi:type="archimate:AggregationRelationship" name="aod:heeftUitgevoerd" id="4a9a2898-d8c8-41d9-8711-e5636a8aa7e7" source="39efc361-5543-4397-b776-22885f7574a4" target="289c3d97-e906-4913-8ed9-1130c3918a46"/>
-    <element xsi:type="archimate:AggregationRelationship" name="aod:resultaatVanActiviteit" id="77004b3b-179b-45ae-a963-bed898e66b41" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="32c7fce5-baf9-4a7a-b17f-0261b2ef573e"/>
+    <element xsi:type="archimate:AggregationRelationship" name="naa:heeftUitgevoerd" id="4a9a2898-d8c8-41d9-8711-e5636a8aa7e7" source="39efc361-5543-4397-b776-22885f7574a4" target="289c3d97-e906-4913-8ed9-1130c3918a46"/>
+    <element xsi:type="archimate:AggregationRelationship" name="naa:resultaatVanActiviteit" id="77004b3b-179b-45ae-a963-bed898e66b41" source="289c3d97-e906-4913-8ed9-1130c3918a46" target="32c7fce5-baf9-4a7a-b17f-0261b2ef573e"/>
     <element xsi:type="archimate:AggregationRelationship" name="dct:creator" id="570dc379-7500-4356-97da-bd9de6f8dace" source="32c7fce5-baf9-4a7a-b17f-0261b2ef573e" target="e351a86d-3ab8-4fda-b5c1-4b71d5576b90"/>
     <element xsi:type="archimate:AggregationRelationship" id="764d519e-c596-4e99-9d55-47571ea4eada" source="e351a86d-3ab8-4fda-b5c1-4b71d5576b90" target="bf19e9bf-3501-4211-86b4-6afda06de363"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="e317bdee-b36d-44e0-bc1f-46a5cc59e0a8" source="1b2d84af-1753-4d6b-8f3a-92acd154107e" target="eb18859d-a852-46fd-8c71-9ad3324c3183"/>
@@ -2761,8 +2761,8 @@ disjointWith	…the first class and second class have no members in common	:Man 
           <content>Opmerking: we gebruiken niet de letterlijke woorden “wie” “wat” “waar” “wanneer” in de URI, we gebruiken wel woorden die iets zeggen over het wie wat waar wanneer.
 Bijvoorbeeld “wie” —> /persoon/ of /organisatie/
 /beeld/ zou bij “wat” kunnen horen, maar het hoeft niet zo nauw vastgelegd te worden in de URI door overal “wat” voor te plakken.
- 
-aod: http://archief.overheid.nl/def/ (termen van de RijksCollectie)
+
+naa: http://archief.overheid.nl/def/ (termen van de RijksCollectie)
 nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
 nabeelddoc: http://archief.overheid.nl/beeld/doc/  +  {fotorecord-referentie} (alle informatie objecten, ook datasets)
 nabeeldent: http://archief.overheid.nl/beeld/id/  +  {entiteit-referentie} (entiteiten, &quot;fysieke&quot; objecten, niet informatie objecten)
@@ -2845,7 +2845,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         </child>
         <child xsi:type="archimate:Note" id="ef51348f-2de6-4312-a5dc-c75c3bb357f2" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
           <bounds x="-54" y="720" width="121" height="49"/>
-          <sourceConnection id="014f3ffb-295e-47a4-bec7-4b20506fcd20" name="aod:volledige_naam" lineColor="#000000" source="ef51348f-2de6-4312-a5dc-c75c3bb357f2" target="82bc1000-5d13-49a9-a2c6-27930a9de43d"/>
+          <sourceConnection id="014f3ffb-295e-47a4-bec7-4b20506fcd20" name="naa:volledige_naam" lineColor="#000000" source="ef51348f-2de6-4312-a5dc-c75c3bb357f2" target="82bc1000-5d13-49a9-a2c6-27930a9de43d"/>
           <content>&quot;Willem van der Poll&quot;^^xsd:string </content>
         </child>
       </element>
@@ -3537,8 +3537,8 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
           <content>Opmerking: we gebruiken niet de letterlijke woorden “wie” “wat” “waar” “wanneer” in de URI, we gebruiken wel woorden die iets zeggen over het wie wat waar wanneer.
 Bijvoorbeeld “wie” —> /persoon/ of /organisatie/
 /beeld/ zou bij “wat” kunnen horen, maar het hoeft niet zo nauw vastgelegd te worden in de URI door overal “wat” voor te plakken.
- 
-aod: http://archief.overheid.nl/def/ (termen van het NA)
+
+naa: http://archief.overheid.nl/def/ (termen van het NA)
 nacollectie: http://archief.overheid.nl/collectie/doc/  +  {collectie-referentie} (alle collecties van het Rijksarchief)
 nabeelddoc: http://archief.overheid.nl/beeld/doc/  +  {fotorecord-referentie} (alle informatie objecten, ook datasets)
 nabeeldent: http://archief.overheid.nl/beeld/id/  +  {entiteit-referentie} (entiteiten, &quot;fysieke&quot; objecten, niet informatie objecten)
@@ -3572,7 +3572,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         </child>
         <child xsi:type="archimate:Note" id="519967e6-5288-4256-a97c-d676745d2998" lineColor="#5c5c5c" textAlignment="1" fillColor="#ffffff">
           <bounds x="-54" y="720" width="121" height="49"/>
-          <sourceConnection id="798416e2-e38a-464b-b830-17f5c75ef195" name="aod:volledige_naam" lineColor="#000000" source="519967e6-5288-4256-a97c-d676745d2998" target="e6c00685-5e2f-4a90-9aee-cd5b36355154"/>
+          <sourceConnection id="798416e2-e38a-464b-b830-17f5c75ef195" name="naa:volledige_naam" lineColor="#000000" source="519967e6-5288-4256-a97c-d676745d2998" target="e6c00685-5e2f-4a90-9aee-cd5b36355154"/>
           <content>&quot;Willem van der Poll&quot;^^xsd:string </content>
         </child>
         <child xsi:type="archimate:DiagramObject" id="f43dee12-6901-4149-91e9-9f1089d58a17" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="49e80716-e251-4260-b7a9-e7e4ac5eb4f6">
