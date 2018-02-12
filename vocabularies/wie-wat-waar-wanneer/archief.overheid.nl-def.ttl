@@ -110,6 +110,10 @@ dcterms:source rdf:type owl:AnnotationProperty ;
                                   dcterms:relation .
 
 
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/title
 dcterms:title rdf:type owl:AnnotationProperty .
 
@@ -1452,17 +1456,20 @@ De Raad van State heeft een geschiedenis die teruggaat tot 1531. Vanaf 1581 func
                                                                                              naa:isRecordType naa:TypeAanstelling ;
                                                                                              rdfs:member <http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
                                                                                              naa:periodebeschrijving "1735-1748"@nl ;
+                                                                                            sem:hasTimeStamp "1647-09-16"^^xsd:string ;
                                                                                              dcterms:identifier "30a08a16-ae58-102d-8e23-0050569c51dd" ;
-                                                                                             dcterms:relation _:genid14 ;
-                                                                                             dcterms:source "NL-HaNA/1.01.19/1527//219v//" .
-
-_:genid14 rdf:type naa:PersoonsVerwijzing ;
-           naa:isOpvolgerVan [ rdf:type naa:PersoonsVerwijzing ;
-                               naa:volledige_naam "[ipv wijlen graaf Willem van Nassau]"^^xsd:string
-                             ] ;
-           naa:achternaam "Nassau"^^xsd:string ;
-           naa:functiebeschrijving "Kapitein"@nl ;
-           sem:hasTimeStamp "1647-09-16"^^xsd:string .
+                                                                                                                naa:functiebeschrijving "Kapitein"@nl ;
+                                                                                             dcterms:relation [ rdf:type naa:PersoonsVerwijzing ;
+                                                                                                                naa:achternaam "Nassau"^^xsd:string ;
+                                                                                                                dcterms:subject naa:Benoemde
+                                                                                                              ] ,
+                                                                                                              [ rdf:type naa:PersoonsVerwijzing ;
+                                                                                                                naa:volledige_naam "wijlen Iemand" ;
+                                                                                                                dcterms:subject naa:Voorganger
+                                                                                                              ] ;
+                                                                                             dcterms:source "NL-HaNA/1.01.19/1527//219v//" ;
+                                                                                             rdfs:comment """Voorbeeld record van NT00194 De Commissieboeken van het NA. 
+Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank nodes. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier."""@nl .
 
 
 ###  http://archief.overheid.nl/collectie/doc/FotoCollectie
@@ -1577,10 +1584,10 @@ dcterms:Agent rdfs:label "Agent"@en ;
 
 ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
         dcterms:title "The OAI ORE terms vocabulary" ;
-        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
+        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 
