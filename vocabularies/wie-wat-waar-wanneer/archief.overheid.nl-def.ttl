@@ -209,7 +209,12 @@ xsd:date rdf:type rdfs:Datatype .
 #################################################################
 
 ###  http://archief.overheid.nl/def/heeftNaam
-naa:heeftNaam rdf:type owl:ObjectProperty .
+naa:heeftNaam rdf:type owl:ObjectProperty ;
+              rdfs:domain naa:ArchiefEntiteit ;
+              rdfs:range naa:ArchiefNaam ;
+              rdfs:label "has name"@en ,
+                         "heeft naam"@nl ;
+              skos:prefLabel "heeft naam"@nl .
 
 
 ###  http://archief.overheid.nl/def/heeftUitgevoerd
@@ -217,6 +222,14 @@ naa:heeftUitgevoerd rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
                     rdfs:domain bgn:Person ;
                     rdfs:range cidoc-crm:E65_Creation .
+
+
+###  http://archief.overheid.nl/def/isBeschrevenIn
+naa:isBeschrevenIn rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dcterms:isReferencedBy ;
+                   rdfs:domain naa:ArchiefEntiteit ;
+                   rdfs:range naa:ArchiefVerwijzing ;
+                   rdfs:comment "Gebruik isBeschrevenIn om een entiteit te koppelen aan het archiefstuk waar het (of zij, of hij) beschreven staat in het archief."@nl .
 
 
 ###  http://archief.overheid.nl/def/isOpvolgerVan
@@ -256,6 +269,10 @@ dc:subject rdf:type owl:ObjectProperty .
 
 ###  http://purl.org/dc/terms/isPartOf
 dcterms:isPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/isReferencedBy
+dcterms:isReferencedBy rdf:type owl:ObjectProperty .
 
 
 ###  http://rdfs.org/ns/void#class
@@ -740,18 +757,6 @@ naa:voorvoegsel rdf:type owl:DatatypeProperty ;
                 rdfs:label "preposition"@en ,
                            "voorvoegsel"@nl ;
                 skos:prefLabel "voorvoegsel"@nl .
-
-
-###  http://purl.org/dc/terms/identifier
-dcterms:identifier rdf:type owl:DatatypeProperty ;
-                   rdfs:range rdfs:Literal ;
-                   dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
-                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001> ;
-                   dcterms:issued "2008-01-14"^^xsd:date ;
-                   dcterms:modified "2008-01-14"^^xsd:date ;
-                   rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
-                   rdfs:isDefinedBy dcterms: ;
-                   rdfs:label "Identifier"@en .
 
 
 ###  http://rdfs.org/ns/void#classes
@@ -1455,19 +1460,22 @@ De Raad van State heeft een geschiedenis die teruggaat tot 1531. Vanaf 1581 func
                                                                                                       naa:DetailRecord ;
                                                                                              naa:isRecordType naa:TypeAanstelling ;
                                                                                              rdfs:member <http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
-                                                                                             naa:periodebeschrijving "1735-1748"@nl ;
-                                                                                            sem:hasTimeStamp "1647-09-16"^^xsd:string ;
-                                                                                             dcterms:identifier "30a08a16-ae58-102d-8e23-0050569c51dd" ;
-                                                                                                                naa:functiebeschrijving "Kapitein"@nl ;
+                                                                                             naa:functiebeschrijving "Sergeant Majoor titulair te paard"@nl ;
+                                                                                             naa:periodebeschrijving "1720-1734" ;
+                                                                                             sem:hasTimeStamp "1727-04-28"^^xsd:string ;
+                                                                                             dcterms:identifier "2f70b03a-ae58-102d-8e23-0050569c51dd" ;
                                                                                              dcterms:relation [ rdf:type naa:PersoonsVerwijzing ;
-                                                                                                                naa:achternaam "Nassau"^^xsd:string ;
+                                                                                                                naa:achternaam "Moenen"^^xsd:string ;
+                                                                                                                naa:volledige_naam "Servaas Moenen"^^xsd:string ;
+                                                                                                                naa:voornaam "Servaas"^^xsd:string ;
+                                                                                                                dcterms:identifier "12024"^^xsd:string ;
                                                                                                                 dcterms:subject naa:Benoemde
                                                                                                               ] ,
                                                                                                               [ rdf:type naa:PersoonsVerwijzing ;
-                                                                                                                naa:volledige_naam "wijlen Iemand" ;
+                                                                                                                naa:volledige_naam "wijlen Michiel Adolff van Belling"^^xsd:string ;
                                                                                                                 dcterms:subject naa:Voorganger
                                                                                                               ] ;
-                                                                                             dcterms:source "NL-HaNA/1.01.19/1527//219v//" ;
+                                                                                             dcterms:source "NL-HaNA/1.01.19/1537//130v//" ;
                                                                                              rdfs:comment """Voorbeeld record van NT00194 De Commissieboeken van het NA. 
 Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank nodes. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier."""@nl .
 
@@ -1554,15 +1562,27 @@ naa:Voorganger rdf:type owl:NamedIndividual ,
                                                            rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
 
 
+###  http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024
+<http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024> rdf:type owl:NamedIndividual ,
+                                                                       naa:Persoon ;
+                                                              naa:isBeschrevenIn <http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> ;
+                                                              rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ;
+                                                              naa:heeftNaam [ rdf:type naa:HistorischeNaam ;
+                                                                                 naa:achternaam "Moenen"^^xsd:string ;
+                                                                                 naa:volledige_naam "Servaas Moenen"^^xsd:string ;
+                                                                                 naa:voornaam "Servaas"^^xsd:string
+                                                                               ] .
+
+
 ###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
 <http://archief.overheid.nl/persoon/id/Willem_vd_Poll> rdf:type owl:NamedIndividual ,
                                                                 naa:Persoon ;
-                                                       naa:heeftUitgevoerd _:genid16 ;
+                                                       naa:heeftUitgevoerd _:genid17 ;
                                                        rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ,
                                                                    <http://archief.overheid.nl/persoon/doc/DatasetFotografen> ;
                                                        rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
 
-_:genid16 rdf:type naa:FotoCreatie ;
+_:genid17 rdf:type naa:FotoCreatie ;
            naa:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto1> .
 
 
@@ -1582,12 +1602,25 @@ dcterms:Agent rdfs:label "Agent"@en ;
               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Agent-001> .
 
 
-ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
+dcterms:identifier
+    dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001> ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    dcterms:modified "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Identifier"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier> .
+
+
+ore:toc dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
+        rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
         dcterms:title "The OAI ORE terms vocabulary" ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
-        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 
