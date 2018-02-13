@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="NA-schetsen" id="dd7a5a94-02f3-4ab8-8384-b63c69a6070d" version="4.0.0">
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="NA SA ZVT &amp; Bekijken" id="dd7a5a94-02f3-4ab8-8384-b63c69a6070d" version="4.0.0">
   <folder name="Strategy" id="6bbfc192-1cf4-443a-b9db-ede5b080ebab" type="strategy">
     <element xsi:type="archimate:Resource" name="Computer Science" id="86111efa-55f0-4438-9274-81cc75e557a4"/>
     <element xsi:type="archimate:Resource" name="Wiskunde" id="d48ac39f-7bd6-49e1-9611-8385a1b1717e"/>
@@ -859,6 +859,30 @@ owl:Thing rdf:type owl:Class ;
           rdfs:isDefinedBy owl: ;
           rdfs:label &quot;Thing&quot; .</documentation>
           </element>
+          <element xsi:type="archimate:DataObject" name="owl:topDataProperty" id="43e5902c-ede7-480a-adef-8f6f18024be3">
+            <documentation>http://www.coinsweb.nl/wiki2/index.php/Owl:DatatypeProperty
+
+An owl:DatatypeProperty is defined as an instance of the OWL class owl:DatatypeProperty.
+
+Datatype properties link objects to data values.
+
+owl:DatatypeProperty is a subclass of the RDF class rdf:Property.
+
+
+See also
+owl:ObjectProperty
+Web Ontology Language    
+
+&lt;!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    &lt;DatatypeProperty rdf:about=&quot;http://www.w3.org/2002/07/owl#topDataProperty&quot;>
+        &lt;rdfs:domain rdf:resource=&quot;http://www.w3.org/2002/07/owl#Thing&quot;/>
+        &lt;rdfs:range rdf:resource=&quot;http://www.w3.org/2000/01/rdf-schema#Literal&quot;/>
+        &lt;rdfs:comment>The data property that relates every individual to every data value.&lt;/rdfs:comment>
+        &lt;rdfs:isDefinedBy rdf:resource=&quot;http://www.w3.org/2002/07/owl#&quot;/>
+        &lt;rdfs:label>topDataProperty&lt;/rdfs:label>
+    &lt;/DatatypeProperty></documentation>
+          </element>
         </folder>
         <folder name="rdf(s)" id="b0a2b12c-18c9-4875-82a3-d61bb3cd831b">
           <element xsi:type="archimate:DataObject" name="rdf:type" id="1b7f7dd6-d734-40b1-8945-9002b36a0be4"/>
@@ -1582,30 +1606,6 @@ An open-source, web-based viewer for high-resolution zoomable images, implemente
     <element xsi:type="archimate:ApplicationFunction" name="Bookmark plaatsen" id="07e23307-61b9-4db1-a789-508e2a3a21ab"/>
     <element xsi:type="archimate:ApplicationFunction" name="Bookmark lezen" id="e5bd40dd-4962-4430-a298-b847248acc31"/>
     <element xsi:type="archimate:ApplicationFunction" name="Configuratie opvragen" id="6f4a3778-7c2e-4237-8234-333893ec7458"/>
-    <element xsi:type="archimate:DataObject" name="owl:topDataProperty" id="43e5902c-ede7-480a-adef-8f6f18024be3">
-      <documentation>http://www.coinsweb.nl/wiki2/index.php/Owl:DatatypeProperty
-
-An owl:DatatypeProperty is defined as an instance of the OWL class owl:DatatypeProperty.
-
-Datatype properties link objects to data values.
-
-owl:DatatypeProperty is a subclass of the RDF class rdf:Property.
-
-
-See also
-owl:ObjectProperty
-Web Ontology Language    
-
-&lt;!-- http://www.w3.org/2002/07/owl#topDataProperty -->
-
-    &lt;DatatypeProperty rdf:about=&quot;http://www.w3.org/2002/07/owl#topDataProperty&quot;>
-        &lt;rdfs:domain rdf:resource=&quot;http://www.w3.org/2002/07/owl#Thing&quot;/>
-        &lt;rdfs:range rdf:resource=&quot;http://www.w3.org/2000/01/rdf-schema#Literal&quot;/>
-        &lt;rdfs:comment>The data property that relates every individual to every data value.&lt;/rdfs:comment>
-        &lt;rdfs:isDefinedBy rdf:resource=&quot;http://www.w3.org/2002/07/owl#&quot;/>
-        &lt;rdfs:label>topDataProperty&lt;/rdfs:label>
-    &lt;/DatatypeProperty></documentation>
-    </element>
   </folder>
   <folder name="Technology &amp; Physical" id="61545d0e-7d10-4010-95d7-8dfca0130293" type="technology">
     <element xsi:type="archimate:Node" name="Hub3" id="2c87ad78-9c86-423b-9db1-14006d8a7ee6"/>
@@ -1848,8 +1848,6 @@ If you would like an overlay to point to a specific point in the image, you can 
   <folder name="Implementation &amp; Migration" id="78e070f4-8f70-4b08-b7ce-7fc0f193f7fd" type="implementation_migration"/>
   <folder name="Other" id="b27f5923-4ca7-439c-a94b-62da6d936709" type="other">
     <element xsi:type="archimate:Junction" name="Junction" id="c8c51fce-e119-482a-9d9b-fc39239095a5" type="or"/>
-    <element xsi:type="archimate:Junction" name="Junction" id="c4ba605b-d2db-4143-a92d-b1518841c815" type="or"/>
-    <element xsi:type="archimate:Junction" name="Junction" id="92acaba8-ffdb-4c87-9aff-5d001d8b6dc8"/>
     <element xsi:type="archimate:Junction" name="keuzemomentje" id="5601950e-a4e8-4246-9bc3-8478c32077ac" type="or"/>
     <element xsi:type="archimate:Grouping" name="Bibliotheken (niet verplicht, dit zijn aanbevelingen)" id="4a2949ca-a6c2-4b48-b41e-e8a53a6ec844"/>
     <element xsi:type="archimate:Grouping" name="Fysieke Archief Entiteiten" id="7be95bc2-5fa0-4187-9ca5-5132e4f82223"/>
