@@ -11,12 +11,12 @@
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix void: <http://rdfs.org/ns/void#> .
@@ -66,6 +66,19 @@ dcterms:hasPart rdf:type owl:AnnotationProperty .
 
 ###  http://purl.org/dc/terms/hasVersion
 dcterms:hasVersion rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001> ;
+                   dcterms:issued "2008-01-14"^^xsd:date ;
+                   dcterms:modified "2008-01-14"^^xsd:date ;
+                   rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Identifier"@en ;
+                   rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf dc:identifier ;
+                   rdfs:range rdfs:Literal .
 
 
 ###  http://purl.org/dc/terms/issued
@@ -1382,6 +1395,34 @@ dcat:Dataset rdf:type owl:Class ;
                         "データセット"@ja .
 
 
+###  http://www.w3.org/ns/prov#Activity
+prov:Activity rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Agent
+prov:Agent rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Collection
+prov:Collection rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Location
+prov:Location rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Organisation
+prov:Organisation rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Person
+prov:Person rdf:type owl:Class .
+
+
 ###  http://xmlns.com/foaf/0.1/Agent
 foaf:Agent rdf:type owl:Class ;
            rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
@@ -1420,7 +1461,8 @@ foaf:Project rdf:type owl:Class ;
 ###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
 <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> rdf:type owl:NamedIndividual ,
                                                                      void:Dataset ,
-                                                                     dcat:Dataset ;
+                                                                     dcat:Dataset ,
+                                                                     prov:Entity ;
                                                             rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
 
 
@@ -1435,7 +1477,8 @@ foaf:Project rdf:type owl:Class ;
 ###  http://archief.overheid.nl/collectie/doc/DatasetNT00194
 <http://archief.overheid.nl/collectie/doc/DatasetNT00194> rdf:type owl:NamedIndividual ,
                                                                    void:Dataset ,
-                                                                   dcat:Dataset ;
+                                                                   dcat:Dataset ,
+                                                                   prov:Entity ;
                                                           dcterms:identifier "nt00194" ;
                                                           dcterms:source <http://www.gahetna.nl/collectie/index/nt00194> ;
                                                           rdfs:comment """Achtergrond
@@ -1483,7 +1526,8 @@ Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank
 
 ###  http://archief.overheid.nl/collectie/doc/FotoCollectie
 <http://archief.overheid.nl/collectie/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
-                                                                  dcat:Catalog ;
+                                                                  dcat:Catalog ,
+                                                                  prov:Collection ;
                                                          dcat:dataset <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
                                                          rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
 
@@ -1498,7 +1542,8 @@ Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank
 
 ###  http://archief.overheid.nl/collectie/doc/IndexCollectie
 <http://archief.overheid.nl/collectie/doc/IndexCollectie> rdf:type owl:NamedIndividual ,
-                                                                   dcat:Catalog ;
+                                                                   dcat:Catalog ,
+                                                                   prov:Collection ;
                                                           dcat:dataset <http://archief.overheid.nl/collectie/doc/DatasetNT00194> ;
                                                           dcat:record <http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194> ;
                                                           dcterms:description """Wat is een index?
@@ -1508,7 +1553,8 @@ Een index gaat over de inhoud van een specifiek archief of archiefstukken en is 
 
 ###  http://archief.overheid.nl/collectie/doc/PersoonsCollectie
 <http://archief.overheid.nl/collectie/doc/PersoonsCollectie> rdf:type owl:NamedIndividual ,
-                                                                      dcat:Catalog ;
+                                                                      dcat:Catalog ,
+                                                                      prov:Collection ;
                                                              dcat:dataset <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ;
                                                              rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
 
@@ -1552,27 +1598,29 @@ naa:Voorganger rdf:type owl:NamedIndividual ,
 ###  http://archief.overheid.nl/persoon/doc/DatasetAllePersonen
 <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> rdf:type owl:NamedIndividual ,
                                                                       void:Dataset ,
-                                                                      dcat:Dataset ;
+                                                                      dcat:Dataset ,
+                                                                      prov:Entity ;
                                                              rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
 
 
 ###  http://archief.overheid.nl/persoon/doc/DatasetFotografen
 <http://archief.overheid.nl/persoon/doc/DatasetFotografen> rdf:type owl:NamedIndividual ,
                                                                     void:Dataset ,
-                                                                    dcat:Dataset ;
+                                                                    dcat:Dataset ,
+                                                                    prov:Entity ;
                                                            rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
 
 
 ###  http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024
 <http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024> rdf:type owl:NamedIndividual ,
                                                                        naa:Persoon ;
-                                                              naa:isBeschrevenIn <http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> ;
-                                                              rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ;
                                                               naa:heeftNaam [ rdf:type naa:HistorischeNaam ;
-                                                                                 naa:achternaam "Moenen"^^xsd:string ;
-                                                                                 naa:volledige_naam "Servaas Moenen"^^xsd:string ;
-                                                                                 naa:voornaam "Servaas"^^xsd:string
-                                                                               ] .
+                                                                              naa:achternaam "Moenen"^^xsd:string ;
+                                                                              naa:volledige_naam "Servaas Moenen"^^xsd:string ;
+                                                                              naa:voornaam "Servaas"^^xsd:string
+                                                                            ] ;
+                                                              naa:isBeschrevenIn <http://archief.overheid.nl/collectie/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> ;
+                                                              rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> .
 
 
 ###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
@@ -1603,23 +1651,10 @@ dcterms:Agent rdfs:label "Agent"@en ;
               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Agent-001> .
 
 
-dcterms:identifier
-    dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
-    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001> ;
-    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
-    dcterms:modified "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
-    a rdf:Property ;
-    rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
-    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
-    rdfs:label "Identifier"@en ;
-    rdfs:range rdfs:Literal ;
-    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier> .
-
-
-ore:toc dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
-        rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
+ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
         dcterms:title "The OAI ORE terms vocabulary" ;
+        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
