@@ -9,6 +9,7 @@
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix naa: <http://archief.overheid.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
@@ -19,10 +20,13 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix svcs: <http://rdfs.org/sioc/services#> .
 @prefix void: <http://rdfs.org/ns/void#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
 @base <http://archief.overheid.nl/def/> .
@@ -50,6 +54,10 @@ dc:source rdf:type owl:AnnotationProperty .
 
 ###  http://purl.org/dc/terms/
 dcterms: rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/conformsTo
+dcterms:conformsTo rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/creator
@@ -208,6 +216,34 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2004/02/skos/core#scopeNote
 skos:scopeNote rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#country-name
+vcard:country-name rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasAddress
+vcard:hasAddress rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasPostalCode
+vcard:hasPostalCode rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasTelephone
+vcard:hasTelephone rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasURL
+vcard:hasURL rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#locality
+vcard:locality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#street-address
+vcard:street-address rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -417,6 +453,55 @@ void:target rdf:type owl:ObjectProperty ;
             rdfs:label "Target" .
 
 
+###  http://rdfs.org/sioc/services#has_service
+svcs:has_service rdf:type owl:ObjectProperty ;
+                 owl:inverseOf svcs:service_of ;
+                 rdfs:range svcs:Service ;
+                 rdfs:comment "A Service associated with this SIOC object."@en ;
+                 rdfs:isDefinedBy svcs: ;
+                 rdfs:label "has service"@en .
+
+
+###  http://rdfs.org/sioc/services#results_format
+svcs:results_format rdf:type owl:ObjectProperty ;
+                    rdfs:domain svcs:Service ;
+                    rdfs:comment "Format of results returned by a web service."@en ;
+                    rdfs:isDefinedBy svcs: ;
+                    rdfs:label "results format"@en .
+
+
+###  http://rdfs.org/sioc/services#service_definition
+svcs:service_definition rdf:type owl:ObjectProperty ;
+                        rdfs:domain svcs:Service ;
+                        rdfs:comment "Links to a web service definition of this sioc:Service."@en ;
+                        rdfs:isDefinedBy svcs: ;
+                        rdfs:label "service definition"@en .
+
+
+###  http://rdfs.org/sioc/services#service_endpoint
+svcs:service_endpoint rdf:type owl:ObjectProperty ;
+                      rdfs:domain svcs:Service ;
+                      rdfs:comment "URL of a web service endpoint."@en ;
+                      rdfs:isDefinedBy svcs: ;
+                      rdfs:label "service endpoint"@en .
+
+
+###  http://rdfs.org/sioc/services#service_of
+svcs:service_of rdf:type owl:ObjectProperty ;
+                rdfs:domain svcs:Service ;
+                rdfs:comment "A SIOC object this Service is associated with."@en ;
+                rdfs:isDefinedBy svcs: ;
+                rdfs:label "service of"@en .
+
+
+###  http://rdfs.org/sioc/services#service_protocol
+svcs:service_protocol rdf:type owl:ObjectProperty ;
+                      rdfs:domain svcs:Service ;
+                      rdfs:comment "A protocol used by a web service. Possible protocol values include SOAP, REST, SPARQL-QUERY, GData and OpenSearch. These will be added to this module later."@en ;
+                      rdfs:isDefinedBy svcs: ;
+                      rdfs:label "service protocol"@en .
+
+
 ###  http://www.cidoc-crm.org/cidoc-crm/P11i_participated_in
 cidoc-crm:P11i_participated_in rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf cidoc-crm:P12i_was_present_at ;
@@ -521,6 +606,18 @@ edm:aggregatedCHO rdf:type owl:ObjectProperty ;
                   rdfs:range edm:ProvidedCHO ;
                   rdfs:label "Aggregated Cultural Heritage Object"@en ;
                   skos:definition "This property associates an ORE aggregation with the cultural heritage object(s) (CHO for short) it is about."@en .
+
+
+###  http://www.europeana.eu/schemas/edm/hasView
+edm:hasView rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf ore:aggregates ;
+            rdfs:domain ore:Aggregation ;
+            rdfs:range edm:WebResource ;
+            rdfs:label "Has View"@en ;
+            skos:definition """This property relates a ORE aggregation about a CHO with a web resource
+                providing a view of that CHO. Examples of view are: a thumbnail, a textual
+                abstract and a table of contents. The ORE aggregation may be a Europeana
+                Aggregation, in which case the view is an object owned by Europeana (i.e., an instance of edm:EuropeanaObject) or an aggregation contributed by a content provider. In order to capture both these cases, the domain of edm:hasView is ore:Aggregation and its range is edm:WebResource"""@en .
 
 
 ###  http://www.openarchives.org/ore/terms/aggregates
@@ -1111,6 +1208,13 @@ void:TechnicalFeature rdf:type owl:Class ;
                       rdfs:label "technical feature" .
 
 
+###  http://rdfs.org/sioc/services#Service
+svcs:Service rdf:type owl:Class ;
+             rdfs:comment "A Service is web service associated with a Site or part of it."@en ;
+             rdfs:isDefinedBy svcs: ;
+             rdfs:label "Service"@en .
+
+
 ###  http://schema.org/CreativeWork
 schema:CreativeWork rdf:type owl:Class ;
                     owl:equivalentClass foaf:Document .
@@ -1370,6 +1474,10 @@ rdfs:Resource rdf:type owl:Class ;
 <http://www.w3.org/2004/03/trix/rdfg-1/Graph> rdf:type owl:Class .
 
 
+###  http://www.w3.org/2006/vcard/ns#Address
+vcard:Address rdf:type owl:Class .
+
+
 ###  http://www.w3.org/ns/dcat#Catalog
 dcat:Catalog rdf:type owl:Class ;
              rdfs:comment "A curated collection of metadata about datasets"@en ,
@@ -1422,6 +1530,10 @@ dcat:Dataset rdf:type owl:Class ;
                         "データセット"@ja .
 
 
+###  http://www.w3.org/ns/org#FormalOrganization
+org:FormalOrganization rdf:type owl:Class .
+
+
 ###  http://www.w3.org/ns/prov#Activity
 prov:Activity rdf:type owl:Class .
 
@@ -1448,6 +1560,10 @@ prov:Organisation rdf:type owl:Class .
 
 ###  http://www.w3.org/ns/prov#Person
 prov:Person rdf:type owl:Class .
+
+
+###  http://www3.iath.virginia.edu/eac/cpf/CorporateBody
+eac-cpf:CorporateBody rdf:type owl:Class .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
@@ -1485,20 +1601,21 @@ foaf:Project rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld
-<http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> rdf:type owl:NamedIndividual ,
-                                                                     void:Dataset ,
-                                                                     dcat:Dataset ,
-                                                                     prov:Entity ;
-                                                            rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
+###  http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo
+<http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> rdf:type owl:NamedIndividual ,
+                                                                            void:Dataset ,
+                                                                            dcat:Dataset ,
+                                                                            prov:Entity ;
+                                                                   rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
 
 
-###  http://archief.overheid.nl/beeld/id/Foto1
-<http://archief.overheid.nl/beeld/id/Foto1> rdf:type owl:NamedIndividual ,
-                                                     naa:Foto ;
-                                            dcterms:creator [ rdf:type naa:PersoonsVerwijzing ;
-                                                              naa:volledige_naam "Willem van der Poll"^^xsd:string
-                                                            ] .
+###  http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                         naa:Foto ;
+                                                                                edm:hasView <https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> ;
+                                                                                dcterms:creator [ rdf:type naa:PersoonsVerwijzing ;
+                                                                                                  naa:volledige_naam "Willem van der Poll"^^xsd:string
+                                                                                                ] .
 
 
 ###  http://archief.overheid.nl/collectie/doc/DatasetNT00194
@@ -1555,16 +1672,16 @@ Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank
 <http://archief.overheid.nl/collectie/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
                                                                   dcat:Catalog ,
                                                                   prov:Collection ;
-                                                         dcat:dataset <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
+                                                         dcat:dataset <http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
                                                          rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
 
 
-###  http://archief.overheid.nl/collectie/doc/FotoRecord01
-<http://archief.overheid.nl/collectie/doc/FotoRecord01> rdf:type owl:NamedIndividual ,
-                                                                 naa:GrafischRecord ;
-                                                        edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto1> ;
-                                                        rdfs:member <http://archief.overheid.nl/beeld/doc/DatasetFotoVoorbeeld> ;
-                                                        dcterms:creator "Nationaal Archief"@nl .
+###  http://archief.overheid.nl/collectie/doc/FotoRecord-0145be75-136a-7e34-1709-f61201e4bfaf
+<http://archief.overheid.nl/collectie/doc/FotoRecord-0145be75-136a-7e34-1709-f61201e4bfaf> rdf:type owl:NamedIndividual ,
+                                                                                                    naa:GrafischRecord ;
+                                                                                           edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
+                                                                                           rdfs:member <http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
+                                                                                           dcterms:creator "Nationaal Archief"@nl .
 
 
 ###  http://archief.overheid.nl/collectie/doc/IndexCollectie
@@ -1616,7 +1733,20 @@ naa:Voorganger rdf:type owl:NamedIndividual ,
 
 ###  http://archief.overheid.nl/organisatie/id/NationaalArchief
 <http://archief.overheid.nl/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                      prov:Agent .
+                                                                      org:FormalOrganization ,
+                                                                      prov:Agent ,
+                                                                      eac-cpf:CorporateBody ;
+                                                             owl:sameAs <http://nl.dbpedia.org/resource/Nationaal_Archief> ;
+                                                             dcterms:identifier "NL-HaNA"^^xsd:string ;
+                                                             skos:prefLabel "Nationaal Archief"@nl ;
+                                                             vcard:hasAddress [ rdf:type vcard:Address ;
+                                                                                vcard:country-name "Nederland"^^xsd:string ;
+                                                                                vcard:hasPostalCode "2595 BE"^^xsd:string ;
+                                                                                vcard:hasTelephone "(070) 3315400"^^xsd:string ;
+                                                                                vcard:hasURL "http://www.nationaalarchief.nl"^^xsd:anyURI ;
+                                                                                vcard:locality "Den Haag"^^xsd:string ;
+                                                                                vcard:street-address "Prins Willem Alexanderhof 20"^^xsd:string
+                                                                              ] .
 
 
 ###  http://archief.overheid.nl/persoon/doc/CatalogusRecordNT00194
@@ -1659,28 +1789,27 @@ naa:Voorganger rdf:type owl:NamedIndividual ,
 ###  http://archief.overheid.nl/persoon/id/GerardKuys
 <http://archief.overheid.nl/persoon/id/GerardKuys> rdf:type owl:NamedIndividual ,
                                                             naa:Persoon ;
-                                                            naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
-                                                                            naa:achternaam "Kuys"^^xsd:string ;
-                                                                            naa:voornaam "Gerard"^^xsd:string
-                                                                          ] ;
-                                                            prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
-                                                            foaf:familyName "Kuys"^^rdfs:Literal ;
-                                                            foaf:firstName "Gerard"^^rdfs:Literal ;
-                                                            foaf:gender "man"^^rdfs:Literal .
+                                                   naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
+                                                                   naa:achternaam "Kuys"^^xsd:string ;
+                                                                   naa:voornaam "Gerard"^^xsd:string
+                                                                 ] ;
+                                                   prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
+                                                   foaf:familyName "Kuys"^^rdfs:Literal ;
+                                                   foaf:firstName "Gerard"^^rdfs:Literal ;
+                                                   foaf:gender "man"^^rdfs:Literal .
 
 
 ###  http://archief.overheid.nl/persoon/id/GijsbertKruithof
 <http://archief.overheid.nl/persoon/id/GijsbertKruithof> rdf:type owl:NamedIndividual ,
                                                                   naa:Persoon ;
-                                                                  naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
-                                                                                  naa:achternaam "Kruithof"^^xsd:string ;
-                                                                                  naa:voornaam "Gijsbert"^^xsd:string
-                                                                                ] ;
-                                                                  prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
-                                                                  foaf:familyName "Kruithof"^^rdfs:Literal ;
-                                                                  foaf:firstName "Gijsbert"^^rdfs:Literal ;
-                                                                  foaf:gender "man"^^rdfs:Literal .
-
+                                                         naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
+                                                                         naa:achternaam "Kruithof"^^xsd:string ;
+                                                                         naa:voornaam "Gijsbert"^^xsd:string
+                                                                       ] ;
+                                                         prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
+                                                         foaf:familyName "Kruithof"^^rdfs:Literal ;
+                                                         foaf:firstName "Gijsbert"^^rdfs:Literal ;
+                                                         foaf:gender "man"^^rdfs:Literal .
 
 
 ###  http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024
@@ -1695,20 +1824,34 @@ naa:Voorganger rdf:type owl:NamedIndividual ,
                                                               rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> .
 
 
-###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll
-<http://archief.overheid.nl/persoon/id/Willem_vd_Poll> rdf:type owl:NamedIndividual ,
-                                                                naa:Persoon ;
-                                                       naa:heeftUitgevoerd _:genid18 ;
-                                                       rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ,
-                                                                   <http://archief.overheid.nl/persoon/doc/DatasetFotografen> ;
-                                                       rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
+###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll_(fotograaf)
+<http://archief.overheid.nl/persoon/id/Willem_vd_Poll_(fotograaf)> rdf:type owl:NamedIndividual ,
+                                                                            naa:Persoon ;
+                                                                   naa:heeftUitgevoerd _:genid21 ;
+                                                                   rdfs:member <http://archief.overheid.nl/persoon/doc/DatasetAllePersonen> ,
+                                                                               <http://archief.overheid.nl/persoon/doc/DatasetFotografen> ;
+                                                                   rdfs:comment "Het is nu mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
 
-_:genid18 rdf:type naa:FotoCreatie ;
-           naa:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto1> .
+_:genid21 rdf:type naa:FotoCreatie ;
+           naa:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
 
 
-[ rdf:type naa:PersoonsNaam
-] .
+###  http://nl.dbpedia.org/resource/Nationaal_Archief
+<http://nl.dbpedia.org/resource/Nationaal_Archief> rdf:type owl:NamedIndividual .
+
+
+###  https://service.nationaalarchief.nl/api/iiif
+<https://service.nationaalarchief.nl/api/iiif> rdf:type owl:NamedIndividual ,
+                                                        svcs:Service ;
+                                               dcterms:conformsTo <http://iiif.io/api/image> ;
+                                               rdfs:comment "De IIIF service zoals geleverd door GAF (Generieke Archief Functies)."@nl .
+
+
+###  https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e
+<https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> rdf:type owl:NamedIndividual ,
+                                                                                                        edm:WebResource ;
+                                                                                               svcs:has_service <https://service.nationaalarchief.nl/api/iiif> .
+
 
 #################################################################
 #    Annotations
@@ -1727,11 +1870,11 @@ dcterms:Agent rdfs:label "Agent"@en ;
 
 
 ore:toc rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
-        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
-                          ] ;
         dcterms:title "The OAI ORE terms vocabulary" ;
         dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
         rdfs:label "The OAI ORE terms vocabulary" ;
+        dcterms:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                          ] ;
         rdfs:comment "The set of terms provided by the OAI ORE initiative" .
 
 

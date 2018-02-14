@@ -1211,11 +1211,12 @@ skos:prefLabel &quot;Grafisch record&quot;@nl .</documentation>
           <element xsi:type="archimate:DataObject" name="naa:Kaart" id="019b36ac-0faf-4c7a-8b61-d751fc316392"/>
           <element xsi:type="archimate:DataObject" name="naa:LandKaart" id="8d411b3b-4e1b-4162-9e1c-a338231c87a6"/>
           <element xsi:type="archimate:DataObject" name="naa:Persoon" id="6a09e730-088a-4285-9f0e-af1e1ea02c75">
-            <documentation>###  http://archief.overheid.nl/def/PersoonEntiteit
-naa:PersoonEntiteit rdf:type owl:Class ;
-owl:equivalentClass bgn:Person , foaf:Person, cidoc-crm:E39_Actor ;
-rdfs:subClassOf naa:ArchiefEntiteit ;
-rdfs:comment &quot;Fysiek persoon in het domein van archieven.&quot;@nl .</documentation>
+            <documentation>###  http://archief.overheid.nl/def/Persoon
+naa:Persoon rdf:type owl:Class ;
+            owl:equivalentClass bgn:Person ,
+                                cidoc-crm:E39_Actor ;
+            rdfs:subClassOf prov:Agent ;
+            rdfs:comment &quot;Fysiek persoon in het domein van archieven.&quot;@nl .</documentation>
           </element>
           <element xsi:type="archimate:DataObject" name="naa:ZeeKaart" id="83d7a993-b6ae-4ac4-b9a2-0c069df29fe9"/>
           <element xsi:type="archimate:DataObject" name="napersoondoc:DatasetAllePersonen" id="5022489a-2a8a-447f-bc9e-926e37de5fd1"/>
@@ -2362,7 +2363,6 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:AggregationRelationship" name="owl:disjointWith" id="86c51e44-3d84-4d4c-95b6-2358921def25" source="cb3974a6-47e9-4920-a6fa-b19f98d76fc0" target="eb18859d-a852-46fd-8c71-9ad3324c3183"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="0dd694d5-2dbc-4cf7-96d6-1ff2e700de89" source="cb3974a6-47e9-4920-a6fa-b19f98d76fc0" target="8c843230-2458-4baa-989b-bce44d033359"/>
     <element xsi:type="archimate:AggregationRelationship" name="owl:equivalentClass" id="9ac3d9aa-fc9a-4ef7-b990-9269f4d0b5ac" source="cb3974a6-47e9-4920-a6fa-b19f98d76fc0" target="e5dc33a7-6f8b-45de-8790-da1cc8fdd810"/>
-    <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="600303c8-0c55-4c93-a3a2-60a5ddfb750d" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="cb3974a6-47e9-4920-a6fa-b19f98d76fc0"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="9cb94151-ec1c-44ce-bc68-d10c73f8b432" source="ac77137d-556f-440b-bee2-d95dbe67cea9" target="cb3974a6-47e9-4920-a6fa-b19f98d76fc0"/>
     <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="73fe3c27-a488-4c05-a500-7c50e69425b0" source="c1fdd966-a9ff-493c-8c61-5335e29d0c61" target="cb3974a6-47e9-4920-a6fa-b19f98d76fc0"/>
     <element xsi:type="archimate:AggregationRelationship" id="5643b170-3b05-4984-be66-6314f7fb10e3" source="019b36ac-0faf-4c7a-8b61-d751fc316392" target="cb3974a6-47e9-4920-a6fa-b19f98d76fc0"/>
@@ -2550,6 +2550,7 @@ disjointWith	…the first class and second class have no members in common	:Man 
     <element xsi:type="archimate:SpecializationRelationship" name="rdf:type(a)" id="0cfebeab-29ec-4dbf-8c63-d8edfafca30c" source="5022489a-2a8a-447f-bc9e-926e37de5fd1" target="5b7e17c5-1a06-4aa4-a48b-21697b6ab27d"/>
     <element xsi:type="archimate:SpecializationRelationship" name="rdf:type(a)" id="0da75523-6bd7-41f1-ab34-74ecb7358aa0" source="a762d0eb-04c4-496c-9b3e-88f2a8582117" target="5b7e17c5-1a06-4aa4-a48b-21697b6ab27d"/>
     <element xsi:type="archimate:SpecializationRelationship" name="rdf:type(a)" id="89199bdc-3bab-4d8e-a56c-b6e11cc60f43" source="fc325332-63e3-4cf4-ba89-d5851fc493f3" target="5b7e17c5-1a06-4aa4-a48b-21697b6ab27d"/>
+    <element xsi:type="archimate:AggregationRelationship" name="rdfs:subClassOf" id="f8c7c9c0-f3cd-42bb-b057-b3fccb6c7e5e" source="6a09e730-088a-4285-9f0e-af1e1ea02c75" target="752c2ed3-4546-44ca-b6ee-3020cc578dca"/>
   </folder>
   <folder name="Views" id="1106c770-e13e-4b3d-b75c-8d72c67d5ead" type="diagrams">
     <folder name="Linked Data" id="9b434202-298c-47cc-a78d-ba4cc18702aa">
@@ -3534,7 +3535,7 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         <child xsi:type="archimate:DiagramObject" id="bc8a07ad-38d2-4854-9a75-874e93671ff6" targetConnections="b3fa1a85-89a1-4b5e-8375-4a463476fb8e" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="04c4696f-26e9-4d47-b4f0-3699e6051541">
           <bounds x="-192" y="264" width="120" height="55"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="16eabc1f-99b6-4625-83c5-c06087e1e343" targetConnections="a9b208d0-1001-42d2-b455-cd4f7858b983 38d867fc-fb74-49e4-85ee-7cb695344868 b5f5873d-3fcb-4aac-b53c-fcfc67dcddb4 84dc0226-1db3-4e62-8db1-dccfa5672364" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="cb3974a6-47e9-4920-a6fa-b19f98d76fc0">
+        <child xsi:type="archimate:DiagramObject" id="16eabc1f-99b6-4625-83c5-c06087e1e343" targetConnections="a9b208d0-1001-42d2-b455-cd4f7858b983 38d867fc-fb74-49e4-85ee-7cb695344868 84dc0226-1db3-4e62-8db1-dccfa5672364" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="cb3974a6-47e9-4920-a6fa-b19f98d76fc0">
           <bounds x="432" y="264" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="7756fa42-75ac-4f49-acb9-8c858a47bf28" lineColor="#000000" source="16eabc1f-99b6-4625-83c5-c06087e1e343" target="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" archimateRelationship="86c51e44-3d84-4d4c-95b6-2358921def25">
             <bendpoint startX="-108" startY="21" endX="180" endY="21"/>
@@ -3562,8 +3563,8 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
             <bendpoint startX="144" startY="-15" endX="-132" endY="33"/>
           </sourceConnection>
           <sourceConnection xsi:type="archimate:Connection" id="a4fd5a82-f792-408a-95fd-183b6bfeb299" lineColor="#000000" source="c4ac16bf-00ee-4069-81ca-06eccc7a48cb" target="a74db1b1-2023-4b76-8eb7-870862ec259d" archimateRelationship="13aaf85f-af8b-43a3-8ed6-0dbcb5eba1b6"/>
-          <sourceConnection xsi:type="archimate:Connection" id="b5f5873d-3fcb-4aac-b53c-fcfc67dcddb4" lineColor="#000000" source="c4ac16bf-00ee-4069-81ca-06eccc7a48cb" target="16eabc1f-99b6-4625-83c5-c06087e1e343" archimateRelationship="600303c8-0c55-4c93-a3a2-60a5ddfb750d"/>
           <sourceConnection xsi:type="archimate:Connection" id="99b35c2b-4db8-478b-b160-baf285fdf53d" lineColor="#000000" source="c4ac16bf-00ee-4069-81ca-06eccc7a48cb" target="f7f1f802-15e3-4bcf-a422-f02e04ec4728" archimateRelationship="bbb7ab21-9c06-4b7d-ad86-45314baad2ad"/>
+          <sourceConnection xsi:type="archimate:Connection" id="30db212a-8730-4860-b2b9-e6b00743f2fc" lineColor="#000000" source="c4ac16bf-00ee-4069-81ca-06eccc7a48cb" target="8d451c41-ab11-48e5-b261-c5d8b5ca11f8" archimateRelationship="f8c7c9c0-f3cd-42bb-b057-b3fccb6c7e5e"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="599b8b9c-8fcd-47ca-8d84-3ca4cbea9813" targetConnections="0fda28c7-04ef-4e72-9d18-1a7f34b563a3 e9dad24f-22ef-4735-af10-b7695bb77439" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="3b4aa45f-cff7-49ca-a2b1-a468ffdb37c8">
           <bounds x="948" y="216" width="120" height="55"/>
@@ -3606,6 +3607,9 @@ nabeelddataset: http://archief.overheid.nl/beeld/dataset/doc/ +  {dataset-refere
         <child xsi:type="archimate:DiagramObject" id="8e448831-65d2-457a-affe-bb7c502c5111" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="bf19e9bf-3501-4211-86b4-6afda06de363">
           <bounds x="108" y="372" width="120" height="55"/>
           <sourceConnection xsi:type="archimate:Connection" id="7b6689bf-dbdc-4dd2-b8dc-a6a3bcb29fc2" lineColor="#000000" source="8e448831-65d2-457a-affe-bb7c502c5111" target="88e26ea7-15fb-4c3d-af15-0d0cd0345ebd" archimateRelationship="273405dd-d87f-4bae-ba5f-8824f6182c10"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="8d451c41-ab11-48e5-b261-c5d8b5ca11f8" targetConnections="30db212a-8730-4860-b2b9-e6b00743f2fc" lineColor="#5c5c5c" fillColor="#b5ffff" archimateElement="752c2ed3-4546-44ca-b6ee-3020cc578dca">
+          <bounds x="756" y="24" width="120" height="55"/>
         </child>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" name="NA NadereToegang Voorbeeld Commissieboeken (NT00194)" id="011f662a-65f5-4e62-bddf-2b73b3147116">
