@@ -1615,7 +1615,9 @@ foaf:Project rdf:type owl:Class ;
                                                                                 edm:hasView <https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> ;
                                                                                 dcterms:creator [ rdf:type naa:PersoonsVerwijzing ;
                                                                                                   naa:volledige_naam "Willem van der Poll"^^xsd:string
-                                                                                                ] .
+                                                                                                ] ;
+                                                                                rdfs:comment """Dit object vertegenwoordigt de 'fysieke' foto indien het om een scan gaat, of om de 'Born Digital' variant indien er geen fysieke vorm bestaat.
+De sleutel van dit foto object is afkomstig uit het e-Depot en is gebaseerd op de \"Deliverable Unit\"."""@nl .
 
 
 ###  http://archief.overheid.nl/collectie/doc/DatasetNT00194
@@ -1665,7 +1667,7 @@ De Raad van State heeft een geschiedenis die teruggaat tot 1531. Vanaf 1581 func
                                                                                                               ] ;
                                                                                              dcterms:source "NL-HaNA/1.01.19/1537//130v//" ;
                                                                                              rdfs:comment """Voorbeeld record van NT00194 De Commissieboeken van het NA.
-Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank nodes. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier."""@nl .
+Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank nodes. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier. De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."""@nl .
 
 
 ###  http://archief.overheid.nl/collectie/doc/FotoCollectie
@@ -1681,7 +1683,8 @@ Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank
                                                                                                     naa:GrafischRecord ;
                                                                                            edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                            rdfs:member <http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
-                                                                                           dcterms:creator "Nationaal Archief"@nl .
+                                                                                           dcterms:creator "Nationaal Archief"@nl ;
+                                                                                           rdfs:comment "De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."@nl .
 
 
 ###  http://archief.overheid.nl/collectie/doc/IndexCollectie
