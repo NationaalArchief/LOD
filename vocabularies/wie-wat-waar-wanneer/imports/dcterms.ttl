@@ -950,7 +950,7 @@ dcterms:source
     dcterms:hasVersion <http://dublincore.org/usage/terms/history/#sourceT-001> ;
     dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
     dcterms:modified "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
-    a rdf:Property ;
+    a rdf:Property , owl:ObjectProperty;
     rdfs:comment "A related resource from which the described resource is derived."@en ;
     rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
     rdfs:label "Source"@en ;
@@ -1034,4 +1034,3 @@ dcterms:valid
     rdfs:label "Date Valid"@en ;
     rdfs:range rdfs:Literal ;
     rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
-
