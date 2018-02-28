@@ -81,14 +81,14 @@ dcterms:hasVersion rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/identifier
-dcterms:identifier dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+dcterms:identifier rdf:type owl:AnnotationProperty ;
+                   dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001> ;
                    dcterms:issued "2008-01-14"^^xsd:date ;
                    dcterms:modified "2008-01-14"^^xsd:date ;
                    rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
                    rdfs:isDefinedBy dcterms: ;
                    rdfs:label "Identifier"@en ;
-                   rdf:type owl:AnnotationProperty ;
                    rdfs:subPropertyOf dc:identifier ;
                    rdfs:range rdfs:Literal .
 
@@ -107,6 +107,20 @@ dcterms:modified rdf:type owl:AnnotationProperty .
 
 ###  http://purl.org/dc/terms/publisher
 dcterms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:AnnotationProperty ;
+                 dcterms:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en ;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relationT-001> ;
+                 dcterms:issued "2008-01-14"^^xsd:date ;
+                 dcterms:modified "2008-01-14"^^xsd:date ;
+                 rdfs:comment "A related resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Relation"@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
+                 rdfs:subPropertyOf dc:relation .
+
 
 ###  http://purl.org/dc/terms/terms
 dcterms:terms rdf:type owl:AnnotationProperty .
@@ -281,7 +295,7 @@ naa:isRecordType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf dcterms:type ;
                  rdfs:domain naa:DetailRecord ;
                  rdfs:range naa:RecordType ;
-                 rdfs:comment "Optioneel: specificeert dat een DetailRecord van een bepaald type is. Een record uit een NT kan een benoeming zijn, gebruik dan DetailRecord en maak een nieuw type DetailRecordType: TypeBenoeming. Dit voorkomt dat je voor elk \"bijzonder\" NT record een subclass moet maken."@nl .
+                 rdfs:comment "Optioneel: specificeert dat een DetailRecord van een bepaald type is. Een record uit een NT kan een benoeming zijn, gebruik dan DetailRecord en maak een nieuw type RecordType: TypeBenoeming. Dit voorkomt dat je voor elk \"bijzonder\" NT record een subclass moet maken."@nl .
 
 
 ###  http://archief.overheid.nl/def/isVoorgangerVan
@@ -375,18 +389,6 @@ dcterms:type rdf:type owl:ObjectProperty ;
              rdfs:comment "The nature or genre of the resource."@en ;
              rdfs:isDefinedBy dcterms: ;
              rdfs:label "Type"@en .
-
- ###  http://purl.org/dc/terms/relation
- dcterms:relation dcterms:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en ;
-                  dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relationT-001> ;
-                  dcterms:issued "2008-01-14"^^xsd:date ;
-                  dcterms:modified "2008-01-14"^^xsd:date ;
-                  rdfs:comment "A related resource."@en ;
-                  rdfs:isDefinedBy dcterms: ;
-                  rdfs:label "Relation"@en ;
-                  skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en ;
-                  rdf:type owl:AnnotationProperty ;
-                  rdfs:subPropertyOf dc:relation .
 
 
 ###  http://rdfs.org/ns/void#class
@@ -1694,7 +1696,7 @@ De Raad van State heeft een geschiedenis die teruggaat tot 1531. Vanaf 1581 func
                                                                                            dcterms:relation _:genid20 ,
                                                                                                             _:genid21 ;
                                                                                            rdfs:comment """Voorbeeld record van NT00194 De Commissieboeken van het NA.
-Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit zijn blank nodes. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier. De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."""@nl .
+Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit mogen blank nodes zijn. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier. De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."""@nl .
 
 _:genid20 rdf:type naa:PersoonsVerwijzing ;
            dcterms:subject naa:Benoemde ;
@@ -1722,6 +1724,7 @@ _:genid21 rdf:type naa:PersoonsVerwijzing ;
                                                                                          naa:isRecordType naa:TypeFotoRecord ;
                                                                                          edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                          rdfs:member <http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
+                                                                                         naa:periodebeschrijving "Tussen 1950-00-00/1955-00-00"@nl ;
                                                                                          dcterms:creator <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
                                                                                          rdfs:comment "De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."@nl .
 
@@ -1756,6 +1759,7 @@ Een index gaat over de inhoud van een specifiek archief of archiefstukken en is 
 ###  http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                          naa:ArchiefEntiteit ;
+                                                                                naa:isEntiteitType naa:TypeFoto ;
                                                                                 edm:hasView <https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> ;
                                                                                 dcterms:creator [ rdf:type naa:PersoonsVerwijzing ;
                                                                                                   naa:volledige_naam "Willem van der Poll"^^xsd:string
@@ -1777,7 +1781,8 @@ naa:FotoCreatie rdf:type owl:NamedIndividual ,
 
 ###  http://archief.overheid.nl/def/TypeAanstellingRecord
 naa:TypeAanstellingRecord rdf:type owl:NamedIndividual ,
-                                   naa:RecordType .
+                                   naa:RecordType ;
+                          rdfs:comment "Bijvoorbeeld inschrijvingen van aanstellingen van militairen in de rang van kapitein of hoger in het Staatse Leger,"@nl .
 
 
 ###  http://archief.overheid.nl/def/TypeArchiefInventaris
@@ -2000,6 +2005,7 @@ _:genid28 rdf:type naa:FotoCreatie ;
 ###  http://nl.dbpedia.org/resource/Nationaal_Archief
 <http://nl.dbpedia.org/resource/Nationaal_Archief> rdf:type owl:NamedIndividual .
 
+
 ###  https://service.nationaalarchief.nl/api/iiif
 <https://service.nationaalarchief.nl/api/iiif> rdf:type owl:NamedIndividual ,
                                                         svcs:Service ;
@@ -2010,7 +2016,8 @@ _:genid28 rdf:type naa:FotoCreatie ;
 ###  https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e
 <https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> rdf:type owl:NamedIndividual ,
                                                                                                         edm:WebResource ;
-                                                                                               svcs:has_service <https://service.nationaalarchief.nl/api/iiif> .
+                                                                                               svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
+                                                                                               dc:source "https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e"^^xsd:string .
 
 
 #################################################################
@@ -2018,5 +2025,6 @@ _:genid28 rdf:type naa:FotoCreatie ;
 #################################################################
 
 naa:FotoCreatie rdfs:comment "Een fotocreatie is van het type \"Creation\" (Cidoc CRM) volgens het model: actie --> consequentie, of resultaat. Het resultaat van deze actie is een fysieke foto."@nl .
+
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
