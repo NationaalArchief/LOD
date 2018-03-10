@@ -1,4 +1,4 @@
-@prefix : <http://archief.overheid.nl/def/> .
+@prefix : <http://archief.nl/def/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -7,7 +7,7 @@
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
-@prefix naa: <http://archief.overheid.nl/def/> .
+@prefix naa: <http://archief.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -29,10 +29,10 @@
 @prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
-@base <http://archief.overheid.nl/def/> .
+@base <http://archief.nl/def/> .
 
-<http://archief.overheid.nl/def/> rdf:type owl:Ontology ;
-                                   rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
+<http://archief.nl/def/> rdf:type owl:Ontology ;
+                          rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
 
@@ -248,7 +248,13 @@ xsd:date rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://archief.overheid.nl/def/heeftNaam
+###  http://archief.nl/def/handle
+naa:handle rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf dcterms:hasPart ;
+           rdfs:comment "Verwijzing van de persistente URL (Handle)."@nl .
+
+
+###  http://archief.nl/def/heeftNaam
 naa:heeftNaam rdf:type owl:ObjectProperty ;
               rdfs:domain naa:ArchiefEntiteit ;
               rdfs:range naa:ArchiefNaam ,
@@ -258,14 +264,14 @@ naa:heeftNaam rdf:type owl:ObjectProperty ;
               skos:prefLabel "heeft naam"@nl .
 
 
-###  http://archief.overheid.nl/def/heeftUitgevoerd
+###  http://archief.nl/def/heeftUitgevoerd
 naa:heeftUitgevoerd rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf cidoc-crm:P11i_participated_in ;
                     rdfs:domain bgn:Person ;
                     rdfs:range cidoc-crm:E65_Creation .
 
 
-###  http://archief.overheid.nl/def/isBeschrevenIn
+###  http://archief.nl/def/isBeschrevenIn
 naa:isBeschrevenIn rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf dcterms:isReferencedBy ;
                    rdfs:domain naa:ArchiefEntiteit ;
@@ -273,16 +279,16 @@ naa:isBeschrevenIn rdf:type owl:ObjectProperty ;
                    rdfs:comment "Gebruik isBeschrevenIn om een entiteit te koppelen aan het archiefstuk waar het (of zij, of hij) beschreven staat in het archief."@nl .
 
 
-###  http://archief.overheid.nl/def/isEntiteitType
+###  http://archief.nl/def/isEntiteitType
 naa:isEntiteitType rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf dcterms:type ;
                    rdfs:domain naa:ArchiefEntiteit ;
                    rdfs:range naa:EntiteitType ;
                    rdfs:comment """Optioneel. Specificeert dat een ArchiefEntiteit van een bepaald type is.
-Zie http://archief.overheid.nl/def/ArchiefEntiteitType"""@nl .
+Zie http://archief.nl/def/ArchiefEntiteitType"""@nl .
 
 
-###  http://archief.overheid.nl/def/isOpvolgerVan
+###  http://archief.nl/def/isOpvolgerVan
 naa:isOpvolgerVan rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   owl:inverseOf naa:isVoorgangerVan ;
@@ -290,7 +296,7 @@ naa:isOpvolgerVan rdf:type owl:ObjectProperty ;
                   rdfs:range foaf:Agent .
 
 
-###  http://archief.overheid.nl/def/isRecordType
+###  http://archief.nl/def/isRecordType
 naa:isRecordType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf dcterms:type ;
                  rdfs:domain naa:DetailRecord ;
@@ -298,14 +304,14 @@ naa:isRecordType rdf:type owl:ObjectProperty ;
                  rdfs:comment "Optioneel: specificeert dat een DetailRecord van een bepaald type is. Een record uit een NT kan een benoeming zijn, gebruik dan DetailRecord en maak een nieuw type RecordType: TypeBenoeming. Dit voorkomt dat je voor elk \"bijzonder\" NT record een subclass moet maken."@nl .
 
 
-###  http://archief.overheid.nl/def/isVoorgangerVan
+###  http://archief.nl/def/isVoorgangerVan
 naa:isVoorgangerVan rdf:type owl:ObjectProperty ;
                     rdfs:domain foaf:Agent ;
                     rdfs:range foaf:Agent ;
                     rdfs:comment "Geeft aan dat iemand (beschreven of echt persoon) voor gegaan is aan een ander iemand zonder context van de activiteit."@nl .
 
 
-###  http://archief.overheid.nl/def/resultaatVanActiviteit
+###  http://archief.nl/def/resultaatVanActiviteit
 naa:resultaatVanActiviteit rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf cidoc-crm:P94_has_created ;
                            rdfs:range naa:ArchiefEntiteit ;
@@ -346,6 +352,11 @@ dc:type rdf:type owl:ObjectProperty ;
         rdfs:isDefinedBy dc: ;
         rdfs:label "Type"@en ;
         skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+
+###  http://purl.org/dc/terms/hasPart
+dcterms:hasPart rdf:type owl:ObjectProperty ;
+                rdfs:range naa:ArchiefVerwijzing .
 
 
 ###  http://purl.org/dc/terms/isPartOf
@@ -820,7 +831,7 @@ foaf:primaryTopic rdf:type owl:ObjectProperty ,
 #    Data properties
 #################################################################
 
-###  http://archief.overheid.nl/def/achternaam
+###  http://archief.nl/def/achternaam
 naa:achternaam rdf:type owl:DatatypeProperty ;
                rdfs:range xsd:string ;
                rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
@@ -830,7 +841,7 @@ naa:achternaam rdf:type owl:DatatypeProperty ;
                skos:prefLabel "achternaam"@nl .
 
 
-###  http://archief.overheid.nl/def/achternaam_van_meisjesnaam
+###  http://archief.nl/def/achternaam_van_meisjesnaam
 naa:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
                                rdfs:subPropertyOf naa:achtervoegsel ;
                                rdfs:range xsd:string ;
@@ -839,27 +850,27 @@ naa:achternaam_van_meisjesnaam rdf:type owl:DatatypeProperty ;
                                skos:prefLabel "achternaam van meisjesnaam"@nl .
 
 
-###  http://archief.overheid.nl/def/achtervoegsel
+###  http://archief.nl/def/achtervoegsel
 naa:achtervoegsel rdf:type owl:DatatypeProperty ;
                   rdfs:range xsd:string ;
                   rdfs:label "achtervoegsel"@nl ,
                              "postposition"@en .
 
 
-###  http://archief.overheid.nl/def/beroepsbeschrijving
+###  http://archief.nl/def/beroepsbeschrijving
 naa:beroepsbeschrijving rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf naa:functiebeschrijving ;
                         rdfs:range xsd:string ;
                         rdfs:comment "Beschrijving van het beroep."@nl .
 
 
-###  http://archief.overheid.nl/def/functiebeschrijving
+###  http://archief.nl/def/functiebeschrijving
 naa:functiebeschrijving rdf:type owl:DatatypeProperty ;
                         rdfs:domain foaf:Agent ;
                         rdfs:comment "Beschrijving van een functie die iemand heeft uitgeoefend of vervuld. Kan ook een activiteit geweest zijn."@nl .
 
 
-###  http://archief.overheid.nl/def/initialen
+###  http://archief.nl/def/initialen
 naa:initialen rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf naa:voorvoegsel ;
               rdfs:range xsd:string ;
@@ -868,7 +879,7 @@ naa:initialen rdf:type owl:DatatypeProperty ;
                          "initials"@en .
 
 
-###  http://archief.overheid.nl/def/naamstoevoeging
+###  http://archief.nl/def/naamstoevoeging
 naa:naamstoevoeging rdf:type owl:DatatypeProperty ;
                     rdfs:comment "distinctive addition to last name"@en ,
                                  "onderscheidende toevoeging aan de achternaam"@nl ;
@@ -877,7 +888,7 @@ naa:naamstoevoeging rdf:type owl:DatatypeProperty ;
                     skos:prefLabel "naamstoevoeging"@nl .
 
 
-###  http://archief.overheid.nl/def/patroniem_na_achternaam
+###  http://archief.nl/def/patroniem_na_achternaam
 naa:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
                             rdfs:subPropertyOf naa:achtervoegsel ;
                             rdfs:range xsd:string ;
@@ -886,7 +897,7 @@ naa:patroniem_na_achternaam rdf:type owl:DatatypeProperty ;
                             skos:prefLabel "patroniem na achternaam"@nl .
 
 
-###  http://archief.overheid.nl/def/patroniem_voor_naam
+###  http://archief.nl/def/patroniem_voor_naam
 naa:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf naa:voorvoegsel ;
                         rdfs:range xsd:string ;
@@ -895,13 +906,13 @@ naa:patroniem_voor_naam rdf:type owl:DatatypeProperty ;
                         skos:prefLabel "patroniem vóór naam"@nl .
 
 
-###  http://archief.overheid.nl/def/periodebeschrijving
+###  http://archief.nl/def/periodebeschrijving
 naa:periodebeschrijving rdf:type owl:DatatypeProperty ;
                         rdfs:domain naa:ArchiefVerwijzing ;
                         rdfs:comment "Beschrijft een periode waar de archiefverwijzing betrekking op heeft."@nl .
 
 
-###  http://archief.overheid.nl/def/titel
+###  http://archief.nl/def/titel
 naa:titel rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf naa:voorvoegsel ;
           rdfs:range xsd:string ;
@@ -911,7 +922,7 @@ naa:titel rdf:type owl:DatatypeProperty ;
           skos:prefLabel "titel"@nl .
 
 
-###  http://archief.overheid.nl/def/titel_na_naam
+###  http://archief.nl/def/titel_na_naam
 naa:titel_na_naam rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf naa:achtervoegsel ;
                   rdfs:range xsd:string ;
@@ -921,13 +932,13 @@ naa:titel_na_naam rdf:type owl:DatatypeProperty ;
                   skos:prefLabel "titel na naam"@nl .
 
 
-###  http://archief.overheid.nl/def/volledige_naam
+###  http://archief.nl/def/volledige_naam
 naa:volledige_naam rdf:type owl:DatatypeProperty ;
                    rdfs:range xsd:string ;
                    rdfs:comment "De volledige naam zoals bekend in de originele records uit het archief."@nl .
 
 
-###  http://archief.overheid.nl/def/voornaam
+###  http://archief.nl/def/voornaam
 naa:voornaam rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf naa:voorvoegsel ;
              rdfs:range xsd:string ;
@@ -937,7 +948,7 @@ naa:voornaam rdf:type owl:DatatypeProperty ;
              skos:prefLabel "voornaam"@nl .
 
 
-###  http://archief.overheid.nl/def/voorvoegsel
+###  http://archief.nl/def/voorvoegsel
 naa:voorvoegsel rdf:type owl:DatatypeProperty ;
                 rdfs:range xsd:string ;
                 rdfs:label "preposition"@en ,
@@ -1038,7 +1049,7 @@ foaf:gender rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-###  http://archief.overheid.nl/def/ArchiefEntiteit
+###  http://archief.nl/def/ArchiefEntiteit
 naa:ArchiefEntiteit rdf:type owl:Class ;
                     owl:equivalentClass cidoc-crm:E1_CRM_Entity ,
                                         edm:NonInformationResource ;
@@ -1047,7 +1058,7 @@ naa:ArchiefEntiteit rdf:type owl:Class ;
                     rdfs:comment "Een archief entiteit staat voor entiteiten waar naar verwezen wordt in de verzamelingen  archief records."@nl .
 
 
-###  http://archief.overheid.nl/def/ArchiefNaam
+###  http://archief.nl/def/ArchiefNaam
 naa:ArchiefNaam rdf:type owl:Class ;
                 owl:equivalentClass dbo:Name ;
                 rdfs:comment "A name in the archival domain"@en ,
@@ -1057,7 +1068,7 @@ naa:ArchiefNaam rdf:type owl:Class ;
                 skos:prefLabel "Naam"@nl .
 
 
-###  http://archief.overheid.nl/def/ArchiefVerwijzing
+###  http://archief.nl/def/ArchiefVerwijzing
 naa:ArchiefVerwijzing rdf:type owl:Class ;
                       owl:equivalentClass dbo:Reference ,
                                           dcterms:BibliographicResource ,
@@ -1067,7 +1078,7 @@ naa:ArchiefVerwijzing rdf:type owl:Class ;
                                  "Archival reference"@en .
 
 
-###  http://archief.overheid.nl/def/DetailRecord
+###  http://archief.nl/def/DetailRecord
 naa:DetailRecord rdf:type owl:Class ;
                  rdfs:subClassOf naa:ArchiefVerwijzing ,
                                  ore:Aggregation ;
@@ -1076,16 +1087,16 @@ naa:DetailRecord rdf:type owl:Class ;
                  skos:prefLabel "Record uit een Nadere Toegang"@nl .
 
 
-###  http://archief.overheid.nl/def/EntiteitType
+###  http://archief.nl/def/EntiteitType
 naa:EntiteitType rdf:type owl:Class ;
                  rdfs:comment "Classificatie van (archiefentiteiten). Type = foto, bladzijde, geluidsopname etc. Gebruik om een ArchiefEntiteit te classificeren volgens een standaard."@nl .
 
 
-###  http://archief.overheid.nl/def/FotoCreatie
+###  http://archief.nl/def/FotoCreatie
 naa:FotoCreatie rdf:type owl:Class .
 
 
-###  http://archief.overheid.nl/def/GrafischRecord
+###  http://archief.nl/def/GrafischRecord
 naa:GrafischRecord rdf:type owl:Class ;
                    rdfs:subClassOf naa:DetailRecord ;
                    rdfs:comment "Een record van een grafisch object. Bevat beschrijving en de verwijzing naar het fysieke object en de eventuele zichtexemplaren."@nl ;
@@ -1093,7 +1104,7 @@ naa:GrafischRecord rdf:type owl:Class ;
                    skos:prefLabel "Grafisch record"@nl .
 
 
-###  http://archief.overheid.nl/def/HistorischeNaam
+###  http://archief.nl/def/HistorischeNaam
 naa:HistorischeNaam rdf:type owl:Class ;
                     rdfs:subClassOf naa:ArchiefNaam ;
                     rdfs:comment "Een naam van een persoon uit de geschiedenis, niet de persoon zelf."@nl ;
@@ -1101,7 +1112,7 @@ naa:HistorischeNaam rdf:type owl:Class ;
                     skos:prefLabel "Historische naam"@nl .
 
 
-###  http://archief.overheid.nl/def/Persoon
+###  http://archief.nl/def/Persoon
 naa:Persoon rdf:type owl:Class ;
             owl:equivalentClass bgn:Person ,
                                 cidoc-crm:E39_Actor ;
@@ -1109,7 +1120,7 @@ naa:Persoon rdf:type owl:Class ;
             rdfs:comment "Fysiek persoon in het domein van archieven."@nl .
 
 
-###  http://archief.overheid.nl/def/PersoonsNaam
+###  http://archief.nl/def/PersoonsNaam
 naa:PersoonsNaam rdf:type owl:Class ;
                  rdfs:subClassOf naa:HistorischeNaam ;
                  rdfs:comment "Een naam van een persoon, niet de persoon zelf."@nl ;
@@ -1117,7 +1128,7 @@ naa:PersoonsNaam rdf:type owl:Class ;
                  skos:prefLabel "Persoonsnaam"@nl .
 
 
-###  http://archief.overheid.nl/def/PersoonsVerwijzing
+###  http://archief.nl/def/PersoonsVerwijzing
 naa:PersoonsVerwijzing rdf:type owl:Class ;
                        rdfs:subClassOf edm:InformationResource ;
                        rdfs:comment "A Person Reference is the reference to a Person in a single archival record."@en ,
@@ -1126,11 +1137,11 @@ naa:PersoonsVerwijzing rdf:type owl:Class ;
                        skos:altLabel "Persoonsbeschrijving"@nl .
 
 
-###  http://archief.overheid.nl/def/RecordType
+###  http://archief.nl/def/RecordType
 naa:RecordType rdf:type owl:Class .
 
 
-###  http://archief.overheid.nl/def/VervaardigerVerwijzing
+###  http://archief.nl/def/VervaardigerVerwijzing
 naa:VervaardigerVerwijzing rdf:type owl:Class ;
                            rdfs:subClassOf edm:InformationResource .
 
@@ -1263,13 +1274,28 @@ schema:Person rdf:type owl:Class ;
               owl:equivalentClass foaf:Person .
 
 
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Constraint
+sem:Constraint rdf:type owl:Class .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Role
+sem:Role rdf:type owl:Class ;
+         rdfs:subClassOf sem:Constraint ;
+         rdfs:comment "Roles are properties with a subspecified function or position indicated by a RoleType in the scope of an Event. For example, the sem:hasActor property can be subspecified with the RoleType attacker, to denote that the type of participation of the Actor in the scope of the Event is \"attacker\". The sem:hasPlace property can be subspecified with the RoleType origin, to denote that within the scope of the Event it is the origin." ;
+         rdfs:label "Role" .
+
+
 ###  http://semanticweb.cs.vu.nl/2009/11/sem/RoleType
 sem:RoleType rdf:type owl:Class ;
-             rdfs:subClassOf sem:Type .
+             rdfs:subClassOf sem:Type ;
+             rdfs:comment "EventType contains all resources that are used to classify Roles, e.g. receiver." ;
+             rdfs:label "Role type" .
 
 
 ###  http://semanticweb.cs.vu.nl/2009/11/sem/Type
-sem:Type rdf:type owl:Class .
+sem:Type rdf:type owl:Class ;
+         rdfs:comment "The SEM Type class contains all types of Core instances. These can be either individuals of classes themselves. This class is meant to be extended for each application domain." ;
+         rdfs:label "Type" .
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
@@ -1634,38 +1660,57 @@ foaf:Project rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://archief.overheid.nl/NL-HaNA/doc/CatalogusRecordNT00194
-<http://archief.overheid.nl/NL-HaNA/doc/CatalogusRecordNT00194> rdf:type owl:NamedIndividual ,
-                                                                         dcat:CatalogRecord ;
-                                                                foaf:primaryTopic <http://archief.overheid.nl/NL-HaNA/doc/DatasetNT00194> ;
-                                                                dcterms:issued "7-2-2018"^^xsd:date ;
-                                                                dcterms:modified "7-2-2018"^^xsd:date .
+###  http://archief.nl/NL-HaNA/doc/Catalogus-Fotos
+<http://archief.nl/NL-HaNA/doc/Catalogus-Fotos> rdf:type owl:NamedIndividual ,
+                                                         dcat:Catalog ,
+                                                         prov:Collection ;
+                                                dcat:dataset <http://archief.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
+                                                rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/DatasetAllePersonen
-<http://archief.overheid.nl/NL-HaNA/doc/DatasetAllePersonen> rdf:type owl:NamedIndividual ,
-                                                                      void:Dataset ,
-                                                                      dcat:Dataset ,
-                                                                      prov:Entity ;
-                                                             rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
+###  http://archief.nl/NL-HaNA/doc/Catalogus-Indexen
+<http://archief.nl/NL-HaNA/doc/Catalogus-Indexen> rdf:type owl:NamedIndividual ,
+                                                           dcat:Catalog ,
+                                                           prov:Collection ;
+                                                  dcat:dataset <http://archief.nl/NL-HaNA/doc/Dataset-NT00194> ;
+                                                  dcat:record <http://archief.nl/NL-HaNA/doc/CatalogusRecord-NT00194> ;
+                                                  dcterms:description """Wat is een index?
+Een index gaat over de inhoud van een specifiek archief of archiefstukken en is daarmee vergelijkbaar met een index achterin een boek. Vaak zijn in een index persoons- of geografische namen opgenomen die in de originele documenten voorkomen."""@nl ;
+                                                  rdfs:label "Indexen"@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/DatasetFotografen
-<http://archief.overheid.nl/NL-HaNA/doc/DatasetFotografen> rdf:type owl:NamedIndividual ,
-                                                                    void:Dataset ,
-                                                                    dcat:Dataset ,
-                                                                    prov:Entity ;
-                                                           rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
+###  http://archief.nl/NL-HaNA/doc/CatalogusRecord-NT00194
+<http://archief.nl/NL-HaNA/doc/CatalogusRecord-NT00194> rdf:type owl:NamedIndividual ,
+                                                                 dcat:CatalogRecord ;
+                                                        foaf:primaryTopic <http://archief.nl/NL-HaNA/doc/Dataset-NT00194> ;
+                                                        dcterms:issued "7-2-2018"^^xsd:date ;
+                                                        dcterms:modified "7-2-2018"^^xsd:date .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/DatasetNT00194
-<http://archief.overheid.nl/NL-HaNA/doc/DatasetNT00194> rdf:type owl:NamedIndividual ,
-                                                                 void:Dataset ,
-                                                                 dcat:Dataset ,
-                                                                 prov:Entity ;
-                                                        dc:identifier "nt00194" ;
-                                                        dc:source "http://www.gahetna.nl/NL-HaNA/index/nt00194" ;
-                                                        rdfs:comment """Achtergrond
+###  http://archief.nl/NL-HaNA/doc/Dataset-AlleFotografen
+<http://archief.nl/NL-HaNA/doc/Dataset-AlleFotografen> rdf:type owl:NamedIndividual ,
+                                                                void:Dataset ,
+                                                                dcat:Dataset ,
+                                                                prov:Entity ;
+                                                       rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie met het beroep fotograaf onderdeel van uitmaken."@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/Dataset-AllePersonen
+<http://archief.nl/NL-HaNA/doc/Dataset-AllePersonen> rdf:type owl:NamedIndividual ,
+                                                              void:Dataset ,
+                                                              dcat:Dataset ,
+                                                              prov:Entity ;
+                                                     rdfs:label "De lijst waar alle persoon entiteiten van de Rijkscollectie onderdeel van uitmaken."@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/Dataset-NT00194
+<http://archief.nl/NL-HaNA/doc/Dataset-NT00194> rdf:type owl:NamedIndividual ,
+                                                         void:Dataset ,
+                                                         dcat:Dataset ,
+                                                         prov:Entity ;
+                                                dc:identifier "nt00194" ;
+                                                dc:source "http://www.gahetna.nl/NL-HaNA/index/nt00194" ;
+                                                rdfs:comment """Achtergrond
 Deze index verwijst naar de Commissieboeken van het archief van de Raad van State. In deze commissieboeken zijn de aanstellingsbesluiten opgenomen van militairen in de rang van kapitein en hoger. Het gaat om aanstellingen in de periode 1581-1790. De commissieboeken bevinden zich in in het archief van de Raad van State (1581-1795) 1.01.19. in de inventarisnummers 1523-1543. In totaal zijn in de index 27141 inschrijvingen opgenomen.
 
 Digitaal?
@@ -1683,134 +1728,109 @@ De Raad van State
 De Raad van State heeft een geschiedenis die teruggaat tot 1531. Vanaf 1581 functioneerde de Raad als centraal regeringscollege met taken op het gebied van oorlog, militie, financiën en bestuur. Eén van de taken van de Raad van State was het in bedrijf houden van het militaire apparaat. Daartoe werd in 1575 het Staatse Leger in het leven geroepen. De personeelsadministratie hiervan werd door de Raad van State bijgehouden. In 1788 werd er voor gekozen het leger vooral te laten bestaan uit beroepskrachten. Met de instelling van de Bataafse Republiek in 1795 werd het Staatse Leger echter opgeheven."""@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd
-<http://archief.overheid.nl/NL-HaNA/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
-                                                                                                    naa:DetailRecord ;
-                                                                                           naa:isRecordType naa:TypeAanstellingRecord ;
-                                                                                           rdfs:member <http://archief.overheid.nl/NL-HaNA/doc/DatasetNT00194> ;
-                                                                                           naa:functiebeschrijving "Sergeant Majoor titulair te paard"@nl ;
-                                                                                           naa:periodebeschrijving "1720-1734" ;
-                                                                                           sem:hasTimeStamp "1727-04-28"^^xsd:string ;
-                                                                                           dc:identifier "2f70b03a-ae58-102d-8e23-0050569c51dd" ;
-                                                                                           dc:source "NL-HaNA/1.01.19/1537//130v//" ;
-                                                                                           dcterms:relation _:genid20 ,
-                                                                                                            _:genid21 ;
-                                                                                           rdfs:comment """Voorbeeld record van NT00194 De Commissieboeken van het NA.
+###  http://archief.nl/NL-HaNA/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd
+<http://archief.nl/NL-HaNA/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                           naa:DetailRecord ;
+                                                                                  naa:isRecordType naa:TypeAanstellingRecord ;
+                                                                                  rdfs:member <http://archief.nl/NL-HaNA/doc/Dataset-NT00194> ;
+                                                                                  naa:functiebeschrijving "Sergeant Majoor titulair te paard"@nl ;
+                                                                                  naa:periodebeschrijving "1720-1734" ;
+                                                                                  sem:hasTimeStamp "1727-04-28"^^xsd:string ;
+                                                                                  dc:identifier "2f70b03a-ae58-102d-8e23-0050569c51dd" ;
+                                                                                  dc:source "NL-HaNA/1.01.19/1537//130v//" ;
+                                                                                  dcterms:relation [ ] ,
+[ dcterms:identifier "12024"^^xsd:string
+] ;
+rdfs:comment """Voorbeeld record van NT00194 De Commissieboeken van het NA.
 Persoonsbeschrijvingen worden aangeduid middels dcterms:relation, dit mogen blank nodes zijn. Binnen deze beschrijvingen kan middels dcterms:subject het verschil of eventuele overeenkomsten aangegeven worden. Indien er een uniek referentie nummer of sleutel bekend is van de persoon moet dit aangegeven worden middels dcterms:identifier. De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."""@nl .
 
-_:genid20 rdf:type naa:PersoonsVerwijzing ;
-           dcterms:subject naa:Benoemde ;
-           naa:achternaam "Moenen"^^xsd:string ;
-           naa:volledige_naam "Servaas Moenen"^^xsd:string ;
-           naa:voornaam "Servaas"^^xsd:string ;
-           dcterms:identifier "12024"^^xsd:string .
 
-_:genid21 rdf:type naa:PersoonsVerwijzing ;
-           dcterms:subject naa:Voorganger ;
-           naa:volledige_naam "wijlen Michiel Adolff van Belling"^^xsd:string .
-
-
-###  http://archief.overheid.nl/NL-HaNA/doc/FotoCollectie
-<http://archief.overheid.nl/NL-HaNA/doc/FotoCollectie> rdf:type owl:NamedIndividual ,
-                                                                dcat:Catalog ,
-                                                                prov:Collection ;
-                                                       dcat:dataset <http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
-                                                       rdfs:label "De Fotocollectie van het Rijks Archief."@nl .
+###  http://archief.nl/NL-HaNA/doc/FotoRecord-0145be75-136a-7e34-1709-f61201e4bfaf
+<http://archief.nl/NL-HaNA/doc/FotoRecord-0145be75-136a-7e34-1709-f61201e4bfaf> rdf:type owl:NamedIndividual ,
+                                                                                         naa:DetailRecord ;
+                                                                                naa:isRecordType naa:TypeFotoRecord ;
+                                                                                edm:aggregatedCHO <http://archief.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
+                                                                                rdfs:member <http://archief.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
+                                                                                naa:periodebeschrijving "Tussen 1950-00-00/1955-00-00"@nl ;
+                                                                                dcterms:creator <http://archief.nl/organisatie/id/NationaalArchief> ;
+                                                                                rdfs:comment "De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/FotoRecord-0145be75-136a-7e34-1709-f61201e4bfaf
-<http://archief.overheid.nl/NL-HaNA/doc/FotoRecord-0145be75-136a-7e34-1709-f61201e4bfaf> rdf:type owl:NamedIndividual ,
-                                                                                                  naa:DetailRecord ;
-                                                                                         naa:isRecordType naa:TypeFotoRecord ;
-                                                                                         edm:aggregatedCHO <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
-                                                                                         rdfs:member <http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> ;
-                                                                                         naa:periodebeschrijving "Tussen 1950-00-00/1955-00-00"@nl ;
-                                                                                         dcterms:creator <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
-                                                                                         rdfs:comment "De sleutel (UUID) is afkomstig van het Collectie Beheer Systeem zodat deze opvraagbaar is voor beheer acties."@nl .
+###  http://archief.nl/NL-HaNA/doc/PersoonsCollectie
+<http://archief.nl/NL-HaNA/doc/PersoonsCollectie> rdf:type owl:NamedIndividual ,
+                                                           dcat:Catalog ,
+                                                           prov:Collection ;
+                                                  dcat:dataset <http://archief.nl/NL-HaNA/doc/Dataset-AllePersonen> ;
+                                                  rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/IndexCollectie
-<http://archief.overheid.nl/NL-HaNA/doc/IndexCollectie> rdf:type owl:NamedIndividual ,
-                                                                 dcat:Catalog ,
-                                                                 prov:Collection ;
-                                                        dcat:dataset <http://archief.overheid.nl/NL-HaNA/doc/DatasetNT00194> ;
-                                                        dcat:record <http://archief.overheid.nl/NL-HaNA/doc/CatalogusRecordNT00194> ;
-                                                        dcterms:description """Wat is een index?
-Een index gaat over de inhoud van een specifiek archief of archiefstukken en is daarmee vergelijkbaar met een index achterin een boek. Vaak zijn in een index persoons- of geografische namen opgenomen die in de originele documenten voorkomen."""@nl ;
-                                                        rdfs:label "Indexen"@nl .
+###  http://archief.nl/beeld/doc/Dataset-Fotocollectie_Anefo
+<http://archief.nl/beeld/doc/Dataset-Fotocollectie_Anefo> rdf:type owl:NamedIndividual ,
+                                                                   void:Dataset ,
+                                                                   dcat:Dataset ,
+                                                                   prov:Entity ;
+                                                          rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PersoonsCollectie
-<http://archief.overheid.nl/NL-HaNA/doc/PersoonsCollectie> rdf:type owl:NamedIndividual ,
-                                                                    dcat:Catalog ,
-                                                                    prov:Collection ;
-                                                           dcat:dataset <http://archief.overheid.nl/NL-HaNA/doc/DatasetAllePersonen> ;
-                                                           rdfs:label "Alle personen die voorkomen in de archieven van de Rijkscollectie."@nl .
-
-
-###  http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo
-<http://archief.overheid.nl/beeld/doc/Dataset-Fotocollectie_Anefo> rdf:type owl:NamedIndividual ,
-                                                                            void:Dataset ,
-                                                                            dcat:Dataset ,
-                                                                            prov:Entity ;
-                                                                   rdfs:comment "Een set foto's als voorbeeld. Deze set is onderdeel van de Fotocollectie."@nl .
-
-
-###  http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c
-<http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
-                                                                                         naa:ArchiefEntiteit ;
-                                                                                naa:isEntiteitType naa:TypeFoto ;
-                                                                                edm:hasView <https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> ;
-                                                                                dcterms:creator [ rdf:type naa:PersoonsVerwijzing ;
-                                                                                                  naa:volledige_naam "Willem van der Poll"^^xsd:string
-                                                                                                ] ;
-                                                                                rdfs:comment """Dit object vertegenwoordigt de 'fysieke' foto indien het om een scan gaat, of om de 'Born Digital' variant indien er geen fysieke vorm bestaat.
+###  http://archief.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                naa:ArchiefEntiteit ;
+                                                                       naa:isEntiteitType naa:TypeFoto ;
+                                                                       edm:hasView <https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e> ;
+                                                                       dcterms:creator [ ] ;
+rdfs:comment """Dit object vertegenwoordigt de 'fysieke' foto indien het om een scan gaat, of om de 'Born Digital' variant indien er geen fysieke vorm bestaat.
 De sleutel van dit foto object is afkomstig uit het e-Depot en is gebaseerd op de \"Deliverable Unit\"."""@nl .
 
 
-###  http://archief.overheid.nl/def/Benoemde
-naa:Benoemde rdf:type owl:NamedIndividual ,
-                      sem:RoleType ;
-             rdfs:comment "De rol van iemand of iets waarbij deze benoemd is tot iets."@nl .
-
-
-###  http://archief.overheid.nl/def/FotoCreatie
+###  http://archief.nl/def/FotoCreatie
 naa:FotoCreatie rdf:type owl:NamedIndividual ,
                          cidoc-crm:E65_Creation .
 
 
-###  http://archief.overheid.nl/def/TypeAanstellingRecord
+###  http://archief.nl/def/Rol-Benoemde
+naa:Rol-Benoemde rdf:type owl:NamedIndividual ,
+                          sem:Role ;
+                 rdfs:comment "De rol van iemand of iets waarbij deze benoemd is tot iets."@nl .
+
+
+###  http://archief.nl/def/Rol-Voorganger
+naa:Rol-Voorganger rdf:type owl:NamedIndividual ,
+                            sem:Role ;
+                   rdfs:comment "De rol van voorganger als iemand, of iets die een ander of iets anders is voorgegaan."@nl .
+
+
+###  http://archief.nl/def/TypeAanstellingRecord
 naa:TypeAanstellingRecord rdf:type owl:NamedIndividual ,
                                    naa:RecordType ;
                           rdfs:comment "Bijvoorbeeld inschrijvingen van aanstellingen van militairen in de rang van kapitein of hoger in het Staatse Leger,"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeArchiefInventaris
+###  http://archief.nl/def/TypeArchiefInventaris
 naa:TypeArchiefInventaris rdf:type owl:NamedIndividual ,
                                    naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeBladzijde
+###  http://archief.nl/def/TypeBladzijde
 naa:TypeBladzijde rdf:type owl:NamedIndividual ,
                            naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeDigitaleAfbeelding
+###  http://archief.nl/def/TypeDigitaleAfbeelding
 naa:TypeDigitaleAfbeelding rdf:type owl:NamedIndividual ,
                                     naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeDigitaleVideo
+###  http://archief.nl/def/TypeDigitaleVideo
 naa:TypeDigitaleVideo rdf:type owl:NamedIndividual ,
                                naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeEenvoudigeTekst
+###  http://archief.nl/def/TypeEenvoudigeTekst
 naa:TypeEenvoudigeTekst rdf:type owl:NamedIndividual ,
                                  naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeFilmOpname
+###  http://archief.nl/def/TypeFilmOpname
 naa:TypeFilmOpname rdf:type owl:NamedIndividual ,
                             naa:EntiteitType ;
                    rdfs:comment "Een videopname"@nl ;
@@ -1818,188 +1838,182 @@ naa:TypeFilmOpname rdf:type owl:NamedIndividual ,
                    skos:prefLabel "Video opname"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeFoto
+###  http://archief.nl/def/TypeFoto
 naa:TypeFoto rdf:type owl:NamedIndividual ,
                       naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeFotoNegatief
+###  http://archief.nl/def/TypeFotoNegatief
 naa:TypeFotoNegatief rdf:type owl:NamedIndividual ,
                               naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeFotoRecord
+###  http://archief.nl/def/TypeFotoRecord
 naa:TypeFotoRecord rdf:type owl:NamedIndividual ,
                             naa:RecordType .
 
 
-###  http://archief.overheid.nl/def/TypeGeluidsOpname
+###  http://archief.nl/def/TypeGeluidsOpname
 naa:TypeGeluidsOpname rdf:type owl:NamedIndividual ,
                                naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeIllustratie
+###  http://archief.nl/def/TypeIllustratie
 naa:TypeIllustratie rdf:type owl:NamedIndividual ,
                              naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeKaart
+###  http://archief.nl/def/TypeKaart
 naa:TypeKaart rdf:type owl:NamedIndividual ,
                        naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeLandKaart
+###  http://archief.nl/def/TypeLandKaart
 naa:TypeLandKaart rdf:type owl:NamedIndividual ,
                            naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeManuscript
+###  http://archief.nl/def/TypeManuscript
 naa:TypeManuscript rdf:type owl:NamedIndividual ,
                             naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypePDF
+###  http://archief.nl/def/TypePDF
 naa:TypePDF rdf:type owl:NamedIndividual ,
                      naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeSpreadsheet
+###  http://archief.nl/def/TypeSpreadsheet
 naa:TypeSpreadsheet rdf:type owl:NamedIndividual ,
                              naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeSterrenKaart
+###  http://archief.nl/def/TypeSterrenKaart
 naa:TypeSterrenKaart rdf:type owl:NamedIndividual ,
                               naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeTekstMetOpmaak
+###  http://archief.nl/def/TypeTekstMetOpmaak
 naa:TypeTekstMetOpmaak rdf:type owl:NamedIndividual ,
                                 naa:EntiteitType ;
                        rdfs:comment "Word"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeWord
+###  http://archief.nl/def/TypeWord
 naa:TypeWord rdf:type owl:NamedIndividual ,
                       naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/TypeZeeKaart
+###  http://archief.nl/def/TypeZeeKaart
 naa:TypeZeeKaart rdf:type owl:NamedIndividual ,
                           naa:EntiteitType .
 
 
-###  http://archief.overheid.nl/def/Voorganger
-naa:Voorganger rdf:type owl:NamedIndividual ,
-                        sem:RoleType ;
-               rdfs:comment "De rol van voorganger als iemand, of iets die een ander of iets anders is voorgegaan."@nl .
-
-
-###  http://archief.overheid.nl/def/ZeeKaart
+###  http://archief.nl/def/ZeeKaart
 naa:ZeeKaart rdf:type owl:NamedIndividual ,
                       naa:ArchiefEntiteit .
 
 
-###  http://archief.overheid.nl/naam/doc/willem_vd_poll_naam
-<http://archief.overheid.nl/naam/doc/willem_vd_poll_naam> rdf:type owl:NamedIndividual ,
-                                                                   naa:PersoonsNaam ;
-                                                          naa:volledige_naam "Willem van der Poll"^^xsd:string .
+###  http://archief.nl/naam/doc/willem_vd_poll_naam
+<http://archief.nl/naam/doc/willem_vd_poll_naam> rdf:type owl:NamedIndividual ,
+                                                          naa:PersoonsNaam ;
+                                                 naa:volledige_naam "Willem van der Poll"^^xsd:string .
 
 
-###  http://archief.overheid.nl/organisatie/id/NationaalArchief
-<http://archief.overheid.nl/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                      org:FormalOrganization ,
-                                                                      prov:Agent ,
-                                                                      eac-cpf:CorporateBody ;
-                                                             owl:sameAs <http://nl.dbpedia.org/resource/Nationaal_Archief> ;
-                                                             dcterms:identifier "NL-HaNA"^^xsd:string ;
-                                                             skos:prefLabel "Nationaal Archief"@nl ;
-                                                             vcard:hasAddress [ rdf:type vcard:Address ;
-                                                                                vcard:country-name "Nederland"^^xsd:string ;
-                                                                                vcard:hasPostalCode "2595 BE"^^xsd:string ;
-                                                                                vcard:hasTelephone "(070) 3315400"^^xsd:string ;
-                                                                                vcard:hasURL "http://www.nationaalarchief.nl"^^xsd:anyURI ;
-                                                                                vcard:locality "Den Haag"^^xsd:string ;
-                                                                                vcard:street-address "Prins Willem Alexanderhof 20"^^xsd:string
-                                                                              ] .
+###  http://archief.nl/organisatie/id/NationaalArchief
+<http://archief.nl/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                             org:FormalOrganization ,
+                                                             prov:Agent ,
+                                                             eac-cpf:CorporateBody ;
+                                                    owl:sameAs <http://nl.dbpedia.org/resource/Nationaal_Archief> ;
+                                                    dcterms:identifier "NL-HaNA"^^xsd:string ;
+                                                    skos:prefLabel "Nationaal Archief"@nl ;
+                                                    vcard:hasAddress [ rdf:type vcard:Address ;
+                                                                       vcard:country-name "Nederland"^^xsd:string ;
+                                                                       vcard:hasPostalCode "2595 BE"^^xsd:string ;
+                                                                       vcard:hasTelephone "(070) 3315400"^^xsd:string ;
+                                                                       vcard:hasURL "http://www.nationaalarchief.nl"^^xsd:anyURI ;
+                                                                       vcard:locality "Den Haag"^^xsd:string ;
+                                                                       vcard:street-address "Prins Willem Alexanderhof 20"^^xsd:string
+                                                                     ] .
 
 
-###  http://archief.overheid.nl/persoon/id/EddeHeer
-<http://archief.overheid.nl/persoon/id/EddeHeer> rdf:type owl:NamedIndividual ,
-                                                          naa:Persoon .
+###  http://archief.nl/persoon/id/EddeHeer
+<http://archief.nl/persoon/id/EddeHeer> rdf:type owl:NamedIndividual ,
+                                                 naa:Persoon .
 
 
-###  http://archief.overheid.nl/persoon/id/ElvinDechesne
-<http://archief.overheid.nl/persoon/id/ElvinDechesne> rdf:type owl:NamedIndividual ,
-                                                               naa:Persoon ;
-                                                      naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
-                                                                      naa:achternaam "Dechesne"^^xsd:string ;
-                                                                      naa:voornaam "Elvin"^^xsd:string
-                                                                    ] ;
-                                                      prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
-                                                      foaf:familyName "Dechesne"^^rdfs:Literal ;
-                                                      foaf:firstName "Elvin"^^rdfs:Literal ;
-                                                      foaf:gender "man"^^rdfs:Literal .
+###  http://archief.nl/persoon/id/ElvinDechesne
+<http://archief.nl/persoon/id/ElvinDechesne> rdf:type owl:NamedIndividual ,
+                                                      naa:Persoon ;
+                                             naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
+                                                             naa:achternaam "Dechesne"^^xsd:string ;
+                                                             naa:voornaam "Elvin"^^xsd:string
+                                                           ] ;
+                                             prov:actedOnBehalfOf <http://archief.nl/organisatie/id/NationaalArchief> ;
+                                             foaf:familyName "Dechesne"^^rdfs:Literal ;
+                                             foaf:firstName "Elvin"^^rdfs:Literal ;
+                                             foaf:gender "man"^^rdfs:Literal .
 
 
-###  http://archief.overheid.nl/persoon/id/GerardKuys
-<http://archief.overheid.nl/persoon/id/GerardKuys> rdf:type owl:NamedIndividual ,
-                                                            naa:Persoon ;
-                                                   naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
-                                                                   naa:achternaam "Kuys"^^xsd:string ;
-                                                                   naa:voornaam "Gerard"^^xsd:string
-                                                                 ] ;
-                                                   prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
-                                                   foaf:familyName "Kuys"^^rdfs:Literal ;
-                                                   foaf:firstName "Gerard"^^rdfs:Literal ;
-                                                   foaf:gender "man"^^rdfs:Literal .
+###  http://archief.nl/persoon/id/GerardKuys
+<http://archief.nl/persoon/id/GerardKuys> rdf:type owl:NamedIndividual ,
+                                                   naa:Persoon ;
+                                          naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
+                                                          naa:achternaam "Kuys"^^xsd:string ;
+                                                          naa:voornaam "Gerard"^^xsd:string
+                                                        ] ;
+                                          prov:actedOnBehalfOf <http://archief.nl/organisatie/id/NationaalArchief> ;
+                                          foaf:familyName "Kuys"^^rdfs:Literal ;
+                                          foaf:firstName "Gerard"^^rdfs:Literal ;
+                                          foaf:gender "man"^^rdfs:Literal .
 
 
-###  http://archief.overheid.nl/persoon/id/GijsbertKruithof
-<http://archief.overheid.nl/persoon/id/GijsbertKruithof> rdf:type owl:NamedIndividual ,
-                                                                  naa:Persoon ;
-                                                         naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
-                                                                         naa:achternaam "Kruithof"^^xsd:string ;
-                                                                         naa:voornaam "Gijsbert"^^xsd:string
-                                                                       ] ;
-                                                         prov:actedOnBehalfOf <http://archief.overheid.nl/organisatie/id/NationaalArchief> ;
-                                                         foaf:familyName "Kruithof"^^rdfs:Literal ;
-                                                         foaf:firstName "Gijsbert"^^rdfs:Literal ;
-                                                         foaf:gender "man"^^rdfs:Literal .
+###  http://archief.nl/persoon/id/GijsbertKruithof
+<http://archief.nl/persoon/id/GijsbertKruithof> rdf:type owl:NamedIndividual ,
+                                                         naa:Persoon ;
+                                                naa:heeftNaam [ rdf:type naa:PersoonsNaam ;
+                                                                naa:achternaam "Kruithof"^^xsd:string ;
+                                                                naa:voornaam "Gijsbert"^^xsd:string
+                                                              ] ;
+                                                prov:actedOnBehalfOf <http://archief.nl/organisatie/id/NationaalArchief> ;
+                                                foaf:familyName "Kruithof"^^rdfs:Literal ;
+                                                foaf:firstName "Gijsbert"^^rdfs:Literal ;
+                                                foaf:gender "man"^^rdfs:Literal .
 
 
-###  http://archief.overheid.nl/persoon/id/JohanGuijt
-<http://archief.overheid.nl/persoon/id/JohanGuijt> rdf:type owl:NamedIndividual ,
-                                                            naa:Persoon .
+###  http://archief.nl/persoon/id/JohanGuijt
+<http://archief.nl/persoon/id/JohanGuijt> rdf:type owl:NamedIndividual ,
+                                                   naa:Persoon .
 
 
-###  http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024
-<http://archief.overheid.nl/persoon/id/Persoon-NT00194-12024> rdf:type owl:NamedIndividual ,
-                                                                       naa:Persoon ;
-                                                              naa:heeftNaam [ rdf:type naa:HistorischeNaam ;
-                                                                              naa:achternaam "Moenen"^^xsd:string ;
-                                                                              naa:volledige_naam "Servaas Moenen"^^xsd:string ;
-                                                                              naa:voornaam "Servaas"^^xsd:string
-                                                                            ] ;
-                                                              naa:isBeschrevenIn <http://archief.overheid.nl/NL-HaNA/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> ;
-                                                              rdfs:member <http://archief.overheid.nl/NL-HaNA/doc/DatasetAllePersonen> .
+###  http://archief.nl/persoon/id/Persoon-NT00194-12024
+<http://archief.nl/persoon/id/Persoon-NT00194-12024> rdf:type owl:NamedIndividual ,
+                                                              naa:Persoon ;
+                                                     naa:heeftNaam [ rdf:type naa:HistorischeNaam ;
+                                                                     naa:achternaam "Moenen"^^xsd:string ;
+                                                                     naa:volledige_naam "Servaas Moenen"^^xsd:string ;
+                                                                     naa:voornaam "Servaas"^^xsd:string
+                                                                   ] ;
+                                                     naa:isBeschrevenIn <http://archief.nl/NL-HaNA/doc/DetailRecord-30a08a16-ae58-102d-8e23-0050569c51dd> ;
+                                                     rdfs:member <http://archief.nl/NL-HaNA/doc/Dataset-AllePersonen> .
 
 
-###  http://archief.overheid.nl/persoon/id/SjoerdSiebinga
-<http://archief.overheid.nl/persoon/id/SjoerdSiebinga> rdf:type owl:NamedIndividual ,
-                                                                naa:Persoon .
+###  http://archief.nl/persoon/id/SjoerdSiebinga
+<http://archief.nl/persoon/id/SjoerdSiebinga> rdf:type owl:NamedIndividual ,
+                                                       naa:Persoon .
 
 
-###  http://archief.overheid.nl/persoon/id/Willem_vd_Poll_(fotograaf)
-<http://archief.overheid.nl/persoon/id/Willem_vd_Poll_(fotograaf)> rdf:type owl:NamedIndividual ,
-                                                                            naa:Persoon ;
-                                                                   naa:heeftUitgevoerd _:genid28 ;
-                                                                   rdfs:member <http://archief.overheid.nl/NL-HaNA/doc/DatasetAllePersonen> ,
-                                                                               <http://archief.overheid.nl/NL-HaNA/doc/DatasetFotografen> ;
-                                                                   rdfs:comment "Het is mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
+###  http://archief.nl/persoon/id/Willem_vd_Poll_(fotograaf)
+<http://archief.nl/persoon/id/Willem_vd_Poll_(fotograaf)> rdf:type owl:NamedIndividual ,
+                                                                   naa:Persoon ;
+                                                          naa:heeftUitgevoerd _:genid28 ;
+                                                          rdfs:member <http://archief.nl/NL-HaNA/doc/Dataset-AlleFotografen> ,
+                                                                      <http://archief.nl/NL-HaNA/doc/Dataset-AllePersonen> ;
+                                                          rdfs:comment "Het is mogelijk om een actor te verbinden met een productie of activiteit zoals het maken van een foto. Dit is een gebeurtenis welke een entiteit (fysiek, of “echt” ding of product) tot gevolg heeft. Er is nu een enkele test individual voor de gebeurtenis “het maken van een foto”. Dit is op basis van E65_Creation van Cidoc-crm —> FotoCreatie. Het voorbeeld Willem vd Poll krijgt dan de volgende syntax: Willem vd Poll - heeftUitgevoerd - blank node: [ type FotoCreatie - heeftGeproduceerd - Foto1 ] . Omgekeerd staat er bij Foto1 een eenvoudige dcterms:creator - Willem vd Poll. De entiteit Willem vd Poll verwijst zelf niet naar het record van de foto, maar naar het ‘fysieke’ object. In het record over de Foto komen sec de gegevens zoals ze bekend staan bij het archief, en daar gebruiken we PersoonsVerwijzing voor."@nl .
 
 _:genid28 rdf:type naa:FotoCreatie ;
-           naa:resultaatVanActiviteit <http://archief.overheid.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
+           naa:resultaatVanActiviteit <http://archief.nl/beeld/id/Foto-8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
 
 
 ###  http://nl.dbpedia.org/resource/Nationaal_Archief
@@ -2019,6 +2033,22 @@ _:genid28 rdf:type naa:FotoCreatie ;
                                                                                                svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
                                                                                                dc:source "https://service.nationaalarchief.nl/api/file/v1/default/5b65777d-083a-41d8-8692-d841434b4b5e"^^xsd:string .
 
+
+[ rdf:type naa:PersoonsVerwijzing ;
+  dcterms:subject naa:Rol-Voorganger ;
+  naa:volledige_naam "wijlen Michiel Adolff van Belling"^^xsd:string
+] .
+
+[ rdf:type naa:PersoonsVerwijzing ;
+   dcterms:subject naa:Rol-Benoemde ;
+   naa:achternaam "Moenen"^^xsd:string ;
+   naa:volledige_naam "Servaas Moenen"^^xsd:string ;
+   naa:voornaam "Servaas"^^xsd:string
+ ] .
+
+[ rdf:type naa:PersoonsVerwijzing ;
+   naa:volledige_naam "Willem van der Poll"^^xsd:string
+ ] .
 
 #################################################################
 #    Annotations
