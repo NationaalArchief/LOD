@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1522319981186" name="http://id.loc.gov/ontologies/bibframe/" uri="bibframe.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1522319981186" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v6.2-draft-2015August.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1522319981186" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v5.0.4_official_release.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1522319981186" name="http://www.w3.org/2002/07/owl" uri="owl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1522319981186" name="http://www.w3.org/ns/dcat" uri="dcat.owl"/>
+    </group>
+</catalog>

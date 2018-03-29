@@ -1,0 +1,729 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf
+<http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/StateType
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/StateType> rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/hasCountry
+<http://na.metamatter.nl/NadereToegangen/ontology/hasCountry> rdf:type owl:ObjectProperty ;
+                                                              rdfs:range <http://dbpedia.org/ontology/Country> ;
+                                                              rdfs:label "has its residence in country"^^xsd:string ;
+                                                              skos:prefLabel "land"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/hasEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/hasEvent> rdf:type owl:ObjectProperty ;
+                                                            rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                            rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Event> ;
+                                                            rdfs:label "has event"^^xsd:string ;
+                                                            skos:prefLabel "heeft gebeurtenis"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/hasEventType
+<http://na.metamatter.nl/NadereToegangen/ontology/hasEventType> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event> ;
+                                                                rdfs:label "has event type"^^xsd:string ;
+                                                                skos:prefLabel "heeft soort gebeurtenis"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/birthPlace
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/birthPlace> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                       rdfs:range <http://dbpedia.org/ontology/Place> ;
+                                                                       rdfs:label "place of birth"@nl ;
+                                                                       skos:prefLabel "geboorteplaats"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/deathPlace
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/deathPlace> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                       rdfs:range <http://dbpedia.org/ontology/Place> ;
+                                                                       rdfs:label "place of death"@nl ;
+                                                                       skos:prefLabel "plaats van overlijden"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasIdentifier
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasIdentifier> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                          rdfs:range <http://na.metamatter.nl/NadereToegangen/ontology/Identifier> ;
+                                                                          rdfs:label "has identifier"^^xsd:string ;
+                                                                          skos:prefLabel "heeft identificator"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasName> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                    rdfs:range <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ;
+                                                                    rdfs:label "has name"^^xsd:string ;
+                                                                    skos:prefLabel "heeft naam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasRelation
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasRelation> rdf:type owl:ObjectProperty ;
+                                                                        rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                        rdfs:range <http://na.metamatter.nl/NadereToegangen/ontology/Personen/Relation> ;
+                                                                        rdfs:label "has relation"^^xsd:string ;
+                                                                        skos:prefLabel "heeft relatie"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasState
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasState> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                     rdfs:range <http://na.metamatter.nl/NadereToegangen/ontology/Personen/State> ;
+                                                                     rdfs:label "has state"^^xsd:string ;
+                                                                     skos:prefLabel "heeft toestand"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasStateType
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasStateType> rdf:type owl:ObjectProperty ;
+                                                                         rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/State> ;
+                                                                         rdfs:range <http://na.metamatter.nl/NadereToegangen/ontology/Personen/StateType> .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/sex
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/sex> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                rdfs:range <http://na.metamatter.nl/NadereToegangen/ontology/Personen/Gender> ;
+                                                                rdfs:label "sex"^^xsd:string ;
+                                                                skos:prefLabel "geslacht"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/when
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/when> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent> ;
+                                                                 rdfs:range xsd:Literal .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alias
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alias> rdf:type owl:DatatypeProperty ;
+                                                                  rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                  rdfs:range xsd:string ;
+                                                                  rdfs:comment "equivalent property would be foaf:alias if there were such"^^xsd:string ;
+                                                                  rdfs:label "beroepsnaam (in het geval van artiesten)"^^xsd:string ;
+                                                                  skos:prefLabel "beroepsnaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeFirstName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeFirstName> rdf:type owl:DatatypeProperty ;
+                                                                                 rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                    <http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionName> ;
+                                                                                 rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                 rdfs:range xsd:string ;
+                                                                                 rdfs:label "alternative first name"^^xsd:string ;
+                                                                                 skos:prefLabel "ook geheten"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeFullname
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeFullname> rdf:type owl:DatatypeProperty ;
+                                                                                rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                   <http://na.metamatter.nl/NadereToegangen/ontology/Personen/fullname> ;
+                                                                                rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                rdfs:range xsd:string ;
+                                                                                rdfs:label "alternative full name"^^xsd:string ;
+                                                                                skos:prefLabel "ook vermeld als"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntraposition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntraposition> rdf:type owl:DatatypeProperty ;
+                                                                                     rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                        <http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> ;
+                                                                                     rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                     rdfs:range xsd:string ;
+                                                                                     rdfs:comment "Komt voor in gevallen als wanneer iemand met het Franse equivalent van 'van' wordt aangeduid"^^xsd:string ;
+                                                                                     rdfs:label "alternative intraposition"^^xsd:string ;
+                                                                                     skos:prefLabel "ook vermeld als"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntrapositionName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntrapositionName> rdf:type owl:DatatypeProperty ;
+                                                                                         rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntraposition> ,
+                                                                                                            <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                            <http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> ;
+                                                                                         rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                         rdfs:range xsd:string ;
+                                                                                         rdfs:label "alternative name in intraposition"^^xsd:string ,
+                                                                                                    "middle name variant"^^xsd:string ;
+                                                                                         skos:prefLabel "optioneel tussenvoegsel"@nl ,
+                                                                                                        "tussenvoegsel (variant)"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntrapositionTitle
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntrapositionTitle> rdf:type owl:DatatypeProperty ;
+                                                                                          rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeIntraposition> ;
+                                                                                          rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                          rdfs:range xsd:string ;
+                                                                                          rdfs:label "alternative title in intraposition"^^xsd:string ;
+                                                                                          skos:prefLabel "optionele titel in tussennaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeLastName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeLastName> rdf:type owl:DatatypeProperty ;
+                                                                                rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                   <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionName> ;
+                                                                                rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                rdfs:range xsd:string ;
+                                                                                rdfs:label "alternative last name"^^xsd:string ;
+                                                                                skos:prefLabel "ook geheten"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> rdf:type owl:DatatypeProperty ;
+                                                                                    rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                    rdfs:range xsd:string ;
+                                                                                    rdfs:label "variant op naamelement"^^xsd:string ;
+                                                                                    skos:prefLabel "afwijkende benaming"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativePostpositionAddition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativePostpositionAddition> rdf:type owl:DatatypeProperty ;
+                                                                                            rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                               <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                                            rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                            rdfs:range xsd:string ;
+                                                                                            rdfs:label "alternative addition to last name"^^xsd:string ;
+                                                                                            skos:prefLabel "variant op naamstoevoeging"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativePostpositionTitle
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativePostpositionTitle> rdf:type owl:DatatypeProperty ;
+                                                                                         rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/alternativeNamePosition> ,
+                                                                                                            <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                                         rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                         rdfs:range xsd:string ;
+                                                                                         rdfs:label "alternative title after name"^^xsd:string ;
+                                                                                         skos:prefLabel "titelvariant na de naam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/birthdate
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/birthdate> rdf:type owl:DatatypeProperty ;
+                                                                      rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                      rdfs:range xsd:date ;
+                                                                      rdfs:label "date of birth"@nl ;
+                                                                      skos:prefLabel "geboortedatum"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/deathdate
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/deathdate> rdf:type owl:DatatypeProperty ;
+                                                                      rdfs:domain <http://biographynet.nl/schema/Person> ;
+                                                                      rdfs:range xsd:date ;
+                                                                      rdfs:label "date of death"@nl ;
+                                                                      skos:prefLabel "sterfdatum"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/fullname
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/fullname> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ;
+                                                                     rdfs:range xsd:string ;
+                                                                     rdfs:label "full name"^^xsd:string ;
+                                                                     skos:prefLabel "volledige naam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasStateType
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasStateType> rdf:type owl:DatatypeProperty .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> rdf:type owl:DatatypeProperty ;
+                                                                          rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                          rdfs:range xsd:string ;
+                                                                          rdfs:label "intraposition"^^xsd:string ;
+                                                                          skos:prefLabel "tussenvoegsel"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionInitials
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionInitials> rdf:type owl:DatatypeProperty ;
+                                                                                  rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> ;
+                                                                                  rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                  rdfs:range xsd:string ;
+                                                                                  rdfs:label "initials as part of the middle name"^^xsd:string ;
+                                                                                  skos:prefLabel "initialen tussen voor- en achternaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionMaidenName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionMaidenName> rdf:type owl:DatatypeProperty ;
+                                                                                    rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> ;
+                                                                                    rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                    rdfs:range xsd:string ;
+                                                                                    rdfs:label "intraposition maiden name"^^xsd:string ;
+                                                                                    skos:prefLabel "middelnaam van meisjesnaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionName> rdf:type owl:DatatypeProperty ;
+                                                                              rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> ;
+                                                                              rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                              rdfs:range xsd:string ;
+                                                                              rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+                                                                              rdfs:label "middle name"^^xsd:string ;
+                                                                              skos:prefLabel "tussenvoegsel"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionTitle
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/intrapositionTitle> rdf:type owl:DatatypeProperty ;
+                                                                               rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/intraposition> ;
+                                                                               rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                               rdfs:range xsd:string ;
+                                                                               rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+                                                                               rdfs:label "middle name title"^^xsd:string ;
+                                                                               skos:prefLabel "titel bij tussenvoegsel"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/lifespan
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/lifespan> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonEntity> ;
+                                                                     rdfs:range xsd:string ;
+                                                                     rdfs:label "life span"@nl ;
+                                                                     skos:prefLabel "leven van.. tot.."@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/nickname
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/nickname> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                     rdfs:range xsd:string ;
+                                                                     rdfs:label "informal name"^^xsd:string ;
+                                                                     skos:prefLabel "roepnaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/notAfter
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/notAfter> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent> ;
+                                                                     rdfs:range xsd:date ;
+                                                                     rdfs:label "Niet na"@nl ;
+                                                                     skos:prefLabel "niet na"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/notBefore
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/notBefore> rdf:type owl:DatatypeProperty ;
+                                                                      rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent> ;
+                                                                      rdfs:range xsd:date ;
+                                                                      rdfs:label "Niet vóór"@nl ;
+                                                                      skos:prefLabel "niet vóór"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> rdf:type owl:DatatypeProperty ;
+                                                                         rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                         rdfs:range xsd:string ;
+                                                                         rdfs:label "postposition"^^xsd:string ;
+                                                                         skos:prefLabel "achtervoegsel"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionAddition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionAddition> rdf:type owl:DatatypeProperty ;
+                                                                                 rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                                 rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                 rdfs:range xsd:string ;
+                                                                                 rdfs:label "distinctive addition to last name"^^xsd:string ;
+                                                                                 skos:prefLabel "naamstoevoeging"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionMaidenName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionMaidenName> rdf:type owl:DatatypeProperty ;
+                                                                                   rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                                   rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                   rdfs:range xsd:string ;
+                                                                                   rdfs:label "maiden name as the last part of a person's name"^^xsd:string ;
+                                                                                   skos:prefLabel "achternaam van meisjesnaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionName> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                             rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                             rdfs:range xsd:string ;
+                                                                             rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+                                                                             rdfs:label "last name"^^xsd:string ;
+                                                                             skos:altLabel "geslachtsnaam"@nl ;
+                                                                             skos:prefLabel "achternaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionPatronym
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionPatronym> rdf:type owl:DatatypeProperty ;
+                                                                                 rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                                 rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                 rdfs:range xsd:string ;
+                                                                                 rdfs:label "patronym after last name"^^xsd:string ;
+                                                                                 skos:prefLabel "patroniem achteraan"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionTitle
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/postpositionTitle> rdf:type owl:DatatypeProperty ;
+                                                                              rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/postposition> ;
+                                                                              rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                              rdfs:range xsd:string ;
+                                                                              rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+                                                                              rdfs:label "title after name"^^xsd:string ;
+                                                                              skos:prefLabel "titel na de naam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/preposition
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/preposition> rdf:type owl:DatatypeProperty ;
+                                                                        rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/PersonName> ;
+                                                                        rdfs:range xsd:string ;
+                                                                        rdfs:label "preposition"^^xsd:string ;
+                                                                        skos:prefLabel "voorvoegsel"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionInitials
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionInitials> rdf:type owl:DatatypeProperty ;
+                                                                                rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/preposition> ;
+                                                                                rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                rdfs:range xsd:string ;
+                                                                                rdfs:label "initials as part of the first name"^^xsd:string ;
+                                                                                skos:prefLabel "initialen"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionName> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/preposition> ;
+                                                                            rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                            rdfs:range xsd:string ;
+                                                                            rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+                                                                            rdfs:label "first name"^^xsd:string ;
+                                                                            skos:prefLabel "voornaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionPatronym
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionPatronym> rdf:type owl:DatatypeProperty ;
+                                                                                rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/preposition> ;
+                                                                                rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                                rdfs:range xsd:string ;
+                                                                                rdfs:label "patronym in first name"^^xsd:string ;
+                                                                                skos:prefLabel "patroniem vooraan"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionTitle
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/prepositionTitle> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:subPropertyOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/preposition> ;
+                                                                             rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                                                             rdfs:range xsd:string ;
+                                                                             rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"^^xsd:string ;
+                                                                             rdfs:label "title"^^xsd:string ;
+                                                                             skos:prefLabel "titel"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/source
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/source> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/BiographicalDocument> ;
+                                                                   rdfs:range xsd:anyURI ;
+                                                                   rdfs:comment "Use restricted to Biographical Portal"^^rdfs:Literal ;
+                                                                   rdfs:label "Bron"@nl ;
+                                                                   skos:prefLabel "Bron"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateDesignation
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateDesignation> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/State> ;
+                                                                             rdfs:range xsd:string ;
+                                                                             rdfs:label "Kenmerk"@nl ;
+                                                                             skos:prefLabel "Kenmerk"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateFrom
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateFrom> rdf:type owl:DatatypeProperty .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateTypeDesignation
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateTypeDesignation> rdf:type owl:DatatypeProperty ;
+                                                                                 rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/StateType> ;
+                                                                                 rdfs:range xsd:string ;
+                                                                                 rdfs:comment "Not in use with Nadere Toegangen"^^rdfs:Literal ;
+                                                                                 rdfs:label "Aard van het Statuskenmerk"@nl ;
+                                                                                 skos:prefLabel "Statuskenmerk"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateUntil
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/stateUntil> rdf:type owl:DatatypeProperty .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/text
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/text> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:domain <http://na.metamatter.nl/NadereToegangen/ontology/Personen/BiographicalDocument> ;
+                                                                 rdfs:range xsd:string ;
+                                                                 rdfs:comment "Use restricted to Biographical Portal"^^rdfs:Literal ;
+                                                                 rdfs:label "Biografische tekst"@nl ;
+                                                                 skos:prefLabel "biografietekst"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/when
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/when> rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://biographynet.nl/schema/Name
+<http://biographynet.nl/schema/Name> rdf:type owl:Class ;
+                                     owl:equivalentClass <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ,
+                                                         <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> .
+
+
+###  http://biographynet.nl/schema/Person
+<http://biographynet.nl/schema/Person> rdf:type owl:Class ;
+                                       owl:equivalentClass <http://na.metamatter.nl/NadereToegangen/ontology/PersonEntity> ,
+                                                           foaf:Person ;
+                                       owl:disjointWith <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ,
+                                                        <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> ;
+                                       rdfs:comment "In all National Archives' Linked Data sets referring to Persons, def:PersonEntity is used because of the distinction between a Reference and a real-world Person"^^xsd:string .
+
+
+###  http://biographynet.nl/schema/Sex
+<http://biographynet.nl/schema/Sex> rdf:type owl:Class ;
+                                    owl:equivalentClass <http://na.metamatter.nl/NadereToegangen/ontology/Personen/Gender> .
+
+
+###  http://dbpedia.org/ontology/Country
+<http://dbpedia.org/ontology/Country> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Name
+<http://dbpedia.org/ontology/Name> rdf:type owl:Class ;
+                                   owl:equivalentClass <http://na.metamatter.nl/NadereToegangen/ontology/Personen/CorporateName> ,
+                                                       <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ,
+                                                       <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> .
+
+
+###  http://dbpedia.org/ontology/Place
+<http://dbpedia.org/ontology/Place> rdf:type owl:Class ;
+                                    rdfs:comment "A link to dbo:Place should be provided everywhere (through DBpedia) a link to GeoNames can be made"^^rdfs:Literal .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Identifier
+<http://na.metamatter.nl/NadereToegangen/ontology/Identifier> rdf:type owl:Class .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/PersonEntity
+<http://na.metamatter.nl/NadereToegangen/ontology/PersonEntity> rdf:type owl:Class ;
+                                                                owl:disjointWith <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/PersonName
+<http://na.metamatter.nl/NadereToegangen/ontology/PersonName> rdf:type owl:Class .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/BiographicalDocument
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/BiographicalDocument> rdf:type owl:Class .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/CorporateEntity
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/CorporateEntity> rdf:type owl:Class ;
+                                                                            owl:disjointWith <http://na.metamatter.nl/NadereToegangen/ontology/Personen/CorporateName> .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/CorporateName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/CorporateName> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ;
+                                                                          rdfs:label "Corporate name"^^xsd:string ;
+                                                                          skos:prefLabel "Bedrijfsnaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/Gender
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/Gender> rdf:type owl:Class ;
+                                                                   rdfs:label "Gender"^^xsd:string ;
+                                                                   skos:prefLabel "Geslacht"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent> rdf:type owl:Class .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> rdf:type owl:Class ;
+                                                                           rdfs:comment "A name of a person in history"^^xsd:string ;
+                                                                           rdfs:label "Name of a person in history"^^xsd:string ;
+                                                                           skos:prefLabel "Naam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonEntity
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonEntity> rdf:type owl:Class ;
+                                                                         owl:disjointWith <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonName> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalName> ;
+                                                                       rdfs:label "Person name"^^xsd:string ;
+                                                                       skos:prefLabel "Persoonsnaam"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/Relation
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/Relation> rdf:type owl:Class ;
+                                                                     rdfs:label "Relation"^^xsd:string ;
+                                                                     skos:prefLabel "Relatie"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/State
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/State> rdf:type owl:Class ;
+                                                                  rdfs:label "State"^^xsd:string ;
+                                                                  skos:prefLabel "Toestand"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/StateType
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/StateType> rdf:type owl:Class .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Event
+<http://semanticweb.cs.vu.nl/2009/11/sem/Event> rdf:type owl:Class .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/EventType
+<http://semanticweb.cs.vu.nl/2009/11/sem/EventType> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://semanticweb.cs.vu.nl/2009/11/sem/Type> .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Type
+<http://semanticweb.cs.vu.nl/2009/11/sem/Type> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2001/XMLSchema#Literal
+xsd:Literal rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/BirthEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/BirthEvent> rdf:type owl:NamedIndividual ,
+                                                                                <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                       skos:broader <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                       <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                       rdfs:label "Birth"@en ,
+                                                                                  "Geboorte"@nl ;
+                                                                       skos:prefLabel "Geboorte"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/CareerEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/CareerEvent> rdf:type owl:NamedIndividual ,
+                                                                                 <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                        <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                        rdfs:label "Career event"@en ,
+                                                                                   "Gebeurtenis in iemand zijn loopbaan"@nl ;
+                                                                        skos:prefLabel "Gebeurtenis in loopbaan"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/CommissionEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/CommissionEvent> rdf:type owl:NamedIndividual ,
+                                                                                     <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                            skos:broader <http://na.metamatter.nl/NadereToegangen/ontology/Personen/CareerEvent> ;
+                                                                            <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://na.metamatter.nl/NadereToegangen/ontology/Personen/CareerEvent> ;
+                                                                            rdfs:label "Commission"@en ,
+                                                                                       "Opdracht of aanstelling als gebeurtenis"@nl ;
+                                                                            skos:prefLabel "Aanstelling als gebeurtenis"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/DeathEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/DeathEvent> rdf:type owl:NamedIndividual ,
+                                                                                <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                       skos:broader <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                       <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                       rdfs:label "Death"@en ,
+                                                                                  "Dood"@nl ;
+                                                                       skos:prefLabel "Overlijden"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent> rdf:type owl:NamedIndividual ,
+                                                                                     <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/MarriageEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/MarriageEvent> rdf:type owl:NamedIndividual ,
+                                                                                   <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                          skos:broader <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                          <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> ;
+                                                                          rdfs:label "Huwelijk"@nl ,
+                                                                                     "Marriage"@en ;
+                                                                          skos:prefLabel "Huwelijk"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/PersonalEvent> rdf:type owl:NamedIndividual ,
+                                                                                   <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                          <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                          rdfs:comment "Note the difference between a Historical and a Personal Event: the former is a general event to be compared to an EDM event, the latter is an event strictly in one's personal life"^^xsd:string ;
+                                                                          rdfs:label "Gebeurtenis in iemand zijn persoonlijk leven"@nl ,
+                                                                                     "Personal event"@en ;
+                                                                          skos:prefLabel "Persoonlijke gebeurtenis"@nl .
+
+
+###  http://na.metamatter.nl/NadereToegangen/ontology/Personen/SuccessionEvent
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/SuccessionEvent> rdf:type owl:NamedIndividual ,
+                                                                                     <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                            skos:broader <http://na.metamatter.nl/NadereToegangen/ontology/Personen/CareerEvent> ;
+                                                                            <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://na.metamatter.nl/NadereToegangen/ontology/Personen/CareerEvent> ;
+                                                                            rdfs:label "A succession in a professional careeer"@en ,
+                                                                                       "Opvolging als gebeurtenis"@nl ;
+                                                                            skos:prefLabel "Opvolging als gebeurtenis"@nl .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/HistoricalEvent> skos:prefLabel "Gebeurtenis van bredere betekenis"@nl ;
+                                                                            <http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> <http://semanticweb.cs.vu.nl/2009/11/sem/EventType> ;
+                                                                            rdfs:label "Gebeurtenis in een domain van cultureel erfgoed"^^xsd:string .
+
+
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/hasStateType> rdfs:label "has state type"^^xsd:string ;
+                                                                         skos:prefLabel "heeft soort toestand"@nl ;
+                                                                         rdfs:comment "Not being used with Nadere Toegangen"^^rdfs:Literal .
+
+
+<http://na.metamatter.nl/NadereToegangen/ontology/Personen/when> rdfs:label "date/time of the event"^^xsd:string ;
+                                                                 skos:prefLabel "datum/tijd gebeurtenis"@nl .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

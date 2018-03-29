@@ -1,0 +1,330 @@
+@prefix : <http://archief.nl/def/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix hg: <http://rdf.histograph.io/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix bgn: <http://biographynet.nl/schema/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix naa: <http://archief.nl/def/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix svcs: <http://rdfs.org/sioc/services#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
+@prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
+@base <http://archief.nl/def/> .
+
+<http://archief.nl/def/> rdf:type owl:Ontology ;
+                          owl:imports <http://purl.org/NET/dc_owl2dl/elements> ,
+                                      edm: ;
+                          rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
+Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
+Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/hasView
+edm:hasView rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rdfs.org/sioc/services#has_service
+svcs:has_service rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about
+<http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about> rdf:type owl:ObjectProperty .
+
+
+###  http://www.openarchives.org/ore/terms/aggregates
+ore:aggregates rdf:type owl:ObjectProperty ;
+               owl:inverseOf ore:isAggregatedBy ;
+               rdfs:domain ore:Aggregation ;
+               rdfs:range ore:AggregatedResource .
+
+
+###  http://www.openarchives.org/ore/terms/isAggregatedBy
+ore:isAggregatedBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://archief.nl/def/ArchivalEntity
+naa:ArchivalEntity rdf:type owl:Class ;
+                   owl:equivalentClass edm:NonInformationResource ;
+                   rdfs:subClassOf ore:AggregatedResource ;
+                   owl:disjointWith naa:ArchivalReference ;
+                   rdfs:label "ArchiefEntiteit"@nl ;
+                   skos:definition "An Archival entity represents entities referred to across the boundaries of archival records."@en ,
+                                   "Een archivistische entiteit vertegenwoordigt entiteiten waarnaar wordt verwezen over de grenzen van archiefarchieven."@nl .
+
+
+###  http://archief.nl/def/ArchivalReference
+naa:ArchivalReference rdf:type owl:Class ;
+                      owl:equivalentClass edm:InformationResource ;
+                      rdfs:subClassOf dbo:Reference ,
+                                      dcterms:BibliographicResource ,
+                                      ore:AggregatedResource ;
+                      rdfs:label "ArchiefVerwijzing"@nl ;
+                      skos:definition "An Archival Reference is the document-bound stand-in for archival entities referred to in archival records. May also be a dataset."@en ,
+                                      "Een archivalreferentie is de documentgebonden standaard voor archivistische entiteiten waarnaar wordt verwezen in archiefdocumenten. Kan ook een dataset zijn."@nl .
+
+
+###  http://archief.nl/def/CorporateEntity
+naa:CorporateEntity rdf:type owl:Class ;
+                    owl:equivalentClass edm:Agent ;
+                    rdfs:subClassOf naa:ArchivalEntity ;
+                    skos:definition "A Corporate Entity is a corporation referred to across a set of archival records."@en ;
+                    skos:prefLabel "Corporation in an Archives domain."@en .
+
+
+###  http://archief.nl/def/NL-HaNA_Aggregation
+naa:NL-HaNA_Aggregation rdf:type owl:Class ;
+                        rdfs:subClassOf ore:Aggregation ;
+                        rdfs:label "Nationaal Archief Aggregatie. Kan een collectie zijn, of een record."@nl .
+
+
+###  http://archief.nl/def/PersonEntity
+naa:PersonEntity rdf:type owl:Class ;
+                 owl:equivalentClass bgn:Person ,
+                                     foaf:Person ;
+                 rdfs:subClassOf naa:ArchivalEntity ;
+                 owl:disjointWith naa:PersonReference ;
+                 skos:definition "Persoon met relevantie in de erfgoedsector."@nl ;
+                 skos:prefLabel "Person in an Archives domain"@en .
+
+
+###  http://archief.nl/def/PersonReference
+naa:PersonReference rdf:type owl:Class ;
+                    rdfs:subClassOf naa:ArchivalReference ;
+                    skos:definition "A Person Reference is the reference to a Person in a single archival record."@en .
+
+
+###  http://biographynet.nl/schema/Person
+bgn:Person rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Reference
+dbo:Reference rdf:type owl:Class .
+
+
+###  http://purl.org/dc/dcmitype/Collection
+<http://purl.org/dc/dcmitype/Collection> rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/BibliographicResource
+dcterms:BibliographicResource rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
+cidoc-crm:E1_CRM_Entity rdf:type owl:Class ;
+                        owl:equivalentClass edm:NonInformationResource ;
+                        rdfs:comment """This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model.
+It is an abstract concept providing for three general properties:
+1.	Identification by name or appellation, and in particular by a preferred identifier
+2.	Classification by type, allowing further refinement of the specific subclass an instance belongs to
+3.	Attachment of free text for the expression of anything not captured by formal properties
+With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity.
+"""@en .
+
+
+###  http://www.europeana.eu/schemas/edm/Agent
+edm:Agent rdf:type owl:Class .
+
+
+###  http://www.europeana.eu/schemas/edm/InformationResource
+edm:InformationResource rdf:type owl:Class .
+
+
+###  http://www.europeana.eu/schemas/edm/NonInformationResource
+edm:NonInformationResource rdf:type owl:Class .
+
+
+###  http://www.europeana.eu/schemas/edm/WebResource
+edm:WebResource rdf:type owl:Class .
+
+
+###  http://www.openarchives.org/ore/terms/AggregatedResource
+ore:AggregatedResource rdf:type owl:Class ;
+                       rdfs:comment "A resource which is included in an Aggregation. Note that asserting that a resource is a member of the class of Aggregated Resources does not imply anything other than that it is aggregated by at least one Aggregation." ;
+                       rdfs:isDefinedBy ore: ;
+                       rdfs:label "Aggregated Resource" .
+
+
+###  http://www.openarchives.org/ore/terms/Aggregation
+ore:Aggregation rdf:type owl:Class ;
+                rdfs:subClassOf <http://purl.org/dc/dcmitype/Collection> ;
+                rdfs:comment "A set of related resources (Aggregated Resources), grouped together such that the set can be treated as a single resource. This is the entity described within the ORE interoperability framework by a Resource Map." ;
+                rdfs:isDefinedBy ore: ;
+                rdfs:label "Aggregation" .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                              naa:ArchivalEntity ;
+                                                                                     dc:description "Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation
+<http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation> rdf:type owl:NamedIndividual ,
+                                                                      naa:NL-HaNA_Aggregation ;
+                                                             owl:sameAs <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> ;
+                                                             rdfs:seeAlso <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> .
+
+
+###  http://archief.nl/NL-HaNA/doc/Comm﻿issionAggregation:30a08a16-ae58-102d-8e23-0050569c51dd
+<http://archief.nl/NL-HaNA/doc/Comm﻿issionAggregation:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                                     naa:NL-HaNA_Aggregation ;
+                                                                                            ore:aggregates <http://archief.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> ;
+                                                                                            ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NadereToegangAggregation:NT00194> .
+
+
+###  http://archief.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd
+<http://archief.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                                   naa:ArchivalReference ;
+                                                                                          dc:description "Commissaris van de Monstering"@nl ;
+                                                                                          dc:source "NL-HaNA/1.01.19/1523//002//"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                              naa:NL-HaNA_Aggregation ;
+                                                                                     ore:aggregates <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
+                                                                                     ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
+                                                                                                        <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> ;
+                                                                                     edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> .
+
+
+###  http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo
+<http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> rdf:type owl:NamedIndividual ,
+                                                                        naa:NL-HaNA_Aggregation .
+
+
+###  http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief
+<http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                                   naa:NL-HaNA_Aggregation ;
+                                                                          ore:aggregates <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
+                                                                                         <http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland> .
+
+
+###  http://archief.nl/NL-HaNA/doc/FotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/NL-HaNA/doc/FotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                            naa:ArchivalReference ;
+                                                                                   skos:note """Opmerking: voor fysieke objecten zoals foto's rijst de vraag of dit informatie-object toegevoegde waarde biedt aan de aggregatie (het record).
+Immers, het object FotoEntity:UUID biedt al voldoende mogelijkheid om de metadata te borgen zoals deze bekend is in het Collectie Beheer Systeem."""@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland
+<http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland> rdf:type owl:NamedIndividual ,
+                                                                                     naa:NL-HaNA_Aggregation .
+
+
+###  http://archief.nl/NL-HaNA/doc/FotografenCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00
+<http://archief.nl/NL-HaNA/doc/FotografenCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                             naa:NL-HaNA_Aggregation .
+
+
+###  http://archief.nl/NL-HaNA/doc/NadereToegangAggregation:NT00194
+<http://archief.nl/NL-HaNA/doc/NadereToegangAggregation:NT00194> rdf:type owl:NamedIndividual ,
+                                                                          naa:NL-HaNA_Aggregation ;
+                                                                 owl:sameAs <http://archief.nl/NL-HaNA/doc/NadereToegangAggregation:02b4f924-cd6d-102c-9f8b-005056a23d00> ;
+                                                                 dc:description "Naamindex van de Raad van State"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NadereToegangAggregation:02b4f924-cd6d-102c-9f8b-005056a23d00
+<http://archief.nl/NL-HaNA/doc/NadereToegangAggregation:02b4f924-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                       naa:NL-HaNA_Aggregation .
+
+
+###  http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00
+<http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                           naa:NL-HaNA_Aggregation ;
+                                                                                                  rdfs:seeAlso <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation> ;
+                                                                                                  skos:note "Dit voorbeeld dient ter illustratie om aan te tonen dat een persoonscollectie gemunt moet worden op basis van het GUID of UUID uit het CBS. Voor een aggregatie op het hoogste niveau, zoals de persoons collectie van het Nationaal Archief kan er ook een 'Cool URI' gemunt geworden zonder UUID. Een owl:sameAs wordt gebruikt om aan te tonen dat het om dezelfde collecties gaat."@nl .
+
+
+###  http://archief.nl/NL-HaNA/persoon/id/PersonEntity:ed061fdc-a7f4-102d-ad54-0050569c51dd
+<http://archief.nl/NL-HaNA/persoon/id/PersonEntity:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                                  naa:PersonEntity ;
+                                                                                         owl:sameAs <http://archief.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)> ;
+                                                                                         ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> .
+
+
+###  http://archief.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)
+<http://archief.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)> rdf:type owl:NamedIndividual ,
+                                                                          naa:PersonEntity .
+
+
+###  https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51
+<https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> rdf:type owl:NamedIndividual ,
+                                                                                                                     edm:WebResource ;
+                                                                                                            svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
+                                                                                                            dc:source "https://service.nationaalarchief.nl/api/file/v1/default/0a13ec5b-b52d-4600-b58b-b6d6d9614e51"^^xsd:string .
+
+
+###  https://service.nationaalarchief.nl/api/iiif
+<https://service.nationaalarchief.nl/api/iiif> rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
