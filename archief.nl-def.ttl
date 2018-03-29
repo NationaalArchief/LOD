@@ -98,6 +98,10 @@ ore:aggregates rdf:type owl:ObjectProperty ;
 ore:isAggregatedBy rdf:type owl:ObjectProperty .
 
 
+###  http://xmlns.com/foaf/0.1/made
+foaf:made rdf:type owl:ObjectProperty .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -308,7 +312,8 @@ Immers, het object FotoEntity:UUID biedt al voldoende mogelijkheid om de metadat
 <http://archief.nl/NL-HaNA/persoon/id/PersonEntity:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
                                                                                                   naa:PersonEntity ;
                                                                                          owl:sameAs <http://archief.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)> ;
-                                                                                         ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> .
+                                                                                         ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> ;
+                                                                                         foaf:made <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
 
 
 ###  http://archief.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)
