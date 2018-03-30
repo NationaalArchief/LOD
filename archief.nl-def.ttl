@@ -51,6 +51,18 @@ dc:description rdf:type owl:AnnotationProperty .
 dc:source rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:AnnotationProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/begin
+edm:begin rdf:type owl:AnnotationProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/end
+edm:end rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.europeana.eu/schemas/edm/hasView
 edm:hasView rdf:type owl:AnnotationProperty .
 
@@ -227,7 +239,11 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:ArchivalEntity ;
-                                                                                     dc:description "Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht"@nl .
+                                                                                     dc:description "Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht"@nl ;
+                                                                                     dcterms:relation [ rdf:type edm:TimeSpan ;
+                                                                                                        edm:begin "0000-00-00"^^xsd:string ;
+                                                                                                        edm:end "0000-00-00"^^xsd:string
+                                                                                                      ] .
 
 
 ###  http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation
@@ -256,7 +272,8 @@ foaf:Person rdf:type owl:Class .
                                                                                               naa:NL-HaNA_Aggregation ;
                                                                                      ore:aggregates <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                      ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
-                                                                                                        <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> ;
+                                                                                                        <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> ,
+                                                                                                        <http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland> ;
                                                                                      edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> .
 
 
@@ -267,9 +284,7 @@ foaf:Person rdf:type owl:Class .
 
 ###  http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief
 <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                                   naa:NL-HaNA_Aggregation ;
-                                                                          ore:aggregates <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
-                                                                                         <http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland> .
+                                                                                   naa:NL-HaNA_Aggregation .
 
 
 ###  http://archief.nl/NL-HaNA/doc/FotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
