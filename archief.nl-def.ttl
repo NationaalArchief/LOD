@@ -18,6 +18,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix iiif: <http://iiif.io/api/image/2#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -28,6 +29,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
 @base <http://archief.nl/def/> .
@@ -42,6 +44,19 @@ Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld a
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://archief.nl/def/accessNumber
+naa:accessNumber rdf:type owl:AnnotationProperty ;
+                 rdfs:label "toegangsnummer"@nl ;
+                 rdfs:subPropertyOf dc:identifier ;
+                 rdfs:range xsd:string .
+
+
+###  http://archief.nl/def/archiveInventoryIdentifier
+naa:archiveInventoryIdentifier rdf:type owl:AnnotationProperty ;
+                               rdfs:label "archiefinventaris"@nl ;
+                               rdfs:subPropertyOf dc:identifier .
+
 
 ###  http://purl.org/dc/elements/1.1/description
 dc:description rdf:type owl:AnnotationProperty .
@@ -112,6 +127,23 @@ ore:isAggregatedBy rdf:type owl:ObjectProperty .
 
 ###  http://xmlns.com/foaf/0.1/made
 foaf:made rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dbpedia.org/ontology/scale
+dbo:scale rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string .
+
+
+###  http://iiif.io/api/image/2#scaleFactor
+iiif:scaleFactor rdf:type owl:DatatypeProperty .
+
+
+###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#aspectRatio
+ebucore:aspectRatio rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -239,11 +271,21 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:ArchivalEntity ;
-                                                                                     dc:description "Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht"@nl ;
+                                                                                     dbo:scale "1:10" ;
+                                                                                     naa:accessNumber "MAIS toegangscode | MAIS Inventarisnummer (bijvoorbeeld 2.24.01.07)"@nl ;
+                                                                                     dc:coverage "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)"@nl ;
+                                                                                     dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
+                                                                                     dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
+                                                                                     dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
+                                                                                     dc:relation "MAIS Verwijzing"@nl ;
+                                                                                     dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
                                                                                      dcterms:relation [ rdf:type edm:TimeSpan ;
-                                                                                                        edm:begin "0000-00-00"^^xsd:string ;
-                                                                                                        edm:end "0000-00-00"^^xsd:string
-                                                                                                      ] .
+                                                                                                        dc:coverage "MAIS Datering geschat"@nl ;
+                                                                                                        dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                                        edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
+                                                                                                        edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
+                                                                                                      ] ;
+                                                                                     skos:note "MAIS Opmerkingen"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation
