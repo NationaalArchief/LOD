@@ -26,6 +26,7 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
@@ -44,42 +45,6 @@ Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld a
 #################################################################
 #    Annotation properties
 #################################################################
-
-###  http://archief.nl/def/accessNumber
-naa:accessNumber rdf:type owl:AnnotationProperty ;
-                 rdfs:label "toegangsnummer"@nl ;
-                 rdfs:subPropertyOf dc:identifier ;
-                 rdfs:range xsd:string .
-
-
-###  http://archief.nl/def/archiveInventoryIdentifier
-naa:archiveInventoryIdentifier rdf:type owl:AnnotationProperty ;
-                               rdfs:label "archiefinventaris"@nl ;
-                               rdfs:subPropertyOf dc:identifier .
-
-
-###  http://purl.org/dc/elements/1.1/description
-dc:description rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/elements/1.1/source
-dc:source rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/relation
-dcterms:relation rdf:type owl:AnnotationProperty .
-
-
-###  http://www.europeana.eu/schemas/edm/begin
-edm:begin rdf:type owl:AnnotationProperty .
-
-
-###  http://www.europeana.eu/schemas/edm/end
-edm:end rdf:type owl:AnnotationProperty .
-
-
-###  http://www.europeana.eu/schemas/edm/hasView
-edm:hasView rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#definition
@@ -102,9 +67,37 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 skos:scopeNote rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/ns/adms#relatedWebPage
+<http://www.w3.org/ns/adms#relatedWebPage> rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://purl.org/dc/terms/accessRights
+dcterms:accessRights rdf:type owl:ObjectProperty ;
+                     skos:note "MAIS openb.beperking"@nl .
+
+
+###  http://purl.org/dc/terms/coverage
+dcterms:coverage rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf dc:coverage .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:ObjectProperty ;
+               rdfs:range dcterms:RightsStatement ;
+               skos:note "TODO: een gecontrolleerde vocabulaire (naa) zodat we naar geclassificeerde begrippen kunnen verwijzen met eigen URI's."@nl ;
+               skos:scopeNote "MAIS Rechten"@nl .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf dc:subject ;
+                skos:note """MAIS Relaties (thesaurusterm). Bijvoorbeeld een verwijzing naar de GTAA thesaurus.
+Gebruiken bij de ore:Aggregation indien het een externe verwijzing (URI) betreft. Een naa:ArchivalEntity mag geen ongecontrolleerde verwijzingen bevatten naar objecten buiten het domein van de RijksCollectie."""@nl .
+
 
 ###  http://rdfs.org/sioc/services#has_service
 svcs:has_service rdf:type owl:ObjectProperty .
@@ -133,13 +126,125 @@ foaf:made rdf:type owl:ObjectProperty .
 #    Data properties
 #################################################################
 
+###  http://archief.nl/def/additionalDescription
+naa:additionalDescription rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf dc:description ;
+                          rdfs:label "extra toelichting"@nl ;
+                          skos:note "MAIS Annotatie"@nl ;
+                          skos:prefLabel "extra toelichting"@nl .
+
+
+###  http://archief.nl/def/catalogReferenceNumber
+naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
+                           owl:equivalentProperty naa:findingAidNumber ;
+                           rdfs:subPropertyOf dc:identifier ;
+                           rdfs:label "Nummer archiefinventaris"@nl ;
+                           skos:altLabel "Toegangsnummer"@nl ;
+                           skos:note "MAIS toegangscode"@nl ;
+                           skos:prefLabel "Nummer archiefinventaris"@nl .
+
+
+###  http://archief.nl/def/deprecatedKeyword
+naa:deprecatedKeyword rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf dc:description ;
+                      skos:note "MAIS oud nummer. Voorbeeld een UDC code."@nl .
+
+
+###  http://archief.nl/def/deprecatedKeywordCodec
+naa:deprecatedKeywordCodec rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf dc:description ;
+                           skos:note "MAIS Codecnummer. Afkomstig van Spaarnestad."@nl .
+
+
+###  http://archief.nl/def/fileNumber
+naa:fileNumber rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf dc:identifier ;
+               rdfs:label "Bestanddeelnummer"@nl ;
+               skos:prefLabel "Bestanddeelnummer"@nl .
+
+
+###  http://archief.nl/def/findingAidNumber
+naa:findingAidNumber rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf dc:identifier ;
+                     skos:prefLabel "Nummer archiefinventaris"@nl .
+
+
+###  http://archief.nl/def/inventoryNumber
+naa:inventoryNumber rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf dc:identifier ;
+                    rdfs:label "Inventarisnummer"@nl ;
+                    skos:note "MAIS Inventarisnummer"@nl ;
+                    skos:prefLabel "Inventarisnummer"@nl .
+
+
 ###  http://dbpedia.org/ontology/scale
 dbo:scale rdf:type owl:DatatypeProperty ;
           rdfs:range xsd:string .
 
 
+###  http://id.loc.gov/ontologies/bibframe/otherEdition
+bf:otherEdition rdf:type owl:DatatypeProperty ;
+                skos:note "MAIS Publicatie, al eerder verschenen bijvoorbeeld in Elsevier Wereldkroniek."@nl .
+
+
+###  http://id.loc.gov/ontologies/bibframe/scale
+bf:scale rdf:type owl:DatatypeProperty .
+
+
 ###  http://iiif.io/api/image/2#scaleFactor
 iiif:scaleFactor rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/license
+dc:license rdf:type owl:DatatypeProperty ;
+           skos:note "MAIS Licentie methode"@nl .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:DatatypeProperty ;
+                skos:note "MAIS Aanmaakdatum"@nl .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:DatatypeProperty ;
+                skos:note "MAIS Vervaardiger"@nl .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:DatatypeProperty ;
+                   skos:note "MAIS Editie"@nl .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:DatatypeProperty ;
+                skos:note "MAIS Licentie methode"@nl .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:DatatypeProperty ;
+                 skos:note "MAIS Wijzigingsdatum"@nl .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+dcterms:rightsHolder rdf:type owl:DatatypeProperty ;
+                     skos:note "MAIS Auteursrechthouder"@nl .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:DatatypeProperty ;
+               skos:note "MAIS Download"@nl .
 
 
 ###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#aspectRatio
@@ -217,6 +322,10 @@ dbo:Reference rdf:type owl:Class .
 dcterms:BibliographicResource rdf:type owl:Class .
 
 
+###  http://purl.org/dc/terms/RightsStatement
+dcterms:RightsStatement rdf:type owl:Class .
+
+
 ###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
 cidoc-crm:E1_CRM_Entity rdf:type owl:Class ;
                         owl:equivalentClass edm:NonInformationResource ;
@@ -245,6 +354,15 @@ edm:NonInformationResource rdf:type owl:Class .
 edm:WebResource rdf:type owl:Class .
 
 
+###  http://www.loc.gov/premis/rdf/v3/License
+premis:License rdf:type owl:Class ;
+               rdfs:subClassOf premis:RightsBasis .
+
+
+###  http://www.loc.gov/premis/rdf/v3/RightsBasis
+premis:RightsBasis rdf:type owl:Class .
+
+
 ###  http://www.openarchives.org/ore/terms/AggregatedResource
 ore:AggregatedResource rdf:type owl:Class ;
                        rdfs:comment "A resource which is included in an Aggregation. Note that asserting that a resource is a member of the class of Aggregated Resources does not imply anything other than that it is aggregated by at least one Aggregation." ;
@@ -271,17 +389,31 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:ArchivalEntity ;
-                                                                                     dbo:scale "1:10" ;
-                                                                                     naa:accessNumber "MAIS toegangscode | MAIS Inventarisnummer (bijvoorbeeld 2.24.01.07)"@nl ;
+                                                                                     dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
+                                                                                                            dc:description "MAIS Aut.toelichting"@nl ;
+                                                                                                            dcterms:source "MAIS Download URL"@nl ;
+                                                                                                            dc:subject "MAIS Aut.toelichting"@nl ;
+                                                                                                            skos:note "MAIS openb.beperking"@nl
+                                                                                                          ] ;
+                                                                                     dcterms:rights naa:RightsTypePublicDomain ;
+                                                                                     naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
+                                                                                     naa:catalogReferenceNumber "2.24.01.07" ;
+                                                                                     bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
+                                                                                     bf:scale "1:10" ;
+                                                                                     dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
+                                                                                     dc:license "MAIS Licentie methode"@nl ;
+                                                                                     dcterms:created "MAIS Aanmaakdatum"@nl ;
+                                                                                     dcterms:creator "MAIS Vervaardiger"@nl ;
+                                                                                     dcterms:modified "MAIS Wijzigingsdatum"@nl ;
+                                                                                     dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
                                                                                      dc:coverage "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)"@nl ;
                                                                                      dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
-                                                                                     dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
                                                                                      dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
                                                                                      dc:relation "MAIS Verwijzing"@nl ;
                                                                                      dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
                                                                                      dcterms:relation [ rdf:type edm:TimeSpan ;
-                                                                                                        dc:coverage "MAIS Datering geschat"@nl ;
                                                                                                         dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                                        dc:coverage "MAIS Datering geschat"@nl ;
                                                                                                         edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
                                                                                                         edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
                                                                                                       ] ;
@@ -312,11 +444,14 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:NL-HaNA_Aggregation ;
+                                                                                     dcterms:subject <http://data.beeldengeluid.nl/gtaa/217385> ;
                                                                                      ore:aggregates <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                      ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
                                                                                                         <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> ,
                                                                                                         <http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland> ;
-                                                                                     edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> .
+                                                                                     edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> ;
+                                                                                     edm:isShownAt <https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> ;
+                                                                                     edm:landingPage <http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> .
 
 
 ###  http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo
@@ -378,11 +513,37 @@ Immers, het object FotoEntity:UUID biedt al voldoende mogelijkheid om de metadat
                                                                           naa:PersonEntity .
 
 
+###  http://archief.nl/def/RightsTypePublicDomain
+naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
+                                    premis:License ;
+                           dc:creator "Elvin Dechesne"^^xsd:string ;
+                           dc:date "1523019854832"^^xsd:long ;
+                           skos:note "CC0" ;
+                           <http://www.w3.org/ns/adms#relatedWebPage> <https://wiki.creativecommons.org/wiki/CC0_FAQ> .
+
+
+###  http://data.beeldengeluid.nl/gtaa/217385
+<http://data.beeldengeluid.nl/gtaa/217385> rdf:type owl:NamedIndividual ,
+                                                    edm:WebResource .
+
+
+###  http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab
+<http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> rdf:type owl:NamedIndividual ,
+                                                                                                                                       edm:WebResource ;
+                                                                                                                              skos:note "MAIS Webdisplay"@nl .
+
+
 ###  https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51
 <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> rdf:type owl:NamedIndividual ,
                                                                                                                      edm:WebResource ;
                                                                                                             svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
                                                                                                             dc:source "https://service.nationaalarchief.nl/api/file/v1/default/0a13ec5b-b52d-4600-b58b-b6d6d9614e51"^^xsd:string .
+
+
+###  https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab
+<https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> rdf:type owl:NamedIndividual ,
+                                                                             edm:WebResource ;
+                                                                    skos:note "MAIS Handle"@nl .
 
 
 ###  https://service.nationaalarchief.nl/api/iiif
