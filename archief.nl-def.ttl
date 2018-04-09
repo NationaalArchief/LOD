@@ -36,8 +36,7 @@
 @base <http://archief.nl/def/> .
 
 <http://archief.nl/def/> rdf:type owl:Ontology ;
-                          owl:imports <http://purl.org/NET/dc_owl2dl/elements> ,
-                                      edm: ;
+                          owl:imports <http://purl.org/NET/dc_owl2dl/terms_od> ;
                           rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
@@ -45,6 +44,41 @@ Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld a
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/format
+dc:format rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/type
+dc:type rdf:type owl:AnnotationProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/isShownAt
+edm:isShownAt rdf:type owl:AnnotationProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/landingPage
+edm:landingPage rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#definition
@@ -85,6 +119,15 @@ dcterms:coverage rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf dc:coverage .
 
 
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:ObjectProperty ;
+                skos:note "MAIS Licentie methode"@nl .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:ObjectProperty .
+
+
 ###  http://purl.org/dc/terms/rights
 dcterms:rights rdf:type owl:ObjectProperty ;
                rdfs:range dcterms:RightsStatement ;
@@ -105,6 +148,18 @@ svcs:has_service rdf:type owl:ObjectProperty .
 
 ###  http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about
 <http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about> rdf:type owl:ObjectProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/hasView
+edm:hasView rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf ore:aggregates ;
+            rdfs:domain ore:Aggregation ;
+            rdfs:range edm:WebResource ;
+            rdfs:label "Has View"@en ;
+            skos:definition """This property relates a ORE aggregation about a CHO with a web resource
+providing a view of that CHO. Examples of view are: a thumbnail, a textual
+abstract and a table of contents. The ORE aggregation may be a Europeana
+Aggregation, in which case the view is an object owned by Europeana (i.e., an instance of edm:EuropeanaObject) or an aggregation contributed by a content provider. In order to capture both these cases, the domain of edm:hasView is ore:Aggregation and its range is edm:WebResource"""@en .
 
 
 ###  http://www.openarchives.org/ore/terms/aggregates
@@ -195,6 +250,10 @@ bf:scale rdf:type owl:DatatypeProperty .
 iiif:scaleFactor rdf:type owl:DatatypeProperty .
 
 
+###  http://purl.org/dc/elements/1.1/coverage
+dc:coverage rdf:type owl:DatatypeProperty .
+
+
 ###  http://purl.org/dc/elements/1.1/description
 dc:description rdf:type owl:DatatypeProperty .
 
@@ -212,6 +271,10 @@ dc:license rdf:type owl:DatatypeProperty ;
 dc:rights rdf:type owl:DatatypeProperty .
 
 
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:DatatypeProperty .
+
+
 ###  http://purl.org/dc/terms/created
 dcterms:created rdf:type owl:DatatypeProperty ;
                 skos:note "MAIS Aanmaakdatum"@nl .
@@ -225,11 +288,6 @@ dcterms:creator rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/dc/terms/hasVersion
 dcterms:hasVersion rdf:type owl:DatatypeProperty ;
                    skos:note "MAIS Editie"@nl .
-
-
-###  http://purl.org/dc/terms/license
-dcterms:license rdf:type owl:DatatypeProperty ;
-                skos:note "MAIS Licentie methode"@nl .
 
 
 ###  http://purl.org/dc/terms/modified
@@ -249,6 +307,14 @@ dcterms:source rdf:type owl:DatatypeProperty ;
 
 ###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#aspectRatio
 ebucore:aspectRatio rdf:type owl:DatatypeProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/begin
+edm:begin rdf:type owl:DatatypeProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/end
+edm:end rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -350,6 +416,10 @@ edm:InformationResource rdf:type owl:Class .
 edm:NonInformationResource rdf:type owl:Class .
 
 
+###  http://www.europeana.eu/schemas/edm/TimeSpan
+edm:TimeSpan rdf:type owl:Class .
+
+
 ###  http://www.europeana.eu/schemas/edm/WebResource
 edm:WebResource rdf:type owl:Class .
 
@@ -395,13 +465,28 @@ foaf:Person rdf:type owl:Class .
                                                                                                             dc:subject "MAIS Aut.toelichting"@nl ;
                                                                                                             skos:note "MAIS openb.beperking"@nl
                                                                                                           ] ;
+                                                                                     dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
+                                                                                     dcterms:relation [ rdf:type edm:TimeSpan ;
+                                                                                                        dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                                        edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
+                                                                                                        edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
+                                                                                                        dc:coverage "MAIS Datering geschat"@nl
+                                                                                                      ] ;
+                                                                                        dcterms:relation [ rdf:type naa:PersonEntity ;
+
+                                                                                        ] ;
                                                                                      dcterms:rights naa:RightsTypePublicDomain ;
+                                                                                     dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
+                                                                                                     <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
+                                                                                                     <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ;
                                                                                      naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
                                                                                      naa:catalogReferenceNumber "2.24.01.07" ;
                                                                                      bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
                                                                                      bf:scale "1:10" ;
+                                                                                     dc:coverage "Frankrijk"@nl ;
                                                                                      dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
                                                                                      dc:license "MAIS Licentie methode"@nl ;
+                                                                                     dc:subject "militairen"@nl ;
                                                                                      dcterms:created "MAIS Aanmaakdatum"@nl ;
                                                                                      dcterms:creator "MAIS Vervaardiger"@nl ;
                                                                                      dcterms:modified "MAIS Wijzigingsdatum"@nl ;
@@ -411,12 +496,6 @@ foaf:Person rdf:type owl:Class .
                                                                                      dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
                                                                                      dc:relation "MAIS Verwijzing"@nl ;
                                                                                      dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
-                                                                                     dcterms:relation [ rdf:type edm:TimeSpan ;
-                                                                                                        dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
-                                                                                                        dc:coverage "MAIS Datering geschat"@nl ;
-                                                                                                        edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
-                                                                                                        edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
-                                                                                                      ] ;
                                                                                      skos:note "MAIS Opmerkingen"@nl .
 
 
@@ -444,12 +523,11 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:NL-HaNA_Aggregation ;
-                                                                                     dcterms:subject <http://data.beeldengeluid.nl/gtaa/217385> ;
+                                                                                     edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
                                                                                      ore:aggregates <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                      ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
                                                                                                         <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:NationaalArchief> ,
                                                                                                         <http://archief.nl/NL-HaNA/doc/FotoThemaAggregation:BevrijdingVanNederland> ;
-                                                                                     edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> ;
                                                                                      edm:isShownAt <https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> ;
                                                                                      edm:landingPage <http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> .
 
@@ -522,32 +600,60 @@ naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                            <http://www.w3.org/ns/adms#relatedWebPage> <https://wiki.creativecommons.org/wiki/CC0_FAQ> .
 
 
-###  http://data.beeldengeluid.nl/gtaa/217385
-<http://data.beeldengeluid.nl/gtaa/217385> rdf:type owl:NamedIndividual ,
-                                                    edm:WebResource .
+###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
+<http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                              edm:WebResource ;
+                                                     skos:note "MAIS Relaties:geografische term. GTAA geografische locatie."@nl .
 
 
-###  http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab
-<http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> rdf:type owl:NamedIndividual ,
-                                                                                                                                       edm:WebResource ;
-                                                                                                                              skos:note "MAIS Webdisplay"@nl .
+###  http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld
+<http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                               edm:WebResource .
 
 
-###  https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51
-<https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:0a13ec5b-b52d-4600-b58b-b6d6d9614e51> rdf:type owl:NamedIndividual ,
-                                                                                                                     edm:WebResource ;
-                                                                                                            svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
-                                                                                                            dc:source "https://service.nationaalarchief.nl/api/file/v1/default/0a13ec5b-b52d-4600-b58b-b6d6d9614e51"^^xsd:string .
+###  http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld
+<http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                                    edm:WebResource ;
+                                                           skos:note "MAIS Relaties:thesaurusterm. GTAA onderwerp (algemeen)."@nl .
 
 
-###  https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab
-<https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> rdf:type owl:NamedIndividual ,
-                                                                             edm:WebResource ;
-                                                                    skos:note "MAIS Handle"@nl .
+###  http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld
+<http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                                  edm:WebResource .
+
+
+###  http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/WebpaginaFotoVoorbeeld
+<http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/WebpaginaFotoVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                                                                                         edm:WebResource ;
+                                                                                                                skos:note "MAIS Webdisplay"@nl .
+
+
+###  https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld
+<https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                                                                           edm:WebResource ;
+                                                                                                  svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
+                                                                                                  dc:source "https://service.nationaalarchief.nl/api/file/v1/default/0a13ec5b-b52d-4600-b58b-b6d6d9614e51"^^xsd:string .
+
+
+###  https://hdl.handle.net/10648/urlHandleVoorbeeld
+<https://hdl.handle.net/10648/urlHandleVoorbeeld> rdf:type owl:NamedIndividual ,
+                                                           edm:WebResource ;
+                                                  skos:note "MAIS Handle"@nl .
 
 
 ###  https://service.nationaalarchief.nl/api/iiif
 <https://service.nationaalarchief.nl/api/iiif> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+dc:coverage rdfs:comment "TODO: omzetten naar Places in Time waar mogelijk via erfgeo.nl"@nl ;
+            skos:note "MAIS Trefwoorden: geografische namen"@nl .
+
+
+dc:subject skos:note "MAIS Trefwoorden algemeen"@nl .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
