@@ -36,7 +36,7 @@
 @base <http://archief.nl/def/> .
 
 <http://archief.nl/def/> rdf:type owl:Ontology ;
-                          owl:imports <http://purl.org/NET/dc_owl2dl/terms_od> ;
+                          # owl:imports <http://purl.org/NET/dc_owl2dl/terms_od> ;
                           rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
