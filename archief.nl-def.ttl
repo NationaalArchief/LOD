@@ -351,6 +351,13 @@ edm:end rdf:type owl:DatatypeProperty .
 #    Classes
 #################################################################
 
+###  http://archief.nl/def/AggregationType
+naa:AggregationType rdf:type owl:Class ;
+                    dc:creator "Elvin Dechesne"^^xsd:string ;
+                    dc:date "1523361102721"^^xsd:long ;
+                    skos:note "Methode om een aggregatie van een type te voorzien (bijvoorbeeld aggregatie niveau)."@nl .
+
+
 ###  http://archief.nl/def/ArchivalEntity
 naa:ArchivalEntity rdf:type owl:Class ;
                    owl:equivalentClass edm:NonInformationResource ;
@@ -561,9 +568,10 @@ foaf:Person rdf:type owl:Class .
                                                                                      naa:archivalEntityType naa:TypePhotograph ;
                                                                                      dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
                                                                                                             dc:description "MAIS Aut.toelichting"@nl ;
-                                                                                                            dc:subject "MAIS Aut.toelichting"@nl ;
+                                                                                                            dc:subject "MAIS  MAIS openb.beperking"@nl ;
                                                                                                             dcterms:source "MAIS Download URL"@nl ;
-                                                                                                            skos:note "MAIS openb.beperking"@nl
+                                                                                                            skos:note "MAIS openb.beperking"@nl ;
+                                                                                                            dcterms:type naa:RightsTypePublicDomain;
                                                                                                           ] ;
                                                                                      dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
                                                                                      dcterms:publisher <http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
@@ -578,10 +586,14 @@ foaf:Person rdf:type owl:Class .
                                                                                                      <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
                                                                                                      <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
                                                                                                      [ rdf:type naa:PersonEntity ;
-                                                                                                       naa:lastKnownName "Henrik"
+                                                                                                        rdfs:label "Henrik" ;
+                                                                                                       naa:lastKnownName "Henrik" ;
+                                                                                                       owl:seeAlso <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld>
                                                                                                      ] ,
                                                                                                      [ rdf:type hg:PlaceInTime ;
-                                                                                                       rdfs:label "Frankrijk"
+                                                                                                       rdfs:label "Frankrijk" ;
+                                                                                                       naa:lastKnownName "Frankrijk" ;
+                                                                                                       owl:seeAlso <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld>
                                                                                                      ] ;
                                                                                      naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
                                                                                      naa:catalogReferenceNumber "2.24.01.07" ;
@@ -629,6 +641,7 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
 <http://archief.nl/NL-HaNA/doc/FotoAggregation:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:NL-HaNA_Aggregation ;
+                                                                                     dcterms:type naa:TypePhotoAggregation ;
                                                                                      edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
                                                                                      ore:aggregates <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                      ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/FotoCollectieAggregation:Anefo> ,
@@ -712,6 +725,15 @@ naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                            <http://www.w3.org/ns/adms#relatedWebPage> <https://wiki.creativecommons.org/wiki/CC0_FAQ> .
 
 
+###  http://archief.nl/def/TypePhotoAggregation
+naa:TypePhotoAggregation rdf:type owl:NamedIndividual ,
+                                  naa:AggregationType ;
+                         dc:creator "Elvin Dechesne"^^xsd:string ;
+                         dc:date "1523361574463"^^xsd:long ;
+                         rdfs:label "Aggregatie van het type foto"@nl ;
+                         skos:altLabel "Photograph Record"@en .
+
+
 ###  http://archief.nl/def/TypePhotograph
 naa:TypePhotograph rdf:type owl:NamedIndividual ,
                             naa:ArchivalEntityType ;
@@ -770,7 +792,7 @@ naa:TypePhotograph rdf:type owl:NamedIndividual ,
 ###  https://service.nationaalarchief.nl/api/iiif
 <https://service.nationaalarchief.nl/api/iiif> rdf:type owl:NamedIndividual ,
                                                         svcs:Service ;
-                                               rdfs:comment """De Generieke Archief Functies zijn een aantal webservices geleverd door het Nationaal Archief. 
+                                               rdfs:comment """De Generieke Archief Functies zijn een aantal webservices geleverd door het Nationaal Archief.
 
 De IIIF functie is bestemd voor het levereren van zichtexemplaren volgens het International Image Interoperability Framework, metadata en configuraties voor webviewers zoals de Univeral Viewer."""@en ;
                                                rdfs:seeAlso <https://nationaalarchief.nl/gaf/api/> ;
