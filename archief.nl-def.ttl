@@ -580,7 +580,7 @@ foaf:Person rdf:type owl:Class .
                                                                                                       ] ;
                                                                                      dcterms:rights naa:RightsTypePublicDomain ;
                                                                                      dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
-                                                                                               dcterms:type naa:RightsTypePublicDomain ;
+                                                                                              dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
                                                                                                dc:description "MAIS Aut.toelichting"@nl ;
                                                                                                dc:subject "MAIS  MAIS openb.beperking"@nl ;
                                                                                                dcterms:source "MAIS Download URL"@nl ;
