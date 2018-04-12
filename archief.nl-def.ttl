@@ -153,6 +153,11 @@ dcterms:subject rdf:type owl:ObjectProperty ;
 Gebruiken bij de ore:Aggregation indien het een externe verwijzing (URI) betreft. Een naa:ArchivalEntity mag geen ongecontrolleerde verwijzingen bevatten naar objecten buiten het domein van de RijksCollectie."""@nl .
 
 
+###  http://purl.org/dc/terms/temporal
+dcterms:temporal rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf dcterms:coverage .
+
+
 ###  http://purl.org/dc/terms/type
 dcterms:type rdf:type owl:ObjectProperty .
 
@@ -520,7 +525,8 @@ edm:TimeSpan rdf:type owl:Class .
 
 
 ###  http://www.europeana.eu/schemas/edm/WebResource
-edm:WebResource rdf:type owl:Class .
+edm:WebResource rdf:type owl:Class ;
+                rdfs:subClassOf edm:InformationResource .
 
 
 ###  http://www.loc.gov/premis/rdf/v3/License
@@ -564,54 +570,54 @@ foaf:Person rdf:type owl:Class .
 <http://archief.nl/NL-HaNA/beeld/id/FotoEntity:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
                                                                                               naa:ArchivalEntity ;
                                                                                      naa:isEntityType naa:TypePhotograph ;
-                                                                                     dcterms:accessRights _:genid2;
-                                                                                    dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
-                                                                                    dcterms:publisher <http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
-                                                                                    dcterms:relation [ rdf:type edm:TimeSpan ;
-                                                                                                       dc:coverage "MAIS Datering geschat"@nl ;
-                                                                                                       dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
-                                                                                                       edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
-                                                                                                       edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
+                                                                                     dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
+                                                                                     dcterms:publisher <http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
+                                                                                     dcterms:relation [ rdf:type edm:TimeSpan ;
+                                                                                                        dc:coverage "MAIS Datering geschat"@nl ;
+                                                                                                        dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                                        edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
+                                                                                                        edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
+                                                                                                      ] ;
+                                                                                     dcterms:rights naa:RightsTypePublicDomain ;
+                                                                                     dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
+                                                                                               dcterms:type naa:RightsTypePublicDomain ;
+                                                                                               dc:description "MAIS Aut.toelichting"@nl ;
+                                                                                               dc:subject "MAIS  MAIS openb.beperking"@nl ;
+                                                                                               dcterms:source "MAIS Download URL"@nl ;
+                                                                                               skos:note "MAIS openb.beperking"@nl
+                                                                                               ] ;
+                                                                                     dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
+                                                                                                     <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
+                                                                                                     <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
+                                                                                                     [ rdf:type naa:PersonEntity ;
+                                                                                                       naa:lastKnownName "Henrik" ;
+                                                                                                       rdfs:label "Henrik"
+                                                                                                     ] ,
+                                                                                                     [ rdf:type hg:PlaceInTime ;
+                                                                                                       naa:lastKnownName "Frankrijk" ;
+                                                                                                       rdfs:label "Frankrijk"
                                                                                                      ] ;
-                                                                                    dcterms:rights naa:RightsTypePublicDomain ;
-                                                                                    dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
-                                                                                                    <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
-                                                                                                    <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
-                                                                                                    [ rdf:type naa:PersonEntity ;
-                                                                                                      naa:lastKnownName "Henrik" ;
-                                                                                                      rdfs:label "Henrik"
-                                                                                                    ] ,
-                                                                                                    [ rdf:type hg:PlaceInTime ;
-                                                                                                      naa:lastKnownName "Frankrijk" ;
-                                                                                                      rdfs:label "Frankrijk"
-                                                                                                    ] ;
-                                                                                    naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
-                                                                                    naa:catalogReferenceNumber "2.24.01.07" ;
-                                                                                    bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
-                                                                                    bf:scale "1:10" ;
-                                                                                    dc:coverage "Frankrijk"@nl ,
-                                                                                                "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)"@nl ;
-                                                                                    dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
-                                                                                    dc:identifier "ff0c94fd-456b-a512-b5fa-a7c3e696a7ab" ;
-                                                                                    dc:license "MAIS Licentie methode"@nl ;
-                                                                                    dc:publisher "Nationaal Archief"@nl ;
-                                                                                    dc:subject "militairen."@nl ;
-                                                                                    dcterms:created "MAIS Aanmaakdatum"@nl ;
-                                                                                    dcterms:creator "MAIS Vervaardiger"@nl ;
-                                                                                    dcterms:modified "MAIS Wijzigingsdatum"@nl ;
-                                                                                    dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
-                                                                                    dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
-                                                                                    dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
-                                                                                    dc:relation "MAIS Verwijzing"@nl ;
-                                                                                    dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
-                                                                                    skos:note "Eventuele Opmerkingen"@nl .
+                                                                                     naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
+                                                                                     naa:catalogReferenceNumber "2.24.01.07" ;
+                                                                                     bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
+                                                                                     bf:scale "1:10" ;
+                                                                                     dc:coverage "Frankrijk"@nl ,
+                                                                                                 "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)."@nl ;
+                                                                                     dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
+                                                                                     dc:identifier "ff0c94fd-456b-a512-b5fa-a7c3e696a7ab" ;
+                                                                                     dc:license "MAIS Licentie methode"@nl ;
+                                                                                     dc:publisher "Nationaal Archief"@nl ;
+                                                                                     dc:subject "militairen."@nl ;
+                                                                                     dcterms:created "MAIS Aanmaakdatum"@nl ;
+                                                                                     dcterms:creator "MAIS Vervaardiger"@nl ;
+                                                                                     dcterms:modified "MAIS Wijzigingsdatum"@nl ;
+                                                                                     dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
+                                                                                     dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
+                                                                                     dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
+                                                                                     dc:relation "MAIS Verwijzing"@nl ;
+                                                                                     dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
+                                                                                     skos:note "Eventuele Opmerkingen"@nl .
 
-_:genid2 rdf:type dcterms:RightsStatement ;
-            dcterms:type naa:RightsTypePublicDomain ;
-            dc:description "MAIS Aut.toelichting"@nl ;
-            dc:subject "MAIS  MAIS openb.beperking"@nl ;
-            dcterms:source "MAIS Download URL"@nl ;
-            skos:note "MAIS openb.beperking"@nl .
 
 ###  http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation
 <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation> rdf:type owl:NamedIndividual ,
@@ -711,6 +717,7 @@ Immers, het object FotoEntity:UUID biedt al voldoende mogelijkheid om de metadat
 <http://archief.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)> rdf:type owl:NamedIndividual ,
                                                                           naa:PersonEntity .
 
+
 ###  http://archief.nl/def/RightsTypePublicDomain
 naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                                     premis:License ;
@@ -734,6 +741,7 @@ naa:TypePhotograph rdf:type owl:NamedIndividual ,
                             naa:ArchivalEntityType ;
                    dc:date "1523266085887"^^xsd:long ;
                    dc:creator "Elvin Dechesne"^^xsd:string .
+
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
 <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> rdf:type owl:NamedIndividual ,
