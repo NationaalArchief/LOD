@@ -39,14 +39,45 @@
                                                     owl:imports naa: .
 
 #################################################################
+#    Classes
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/E4_Period
+cidoc-crm:E4_Period rdf:type owl:Class ;
+                    owl:equivalentClass edm:Event .
+
+
+###  http://www.europeana.eu/schemas/edm/Event
+edm:Event rdf:type owl:Class ;
+          rdfs:subClassOf edm:NonInformationResource .
+
+
+#################################################################
 #    Individuals
 #################################################################
+
+###  http://archief.overheid.nl/NL-HaNA/doc/CanonLaw:7bb8b9d4-71c1-102d-a0ea-005056a23d00
+<http://archief.overheid.nl/NL-HaNA/doc/CanonLaw:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                edm:Event ;
+                                                                                       edm:begin "1738-01-01"^^rdfs:Literal ;
+                                                                                       rdfs:label "Kerkrecht"@nl .
+
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00
 <http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
                                                                                                    naa:NL-HaNA_Aggregation ;
                                                                                           naa:isAggregationType naa:TypeDeathRecord ;
+                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/CanonLaw:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
+                                                                                                         <http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
+                                                                                                         <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
                                                                                           ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)> .
+
+
+###  http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00
+<http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                      naa:ArchivalReference ;
+                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
+                                                                                             skos:definition "Informatie behorende bij het record over het overlijden van persoon x uit NT y"@nl .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/NT:00342_Suriname(Gereformeerden)
@@ -73,19 +104,29 @@ De naam 'Database Gereformeerden' is gekozen om aan te geven dat dit gegevensbes
 ###  http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Births)
 <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Births)> rdf:type owl:NamedIndividual ,
                                                                                 naa:NL-HaNA_Aggregation ;
-                                                                       naa:isAggregationType naa:TypeAdditionalFindingAidView .
+                                                                       naa:isAggregationType naa:TypeAdditionalFindingAidView ;
+                                                                       rdfs:label "Trouwregister Koloniaal Suriname"@nl ;
+                                                                       skos:definition "Trouwregister Koloniaal Suriname"@nl .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)
 <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)> rdf:type owl:NamedIndividual ,
                                                                                 naa:NL-HaNA_Aggregation ;
-                                                                       naa:isAggregationType naa:TypeAdditionalFindingAidView .
+                                                                       naa:isAggregationType naa:TypeAdditionalFindingAidView ;
+                                                                       rdfs:label "Overlijdensregister Koloniaal Suriname"@nl ;
+                                                                       skos:definition "Overlijdensregister Koloniaal Suriname"@nl .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Memberships)
 <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Memberships)> rdf:type owl:NamedIndividual ,
                                                                                      naa:NL-HaNA_Aggregation ;
                                                                             naa:isAggregationType naa:TypeAdditionalFindingAidView .
+
+
+###  http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00
+<http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                       naa:PersonEntity ;
+                                                                                              ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:NationaalArchief> .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
