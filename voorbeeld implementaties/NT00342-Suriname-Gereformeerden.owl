@@ -1,0 +1,113 @@
+@prefix : <http://archief.overheid.nl/def/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://archief.overheid.nl/NL-HaNA/doc/> .
+
+<http://archief.overheid.nl/def/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://archief.overheid.nl/def/isAggregationType
+:isAggregationType rdf:type owl:ObjectProperty .
+
+
+###  http://archief.overheid.nl/def/isEntityType
+:isEntityType rdf:type owl:ObjectProperty .
+
+
+###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#hasRole
+<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#hasRole> rdf:type owl:ObjectProperty .
+
+
+###  http://www.openarchives.org/ore/terms/aggregates
+<http://www.openarchives.org/ore/terms/aggregates> rdf:type owl:ObjectProperty .
+
+
+###  http://www.openarchives.org/ore/terms/isAggregatedBy
+<http://www.openarchives.org/ore/terms/isAggregatedBy> rdf:type owl:ObjectProperty .
+
+
+###  http://xmlns.com/foaf/0.1/knows
+<http://xmlns.com/foaf/0.1/knows> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://archief.overheid.nl/def/AggregationType
+:AggregationType rdf:type owl:Class .
+
+
+###  http://archief.overheid.nl/def/NL-HaNA_Aggregation
+:NL-HaNA_Aggregation rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00
+<http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                   :NL-HaNA_Aggregation ;
+                                                                                          :isAggregationType :TypeDeathRecord .
+
+
+###  http://archief.overheid.nl/NL-HaNA/doc/NT:00342_Suriname(Gereformeerden)
+<http://archief.overheid.nl/NL-HaNA/doc/NT:00342_Suriname(Gereformeerden)> rdf:type owl:NamedIndividual ,
+                                                                                    :NL-HaNA_Aggregation ;
+                                                                           :isAggregationType :TypeDetailedContentDescription ;
+                                                                           <http://www.openarchives.org/ore/terms/aggregates> <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)> ;
+                                                                           rdfs:comment """De database Gereformeerden 1688-1792 bevat informatie die tegenwoordig door de overheid, door middel van de Burgerlijke Stand, wordt bijgehouden: geboorte, huwelijk en overlijden van individuele burgers.
+Zoals de naam aangeeft, betreffen de gegevens - overigens niet uitsluitend! - het calvinistische deel van de koloniale bevolking. De Surinaamse calvinisten behoorden voor het merendeel tot wat in de 17e en 18e eeuw de 'Nederduits Hervormde' of 'Nederduits Gereformeerde' kerk heette. Hoewel in die tijd de woorden gereformeerd en hervormd dus door elkaar werden gebruikt, worden de Nederlandse calvinisten van vóór de 19e-eeuwse kerkscheuringen in het huidige spraakgebruik gewoonlijk kortweg 'hervormden' genoemd. Toch is hier niet gekozen voor de naam 'Database Hervormden'. Voor een belangrijk deel bestond de calvinistische gemeenschap in Suriname in de 18e eeuw namelijk uit Franstaligen. In Nederland stichtten deze om hun geloof uit Frankrijk uitgewekenen, en hun afstammelingen in tal van plaatsen een eigen 'Waalse kerk'. In Suriname stichtten de Franse calvinisten echter geen aparte gemeente. Zij vormden één geheel met hun Nederlandse geloofsgenoten.
+De naam 'Database Gereformeerden' is gekozen om aan te geven dat dit gegevensbestand betrekking heeft op de gehele calvinistische bevolkingsgroep, en niet alleen op de (Nederlandstalige) hervormden."""@nl ;
+                                                                           rdfs:seeAlso <http://www.gahetna.nl/collectie/index/nt00342> ,
+                                                                                        <http://www.gahetna.nl/collectie/index/nt00342/colofon/bronnen> .
+
+
+###  http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)
+<http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)> rdf:type owl:NamedIndividual ,
+                                                                                :NL-HaNA_Aggregation .
+
+
+###  http://archief.overheid.nl/def/TypeAdditionalFindingAidView
+:TypeAdditionalFindingAidView rdf:type owl:NamedIndividual ,
+                                       :AggregationType .
+
+
+###  http://archief.overheid.nl/def/TypeBaptismRecord
+:TypeBaptismRecord rdf:type owl:NamedIndividual ,
+                            :AggregationType .
+
+
+###  http://archief.overheid.nl/def/TypeDeathRecord
+:TypeDeathRecord rdf:type owl:NamedIndividual ,
+                          :AggregationType .
+
+
+###  http://archief.overheid.nl/def/TypeDetailedContentDescription
+:TypeDetailedContentDescription rdf:type owl:NamedIndividual ,
+                                         :AggregationType .
+
+
+###  http://archief.overheid.nl/def/TypeMarriageRecord
+:TypeMarriageRecord rdf:type owl:NamedIndividual ,
+                             :AggregationType .
+
+
+###  http://archief.overheid.nl/def/TypeMembershipRecord
+:TypeMembershipRecord rdf:type owl:NamedIndividual ,
+                               :AggregationType .
+
+
+###  http://archief.overheid.nl/def/TypePersonCollection
+:TypePersonCollection rdf:type owl:NamedIndividual ,
+                               :AggregationType .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
