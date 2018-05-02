@@ -56,18 +56,20 @@ edm:Event rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://archief.overheid.nl/NL-HaNA/doc/CanonLaw:7bb8b9d4-71c1-102d-a0ea-005056a23d00
-<http://archief.overheid.nl/NL-HaNA/doc/CanonLaw:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
-                                                                                                edm:Event ;
-                                                                                       edm:begin "1738-01-01"^^rdfs:Literal ;
-                                                                                       rdfs:label "Kerkrecht"@nl .
+###  http://archief.overheid.nl/NL-HaNA/doc/CanonLawRights:7bb8b9d4-71c1-102d-a0ea-005056a23d00
+<http://archief.overheid.nl/NL-HaNA/doc/CanonLawRights:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                      premis:RightsBasis ;
+                                                                                             prov:wasAssociatedWith <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
+                                                                                             premis:startDate "1738-01-01"^^rdfs:Literal ;
+                                                                                             rdfs:label "Moment van registratie kerkrecht"@nl ;
+                                                                                             skos:definition "Moment van registratie kerkrecht"@nl .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00
 <http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
                                                                                                    naa:NL-HaNA_Aggregation ;
                                                                                           naa:isAggregationType naa:TypeDeathRecord ;
-                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/CanonLaw:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
+                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/CanonLawRights:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
                                                                                                          <http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
                                                                                                          <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
                                                                                           ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)> .
