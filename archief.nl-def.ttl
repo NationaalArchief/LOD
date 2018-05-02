@@ -410,6 +410,7 @@ naa:alternativeIntraposition rdf:type owl:DatatypeProperty ;
                                                          bgn:Name
                                                        )
                                          ] ;
+                             rdfs:range xsd:string ;
                              rdfs:comment "Komt voor in gevallen als wanneer iemand met het Franse equivalent van 'van' wordt aangeduid"@nl ;
                              rdfs:label "alternative intraposition"@en ,
                                         "ook vermeld als"@nl ;
@@ -486,6 +487,22 @@ naa:alternativePostpositionAddition rdf:type owl:DatatypeProperty ;
                                     skos:prefLabel "variant op naamstoevoeging"@nl .
 
 
+###  http://archief.overheid.nl/def/alternativePostpositionTitle
+naa:alternativePostpositionTitle rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf naa:alternativeNamePosition ,
+                                                    naa:postposition ;
+                                 rdfs:domain [ rdf:type owl:Class ;
+                                               owl:unionOf ( naa:PersonEntity
+                                                             bgn:Name
+                                                           )
+                                             ] ;
+                                 rdfs:range xsd:string ;
+                                 rdfs:label "alternative title after name"@en ,
+                                            "titelvariant na de naam"@nl ;
+                                 skos:prefLabel "alternative title after name"@en ,
+                                                "titelvariant na de naam"@nl .
+
+
 ###  http://archief.overheid.nl/def/catalogReferenceNumber
 naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
                            owl:equivalentProperty naa:findingAidNumber ;
@@ -536,7 +553,16 @@ naa:fullname rdf:type owl:DatatypeProperty ;
 
 
 ###  http://archief.overheid.nl/def/intraposition
-naa:intraposition rdf:type owl:DatatypeProperty .
+naa:intraposition rdf:type owl:DatatypeProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( naa:PersonEntity
+                                              bgn:Name
+                                            )
+                              ] ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "intraposition"@en ,
+                             "tussenvoegsel"@nl ;
+                  skos:prefLabel "tussenvoegsel"@nl .
 
 
 ###  http://archief.overheid.nl/def/inventoryNumber
@@ -559,21 +585,152 @@ naa:postposition rdf:type owl:DatatypeProperty ;
                                              bgn:Name
                                            )
                              ] ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 rdfs:label "achtervoegsel"@nl ,
+                            "postposition"@en .
+
+
+###  http://archief.overheid.nl/def/postpositionAddition
+naa:postpositionAddition rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf naa:postposition ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( naa:PersonEntity
+                                                     bgn:Name
+                                                   )
+                                     ] ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "distinctive addition to last name"@en ,
+                                    "naamstoevoeging"@nl ;
+                         skos:prefLabel "naamstoevoeging"@nl .
+
+
+###  http://archief.overheid.nl/def/postpositionMaidenName
+naa:postpositionMaidenName rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf naa:postposition ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( naa:PersonEntity
+                                                       bgn:Name
+                                                     )
+                                       ] ;
+                           rdfs:range xsd:string ;
+                           rdfs:label "achternaam van meisjesnaam"@nl ,
+                                      "maiden name as the last part of a person's name"@en ;
+                           skos:prefLabel "achternaam van meisjesnaam"@nl ,
+                                          "maiden name as the last part of a person's name"@en .
 
 
 ###  http://archief.overheid.nl/def/postpositionName
-naa:postpositionName rdf:type owl:DatatypeProperty .
+naa:postpositionName rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf naa:postposition ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( naa:PersonEntity
+                                                 bgn:Name
+                                               )
+                                 ] ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+                     rdfs:label "achternaam"@nl ,
+                                "last name"@en ;
+                     skos:altLabel "geslachtsnaam"@nl ;
+                     skos:prefLabel "achternaam"@nl .
+
+
+###  http://archief.overheid.nl/def/postpositionPatronym
+naa:postpositionPatronym rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf naa:postposition ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( naa:PersonEntity
+                                                     bgn:Name
+                                                   )
+                                     ] ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "patroniem achteraan"@nl ,
+                                    "patronym after last name"@en .
+
+
+###  http://archief.overheid.nl/def/postpositionTitle
+naa:postpositionTitle rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf naa:postposition ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( naa:PersonEntity
+                                                  bgn:Name
+                                                )
+                                  ] ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+                      rdfs:label "titel na de naam"@nl ,
+                                 "title after name"@en ;
+                      skos:prefLabel "titel na de naam"@nl .
+
+
+###  http://archief.overheid.nl/def/preposition
+naa:preposition rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( naa:PersonEntity
+                                            bgn:Name
+                                          )
+                            ] ;
+                rdfs:range xsd:string ;
+                rdfs:label "preposition"@en ,
+                           "voorvoegsel"@nl .
+
+
+###  http://archief.overheid.nl/def/prepositionInitials
+naa:prepositionInitials rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf naa:preposition ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( naa:PersonEntity
+                                                    bgn:Name
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "initialen"@nl ,
+                                   "initials as part of the first name"@en ;
+                        skos:prefLabel "initialen"@nl .
 
 
 ###  http://archief.overheid.nl/def/prepositionName
 naa:prepositionName rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf naa:preposition ;
                     rdfs:domain [ rdf:type owl:Class ;
                                   owl:unionOf ( naa:PersonEntity
                                                 bgn:Name
                                               )
                                 ] ;
-                    rdfs:range xsd:string .
+                    rdfs:range xsd:string ;
+                    rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+                    rdfs:label "first name"@en ,
+                               "voornaam"@nl ;
+                    skos:prefLabel "voornaam"@nl .
+
+
+###  http://archief.overheid.nl/def/prepositionPatronym
+naa:prepositionPatronym rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf naa:preposition ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( naa:PersonEntity
+                                                    bgn:Name
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "patroniem vooraan"@nl ,
+                                   "patronym in first name"@en ;
+                        skos:prefLabel "patroniem vooraan"@nl .
+
+
+###  http://archief.overheid.nl/def/prepositionTitle
+naa:prepositionTitle rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf naa:preposition ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( naa:PersonEntity
+                                                 bgn:Name
+                                               )
+                                 ] ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "In order to deal with names and titles being part of prepostion, intraposition or postposition, for each of these properties specialisations have been defined for either name or title"@en ;
+                     rdfs:label "titel"@nl ,
+                                "title"@en ;
+                     skos:prefLabel "titel"@en .
 
 
 ###  http://dbpedia.org/ontology/scale
@@ -1054,8 +1211,7 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd
 <http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
                                                                                                          naa:NL-HaNA_Aggregation ;
-                                                                                                ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> ;
-                                                                                                ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NadereToegangAggregation:NT00194> .
+                                                                                                ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd
@@ -1065,16 +1221,11 @@ foaf:Person rdf:type owl:Class .
                                                                                                    dc:source "NL-HaNA/1.01.19/1523//002//"@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/NadereToegangAggregation:NT00194
-<http://archief.overheid.nl/NL-HaNA/doc/NadereToegangAggregation:NT00194> rdf:type owl:NamedIndividual ,
-                                                                                   naa:NL-HaNA_Aggregation ;
-                                                                          owl:sameAs <http://archief.overheid.nl/NL-HaNA/doc/NadereToegangAggregation:02b4f924-cd6d-102c-9f8b-005056a23d00> ;
-                                                                          dc:description "Naamindex van de Raad van State"@nl .
-
-
-###  http://archief.overheid.nl/NL-HaNA/doc/NadereToegangAggregation:02b4f924-cd6d-102c-9f8b-005056a23d00
-<http://archief.overheid.nl/NL-HaNA/doc/NadereToegangAggregation:02b4f924-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
-                                                                                                                naa:NL-HaNA_Aggregation .
+###  http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne
+<http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual ,
+                                                                     bgn:Name ;
+                                                            naa:alias "The Amazing Solution Architect" ;
+                                                            naa:fullname "Elvin Michiel Mos Dechesne" .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:NationaalArchief
@@ -1145,9 +1296,10 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
 ###  http://archief.overheid.nl/NL-HaNA/persoon/id/ElvinDechesne
 <http://archief.overheid.nl/NL-HaNA/persoon/id/ElvinDechesne> rdf:type owl:NamedIndividual ,
                                                                        naa:PersonEntity ;
-                                                              naa:hasName naa:ElvinDechesne ;
+                                                              naa:hasName <http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
                                                               naa:sex naa:GenderMale ;
                                                               naa:alias "The Amazing Solution Architect" ;
+                                                              naa:fullname "Elvin Michiel Mos Dechesne" ;
                                                               edm:landingPage <https://www.linkedin.com/in/elvindechesne/> .
 
 
@@ -1266,14 +1418,6 @@ naa:TypeAdditionalFindingAid rdf:type owl:NamedIndividual ,
                              skos:label "Methodische ontsluiting van één of meer archieven"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeAdditionalFindingAidView
-naa:TypeAdditionalFindingAidView rdf:type owl:NamedIndividual ,
-                                          naa:AggregationType ;
-                                 rdfs:label "View van een Nadere Toegang"@nl ;
-                                 skos:definition "Wanneer een Nadere Toegang is verdeeld over kleinere (data-) sets, noemen we dit 'views'. Een view is een aggregatie van records, en is zelf onderdeel van een bovenliggende aggregatie, de Nadere Toegang zelf."@nl ;
-                                 skos:prefLabel "View van een Nadere Toegang"@nl .
-
-
 ###  http://archief.overheid.nl/def/TypeBaptismRecord
 naa:TypeBaptismRecord rdf:type owl:NamedIndividual ,
                                naa:AggregationType ;
@@ -1300,6 +1444,14 @@ naa:TypeDetailedContentDescription rdf:type owl:NamedIndividual ,
                                    skos:definition "Een Nadere Toegang bevat verdiepende beschrijving (ofwel, een omschrijving van de stukken op een niveau dieper dan de beschrijving van het inventarisnummer). Nadere Toegangen zijn meer op de inhoud van de stukken gericht."@nl ,
                                                    "Staat van specificaties van: 1. Gegevens in een archiefstuk of in een archiefbestanddeel, dat als geheel in een beschrijving is opgenomen. 2. Archiefbestanddelen binnen een archiefafdeling of een archief."@nl ;
                                    skos:label "Nadere Toegang"@nl .
+
+
+###  http://archief.overheid.nl/def/TypeDetailedContentDescriptionView
+naa:TypeDetailedContentDescriptionView rdf:type owl:NamedIndividual ,
+                                                naa:AggregationType ;
+                                       rdfs:label "View van een Nadere Toegang"@nl ;
+                                       skos:definition "Wanneer een Nadere Toegang is verdeeld over kleinere (data-) sets, noemen we dit 'views'. Een view is een aggregatie van records, en is zelf onderdeel van een bovenliggende aggregatie, de Nadere Toegang zelf."@nl ;
+                                       skos:prefLabel "View van een Nadere Toegang"@nl .
 
 
 ###  http://archief.overheid.nl/def/TypeFindingAid
@@ -1387,17 +1539,16 @@ naa:TypePhotographersCollection rdf:type owl:NamedIndividual ,
                                 rdfs:label "Een type verzameling van fotografen"@nl .
 
 
+###  http://archief.overheid.nl/def/TypeSlaveryRecord
+naa:TypeSlaveryRecord rdf:type owl:NamedIndividual ,
+                               naa:AggregationType .
+
+
 ###  http://archief.overheid.nl/def/TypesOfMaterials
 naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:comment "Classificatie schema t.b.v. ArchivalEntities (Foto's, boeken, etc)"@en ;
                      skos:label "Materiaal types"@nl .
-
-
-###  http://archief.overheid.nl/def/Name:ElvinDechesne
-naa:ElvinDechesne rdf:type owl:NamedIndividual ,
-                           bgn:Name ;
-                  naa:alias "The Amazing Solution Architect" .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
