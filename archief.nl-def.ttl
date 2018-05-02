@@ -136,6 +136,36 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://archief.overheid.nl/def/hasName
+naa:hasName rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf dcterms:identifier ;
+            rdfs:range bgn:Name ;
+            rdfs:label "heeft naam"@nl ;
+            skos:label "heeft naam"@nl .
+
+
+###  http://archief.overheid.nl/def/hasProfession
+naa:hasProfession rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf naa:hasRole ;
+                  rdfs:domain edm:Agent ;
+                  rdfs:range naa:Profession ;
+                  rdfs:label "heeft beroep"@nl ;
+                  skos:definition "denotes that an actor has a profession"@en ,
+                                  "verbindt een actor met een beroep"@nl ;
+                  skos:label "heeft beroep"@nl .
+
+
+###  http://archief.overheid.nl/def/hasRole
+naa:hasRole rdf:type owl:ObjectProperty ;
+            owl:equivalentProperty ebucore:hasRole ;
+            rdfs:range naa:Role ;
+            rdfs:label "heeft rol"@nl ;
+            skos:definition "verbindt een entiteit met een rol"@nl ;
+            skos:label "heeft rol"@nl ;
+            skos:prefLabel "denotes that something has a role"@en ,
+                           "heeft rol"@nl .
+
+
 ###  http://archief.overheid.nl/def/isAggregationType
 naa:isAggregationType rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf dcterms:type ;
@@ -159,6 +189,20 @@ naa:isMaterialType rdf:type owl:ObjectProperty ;
                    skos:label "is van het type materiaal"@nl .
 
 
+###  http://archief.overheid.nl/def/sex
+naa:sex rdf:type owl:ObjectProperty ;
+        owl:equivalentProperty dbo:sex ,
+                               schema:gender ;
+        rdfs:domain naa:PersonEntity ;
+        rdfs:range naa:GenderType ;
+        rdfs:label "geslacht"@nl ;
+        skos:prefLabel "geslacht"@nl .
+
+
+###  http://dbpedia.org/ontology/sex
+dbo:sex rdf:type owl:ObjectProperty .
+
+
 ###  http://purl.org/dc/terms/accessRights
 dcterms:accessRights rdf:type owl:ObjectProperty ;
                      skos:note "MAIS openb.beperking"@nl .
@@ -167,6 +211,10 @@ dcterms:accessRights rdf:type owl:ObjectProperty ;
 ###  http://purl.org/dc/terms/coverage
 dcterms:coverage rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf dc:coverage .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/dc/terms/isPartOf
@@ -212,6 +260,10 @@ dcterms:type rdf:type owl:ObjectProperty .
 
 ###  http://rdfs.org/sioc/services#has_service
 svcs:has_service rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/gender
+schema:gender rdf:type owl:ObjectProperty .
 
 
 ###  http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about
@@ -309,6 +361,131 @@ naa:additionalDescription rdf:type owl:DatatypeProperty ;
                           skos:prefLabel "extra toelichting"@nl .
 
 
+###  http://archief.overheid.nl/def/alias
+naa:alias rdf:type owl:DatatypeProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( naa:PersonEntity
+                                      bgn:Name
+                                    )
+                      ] ;
+          rdfs:range xsd:string ;
+          rdfs:label "alias"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativeFirstName
+naa:alternativeFirstName rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf naa:alternativeNamePosition ,
+                                            naa:prepositionName ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( naa:PersonEntity
+                                                     bgn:Name
+                                                   )
+                                     ] ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "alternative first name"@en ;
+                         skos:prefLabel "ook geheten"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativeFullname
+naa:alternativeFullname rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf naa:alternativeNamePosition ,
+                                           naa:fullname ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( naa:PersonEntity
+                                                    bgn:Name
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "alternative full name"@en ,
+                                   "ook vermeld als"@nl ;
+                        skos:prefLabel "ook vermeld als"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativeIntraposition
+naa:alternativeIntraposition rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf naa:alternativeNamePosition ,
+                                                naa:intraposition ;
+                             rdfs:domain [ rdf:type owl:Class ;
+                                           owl:unionOf ( naa:PersonEntity
+                                                         bgn:Name
+                                                       )
+                                         ] ;
+                             rdfs:comment "Komt voor in gevallen als wanneer iemand met het Franse equivalent van 'van' wordt aangeduid"@nl ;
+                             rdfs:label "alternative intraposition"@en ,
+                                        "ook vermeld als"@nl ;
+                             skos:prefLabel "ook vermeld als"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativeIntrapositionName
+naa:alternativeIntrapositionName rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf naa:alternativeIntraposition ;
+                                 rdfs:domain [ rdf:type owl:Class ;
+                                               owl:unionOf ( naa:PersonEntity
+                                                             bgn:Name
+                                                           )
+                                             ] ;
+                                 rdfs:range xsd:string ;
+                                 rdfs:label "alternative name in intraposition"@en ,
+                                            "optioneel tussenvoegsel"@nl ;
+                                 skos:altLabel "middle name variant"@en ,
+                                               "tussenvoegsel (variant)"@nl ;
+                                 skos:prefLabel "optioneel tussenvoegsel"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativeIntrapositionTitle
+naa:alternativeIntrapositionTitle rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf naa:alternativeIntraposition ;
+                                  rdfs:domain [ rdf:type owl:Class ;
+                                                owl:unionOf ( naa:PersonEntity
+                                                              bgn:Name
+                                                            )
+                                              ] ;
+                                  rdfs:range xsd:string .
+
+
+###  http://archief.overheid.nl/def/alternativeLastName
+naa:alternativeLastName rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf naa:alternativeNamePosition ,
+                                           naa:postpositionName ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( naa:PersonEntity
+                                                    bgn:Name
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "alternative last name"@en ,
+                                   "ook geheten"@nl ;
+                        skos:label "alternative last name"@en ,
+                                   "ook geheten"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativeNamePosition
+naa:alternativeNamePosition rdf:type owl:DatatypeProperty ;
+                            rdfs:domain [ rdf:type owl:Class ;
+                                          owl:unionOf ( naa:PersonEntity
+                                                        bgn:Name
+                                                      )
+                                        ] ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "variant op naamelement"@nl ;
+                            skos:prefLabel "variant op naamelement"@nl .
+
+
+###  http://archief.overheid.nl/def/alternativePostpositionAddition
+naa:alternativePostpositionAddition rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf naa:alternativeNamePosition ,
+                                                       naa:postposition ;
+                                    rdfs:domain [ rdf:type owl:Class ;
+                                                  owl:unionOf ( naa:PersonEntity
+                                                                bgn:Name
+                                                              )
+                                                ] ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "alternative addition to last name"@en ,
+                                               "variant op naamstoevoeging"@nl ;
+                                    skos:prefLabel "variant op naamstoevoeging"@nl .
+
+
 ###  http://archief.overheid.nl/def/catalogReferenceNumber
 naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
                            owl:equivalentProperty naa:findingAidNumber ;
@@ -344,6 +521,24 @@ naa:findingAidNumber rdf:type owl:DatatypeProperty ;
                      skos:prefLabel "Nummer archiefinventaris"@nl .
 
 
+###  http://archief.overheid.nl/def/fullname
+naa:fullname rdf:type owl:DatatypeProperty ;
+             owl:equivalentProperty naa:lastKnownName ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( naa:PersonEntity
+                                         bgn:Name
+                                       )
+                         ] ;
+             rdfs:range xsd:string ;
+             rdfs:label "full name"@en ,
+                        "volledige naam"@nl ;
+             skos:prefLabel "volledige naam"@nl .
+
+
+###  http://archief.overheid.nl/def/intraposition
+naa:intraposition rdf:type owl:DatatypeProperty .
+
+
 ###  http://archief.overheid.nl/def/inventoryNumber
 naa:inventoryNumber rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf dc:identifier ;
@@ -355,6 +550,30 @@ naa:inventoryNumber rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/lastKnownName
 naa:lastKnownName rdf:type owl:DatatypeProperty ;
                   rdfs:range xsd:string .
+
+
+###  http://archief.overheid.nl/def/postposition
+naa:postposition rdf:type owl:DatatypeProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( naa:PersonEntity
+                                             bgn:Name
+                                           )
+                             ] ;
+                 rdfs:range xsd:string .
+
+
+###  http://archief.overheid.nl/def/postpositionName
+naa:postpositionName rdf:type owl:DatatypeProperty .
+
+
+###  http://archief.overheid.nl/def/prepositionName
+naa:prepositionName rdf:type owl:DatatypeProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( naa:PersonEntity
+                                                bgn:Name
+                                              )
+                                ] ;
+                    rdfs:range xsd:string .
 
 
 ###  http://dbpedia.org/ontology/scale
@@ -481,6 +700,16 @@ premis:startDate rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
+###  http://archief.overheid.nl/def/Agent
+naa:Agent rdf:type owl:Class ;
+          owl:equivalentClass foaf:Agent ;
+          rdfs:subClassOf edm:Agent ,
+                          foaf:Agent ;
+          rdfs:label "Agent"@nl ;
+          skos:definition "actieve entiteit zoals een actor of persoon"@nl ;
+          skos:label "Agent"@nl .
+
+
 ###  http://archief.overheid.nl/def/AggregationType
 naa:AggregationType rdf:type owl:Class .
 
@@ -523,6 +752,10 @@ naa:CorporateEntity rdf:type owl:Class ;
                     skos:prefLabel "Corporation in an Archives domain."@en .
 
 
+###  http://archief.overheid.nl/def/GenderType
+naa:GenderType rdf:type owl:Class .
+
+
 ###  http://archief.overheid.nl/def/NL-HaNA_Aggregation
 naa:NL-HaNA_Aggregation rdf:type owl:Class ;
                         rdfs:subClassOf bf:Collection ,
@@ -553,6 +786,26 @@ naa:Photograph rdf:type owl:Class ;
                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                      owl:onClass naa:ArchivalEntity
                                    ] .
+
+
+###  http://archief.overheid.nl/def/Profession
+naa:Profession rdf:type owl:Class ;
+               rdfs:subClassOf naa:Role ;
+               rdfs:label "Beroep"@nl ;
+               skos:label "Beroep"@nl ;
+               skos:prefLabel "Beroep"@nl .
+
+
+###  http://archief.overheid.nl/def/Role
+naa:Role rdf:type owl:Class ;
+         rdfs:subClassOf ebucore:Role ,
+                         prov:Role ;
+         rdfs:label "Rol"@nl ;
+         skos:prefLabel "Rol"@nl .
+
+
+###  http://biographynet.nl/schema/Name
+bgn:Name rdf:type owl:Class .
 
 
 ###  http://biographynet.nl/schema/Person
@@ -634,6 +887,11 @@ It is an abstract concept providing for three general properties:
 3.	Attachment of free text for the expression of anything not captured by formal properties
 With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity.
 """@en .
+
+
+###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#Role
+ebucore:Role rdf:type owl:Class ;
+             rdfs:subClassOf skos:Concept .
 
 
 ###  http://www.europeana.eu/schemas/edm/Agent
@@ -719,6 +977,10 @@ prov:Organization rdf:type owl:Class .
 
 ###  http://www.w3.org/ns/prov#Person
 prov:Person rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Role
+prov:Role rdf:type owl:Class .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
@@ -880,6 +1142,15 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
                                                                      <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
 
 
+###  http://archief.overheid.nl/NL-HaNA/persoon/id/ElvinDechesne
+<http://archief.overheid.nl/NL-HaNA/persoon/id/ElvinDechesne> rdf:type owl:NamedIndividual ,
+                                                                       naa:PersonEntity ;
+                                                              naa:hasName naa:ElvinDechesne ;
+                                                              naa:sex naa:GenderMale ;
+                                                              naa:alias "The Amazing Solution Architect" ;
+                                                              edm:landingPage <https://www.linkedin.com/in/elvindechesne/> .
+
+
 ###  http://archief.overheid.nl/NL-HaNA/persoon/id/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd
 <http://archief.overheid.nl/NL-HaNA/persoon/id/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
                                                                                                      naa:PersonEntity ;
@@ -907,6 +1178,24 @@ naa:CorporateType rdf:type owl:NamedIndividual ,
                   skos:inScheme naa:OrganisationTypes ;
                   skos:label "Corporation"@en ;
                   skos:prefLabel "Particuliere onderneming"@nl .
+
+
+###  http://archief.overheid.nl/def/GenderFemale
+naa:GenderFemale rdf:type owl:NamedIndividual ,
+                          naa:GenderType ;
+                 rdfs:label "Vrouw"@nl .
+
+
+###  http://archief.overheid.nl/def/GenderMale
+naa:GenderMale rdf:type owl:NamedIndividual ,
+                        naa:GenderType ;
+               rdfs:label "Man"@nl .
+
+
+###  http://archief.overheid.nl/def/GenderNeutral
+naa:GenderNeutral rdf:type owl:NamedIndividual ,
+                           naa:GenderType ;
+                  rdfs:label "Gender neutraal"@nl .
 
 
 ###  http://archief.overheid.nl/def/OrganisationTypes
@@ -959,6 +1248,15 @@ naa:RightsType_CCBY rdf:type owl:NamedIndividual ,
                     premis:hasTerms "Attribution"@en ,
                                     "Naamsvermelding"@nl ;
                     rdfs:label "CC BY"^^xsd:string .
+
+
+###  http://archief.overheid.nl/def/SlaveRoll
+naa:SlaveRoll rdf:type owl:NamedIndividual ,
+                       naa:Role ;
+              rdfs:label "rol van slaaf"@nl ;
+              skos:definition "An agent can be assigned the role of slave"@en ;
+              skos:label "rol van slaaf"@nl ;
+              skos:prefLabel "rol van slaaf"@nl .
 
 
 ###  http://archief.overheid.nl/def/TypeAdditionalFindingAid
@@ -1094,6 +1392,12 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:comment "Classificatie schema t.b.v. ArchivalEntities (Foto's, boeken, etc)"@en ;
                      skos:label "Materiaal types"@nl .
+
+
+###  http://archief.overheid.nl/def/Name:ElvinDechesne
+naa:ElvinDechesne rdf:type owl:NamedIndividual ,
+                           bgn:Name ;
+                  naa:alias "The Amazing Solution Architect" .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
