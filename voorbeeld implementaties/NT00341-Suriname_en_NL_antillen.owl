@@ -1,4 +1,4 @@
-@prefix : <http://archief.overheid.nl/NL-HaNA/doc/examples/> .
+@prefix : <http://archief.overheid.nl/NL-HaNA/doc/example/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -33,14 +33,97 @@
 @prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
-@base <http://archief.overheid.nl/NL-HaNA/doc/examples/> .
+@base <http://archief.overheid.nl/NL-HaNA/doc/example/> .
 
-<http://archief.overheid.nl/NL-HaNA/doc/examples/> rdf:type owl:Ontology ;
-                                                    owl:imports naa: .
+<http://archief.overheid.nl/NL-HaNA/doc/example/> rdf:type owl:Ontology ;
+                                                   owl:imports naa: .
 
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://archief.overheid.nl/NL-HaNA/doc/NT:00341_Vrijverklaarde_slaven
+<http://archief.overheid.nl/NL-HaNA/doc/NT:00341_Vrijverklaarde_slaven> rdf:type owl:NamedIndividual ,
+                                                                                 naa:NL-HaNA_Aggregation ;
+                                                                        naa:isAggregationType naa:TypeDetailedContentDescription ;
+                                                                        ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Owners> ,
+                                                                                       <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Slaves> ;
+                                                                        rdfs:comment """In navolging van Engeland (1833) en Frankrijk (1848) werd door de Nederlandse regering in 1863 de slavernij afgeschaft. De afschaffing van de slavernij wordt ook wel aangeduid met de term ‘emancipatie’. Deze emancipatie had grote gevolgen voor de Surinaamse maatschappij. De voormalig slaveneigenaren ontvingen voor iedere vrijgelaten slaaf een premie van de Nederlandse overheid, als compensatie voor het wegvallen van het arbeidspotentieel. Als alternatief voor de inzet van slaven werden door de voormalig slaveneigenaren contractarbeiders geworven in Nederlands Indië, India en China (Arbeid op Contract). De voormalige slaven werden voor een periode van tien jaar onder staatstoezicht geplaatst. In deze periode waren vrijgelatenen tussen de 15 en 60 jaar verplicht een arbeidsovereenkomst af te sluiten. Deze maatregel was vooral bedoeld om te voorkomen dat de voormalige slaven massaal de plantages zouden verlaten, waardoor de plantage-economie zou instorten. Pas na de periode van staatstoezicht verworven de voormalige slaven het volledig burgerrecht. 
+
+De database ‘Emancipatie 1863’ bevat gegevens over personen die in 1863 bij de afschaffing van de slavernij in Suriname en de Nederlandse Antillen werden vrijgelaten. Tevens treft u in de database informatie aan over de eigenaren van deze personen. De namen zijn afkomstig uit de emancipatieregisters van Paramaribo, van de overige districten in Suriname en van de Nederlandse Antillen.
+
+Verdere informatie over de emancipatieregisters en de gegevens van de Rekenkamer treft u aan in de tabel Slaven en de tabel Eigenaren. Van de Surinaamse slaven zijn de gegevens van deze beide tabellen gekoppeld met behulp van het borderelnummer. Van de slaven op de Nederlandse Antillen bestaat een dergelijke koppeling niet.
+
+Hierdoor is het voor Surinaamse slaven mogelijk, om wanneer u een slaaf gevonden heeft de bijbehorende eigenaar (eigenaren) te vinden, óf wanneer u de naam van een eigenaar heeft de bijbehorende slaven op te zoeken. Wanneer u de gegevens van een slaaf heeft gevonden klikt u op het borderelnummer. Vervolgens krijgt u een overzicht van de eigenaar (eigenaren) van deze slaaf. Wanneer u de gegevens van een eigenaar heeft kunt u op het borderelnummer klikken om een overzicht te krijgen van de slaven behorende aan deze eigenaar.
+
+Bij een aantal categoriën slaven is er geen borderelnummer en dus geen link naar de eigenaar of eigenaren. Dit waren gouvernementsslaven (in dienst van de staat), slaven die leden aan lepra of slaven in wegloperskampen. Meer hierover in het Colofon.
+
+Tabel slaven
+De tabel Slaven bevat twaalf velden met gegevens. Onderstaand treft u een overzicht aan van de velden. Op een aantal velden wordt een nadere toelichting geboden.
+
+Overzicht
+
+Familienaam
+Slavennaam
+Voornaam
+Geslacht
+Verblijfplaats
+Leeftijd
+Beroep
+Godsdienst
+Borderelnummer
+Plantage
+District
+Opmerkingen
+Uitleg
+
+Familienaam:
+dit is de naam die de slaaf ontving bij de Emancipatie op 1 juli 1863.
+Voornaam:
+dit is de voornaam, of voornamen, zoals deze door de slaaf na de Emancipatie werden gevoerd. Vaak was dit de slavenroepnaam aangevuld met een christelijke doopnaam.
+Slavennaam: dit is de voornaam, of voornamen, waaronder een slaaf in de slavenregistratie ingeschreven stond. Deze naam is niet noodzakelijk de daadwerkelijke roepnaam.
+Opmerking: dit is aanvullende informatie, afkomstig uit zowel de emancipatieregisters als de borderellen van de Algemene Rekenkamer. Het betreft informatie over familierelaties, en over naamgeving van de slaven bij vrijlating. Wanneer een naam tevens voorkomt als manumissienaam wordt dit aangegeven. U kunt dan in de database manumissies deze naam terugvinden.
+Verblijfplaats:
+deze is meestal gelijk aan de vermelding bij plantage.
+Borderelnummer:
+dit is de koppeling met de tabel eigenaren. Wanneer u het borderelnummer aanklikt verschijnt er een overzicht van de eigenaren van deze slaaf.
+Godsdienst:
+Vaak treft u hier de afkorting EBG aan. Dit betekent dat de persoon in kwestie lid was van de Evangelische Broeder Gemeente.
+Tabel eigenaren
+De tabel Eigenaren bevat elf velden met gegevens. Onderstaand treft u een overzicht aan van de velden aan met een nadere uitleg.
+
+Overzicht
+
+Achternaam
+Voornaam
+Straat
+Woonplaats
+Land
+Locatie plantage
+Beroep
+Plantage
+Borderelnummer
+Aandeel in plantage
+Opmerkingen
+Uitleg
+
+Borderelnummer:
+dit is de koppeling met de tabel slaven. Wanneer u het kopje 'Slaven' aanklikt verschijnt een overzicht van slaven die eigendom waren van deze eigenaar.
+Opmerkingen:
+dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Rekenkamer. Het betreft persoonsgegevens over de eigenaar en informatie over familierelaties."""@nl .
+
+
+###  http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001
+<http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> rdf:type owl:NamedIndividual ,
+                                                                             naa:NL-HaNA_Aggregation ;
+                                                                    naa:isAggregationType naa:TypeDocketRecord .
+
+
+###  http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Owners
+<http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Owners> rdf:type owl:NamedIndividual ,
+                                                                      naa:NL-HaNA_Aggregation ;
+                                                             naa:isAggregationType naa:TypeDetailedContentDescriptionView .
+
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Slaves
 <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Slaves> rdf:type owl:NamedIndividual ,
@@ -52,12 +135,6 @@
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveRecord:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
                                                                                                    naa:NL-HaNA_Aggregation ;
                                                                                           naa:isAggregationType naa:TypeSlaveryRecord .
-
-
-###  http://archief.overheid.nl/NL-HaNA/doc/examples/http://archief.overheid.nl/NL-HaNA/doc/NT:00341_Vrijverklaarde_slaven
-<http://archief.overheid.nl/NL-HaNA/doc/examples/http://archief.overheid.nl/NL-HaNA/doc/NT:00341_Vrijverklaarde_slaven> rdf:type owl:NamedIndividual ,
-                                                                                                                                 naa:NL-HaNA_Aggregation ;
-                                                                                                                        naa:isAggregationType naa:TypeDetailedContentDescription .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

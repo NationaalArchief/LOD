@@ -1,4 +1,4 @@
-@prefix : <http://archief.overheid.nl/NL-HaNA/doc/examples/> .
+@prefix : <http://archief.overheid.nl/NL-HaNA/doc/example/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -33,9 +33,9 @@
 @prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
-@base <http://archief.overheid.nl/NL-HaNA/doc/examples/> .
+@base <http://archief.overheid.nl/NL-HaNA/doc/example/> .
 
-<http://archief.overheid.nl/NL-HaNA/doc/examples/> rdf:type owl:Ontology ;
+<http://archief.overheid.nl/NL-HaNA/doc/example/> rdf:type owl:Ontology ;
                                                     owl:imports naa: .
 
 #################################################################

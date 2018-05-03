@@ -1034,6 +1034,10 @@ schema:Place rdf:type owl:Class .
 sem:Place rdf:type owl:Class .
 
 
+###  http://www.cidoc-crm.org/cidoc-crm/E10_Transfer_of_Custody
+cidoc-crm:E10_Transfer_of_Custody rdf:type owl:Class .
+
+
 ###  http://www.cidoc-crm.org/cidoc-crm/E1_CRM_Entity
 cidoc-crm:E1_CRM_Entity rdf:type owl:Class ;
                         owl:equivalentClass edm:NonInformationResource ;
@@ -1452,6 +1456,20 @@ naa:TypeDetailedContentDescriptionView rdf:type owl:NamedIndividual ,
                                        rdfs:label "View van een Nadere Toegang"@nl ;
                                        skos:definition "Wanneer een Nadere Toegang is verdeeld over kleinere (data-) sets, noemen we dit 'views'. Een view is een aggregatie van records, en is zelf onderdeel van een bovenliggende aggregatie, de Nadere Toegang zelf."@nl ;
                                        skos:prefLabel "View van een Nadere Toegang"@nl .
+
+
+###  http://archief.overheid.nl/def/TypeDocketRecord
+naa:TypeDocketRecord rdf:type owl:NamedIndividual ,
+                              naa:AggregationType ;
+                     rdfs:label "Borderelnummer"@nl ,
+                                "Docket record"@en ;
+                     rdfs:seeAlso <https://en.wikipedia.org/wiki/Docket> ,
+                                  <https://en.wikipedia.org/wiki/Receipt> ,
+                                  <https://labyrinth.rienkjonker.nl/lexicon/terminologie#letter_b> ;
+                     skos:altLabel "Receipt"@en ;
+                     skos:definition "A formal abridged record of the proceedings in a legal action (2) : a register of such records."@en ,
+                                     "Een borderel is een veelal, los inliggend uittreksel bevattend de getallen van inkomsten en uitgaven horend bij de rekening, de staat, waarin de inkomsten en uitgaven over een bepaald tijdvak worden verantwoord."@nl ;
+                     skos:prefLabel "Borderelnummer"@nl .
 
 
 ###  http://archief.overheid.nl/def/TypeFindingAid
