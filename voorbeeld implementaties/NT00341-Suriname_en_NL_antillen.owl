@@ -8,6 +8,7 @@
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix gvp: <http://vocab.getty.edu/ontology/> .
 @prefix naa: <http://archief.overheid.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -48,7 +49,7 @@
                                                                         naa:isAggregationType naa:TypeDetailedContentDescription ;
                                                                         ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Owners> ,
                                                                                        <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Slaves> ;
-                                                                        rdfs:comment """In navolging van Engeland (1833) en Frankrijk (1848) werd door de Nederlandse regering in 1863 de slavernij afgeschaft. De afschaffing van de slavernij wordt ook wel aangeduid met de term ‘emancipatie’. Deze emancipatie had grote gevolgen voor de Surinaamse maatschappij. De voormalig slaveneigenaren ontvingen voor iedere vrijgelaten slaaf een premie van de Nederlandse overheid, als compensatie voor het wegvallen van het arbeidspotentieel. Als alternatief voor de inzet van slaven werden door de voormalig slaveneigenaren contractarbeiders geworven in Nederlands Indië, India en China (Arbeid op Contract). De voormalige slaven werden voor een periode van tien jaar onder staatstoezicht geplaatst. In deze periode waren vrijgelatenen tussen de 15 en 60 jaar verplicht een arbeidsovereenkomst af te sluiten. Deze maatregel was vooral bedoeld om te voorkomen dat de voormalige slaven massaal de plantages zouden verlaten, waardoor de plantage-economie zou instorten. Pas na de periode van staatstoezicht verworven de voormalige slaven het volledig burgerrecht. 
+                                                                        rdfs:comment """In navolging van Engeland (1833) en Frankrijk (1848) werd door de Nederlandse regering in 1863 de slavernij afgeschaft. De afschaffing van de slavernij wordt ook wel aangeduid met de term ‘emancipatie’. Deze emancipatie had grote gevolgen voor de Surinaamse maatschappij. De voormalig slaveneigenaren ontvingen voor iedere vrijgelaten slaaf een premie van de Nederlandse overheid, als compensatie voor het wegvallen van het arbeidspotentieel. Als alternatief voor de inzet van slaven werden door de voormalig slaveneigenaren contractarbeiders geworven in Nederlands Indië, India en China (Arbeid op Contract). De voormalige slaven werden voor een periode van tien jaar onder staatstoezicht geplaatst. In deze periode waren vrijgelatenen tussen de 15 en 60 jaar verplicht een arbeidsovereenkomst af te sluiten. Deze maatregel was vooral bedoeld om te voorkomen dat de voormalige slaven massaal de plantages zouden verlaten, waardoor de plantage-economie zou instorten. Pas na de periode van staatstoezicht verworven de voormalige slaven het volledig burgerrecht.
 
 De database ‘Emancipatie 1863’ bevat gegevens over personen die in 1863 bij de afschaffing van de slavernij in Suriname en de Nederlandse Antillen werden vrijgelaten. Tevens treft u in de database informatie aan over de eigenaren van deze personen. De namen zijn afkomstig uit de emancipatieregisters van Paramaribo, van de overige districten in Suriname en van de Nederlandse Antillen.
 
@@ -134,18 +135,34 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveRecord:cec8f77c-8a4b-4049-86b8-15a122772dfb
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveRecord:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
                                                                                                    naa:NL-HaNA_Aggregation ;
-                                                                                          naa:isAggregationType naa:TypeSlaveryRecord .
+                                                                                          naa:isAggregationType naa:TypeSlaveryRecord ;
+                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> ,
+                                                                                                         <http://archief.overheid.nl/NL-HaNA/id/FreedSlave:NT00341_1> .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
                                                                                                       naa:ArchivalReference ;
-                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/FreedSlave:NT00341_1> .
+                                                                                             dcterms:coverage naa:ProvinceParamaribo ;
+                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/FreedSlave:NT00341_1> ;
+                                                                                             ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
+                                                                                             rdfs:comment "Onderdeel van het record over de vrijlating van persoon x op locatie y. Deze beschrijving is tevens onderdeel van borderel z. De records van de slaveneigenaren die eigenaar waren van persoon x verwijzen ook naar borderel z."@nl ;
+                                                                                             rdfs:label "Beschrijving van een vrijverklaarde slaaf"@nl .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/id/FreedSlave:NT00341_1
 <http://archief.overheid.nl/NL-HaNA/id/FreedSlave:NT00341_1> rdf:type owl:NamedIndividual ,
                                                                       naa:PersonEntity ;
+                                                             naa:hasProfession naa:ProfessionServant ;
+                                                             naa:hasReligion naa:ReligionEBG ;
+                                                             naa:hasResidency naa:ProvinceParamaribo ;
+                                                             naa:sex naa:GenderFemale ;
+                                                             ebucore:hasRole naa:RoleSlave ;
+                                                             naa:age 56 ;
+                                                             naa:alternativeFirstName "Susanna" ;
+                                                             naa:fragmentIdentifier "1"^^xsd:int ;
+                                                             naa:postpositionName "Absent" ;
+                                                             naa:prepositionName "Juliana Susanna" ;
                                                              dc:identifier "cec8f77c-8a4b-4049-86b8-15a122772dfb" .
 
 

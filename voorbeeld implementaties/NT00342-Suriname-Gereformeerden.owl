@@ -8,6 +8,7 @@
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix gvp: <http://vocab.getty.edu/ontology/> .
 @prefix naa: <http://archief.overheid.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .

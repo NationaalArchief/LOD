@@ -8,6 +8,7 @@
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix gvp: <http://vocab.getty.edu/ontology#> .
 @prefix naa: <http://archief.overheid.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -155,6 +156,26 @@ naa:hasProfession rdf:type owl:ObjectProperty ;
                   skos:label "heeft beroep"@nl .
 
 
+###  http://archief.overheid.nl/def/hasReligion
+naa:hasReligion rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty gvp:aat2335_associated_with ;
+                rdfs:domain naa:PersonEntity ;
+                rdfs:range skos:Concept ;
+                rdfs:label "has religion"@en ,
+                           "heeft (geloofs-)overtuiging"@nl ;
+                skos:prefLabel "heeft (geloofs-)overtuiging"@en .
+
+
+###  http://archief.overheid.nl/def/hasResidency
+naa:hasResidency rdf:type owl:ObjectProperty ;
+                 owl:equivalentProperty cidoc-crm:P74_has_current_or_former_residence ;
+                 rdfs:domain naa:Agent ;
+                 rdfs:range hg:PlaceInTime ;
+                 rdfs:label "has residency (domicile)"@en ,
+                            "heeft verblijfplaats"@nl ;
+                 skos:prefLabel "heeft verblijfplaats"@nl .
+
+
 ###  http://archief.overheid.nl/def/hasRole
 naa:hasRole rdf:type owl:ObjectProperty ;
             owl:equivalentProperty ebucore:hasRole ;
@@ -266,6 +287,14 @@ svcs:has_service rdf:type owl:ObjectProperty .
 schema:gender rdf:type owl:ObjectProperty .
 
 
+###  http://vocab.getty.edu/ontology#aat2335_associated_with
+gvp:aat2335_associated_with rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P74_has_current_or_former_residence
+cidoc-crm:P74_has_current_or_former_residence rdf:type owl:ObjectProperty .
+
+
 ###  http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about
 <http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about> rdf:type owl:ObjectProperty .
 
@@ -361,6 +390,19 @@ naa:additionalDescription rdf:type owl:DatatypeProperty ;
                           skos:prefLabel "extra toelichting"@nl .
 
 
+###  http://archief.overheid.nl/def/age
+naa:age rdf:type owl:DatatypeProperty ;
+        owl:equivalentProperty dbo:age ,
+                               foaf:age ;
+        rdfs:domain naa:Agent ;
+        rdfs:range xsd:int ;
+        rdfs:label "age in years"@en ,
+                   "leeftijd in jaren"@nl ;
+        rdfs:seeAlso dbo:age ,
+                     foaf:age ;
+        skos:prefLabel "leeftijd in jaren"@nl .
+
+
 ###  http://archief.overheid.nl/def/alias
 naa:alias rdf:type owl:DatatypeProperty ;
           rdfs:domain [ rdf:type owl:Class ;
@@ -382,7 +424,8 @@ naa:alternativeFirstName rdf:type owl:DatatypeProperty ;
                                                    )
                                      ] ;
                          rdfs:range xsd:string ;
-                         rdfs:label "alternative first name"@en ;
+                         rdfs:label "alternative first name"@en ,
+                                    "ook geheten"@nl ;
                          skos:prefLabel "ook geheten"@nl .
 
 
@@ -441,7 +484,10 @@ naa:alternativeIntrapositionTitle rdf:type owl:DatatypeProperty ;
                                                               bgn:Name
                                                             )
                                               ] ;
-                                  rdfs:range xsd:string .
+                                  rdfs:range xsd:string ;
+                                  rdfs:label "alternative title in intraposition"@en ,
+                                             "optionele titel in tussennaam"@nl ;
+                                  skos:prefLabel "optionele titel in tussennaam"@nl .
 
 
 ###  http://archief.overheid.nl/def/alternativeLastName
@@ -536,6 +582,16 @@ naa:fileNumber rdf:type owl:DatatypeProperty ;
 naa:findingAidNumber rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dc:identifier ;
                      skos:prefLabel "Nummer archiefinventaris"@nl .
+
+
+###  http://archief.overheid.nl/def/fragmentIdentifier
+naa:fragmentIdentifier rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf dc:identifier ;
+                       rdfs:range xsd:int ;
+                       rdfs:comment "Gebruik voor het identificieren van entiteiten binnen een bepaalde context. Buiten de context (zoals de bijbehorende aggregatie) zal deze referentie sleutel niet uniek zijn, maar binnen de context, of scope - wel. Een voorbeeld is de Prsid van Mais Flexis die volgnummers gebruikt voor het refereren van personen in een index (Nadere Toegang). Indien er voor een PersonEntity geen unieke referentie (UUID) bekend is, munten we een dergelijke entiteit op basis van de beschikbare gegevens. In het geval van een NT weten we dan wel de naam van de NT en combineren we deze met de naa:fragmentIdentifier. Op deze manier kunnen de interne verwijzingen van records uit verschillende NTViews naar elkaar verwijzen."@nl ;
+                       rdfs:label "fragment identifier"@en ,
+                                  "niet-universele identificatie"@nl ;
+                       skos:altLabel "context afhankelijke identificatie"@nl .
 
 
 ###  http://archief.overheid.nl/def/fullname
@@ -733,6 +789,11 @@ naa:prepositionTitle rdf:type owl:DatatypeProperty ;
                      skos:prefLabel "titel"@en .
 
 
+###  http://dbpedia.org/ontology/age
+dbo:age rdf:type owl:DatatypeProperty ;
+        rdfs:domain dbo:Agent .
+
+
 ###  http://dbpedia.org/ontology/scale
 dbo:scale rdf:type owl:DatatypeProperty ;
           rdfs:range xsd:string .
@@ -853,16 +914,24 @@ premis:startDate rdf:type owl:DatatypeProperty ;
                  rdfs:range rdfs:Literal .
 
 
+###  http://xmlns.com/foaf/0.1/age
+foaf:age rdf:type owl:DatatypeProperty ;
+         rdfs:domain foaf:Agent .
+
+
 #################################################################
 #    Classes
 #################################################################
 
 ###  http://archief.overheid.nl/def/Agent
 naa:Agent rdf:type owl:Class ;
-          owl:equivalentClass foaf:Agent ;
-          rdfs:subClassOf edm:Agent ,
-                          foaf:Agent ;
+          owl:equivalentClass dbo:Agent ,
+                              edm:Agent ,
+                              foaf:Agent ;
           rdfs:label "Agent"@nl ;
+          rdfs:seeAlso dbo:Agent ,
+                       edm:Agent ,
+                       foaf:Agent ;
           skos:definition "actieve entiteit zoals een actor of persoon"@nl ;
           skos:label "Agent"@nl .
 
@@ -969,6 +1038,10 @@ bgn:Name rdf:type owl:Class .
 bgn:Person rdf:type owl:Class .
 
 
+###  http://dbpedia.org/ontology/Agent
+dbo:Agent rdf:type owl:Class .
+
+
 ###  http://dbpedia.org/ontology/Reference
 dbo:Reference rdf:type owl:Class .
 
@@ -1018,6 +1091,10 @@ dcterms:RightsStatement rdf:type owl:Class .
 
 ###  http://rdf.histograph.io/PlaceInTime
 hg:PlaceInTime rdf:type owl:Class .
+
+
+###  http://rdf.histograph.io/PlaceInTimeType
+hg:PlaceInTimeType rdf:type owl:Class .
 
 
 ###  http://rdfs.org/sioc/services#Service
@@ -1130,6 +1207,10 @@ org:FormalOrganization rdf:type owl:Class ;
 org:Organization rdf:type owl:Class ;
                  owl:equivalentClass foaf:Organization ;
                  rdfs:subClassOf foaf:Agent .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/prov#Organization
@@ -1320,6 +1401,15 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
                                                                                    naa:PersonEntity .
 
 
+###  http://archief.overheid.nl/NL-HaNA/place/id/CityParamaribo
+<http://archief.overheid.nl/NL-HaNA/place/id/CityParamaribo> rdf:type owl:NamedIndividual ,
+                                                                      hg:PlaceInTime ;
+                                                             dcterms:type hg:City ;
+                                                             rdfs:comment "Verwijzing naar de stad Paramaribo zonder specifieke tijdgebonden context zoals landgrenzen, populatie e.d."@nl ;
+                                                             rdfs:label "Paramaribo (stad)"@nl ;
+                                                             rdfs:seeAlso <https://nl.wikipedia.org/wiki/Paramaribo> .
+
+
 ###  http://archief.overheid.nl/def/AgencyType
 naa:AgencyType rdf:type owl:NamedIndividual ,
                         skos:Concept ;
@@ -1385,6 +1475,37 @@ naa:PhotographyColour rdf:type owl:NamedIndividual ,
                       skos:prefLabel "Kleurenfoto"@nl .
 
 
+###  http://archief.overheid.nl/def/ProfessionServant
+naa:ProfessionServant rdf:type owl:NamedIndividual ,
+                               naa:Profession ;
+                      rdfs:comment "The profession of servant"@en ;
+                      rdfs:label "Het beroep van bediende"@nl ;
+                      skos:prefLabel "Het beroep van bediende"@nl .
+
+
+###  http://archief.overheid.nl/def/ProvinceParamaribo
+naa:ProvinceParamaribo rdf:type owl:NamedIndividual ,
+                                hg:PlaceInTime ;
+                       dcterms:type hg:Province ;
+                       rdfs:comment "Verwijzing naar de provincie Paramaribo zonder specifieke tijdgebonden context zoals landgrenzen, populatie e.d."@nl ;
+                       rdfs:label "Paramaribo (provincie)"@nl ;
+                       rdfs:seeAlso <http://archief.overheid.nl/NL-HaNA/place/id/CityParamaribo> ,
+                                    <https://nl.wikipedia.org/wiki/Paramaribo> .
+
+
+###  http://archief.overheid.nl/def/ReligionEBG
+naa:ReligionEBG rdf:type owl:NamedIndividual ,
+                         skos:Concept ;
+                rdfs:comment """Bestand:Broedergemeente.ogv
+De Evangelische Broedergemeente in Suriname in 1968
+De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
+
+In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in Suriname. Ongeveer 40% van de creolen in Suriname is lid van de Evangelische Broedergemeente. Ook internationaal doen de Moravische broeders veel aan zendingswerk."""@nl ;
+                rdfs:label "Evangelische Broedergemeente"@nl ;
+                rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
+                skos:prefLabel "Evangelische Broedergemeente"@nl .
+
+
 ###  http://archief.overheid.nl/def/RightsTypePublicDomain
 naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                                     premis:License ;
@@ -1406,8 +1527,8 @@ naa:RightsType_CCBY rdf:type owl:NamedIndividual ,
                     rdfs:label "CC BY"^^xsd:string .
 
 
-###  http://archief.overheid.nl/def/SlaveRoll
-naa:SlaveRoll rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/def/RoleSlave
+naa:RoleSlave rdf:type owl:NamedIndividual ,
                        naa:Role ;
               rdfs:label "rol van slaaf"@nl ;
               skos:definition "An agent can be assigned the role of slave"@en ;
@@ -1589,6 +1710,111 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
 ###  http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld
 <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> rdf:type owl:NamedIndividual ,
                                                                   edm:WebResource .
+
+
+###  http://rdf.histograph.io/Address
+hg:Address rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Area
+hg:Area rdf:type owl:NamedIndividual ,
+                 hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Baljuwschap
+hg:Baljuwschap rdf:type owl:NamedIndividual ,
+                        hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Barony
+hg:Barony rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Borough
+hg:Borough rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Building
+hg:Building rdf:type owl:NamedIndividual ,
+                     hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/City
+hg:City rdf:type owl:NamedIndividual ,
+                 hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Country
+hg:Country rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Countship
+hg:Countship rdf:type owl:NamedIndividual ,
+                      hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Departement
+hg:Departement rdf:type owl:NamedIndividual ,
+                        hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Fort
+hg:Fort rdf:type owl:NamedIndividual ,
+                 hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Heerlijkheid
+hg:Heerlijkheid rdf:type owl:NamedIndividual ,
+                         hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Monument
+hg:Monument rdf:type owl:NamedIndividual ,
+                     hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Municipality
+hg:Municipality rdf:type owl:NamedIndividual ,
+                         hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Neighbourhood
+hg:Neighbourhood rdf:type owl:NamedIndividual ,
+                          hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Place
+hg:Place rdf:type owl:NamedIndividual ,
+                  hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Polder
+hg:Polder rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Province
+hg:Province rdf:type owl:NamedIndividual ,
+                     hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Region
+hg:Region rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Street
+hg:Street rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType .
+
+
+###  http://rdf.histograph.io/Water
+hg:Water rdf:type owl:NamedIndividual ,
+                  hg:PlaceInTimeType .
 
 
 ###  http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/WebpaginaFotoVoorbeeld
