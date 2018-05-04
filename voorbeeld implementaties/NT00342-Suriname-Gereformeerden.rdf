@@ -122,7 +122,7 @@ edm:Event rdf:type owl:Class ;
                                                                                              premis:startDate "1738-01-01"^^rdfs:Literal ;
                                                                                              rdfs:label "Moment van registratie kerkrecht"@nl ;
                                                                                              skos:definition "Moment van registratie kerkrecht"@nl ;
-                                                                                             prov:wasAssociatedWith <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> .
+                                                                                             prov:wasAssociatedWith <http://archief.overheid.nl/NL-HaNA/id/persoon/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/DeathRecord:7bb8b9d4-71c1-102d-a0ea-005056a23d00
@@ -131,14 +131,14 @@ edm:Event rdf:type owl:Class ;
                                                                                           naa:isAggregationType naa:TypeDeathRecord ;
                                                                                           ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/CanonLawRights:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
                                                                                                          <http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ,
-                                                                                                         <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
+                                                                                                         <http://archief.overheid.nl/NL-HaNA/id/persoon/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
                                                                                           ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTView:00342_Suriname(Deaths)> .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00
 <http://archief.overheid.nl/NL-HaNA/doc/DeathReference:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
                                                                                                       naa:ArchivalReference ;
-                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
+                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/persoon/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> ;
                                                                                              skos:definition "Informatie behorende bij het record over het overlijden van persoon x uit NT y"@nl .
 
 
@@ -185,8 +185,8 @@ De naam 'Database Gereformeerden' is gekozen om aan te geven dat dit gegevensbes
                                                                             naa:isAggregationType naa:TypeDetailedContentDescriptionView .
 
 
-###  http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00
-<http://archief.overheid.nl/NL-HaNA/persoon/id/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00
+<http://archief.overheid.nl/NL-HaNA/id/persoon/Deceased:7bb8b9d4-71c1-102d-a0ea-005056a23d00> rdf:type owl:NamedIndividual ,
                                                                                                        naa:PersonEntity ;
                                                                                               ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:NationaalArchief> .
 

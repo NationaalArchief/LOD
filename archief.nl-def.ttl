@@ -226,6 +226,14 @@ naa:sex rdf:type owl:ObjectProperty ;
         skos:prefLabel "geslacht"@nl .
 
 
+###  http://archief.overheid.nl/def/wasOwnedBy
+naa:wasOwnedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fibo-fnd-oac-own:isOwnedBy ;
+               rdfs:label "is in het bezit geweest van"@nl ,
+                          "was owned by"@en ;
+               skos:prefLabel "is in het bezit geweest van"@nl .
+
+
 ###  http://dbpedia.org/ontology/sex
 dbo:sex rdf:type owl:ObjectProperty .
 
@@ -1287,57 +1295,6 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://archief.overheid.nl/NL-HaNA/beeld/id/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
-<http://archief.overheid.nl/NL-HaNA/beeld/id/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
-                                                                                                  naa:ArchivalEntity ;
-                                                                                         naa:isMaterialType naa:TypePhotograph ;
-                                                                                         dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
-                                                                                                                dc:description "MAIS Aut.toelichting"@nl ;
-                                                                                                                dc:subject "MAIS  MAIS openb.beperking"@nl ;
-                                                                                                                dcterms:source "MAIS Download URL"@nl ;
-                                                                                                                dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
-                                                                                                                skos:note "MAIS openb.beperking"@nl
-                                                                                                              ] ;
-                                                                                         dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
-                                                                                         dcterms:publisher <http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
-                                                                                         dcterms:relation [ rdf:type edm:TimeSpan ;
-                                                                                                            dc:coverage "MAIS Datering geschat"@nl ;
-                                                                                                            dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
-                                                                                                            edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
-                                                                                                            edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
-                                                                                                          ] ;
-                                                                                         dcterms:rights naa:RightsTypePublicDomain ;
-                                                                                         dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
-                                                                                                         <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
-                                                                                                         <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
-                                                                                                         [ rdf:type hg:PlaceInTime ;
-                                                                                                           rdfs:label "Frankrijk"
-                                                                                                         ] ,
-                                                                                                         [ rdfs:label "Henrik"
-                                                                                                         ] ;
-                                                                                         edm:isShownBy <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
-                                                                                         naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
-                                                                                         naa:catalogReferenceNumber "2.24.01.07" ;
-                                                                                         bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
-                                                                                         bf:scale "1:10" ;
-                                                                                         dc:coverage "Frankrijk"@nl ,
-                                                                                                     "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)."@nl ;
-                                                                                         dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
-                                                                                         dc:identifier "ff0c94fd-456b-a512-b5fa-a7c3e696a7ab" ;
-                                                                                         dc:license "MAIS Licentie methode"@nl ;
-                                                                                         dc:publisher "Nationaal Archief"@nl ;
-                                                                                         dc:subject "militairen."@nl ;
-                                                                                         dcterms:created "MAIS Aanmaakdatum"@nl ;
-                                                                                         dcterms:creator "MAIS Vervaardiger"@nl ;
-                                                                                         dcterms:modified "MAIS Wijzigingsdatum"@nl ;
-                                                                                         dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
-                                                                                         dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
-                                                                                         dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
-                                                                                         dc:relation "MAIS Verwijzing"@nl ;
-                                                                                         dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
-                                                                                         skos:note "Eventuele Opmerkingen"@nl .
-
-
 ###  http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd
 <http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
                                                                                                          naa:NL-HaNA_Aggregation ;
@@ -1394,7 +1351,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
                                                                                           naa:isAggregationType naa:TypePhotoRecord ;
                                                                                           dcterms:type naa:TypePhotoRecord ;
                                                                                           edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
-                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/beeld/id/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
+                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
                                                                                           ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:Anefo> ,
                                                                                                              <http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland> ,
                                                                                                              <http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief> ;
@@ -1414,16 +1371,59 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
                                                                                                               naa:NL-HaNA_Aggregation .
 
 
-###  http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief
-<http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                              premis:Organization ,
-                                                                              org:FormalOrganization ;
-                                                                     rdfs:label "Nationaal Archief"@nl ;
-                                                                     <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
+###  http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                                  naa:ArchivalEntity ;
+                                                                                         naa:isMaterialType naa:TypePhotograph ;
+                                                                                         dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
+                                                                                                                dc:description "MAIS Aut.toelichting"@nl ;
+                                                                                                                dc:subject "MAIS  MAIS openb.beperking"@nl ;
+                                                                                                                dcterms:source "MAIS Download URL"@nl ;
+                                                                                                                dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
+                                                                                                                skos:note "MAIS openb.beperking"@nl
+                                                                                                              ] ;
+                                                                                         dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
+                                                                                         dcterms:publisher <http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
+                                                                                         dcterms:relation [ rdf:type edm:TimeSpan ;
+                                                                                                            dc:coverage "MAIS Datering geschat"@nl ;
+                                                                                                            dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                                            edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
+                                                                                                            edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
+                                                                                                          ] ;
+                                                                                         dcterms:rights naa:RightsTypePublicDomain ;
+                                                                                         dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
+                                                                                                         <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
+                                                                                                         <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
+                                                                                                         [ rdf:type hg:PlaceInTime ;
+                                                                                                           rdfs:label "Frankrijk"
+                                                                                                         ] ,
+                                                                                                         [ rdfs:label "Henrik"
+                                                                                                         ] ;
+                                                                                         edm:isShownBy <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
+                                                                                         naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
+                                                                                         naa:catalogReferenceNumber "2.24.01.07" ;
+                                                                                         bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
+                                                                                         bf:scale "1:10" ;
+                                                                                         dc:coverage "Frankrijk"@nl ,
+                                                                                                     "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)."@nl ;
+                                                                                         dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
+                                                                                         dc:identifier "ff0c94fd-456b-a512-b5fa-a7c3e696a7ab" ;
+                                                                                         dc:license "MAIS Licentie methode"@nl ;
+                                                                                         dc:publisher "Nationaal Archief"@nl ;
+                                                                                         dc:subject "militairen."@nl ;
+                                                                                         dcterms:created "MAIS Aanmaakdatum"@nl ;
+                                                                                         dcterms:creator "MAIS Vervaardiger"@nl ;
+                                                                                         dcterms:modified "MAIS Wijzigingsdatum"@nl ;
+                                                                                         dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
+                                                                                         dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
+                                                                                         dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
+                                                                                         dc:relation "MAIS Verwijzing"@nl ;
+                                                                                         dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
+                                                                                         skos:note "Eventuele Opmerkingen"@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/persoon/id/ElvinDechesne
-<http://archief.overheid.nl/NL-HaNA/persoon/id/ElvinDechesne> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/ElvinDechesne
+<http://archief.overheid.nl/NL-HaNA/id/persoon/ElvinDechesne> rdf:type owl:NamedIndividual ,
                                                                        naa:PersonEntity ;
                                                               naa:hasName <http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
                                                               naa:sex naa:GenderMale ;
@@ -1432,17 +1432,25 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
                                                               edm:landingPage <https://www.linkedin.com/in/elvindechesne/> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/persoon/id/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd
-<http://archief.overheid.nl/NL-HaNA/persoon/id/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd
+<http://archief.overheid.nl/NL-HaNA/id/persoon/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
                                                                                                      naa:PersonEntity ;
-                                                                                            owl:sameAs <http://archief.overheid.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)> ;
+                                                                                            owl:sameAs <http://archief.overheid.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)> ;
                                                                                             ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> ;
-                                                                                            foaf:made <http://archief.overheid.nl/NL-HaNA/beeld/id/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
+                                                                                            foaf:made <http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)
-<http://archief.overheid.nl/NL-HaNA/persoon/id/Willem_vd_Poll(fotograaf)> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)
+<http://archief.overheid.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)> rdf:type owl:NamedIndividual ,
                                                                                    naa:PersonEntity .
+
+
+###  http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief
+<http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                              premis:Organization ,
+                                                                              org:FormalOrganization ;
+                                                                     rdfs:label "Nationaal Archief"@nl ;
+                                                                     <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
 
 
 ###  http://archief.overheid.nl/def/AgencyType
@@ -1540,19 +1548,6 @@ naa:ProfessionServant rdf:type owl:NamedIndividual ,
                       rdfs:label "Het beroep van bediende"@nl ,
                                  "The profession of servant"@en ;
                       skos:prefLabel "Het beroep van bediende"@nl .
-
-
-###  http://archief.overheid.nl/def/ReligionEBG
-naa:ReligionEBG rdf:type owl:NamedIndividual ,
-                         skos:Concept ;
-                rdfs:comment """Bestand:Broedergemeente.ogv
-De Evangelische Broedergemeente in Suriname in 1968
-De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
-
-In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in Suriname. Ongeveer 40% van de creolen in Suriname is lid van de Evangelische Broedergemeente. Ook internationaal doen de Moravische broeders veel aan zendingswerk."""@nl ;
-                rdfs:label "Evangelische Broedergemeente"@nl ;
-                rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
-                skos:prefLabel "Evangelische Broedergemeente"@nl .
 
 
 ###  http://archief.overheid.nl/def/RightsTypePublicDomain
@@ -1742,6 +1737,31 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:comment "Classificatie schema t.b.v. ArchivalEntities (Foto's, boeken, etc)"@en ;
                      skos:label "Materiaal types"@nl .
+
+
+###  http://archief.overheid.nl/id/plaats/CityAmsterdam
+<http://archief.overheid.nl/id/plaats/CityAmsterdam> rdf:type owl:NamedIndividual ,
+                                                              hg:PlaceInTime ;
+                                                     rdfs:label "Amsterdam (stad)"@nl .
+
+
+###  http://archief.overheid.nl/id/plaats/PlaceAmsterdam
+<http://archief.overheid.nl/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
+                                                               hg:PlaceInTime ;
+                                                      rdfs:label "Amsterdam (plaats)"@nl .
+
+
+###  http://archief.overheid.nl/id/religie/ReligionEBG
+<http://archief.overheid.nl/id/religie/ReligionEBG> rdf:type owl:NamedIndividual ,
+                                                             skos:Concept ;
+                                                    rdfs:comment """Bestand:Broedergemeente.ogv
+De Evangelische Broedergemeente in Suriname in 1968
+De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
+
+In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in Suriname. Ongeveer 40% van de creolen in Suriname is lid van de Evangelische Broedergemeente. Ook internationaal doen de Moravische broeders veel aan zendingswerk."""@nl ;
+                                                    rdfs:label "Evangelische Broedergemeente"@nl ;
+                                                    rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
+                                                    skos:prefLabel "Evangelische Broedergemeente"@nl .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld

@@ -1,4 +1,4 @@
-@prefix : <http://archief.overheid.nl/NL-HaNA/doc/example/> .
+@prefix : <http://archief.overheid.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -37,18 +37,17 @@
 @base <http://archief.overheid.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/> .
 
 <http://archief.overheid.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/> rdf:type owl:Ontology ;
-                                                   owl:imports naa: ;
-                                                   dc:creator "Heinrich Helstone (Suriname)" ;
-                                                   dc:rights "Rechten voorbehouden. De indexrecords uit deze Nadere Toegang zijn niet beschikbaar onder een Creative Commons licentie of CC0 verklaring."@nl ;
-                                                   rdfs:label "Suriname en de Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie 1863)"@nl ;
-                                                   rdfs:comment """Accountability:
+                                                                                                                        owl:imports naa: ;
+                                                                                                                        dc:creator "Heinrich Helstone (Suriname)" ;
+                                                                                                                        rdfs:label "Suriname en de Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie 1863)"@nl ;
+                                                                                                                        rdfs:comment """Accountability:
 Deze database was een initiatief van het Nationaal Archief in het kader van de Historische Database Suriname, waarin het Nationaal Archief heeft samengewerkt met Amrit consultancy in Den Haag en het Instituut voor Maatschappij Wetenschappelijk Onderzoek (IMWO) te Paramaribo. Concept en realisatie van deze website: Hic et Nunc te Rotterdam.
 De gegevens over de manumissies en de emancipaties werden geleverd door de onafhankelijke onderzoekers O. ten Hove en H. Helstone.
 
 De database Emancipatie werd in 1999 beschikbaar gesteld via een website die gemaakt was door Hic et Nunc. In 2010 is deze website overgezet naar de nieuwe website van het Nationaal Archief. In 2013 is een belangrijke toevoeging aan de index gedaan.
 De database is gemigreerd van een MS SQL database naar een MySQL database. De technische details zijn opgeslagen in het Beheersysteem voor Nadere Toegangen van het Nationaal Archief.
 Voor het tot stand komen van deze database vormden de in Paramaribo verzamelde gegevens van de emancipatieregisters het uitgangspunt. Deze gegevens uit de emancipatieregisters werden aangevuld met de gegevens afkomstig uit het archief van de Algemene Rekenkamer, zoals informatie over de beroepen en de geloofsovertuiging van de slaven en over de eigenaren."""@nl ;
-                                                   dc:creator "Okke ten Hove" .
+                                                                                                                        dc:creator "Okke ten Hove" .
 
 #################################################################
 #    Individuals
@@ -147,8 +146,17 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerRecord:e6a05c41-2777-471d-affa-53768683a658> rdf:type owl:NamedIndividual ,
                                                                                                         naa:NL-HaNA_Aggregation ;
                                                                                                naa:isAggregationType naa:TypeSlaveryRecord ;
-                                                                                               ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> ,
-                                                                                                              <http://archief.overheid.nl/NL-HaNA/persoon/id/SlaveOwner:NT00341_2176> .
+                                                                                               ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658> ,
+                                                                                                              <http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
+                                                                                               ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Owners> .
+
+
+###  http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658
+<http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658> rdf:type owl:NamedIndividual ,
+                                                                                                           naa:ArchivalReference ;
+                                                                                                  dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
+                                                                                                  ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
+                                                                                                  naa:docketRecordNumber "PE001" .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveRecord:cec8f77c-8a4b-4049-86b8-15a122772dfb
@@ -156,29 +164,36 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                    naa:NL-HaNA_Aggregation ;
                                                                                           naa:isAggregationType naa:TypeSlaveryRecord ;
                                                                                           ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> ,
-                                                                                                         <http://archief.overheid.nl/NL-HaNA/persoon/id/FreedSlave:NT00341_1> .
+                                                                                                         <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
+                                                                                          ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTView:00341_Slaves> .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
                                                                                                       naa:ArchivalReference ,
                                                                                                       premis:RightsBasis ;
-                                                                                             dcterms:coverage <http://archief.overheid.nl/NL-HaNA/plaats/id/ProvinceParamaribo> ;
-                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/persoon/id/FreedSlave:NT00341_1> ;
+                                                                                             dcterms:coverage <http://archief.overheid.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
+                                                                                             dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
                                                                                              ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
                                                                                              naa:docketRecordNumber "PE001" ;
                                                                                              rdfs:comment "Onderdeel van het record over de vrijlating van persoon x op locatie y. Deze beschrijving is tevens onderdeel van borderel z. De records van de slaveneigenaren die eigenaar waren van persoon x verwijzen ook naar borderel z."@nl ;
-                                                                                             rdfs:label "Beschrijving van een vrijverklaarde slaaf"@nl ;
+                                                                                             rdfs:label "Beschrijving over een vrijverklaarde slaaf"@nl ;
                                                                                              skos:note "Geboortejaar Emancipatieregister 1806De naam Absent werd ook in 1863 gegeven op pl La Jalousie (Commetewane) en vermoedelijk verwant aan Susanna Absent."@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/persoon/id/FreedSlave:NT00341_1
-<http://archief.overheid.nl/NL-HaNA/persoon/id/FreedSlave:NT00341_1> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/
+<http://archief.overheid.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/> rdf:type owl:NamedIndividual ;
+                                                                                                                       dc:rights "Rechten voorbehouden. De indexrecords uit deze Nadere Toegang zijn niet beschikbaar onder een Creative Commons licentie of CC0 verklaring."@nl .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> rdf:type owl:NamedIndividual ,
                                                                               naa:PersonEntity ;
                                                                      naa:hasProfession naa:ProfessionServant ;
                                                                      naa:hasReligion naa:ReligionEBG ;
-                                                                     naa:hasResidency <http://archief.overheid.nl/NL-HaNA/plaats/id/PlaceParamaribo> ;
+                                                                     naa:hasResidency <http://archief.overheid.nl/NL-HaNA/id/plaats/PlaceParamaribo> ;
                                                                      naa:sex naa:GenderFemale ;
+                                                                     naa:wasOwnedBy <http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                      ebucore:hasRole naa:RoleSlave ;
                                                                      naa:age 56 ;
                                                                      naa:alternativeFirstName "Susanna" ;
@@ -188,40 +203,88 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                      dc:identifier "cec8f77c-8a4b-4049-86b8-15a122772dfb" .
 
 
-###  http://archief.overheid.nl/NL-HaNA/persoon/id/SlaveOwner:NT00341_2176
-<http://archief.overheid.nl/NL-HaNA/persoon/id/SlaveOwner:NT00341_2176> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12658
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12658> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12659
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12659> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12660
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12660> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12661
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12661> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12662
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12662> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12663
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12663> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12664
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12664> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12665
+<http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12665> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176
+<http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> rdf:type owl:NamedIndividual ,
                                                                                  naa:PersonEntity ;
                                                                         naa:hasProfession naa:ProfessionMerchant ,
                                                                                           naa:ProfessionPlantationKeeper ,
                                                                                           naa:ProfessionRecordKeeper ;
-                                                                        naa:hasResidency <http://archief.overheid.nl/NL-HaNA/plaats/id/CountryTheNetherlands> ,
-                                                                                         <http://archief.overheid.nl/NL-HaNA/plaats/id/PlaceAmsterdam> ;
+                                                                        naa:hasResidency <http://archief.overheid.nl/NL-HaNA/id/plaats/CountryTheNetherlands> ,
+                                                                                         <http://archief.overheid.nl/NL-HaNA/id/plaats/PlaceAmsterdam> ;
+                                                                        naa:owned <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12658> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12659> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12660> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12661> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12662> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12663> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12664> ,
+                                                                                  <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12665> ;
                                                                         naa:sex naa:GenderFemale ;
                                                                         ebucore:hasRole naa:RoleSlaveOwner ;
                                                                         naa:fragmentIdentifier "2176"^^xsd:int ;
                                                                         naa:postpositionName "Kuvel" ;
                                                                         naa:prepositionName "Geertruida Elisabeth" ;
-                                                                        dc:identifier "cec8f77c-8a4b-4049-86b8-15a122772dfb" .
+                                                                        dc:identifier "e6a05c41-2777-471d-affa-53768683a658" .
 
 
-###  http://archief.overheid.nl/NL-HaNA/plaats/id/CountryTheNetherlands
-<http://archief.overheid.nl/NL-HaNA/plaats/id/CountryTheNetherlands> rdf:type owl:NamedIndividual .
+###  http://archief.overheid.nl/NL-HaNA/id/plaats/CountryTheNetherlands
+<http://archief.overheid.nl/NL-HaNA/id/plaats/CountryTheNetherlands> rdf:type owl:NamedIndividual .
 
 
-###  http://archief.overheid.nl/NL-HaNA/plaats/id/PlaceAmsterdam
-<http://archief.overheid.nl/NL-HaNA/plaats/id/PlaceAmsterdam> rdf:type owl:NamedIndividual .
+###  http://archief.overheid.nl/NL-HaNA/id/plaats/PlaceAmsterdam
+<http://archief.overheid.nl/NL-HaNA/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
+                                                                       hg:PlaceInTime ;
+                                                              rdfs:label "Amsterdam (plaats)"@nl ;
+                                                              rdfs:seeAlso <http://archief.overheid.nl/id/plaats/PlaceAmsterdam> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/plaats/id/PlaceParamaribo
-<http://archief.overheid.nl/NL-HaNA/plaats/id/PlaceParamaribo> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/plaats/PlaceParamaribo
+<http://archief.overheid.nl/NL-HaNA/id/plaats/PlaceParamaribo> rdf:type owl:NamedIndividual ,
                                                                         hg:PlaceInTime ;
                                                                dcterms:type hg:Place .
 
 
-###  http://archief.overheid.nl/NL-HaNA/plaats/id/ProvinceParamaribo
-<http://archief.overheid.nl/NL-HaNA/plaats/id/ProvinceParamaribo> rdf:type owl:NamedIndividual ,
+###  http://archief.overheid.nl/NL-HaNA/id/plaats/ProvinceParamaribo
+<http://archief.overheid.nl/NL-HaNA/id/plaats/ProvinceParamaribo> rdf:type owl:NamedIndividual ,
                                                                            hg:PlaceInTime ;
                                                                   dcterms:type hg:Province .
+
+
+###  http://archief.overheid.nl/def/ReligionEBG
+naa:ReligionEBG rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
