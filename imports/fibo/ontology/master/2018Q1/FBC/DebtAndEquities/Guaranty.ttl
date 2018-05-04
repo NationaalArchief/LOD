@@ -1,0 +1,186 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/DebtAndEquities/Guaranty/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/CurrencyAmount/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Agreements/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Contracts/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Documents/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/BusinessDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/FinancialDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Parties/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Roles/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/DebtAndEquities/Guaranty/> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fbc-dae-gty: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-pty-rl: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/>
+	a owl:Ontology ;
+	rdfs:label "Guaranty Ontology" ;
+	dct:abstract "This ontology defines concepts related to contractual guaranty." ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		<http://www.omg.org/spec/ODM/> ,
+		<http://www.w3.org/standards/techs/owl#w3c_all>
+		;
+	sm:copyright """Copyright (c) 2016-2018 EDM Council, Inc.
+Copyright (c) 2016-2018 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		<https://spec.edmcouncil.org/fibo/ontology/BE/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FND/>
+		;
+	sm:fileAbbreviation "fibo-fbc-dae-gty" ;
+	sm:filename "Guaranty.rdf" ;
+	rdfs:seeAlso
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FBC/AboutFBC/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/AboutDebtAndEquities/>
+		;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/CurrencyAmount/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Agreements/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Contracts/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Documents/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/BusinessDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/FinancialDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Parties/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Roles/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/DebtAndEquities/Guaranty/> ;
+	skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/ version of this ontology was added to the FBC specification via the FBC 1.1 RTF in support of several FIBO debt-oriented initiatives." ;
+	fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+	.
+
+fibo-fbc-dae-gty:Guarantor
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-agr-ctr:ContractThirdParty ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:hasIdentity ;
+			owl:allValuesFrom fibo-be-le-lp:LegalPerson ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-pty-rl:isPlayedBy ;
+			owl:someValuesFrom [
+				a owl:Restriction ;
+				owl:onProperty fibo-fnd-pty-pty:isAPartyTo ;
+				owl:someValuesFrom fibo-fnd-agr-ctr:Contract ;
+			] ;
+		]
+		;
+	rdfs:label "guarantor" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	skos:definition "a party that guarantees, endorses, or provides indemnity for some obligation on behalf of some other party" ;
+	fibo-fnd-utl-av:adaptedFrom "Barron's Dictionary of Business and Economics Terms, Fifth Edition, 2012" ;
+	fibo-fnd-utl-av:explanatoryNote "In some cases, the party acting as guarantor may also be a party to the contract, such as in the case of Fannie Mae or Freddie Mac.  In such cases, the same individual would be modeled as having both roles." ;
+	.
+
+fibo-fbc-dae-gty:Guaranty
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-agr-agr:Commitment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-dae-gty:isGuaranteedBy ;
+			owl:allValuesFrom fibo-fbc-dae-gty:Guarantor ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-dae-gty:hasPriorityLevel ;
+			owl:allValuesFrom fibo-fbc-dae-gty:PriorityLevel ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-dae-gty:hasGuaranteedAmount ;
+			owl:allValuesFrom fibo-fnd-acc-cur:MonetaryAmount ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+			owl:allValuesFrom fibo-fnd-dt-fd:Date ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-dt-bd:holdsDuring ;
+			owl:allValuesFrom fibo-fnd-dt-fd:DatePeriod ;
+		]
+		;
+	rdfs:label "guaranty" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	skos:definition "a commitment whereby something, such as a debt, cash flows on a debt instrument (e.g., interest payments), or performance of some obligation, is guaranteed if the person or organization with primary liability fails to perform" ;
+	fibo-fnd-utl-av:adaptedFrom "Barron's Dictionary of Business and Economics Terms, Fifth Edition, 2012" ;
+	.
+
+fibo-fbc-dae-gty:PriorityLevel
+	a owl:Class ;
+	rdfs:subClassOf fibo-fnd-agr-ctr:ContractualElement ;
+	rdfs:label "priority level" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	skos:definition "the level of priority that guaranty has in the context of the contract, for example for a credit enhancement priority" ;
+	.
+
+fibo-fbc-dae-gty:hasGuaranteedAmount
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+	rdfs:label "has guaranteed amount" ;
+	rdfs:domain fibo-fbc-dae-gty:Guaranty ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+	skos:definition "relates the guaranty to the monetary amount guaranteed" ;
+	.
+
+fibo-fbc-dae-gty:hasGuarantor
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-agr-ctr:hasThirdParty ;
+	rdfs:label "has guarantor" ;
+	rdfs:domain fibo-fnd-agr-ctr:Contract ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	rdfs:range fibo-fbc-dae-gty:Guarantor ;
+	skos:definition "relates the guarantor to the contract for which they are providing a guaranty" ;
+	.
+
+fibo-fbc-dae-gty:hasPriorityLevel
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:has ;
+	rdfs:label "has priority level" ;
+	rdfs:domain fibo-fbc-dae-gty:Guaranty ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	rdfs:range fibo-fbc-dae-gty:PriorityLevel ;
+	skos:definition "relates a guaranty to some level of priority that guaranty has in the context of the contract, for example for a credit enhancement priority" ;
+	.
+
+fibo-fbc-dae-gty:isGuaranteedBy
+	a owl:ObjectProperty ;
+	rdfs:label "is guaranteed by" ;
+	rdfs:domain fibo-fbc-dae-gty:Guaranty ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> ;
+	rdfs:range fibo-fbc-dae-gty:Guarantor ;
+	skos:definition "relates guaranty to the contract guarantor, i.e., to the legal person providing the guaranty" ;
+	.
+

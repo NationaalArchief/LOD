@@ -1,0 +1,276 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/1.2/AboutBE-1.2-Europe/
+# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/
+# imports: http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes/
+# imports: http://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/
+# imports: http://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/
+# imports: http://www.omg.org/spec/LCC/Languages/ISO639-2-LanguageCodes/
+# imports: http://www.omg.org/spec/LCC/Languages/LanguageRepresentation/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Corporations/AboutCorporations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Corporations/Corporations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/AboutFunctionalEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/FunctionalEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/Publishers/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/AboutGovernmentEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/GovernmentEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/AboutLegalEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/CorporateBodies/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/AboutBEOwnershipAndControl/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/ControlParties/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/CorporateControl/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/CorporateOwnership/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/Executives/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/OwnershipParties/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Partnerships/AboutPartnerships/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Partnerships/Partnerships/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/AboutPrivateLimitedCompanies/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/SoleProprietorships/AboutSoleProprietorships/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/SoleProprietorships/SoleProprietorships/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Trusts/AboutTrusts/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Trusts/Trusts/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/AccountingEquity/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/CurrencyAmount/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/ISO4217-CurrencyCodes/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/Agents/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/People/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Agreements/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Contracts/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Arrangements/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/ClassificationSchemes/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Codes/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Documents/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/IdentifiersAndIndices/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Lifecycles/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/BusinessDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/FinancialDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/Occurrences/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/GoalsAndObjectives/Goals/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/GoalsAndObjectives/Objectives/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/Jurisdiction/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/LegalCapacity/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/LegalCore/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Organizations/FormalOrganizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Organizations/LegitimateOrganizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Organizations/Organizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/OwnershipAndControl/Control/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/OwnershipAndControl/Ownership/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/OwnershipAndControl/OwnershipAndControl/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Parties/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Roles/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Addresses/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Countries/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Facilities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Locations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/VirtualPlaces/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/ProductsAndServices/PaymentsAndSchedules/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/ProductsAndServices/ProductsAndServices/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Quantities/QuantitiesAndUnits/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/Analytics/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/1.2/AboutBE-1.2-Europe/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-be-1.2-eu: <https://spec.edmcouncil.org/fibo/ontology/BE/1.2/AboutBE-1.2-Europe/> .
+@prefix fibo-be-corp-corp: <https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/> .
+@prefix fibo-be-corp-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/AboutCorporations/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-fct-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/AboutFunctionalEntities/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-ge-euj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AboutGovernmentEntities/> .
+@prefix fibo-be-ge-ukj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-le-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/AboutLegalEntities/> .
+@prefix fibo-be-oac-cctl: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateControl/> .
+@prefix fibo-be-oac-cown: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateOwnership/> .
+@prefix fibo-be-oac-cpty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/> .
+@prefix fibo-be-oac-exec: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/> .
+@prefix fibo-be-oac-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/AboutBEOwnershipAndControl/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-be-plc-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/AboutPrivateLimitedCompanies/> .
+@prefix fibo-be-plc-plc: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> .
+@prefix fibo-be-ptr-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/AboutPartnerships/> .
+@prefix fibo-be-ptr-ptr: <https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/> .
+@prefix fibo-be-sps-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/AboutSoleProprietorships/> .
+@prefix fibo-be-sps-sps: <https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/SoleProprietorships/> .
+@prefix fibo-be-tr-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/AboutTrusts/> .
+@prefix fibo-be-tr-tr: <https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/> .
+@prefix fibo-fnd: <https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/> .
+@prefix fibo-fnd-aap-agt: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/> .
+@prefix fibo-fnd-aap-ppl: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> .
+@prefix fibo-fnd-acc-4217: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/> .
+@prefix fibo-fnd-acc-aeq: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-arr: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> .
+@prefix fibo-fnd-arr-cd: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Codes/> .
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-gao-gl: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Goals/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-law-jur: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/> .
+@prefix fibo-fnd-oac-oac: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/OwnershipAndControl/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-org-fm: <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/> .
+@prefix fibo-fnd-org-lg: <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/LegitimateOrganizations/> .
+@prefix fibo-fnd-org-org: <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-cty: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Countries/> .
+@prefix fibo-fnd-plc-fac: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Facilities/> .
+@prefix fibo-fnd-plc-loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/> .
+@prefix fibo-fnd-plc-vrt: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-pty-rl: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/> .
+@prefix fibo-fnd-qt-qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2: <http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes/> .
+@prefix lcc-3166-2-gb: <http://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/> .
+@prefix lcc-639-1: <http://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/> .
+@prefix lcc-639-2: <http://www.omg.org/spec/LCC/Languages/ISO639-2-LanguageCodes/> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix lcc-lr: <http://www.omg.org/spec/LCC/Languages/LanguageRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/BE/1.2/AboutBE-1.2-Europe/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Business Entities (BE) Specification Version 1.2, European Extension" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2015-2018 EDM Council, Inc.
+Copyright (c) 2015-2018 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-be-1.2-eu" ;
+	sm:filename "AboutBE-1.2-Europe.rdf" ;
+	sm:publicationDate "2018-03-13T18:00:00"^^xsd:dateTime ;
+	owl:imports
+		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> ,
+		<http://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes/> ,
+		<http://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/> ,
+		<http://www.omg.org/spec/LCC/Languages/ISO639-1-LanguageCodes/> ,
+		<http://www.omg.org/spec/LCC/Languages/ISO639-2-LanguageCodes/> ,
+		<http://www.omg.org/spec/LCC/Languages/LanguageRepresentation/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Corporations/AboutCorporations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Corporations/Corporations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/AboutFunctionalEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/FunctionalEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/Publishers/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/AboutGovernmentEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/GovernmentEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/AboutLegalEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/CorporateBodies/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/AboutBEOwnershipAndControl/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/ControlParties/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/CorporateControl/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/CorporateOwnership/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/Executives/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/OwnershipAndControl/OwnershipParties/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Partnerships/AboutPartnerships/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Partnerships/Partnerships/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/AboutPrivateLimitedCompanies/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/SoleProprietorships/AboutSoleProprietorships/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/SoleProprietorships/SoleProprietorships/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Trusts/AboutTrusts/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Trusts/Trusts/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/AccountingEquity/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/CurrencyAmount/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Accounting/ISO4217-CurrencyCodes/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/Agents/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/People/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Agreements/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Agreements/Contracts/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Arrangements/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/ClassificationSchemes/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Codes/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Documents/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/IdentifiersAndIndices/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Lifecycles/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/BusinessDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/FinancialDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/Occurrences/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/GoalsAndObjectives/Goals/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/GoalsAndObjectives/Objectives/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/Jurisdiction/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/LegalCapacity/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/LegalCore/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Organizations/FormalOrganizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Organizations/LegitimateOrganizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Organizations/Organizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/OwnershipAndControl/Control/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/OwnershipAndControl/Ownership/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/OwnershipAndControl/OwnershipAndControl/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Parties/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Roles/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Addresses/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Countries/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Facilities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Locations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/VirtualPlaces/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/ProductsAndServices/PaymentsAndSchedules/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/ProductsAndServices/ProductsAndServices/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Quantities/QuantitiesAndUnits/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/Analytics/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE-1.2-Europe/> ;
+	.
+
+fibo-be-1.2-eu:BusinessEntities-1.2-Europe
+	a
+		sm:SpecificationVersion ,
+		owl:NamedIndividual
+		;
+	rdfs:label "EDMC Financial Industry Business Ontology (FIBO) Business Entities (BE) Specification Version 1.2, European Extension" ;
+	sm:addressForComments "http://www.omg.org/issues/"^^xsd:anyURI ;
+	sm:isVersionOf fibo-fnd:BESpecification ;
+	sm:publicationDate "2018-03-13T18:00:00"^^xsd:dateTime ;
+	sm:specificationVersionStatus "Formal Specification" ;
+	sm:specificationVersionURL "https://spec.edmcouncil.org/fibo/ontology/BE/1.2/"^^xsd:anyURI ;
+	skos:definition "individual representing metadata about the FIBO Business Entities (BE) Version 1.2 Specification, European Extension" ;
+	skos:historyNote """Revisions to the FIBO Business Entities (BE) Specification and related ontologies are managed per the process outlined in the Policies and Procedures for OMG standards, with the intent to maintain backwards compatibility in the ontologies to the degree possible.
+  
+The RDF/XML serialized OWL for the Foundations ODM/OWL ontologies have been checked for syntactic errors and logical consistency with Protege 4 (http://protege.stanford.edu/), HermiT 1.3.8 (http://www.hermit-reasoner.com/) and Pellet 2.3 (http://clarkparsia.com/pellet/).""" ;
+	fibo-fnd-utl-av:usageNote "Users should be aware that the BE ontologies depend on the ontologies specified in the EDMC-FIBO Foundations (FND) specification, and as such, this ontology imports all of FND in addition to all of BE.  It is useful for importing the entire set of ontologies as the basis for other development, in other words. Individual ontologies within BE only import those on which they directly depend." ;
+	.
+

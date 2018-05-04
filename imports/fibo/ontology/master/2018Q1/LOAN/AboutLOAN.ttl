@@ -1,0 +1,69 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/LOAN/AboutLOAN/
+# imports: http://www.omg.org/techprocess/ab/SpecificationMetadata/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/LOAN/AboutLOAN/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/AboutLOAN/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/LOAN/AboutLOAN/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Loan Contracts (LOAN) Specification" ;
+	dct:license <http://opensource.org/licenses/MIT> ;
+	sm:contentLanguage
+		<http://www.omg.org/spec/ODM/> ,
+		<http://www.w3.org/standards/techs/owl#w3c_all>
+		;
+	sm:copyright """Copyright (c) 2015-2017 EDM Council, Inc.
+Copyright (c) 2015-2017 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-ln" ;
+	sm:filename "AboutLOAN.rdf" ;
+	sm:publicationDate "2017-02-20T18:00:00"^^xsd:dateTime ;
+	owl:imports <http://www.omg.org/techprocess/ab/SpecificationMetadata/> ;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/LOAN/AboutLOAN/> ;
+	.
+
+fibo-ln:LOANSpecification
+	a
+		sm:Specification ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO Loan Contracts (LOAN) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contributor
+		"Office of Financial Research" ,
+		"Semantic Arts" ,
+		"Wells Fargo"
+		;
+	sm:copyright """Copyright (c) 2015-2017 EDM Council, Inc.
+Copyright (c) 2015-2017 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		"http://www.omg.org/techprocess/ab/SpecificationMetadata/"^^xsd:anyURI ,
+		<https://spec.edmcouncil.org/fibo/ontology/BE/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FBC/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FND/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/IND/>
+		;
+	sm:keyword
+		"financial instruments" ,
+		"loan contracts" ,
+		"mortgage"
+		;
+	sm:responsibleTaskForce "http://fdtf.omg.org/"^^xsd:anyURI ;
+	sm:specificationAbbreviation "FIBO-LOAN" ;
+	sm:specificationAbstract "The FIBO Loan Contracts specification provides a model of concepts that are common to financial instrumants that are also loan contracts in various market categories including but not limited to commercial, small business, automobile, education and mortgage. This specification is a part of the overall FIBO family of specifications. High-level concepts relevant to loan contracts include the obligations of parties playing different roles, credit and risk, security agreements, generally are covered, as well as additional detail for HMDA-specific loans.  Details defining debt instrumnts in general are covered in a separate debt specification." ;
+	sm:specificationTitle "EDMC Financial Industry Business Ontology (FIBO) Loan Contracts (LOAN) Specification" ;
+	sm:specificationURL "http://www.omg.org/spec/EDMC-FIBO/LOAN/"^^xsd:anyURI ;
+	sm:submitter "EDM Council, Inc." ;
+	rdfs:seeAlso
+		<http://www.edmcouncil.org/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/>
+		;
+	skos:definition "individual representing metadata about the FIBO Loan Contracts specification" ;
+	.
+

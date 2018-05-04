@@ -1,0 +1,59 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/ProductsAndServices/AboutProductsAndServices/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/AboutFBC/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/ProductsAndServices/AboutProductsAndServices/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc: <https://spec.edmcouncil.org/fibo/ontology/FBC/AboutFBC/> .
+@prefix fibo-fbc-pas-mod: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/AboutProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/AboutProductsAndServices/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Financial Business and Commerce(FBC) Products and Services Module" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2015 EDM Council, Inc.
+Copyright (c) 2015 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-fbc-pas-mod" ;
+	sm:filename "AboutProductsAndServices.rdf" ;
+	sm:publicationDate "2015-05-18T18:00:00"^^xsd:dateTime ;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/AboutFBC/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/ProductsAndServices/AboutProductsAndServices/> ;
+	.
+
+fibo-fbc-pas-mod:FBCProductsAndServicesModule
+	a
+		sm:Module ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO FBC Products and Services Module" ;
+	sm:moduleAbbreviation "FIBO-FBC-PAS" ;
+	sm:moduleAbstract "This module extends the Products and Services module in the Foundations (FND) specification, and includes ontologies describing financial products, financial services, financial service providers, product catalogs, and the like, as well as customer/client accounts." ;
+	sm:moduleName "Products and Services" ;
+	sm:moduleVersion "1.0" ;
+	rdfs:seeAlso
+		"http://www.edmcouncil.org/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FBC/AboutFBC/"^^xsd:anyURI
+		;
+	skos:definition "individual representing metadata about the FIBO FBC Products and Services module" ;
+	fibo-fnd-rel-rel:isPartOf fibo-fbc:FBCSpecification ;
+	fibo-fnd-utl-av:usageNote "Users should be aware that the FBC Products and Services ontologies depend on a number of the ontologies specified in the EDMC-FIBO Foundations (FND) and Business Entities (BE) specifications.  Individual ontologies in this module import only those FIBO FND and BE ontologies they use directly, however." ;
+	.
+

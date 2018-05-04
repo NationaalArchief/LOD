@@ -34,6 +34,8 @@
 @prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
 @base <http://archief.overheid.nl/def/> .
 
 <http://archief.overheid.nl/def/> rdf:type owl:Ontology ;
@@ -55,10 +57,6 @@ dc:format rdf:type owl:AnnotationProperty .
 
 ###  http://purl.org/dc/elements/1.1/relation
 dc:relation rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/elements/1.1/source
-dc:source rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/type
@@ -208,6 +206,14 @@ naa:isMaterialType rdf:type owl:ObjectProperty ;
                    rdfs:domain naa:ArchivalEntity ;
                    rdfs:range naa:ArchivalEntityType ;
                    skos:label "is van het type materiaal"@nl .
+
+
+###  http://archief.overheid.nl/def/owned
+naa:owned rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf fibo-fnd-oac-own:owns ;
+          rdfs:label "bezat"@nl ;
+          skos:definition "To have owned something."@en ;
+          skos:note "Deze term is gemunt om overdracht van eigenaarschap te kunnen duiden die in het verleden heeft plaats gevonden."@nl .
 
 
 ###  http://archief.overheid.nl/def/sex
@@ -376,6 +382,23 @@ foaf:maker rdf:type owl:ObjectProperty .
 
 ###  http://xmlns.com/foaf/0.1/primaryTopic
 foaf:primaryTopic rdf:type owl:ObjectProperty .
+
+
+###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/isOwnedBy
+fibo-fnd-oac-own:isOwnedBy rdf:type owl:ObjectProperty ;
+                           rdfs:domain fibo-fnd-oac-own:Asset ;
+                           rdfs:range fibo-fnd-oac-own:Owner ;
+                           rdfs:isDefinedBy fibo-fnd-oac-own: ;
+                           rdfs:label "is an asset of" ;
+                           skos:definition "identifies the party that owns the asset" .
+
+
+###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/owns
+fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
+                      rdfs:domain fibo-fnd-pty-pty:IndependentParty ;
+                      rdfs:isDefinedBy fibo-fnd-oac-own: ;
+                      rdfs:label "owns" ;
+                      skos:definition "to have (something) as one's own, possess" .
 
 
 #################################################################
@@ -569,6 +592,11 @@ naa:deprecatedKeyword rdf:type owl:DatatypeProperty ;
 naa:deprecatedKeywordCodec rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf dc:description ;
                            skos:note "MAIS Codecnummer. Afkomstig van Spaarnestad."@nl .
+
+
+###  http://archief.overheid.nl/def/docketRecordNumber
+naa:docketRecordNumber rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf dc:source .
 
 
 ###  http://archief.overheid.nl/def/fileNumber
@@ -842,6 +870,10 @@ dc:publisher rdf:type owl:DatatypeProperty .
 dc:rights rdf:type owl:DatatypeProperty .
 
 
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:DatatypeProperty .
+
+
 ###  http://purl.org/dc/elements/1.1/subject
 dc:subject rdf:type owl:DatatypeProperty .
 
@@ -879,6 +911,7 @@ dcterms:rightsHolder rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/dc/terms/source
 dcterms:source rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf dc:source ;
                skos:note "MAIS Download"@nl .
 
 
@@ -1238,6 +1271,18 @@ foaf:Organization rdf:type owl:Class .
 foaf:Person rdf:type owl:Class .
 
 
+###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Asset
+fibo-fnd-oac-own:Asset rdf:type owl:Class .
+
+
+###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Owner
+fibo-fnd-oac-own:Owner rdf:type owl:Class .
+
+
+###  https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/IndependentParty
+fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
+
+
 #################################################################
 #    Individuals
 #################################################################
@@ -1302,8 +1347,7 @@ foaf:Person rdf:type owl:Class .
 ###  http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd
 <http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
                                                                                                             naa:ArchivalReference ;
-                                                                                                   dc:description "Commissaris van de Monstering"@nl ;
-                                                                                                   dc:source "NL-HaNA/1.01.19/1523//002//"@nl .
+                                                                                                   dc:description "Commissaris van de Monstering"@nl .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne
@@ -1401,15 +1445,6 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
                                                                                    naa:PersonEntity .
 
 
-###  http://archief.overheid.nl/NL-HaNA/place/id/CityParamaribo
-<http://archief.overheid.nl/NL-HaNA/place/id/CityParamaribo> rdf:type owl:NamedIndividual ,
-                                                                      hg:PlaceInTime ;
-                                                             dcterms:type hg:City ;
-                                                             rdfs:comment "Verwijzing naar de stad Paramaribo zonder specifieke tijdgebonden context zoals landgrenzen, populatie e.d."@nl ;
-                                                             rdfs:label "Paramaribo (stad)"@nl ;
-                                                             rdfs:seeAlso <https://nl.wikipedia.org/wiki/Paramaribo> .
-
-
 ###  http://archief.overheid.nl/def/AgencyType
 naa:AgencyType rdf:type owl:NamedIndividual ,
                         skos:Concept ;
@@ -1475,22 +1510,36 @@ naa:PhotographyColour rdf:type owl:NamedIndividual ,
                       skos:prefLabel "Kleurenfoto"@nl .
 
 
+###  http://archief.overheid.nl/def/ProfessionMerchant
+naa:ProfessionMerchant rdf:type owl:NamedIndividual ,
+                                naa:Profession ;
+                       rdfs:label "Het beroep van koopman"@nl ,
+                                  "The profession of merchant"@en ;
+                       skos:prefLabel "Het beroep van koopman"@nl .
+
+
+###  http://archief.overheid.nl/def/ProfessionPlantationKeeper
+naa:ProfessionPlantationKeeper rdf:type owl:NamedIndividual ,
+                                        naa:Profession ;
+                               rdfs:label "Het beroep van plantagehouder"@nl ,
+                                          "The profession of plantation keeper"@en ;
+                               skos:prefLabel "Het beroep van plantagehouder"@nl .
+
+
+###  http://archief.overheid.nl/def/ProfessionRecordKeeper
+naa:ProfessionRecordKeeper rdf:type owl:NamedIndividual ,
+                                    naa:Profession ;
+                           rdfs:label "Het beroep van administrateur"@nl ,
+                                      "The profession of record keeper"@en ;
+                           skos:prefLabel "Het beroep van administrateur"@nl .
+
+
 ###  http://archief.overheid.nl/def/ProfessionServant
 naa:ProfessionServant rdf:type owl:NamedIndividual ,
                                naa:Profession ;
-                      rdfs:comment "The profession of servant"@en ;
-                      rdfs:label "Het beroep van bediende"@nl ;
+                      rdfs:label "Het beroep van bediende"@nl ,
+                                 "The profession of servant"@en ;
                       skos:prefLabel "Het beroep van bediende"@nl .
-
-
-###  http://archief.overheid.nl/def/ProvinceParamaribo
-naa:ProvinceParamaribo rdf:type owl:NamedIndividual ,
-                                hg:PlaceInTime ;
-                       dcterms:type hg:Province ;
-                       rdfs:comment "Verwijzing naar de provincie Paramaribo zonder specifieke tijdgebonden context zoals landgrenzen, populatie e.d."@nl ;
-                       rdfs:label "Paramaribo (provincie)"@nl ;
-                       rdfs:seeAlso <http://archief.overheid.nl/NL-HaNA/place/id/CityParamaribo> ,
-                                    <https://nl.wikipedia.org/wiki/Paramaribo> .
 
 
 ###  http://archief.overheid.nl/def/ReligionEBG
@@ -1534,6 +1583,11 @@ naa:RoleSlave rdf:type owl:NamedIndividual ,
               skos:definition "An agent can be assigned the role of slave"@en ;
               skos:label "rol van slaaf"@nl ;
               skos:prefLabel "rol van slaaf"@nl .
+
+
+###  http://archief.overheid.nl/def/RoleSlaveOwner
+naa:RoleSlaveOwner rdf:type owl:NamedIndividual ,
+                            ebucore:Role .
 
 
 ###  http://archief.overheid.nl/def/TypeAdditionalFindingAid
@@ -1717,31 +1771,6 @@ hg:Address rdf:type owl:NamedIndividual ,
                     hg:PlaceInTimeType .
 
 
-###  http://rdf.histograph.io/Area
-hg:Area rdf:type owl:NamedIndividual ,
-                 hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Baljuwschap
-hg:Baljuwschap rdf:type owl:NamedIndividual ,
-                        hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Barony
-hg:Barony rdf:type owl:NamedIndividual ,
-                   hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Borough
-hg:Borough rdf:type owl:NamedIndividual ,
-                    hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Building
-hg:Building rdf:type owl:NamedIndividual ,
-                     hg:PlaceInTimeType .
-
-
 ###  http://rdf.histograph.io/City
 hg:City rdf:type owl:NamedIndividual ,
                  hg:PlaceInTimeType .
@@ -1752,49 +1781,14 @@ hg:Country rdf:type owl:NamedIndividual ,
                     hg:PlaceInTimeType .
 
 
-###  http://rdf.histograph.io/Countship
-hg:Countship rdf:type owl:NamedIndividual ,
-                      hg:PlaceInTimeType .
-
-
 ###  http://rdf.histograph.io/Departement
 hg:Departement rdf:type owl:NamedIndividual ,
                         hg:PlaceInTimeType .
 
 
-###  http://rdf.histograph.io/Fort
-hg:Fort rdf:type owl:NamedIndividual ,
-                 hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Heerlijkheid
-hg:Heerlijkheid rdf:type owl:NamedIndividual ,
-                         hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Monument
-hg:Monument rdf:type owl:NamedIndividual ,
-                     hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Municipality
-hg:Municipality rdf:type owl:NamedIndividual ,
-                         hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Neighbourhood
-hg:Neighbourhood rdf:type owl:NamedIndividual ,
-                          hg:PlaceInTimeType .
-
-
 ###  http://rdf.histograph.io/Place
 hg:Place rdf:type owl:NamedIndividual ,
                   hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Polder
-hg:Polder rdf:type owl:NamedIndividual ,
-                   hg:PlaceInTimeType .
 
 
 ###  http://rdf.histograph.io/Province
@@ -1810,11 +1804,6 @@ hg:Region rdf:type owl:NamedIndividual ,
 ###  http://rdf.histograph.io/Street
 hg:Street rdf:type owl:NamedIndividual ,
                    hg:PlaceInTimeType .
-
-
-###  http://rdf.histograph.io/Water
-hg:Water rdf:type owl:NamedIndividual ,
-                  hg:PlaceInTimeType .
 
 
 ###  http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/WebpaginaFotoVoorbeeld
@@ -1834,7 +1823,7 @@ hg:Water rdf:type owl:NamedIndividual ,
 <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> rdf:type owl:NamedIndividual ,
                                                                                                            edm:WebResource ;
                                                                                                   svcs:has_service <https://service.nationaalarchief.nl/api/iiif> ;
-                                                                                                  dc:source "https://service.nationaalarchief.nl/api/file/v1/default/0a13ec5b-b52d-4600-b58b-b6d6d9614e51"^^xsd:string .
+                                                                                                  dc:source "https://service.nationaalarchief.nl/api/file/v1/default/0a13ec5b-b52d-4600-b58b-b6d6d9614e51"^^xsd:anyURI .
 
 
 ###  https://hdl.handle.net/10648/urlHandleVoorbeeld

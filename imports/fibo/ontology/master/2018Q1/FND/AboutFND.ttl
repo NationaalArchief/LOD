@@ -1,0 +1,60 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AboutFND/
+# imports: http://www.omg.org/techprocess/ab/SpecificationMetadata/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AboutFND/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd: <https://spec.edmcouncil.org/fibo/ontology/FND/AboutFND/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/FND/AboutFND/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Foundations (FND) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2014 EDM Council, Inc.
+Copyright (c) 2014 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-fnd" ;
+	sm:filename "AboutFND.rdf" ;
+	sm:publicationDate "2014-08-19T18:00:00"^^xsd:dateTime ;
+	owl:imports <http://www.omg.org/techprocess/ab/SpecificationMetadata/> ;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AboutFND/> ;
+	.
+
+fibo-fnd:FNDSpecification
+	a
+		sm:Specification ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO Foundations (FND) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contributor
+		"Adaptive, Inc." ,
+		"Thematix Partners LLC"
+		;
+	sm:copyright """Copyright (c) 2013-2014 EDM Council, Inc.
+Copyright (c) 2013-2014 Object Management Group, Inc.""" ;
+	sm:dependsOn "http://www.omg.org/techprocess/ab/SpecificationMetadata/"^^xsd:anyURI ;
+	sm:keyword "foundational vocabulary" ;
+	sm:responsibleTaskForce "http://fdtf.omg.org/"^^xsd:anyURI ;
+	sm:specificationAbbreviation "FIBO-FND" ;
+	sm:specificationAbstract """FIBO Foundations provides a number of ontologies defining general purpose business concepts required to support the definition of financial instruments. These include concepts and relationships about people, organizations, places, and most importantly, contracts that are essential to other FIBO family specifications such as Business Entities, Indices and Indicators, and Securities. 
+
+The scope of the definitions provided in Foundations is limited to coverage of exactly those concepts needed by other FIBO specifications.  They may be useful for other domains, but are intentionally underspecified to avoid unintended consequences and thus do not provide exhaustive coverage for any concept contained herein.  However, Foundations is designed for growth over time.  The expectation is that as additional foundational knowledge is needed to define concepts in other FIBO family specifications, additional ontologies and/or concepts will be integrated with Foundations as required.""" ;
+	sm:specificationTitle "EDMC Financial Industry Business Ontology (FIBO) Foundations (FND)Specification" ;
+	sm:specificationURL "https://spec.edmcouncil.org/fibo/ontology/FND/"^^xsd:anyURI ;
+	sm:submitter "EDM Council, Inc." ;
+	rdfs:seeAlso
+		"http://www.edmcouncil.org/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/"^^xsd:anyURI
+		;
+	skos:definition "individual representing metadata about the FIBO Foundations specification" ;
+	.
+

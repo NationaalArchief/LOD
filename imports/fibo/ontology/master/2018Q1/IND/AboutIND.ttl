@@ -1,0 +1,71 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/IND/AboutIND/
+# imports: http://www.omg.org/techprocess/ab/SpecificationMetadata/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/IND/AboutIND/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/AboutIND/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/IND/AboutIND/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Indices and Indicators (IND) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2015 EDM Council, Inc.
+Copyright (c) 2015 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-ind" ;
+	sm:filename "AboutIND.rdf" ;
+	sm:publicationDate "2015-05-18T18:00:00"^^xsd:dateTime ;
+	owl:imports <http://www.omg.org/techprocess/ab/SpecificationMetadata/> ;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/IND/AboutIND/> ;
+	.
+
+fibo-ind:INDSpecification
+	a
+		sm:Specification ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO Indices and Indicators (IND) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contributor
+		"Adaptive, Inc." ,
+		"Citigroup" ,
+		"Nordea Bank AB" ,
+		"Thematix Partners LLC"
+		;
+	sm:copyright """Copyright (c) 2014-2015 EDM Council, Inc.
+Copyright (c) 2014-2015 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		"http://www.omg.org/techprocess/ab/SpecificationMetadata/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/BE/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FND/"^^xsd:anyURI
+		;
+	sm:keyword
+		"economic index" ,
+		"economic rate" ,
+		"foreign exchange" ,
+		"interest rate" ,
+		"market index"
+		;
+	sm:specificationAbbreviation "FIBO-IND" ;
+	sm:specificationAbstract """FIBO Indices and Indicators consists of a set of business concepts representing the various forms of market indices, economic indicators and market-based interest rates. The ontologies cover quoted interest rates, economic measures such as employment rates, and quoted indices required to support baskets of securities, including specific kinds of securities in share indices or bond indices, as well as credit indices. 
+
+The indices and indicators terms consist of numeric parameters that vary over time, and that therefore have temporal properties such as a present value, a number of past values based on the frequency with which that index or indicator is updated, and an indefinite number of future values based on various prediction criteria (unlike past values, a future vaue for a given date or date and time, need not be unique).""" ;
+	sm:specificationTitle "EDMC Financial Industry Business Ontology (FIBO) Indices and Indicators (IND) Specification" ;
+	sm:specificationURL "https://spec.edmcouncil.org/fibo/ontology/IND/"^^xsd:anyURI ;
+	sm:submitter "EDM Council, Inc." ;
+	rdfs:seeAlso
+		"http://www.edmcouncil.org/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/"^^xsd:anyURI
+		;
+	skos:definition "individual representing metadata about the FIBO indices and indicators specification" ;
+	.
+

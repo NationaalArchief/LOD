@@ -1,0 +1,59 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/AboutFunctionalEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/AboutFunctionalEntities/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-be: <https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/> .
+@prefix fibo-be-fct-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/AboutFunctionalEntities/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/AboutFunctionalEntities/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Business Entities (BE) Functional Entities Module" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2015 EDM Council, Inc.
+Copyright (c) 2015 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-be-fct-mod" ;
+	sm:filename "AboutFunctionalEntities.rdf" ;
+	sm:publicationDate "2015-02-23T18:00:00"^^xsd:dateTime ;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/FunctionalEntities/AboutFunctionalEntities/> ;
+	.
+
+fibo-be-fct-mod:FunctionalEntitiesModule
+	a
+		sm:Module ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO BE Functional Entities Module" ;
+	sm:moduleAbbreviation "FIBO-BE-FCT" ;
+	sm:moduleAbstract "This module includes ontologies describing entities that are defined according to their function, as opposed to their form. They include various forms of financial intermediaries including banks, government regulatory and registration agencies, special purpose vehicles, business versus non-profit etc., as well as entities described in terms of their function in some process, such as clearing houses, exchanges, markets, publishers, settlement entities and the like." ;
+	sm:moduleName "Functional Entities" ;
+	sm:moduleVersion "1.0" ;
+	rdfs:seeAlso
+		"http://www.edmcouncil.org/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/"^^xsd:anyURI
+		;
+	skos:definition "individual representing metadata about the FIBO BE functional entities module" ;
+	fibo-fnd-rel-rel:isPartOf fibo-be:BESpecification ;
+	fibo-fnd-utl-av:usageNote "Users should be aware that the BE Functional Entities ontologies depend on a number of the ontologies specified in the EDMC-FIBO Foundations (FND) specification.  Individual ontologies in this module import only those FIBO FND ontologies they use directly, however." ;
+	.
+

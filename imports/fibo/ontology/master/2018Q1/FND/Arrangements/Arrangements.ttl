@@ -1,0 +1,106 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Arrangements/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Arrangements/> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-arr: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/>
+	a owl:Ontology ;
+	rdfs:label "Arrangements Ontology" ;
+	dct:abstract "This ontology defines abstract structural concepts, including arrangement and collection, for use in other FIBO ontology elements. These abstract concepts are further refined to support definition of identifiers, codes, quantities, and schemata that organize and classify such identifiers and codes." ;
+	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2014-2018 EDM Council, Inc.
+Copyright (c) 2014-2018 Object Management Group, Inc.""" ;
+	sm:dependsOn "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"^^xsd:anyURI ;
+	sm:fileAbbreviation "fibo-fnd-arr-arr" ;
+	sm:filename "Arrangements.rdf" ;
+	rdfs:seeAlso
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FND/AboutFND/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/AboutArrangements/>
+		;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Arrangements/> ;
+	skos:changeNote
+		"The https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements.rdf version of this ontology was introduced as a part of the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/.  It was further revised in the FTF in advance of the Long Beach meeting to promote Collection to the top level in the hierarchy, resulting in https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/." ,
+		"The https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements.rdf version of this ontology was revised as a part of the issue resolutions identified in the FIBO FND 1.2 RTF report to add a definition for a structured collection." ,
+		"The https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements.rdf version of this ontology was revised as a part of the issue resolutions identified in the FIBO FND 1.3 RTF report to add a general definition for scheme."
+		;
+	fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+	.
+
+fibo-fnd-arr-arr:Arrangement
+	a owl:Class ;
+	rdfs:label "arrangement" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> ;
+	skos:definition "an organizing structure for something" ;
+	.
+
+fibo-fnd-arr-arr:Collection
+	a owl:Class ;
+	rdfs:subClassOf fibo-fnd-arr-arr:Arrangement ;
+	rdfs:label "collection" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> ;
+	skos:definition "a grouping of some variable number of things (may be zero) that have some shared significance" ;
+	.
+
+fibo-fnd-arr-arr:Scheme
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-arr-arr:Arrangement ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:defines ;
+			owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "scheme" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> ;
+	skos:definition "a structure or means of organizing information such as a schema, numbering system, organization scheme, measurement system, taxonomy, or language for organizing information" ;
+	.
+
+fibo-fnd-arr-arr:StructuredCollection
+	a owl:Class ;
+	rdfs:subClassOf fibo-fnd-arr-arr:Collection ;
+	rdfs:label "structured collection" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> ;
+	skos:definition "a collection that has a clearly defined structure or organization" ;
+	.
+
+fibo-fnd-arr-arr:hasConstituent
+	a owl:ObjectProperty ;
+	rdfs:label "has constituent" ;
+	rdfs:domain fibo-fnd-arr-arr:Collection ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> ;
+	skos:definition "an essential part, component, or element of some collection or set" ;
+	.
+
+fibo-fnd-arr-arr:isConstituentOf
+	a owl:ObjectProperty ;
+	rdfs:label "is constituent of" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> ;
+	rdfs:range fibo-fnd-arr-arr:Collection ;
+	owl:inverseOf fibo-fnd-arr-arr:hasConstituent ;
+	skos:definition "identifies the collection that something is an essential part, component, or element of" ;
+	.
+

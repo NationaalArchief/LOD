@@ -1,0 +1,836 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/FunctionalEntities/BusinessRegistries/
+# imports: http://www.omg.org/spec/LCC/Countries/CountryRepresentation/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Corporations/Corporations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/GovernmentEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/FunctionalEntities/RegistrationAuthorities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/Agents/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/IdentifiersAndIndices/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/FinancialDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/Jurisdiction/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Addresses/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/VirtualPlaces/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-be-corp-corp: <https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fbc-fct-breg: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix fibo-fbc-fct-ra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/> .
+@prefix fibo-fnd-aap-agt: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/> .
+@prefix fibo-fnd-arr-cd: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Codes/> .
+@prefix fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-law-jur: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-vrt: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix lcc-cr: <http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/>
+	a owl:Ontology ;
+	rdfs:label "Business Registries Ontology" ;
+	dct:abstract "This ontology extends the Registration Authorities ontology to define specific kinds of registries, such as business entity registries, registries for identifiers and codes of various sorts, and registries for financial institutions and intermediaries based on jurisdiction, who regulates them, and the services they provide." ;
+	dct:license "http://www.omg.org/techprocess/ab/SpecificationMetadata/MITLicense"^^xsd:anyURI ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2015-2017 EDM Council, Inc.
+Copyright (c) 2015-2017 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		"http://www.omg.org/spec/LCC/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/BE/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FND/"^^xsd:anyURI
+		;
+	sm:fileAbbreviation "fibo-fbc-fct-breg" ;
+	sm:filename "BusinessRegistries.rdf" ;
+	rdfs:seeAlso
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FBC/AboutFBC/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/AboutFBCFunctionalEntities/>
+		;
+	owl:imports
+		<http://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/Corporations/Corporations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/GovernmentEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/FunctionalEntities/RegistrationAuthorities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/Agents/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/IdentifiersAndIndices/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/DatesAndTimes/FinancialDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/Jurisdiction/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Addresses/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/VirtualPlaces/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FBC 1.1 RTF report." ;
+	fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+	.
+
+fibo-be-le-fbo:RegisteredAddress
+	a owl:Class ;
+	rdfs:subClassOf fibo-fbc-fct-breg:RegistrationAddress ;
+	.
+
+fibo-be-le-lp:LegalEntity
+	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty fibo-fbc-fct-breg:hasHeadquartersAddress ;
+		owl:onClass fibo-fbc-fct-breg:RegistrationAddress ;
+		owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+	] ;
+	.
+
+fibo-fbc-fct-breg:ActiveStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:EntityStatus
+		;
+	rdfs:label "active status" ;
+	skos:definition "as of the last report or update, the entity was legally registered and operating" ;
+	fibo-fnd-rel-rel:hasTag "ACTIVE" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:AnnulledStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "annulled status" ;
+	skos:definition "status indicating that the registration was determined to be erroneous or invalid after issuance" ;
+	fibo-fnd-rel-rel:hasTag "ANNULLED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:BusinessRegisterIdentifier
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-arr-id:Identifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-aap-agt:identifies ;
+			owl:onClass fibo-fbc-fct-breg:BusinessRegistry ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-ra:isRegisteredBy ;
+			owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistrationAuthority ;
+		]
+		;
+	rdfs:label "business register identifier" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "an identifier that uniquely identifies a business register, such as a register identified by the Global Legal Entity Identifier Foundation (GLEIF) registration authorities list" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:BusinessRegistrationAuthority
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fbc-fct-ra:RegistrationAuthority ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-ra:registers ;
+			owl:someValuesFrom fibo-be-corp-corp:RegistrationIdentifier ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:manages ;
+			owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistry ;
+		]
+		;
+	rdfs:label "business registration authority" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "a registration authority that is responsible for maintaining a registry of business entities" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "A business registry may include any government-managed registry for registering a business, such as a state department of corporations in the US, as well as other registries such as a local operating unit (LOU) for registration of legal entity identifiers (LEIs).  Any sanctioned registration authority as defined by the Registration Authorities List, published by GLEIF, is a business registration authority in this sense." ;
+	.
+
+fibo-fbc-fct-breg:BusinessRegistry
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fbc-fct-ra:Registry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-breg:hasRegistryName ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:string ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:isManagedBy ;
+			owl:onClass fibo-fbc-fct-breg:BusinessRegistrationAuthority ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-ra:hasRegistryEntry ;
+			owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistryEntry ;
+		]
+		;
+	rdfs:label "business registry" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "a registry for registering and maintaining information about business entities" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:BusinessRegistryEntry
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fbc-fct-ra:RegistryEntry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-breg:hasRegistrationStatus ;
+			owl:onClass fibo-fbc-fct-breg:RegistrationStatus ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-ra:hasRegistrationDate ;
+			owl:someValuesFrom [
+				a rdfs:Datatype ;
+				owl:unionOf (
+					xsd:string
+					xsd:dateTime
+					xsd:dateTimeStamp
+				) ;
+			] ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:comprises ;
+			owl:someValuesFrom fibo-be-corp-corp:RegistrationIdentifier ;
+		]
+		;
+	rdfs:label "business registry entry" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "an entry in a business registry" ;
+	.
+
+fibo-fbc-fct-breg:CancelledStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "cancelled status" ;
+	skos:definition "status indicating that the registration was abandoned prior to issuance" ;
+	fibo-fnd-rel-rel:hasTag "CANCELLED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:DuplicateStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "duplicate status" ;
+	skos:definition "status indicating that the registration was determined to be a duplicate registration of the same entity as another registration; duplicate status is assigned to the non-surviving registration (i.e. the identifier that should no longer be used)" ;
+	fibo-fnd-rel-rel:hasTag "DUPLICATE" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:EntityExpirationReasonEnumeration
+	a rdfs:Datatype ;
+	rdfs:label "entity expiration reason enumeration" ;
+	owl:equivalentClass [
+		a rdfs:Datatype ;
+		owl:oneOf (
+			"DISSOLVED"
+			"CORPORATE_ACTION"
+			"OTHER"
+		) ;
+	] ;
+	skos:definition "an enumerated datatype specifying the reason that a legal entity ceased to exist and/or operate as specified in the LEI registry for that entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:EntityStatus
+	a owl:Class ;
+	rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStage ;
+	rdfs:label "entity status" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "a lifecycle stage indicating the operational and/or legal status of an entity as specified in a given business registry for that entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "In some jurisdictions, there may be other possible values for entity status, such as suspended in the State of California, thus the individuals provided herein are not intended to be exhaustive." ;
+	.
+
+fibo-fbc-fct-breg:EntityValidationLevelEnumeration
+	a rdfs:Datatype ;
+	rdfs:label "entity validation level enumeration" ;
+	owl:equivalentClass [
+		a rdfs:Datatype ;
+		owl:oneOf (
+			"ENTITY_SUPPLIED_ONLY"
+			"PARTIALLY_CORROBORATED"
+			"FULLY_CORROBORATED"
+		) ;
+	] ;
+	skos:definition "an enumerated datatype specifying the level of validation performed by the GLEIF or LOU with respect to the reference data provided by the registrant" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:InactiveStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:EntityStatus
+		;
+	rdfs:label "inactive status" ;
+	skos:definition "the entity that was assigned the identifier (business, LEI, or other) is no longer legally registered and/or operating, whether as a result of business closure, acquisition by or merger with another (or new) entity, or determination of illegitimacy" ;
+	fibo-fnd-rel-rel:hasTag "INACTIVE" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:IssuedStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "issued status" ;
+	skos:definition "status indicating that the registration has been validated and issued, and which identifies an entity that was operating legally as of the last update" ;
+	fibo-fnd-rel-rel:hasTag "ISSUED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:LapsedStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "lapsed status" ;
+	skos:definition "status indicating that the registration that has not been renewed by the specified renewal date and is not known by public sources to have ceased operation as of the last update" ;
+	fibo-fnd-rel-rel:hasTag "LAPSED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:LegalEntityIdentifierRegistry
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fbc-fct-breg:BusinessRegistry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:isManagedBy ;
+			owl:onClass fibo-fbc-fct-breg:LocalOperatingUnit ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-ra:hasRegistryEntry ;
+			owl:someValuesFrom fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+		]
+		;
+	rdfs:label "legal entity identifier registry" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "a registry for registering and maintaining information about business entities for a particular jurisdiction" ;
+	fibo-fnd-utl-av:abbreviation "LEI registry" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fbc-fct-breg:BusinessRegistryEntry ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-breg:hasValidationAuthority ;
+			owl:onClass fibo-fbc-fct-breg:BusinessRegistrationAuthority ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-breg:hasRegistrationStatus ;
+			owl:someValuesFrom fibo-fbc-fct-breg:RegistrationStatus ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-breg:hasValidationLevel ;
+			owl:someValuesFrom fibo-fbc-fct-breg:EntityValidationLevelEnumeration ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:comprises ;
+			owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ;
+		]
+		;
+	rdfs:label "legal entity identifier registry entry" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "an entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF)" ;
+	fibo-fnd-utl-av:abbreviation "LEI registry entry" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:LocalOperatingUnit
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fbc-fct-breg:BusinessRegistrationAuthority ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fbc-fct-ra:registers ;
+			owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:issues ;
+			owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:manages ;
+			owl:someValuesFrom fibo-fbc-fct-breg:LegalEntityIdentifierRegistry ;
+		]
+		;
+	rdfs:label "local operating unit" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "a registration authority that issues legal entity identifiers and is authorized by the Global LEI Foundation to do so" ;
+	fibo-fnd-utl-av:abbreviation "LOU" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "LOUs supply registration, renewal and other services, and act as the primary interface for legal entities wishing to obtain an LEI." ;
+	.
+
+fibo-fbc-fct-breg:LocalOperatingUnitIdentifier
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-arr-cd:CodeElement ,
+		fibo-fnd-arr-id:Identifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-aap-agt:identifies ;
+			owl:onClass fibo-fbc-fct-breg:LocalOperatingUnit ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "local operating unit identifier" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "an identifier that uniquely identifies a local operating unit (LOU), issued by the Global Legal Entity Identifier Foundation (GLEIF)" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:MergedStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "merged status" ;
+	skos:definition "status indicating that the registration is for an entity that has been merged into another legal entity, such that this legal entity no longer exists as an independently operating entity" ;
+	fibo-fnd-rel-rel:hasTag "MERGED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:PendingArchivalStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "pending archival status" ;
+	skos:definition "status indicating that the registration is about to be transferred to a different registration authority, after which its registration status will revert to a non-pending status" ;
+	fibo-fnd-rel-rel:hasTag "PENDING_ARCHIVAL" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:PendingTransferStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "pending transfer status" ;
+	skos:definition "status indicating that the registration has requested transfer to a different registration authority, and for which transfer is in progress" ;
+	fibo-fnd-rel-rel:hasTag "PENDING_TRANSFER" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:PendingValidationStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "pending validation status" ;
+	skos:definition "status indicating that an application for registration has been submitted and is in process, pending validation" ;
+	fibo-fnd-rel-rel:hasTag "PENDING_VALIDATION" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:RegistrationAddress
+	a owl:Class ;
+	rdfs:subClassOf fibo-fnd-plc-adr:PhysicalAddress ;
+	rdfs:label "registration address" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "an address for an organization used to register that organization in any registry, such as its legal address, headquarters address, a local address used to obtain a license or pay taxes in some jurisdiction, etc." ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:RegistrationAuthorityCode
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-arr-cd:CodeElement ,
+		fibo-fnd-arr-id:Identifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-aap-agt:identifies ;
+			owl:onClass fibo-fbc-fct-breg:BusinessRegistry ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "registration authority code" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "an identifier that uniquely identifies a business registry, issued by the Global Legal Entity Identifier Foundation (GLEIF)" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:RegistrationStatus
+	a owl:Class ;
+	rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStage ;
+	rdfs:label "registration status" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	skos:definition "a lifecycle stage indicating the status of a given registration of something, such as a business or legal entity, as specified by the registration authority" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "There may be other possible values for registration status, depending on the registry, thus the individuals provided herein are not intended to be exhaustive." ;
+	.
+
+fibo-fbc-fct-breg:RetiredStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "retired status" ;
+	skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity" ;
+	fibo-fnd-rel-rel:hasTag "RETIRED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:TransferredStatus
+	a
+		owl:NamedIndividual ,
+		fibo-fbc-fct-breg:RegistrationStatus
+		;
+	rdfs:label "transferred status" ;
+	skos:definition "status indicating that the registration that has been transferred to a different registration authority" ;
+	fibo-fnd-rel-rel:hasTag "TRANSFERRED" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasAddressLine1
+	a owl:DatatypeProperty ;
+	rdfs:label "has address line 1" ;
+	rdfs:domain fibo-fbc-fct-breg:RegistrationAddress ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "the first line of the street address" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasAddressLine2
+	a owl:DatatypeProperty ;
+	rdfs:label "has address line 2" ;
+	rdfs:domain fibo-fbc-fct-breg:RegistrationAddress ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "the second line of the street address" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasAddressLine3
+	a owl:DatatypeProperty ;
+	rdfs:label "has address line 3" ;
+	rdfs:domain fibo-fbc-fct-breg:RegistrationAddress ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "the third line of the street address" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "This element SHALL be omitted if address line 2 is omitted." ;
+	.
+
+fibo-fbc-fct-breg:hasAddressLine4
+	a owl:DatatypeProperty ;
+	rdfs:label "has address line 4" ;
+	rdfs:domain fibo-fbc-fct-breg:RegistrationAddress ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "the fourth line of the street address" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "This element SHALL be omitted if address line 3 is omitted." ;
+	.
+
+fibo-fbc-fct-breg:hasAlternativeLanguageLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:hasLegalName ;
+	rdfs:label "has alternative language legal name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "a registered legal name for the entity in an alternative language used in the legal jurisdiction in which the entity is registered" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasAutomaticallyTransliteratedLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fbc-fct-breg:hasTransliteratedLegalName ;
+	rdfs:label "has automatically transliterated legal name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "an auto-generated ASCII-transliterated representation of the legal name for the entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasCity
+	a owl:DatatypeProperty ;
+	rdfs:label "has city" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "the name of the city" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasCountry
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:has ;
+	rdfs:label "has country" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range lcc-cr:Country ;
+	skos:definition "identifies the country according to ISO 3166-1" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasEntityExpirationDate
+	a owl:DatatypeProperty ;
+	rdfs:label "has entity expiration date" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range [
+		a rdfs:Datatype ;
+		owl:unionOf (
+			xsd:string
+			xsd:dateTime
+			xsd:dateTimeStamp
+		) ;
+	] ;
+	skos:definition "the date on which an entity ceased to exist" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasEntityExpirationReason
+	a owl:DatatypeProperty ;
+	rdfs:label "has entity expiration reason" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "indicates the reason that an entity ceased to exist (i.e., disolved, merged with another entity, etc.)" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasEntityStatus
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:has ;
+	rdfs:label "has entity status" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range fibo-fbc-fct-breg:EntityStatus ;
+	skos:definition "indicates the status of the entity (i.e., active, inactive)" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasHeadquartersAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-be-le-fbo:hasPrimaryAddress ;
+	rdfs:label "has headquarters address" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range fibo-fbc-fct-breg:RegistrationAddress ;
+	skos:definition "identifies the headquarters address for the registered entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasInitialRegistrationDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fbc-fct-ra:hasRegistrationDate ;
+	rdfs:label "has initial registration date" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range [
+		a rdfs:Datatype ;
+		owl:unionOf (
+			xsd:string
+			xsd:dateTime
+			xsd:dateTimeStamp
+		) ;
+	] ;
+	skos:definition "the date on which an identifier was first registered" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasPostalCode
+	a owl:DatatypeProperty ;
+	rdfs:label "has postal code" ;
+	rdfs:domain fibo-fbc-fct-breg:RegistrationAddress ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "the postal code of this address as specified by the local postal service" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasPreferredTransliteratedLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fbc-fct-breg:hasTransliteratedLegalName ;
+	rdfs:label "has preferred transliterated legal name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "a preferred ASCII-transliterated representation of the legal name for the entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasPriorLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		fibo-fnd-rel-rel:hasLegalName ,
+		fibo-fnd-rel-rel:wasFormerlyKnownAs
+		;
+	rdfs:label "has prior legal name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "a primary legal name that was used previously for the entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasRegistrationStatus
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-arr-lif:hasStage ;
+	rdfs:label "has registration status" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range fibo-fbc-fct-breg:RegistrationStatus ;
+	skos:definition "indicates the status of a specific registration, such as for an identifier or license" ;
+	.
+
+fibo-fbc-fct-breg:hasRegistrationStatusRevisionDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fbc-fct-ra:hasRegistrationDate ;
+	rdfs:label "has registration status revision date" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range [
+		a rdfs:Datatype ;
+		owl:unionOf (
+			xsd:string
+			xsd:dateTime
+			xsd:dateTimeStamp
+		) ;
+	] ;
+	skos:definition "the date that the status of a specific registration in the registry was revised" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasRegistryName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fnd-aap-agt:hasName ;
+	rdfs:label "has registry name" ;
+	rdfs:domain fibo-fbc-fct-ra:Registry ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "a name for the registry, for example, for a business registry in which a business registration identifier for the legal entity is registered" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasRenewalDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fbc-fct-ra:hasRegistrationDate ;
+	rdfs:label "has renewal date" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range [
+		a rdfs:Datatype ;
+		owl:unionOf (
+			xsd:string
+			xsd:dateTime
+			xsd:dateTimeStamp
+		) ;
+	] ;
+	skos:definition "the date by which a specific registration in the registry must be renewed or updated" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasSubdivision
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:has ;
+	rdfs:label "has subdivision" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range lcc-cr:CountrySubdivision ;
+	skos:definition "identifies the country subdivision (state, province, region, etc.) according to ISO 3166-2" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasTradingOrOperationalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fnd-aap-agt:hasName ;
+	rdfs:label "has trading or operational name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "a 'trading as', 'brand name', 'doing business as', or 'operating under' name currently used by the entity in addition to, but not replacing, the (primary) legal, official registered name" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasTransliteratedAddress
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-plc-adr:hasAddress ;
+	rdfs:label "has transliterated address" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range fibo-fnd-plc-adr:Address ;
+	skos:definition "identifies a transliterated (i.e., in Latin or Romanized ASCII) address for the registered entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasTransliteratedLegalName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf
+		fibo-be-le-lei:hasTransliteratedName ,
+		fibo-fnd-rel-rel:hasLegalName
+		;
+	rdfs:label "has transliterated legal name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "an optional ASCII-transliterated (i.e. Latin- or Romanized) representation of the legal name for the entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasValidationAuthority
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:has ;
+	rdfs:label "has validation authority" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range fibo-fbc-fct-breg:BusinessRegistrationAuthority ;
+	skos:definition "identifies the business registration authority for the legal entity, used by the Local Operating Unit (LOU) as the basis for validation, as defined in the GLEIF Registration Authorities List" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-fbc-fct-breg:hasValidationLevel
+	a owl:DatatypeProperty ;
+	rdfs:label "has validation level" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:string ;
+	skos:definition "an indicator of the level of validation performed by the registrar with respect to the legal entity" ;
+	.
+
+fibo-fbc-fct-breg:hasWebsite
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fnd-plc-vrt:hasURL ;
+	rdfs:label "has website" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> ;
+	rdfs:range xsd:anyURI ;
+	skos:definition "a website associated with something, including but not limited to an organization" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI ;
+	.
+

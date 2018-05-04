@@ -1,0 +1,50 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/AboutAgentsAndPeople/
+# imports: http://www.omg.org/techprocess/ab/SpecificationMetadata/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/AboutAgentsAndPeople/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd: <https://spec.edmcouncil.org/fibo/ontology/FND/> .
+@prefix fibo-fnd-aap-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/AboutAgentsAndPeople/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/AboutAgentsAndPeople/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Foundations (FND) Agents and People Module" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2014-2017 EDM Council, Inc.
+Copyright (c) 2014-2017 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-fnd-aap-mod" ;
+	sm:filename "AboutAgentsAndPeople.rdf" ;
+	sm:publicationDate "2017-02-20T18:00:00"^^xsd:dateTime ;
+	owl:imports <http://www.omg.org/techprocess/ab/SpecificationMetadata/> ;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/AboutAgentsAndPeople/> ;
+	skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/AboutAgentsAndPeople.rdf version of this ontology was modified per issue resolutions identified in the FIBO FND 1.2 RTF report." ;
+	.
+
+fibo-fnd-aap-mod:AgentsAndPeopleModule
+	a
+		sm:Module ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO FND Agents And People Module" ;
+	sm:moduleAbbreviation "FIBO-FND-AAP" ;
+	sm:moduleAbstract "This module contains ontologies of concepts relating to types of autonomous entity, that is things in the world which are able to determine their own behavior. Includes ontologies for people and for autononomous entities in general." ;
+	sm:moduleName "AgentsAndPeople" ;
+	sm:moduleVersion "1.0" ;
+	rdfs:seeAlso
+		<http://www.edmcouncil.org/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/FND/AboutFND/>
+		;
+	skos:definition "individual representing metadata about the FIBO FND agents and people module" ;
+	.
+

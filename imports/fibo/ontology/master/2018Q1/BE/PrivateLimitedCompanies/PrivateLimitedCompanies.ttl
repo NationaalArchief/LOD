@@ -1,0 +1,67 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-plc-plc: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/>
+	a owl:Ontology ;
+	rdfs:label "Private Limited Companies Ontology" ;
+	dct:abstract "This ontology defines the fundamental concepts for representing private limited companies -- i.e., companies that have characteristics of corporations and of partnerships but are neither." ;
+	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2016 EDM Council, Inc.
+Copyright (c) 2016 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		"https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FND/"^^xsd:anyURI
+		;
+	sm:fileAbbreviation "fibo-be-plc-plc" ;
+	sm:filename "PrivateLimitedCompanies.rdf" ;
+	rdfs:seeAlso
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/AboutPrivateLimitedCompanies/>
+		;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> ;
+	fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+	.
+
+fibo-be-plc-plc:PrivateCompanyWithLimitedLiability
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-be-le-fbo:FormallyConstitutedOrganization ,
+		fibo-be-le-lp:BusinessEntity ,
+		fibo-be-le-lp:JuridicalPerson
+		;
+	rdfs:label "private company with limited liability" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> ;
+	skos:definition "a hybrid business entity having certain characteristics of both a corporation and a partnership or sole proprietorship (depending on how many owners there are)." ;
+	fibo-fnd-utl-av:adaptedFrom "https://en.wikipedia.org/wiki/Limited_liability_company#Overview"^^xsd:anyURI ;
+	fibo-fnd-utl-av:explanatoryNote "A private company with limited liability, although a business entity, is not a corporation. The primary characteristic this legal form shares with a corporation is limited liability, and the primary characteristic it shares with a partnership is the availability of pass-through income taxation. It is often more flexible than a corporation, and it is well-suited for companies with a single owner." ;
+	.
+

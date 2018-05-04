@@ -1,0 +1,74 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/
+# imports: http://www.omg.org/techprocess/ab/SpecificationMetadata/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd: <https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Business Entities (BE) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2015-2016 EDM Council, Inc.
+Copyright (c) 2015-2016 Object Management Group, Inc.""" ;
+	sm:fileAbbreviation "fibo-be" ;
+	sm:filename "AboutBE.rdf" ;
+	sm:publicationDate "2016-02-15T18:00:00"^^xsd:dateTime ;
+	owl:imports <http://www.omg.org/techprocess/ab/SpecificationMetadata/> ;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/AboutBE/> ;
+	.
+
+fibo-fnd:BESpecification
+	a
+		sm:Specification ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO Business Entities (BE) Specification" ;
+	dct:license sm:MITLicense ;
+	sm:contributor
+		"Adaptive, Inc." ,
+		"Thematix Partners LLC"
+		;
+	sm:copyright """Copyright (c) 2013-2016 EDM Council, Inc.
+Copyright (c) 2013-2016 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		"http://www.omg.org/techprocess/ab/SpecificationMetadata/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FND/"^^xsd:anyURI
+		;
+	sm:keyword
+		"LEI" ,
+		"business entities" ,
+		"legal entities"
+		;
+	sm:responsibleTaskForce "http://fdtf.omg.org/"^^xsd:anyURI ;
+	sm:specificationAbbreviation "FIBO-BE" ;
+	sm:specificationAbstract """The FIBO Business Entities specification provides a model of business concepts that are represented by finance industry terms as used in official regulatory and financial organization documents on the subject of Business Entities.
+
+This specification describes a set of ontologies of and relating to business entities, including legal entities and specific forms of entity, within the overall framework and heading of the Financial Industry Business Ontology (FIBO). 
+
+The business scope of this specification is all terms relating to and descriptive and/or definitive of a range of business entities and legal entities that are considered by financial industry firms, regulators and other industry participants to be of relevance in the financial services domain.  The contents cover concepts and terminology common to
+ - Legal entities, including the concepts specific to ISO 17442 and related respositories,
+ - Formal organizations, including concepts related to their corporate structure, ownership and control, primary executive roles for businesses,
+ - Functional entities related to the financial services industry according to their role or function, including but not limited to financial intermediaries, governments, non-governmental organizations, international organizations, exchange-related, and publishing entities, 
+ - Concepts specific to corporations, partnerships and trusts
+ - Concepts specific to the kinds of things that businesses provide, including financial intermediaries, such as products and services, as well as the consumers and providers of such products and services.""" ;
+	sm:specificationTitle "EDMC Financial Industry Business Ontology (FIBO) Business Entities (BE) Specification" ;
+	sm:specificationURL "https://spec.edmcouncil.org/fibo/ontology/BE/"^^xsd:anyURI ;
+	sm:submitter "EDM Council, Inc." ;
+	rdfs:seeAlso
+		"http://www.edmcouncil.org/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/"^^xsd:anyURI
+		;
+	skos:definition "individual representing metadata about the FIBO Business Entities specification" ;
+	.
+

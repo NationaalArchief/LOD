@@ -1,0 +1,57 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/SEC/Debt/AboutDebt/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/FND/Utilities/AnnotationVocabulary/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/SEC/AboutSEC/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/SEC/Debt/AboutDebt/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec: <https://spec.edmcouncil.org/fibo/ontology/SEC/AboutSEC/> .
+@prefix fibo-sec-dbt-mod: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AboutDebt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AboutDebt/>
+	a owl:Ontology ;
+	rdfs:label "About the EDMC-FIBO Securities (SEC) Debt Module" ;
+	dct:license sm:MITLicense ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright "Copyright (c) 2018 EDM Council, Inc." ;
+	sm:fileAbbreviation "fibo-sec-dbt-mod" ;
+	sm:filename "AboutDebt.rdf" ;
+	sm:publicationDate "2018-03-30T18:00:00"^^xsd:dateTime ;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/FND/Utilities/AnnotationVocabulary/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/SEC/AboutSEC/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/master/latest/SEC/Debt/AboutDebt/> ;
+	.
+
+fibo-sec-dbt-mod:DebtModule
+	a
+		sm:Module ,
+		owl:NamedIndividual
+		;
+	rdfs:label "FIBO SEC Debt Module" ;
+	sm:moduleAbbreviation "FIBO-SEC-DBT" ;
+	sm:moduleAbstract "This module defines debt securities contracts both cash and synthetic, such as bonds, structured finance instruments, short term or money market instruments, and any other contract type characterized by the holding of some debt of the issuer or primary party by the holder or counterparty." ;
+	sm:moduleName "Debt" ;
+	sm:moduleVersion "1.0" ;
+	rdfs:seeAlso
+		"http://www.edmcouncil.org/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/SEC/AboutSEC/"^^xsd:anyURI
+		;
+	skos:definition "individual representing metadata about the FIBO SEC Debt module" ;
+	fibo-fnd-rel-rel:isPartOf fibo-sec:SECSpecification ;
+	.
+

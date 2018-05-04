@@ -1,0 +1,296 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/GovernmentEntities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/Agents/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/ClassificationSchemes/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Codes/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/Jurisdiction/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Roles/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Addresses/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fnd-aap-agt: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/> .
+@prefix fibo-fnd-arr-cd: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Codes/> .
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-law-jur: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-pty-rl: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/>
+	a owl:Ontology ;
+	rdfs:label "Legal Entity Identifier (LEI) Entities Ontology" ;
+	dct:abstract "This ontology defines concepts around contractually capable business entities. The terms defined here are those which are relevant to the Legal Entity Identifier (LEI) work. The term known as legal entity in that work is identified as a formal organization which is recognized in some jurisdiction as being capable of incurring some liability, whether or not is a legal person as understood by the legal community. This is labeled as contractually capable entity, to avoid confusion with the accepted legal term for Legal Entity. Such entities are recognized as requiring an LEI, but the identifier itself is allocated to the formal organization which is recognized as being contractually capable." ;
+	dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+	sm:contentLanguage
+		"http://www.omg.org/spec/ODM/"^^xsd:anyURI ,
+		"http://www.w3.org/standards/techs/owl#w3c_all"^^xsd:anyURI
+		;
+	sm:copyright """Copyright (c) 2013-2018 EDM Council, Inc.
+Copyright (c) 2013-2018 Object Management Group, Inc.""" ;
+	sm:dependsOn
+		"https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"^^xsd:anyURI ,
+		"https://spec.edmcouncil.org/fibo/ontology/FND/"^^xsd:anyURI
+		;
+	sm:fileAbbreviation "fibo-be-le-lei" ;
+	sm:filename "LEIEntities.rdf" ;
+	rdfs:seeAlso
+		<https://spec.edmcouncil.org/fibo/ontology/AboutTheEDMC-FIBOFamily/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/BE/AboutBE/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/AboutLegalEntities/>
+		;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/GovernmentEntities/GovernmentEntities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/FormalBusinessOrganizations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LegalPersons/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/AgentsAndPeople/Agents/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/ClassificationSchemes/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Arrangements/Codes/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Law/Jurisdiction/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Parties/Roles/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Places/Addresses/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Relations/Relations/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/FND/Utilities/AnnotationVocabulary/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2018Q1/BE/LegalEntities/LEIEntities/> ;
+	skos:changeNote
+		"The https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report." ,
+		"The https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.1 RTF report. Changes include deprecation of the MunicipalEntity, Sovereign, and SupranationalEntity classes and making them equivalent to classes in the Government Entities ontology." ,
+		"The https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.2 RTF report."
+		;
+	fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+	.
+
+fibo-be-le-lei:ContractuallyCapableEntity
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-pty-rl:AgentInRole ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:hasIdentity ;
+			owl:onClass fibo-be-le-lp:LegalEntity ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "contractually capable entity" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	skos:definition "A unique entity that is legally or financially responsible for the performance of financial transactions, or has the legal right in its jurisdiction to enter independently into legal contracts, regardless of whether it is incorporated or constituted in some other way (e.g. trust, partnership, contractual). This excludes natural persons, but includes governmental organizations and supranationals." ;
+	fibo-fnd-utl-av:adaptedFrom "ISO 17442" ;
+	.
+
+fibo-be-le-lei:EntityLegalForm
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-fnd-arr-cls:Classifier ,
+		fibo-fnd-arr-cd:CodeElement
+		;
+	rdfs:label "entity legal form" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	skos:definition "a classifier for a legal entity that indicates the nature of that entity as defined from a legal or regulatory perspective, in the jurisdiction in which it was established" ;
+	fibo-fnd-utl-av:adaptedFrom
+		"https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ,
+		"https://www.iso.org/obp/ui/#iso:std:iso:20275:ed-1:v1:en"^^xsd:anyURI
+		;
+	.
+
+fibo-be-le-lei:LEIEligibleEntity
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-be-le-lp:LegalPerson ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-aap-agt:isIdentifiedBy ;
+			owl:onClass fibo-be-le-lei:LegalEntityIdentifier ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "LEI eligible entity" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	skos:definition "a legal person that qualifies to be assigned a legal entity identifier" ;
+	.
+
+fibo-be-le-lei:LEIRegisteredEntity
+	a owl:Class ;
+	rdfs:subClassOf fibo-be-le-lp:LegalPerson ;
+	rdfs:label "LEI registered entity" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	owl:equivalentClass [
+		a owl:Restriction ;
+		owl:onProperty fibo-fnd-aap-agt:isIdentifiedBy ;
+		owl:onClass fibo-be-le-lei:LegalEntityIdentifier ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	] ;
+	skos:definition "a legal person that has registered for and is identified by a legal entity identifier" ;
+	.
+
+fibo-be-le-lei:LegalEntityIdentifier
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-be-le-fbo:OrganizationIdentifier ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-aap-agt:identifies ;
+			owl:onClass fibo-be-le-lp:LegalPerson ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:hasDefinition ;
+			owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifierScheme ;
+		]
+		;
+	rdfs:label "legal entity identifier" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	skos:definition "an organization identifier that uniquely identifies a legal person as defined in ISO 17442" ;
+	fibo-fnd-utl-av:adaptedFrom
+		"https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ,
+		"https://www.iso.org/standard/59771.html"^^xsd:anyURI
+		;
+	.
+
+fibo-be-le-lei:LegalEntityIdentifierScheme
+	a owl:Class ;
+	rdfs:subClassOf
+		fibo-be-le-fbo:OrganizationIdentificationScheme ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:defines ;
+			owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ;
+		]
+		;
+	rdfs:label "legal entity identifier scheme" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	skos:definition "a scheme that specifies the elements of an unambiguous legal entity identifier (LEI) scheme to identify the legal entities relevant to any financial transaction" ;
+	fibo-fnd-utl-av:adaptedFrom
+		"https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ,
+		"https://www.iso.org/standard/59771.html"^^xsd:anyURI
+		;
+	.
+
+fibo-be-le-lei:MunicipalEntity
+	a owl:Class ;
+	rdfs:subClassOf fibo-be-ge-ge:Polity ;
+	rdfs:label "municipal entity" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	owl:deprecated "true"^^xsd:boolean ;
+	owl:equivalentClass fibo-be-ge-ge:MunicipalEntity ;
+	skos:definition "Municipal entity in the sense of a legal entity, that is, what it is that incurs debt for a municipality, i.e. the Municipality in the sense of the legal entity, as distinct from the Municipal government. Draft definition: The legal entity which is a city or municipality. This has a Government which sets laws applicable within the geographical area corresponding to this legal entity. It is identified as a legal entity as well as the setter of laws because it is able to incur debt in its own right." ;
+	.
+
+fibo-be-le-lei:Sovereign
+	a owl:Class ;
+	rdfs:subClassOf fibo-be-ge-ge:Polity ;
+	rdfs:label "sovereign" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	owl:deprecated "true"^^xsd:boolean ;
+	owl:equivalentClass fibo-be-ge-ge:SovereignState ;
+	skos:definition "the legal person corresponding to a state or country" ;
+	.
+
+fibo-be-le-lei:SupranationalEntity
+	a owl:Class ;
+	rdfs:subClassOf fibo-be-ge-ge:Polity ;
+	rdfs:label "supranational entity" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	owl:deprecated "true"^^xsd:boolean ;
+	owl:equivalentClass fibo-be-ge-ge:SupranationalEntity ;
+	skos:definition "a governmental or non-governmental entity that is established by international law or treaty or incorporated at an international level; an international organization, or union, whereby member states transcend national boundaries or interests to share in the decision-making and vote on issues pertaining to the wider grouping" ;
+	fibo-fnd-utl-av:adaptedFrom
+		"ISO 17442, Financial services - Legal Entity Identifier (LEI), section 3.2" ,
+		"http://www.investopedia.com/terms/s/supranational.asp"^^xsd:anyURI
+		;
+	fibo-fnd-utl-av:explanatoryNote "The European Union and the World Trade Organization are both supranationals. In the EU, each member votes on policy that will affect each member nation. The benefits of this construct for the EU are the synergies derived from social and economic policies along with a stronger presence on the international stage." ;
+	.
+
+fibo-be-le-lei:hasAddressOfLegalFormation
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-be-le-fbo:hasRegisteredAddress ;
+	rdfs:label "has address of legal formation" ;
+	rdfs:domain fibo-be-le-lp:LegalEntity ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	rdfs:range fibo-be-le-fbo:RegisteredAddress ;
+	skos:definition "indicates the address of legal formation for the entity, in the jurisdiction in which the entity is established, used for registration purposes with respect to obtaining an LEI" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	fibo-fnd-utl-av:synonym "has legal address" ;
+	.
+
+fibo-be-le-lei:hasLegalForm
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf fibo-fnd-rel-rel:has ;
+	rdfs:label "has legal form" ;
+	rdfs:domain fibo-be-le-lp:LegalEntity ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	rdfs:range fibo-be-le-lei:EntityLegalForm ;
+	skos:definition "indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction" ;
+	fibo-fnd-utl-av:adaptedFrom
+		"https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ,
+		"https://www.iso.org/obp/ui/#iso:std:iso:20275:ed-1:v1:en"^^xsd:anyURI
+		;
+	.
+
+fibo-be-le-lei:hasTransliteratedName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf fibo-fnd-aap-agt:hasName ;
+	rdfs:label "has transliterated name" ;
+	rdfs:isDefinedBy <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> ;
+	rdfs:range xsd:string ;
+	skos:definition "a transliterated (i.e., in Latin or Romanized ASCII) representation of a name for the entity" ;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
+fibo-be-le-lp:LegalEntity
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-be-le-lei:hasLegalForm ;
+			owl:onClass fibo-be-le-lei:EntityLegalForm ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-be-le-lei:hasTransliteratedName ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:string ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-aap-agt:hasName ;
+			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+			owl:onDataRange xsd:string ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-be-le-lei:hasAddressOfLegalFormation ;
+			owl:onClass fibo-be-le-fbo:RegisteredAddress ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty fibo-fnd-rel-rel:hasLegalName ;
+			owl:someValuesFrom xsd:string ;
+		]
+		;
+	fibo-fnd-utl-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+	.
+
