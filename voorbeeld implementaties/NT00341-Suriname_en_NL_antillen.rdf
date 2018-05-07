@@ -153,10 +153,15 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658> rdf:type owl:NamedIndividual ,
-                                                                                                           naa:ArchivalReference ;
+                                                                                                           naa:ArchivalReference ,
+                                                                                                           naa:MultipleOffers ;
                                                                                                   dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
+                                                                                                  schema:itemOffered <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
+                                                                                                  schema:offeredBy <http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                                                   ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
-                                                                                                  naa:docketRecordNumber "PE001" .
+                                                                                                  naa:docketRecordNumber "PE001" ;
+                                                                                                  naa:inventoryFundsImbursedValue "70.800,00"^^rdfs:Literal ;
+                                                                                                  naa:inventoryLevelValue "244"^^xsd:int .
 
 
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveRecord:cec8f77c-8a4b-4049-86b8-15a122772dfb
@@ -175,6 +180,8 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                       premis:RightsBasis ;
                                                                                              dcterms:coverage <http://archief.overheid.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
                                                                                              dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
+                                                                                             schema:itemOffered <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
+                                                                                             schema:offeredBy <http://archief.overheid.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                                              ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
                                                                                              naa:docketRecordNumber "PE001" ;
                                                                                              rdfs:comment "Onderdeel van het record over de vrijlating van persoon x op locatie y. Deze beschrijving is tevens onderdeel van borderel z. De records van de slaveneigenaren die eigenaar waren van persoon x verwijzen ook naar borderel z."@nl ;
@@ -254,6 +261,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                   <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12664> ,
                                                                                   <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12665> ;
                                                                         naa:sex naa:GenderFemale ;
+                                                                        schema:makesOffer <http://archief.overheid.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658> ;
                                                                         ebucore:hasRole naa:RoleSlaveOwner ;
                                                                         naa:fragmentIdentifier "2176"^^xsd:int ;
                                                                         naa:postpositionName "Kuvel" ;

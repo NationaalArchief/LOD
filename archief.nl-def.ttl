@@ -312,7 +312,10 @@ schema:gender rdf:type owl:ObjectProperty .
 
 ###  http://schema.org/inventoryLevel
 schema:inventoryLevel rdf:type owl:ObjectProperty ;
-                      rdfs:domain schema:Offer ;
+                      rdfs:domain schema:Demand ,
+                                  schema:Offer ,
+                                  schema:SomeProducts ;
+                      rdfs:range schema:QuantitativeValue ;
                       rdfs:comment "The current approximate inventory level for the item or items."@en ;
                       rdfs:label "hoeveelheid"@nl ,
                                  "inventory level"@en .
@@ -325,6 +328,16 @@ schema:itemOffered rdf:type owl:ObjectProperty ;
                    rdfs:label "aangeboden object"@nl ,
                               "item offered"@en ;
                    skos:prefLabel "aangeboden object"@nl .
+
+
+###  http://schema.org/makesOffer
+schema:makesOffer rdf:type owl:ObjectProperty ;
+                  rdfs:domain schema:Person ;
+                  rdfs:range schema:Offer ;
+                  rdfs:comment "A pointer to products or services offered by the organization or person."@en ;
+                  rdfs:label "doet aanbod"@nl ,
+                             "makes offer"@en ;
+                  skos:prefLabel "doet aanbod"@nl .
 
 
 ###  http://schema.org/offeredBy
@@ -692,6 +705,37 @@ naa:intraposition rdf:type owl:DatatypeProperty ;
                   skos:prefLabel "tussenvoegsel"@nl .
 
 
+###  http://archief.overheid.nl/def/inventoryEmbursedValue
+naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf naa:inventoryLevelValue ;
+                           rdfs:comment "The amount of the inventory which was eligible for reimbursement"@en ;
+                           rdfs:label "hoeveelheid uit vooraard die vergoed werd"@nl ;
+                           skos:prefLabel "hoeveelheid uit vooraard die vergoed werd"@nl .
+
+
+###  http://archief.overheid.nl/def/inventoryFundsImbursedValue
+naa:inventoryFundsImbursedValue rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf naa:inventoryEmbursedValue ;
+                                rdfs:range rdfs:Literal ;
+                                rdfs:comment """The amount which has been received in respect to the inventory which has been reimbursed
+."""@en ;
+                                rdfs:label "bedrag uitgekeerd voor voorraad"@nl ;
+                                skos:prefLabel "amount in currency imbursed for inventory"@en ,
+                                               "bedrag uitgekeerd voor voorraad"@nl .
+
+
+###  http://archief.overheid.nl/def/inventoryLevelValue
+naa:inventoryLevelValue rdf:type owl:DatatypeProperty ;
+                        rdfs:domain schema:Demand ,
+                                    schema:Offer ,
+                                    schema:SomeProducts ;
+                        rdfs:range xsd:int ;
+                        rdfs:comment "The amount of items which are part of the inventory."@en ;
+                        rdfs:label "amount in inventory"@en ,
+                                   "hoeveelheid in voorraad"@nl ;
+                        skos:prefLabel "hoeveelheid in voorraad"@nl .
+
+
 ###  http://archief.overheid.nl/def/inventoryNumber
 naa:inventoryNumber rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf dc:identifier ;
@@ -958,6 +1002,15 @@ dcterms:source rdf:type owl:DatatypeProperty ;
                skos:note "MAIS Download"@nl .
 
 
+###  http://schema.org/value
+schema:value rdf:type owl:DatatypeProperty ;
+             rdfs:domain schema:QuantitativeValue ;
+             rdfs:comment "The value of the quantitative value or property value node."@en ;
+             rdfs:label "value"@en ,
+                        "waarde"@nl ;
+             skos:prefLabel "waarde"@nl .
+
+
 ###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#aspectRatio
 ebucore:aspectRatio rdf:type owl:DatatypeProperty .
 
@@ -1058,6 +1111,15 @@ naa:CorporateEntity rdf:type owl:Class ;
 naa:GenderType rdf:type owl:Class .
 
 
+###  http://archief.overheid.nl/def/MultipleOffers
+naa:MultipleOffers rdf:type owl:Class ;
+                   rdfs:subClassOf schema:Offer ;
+                   rdfs:label "Meerde aanbiedingen"@nl ,
+                              "Multiple offers"@en ;
+                   skos:altLabel "Bulkaanbieding"@nl ;
+                   skos:prefLabel "Meerdere aanbiedingen"@nl .
+
+
 ###  http://archief.overheid.nl/def/NL-HaNA_Aggregation
 naa:NL-HaNA_Aggregation rdf:type owl:Class ;
                         rdfs:subClassOf bf:Collection ,
@@ -1068,6 +1130,7 @@ naa:NL-HaNA_Aggregation rdf:type owl:Class ;
 ###  http://archief.overheid.nl/def/PersonEntity
 naa:PersonEntity rdf:type owl:Class ;
                  owl:equivalentClass bgn:Person ,
+                                     schema:Person ,
                                      foaf:Person ;
                  rdfs:subClassOf naa:ArchivalEntity ;
                  owl:disjointWith naa:PersonReference ;
@@ -1179,6 +1242,15 @@ svcs:Service rdf:type owl:Class ;
              rdfs:isDefinedBy svcs: .
 
 
+###  http://schema.org/Demand
+schema:Demand rdf:type owl:Class ;
+              rdfs:subClassOf schema:Intangible ;
+              rdfs:comment "A demand entity represents the public, not necessarily binding, not necessarily exclusive, announcement by an organization or person to seek a certain type of goods or services. For describing demand using this type, the very same properties used for Offer apply."@en ;
+              rdfs:label "Demand"@en ,
+                         "Vraag"@nl ;
+              skos:prefLabel "Vraag"@nl .
+
+
 ###  http://schema.org/Intangible
 schema:Intangible rdf:type owl:Class ;
                   rdfs:comment "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc."@en ;
@@ -1191,12 +1263,26 @@ schema:Intangible rdf:type owl:Class ;
 schema:Offer rdf:type owl:Class ;
              rdfs:subClassOf schema:Intangible ;
              rdfs:comment "An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.</p>" ;
-             rdfs:label "Offer" ;
-             rdfs:seeAlso <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+             rdfs:label "Aanbieding"@nl ,
+                        "Offer"@en ;
+             rdfs:seeAlso <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> ;
+             skos:prefLabel "Aanbieding"@nl .
+
+
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class .
 
 
 ###  http://schema.org/Place
 schema:Place rdf:type owl:Class .
+
+
+###  http://schema.org/Product
+schema:Product rdf:type owl:Class ;
+               rdfs:comment "Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online."@en ;
+               rdfs:label "Product"@en ,
+                          "Product"@nl ;
+               skos:prefLabel "Product"@nl .
 
 
 ###  http://schema.org/QuantitativeValue
@@ -1206,6 +1292,14 @@ schema:QuantitativeValue rdf:type owl:Class ;
                          rdfs:label "Kwantitatieve hoeveelheid"@nl ,
                                     "Quantitative value"@en ;
                          skos:prefLabel "Kwantitatieve hoeveelheid"@nl .
+
+
+###  http://schema.org/SomeProducts
+schema:SomeProducts rdf:type owl:Class ;
+                    rdfs:subClassOf schema:Product ;
+                    rdfs:comment "A placeholder for multiple similar products of the same kind."@en ;
+                    rdfs:label "Meerdere producten van hetzelfde type"@nl ,
+                               "Some products"@en .
 
 
 ###  http://schema.org/StructuredValue
