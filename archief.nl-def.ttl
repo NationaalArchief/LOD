@@ -297,8 +297,43 @@ dcterms:type rdf:type owl:ObjectProperty .
 svcs:has_service rdf:type owl:ObjectProperty .
 
 
+###  http://schema.org/areaServed
+schema:areaServed rdf:type owl:ObjectProperty ;
+                  rdfs:domain schema:Offer ;
+                  rdfs:comment "The geographic area where a service or offered item is provided."@en ;
+                  rdfs:label "area served"@en ,
+                             "leverings gebied"@nl ;
+                  skos:prefLabel "leverings gebied"@nl .
+
+
 ###  http://schema.org/gender
 schema:gender rdf:type owl:ObjectProperty .
+
+
+###  http://schema.org/inventoryLevel
+schema:inventoryLevel rdf:type owl:ObjectProperty ;
+                      rdfs:domain schema:Offer ;
+                      rdfs:comment "The current approximate inventory level for the item or items."@en ;
+                      rdfs:label "hoeveelheid"@nl ,
+                                 "inventory level"@en .
+
+
+###  http://schema.org/itemOffered
+schema:itemOffered rdf:type owl:ObjectProperty ;
+                   rdfs:domain schema:Offer ;
+                   rdfs:comment "The item being offered."@en ;
+                   rdfs:label "aangeboden object"@nl ,
+                              "item offered"@en ;
+                   skos:prefLabel "aangeboden object"@nl .
+
+
+###  http://schema.org/offeredBy
+schema:offeredBy rdf:type owl:ObjectProperty ;
+                 rdfs:domain schema:Offer ;
+                 rdfs:range naa:Agent ;
+                 rdfs:comment "A pointer to the organization or person making the offer."@en ;
+                 rdfs:label "aangeboden door"@nl ,
+                            "offered by"@en .
 
 
 ###  http://vocab.getty.edu/ontology#aat2335_associated_with
@@ -1144,8 +1179,42 @@ svcs:Service rdf:type owl:Class ;
              rdfs:isDefinedBy svcs: .
 
 
+###  http://schema.org/Intangible
+schema:Intangible rdf:type owl:Class ;
+                  rdfs:comment "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc."@en ;
+                  rdfs:label "Intangible"@en ,
+                             "Ontastbaar"@nl ;
+                  skos:prefLabel "Ontastbaar"@nl .
+
+
+###  http://schema.org/Offer
+schema:Offer rdf:type owl:Class ;
+             rdfs:subClassOf schema:Intangible ;
+             rdfs:comment "An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.</p>" ;
+             rdfs:label "Offer" ;
+             rdfs:seeAlso <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> .
+
+
 ###  http://schema.org/Place
 schema:Place rdf:type owl:Class .
+
+
+###  http://schema.org/QuantitativeValue
+schema:QuantitativeValue rdf:type owl:Class ;
+                         rdfs:subClassOf schema:StructuredValue ;
+                         rdfs:comment "A point value or interval for product characteristics and other purposes."@en ;
+                         rdfs:label "Kwantitatieve hoeveelheid"@nl ,
+                                    "Quantitative value"@en ;
+                         skos:prefLabel "Kwantitatieve hoeveelheid"@nl .
+
+
+###  http://schema.org/StructuredValue
+schema:StructuredValue rdf:type owl:Class ;
+                       rdfs:subClassOf schema:Intangible ;
+                       rdfs:comment "Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing."@en ;
+                       rdfs:label "Gestructureerde waarde"@nl ,
+                                  "Structured value"@en ;
+                       skos:prefLabel "Gestructureerde waarde"@nl .
 
 
 ###  http://semanticweb.cs.vu.nl/2009/11/sem/Place

@@ -171,6 +171,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 ###  http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb
 <http://archief.overheid.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
                                                                                                       naa:ArchivalReference ,
+                                                                                                      schema:Offer ,
                                                                                                       premis:RightsBasis ;
                                                                                              dcterms:coverage <http://archief.overheid.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
                                                                                              dcterms:subject <http://archief.overheid.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
