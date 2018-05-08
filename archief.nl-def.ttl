@@ -1,4 +1,4 @@
-@prefix : <http://archief.overheid.nl/def/> .
+@prefix : <http://archief.nl/def/> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -9,7 +9,7 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix gvp: <http://vocab.getty.edu/ontology#> .
-@prefix naa: <http://archief.overheid.nl/def/> .
+@prefix naa: <http://archief.nl/def/> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -36,10 +36,10 @@
 @prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
 @prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
 @prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
-@base <http://archief.overheid.nl/def/> .
+@base <http://archief.nl/def/> .
 
-<http://archief.overheid.nl/def/> rdf:type owl:Ontology ;
-                                   rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
+<http://archief.nl/def/> rdf:type owl:Ontology ;
+                          rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
 
@@ -135,7 +135,7 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://archief.overheid.nl/def/hasName
+###  http://archief.nl/def/hasName
 naa:hasName rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf dcterms:identifier ;
             rdfs:range bgn:Name ;
@@ -143,7 +143,7 @@ naa:hasName rdf:type owl:ObjectProperty ;
             skos:label "heeft naam"@nl .
 
 
-###  http://archief.overheid.nl/def/hasProfession
+###  http://archief.nl/def/hasProfession
 naa:hasProfession rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf naa:hasRole ;
                   rdfs:domain edm:Agent ;
@@ -154,7 +154,7 @@ naa:hasProfession rdf:type owl:ObjectProperty ;
                   skos:label "heeft beroep"@nl .
 
 
-###  http://archief.overheid.nl/def/hasReligion
+###  http://archief.nl/def/hasReligion
 naa:hasReligion rdf:type owl:ObjectProperty ;
                 owl:equivalentProperty gvp:aat2335_associated_with ;
                 rdfs:domain naa:PersonEntity ;
@@ -164,7 +164,7 @@ naa:hasReligion rdf:type owl:ObjectProperty ;
                 skos:prefLabel "heeft (geloofs-)overtuiging"@en .
 
 
-###  http://archief.overheid.nl/def/hasResidency
+###  http://archief.nl/def/hasResidency
 naa:hasResidency rdf:type owl:ObjectProperty ;
                  owl:equivalentProperty cidoc-crm:P74_has_current_or_former_residence ;
                  rdfs:domain naa:Agent ;
@@ -174,7 +174,7 @@ naa:hasResidency rdf:type owl:ObjectProperty ;
                  skos:prefLabel "heeft verblijfplaats"@nl .
 
 
-###  http://archief.overheid.nl/def/hasRole
+###  http://archief.nl/def/hasRole
 naa:hasRole rdf:type owl:ObjectProperty ;
             owl:equivalentProperty ebucore:hasRole ;
             rdfs:range naa:Role ;
@@ -185,14 +185,14 @@ naa:hasRole rdf:type owl:ObjectProperty ;
                            "heeft rol"@nl .
 
 
-###  http://archief.overheid.nl/def/isAggregationType
+###  http://archief.nl/def/isAggregationType
 naa:isAggregationType rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf dcterms:type ;
                       rdfs:domain ore:Aggregation ;
                       rdfs:range naa:AggregationType .
 
 
-###  http://archief.overheid.nl/def/isEntityType
+###  http://archief.nl/def/isEntityType
 naa:isEntityType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf dcterms:type ;
                  rdfs:domain naa:ArchivalEntity ;
@@ -200,7 +200,7 @@ naa:isEntityType rdf:type owl:ObjectProperty ;
                  skos:label "is van het type"@nl .
 
 
-###  http://archief.overheid.nl/def/isMaterialType
+###  http://archief.nl/def/isMaterialType
 naa:isMaterialType rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf naa:isEntityType ;
                    rdfs:domain naa:ArchivalEntity ;
@@ -208,7 +208,7 @@ naa:isMaterialType rdf:type owl:ObjectProperty ;
                    skos:label "is van het type materiaal"@nl .
 
 
-###  http://archief.overheid.nl/def/owned
+###  http://archief.nl/def/owned
 naa:owned rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf fibo-fnd-oac-own:owns ;
           rdfs:label "bezat"@nl ;
@@ -216,7 +216,7 @@ naa:owned rdf:type owl:ObjectProperty ;
           skos:note "Deze term is gemunt om overdracht van eigenaarschap te kunnen duiden die in het verleden heeft plaats gevonden."@nl .
 
 
-###  http://archief.overheid.nl/def/sex
+###  http://archief.nl/def/sex
 naa:sex rdf:type owl:ObjectProperty ;
         owl:equivalentProperty dbo:sex ,
                                schema:gender ;
@@ -226,7 +226,7 @@ naa:sex rdf:type owl:ObjectProperty ;
         skos:prefLabel "geslacht"@nl .
 
 
-###  http://archief.overheid.nl/def/wasOwnedBy
+###  http://archief.nl/def/wasOwnedBy
 naa:wasOwnedBy rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf fibo-fnd-oac-own:isOwnedBy ;
                rdfs:label "is in het bezit geweest van"@nl ,
@@ -481,7 +481,7 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://archief.overheid.nl/def/additionalDescription
+###  http://archief.nl/def/additionalDescription
 naa:additionalDescription rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf dc:description ;
                           rdfs:label "extra toelichting"@nl ;
@@ -489,7 +489,7 @@ naa:additionalDescription rdf:type owl:DatatypeProperty ;
                           skos:prefLabel "extra toelichting"@nl .
 
 
-###  http://archief.overheid.nl/def/age
+###  http://archief.nl/def/age
 naa:age rdf:type owl:DatatypeProperty ;
         owl:equivalentProperty dbo:age ,
                                foaf:age ;
@@ -502,7 +502,7 @@ naa:age rdf:type owl:DatatypeProperty ;
         skos:prefLabel "leeftijd in jaren"@nl .
 
 
-###  http://archief.overheid.nl/def/alias
+###  http://archief.nl/def/alias
 naa:alias rdf:type owl:DatatypeProperty ;
           rdfs:domain [ rdf:type owl:Class ;
                         owl:unionOf ( naa:PersonEntity
@@ -513,7 +513,7 @@ naa:alias rdf:type owl:DatatypeProperty ;
           rdfs:label "alias"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeFirstName
+###  http://archief.nl/def/alternativeFirstName
 naa:alternativeFirstName rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf naa:alternativeNamePosition ,
                                             naa:prepositionName ;
@@ -528,7 +528,7 @@ naa:alternativeFirstName rdf:type owl:DatatypeProperty ;
                          skos:prefLabel "ook geheten"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeFullname
+###  http://archief.nl/def/alternativeFullname
 naa:alternativeFullname rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf naa:alternativeNamePosition ,
                                            naa:fullname ;
@@ -543,7 +543,7 @@ naa:alternativeFullname rdf:type owl:DatatypeProperty ;
                         skos:prefLabel "ook vermeld als"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeIntraposition
+###  http://archief.nl/def/alternativeIntraposition
 naa:alternativeIntraposition rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf naa:alternativeNamePosition ,
                                                 naa:intraposition ;
@@ -559,7 +559,7 @@ naa:alternativeIntraposition rdf:type owl:DatatypeProperty ;
                              skos:prefLabel "ook vermeld als"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeIntrapositionName
+###  http://archief.nl/def/alternativeIntrapositionName
 naa:alternativeIntrapositionName rdf:type owl:DatatypeProperty ;
                                  rdfs:subPropertyOf naa:alternativeIntraposition ;
                                  rdfs:domain [ rdf:type owl:Class ;
@@ -575,7 +575,7 @@ naa:alternativeIntrapositionName rdf:type owl:DatatypeProperty ;
                                  skos:prefLabel "optioneel tussenvoegsel"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeIntrapositionTitle
+###  http://archief.nl/def/alternativeIntrapositionTitle
 naa:alternativeIntrapositionTitle rdf:type owl:DatatypeProperty ;
                                   rdfs:subPropertyOf naa:alternativeIntraposition ;
                                   rdfs:domain [ rdf:type owl:Class ;
@@ -589,7 +589,7 @@ naa:alternativeIntrapositionTitle rdf:type owl:DatatypeProperty ;
                                   skos:prefLabel "optionele titel in tussennaam"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeLastName
+###  http://archief.nl/def/alternativeLastName
 naa:alternativeLastName rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf naa:alternativeNamePosition ,
                                            naa:postpositionName ;
@@ -605,7 +605,7 @@ naa:alternativeLastName rdf:type owl:DatatypeProperty ;
                                    "ook geheten"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativeNamePosition
+###  http://archief.nl/def/alternativeNamePosition
 naa:alternativeNamePosition rdf:type owl:DatatypeProperty ;
                             rdfs:domain [ rdf:type owl:Class ;
                                           owl:unionOf ( naa:PersonEntity
@@ -617,7 +617,7 @@ naa:alternativeNamePosition rdf:type owl:DatatypeProperty ;
                             skos:prefLabel "variant op naamelement"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativePostpositionAddition
+###  http://archief.nl/def/alternativePostpositionAddition
 naa:alternativePostpositionAddition rdf:type owl:DatatypeProperty ;
                                     rdfs:subPropertyOf naa:alternativeNamePosition ,
                                                        naa:postposition ;
@@ -632,7 +632,7 @@ naa:alternativePostpositionAddition rdf:type owl:DatatypeProperty ;
                                     skos:prefLabel "variant op naamstoevoeging"@nl .
 
 
-###  http://archief.overheid.nl/def/alternativePostpositionTitle
+###  http://archief.nl/def/alternativePostpositionTitle
 naa:alternativePostpositionTitle rdf:type owl:DatatypeProperty ;
                                  rdfs:subPropertyOf naa:alternativeNamePosition ,
                                                     naa:postposition ;
@@ -648,7 +648,7 @@ naa:alternativePostpositionTitle rdf:type owl:DatatypeProperty ;
                                                 "titelvariant na de naam"@nl .
 
 
-###  http://archief.overheid.nl/def/catalogReferenceNumber
+###  http://archief.nl/def/catalogReferenceNumber
 naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
                            owl:equivalentProperty naa:findingAidNumber ;
                            rdfs:subPropertyOf dc:identifier ;
@@ -658,37 +658,37 @@ naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
                            skos:prefLabel "Nummer archiefinventaris"@nl .
 
 
-###  http://archief.overheid.nl/def/deprecatedKeyword
+###  http://archief.nl/def/deprecatedKeyword
 naa:deprecatedKeyword rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf dc:description ;
                       skos:note "MAIS oud nummer. Voorbeeld een UDC code."@nl .
 
 
-###  http://archief.overheid.nl/def/deprecatedKeywordCodec
+###  http://archief.nl/def/deprecatedKeywordCodec
 naa:deprecatedKeywordCodec rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf dc:description ;
                            skos:note "MAIS Codecnummer. Afkomstig van Spaarnestad."@nl .
 
 
-###  http://archief.overheid.nl/def/docketRecordNumber
+###  http://archief.nl/def/docketRecordNumber
 naa:docketRecordNumber rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dc:source .
 
 
-###  http://archief.overheid.nl/def/fileNumber
+###  http://archief.nl/def/fileNumber
 naa:fileNumber rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf dc:identifier ;
                rdfs:label "Bestanddeelnummer"@nl ;
                skos:prefLabel "Bestanddeelnummer"@nl .
 
 
-###  http://archief.overheid.nl/def/findingAidNumber
+###  http://archief.nl/def/findingAidNumber
 naa:findingAidNumber rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dc:identifier ;
                      skos:prefLabel "Nummer archiefinventaris"@nl .
 
 
-###  http://archief.overheid.nl/def/fragmentIdentifier
+###  http://archief.nl/def/fragmentIdentifier
 naa:fragmentIdentifier rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dc:identifier ;
                        rdfs:range xsd:int ;
@@ -698,7 +698,7 @@ naa:fragmentIdentifier rdf:type owl:DatatypeProperty ;
                        skos:altLabel "context afhankelijke identificatie"@nl .
 
 
-###  http://archief.overheid.nl/def/fullname
+###  http://archief.nl/def/fullname
 naa:fullname rdf:type owl:DatatypeProperty ;
              owl:equivalentProperty naa:lastKnownName ;
              rdfs:domain [ rdf:type owl:Class ;
@@ -712,7 +712,7 @@ naa:fullname rdf:type owl:DatatypeProperty ;
              skos:prefLabel "volledige naam"@nl .
 
 
-###  http://archief.overheid.nl/def/intraposition
+###  http://archief.nl/def/intraposition
 naa:intraposition rdf:type owl:DatatypeProperty ;
                   rdfs:domain [ rdf:type owl:Class ;
                                 owl:unionOf ( naa:PersonEntity
@@ -725,20 +725,22 @@ naa:intraposition rdf:type owl:DatatypeProperty ;
                   skos:prefLabel "tussenvoegsel"@nl .
 
 
-###  http://archief.overheid.nl/def/inventoryEmbursedValue
+###  http://archief.nl/def/inventoryEmbursedValue
 naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf naa:inventoryLevelValue ;
-                           rdfs:domain schema:Offer ,
+                           rdfs:domain naa:MultipleOffers ,
+                                       schema:Offer ,
                                        schema:SomeProducts ;
                            rdfs:comment "The amount of the inventory which was eligible for reimbursement"@en ;
                            rdfs:label "hoeveelheid uit vooraard die vergoed werd"@nl ;
                            skos:prefLabel "hoeveelheid uit vooraard die vergoed werd"@nl .
 
 
-###  http://archief.overheid.nl/def/inventoryFundsImbursedValue
+###  http://archief.nl/def/inventoryFundsImbursedValue
 naa:inventoryFundsImbursedValue rdf:type owl:DatatypeProperty ;
                                 rdfs:subPropertyOf naa:inventoryEmbursedValue ;
-                                rdfs:domain schema:Offer ,
+                                rdfs:domain naa:MultipleOffers ,
+                                            schema:Offer ,
                                             schema:SomeProducts ;
                                 rdfs:range rdfs:Literal ;
                                 rdfs:comment "The amount which has been received in respect to the inventory which has been reimbursed."@en ;
@@ -747,7 +749,7 @@ naa:inventoryFundsImbursedValue rdf:type owl:DatatypeProperty ;
                                                "bedrag uitgekeerd voor voorraad"@nl .
 
 
-###  http://archief.overheid.nl/def/inventoryLevelValue
+###  http://archief.nl/def/inventoryLevelValue
 naa:inventoryLevelValue rdf:type owl:DatatypeProperty ;
                         rdfs:domain schema:Demand ,
                                     schema:Offer ,
@@ -759,7 +761,7 @@ naa:inventoryLevelValue rdf:type owl:DatatypeProperty ;
                         skos:prefLabel "hoeveelheid in voorraad"@nl .
 
 
-###  http://archief.overheid.nl/def/inventoryNumber
+###  http://archief.nl/def/inventoryNumber
 naa:inventoryNumber rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf dc:identifier ;
                     rdfs:label "Inventarisnummer"@nl ;
@@ -767,12 +769,12 @@ naa:inventoryNumber rdf:type owl:DatatypeProperty ;
                     skos:prefLabel "Inventarisnummer"@nl .
 
 
-###  http://archief.overheid.nl/def/lastKnownName
+###  http://archief.nl/def/lastKnownName
 naa:lastKnownName rdf:type owl:DatatypeProperty ;
                   rdfs:range xsd:string .
 
 
-###  http://archief.overheid.nl/def/postposition
+###  http://archief.nl/def/postposition
 naa:postposition rdf:type owl:DatatypeProperty ;
                  rdfs:domain [ rdf:type owl:Class ;
                                owl:unionOf ( naa:PersonEntity
@@ -784,7 +786,7 @@ naa:postposition rdf:type owl:DatatypeProperty ;
                             "postposition"@en .
 
 
-###  http://archief.overheid.nl/def/postpositionAddition
+###  http://archief.nl/def/postpositionAddition
 naa:postpositionAddition rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf naa:postposition ;
                          rdfs:domain [ rdf:type owl:Class ;
@@ -798,7 +800,7 @@ naa:postpositionAddition rdf:type owl:DatatypeProperty ;
                          skos:prefLabel "naamstoevoeging"@nl .
 
 
-###  http://archief.overheid.nl/def/postpositionMaidenName
+###  http://archief.nl/def/postpositionMaidenName
 naa:postpositionMaidenName rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf naa:postposition ;
                            rdfs:domain [ rdf:type owl:Class ;
@@ -813,7 +815,7 @@ naa:postpositionMaidenName rdf:type owl:DatatypeProperty ;
                                           "maiden name as the last part of a person's name"@en .
 
 
-###  http://archief.overheid.nl/def/postpositionName
+###  http://archief.nl/def/postpositionName
 naa:postpositionName rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf naa:postposition ;
                      rdfs:domain [ rdf:type owl:Class ;
@@ -829,7 +831,7 @@ naa:postpositionName rdf:type owl:DatatypeProperty ;
                      skos:prefLabel "achternaam"@nl .
 
 
-###  http://archief.overheid.nl/def/postpositionPatronym
+###  http://archief.nl/def/postpositionPatronym
 naa:postpositionPatronym rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf naa:postposition ;
                          rdfs:domain [ rdf:type owl:Class ;
@@ -842,7 +844,7 @@ naa:postpositionPatronym rdf:type owl:DatatypeProperty ;
                                     "patronym after last name"@en .
 
 
-###  http://archief.overheid.nl/def/postpositionTitle
+###  http://archief.nl/def/postpositionTitle
 naa:postpositionTitle rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf naa:postposition ;
                       rdfs:domain [ rdf:type owl:Class ;
@@ -857,7 +859,7 @@ naa:postpositionTitle rdf:type owl:DatatypeProperty ;
                       skos:prefLabel "titel na de naam"@nl .
 
 
-###  http://archief.overheid.nl/def/preposition
+###  http://archief.nl/def/preposition
 naa:preposition rdf:type owl:DatatypeProperty ;
                 rdfs:domain [ rdf:type owl:Class ;
                               owl:unionOf ( naa:PersonEntity
@@ -869,7 +871,7 @@ naa:preposition rdf:type owl:DatatypeProperty ;
                            "voorvoegsel"@nl .
 
 
-###  http://archief.overheid.nl/def/prepositionInitials
+###  http://archief.nl/def/prepositionInitials
 naa:prepositionInitials rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf naa:preposition ;
                         rdfs:domain [ rdf:type owl:Class ;
@@ -883,7 +885,7 @@ naa:prepositionInitials rdf:type owl:DatatypeProperty ;
                         skos:prefLabel "initialen"@nl .
 
 
-###  http://archief.overheid.nl/def/prepositionName
+###  http://archief.nl/def/prepositionName
 naa:prepositionName rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf naa:preposition ;
                     rdfs:domain [ rdf:type owl:Class ;
@@ -898,7 +900,7 @@ naa:prepositionName rdf:type owl:DatatypeProperty ;
                     skos:prefLabel "voornaam"@nl .
 
 
-###  http://archief.overheid.nl/def/prepositionPatronym
+###  http://archief.nl/def/prepositionPatronym
 naa:prepositionPatronym rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf naa:preposition ;
                         rdfs:domain [ rdf:type owl:Class ;
@@ -912,7 +914,7 @@ naa:prepositionPatronym rdf:type owl:DatatypeProperty ;
                         skos:prefLabel "patroniem vooraan"@nl .
 
 
-###  http://archief.overheid.nl/def/prepositionTitle
+###  http://archief.nl/def/prepositionTitle
 naa:prepositionTitle rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf naa:preposition ;
                      rdfs:domain [ rdf:type owl:Class ;
@@ -1075,7 +1077,7 @@ foaf:age rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-###  http://archief.overheid.nl/def/Agent
+###  http://archief.nl/def/Agent
 naa:Agent rdf:type owl:Class ;
           owl:equivalentClass dbo:Agent ,
                               edm:Agent ,
@@ -1088,11 +1090,11 @@ naa:Agent rdf:type owl:Class ;
           skos:label "Agent"@nl .
 
 
-###  http://archief.overheid.nl/def/AggregationType
+###  http://archief.nl/def/AggregationType
 naa:AggregationType rdf:type owl:Class .
 
 
-###  http://archief.overheid.nl/def/ArchivalEntity
+###  http://archief.nl/def/ArchivalEntity
 naa:ArchivalEntity rdf:type owl:Class ;
                    owl:equivalentClass edm:NonInformationResource ;
                    rdfs:subClassOf ore:AggregatedResource ;
@@ -1102,12 +1104,12 @@ naa:ArchivalEntity rdf:type owl:Class ;
                                    "Een archivistische entiteit vertegenwoordigt entiteiten waarnaar wordt verwezen over de grenzen van archiefarchieven."@nl .
 
 
-###  http://archief.overheid.nl/def/ArchivalEntityType
+###  http://archief.nl/def/ArchivalEntityType
 naa:ArchivalEntityType rdf:type owl:Class ;
                        skos:note "Classe om de typologie voor archief objecten te duiden. Een voorbeeld is een foto welke een object (naa:ArchivalEntity) is van het type (naa:isEntityType) naa:TypePhotograph."@nl .
 
 
-###  http://archief.overheid.nl/def/ArchivalReference
+###  http://archief.nl/def/ArchivalReference
 naa:ArchivalReference rdf:type owl:Class ;
                       owl:equivalentClass edm:InformationResource ;
                       rdfs:subClassOf dbo:Reference ,
@@ -1118,11 +1120,11 @@ naa:ArchivalReference rdf:type owl:Class ;
                                       "Een archivalreferentie is de documentgebonden standaard voor archivistische entiteiten waarnaar wordt verwezen in archiefdocumenten. Kan ook een dataset zijn."@nl .
 
 
-###  http://archief.overheid.nl/def/ArchivalReferenceType
+###  http://archief.nl/def/ArchivalReferenceType
 naa:ArchivalReferenceType rdf:type owl:Class .
 
 
-###  http://archief.overheid.nl/def/CorporateEntity
+###  http://archief.nl/def/CorporateEntity
 naa:CorporateEntity rdf:type owl:Class ;
                     owl:equivalentClass edm:Agent ;
                     rdfs:subClassOf ore:AggregatedResource ;
@@ -1130,11 +1132,11 @@ naa:CorporateEntity rdf:type owl:Class ;
                     skos:prefLabel "Corporation in an Archives domain."@en .
 
 
-###  http://archief.overheid.nl/def/GenderType
+###  http://archief.nl/def/GenderType
 naa:GenderType rdf:type owl:Class .
 
 
-###  http://archief.overheid.nl/def/MultipleOffers
+###  http://archief.nl/def/MultipleOffers
 naa:MultipleOffers rdf:type owl:Class ;
                    rdfs:subClassOf schema:Offer ;
                    rdfs:label "Meerde aanbiedingen"@nl ,
@@ -1143,14 +1145,14 @@ naa:MultipleOffers rdf:type owl:Class ;
                    skos:prefLabel "Meerdere aanbiedingen"@nl .
 
 
-###  http://archief.overheid.nl/def/NL-HaNA_Aggregation
+###  http://archief.nl/def/NL-HaNA_Aggregation
 naa:NL-HaNA_Aggregation rdf:type owl:Class ;
                         rdfs:subClassOf bf:Collection ,
                                         ore:Aggregation ;
                         rdfs:label "Nationaal Archief Aggregatie. Kan een collectie zijn, of een record."@nl .
 
 
-###  http://archief.overheid.nl/def/PersonEntity
+###  http://archief.nl/def/PersonEntity
 naa:PersonEntity rdf:type owl:Class ;
                  owl:equivalentClass bgn:Person ,
                                      schema:Person ,
@@ -1161,13 +1163,13 @@ naa:PersonEntity rdf:type owl:Class ;
                  skos:prefLabel "Person in an Archives domain"@en .
 
 
-###  http://archief.overheid.nl/def/PersonReference
+###  http://archief.nl/def/PersonReference
 naa:PersonReference rdf:type owl:Class ;
                     rdfs:subClassOf naa:ArchivalReference ;
                     skos:definition "A Person Reference is the reference to a Person in a single archival record."@en .
 
 
-###  http://archief.overheid.nl/def/Photograph
+###  http://archief.nl/def/Photograph
 naa:Photograph rdf:type owl:Class ;
                owl:equivalentClass [ rdf:type owl:Restriction ;
                                      owl:onProperty naa:isEntityType ;
@@ -1176,7 +1178,7 @@ naa:Photograph rdf:type owl:Class ;
                                    ] .
 
 
-###  http://archief.overheid.nl/def/Profession
+###  http://archief.nl/def/Profession
 naa:Profession rdf:type owl:Class ;
                rdfs:subClassOf naa:Role ;
                rdfs:label "Beroep"@nl ;
@@ -1184,7 +1186,7 @@ naa:Profession rdf:type owl:Class ;
                skos:prefLabel "Beroep"@nl .
 
 
-###  http://archief.overheid.nl/def/Role
+###  http://archief.nl/def/Role
 naa:Role rdf:type owl:Class ;
          rdfs:subClassOf ebucore:Role ,
                          prov:Role ;
@@ -1192,7 +1194,7 @@ naa:Role rdf:type owl:Class ;
          skos:prefLabel "Rol"@nl .
 
 
-###  http://archief.overheid.nl/def/Slave
+###  http://archief.nl/def/Slave
 naa:Slave rdf:type owl:Class ;
           owl:equivalentClass [ owl:intersectionOf ( naa:PersonEntity
                                                      [ rdf:type owl:Restriction ;
@@ -1496,165 +1498,165 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd
-<http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
-                                                                                                         naa:NL-HaNA_Aggregation ;
-                                                                                                ore:aggregates <http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> .
+###  http://archief.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd
+<http://archief.nl/NL-HaNA/doc/Comm﻿issionRecord:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                                naa:NL-HaNA_Aggregation ;
+                                                                                       ore:aggregates <http://archief.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd
-<http://archief.overheid.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
-                                                                                                            naa:ArchivalReference ;
-                                                                                                   dc:description "Commissaris van de Monstering"@nl .
+###  http://archief.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd
+<http://archief.nl/NL-HaNA/doc/Comm﻿issionReference:30a08a16-ae58-102d-8e23-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                                   naa:ArchivalReference ;
+                                                                                          dc:description "Commissaris van de Monstering"@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne
-<http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual ,
-                                                                     bgn:Name ;
-                                                            naa:alias "The Amazing Solution Architect" ;
-                                                            naa:fullname "Elvin Michiel Mos Dechesne" .
+###  http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne
+<http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual ,
+                                                            bgn:Name ;
+                                                   naa:alias "The Amazing Solution Architect" ;
+                                                   naa:fullname "Elvin Michiel Mos Dechesne" .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:NationaalArchief
-<http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                                    naa:NL-HaNA_Aggregation ;
-                                                                           owl:sameAs <http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> ;
-                                                                           rdfs:seeAlso <http://archief.overheid.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> .
+###  http://archief.nl/NL-HaNA/doc/PersonCollection:NationaalArchief
+<http://archief.nl/NL-HaNA/doc/PersonCollection:NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                           naa:NL-HaNA_Aggregation ;
+                                                                  owl:sameAs <http://archief.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> ;
+                                                                  rdfs:seeAlso <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation:02b51864-cd6d-102c-9f8b-005056a23d00> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00
-<http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
-                                                                                                        naa:NL-HaNA_Aggregation ;
-                                                                                               rdfs:seeAlso <http://archief.overheid.nl/NL-HaNA/doc/PersoonsCollectieAggregation> ;
-                                                                                               skos:note "Dit voorbeeld dient ter illustratie om aan te tonen dat een persoonscollectie gemunt moet worden op basis van het GUID of UUID uit het CBS. Voor een aggregatie op het hoogste niveau, zoals de persoons collectie van het Nationaal Archief kan er ook een 'Cool URI' gemunt geworden zonder UUID. Een owl:sameAs wordt gebruikt om aan te tonen dat het om dezelfde collecties gaat."@nl .
+###  http://archief.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00
+<http://archief.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                               naa:NL-HaNA_Aggregation ;
+                                                                                      rdfs:seeAlso <http://archief.nl/NL-HaNA/doc/PersoonsCollectieAggregation> ;
+                                                                                      skos:note "Dit voorbeeld dient ter illustratie om aan te tonen dat een persoonscollectie gemunt moet worden op basis van het GUID of UUID uit het CBS. Voor een aggregatie op het hoogste niveau, zoals de persoons collectie van het Nationaal Archief kan er ook een 'Cool URI' gemunt geworden zonder UUID. Een owl:sameAs wordt gebruikt om aan te tonen dat het om dezelfde collecties gaat."@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:Anefo
-<http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:Anefo> rdf:type owl:NamedIndividual ,
-                                                                        naa:NL-HaNA_Aggregation ;
-                                                               naa:isAggregationType naa:TypePhotoCollection .
+###  http://archief.nl/NL-HaNA/doc/PhotoCollection:Anefo
+<http://archief.nl/NL-HaNA/doc/PhotoCollection:Anefo> rdf:type owl:NamedIndividual ,
+                                                               naa:NL-HaNA_Aggregation ;
+                                                      naa:isAggregationType naa:TypePhotoCollection .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland
-<http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland> rdf:type owl:NamedIndividual ,
-                                                                                         naa:NL-HaNA_Aggregation .
+###  http://archief.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland
+<http://archief.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland> rdf:type owl:NamedIndividual ,
+                                                                                naa:NL-HaNA_Aggregation .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief
-<http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                                   naa:NL-HaNA_Aggregation ;
-                                                                          naa:isAggregationType naa:TypePhotoCollection .
+###  http://archief.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief
+<http://archief.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                          naa:NL-HaNA_Aggregation ;
+                                                                 naa:isAggregationType naa:TypePhotoCollection .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PhotoRecord:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
-<http://archief.overheid.nl/NL-HaNA/doc/PhotoRecord:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
-                                                                                                   naa:NL-HaNA_Aggregation ;
-                                                                                          naa:isAggregationType naa:TypePhotoRecord ;
-                                                                                          dcterms:type naa:TypePhotoRecord ;
-                                                                                          edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
-                                                                                          ore:aggregates <http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
-                                                                                          ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:Anefo> ,
-                                                                                                             <http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland> ,
-                                                                                                             <http://archief.overheid.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief> ;
-                                                                                          edm:isShownAt <https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> ;
-                                                                                          edm:landingPage <http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> .
+###  http://archief.nl/NL-HaNA/doc/PhotoRecord:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                          naa:NL-HaNA_Aggregation ;
+                                                                                 naa:isAggregationType naa:TypePhotoRecord ;
+                                                                                 dcterms:type naa:TypePhotoRecord ;
+                                                                                 edm:hasView <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
+                                                                                 ore:aggregates <http://archief.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> ;
+                                                                                 ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:Anefo> ,
+                                                                                                    <http://archief.nl/NL-HaNA/doc/PhotoCollection:BevrijdingVanNederland> ,
+                                                                                                    <http://archief.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief> ;
+                                                                                 edm:isShownAt <https://hdl.handle.net/10648/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> ;
+                                                                                 edm:landingPage <http://www.gahetna.nl/collectie/afbeeldingen/fotocollectie/zoeken/weergave/detail/q/id/ff0c94fd-456b-a512-b5fa-a7c3e696a7ab> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PhotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
-<http://archief.overheid.nl/NL-HaNA/doc/PhotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
-                                                                                                      naa:ArchivalReference ;
-                                                                                             skos:note """Opmerking: voor fysieke objecten zoals foto's rijst de vraag of dit informatie-object toegevoegde waarde biedt aan de aggregatie (het record).
+###  http://archief.nl/NL-HaNA/doc/PhotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/NL-HaNA/doc/PhotoReference:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                             naa:ArchivalReference ;
+                                                                                    skos:note """Opmerking: voor fysieke objecten zoals foto's rijst de vraag of dit informatie-object toegevoegde waarde biedt aan de aggregatie (het record).
 Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te borgen zoals deze bekend is in het Collectie Beheer Systeem."""@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/doc/PhotographerCollection:02b51864-cd6d-102c-9f8b-005056a23d00
-<http://archief.overheid.nl/NL-HaNA/doc/PhotographerCollection:02b51864-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
-                                                                                                              naa:NL-HaNA_Aggregation .
+###  http://archief.nl/NL-HaNA/doc/PhotographerCollection:02b51864-cd6d-102c-9f8b-005056a23d00
+<http://archief.nl/NL-HaNA/doc/PhotographerCollection:02b51864-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                     naa:NL-HaNA_Aggregation .
 
 
-###  http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
-<http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
-                                                                                                  naa:ArchivalEntity ;
-                                                                                         naa:isMaterialType naa:TypePhotograph ;
-                                                                                         dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
-                                                                                                                dc:description "MAIS Aut.toelichting"@nl ;
-                                                                                                                dc:subject "MAIS  MAIS openb.beperking"@nl ;
-                                                                                                                dcterms:source "MAIS Download URL"@nl ;
-                                                                                                                dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
-                                                                                                                skos:note "MAIS openb.beperking"@nl
-                                                                                                              ] ;
-                                                                                         dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
-                                                                                         dcterms:publisher <http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
-                                                                                         dcterms:relation [ rdf:type edm:TimeSpan ;
-                                                                                                            dc:coverage "MAIS Datering geschat"@nl ;
-                                                                                                            dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
-                                                                                                            edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
-                                                                                                            edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
-                                                                                                          ] ;
-                                                                                         dcterms:rights naa:RightsTypePublicDomain ;
-                                                                                         dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
-                                                                                                         <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
-                                                                                                         <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
-                                                                                                         [ rdf:type hg:PlaceInTime ;
-                                                                                                           rdfs:label "Frankrijk"
-                                                                                                         ] ,
-                                                                                                         [ rdfs:label "Henrik"
-                                                                                                         ] ;
-                                                                                         edm:isShownBy <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
-                                                                                         naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
-                                                                                         naa:catalogReferenceNumber "2.24.01.07" ;
-                                                                                         bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
-                                                                                         bf:scale "1:10" ;
-                                                                                         dc:coverage "Frankrijk"@nl ,
-                                                                                                     "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)."@nl ;
-                                                                                         dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
-                                                                                         dc:identifier "ff0c94fd-456b-a512-b5fa-a7c3e696a7ab" ;
-                                                                                         dc:license "MAIS Licentie methode"@nl ;
-                                                                                         dc:publisher "Nationaal Archief"@nl ;
-                                                                                         dc:subject "militairen."@nl ;
-                                                                                         dcterms:created "MAIS Aanmaakdatum"@nl ;
-                                                                                         dcterms:creator "MAIS Vervaardiger"@nl ;
-                                                                                         dcterms:modified "MAIS Wijzigingsdatum"@nl ;
-                                                                                         dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
-                                                                                         dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
-                                                                                         dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
-                                                                                         dc:relation "MAIS Verwijzing"@nl ;
-                                                                                         dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
-                                                                                         skos:note "Eventuele Opmerkingen"@nl .
+###  http://archief.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c
+<http://archief.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> rdf:type owl:NamedIndividual ,
+                                                                                         naa:ArchivalEntity ;
+                                                                                naa:isMaterialType naa:TypePhotograph ;
+                                                                                dcterms:accessRights [ rdf:type dcterms:RightsStatement ;
+                                                                                                       dc:description "MAIS Aut.toelichting"@nl ;
+                                                                                                       dc:subject "MAIS  MAIS openb.beperking"@nl ;
+                                                                                                       dcterms:source "MAIS Download URL"@nl ;
+                                                                                                       dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
+                                                                                                       skos:note "MAIS openb.beperking"@nl
+                                                                                                     ] ;
+                                                                                dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
+                                                                                dcterms:publisher <http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
+                                                                                dcterms:relation [ rdf:type edm:TimeSpan ;
+                                                                                                   dc:coverage "MAIS Datering geschat"@nl ;
+                                                                                                   dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                                   edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
+                                                                                                   edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
+                                                                                                 ] ;
+                                                                                dcterms:rights naa:RightsTypePublicDomain ;
+                                                                                dcterms:subject <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
+                                                                                                <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
+                                                                                                <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ,
+                                                                                                [ rdf:type hg:PlaceInTime ;
+                                                                                                  rdfs:label "Frankrijk"
+                                                                                                ] ,
+                                                                                                [ rdfs:label "Henrik"
+                                                                                                ] ;
+                                                                                edm:isShownBy <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
+                                                                                naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
+                                                                                naa:catalogReferenceNumber "2.24.01.07" ;
+                                                                                bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
+                                                                                bf:scale "1:10" ;
+                                                                                dc:coverage "Frankrijk"@nl ,
+                                                                                            "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)."@nl ;
+                                                                                dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
+                                                                                dc:identifier "ff0c94fd-456b-a512-b5fa-a7c3e696a7ab" ;
+                                                                                dc:license "MAIS Licentie methode"@nl ;
+                                                                                dc:publisher "Nationaal Archief"@nl ;
+                                                                                dc:subject "militairen."@nl ;
+                                                                                dcterms:created "MAIS Aanmaakdatum"@nl ;
+                                                                                dcterms:creator "MAIS Vervaardiger"@nl ;
+                                                                                dcterms:modified "MAIS Wijzigingsdatum"@nl ;
+                                                                                dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
+                                                                                dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
+                                                                                dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
+                                                                                dc:relation "MAIS Verwijzing"@nl ;
+                                                                                dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
+                                                                                skos:note "Eventuele Opmerkingen"@nl .
 
 
-###  http://archief.overheid.nl/NL-HaNA/id/persoon/ElvinDechesne
-<http://archief.overheid.nl/NL-HaNA/id/persoon/ElvinDechesne> rdf:type owl:NamedIndividual ,
-                                                                       naa:PersonEntity ;
-                                                              naa:hasName <http://archief.overheid.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
-                                                              naa:sex naa:GenderMale ;
-                                                              naa:alias "The Amazing Solution Architect" ;
-                                                              naa:fullname "Elvin Michiel Mos Dechesne" ;
-                                                              edm:landingPage <https://www.linkedin.com/in/elvindechesne/> .
+###  http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne
+<http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne> rdf:type owl:NamedIndividual ,
+                                                              naa:PersonEntity ;
+                                                     naa:hasName <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
+                                                     naa:sex naa:GenderMale ;
+                                                     naa:alias "The Amazing Solution Architect" ;
+                                                     naa:fullname "Elvin Michiel Mos Dechesne" ;
+                                                     edm:landingPage <https://www.linkedin.com/in/elvindechesne/> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/id/persoon/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd
-<http://archief.overheid.nl/NL-HaNA/id/persoon/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
-                                                                                                     naa:PersonEntity ;
-                                                                                            owl:sameAs <http://archief.overheid.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)> ;
-                                                                                            ore:isAggregatedBy <http://archief.overheid.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> ;
-                                                                                            foaf:made <http://archief.overheid.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
+###  http://archief.nl/NL-HaNA/id/persoon/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd
+<http://archief.nl/NL-HaNA/id/persoon/Person:ed061fdc-a7f4-102d-ad54-0050569c51dd> rdf:type owl:NamedIndividual ,
+                                                                                            naa:PersonEntity ;
+                                                                                   owl:sameAs <http://archief.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)> ;
+                                                                                   ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PersonCollection:02b51864-cd6d-102c-9f8b-005056a23d00> ;
+                                                                                   foaf:made <http://archief.nl/NL-HaNA/id/beeld/Photo:8ac91d57-97cc-41ca-a5b9-a517cf4e265c> .
 
 
-###  http://archief.overheid.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)
-<http://archief.overheid.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)> rdf:type owl:NamedIndividual ,
-                                                                                   naa:PersonEntity .
+###  http://archief.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)
+<http://archief.nl/NL-HaNA/id/persoon/Willem_vd_Poll(fotograaf)> rdf:type owl:NamedIndividual ,
+                                                                          naa:PersonEntity .
 
 
-###  http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief
-<http://archief.overheid.nl/NL-HaNA/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                              premis:Organization ,
-                                                                              org:FormalOrganization ;
-                                                                     rdfs:label "Nationaal Archief"@nl ;
-                                                                     <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
+###  http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief
+<http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                     premis:Organization ,
+                                                                     org:FormalOrganization ;
+                                                            rdfs:label "Nationaal Archief"@nl ;
+                                                            <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
 
 
-###  http://archief.overheid.nl/def/AgencyType
+###  http://archief.nl/def/AgencyType
 naa:AgencyType rdf:type owl:NamedIndividual ,
                         skos:Concept ;
                skos:inScheme naa:OrganisationTypes ;
@@ -1662,7 +1664,7 @@ naa:AgencyType rdf:type owl:NamedIndividual ,
                skos:prefLabel "Agentschap overheid"@nl .
 
 
-###  http://archief.overheid.nl/def/CorporateType
+###  http://archief.nl/def/CorporateType
 naa:CorporateType rdf:type owl:NamedIndividual ,
                            skos:Concept ;
                   skos:inScheme naa:OrganisationTypes ;
@@ -1670,30 +1672,30 @@ naa:CorporateType rdf:type owl:NamedIndividual ,
                   skos:prefLabel "Particuliere onderneming"@nl .
 
 
-###  http://archief.overheid.nl/def/GenderFemale
+###  http://archief.nl/def/GenderFemale
 naa:GenderFemale rdf:type owl:NamedIndividual ,
                           naa:GenderType ;
                  rdfs:label "Vrouw"@nl .
 
 
-###  http://archief.overheid.nl/def/GenderMale
+###  http://archief.nl/def/GenderMale
 naa:GenderMale rdf:type owl:NamedIndividual ,
                         naa:GenderType ;
                rdfs:label "Man"@nl .
 
 
-###  http://archief.overheid.nl/def/GenderNeutral
+###  http://archief.nl/def/GenderNeutral
 naa:GenderNeutral rdf:type owl:NamedIndividual ,
                            naa:GenderType ;
                   rdfs:label "Gender neutraal"@nl .
 
 
-###  http://archief.overheid.nl/def/OrganisationTypes
+###  http://archief.nl/def/OrganisationTypes
 naa:OrganisationTypes rdf:type owl:NamedIndividual ,
                                skos:ConceptScheme .
 
 
-###  http://archief.overheid.nl/def/Photography
+###  http://archief.nl/def/Photography
 naa:Photography rdf:type owl:NamedIndividual ,
                          skos:Concept ;
                 skos:inScheme naa:TypesOfMaterials ;
@@ -1701,7 +1703,7 @@ naa:Photography rdf:type owl:NamedIndividual ,
                 skos:prefLabel "Foto"@nl .
 
 
-###  http://archief.overheid.nl/def/PhotographyBW
+###  http://archief.nl/def/PhotographyBW
 naa:PhotographyBW rdf:type owl:NamedIndividual ,
                            skos:Concept ;
                   skos:broader naa:Photography ;
@@ -1710,7 +1712,7 @@ naa:PhotographyBW rdf:type owl:NamedIndividual ,
                   skos:prefLabel "Zwart-wit foto"@nl .
 
 
-###  http://archief.overheid.nl/def/PhotographyColour
+###  http://archief.nl/def/PhotographyColour
 naa:PhotographyColour rdf:type owl:NamedIndividual ,
                                skos:Concept ;
                       skos:broader naa:Photography ;
@@ -1719,7 +1721,7 @@ naa:PhotographyColour rdf:type owl:NamedIndividual ,
                       skos:prefLabel "Kleurenfoto"@nl .
 
 
-###  http://archief.overheid.nl/def/Plantation
+###  http://archief.nl/def/Plantation
 naa:Plantation rdf:type owl:NamedIndividual ,
                         hg:PlaceInTimeType ;
                rdfs:comment """Een plantage is een stuk grond waarop op grote schaal gewassen in monocultuur verbouwd worden. Plantages komen meestal voor in de tropen, met gewassen als bijvoorbeeld suikerriet, koffie, thee, bananen, soja, ananas, aloë vera, teakhout, cacao, coca, hennep, opium en tabak.
@@ -1731,7 +1733,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                skos:prefLabel "Plantage"@nl .
 
 
-###  http://archief.overheid.nl/def/ProfessionMerchant
+###  http://archief.nl/def/ProfessionMerchant
 naa:ProfessionMerchant rdf:type owl:NamedIndividual ,
                                 naa:Profession ;
                        rdfs:label "Het beroep van koopman"@nl ,
@@ -1739,7 +1741,7 @@ naa:ProfessionMerchant rdf:type owl:NamedIndividual ,
                        skos:prefLabel "Het beroep van koopman"@nl .
 
 
-###  http://archief.overheid.nl/def/ProfessionPlantationKeeper
+###  http://archief.nl/def/ProfessionPlantationKeeper
 naa:ProfessionPlantationKeeper rdf:type owl:NamedIndividual ,
                                         naa:Profession ;
                                rdfs:label "Het beroep van plantagehouder"@nl ,
@@ -1747,7 +1749,7 @@ naa:ProfessionPlantationKeeper rdf:type owl:NamedIndividual ,
                                skos:prefLabel "Het beroep van plantagehouder"@nl .
 
 
-###  http://archief.overheid.nl/def/ProfessionRecordKeeper
+###  http://archief.nl/def/ProfessionRecordKeeper
 naa:ProfessionRecordKeeper rdf:type owl:NamedIndividual ,
                                     naa:Profession ;
                            rdfs:label "Het beroep van administrateur"@nl ,
@@ -1755,7 +1757,7 @@ naa:ProfessionRecordKeeper rdf:type owl:NamedIndividual ,
                            skos:prefLabel "Het beroep van administrateur"@nl .
 
 
-###  http://archief.overheid.nl/def/ProfessionServant
+###  http://archief.nl/def/ProfessionServant
 naa:ProfessionServant rdf:type owl:NamedIndividual ,
                                naa:Profession ;
                       rdfs:label "Het beroep van bediende"@nl ,
@@ -1763,7 +1765,7 @@ naa:ProfessionServant rdf:type owl:NamedIndividual ,
                       skos:prefLabel "Het beroep van bediende"@nl .
 
 
-###  http://archief.overheid.nl/def/RightsTypePublicDomain
+###  http://archief.nl/def/RightsTypePublicDomain
 naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                                     premis:License ;
                            dc:date "1523019854832"^^xsd:long ;
@@ -1772,7 +1774,7 @@ naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                            org:relatedWebPage <https://wiki.creativecommons.org/wiki/CC0_FAQ> .
 
 
-###  http://archief.overheid.nl/def/RightsType_CCBY
+###  http://archief.nl/def/RightsType_CCBY
 naa:RightsType_CCBY rdf:type owl:NamedIndividual ,
                              premis:License ;
                     premis:hasDocumentation "https://creativecommons.nl/#"^^xsd:anyURI ;
@@ -1784,7 +1786,7 @@ naa:RightsType_CCBY rdf:type owl:NamedIndividual ,
                     rdfs:label "CC BY"^^xsd:string .
 
 
-###  http://archief.overheid.nl/def/RoleSlave
+###  http://archief.nl/def/RoleSlave
 naa:RoleSlave rdf:type owl:NamedIndividual ,
                        naa:Role ;
               rdfs:label "rol van slaaf"@nl ;
@@ -1793,37 +1795,37 @@ naa:RoleSlave rdf:type owl:NamedIndividual ,
               skos:prefLabel "rol van slaaf"@nl .
 
 
-###  http://archief.overheid.nl/def/RoleSlaveOwner
+###  http://archief.nl/def/RoleSlaveOwner
 naa:RoleSlaveOwner rdf:type owl:NamedIndividual ,
                             ebucore:Role .
 
 
-###  http://archief.overheid.nl/def/TypeAdditionalFindingAid
+###  http://archief.nl/def/TypeAdditionalFindingAid
 naa:TypeAdditionalFindingAid rdf:type owl:NamedIndividual ,
                                       naa:AggregationType ;
                              rdfs:label "Methodische ontsluiting van één of meer archieven"@nl ;
                              skos:label "Methodische ontsluiting van één of meer archieven"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeBaptismRecord
+###  http://archief.nl/def/TypeBaptismRecord
 naa:TypeBaptismRecord rdf:type owl:NamedIndividual ,
                                naa:AggregationType ;
                       rdfs:label "Doopregistratie"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeBirthRecord
+###  http://archief.nl/def/TypeBirthRecord
 naa:TypeBirthRecord rdf:type owl:NamedIndividual ,
                              naa:AggregationType ;
                     rdfs:label "Geboorteregistratie"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeDeathRecord
+###  http://archief.nl/def/TypeDeathRecord
 naa:TypeDeathRecord rdf:type owl:NamedIndividual ,
                              naa:AggregationType ;
                     rdfs:label "Overlijdensregistratie"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeDetailedContentDescription
+###  http://archief.nl/def/TypeDetailedContentDescription
 naa:TypeDetailedContentDescription rdf:type owl:NamedIndividual ,
                                             naa:AggregationType ;
                                    rdfs:label "Nadere Toegang"@nl ;
@@ -1833,7 +1835,7 @@ naa:TypeDetailedContentDescription rdf:type owl:NamedIndividual ,
                                    skos:label "Nadere Toegang"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeDetailedContentDescriptionView
+###  http://archief.nl/def/TypeDetailedContentDescriptionView
 naa:TypeDetailedContentDescriptionView rdf:type owl:NamedIndividual ,
                                                 naa:AggregationType ;
                                        rdfs:label "View van een Nadere Toegang"@nl ;
@@ -1841,7 +1843,7 @@ naa:TypeDetailedContentDescriptionView rdf:type owl:NamedIndividual ,
                                        skos:prefLabel "View van een Nadere Toegang"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeDocketRecord
+###  http://archief.nl/def/TypeDocketRecord
 naa:TypeDocketRecord rdf:type owl:NamedIndividual ,
                               naa:AggregationType ;
                      rdfs:label "Borderelnummer"@nl ,
@@ -1855,38 +1857,38 @@ naa:TypeDocketRecord rdf:type owl:NamedIndividual ,
                      skos:prefLabel "Borderelnummer"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeFindingAid
+###  http://archief.nl/def/TypeFindingAid
 naa:TypeFindingAid rdf:type owl:NamedIndividual ,
                             naa:AggregationType ;
                    rdfs:label "Toegang tot een of meer archieven"@nl ;
                    skos:label "Toegang tot een of meer archieven"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeMarriageRecord
+###  http://archief.nl/def/TypeMarriageRecord
 naa:TypeMarriageRecord rdf:type owl:NamedIndividual ,
                                 naa:AggregationType ;
                        rdfs:label "Huwelijksregistratie"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeMembershipRecord
+###  http://archief.nl/def/TypeMembershipRecord
 naa:TypeMembershipRecord rdf:type owl:NamedIndividual ,
                                   naa:AggregationType ;
                          rdfs:label "Lidmaatschapsregistratie"@nl .
 
 
-###  http://archief.overheid.nl/def/TypePersonCollection
+###  http://archief.nl/def/TypePersonCollection
 naa:TypePersonCollection rdf:type owl:NamedIndividual ,
                                   naa:AggregationType ;
                          rdfs:label "Een type verzameling van personen"@nl .
 
 
-###  http://archief.overheid.nl/def/TypePhotoCollection
+###  http://archief.nl/def/TypePhotoCollection
 naa:TypePhotoCollection rdf:type owl:NamedIndividual ,
                                  naa:AggregationType ;
                         rdfs:label "Een type verzameling van foto's"@nl .
 
 
-###  http://archief.overheid.nl/def/TypePhotoRecord
+###  http://archief.nl/def/TypePhotoRecord
 naa:TypePhotoRecord rdf:type owl:NamedIndividual ,
                              naa:AggregationType ;
                     dc:date "1523361574463"^^xsd:long ;
@@ -1896,7 +1898,7 @@ naa:TypePhotoRecord rdf:type owl:NamedIndividual ,
                                   "Photograph Record"@en .
 
 
-###  http://archief.overheid.nl/def/TypePhotograph
+###  http://archief.nl/def/TypePhotograph
 naa:TypePhotograph rdf:type owl:NamedIndividual ,
                             naa:ArchivalEntityType ,
                             skos:Concept ;
@@ -1908,7 +1910,7 @@ naa:TypePhotograph rdf:type owl:NamedIndividual ,
                    skos:prefLabel "Foto"@nl .
 
 
-###  http://archief.overheid.nl/def/TypePhotographBlackWhite
+###  http://archief.nl/def/TypePhotographBlackWhite
 naa:TypePhotographBlackWhite rdf:type owl:NamedIndividual ,
                                       naa:ArchivalEntityType ,
                                       skos:Concept ;
@@ -1921,7 +1923,7 @@ naa:TypePhotographBlackWhite rdf:type owl:NamedIndividual ,
                              skos:prefLabel "Zwartwit foto"@nl .
 
 
-###  http://archief.overheid.nl/def/TypePhotographColour
+###  http://archief.nl/def/TypePhotographColour
 naa:TypePhotographColour rdf:type owl:NamedIndividual ,
                                   naa:ArchivalEntityType ,
                                   skos:Concept ;
@@ -1934,55 +1936,55 @@ naa:TypePhotographColour rdf:type owl:NamedIndividual ,
                          skos:prefLabel "Kleuren Foto"@nl .
 
 
-###  http://archief.overheid.nl/def/TypePhotographersCollection
+###  http://archief.nl/def/TypePhotographersCollection
 naa:TypePhotographersCollection rdf:type owl:NamedIndividual ,
                                          naa:AggregationType ;
                                 rdfs:label "Een type verzameling van fotografen"@nl .
 
 
-###  http://archief.overheid.nl/def/TypeSlaveryRecord
+###  http://archief.nl/def/TypeSlaveryRecord
 naa:TypeSlaveryRecord rdf:type owl:NamedIndividual ,
                                naa:AggregationType .
 
 
-###  http://archief.overheid.nl/def/TypesOfMaterials
+###  http://archief.nl/def/TypesOfMaterials
 naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:comment "Classificatie schema t.b.v. ArchivalEntities (Foto's, boeken, etc)"@en ;
                      skos:label "Materiaal types"@nl .
 
 
-###  http://archief.overheid.nl/id/persoon/CategorySlaves
-<http://archief.overheid.nl/id/persoon/CategorySlaves> rdf:type owl:NamedIndividual ,
-                                                                naa:Slave ;
-                                                       rdfs:comment "This is the category for slaves. It's an instance of of type Slave to enable further content discovery. A slave is a PersonEntity with a role of slave."@en ;
-                                                       rdfs:label "Categorie slaven"@nl ,
-                                                                  "Category slaves"@en .
+###  http://archief.nl/id/persoon/CategorySlaves
+<http://archief.nl/id/persoon/CategorySlaves> rdf:type owl:NamedIndividual ,
+                                                       naa:Slave ;
+                                              rdfs:comment "This is the category for slaves. It's an instance of of type Slave to enable further content discovery. A slave is a PersonEntity with a role of slave."@en ;
+                                              rdfs:label "Categorie slaven"@nl ,
+                                                         "Category slaves"@en .
 
 
-###  http://archief.overheid.nl/id/plaats/CityAmsterdam
-<http://archief.overheid.nl/id/plaats/CityAmsterdam> rdf:type owl:NamedIndividual ,
-                                                              hg:PlaceInTime ;
-                                                     rdfs:label "Amsterdam (stad)"@nl .
+###  http://archief.nl/id/plaats/CityAmsterdam
+<http://archief.nl/id/plaats/CityAmsterdam> rdf:type owl:NamedIndividual ,
+                                                     hg:PlaceInTime ;
+                                            rdfs:label "Amsterdam (stad)"@nl .
 
 
-###  http://archief.overheid.nl/id/plaats/PlaceAmsterdam
-<http://archief.overheid.nl/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
-                                                               hg:PlaceInTime ;
-                                                      rdfs:label "Amsterdam (plaats)"@nl .
+###  http://archief.nl/id/plaats/PlaceAmsterdam
+<http://archief.nl/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
+                                                      hg:PlaceInTime ;
+                                             rdfs:label "Amsterdam (plaats)"@nl .
 
 
-###  http://archief.overheid.nl/id/religie/ReligionEBG
-<http://archief.overheid.nl/id/religie/ReligionEBG> rdf:type owl:NamedIndividual ,
-                                                             skos:Concept ;
-                                                    rdfs:comment """Bestand:Broedergemeente.ogv
+###  http://archief.nl/id/religie/ReligionEBG
+<http://archief.nl/id/religie/ReligionEBG> rdf:type owl:NamedIndividual ,
+                                                    skos:Concept ;
+                                           rdfs:comment """Bestand:Broedergemeente.ogv
 De Evangelische Broedergemeente in Suriname in 1968
 De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
 
 In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in Suriname. Ongeveer 40% van de creolen in Suriname is lid van de Evangelische Broedergemeente. Ook internationaal doen de Moravische broeders veel aan zendingswerk."""@nl ;
-                                                    rdfs:label "Evangelische Broedergemeente"@nl ;
-                                                    rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
-                                                    skos:prefLabel "Evangelische Broedergemeente"@nl .
+                                           rdfs:label "Evangelische Broedergemeente"@nl ;
+                                           rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
+                                           skos:prefLabel "Evangelische Broedergemeente"@nl .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
