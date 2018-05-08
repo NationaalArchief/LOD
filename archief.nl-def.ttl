@@ -318,7 +318,8 @@ schema:category rdf:type owl:ObjectProperty ;
                 rdfs:domain naa:MultipleOffers ,
                             schema:Demand ,
                             schema:Offer ,
-                            schema:Product ;
+                            schema:Product ,
+                            ore:Aggregation ;
                 rdfs:comment "Categorisatie is het cognitieve proces waarmee mensen een verdeling aanbrengen in objecten in de wereld of hun eigen cognitieve kennis. Deze verdeling leidt tot een categorie op basis van een concept. Een willekeurige verdeling van objecten uit de wereld wordt meestal een klasse genoemd."@nl ;
                 rdfs:label "categorie"@nl ,
                            "category"@en ;
