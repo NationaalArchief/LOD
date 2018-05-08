@@ -306,6 +306,26 @@ schema:areaServed rdf:type owl:ObjectProperty ;
                   skos:prefLabel "leverings gebied"@nl .
 
 
+###  http://schema.org/availableAtOrFrom
+schema:availableAtOrFrom rdf:type owl:ObjectProperty ;
+                         rdfs:domain naa:MultipleOffers ,
+                                     schema:Demand ,
+                                     schema:Offer .
+
+
+###  http://schema.org/category
+schema:category rdf:type owl:ObjectProperty ;
+                rdfs:domain naa:MultipleOffers ,
+                            schema:Demand ,
+                            schema:Offer ,
+                            schema:Product ;
+                rdfs:comment "Categorisatie is het cognitieve proces waarmee mensen een verdeling aanbrengen in objecten in de wereld of hun eigen cognitieve kennis. Deze verdeling leidt tot een categorie op basis van een concept. Een willekeurige verdeling van objecten uit de wereld wordt meestal een klasse genoemd."@nl ;
+                rdfs:label "categorie"@nl ,
+                           "category"@en ;
+                rdfs:seeAlso <https://nl.wikipedia.org/wiki/Categorisatie> ;
+                skos:prefLabel "categorie"@nl .
+
+
 ###  http://schema.org/gender
 schema:gender rdf:type owl:ObjectProperty .
 
@@ -708,6 +728,8 @@ naa:intraposition rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/inventoryEmbursedValue
 naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf naa:inventoryLevelValue ;
+                           rdfs:domain schema:Offer ,
+                                       schema:SomeProducts ;
                            rdfs:comment "The amount of the inventory which was eligible for reimbursement"@en ;
                            rdfs:label "hoeveelheid uit vooraard die vergoed werd"@nl ;
                            skos:prefLabel "hoeveelheid uit vooraard die vergoed werd"@nl .
@@ -716,9 +738,10 @@ naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
 ###  http://archief.overheid.nl/def/inventoryFundsImbursedValue
 naa:inventoryFundsImbursedValue rdf:type owl:DatatypeProperty ;
                                 rdfs:subPropertyOf naa:inventoryEmbursedValue ;
+                                rdfs:domain schema:Offer ,
+                                            schema:SomeProducts ;
                                 rdfs:range rdfs:Literal ;
-                                rdfs:comment """The amount which has been received in respect to the inventory which has been reimbursed
-."""@en ;
+                                rdfs:comment "The amount which has been received in respect to the inventory which has been reimbursed."@en ;
                                 rdfs:label "bedrag uitgekeerd voor voorraad"@nl ;
                                 skos:prefLabel "amount in currency imbursed for inventory"@en ,
                                                "bedrag uitgekeerd voor voorraad"@nl .
@@ -1167,6 +1190,21 @@ naa:Role rdf:type owl:Class ;
                          prov:Role ;
          rdfs:label "Rol"@nl ;
          skos:prefLabel "Rol"@nl .
+
+
+###  http://archief.overheid.nl/def/Slave
+naa:Slave rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( naa:PersonEntity
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ebucore:hasRole ;
+                                                       owl:hasValue naa:RoleSlave
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:label "Slaaf"@nl ,
+                     "Slave"@en ;
+          skos:prefLabel "Slaaf"@nl .
 
 
 ###  http://biographynet.nl/schema/Name
@@ -1681,6 +1719,18 @@ naa:PhotographyColour rdf:type owl:NamedIndividual ,
                       skos:prefLabel "Kleurenfoto"@nl .
 
 
+###  http://archief.overheid.nl/def/Plantation
+naa:Plantation rdf:type owl:NamedIndividual ,
+                        hg:PlaceInTimeType ;
+               rdfs:comment """Een plantage is een stuk grond waarop op grote schaal gewassen in monocultuur verbouwd worden. Plantages komen meestal voor in de tropen, met gewassen als bijvoorbeeld suikerriet, koffie, thee, bananen, soja, ananas, aloë vera, teakhout, cacao, coca, hennep, opium en tabak.
+
+Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portugezen, Spanjaarden, Engelsen, Fransen, Nederlanders en andere Europeanen die in de 16de en 17de eeuw het hele Caribisch gebied en grote delen van het Amerikaanse vasteland koloniseerden. Met slaven als werkkrachten - eerst Indianen, later Afrikanen - verbouwden de Europese eigenaars van de plantages in deze zogenaamde 'plantagekoloniën' tropische landbouwproducten voor de Europese markt. Ook Nederlands-Indië kende plantages op grote schaal. Vanwege de grote hoeveelheid goedkope inlandse arbeidskrachten was het hier echter niet noodzakelijk slaven in te zetten."""@nl ;
+               rdfs:label "Plantage"@nl ,
+                          "Plantation"@en ;
+               rdfs:seeAlso <https://nl.wikipedia.org/wiki/Plantage> ;
+               skos:prefLabel "Plantage"@nl .
+
+
 ###  http://archief.overheid.nl/def/ProfessionMerchant
 naa:ProfessionMerchant rdf:type owl:NamedIndividual ,
                                 naa:Profession ;
@@ -1900,6 +1950,14 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:comment "Classificatie schema t.b.v. ArchivalEntities (Foto's, boeken, etc)"@en ;
                      skos:label "Materiaal types"@nl .
+
+
+###  http://archief.overheid.nl/id/persoon/CategorySlaves
+<http://archief.overheid.nl/id/persoon/CategorySlaves> rdf:type owl:NamedIndividual ,
+                                                                naa:Slave ;
+                                                       rdfs:comment "This is the category for slaves. It's an instance of of type Slave to enable further content discovery. A slave is a PersonEntity with a role of slave."@en ;
+                                                       rdfs:label "Categorie slaven"@nl ,
+                                                                  "Category slaves"@en .
 
 
 ###  http://archief.overheid.nl/id/plaats/CityAmsterdam
