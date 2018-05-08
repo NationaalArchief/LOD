@@ -308,18 +308,24 @@ schema:areaServed rdf:type owl:ObjectProperty ;
 
 ###  http://schema.org/availableAtOrFrom
 schema:availableAtOrFrom rdf:type owl:ObjectProperty ;
-                         rdfs:domain naa:MultipleOffers ,
-                                     schema:Demand ,
-                                     schema:Offer .
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( naa:MultipleOffers
+                                                     schema:Demand
+                                                     schema:Offer
+                                                   )
+                                     ] .
 
 
 ###  http://schema.org/category
 schema:category rdf:type owl:ObjectProperty ;
-                rdfs:domain naa:MultipleOffers ,
-                            schema:Demand ,
-                            schema:Offer ,
-                            schema:Product ,
-                            ore:Aggregation ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( naa:MultipleOffers
+                                            schema:Demand
+                                            schema:Offer
+                                            schema:Product
+                                            ore:Aggregation
+                                          )
+                            ] ;
                 rdfs:comment "Categorisatie is het cognitieve proces waarmee mensen een verdeling aanbrengen in objecten in de wereld of hun eigen cognitieve kennis. Deze verdeling leidt tot een categorie op basis van een concept. Een willekeurige verdeling van objecten uit de wereld wordt meestal een klasse genoemd."@nl ;
                 rdfs:label "categorie"@nl ,
                            "category"@en ;
@@ -333,9 +339,11 @@ schema:gender rdf:type owl:ObjectProperty .
 
 ###  http://schema.org/inventoryLevel
 schema:inventoryLevel rdf:type owl:ObjectProperty ;
-                      rdfs:domain schema:Demand ,
-                                  schema:Offer ,
-                                  schema:SomeProducts ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( naa:MultipleOffers
+                                                  schema:SomeProducts
+                                                )
+                                  ] ;
                       rdfs:range schema:QuantitativeValue ;
                       rdfs:comment "The current approximate inventory level for the item or items."@en ;
                       rdfs:label "hoeveelheid"@nl ,
@@ -729,9 +737,12 @@ naa:intraposition rdf:type owl:DatatypeProperty ;
 ###  http://archief.nl/def/inventoryEmbursedValue
 naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf naa:inventoryLevelValue ;
-                           rdfs:domain naa:MultipleOffers ,
-                                       schema:Offer ,
-                                       schema:SomeProducts ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( naa:MultipleOffers
+                                                       schema:Offer
+                                                       schema:SomeProducts
+                                                     )
+                                       ] ;
                            rdfs:comment "The amount of the inventory which was eligible for reimbursement"@en ;
                            rdfs:label "hoeveelheid uit vooraard die vergoed werd"@nl ;
                            skos:prefLabel "hoeveelheid uit vooraard die vergoed werd"@nl .
@@ -740,9 +751,12 @@ naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
 ###  http://archief.nl/def/inventoryFundsImbursedValue
 naa:inventoryFundsImbursedValue rdf:type owl:DatatypeProperty ;
                                 rdfs:subPropertyOf naa:inventoryEmbursedValue ;
-                                rdfs:domain naa:MultipleOffers ,
-                                            schema:Offer ,
-                                            schema:SomeProducts ;
+                                rdfs:domain [ rdf:type owl:Class ;
+                                              owl:unionOf ( naa:MultipleOffers
+                                                            schema:Offer
+                                                            schema:SomeProducts
+                                                          )
+                                            ] ;
                                 rdfs:range rdfs:Literal ;
                                 rdfs:comment "The amount which has been received in respect to the inventory which has been reimbursed."@en ;
                                 rdfs:label "bedrag uitgekeerd voor voorraad"@nl ;
@@ -752,9 +766,12 @@ naa:inventoryFundsImbursedValue rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.nl/def/inventoryLevelValue
 naa:inventoryLevelValue rdf:type owl:DatatypeProperty ;
-                        rdfs:domain schema:Demand ,
-                                    schema:Offer ,
-                                    schema:SomeProducts ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( naa:MultipleOffers
+                                                    schema:Offer
+                                                    schema:SomeProducts
+                                                  )
+                                    ] ;
                         rdfs:range xsd:int ;
                         rdfs:comment "The amount of items which are part of the inventory."@en ;
                         rdfs:label "amount in inventory"@en ,

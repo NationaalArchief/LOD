@@ -127,7 +127,8 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 ###  http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001
 <http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> rdf:type owl:NamedIndividual ,
                                                                     naa:NL-HaNA_Aggregation ;
-                                                           naa:isAggregationType naa:TypeDocketRecord .
+                                                           naa:isAggregationType naa:TypeDocketRecord ;
+                                                           schema:category <http://archief.nl/id/persoon/CategorySlaves> .
 
 
 ###  http://archief.nl/NL-HaNA/doc/NTView:00341_Owners
