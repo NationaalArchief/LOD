@@ -684,6 +684,12 @@ naa:docketRecordNumber rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dc:source .
 
 
+###  http://archief.nl/def/fileId
+naa:fileId rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:identifier ;
+           rdfs:label "NT file of view id"@nl .
+
+
 ###  http://archief.nl/def/fileNumber
 naa:fileNumber rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf dc:identifier ;
@@ -719,6 +725,12 @@ naa:fullname rdf:type owl:DatatypeProperty ;
              rdfs:label "full name"@en ,
                         "volledige naam"@nl ;
              skos:prefLabel "volledige naam"@nl .
+
+
+###  http://archief.nl/def/guid
+naa:guid rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf dc:identifier ;
+         rdfs:label "MAIS guid"@nl .
 
 
 ###  http://archief.nl/def/intraposition
@@ -984,7 +996,7 @@ dc:description rdf:type owl:DatatypeProperty .
 
 ###  http://purl.org/dc/elements/1.1/identifier
 dc:identifier rdf:type owl:DatatypeProperty ;
-              skos:note "MAIS Guid"@nl .
+              skos:note "Bij voorkeur het UUID gebruiken, indien deze niet beschikbaar een andere vorm van (unieke) sleutel die referentie naar deze resource mogelijk maakt."@nl .
 
 
 ###  http://purl.org/dc/elements/1.1/license
@@ -1006,6 +1018,12 @@ dc:source rdf:type owl:DatatypeProperty .
 
 ###  http://purl.org/dc/elements/1.1/subject
 dc:subject rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:DatatypeProperty ;
+         rdfs:label "titel"@nl ,
+                    "title"@en .
 
 
 ###  http://purl.org/dc/terms/created
