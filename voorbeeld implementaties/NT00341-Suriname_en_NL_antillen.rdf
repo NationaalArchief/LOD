@@ -59,7 +59,10 @@ Voor het tot stand komen van deze database vormden de in Paramaribo verzamelde g
                                                                         naa:isAggregationType naa:TypeDetailedContentDescription ;
                                                                         ore:aggregates <http://archief.nl/NL-HaNA/doc/NTView:00341_Owners> ,
                                                                                        <http://archief.nl/NL-HaNA/doc/NTView:00341_Slaves> ;
+                                                                        naa:dating 1863 ;
                                                                         dc:identifier "02c4395c-cd6d-102c-9f8b-005056a23d00"@nl ;
+                                                                        dc:title "Suriname en Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie in West-Indië 1863)"@nl ;
+                                                                        dcterms:abstract "Suriname en Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie 1863)"@nl ;
                                                                         rdfs:comment """In navolging van Engeland (1833) en Frankrijk (1848) werd door de Nederlandse regering in 1863 de slavernij afgeschaft. De afschaffing van de slavernij wordt ook wel aangeduid met de term ‘emancipatie’. Deze emancipatie had grote gevolgen voor de Surinaamse maatschappij. De voormalig slaveneigenaren ontvingen voor iedere vrijgelaten slaaf een premie van de Nederlandse overheid, als compensatie voor het wegvallen van het arbeidspotentieel. Als alternatief voor de inzet van slaven werden door de voormalig slaveneigenaren contractarbeiders geworven in Nederlands Indië, India en China (Arbeid op Contract). De voormalige slaven werden voor een periode van tien jaar onder staatstoezicht geplaatst. In deze periode waren vrijgelatenen tussen de 15 en 60 jaar verplicht een arbeidsovereenkomst af te sluiten. Deze maatregel was vooral bedoeld om te voorkomen dat de voormalige slaven massaal de plantages zouden verlaten, waardoor de plantage-economie zou instorten. Pas na de periode van staatstoezicht verworven de voormalige slaven het volledig burgerrecht.
 
 De database ‘Emancipatie 1863’ bevat gegevens over personen die in 1863 bij de afschaffing van de slavernij in Suriname en de Nederlandse Antillen werden vrijgelaten. Tevens treft u in de database informatie aan over de eigenaren van deze personen. De namen zijn afkomstig uit de emancipatieregisters van Paramaribo, van de overige districten in Suriname en van de Nederlandse Antillen.
@@ -123,7 +126,8 @@ Borderelnummer:
 dit is de koppeling met de tabel slaven. Wanneer u het kopje 'Slaven' aanklikt verschijnt een overzicht van slaven die eigendom waren van deze eigenaar.
 Opmerkingen:
 dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Rekenkamer. Het betreft persoonsgegevens over de eigenaar en informatie over familierelaties."""@nl ;
-                                                                        rdfs:label "NT00341 Vrijverklaarde slaven"@nl .
+                                                                        rdfs:label "NT00341 Vrijverklaarde slaven"@nl ;
+                                                                        skos:prefLabel "NT00341 Vrijverklaarde slaven"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001
@@ -303,6 +307,16 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 <http://archief.nl/NL-HaNA/id/plaats/CountryTheNetherlands> rdf:type owl:NamedIndividual .
 
 
+###  http://archief.nl/NL-HaNA/id/plaats/IslandSuriname
+<http://archief.nl/NL-HaNA/id/plaats/IslandSuriname> rdf:type owl:NamedIndividual ,
+                                                              hg:PlaceInTime ;
+                                                     dcterms:type naa:Island ;
+                                                     rdfs:label "Surinam (island)"@en ,
+                                                                "Suriname (eiland)"@nl ;
+                                                     rdfs:seeAlso <http://archief.nl/id/plaats/IslandSuriname> ;
+                                                     skos:prefLabel "Suriname"@nl .
+
+
 ###  http://archief.nl/NL-HaNA/id/plaats/PlaceAmsterdam
 <http://archief.nl/NL-HaNA/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
                                                               hg:PlaceInTime ;
@@ -338,6 +352,12 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 <http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> rdf:type owl:NamedIndividual ,
                                                                   hg:PlaceInTime ;
                                                          dcterms:type hg:Province .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176
+<http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176> rdf:type owl:NamedIndividual ,
+                                                                                hg:PlaceInTime ;
+                                                                       dcterms:type hg:Address .
 
 
 ###  http://archief.nl/def/ReligionEBG

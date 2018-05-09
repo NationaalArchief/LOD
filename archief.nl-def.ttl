@@ -167,6 +167,7 @@ naa:hasReligion rdf:type owl:ObjectProperty ;
 ###  http://archief.nl/def/hasResidency
 naa:hasResidency rdf:type owl:ObjectProperty ;
                  owl:equivalentProperty cidoc-crm:P74_has_current_or_former_residence ;
+                 owl:inverseOf naa:isResidencyOf ;
                  rdfs:domain naa:Agent ;
                  rdfs:range hg:PlaceInTime ;
                  rdfs:label "has residency (domicile)"@en ,
@@ -206,6 +207,16 @@ naa:isMaterialType rdf:type owl:ObjectProperty ;
                    rdfs:domain naa:ArchivalEntity ;
                    rdfs:range naa:ArchivalEntityType ;
                    skos:label "is van het type materiaal"@nl .
+
+
+###  http://archief.nl/def/isResidencyOf
+naa:isResidencyOf rdf:type owl:ObjectProperty ;
+                  owl:equivalentProperty cidoc-crm:P74i_is_current_or_former_residence_of ;
+                  rdfs:domain hg:PlaceInTime ;
+                  rdfs:range bf:Agent ;
+                  rdfs:label "is residency of"@en ,
+                             "is verblijfplaats van"@nl ;
+                  skos:prefLabel "is verblijfplaats van"@nl .
 
 
 ###  http://archief.nl/def/owned
@@ -383,7 +394,14 @@ gvp:aat2335_associated_with rdf:type owl:ObjectProperty .
 
 
 ###  http://www.cidoc-crm.org/cidoc-crm/P74_has_current_or_former_residence
-cidoc-crm:P74_has_current_or_former_residence rdf:type owl:ObjectProperty .
+cidoc-crm:P74_has_current_or_former_residence rdf:type owl:ObjectProperty ;
+                                              rdfs:comment "This property describes the current or former E53 Place of residence of an E39 Actor.  The residence may be either the Place where the Actor resides, or a legally registered address of any kind."@en ;
+                                              rdfs:label "has current or former residence"@en .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P74i_is_current_or_former_residence_of
+cidoc-crm:P74i_is_current_or_former_residence_of rdf:type owl:ObjectProperty ;
+                                                 rdfs:label "is current or former residence of"@en .
 
 
 ###  http://www.cidoc-crm.org/rdfs/cidoc-crm#P129_is_about
@@ -667,6 +685,26 @@ naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
                            skos:prefLabel "Nummer archiefinventaris"@nl .
 
 
+###  http://archief.nl/def/country
+naa:country rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf dc:description ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( naa:ArchivalReference
+                                        hg:PlaceInTime
+                                      )
+                        ] ;
+            rdfs:label "land (beschrijving)"@nl ;
+            skos:prefLabel "land (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/dating
+naa:dating rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:date ;
+           rdfs:label "datering"@nl ,
+                      "dating"@en ;
+           skos:prefLabel "datering"@nl .
+
+
 ###  http://archief.nl/def/deprecatedKeyword
 naa:deprecatedKeyword rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf dc:description ;
@@ -799,9 +837,34 @@ naa:inventoryNumber rdf:type owl:DatatypeProperty ;
                     skos:prefLabel "Inventarisnummer"@nl .
 
 
+###  http://archief.nl/def/island
+naa:island rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:description ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( naa:ArchivalReference
+                                       hg:PlaceInTime
+                                     )
+                       ] ;
+           rdfs:label "eiland (beschrijving)"@nl ,
+                      "island (description)"@en ;
+           skos:prefLabel "eiland (beschrijving)"@nl .
+
+
 ###  http://archief.nl/def/lastKnownName
 naa:lastKnownName rdf:type owl:DatatypeProperty ;
                   rdfs:range xsd:string .
+
+
+###  http://archief.nl/def/place
+naa:place rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf dc:description ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( naa:ArchivalReference
+                                      hg:PlaceInTime
+                                    )
+                      ] ;
+          rdfs:label "plaats (beschrijving)"@nl ;
+          skos:prefLabel "plaats (beschrijving)"@nl .
 
 
 ###  http://archief.nl/def/postposition
@@ -959,6 +1022,31 @@ naa:prepositionTitle rdf:type owl:DatatypeProperty ;
                      skos:prefLabel "titel"@en .
 
 
+###  http://archief.nl/def/province
+naa:province rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf dc:description ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( naa:ArchivalReference
+                                         hg:PlaceInTime
+                                       )
+                         ] ;
+             rdfs:label "province (description)"@en ,
+                        "provincie (beschrijving)"@nl ;
+             skos:prefLabel "provincie (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/street
+naa:street rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:description ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( naa:ArchivalReference
+                                       hg:PlaceInTime
+                                     )
+                       ] ;
+           rdfs:label "straat (beschrijving)"@nl ;
+           skos:prefLabel "straat (beschrijving)"@nl .
+
+
 ###  http://dbpedia.org/ontology/age
 dbo:age rdf:type owl:DatatypeProperty ;
         rdfs:domain dbo:Agent .
@@ -1026,6 +1114,15 @@ dc:title rdf:type owl:DatatypeProperty ;
                     "title"@en .
 
 
+###  http://purl.org/dc/terms/abstract
+dcterms:abstract rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf dc:description ;
+                 rdfs:comment "A summary of the resource."@en ;
+                 rdfs:label "abstract"@en ,
+                            "overzicht"@nl ;
+                 skos:prefLabel "overzicht"@nl .
+
+
 ###  http://purl.org/dc/terms/created
 dcterms:created rdf:type owl:DatatypeProperty ;
                 skos:note "MAIS Aanmaakdatum"@nl .
@@ -1040,6 +1137,15 @@ dcterms:creator rdf:type owl:DatatypeProperty ;
 dcterms:date rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf dc:date ;
              rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf dc:description ;
+                    rdfs:comment "An account of the resource."@en ;
+                    rdfs:label "beschrijving"@nl ,
+                               "description"@en ;
+                    skos:prefLabel "beschrijving"@nl .
 
 
 ###  http://purl.org/dc/terms/hasVersion
@@ -1726,6 +1832,14 @@ naa:GenderNeutral rdf:type owl:NamedIndividual ,
                   rdfs:label "Gender neutraal"@nl .
 
 
+###  http://archief.nl/def/Island
+naa:Island rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType ;
+           rdfs:label "Eiland"@nl ,
+                      "Island"@en ;
+           skos:prefLabel "Eiland"@nl .
+
+
 ###  http://archief.nl/def/OrganisationTypes
 naa:OrganisationTypes rdf:type owl:NamedIndividual ,
                                skos:ConceptScheme .
@@ -2002,6 +2116,15 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
 <http://archief.nl/id/plaats/CityAmsterdam> rdf:type owl:NamedIndividual ,
                                                      hg:PlaceInTime ;
                                             rdfs:label "Amsterdam (stad)"@nl .
+
+
+###  http://archief.nl/id/plaats/IslandSuriname
+<http://archief.nl/id/plaats/IslandSuriname> rdf:type owl:NamedIndividual ,
+                                                      hg:PlaceInTime ;
+                                             dcterms:type naa:Island ;
+                                             rdfs:label "Surinam (island)"@en ,
+                                                        "Suriname (eiland)"@nl ;
+                                             skos:prefLabel "Suriname"@nl .
 
 
 ###  http://archief.nl/id/plaats/PlaceAmsterdam
