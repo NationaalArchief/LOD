@@ -221,7 +221,7 @@ naa:isResidencyOf rdf:type owl:ObjectProperty ;
 
 ###  http://archief.nl/def/owned
 naa:owned rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf fibo-fnd-oac-own:owns ;
+          rdfs:domain fibo-fnd-pty-pty:IndependentParty ;
           rdfs:label "bezat"@nl ;
           skos:definition "To have owned something."@en ;
           skos:note "Deze term is gemunt om overdracht van eigenaarschap te kunnen duiden die in het verleden heeft plaats gevonden."@nl .
@@ -498,6 +498,7 @@ fibo-fnd-oac-own:isOwnedBy rdf:type owl:ObjectProperty ;
 
 ###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/owns
 fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf naa:owned ;
                       rdfs:domain fibo-fnd-pty-pty:IndependentParty ;
                       rdfs:isDefinedBy fibo-fnd-oac-own: ;
                       rdfs:label "owns" ;
@@ -673,6 +674,14 @@ naa:alternativePostpositionTitle rdf:type owl:DatatypeProperty ;
                                             "titelvariant na de naam"@nl ;
                                  skos:prefLabel "alternative title after name"@en ,
                                                 "titelvariant na de naam"@nl .
+
+
+###  http://archief.nl/def/archiveLink
+naa:archiveLink rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf dc:identifier ;
+                rdfs:label "link to archive"@en ,
+                           "verwijzing naar archiefstuk"@nl ;
+                skos:prefLabel "verwijzing naar archiefstuk"@nl .
 
 
 ###  http://archief.nl/def/catalogReferenceNumber
@@ -1062,6 +1071,13 @@ bf:otherEdition rdf:type owl:DatatypeProperty ;
                 skos:note "MAIS Publicatie, al eerder verschenen bijvoorbeeld in Elsevier Wereldkroniek."@nl .
 
 
+###  http://id.loc.gov/ontologies/bibframe/part
+bf:part rdf:type owl:DatatypeProperty ;
+        rdfs:label "aandeel"@nl ;
+        skos:definition "Part of a resource to which information applies."@en ;
+        skos:prefLabel "aandeel"@nl .
+
+
 ###  http://id.loc.gov/ontologies/bibframe/scale
 bf:scale rdf:type owl:DatatypeProperty .
 
@@ -1298,7 +1314,8 @@ naa:NL-HaNA_Aggregation rdf:type owl:Class ;
 naa:PersonEntity rdf:type owl:Class ;
                  owl:equivalentClass bgn:Person ,
                                      schema:Person ,
-                                     foaf:Person ;
+                                     foaf:Person ,
+                                     fibo-fnd-pty-pty:IndependentParty ;
                  rdfs:subClassOf naa:ArchivalEntity ;
                  owl:disjointWith naa:PersonReference ;
                  skos:definition "Persoon met relevantie in de erfgoedsector."@nl ;

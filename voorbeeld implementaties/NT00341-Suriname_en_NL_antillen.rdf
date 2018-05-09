@@ -167,7 +167,9 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                naa:NL-HaNA_Aggregation ;
                                                                                       naa:isAggregationType naa:TypeSlaveryRecord ;
                                                                                       ore:aggregates <http://archief.nl/NL-HaNA/doc/SlaveOwnerReference:e6a05c41-2777-471d-affa-53768683a658> ,
-                                                                                                     <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
+                                                                                                     <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ,
+                                                                                                     <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerPlantation:NT00341_2176> ,
+                                                                                                     <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176> ;
                                                                                       ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTView:00341_Owners> ;
                                                                                       rdfs:label "Record van slaveneigenaar"@nl .
 
@@ -177,6 +179,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                   naa:ArchivalReference ,
                                                                                                   naa:MultipleOffers ;
                                                                                          dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
+                                                                                         schema:areaServed <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerPlantation:NT00341_2176> ;
                                                                                          schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
                                                                                          schema:itemOffered <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ,
                                                                                                             <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12658> ,
@@ -189,10 +192,13 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                             <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12665> ;
                                                                                          schema:offeredBy <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                                          ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
+                                                                                         naa:archiveLink "NL-HaNA/2.02.09.08/229" ;
                                                                                          naa:docketRecordNumber "PE001" ;
                                                                                          naa:inventoryFundsImbursedValue "70.800,00"^^rdfs:Literal ;
                                                                                          naa:inventoryLevelValue "244"^^xsd:int ;
-                                                                                         rdfs:label "Record van verkochte slaven"@nl .
+                                                                                         bf:part "11/144" ;
+                                                                                         rdfs:label "Record van verkochte slaven"@nl ;
+                                                                                         skos:note "Thans (1862) uitlandig"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/SlaveRecord:cec8f77c-8a4b-4049-86b8-15a122772dfb
@@ -283,8 +289,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                naa:hasProfession naa:ProfessionMerchant ,
                                                                                  naa:ProfessionPlantationKeeper ,
                                                                                  naa:ProfessionRecordKeeper ;
-                                                               naa:hasResidency <http://archief.nl/NL-HaNA/id/plaats/CountryTheNetherlands> ,
-                                                                                <http://archief.nl/NL-HaNA/id/plaats/PlaceAmsterdam> ;
+                                                               naa:hasResidency <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176> ;
                                                                naa:owned <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ,
                                                                          <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12658> ,
                                                                          <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12659> ,
@@ -354,10 +359,25 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                          dcterms:type hg:Province .
 
 
+###  http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerPlantation:NT00341_2176
+<http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerPlantation:NT00341_2176> rdf:type owl:NamedIndividual ,
+                                                                                 hg:PlaceInTime ;
+                                                                        dcterms:type naa:Plantation ;
+                                                                        dc:description "Hooyland" ;
+                                                                        rdfs:label "Hooyland"@en ,
+                                                                                   "Hooyland"@nl ;
+                                                                        skos:prefLabel "Hooyland"@nl .
+
+
 ###  http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176
 <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176> rdf:type owl:NamedIndividual ,
                                                                                 hg:PlaceInTime ;
-                                                                       dcterms:type hg:Address .
+                                                                       dcterms:type hg:Address ;
+                                                                       naa:country "Suriname"@nl ;
+                                                                       naa:island "Suriname"@nl ;
+                                                                       naa:place "Paramaribo"@nl ;
+                                                                       naa:street "Maagdenstraat 72"@nl ;
+                                                                       rdfs:label "woonadres van"@nl .
 
 
 ###  http://archief.nl/def/ReligionEBG
