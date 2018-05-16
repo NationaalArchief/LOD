@@ -240,9 +240,9 @@ naa:sex rdf:type owl:ObjectProperty ;
 ###  http://archief.nl/def/wasOwnedBy
 naa:wasOwnedBy rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf fibo-fnd-oac-own:isOwnedBy ;
-               rdfs:label "is in het bezit geweest van"@nl ,
+               rdfs:label "is het bezit geweest van"@nl ,
                           "was owned by"@en ;
-               skos:prefLabel "is in het bezit geweest van"@nl .
+               skos:prefLabel "is het bezit geweest van"@nl .
 
 
 ###  http://dbpedia.org/ontology/sex
@@ -324,7 +324,11 @@ schema:availableAtOrFrom rdf:type owl:ObjectProperty ;
                                                      schema:Demand
                                                      schema:Offer
                                                    )
-                                     ] .
+                                     ] ;
+                         rdfs:comment "The place(s) from which the offer can be obtained (e.g. store locations)."@en ;
+                         rdfs:label "available at or from"@en ,
+                                    "beschikbaar op lokatie"@nl ;
+                         skos:prefLabel "beschikbaar op lokatie"@nl .
 
 
 ###  http://schema.org/category
@@ -803,8 +807,8 @@ naa:inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
                                                      )
                                        ] ;
                            rdfs:comment "The amount of the inventory which was eligible for reimbursement"@en ;
-                           rdfs:label "hoeveelheid uit vooraard die vergoed werd"@nl ;
-                           skos:prefLabel "hoeveelheid uit vooraard die vergoed werd"@nl .
+                           rdfs:label "hoeveelheid uit voorraad die vergoed werd"@nl ;
+                           skos:prefLabel "hoeveelheid uit voorraad die vergoed werd"@nl .
 
 
 ###  http://archief.nl/def/inventoryFundsImbursedValue
@@ -1042,6 +1046,14 @@ naa:province rdf:type owl:DatatypeProperty ;
              rdfs:label "province (description)"@en ,
                         "provincie (beschrijving)"@nl ;
              skos:prefLabel "provincie (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/slaveName
+naa:slaveName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf naa:alternativeNamePosition ;
+              rdfs:label "slave name"@en ,
+                         "slavennaam"@nl ;
+              skos:prefLabel "slavennaam"@nl .
 
 
 ###  http://archief.nl/def/street

@@ -145,9 +145,9 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                     naa:fileId 0 ;
                                                     naa:guid "425AF5AEEB0B041AE053C900A8C0A739" ;
                                                     dc:title "Eigenaren van stadsslaven"@nl ;
-                                                    rdfs:label "Eigenaren"@nl ,
-                                                               "Owners"@en ;
-                                                    skos:prefLabel "Eigenaren"@nl .
+                                                    rdfs:label "NT00341 View: Eigenaren"@nl ,
+                                                               "NT00341 View: Owners"@en ;
+                                                    skos:prefLabel "NT00341 View: Eigenaren"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/NTView:00341_Slaves
@@ -157,9 +157,9 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                     naa:fileId 1 ;
                                                     naa:guid "425AF5AEEB0C041AE053C900A8C0A739" ;
                                                     dc:title "Stadsslaven van eigenaren (inclusief Antillen)"@nl ;
-                                                    rdfs:label "NT00341_stadsslaven"@nl ;
-                                                    skos:prefLabel "Slaven"@nl ,
-                                                                   "Slaves"@en .
+                                                    rdfs:label "NT00341 View: Stadsslaven"@nl ;
+                                                    skos:prefLabel "NT00341 View: City slaves"@en ,
+                                                                   "NT00341 View: Stadsslaven"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/SlaveOwnerRecord:e6a05c41-2777-471d-affa-53768683a658
@@ -216,8 +216,8 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                              naa:ArchivalReference ,
                                                                                              schema:Offer ,
                                                                                              premis:RightsBasis ;
-                                                                                    dcterms:coverage <http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
                                                                                     dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
+                                                                                    schema:availableAtOrFrom <http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
                                                                                     schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
                                                                                     schema:itemOffered <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
                                                                                     schema:offeredBy <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
@@ -243,10 +243,10 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                             naa:wasOwnedBy <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                             ebucore:hasRole naa:RoleSlave ;
                                                             naa:age 56 ;
-                                                            naa:alternativeFirstName "Susanna" ;
                                                             naa:fragmentIdentifier "1"^^xsd:int ;
                                                             naa:postpositionName "Absent" ;
                                                             naa:prepositionName "Juliana Susanna" ;
+                                                            naa:slaveName "Susanna" ;
                                                             dc:identifier "cec8f77c-8a4b-4049-86b8-15a122772dfb" ;
                                                             rdfs:label "Juliana Susanna" .
 
@@ -305,7 +305,9 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                naa:fragmentIdentifier "2176"^^xsd:int ;
                                                                naa:postpositionName "Kuvel" ;
                                                                naa:prepositionName "Geertruida Elisabeth" ;
-                                                               dc:identifier "e6a05c41-2777-471d-affa-53768683a658" .
+                                                               dc:identifier "e6a05c41-2777-471d-affa-53768683a658" ;
+                                                               rdfs:label "Geertruida Elisabeth Kuvel" ;
+                                                               skos:prefLabel "Geertruida Elisabeth Kuvel" .
 
 
 ###  http://archief.nl/NL-HaNA/id/plaats/CountryTheNetherlands
@@ -377,7 +379,9 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                        naa:island "Suriname"@nl ;
                                                                        naa:place "Paramaribo"@nl ;
                                                                        naa:street "Maagdenstraat 72"@nl ;
-                                                                       rdfs:label "woonadres van"@nl .
+                                                                       rdfs:label "residency of Geertruida Elisabeth Kuvel"@en ,
+                                                                                  "woonadres van Geertruida Elisabeth Kuvel"@nl ;
+                                                                       skos:prefLabel "woonadres van Geertruida Elisabeth Kuvel"@nl .
 
 
 ###  http://archief.nl/def/ReligionEBG
