@@ -39,6 +39,18 @@
 @base <http://archief.nl/def/> .
 
 <http://archief.nl/def/> rdf:type owl:Ontology ;
+                          skos:note """Testserver: http://svr0153.test.rad.lan/narthex/
+
+Globale aanroep: http://svr0153.test.rad.lan/api/search/v2/
+
+Opvragen van de datasets: http://svr0153.test.rad.lan/api/datasets/
+
+Dataset statistics: http://svr0153.test.rad.lan/api/datasets/2-24-09/stats/ 
+(2-24-09 als voorbeeld)
+
+Fragments:http://svr0153.test.rad.lan/api/fragments
+
+API documentatie: http://svr0153.test.rad.lan/api/search/v2/scroll/_docs"""@nl ;
                           rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
@@ -2173,6 +2185,18 @@ In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in S
                                            rdfs:label "Evangelische Broedergemeente"@nl ;
                                            rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
                                            skos:prefLabel "Evangelische Broedergemeente"@nl .
+
+
+###  http://archief.nl/id/religie/ReligionRC
+<http://archief.nl/id/religie/ReligionRC> rdf:type owl:NamedIndividual ,
+                                                   skos:Concept ;
+                                          rdfs:comment """De Rooms-Katholieke Kerk is met meer dan 1,2 miljard volgelingen het grootste kerkgenootschap ter wereld en wordt ook wel kortweg de Kerk genoemd. Het hoofd van de Rooms-Katholieke Kerk is de paus.
+
+De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke boeken) en het Nieuwe Testament van de Bijbel, op de katholieke traditie en op het leergezag van Rome. De Kerk heeft het verloop van de geschiedenis van de mensheid, met name in de westerse wereld, in belangrijke mate mede bepaald. Vanaf de invoering van het leenstelsel in de vroege middeleeuwen, tot aan de Napoleontische tijd, belichaamde ze in West-Europa behalve religieuze ook soms politieke macht. Tegenwoordig is de paus, de bisschop van Rome, ook soeverein van Vaticaanstad en is zijn wereldlijke macht beperkt."""@nl ;
+                                          rdfs:label "Roman Catholics"@en ,
+                                                     "Rooms Katholieken"@nl ;
+                                          rdfs:seeAlso <https://nl.wikipedia.org/wiki/Rooms-Katholieke_Kerk> ;
+                                          skos:prefLabel "Rooms Katholieken"@nl .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
