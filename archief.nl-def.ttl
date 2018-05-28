@@ -45,12 +45,12 @@ Globale aanroep: http://svr0153.test.rad.lan/api/search/v2/
 
 Opvragen van de datasets: http://svr0153.test.rad.lan/api/datasets/
 
-Dataset statistics: http://svr0153.test.rad.lan/api/datasets/2-24-09/stats/ 
+Dataset statistics: http://svr0153.test.rad.lan/api/datasets/2-24-09/stats/
 (2-24-09 als voorbeeld)
 
 Fragments:http://svr0153.test.rad.lan/api/fragments
 
-API documentatie: http://svr0153.test.rad.lan/api/search/v2/scroll/_docs"""@nl ;
+API documentatie: http://svr0153.test.rad.lan/api/search/v2/_docs"""@nl ;
                           rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
@@ -1327,11 +1327,76 @@ naa:MultipleOffers rdf:type owl:Class ;
                    skos:prefLabel "Meerdere aanbiedingen"@nl .
 
 
+###  http://archief.nl/def/NL-040041000_Aggregation
+naa:NL-040041000_Aggregation rdf:type owl:Class ;
+                             rdfs:subClassOf ore:Aggregation ,
+                             bf:Collection ;
+                             rdfs:label "Aggregatie Tresoar (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-AhGldA_Aggregation
+naa:NL-AhGldA_Aggregation rdf:type owl:Class ;
+                          rdfs:subClassOf ore:Aggregation ,
+                          bf:Collection ;
+                          rdfs:label "Aggregatie Gelders Archief (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-GrGRA_Aggregation
+naa:NL-GrGRA_Aggregation rdf:type owl:Class ;
+                         rdfs:subClassOf ore:Aggregation ,
+                         bf:Collection ;
+                         rdfs:label "Aggregatie Groninger Archieven (ISIL)"@nl .
+
+
 ###  http://archief.nl/def/NL-HaNA_Aggregation
 naa:NL-HaNA_Aggregation rdf:type owl:Class ;
-                        rdfs:subClassOf bf:Collection ,
-                                        ore:Aggregation ;
-                        rdfs:label "Nationaal Archief Aggregatie. Kan een collectie zijn, of een record."@nl .
+                        rdfs:subClassOf ore:Aggregation ,
+                        bf:Collection ;
+                        rdfs:label "Aggregatie Nationaal Archief (ISIL)"@nl ;
+                        skos:note "ISIL Nationaal Archief"@nl ;
+                        skos:prefLabel "ISIL Nationaal Archief"@nl .
+
+
+###  http://archief.nl/def/NL-HlmNHA_Aggregation
+naa:NL-HlmNHA_Aggregation rdf:type owl:Class ;
+                          rdfs:subClassOf ore:Aggregation ,
+                          bf:Collection ;
+                          rdfs:label "Aggregatie Noord-Hollands Archief (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-LlsNLE_Aggregation
+naa:NL-LlsNLE_Aggregation rdf:type owl:Class ;
+                          rdfs:subClassOf ore:Aggregation ,
+                          bf:Collection ;
+                          rdfs:label "Aggregatie Nieuw Land Erfgoedcentrum (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-MdbZA_Aggregation
+naa:NL-MdbZA_Aggregation rdf:type owl:Class ;
+                         rdfs:subClassOf ore:Aggregation ,
+                         bf:Collection ;
+                         rdfs:label "Aggregatie Zeeuws Archief (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-MtRHCL_Aggregation
+naa:NL-MtRHCL_Aggregation rdf:type owl:Class ;
+                          rdfs:subClassOf ore:Aggregation ,
+                          bf:Collection ;
+                          rdfs:label "Aggregatie RHC Limburg (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-UtHUA_Aggregation
+naa:NL-UtHUA_Aggregation rdf:type owl:Class ;
+                         rdfs:subClassOf ore:Aggregation ,
+                         bf:Collection ;
+                         rdfs:label "Aggregatie Het Utrechts Archief (ISIL)"@nl .
+
+
+###  http://archief.nl/def/NL-ZlHCO_Aggregation
+naa:NL-ZlHCO_Aggregation rdf:type owl:Class ;
+                         rdfs:subClassOf ore:Aggregation ,
+                         bf:Collection ;
+                         rdfs:label "Aggregatie Historisch Centrum Overijssel (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/PersonEntity
