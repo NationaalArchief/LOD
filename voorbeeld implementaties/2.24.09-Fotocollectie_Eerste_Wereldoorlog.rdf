@@ -1,0 +1,141 @@
+@prefix : <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Eerste_Wereld_Oorlog/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix hg: <http://rdf.histograph.io/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix bgn: <http://biographynet.nl/schema/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix gvp: <http://vocab.getty.edu/ontology#> .
+@prefix naa: <http://archief.nl/def/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix iiif: <http://iiif.io/api/image/2#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix svcs: <http://rdfs.org/sioc/services#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+@prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@base <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Eerste_Wereld_Oorlog/> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Eerste_Wereld_Oorlog/> rdf:type owl:Ontology ;
+                                                                               owl:imports naa: ;
+                                                                               skos:note """Testserver: http://svr0153.test.rad.lan/narthex/
+
+Globale aanroep: http://svr0153.test.rad.lan/api/search/v2/
+
+Opvragen van de datasets: http://svr0153.test.rad.lan/api/datasets/
+
+Dataset statistics: http://svr0153.test.rad.lan/api/datasets/2-24-09/stats/
+(2-24-09 als voorbeeld)
+
+Fragments:http://svr0153.test.rad.lan/api/fragments
+
+API documentatie: http://svr0153.test.rad.lan/api/search/v2/_docs"""@nl .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Eerste_Wereld_Oorlog
+<http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Eerste_Wereld_Oorlog> rdf:type owl:NamedIndividual ,
+                                                                                      naa:NL-HaNA_Aggregation ;
+                                                                             naa:isAggregationType naa:TypePhotoCollection ;
+                                                                             dc:creator "Associated Illustration Agencies"@en ,
+                                                                                        "N.V. Vereenigde Fotobureaux"@nl ,
+                                                                                        "The Press Bureau"@en ,
+                                                                                        "onbekend"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/PhotoRecord:AFA301D0D0B4102DBCF8003048976D84
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AFA301D0D0B4102DBCF8003048976D84> rdf:type owl:NamedIndividual ,
+                                                                                      naa:NL-HaNA_Aggregation ;
+                                                                             naa:isAggregationType naa:TypePhotoRecord ;
+                                                                             ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AFA301D0D0B4102DBCF8003048976D84> ,
+                                                                                            <http://archief.nl/NL-HaNA/doc/RightsStatement:AFA301D0D0B4102DBCF8003048976D84> ,
+                                                                                            <http://archief.nl/NL-HaNA/id/beeld/Photo:AFA301D0D0B4102DBCF8003048976D84> ;
+                                                                             ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:NationaalArchief> ,
+                                                                                                <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Eerste_Wereld_Oorlog> .
+
+
+###  http://archief.nl/NL-HaNA/doc/PhotoReference:AFA301D0D0B4102DBCF8003048976D84
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AFA301D0D0B4102DBCF8003048976D84> rdf:type owl:NamedIndividual ,
+                                                                                         naa:ArchivalReference ,
+                                                                                         edm:TimeSpan ;
+                                                                                foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AFA301D0D0B4102DBCF8003048976D84> ;
+                                                                                naa:additionalDescription "Interesting scenes taken on the arrival of German Prisoners at Southampton before they are sent away to the various detention camps."@en ;
+                                                                                dc:coverage "MAIS Datering geschat"@nl ;
+                                                                                dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
+                                                                                edm:begin "1917"^^xsd:string ;
+                                                                                edm:end "1918"^^xsd:string ;
+                                                                                rdfs:comment "Beschrijvende informatie over de foto van het onderwerp. Gebruik een ArchivalReference voor aanvullende beschrijving en/of metadata."@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/RightsStatement:AFA301D0D0B4102DBCF8003048976D84
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AFA301D0D0B4102DBCF8003048976D84> rdf:type owl:NamedIndividual ,
+                                                                                          dcterms:RightsStatement ,
+                                                                                          ore:AggregatedResource ;
+                                                                                 dc:description "MAIS Aut.toelichting"@nl ;
+                                                                                 dc:subject "MAIS  MAIS openb.beperking"@nl ;
+                                                                                 dcterms:source "MAIS Download URL"@nl ;
+                                                                                 dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
+                                                                                 skos:note "MAIS openb.beperking"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/beeld/Photo:AFA301D0D0B4102DBCF8003048976D84
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AFA301D0D0B4102DBCF8003048976D84> rdf:type owl:NamedIndividual ,
+                                                                                     naa:ArchivalEntity ;
+                                                                            naa:isMaterialType naa:TypePhotograph ;
+                                                                            dcterms:accessRights <http://archief.nl/NL-HaNA/doc/RightsStatement:AFA301D0D0B4102DBCF8003048976D84> ;
+                                                                            dcterms:coverage <http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld> ;
+                                                                            dcterms:publisher <http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> ;
+                                                                            dcterms:relation <http://archief.nl/NL-HaNA/doc/PhotoReference:AFA301D0D0B4102DBCF8003048976D84> ;
+                                                                            dcterms:rights naa:RightsTypePublicDomain ;
+                                                                            dcterms:subject <http://archief.nl/id/plaats/PlaceFrankrijk> ,
+                                                                                            <http://data.beeldengeluid.nl/gtaa/GTAANaamVoorbeeld> ,
+                                                                                            <http://data.beeldengeluid.nl/gtaa/GTAAOnderwerpVoorbeeld> ,
+                                                                                            <http://data.beeldengeluid.nl/gtaa/GTAAPersoonVoorbeeld> ;
+                                                                                              edm:isShownBy <https://acpt.nationaalarchief.nl/gaf/api/file/v1/default/WebResource:GAFZichtexemplaarVoorbeeld> ;
+                                                                                              naa:additionalDescription "Extra beschrijving van wie of wat er op de foto staat."@nl ;
+                                                                                              naa:catalogReferenceNumber "2.24.09.07" ;
+                                                                                              bf:otherEdition "al eerder verschenen in Elsevier Wereldkroniek"@nl ;
+                                                                                              bf:scale "1:10" ;
+                                                                                              dc:coverage "Frankrijk"@nl ,
+                                                                                                          "MAIS Lokatie in Beschrijven (bijvoorbeeld Frankrijk)."@nl ;
+                                                                                              dc:description "MAIS Beschrijving (bijvoorbeeld Troonswisseling 30 april : bijeenkomst voor de abdicatie het Paleis op de Dam ; overzicht)"@nl ;
+                                                                                              dc:identifier "AFA301D0D0B4102DBCF8003048976D84" ;
+                                                                                              dc:license "MAIS Licentie methode"@nl ;
+                                                                                              dc:publisher "Nationaal Archief"@nl ;
+                                                                                              dc:subject "militairen."@nl ;
+                                                                                              dcterms:created "MAIS Aanmaakdatum"@nl ;
+                                                                                              dcterms:creator "MAIS Vervaardiger"@nl ;
+                                                                                              dcterms:modified "MAIS Wijzigingsdatum"@nl ;
+                                                                                              dcterms:rightsHolder "Nationaal Archief, CC0"@nl ;
+                                                                                              dc:creator "MAIS Fotograaf | Memorix Vervaardiger | MAIS Auteur (bijvoorbeeld Onbekend / Publiek Domein)"@nl ;
+                                                                                              dc:format "MAIS Afmeting | MAIS Vorm (bijvoorbeeld 13 x 18 cm)"@nl ;
+                                                                                              dc:relation "MAIS Verwijzing"@nl ;
+                                                                                              dc:type "MAIS Materiaal (bijvoorbeeld Foto zwart/wit)"@nl ;
+                                                                                              skos:note "Eventuele Opmerkingen"@nl .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

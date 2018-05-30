@@ -1329,29 +1329,29 @@ naa:MultipleOffers rdf:type owl:Class ;
 
 ###  http://archief.nl/def/NL-040041000_Aggregation
 naa:NL-040041000_Aggregation rdf:type owl:Class ;
-                             rdfs:subClassOf ore:Aggregation ,
-                             bf:Collection ;
+                             rdfs:subClassOf bf:Collection ,
+                                             ore:Aggregation ;
                              rdfs:label "Aggregatie Tresoar (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-AhGldA_Aggregation
 naa:NL-AhGldA_Aggregation rdf:type owl:Class ;
-                          rdfs:subClassOf ore:Aggregation ,
-                          bf:Collection ;
+                          rdfs:subClassOf bf:Collection ,
+                                          ore:Aggregation ;
                           rdfs:label "Aggregatie Gelders Archief (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-GrGRA_Aggregation
 naa:NL-GrGRA_Aggregation rdf:type owl:Class ;
-                         rdfs:subClassOf ore:Aggregation ,
-                         bf:Collection ;
+                         rdfs:subClassOf bf:Collection ,
+                                         ore:Aggregation ;
                          rdfs:label "Aggregatie Groninger Archieven (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-HaNA_Aggregation
 naa:NL-HaNA_Aggregation rdf:type owl:Class ;
-                        rdfs:subClassOf ore:Aggregation ,
-                        bf:Collection ;
+                        rdfs:subClassOf bf:Collection ,
+                                        ore:Aggregation ;
                         rdfs:label "Aggregatie Nationaal Archief (ISIL)"@nl ;
                         skos:note "ISIL Nationaal Archief"@nl ;
                         skos:prefLabel "ISIL Nationaal Archief"@nl .
@@ -1359,43 +1359,43 @@ naa:NL-HaNA_Aggregation rdf:type owl:Class ;
 
 ###  http://archief.nl/def/NL-HlmNHA_Aggregation
 naa:NL-HlmNHA_Aggregation rdf:type owl:Class ;
-                          rdfs:subClassOf ore:Aggregation ,
-                          bf:Collection ;
+                          rdfs:subClassOf bf:Collection ,
+                                          ore:Aggregation ;
                           rdfs:label "Aggregatie Noord-Hollands Archief (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-LlsNLE_Aggregation
 naa:NL-LlsNLE_Aggregation rdf:type owl:Class ;
-                          rdfs:subClassOf ore:Aggregation ,
-                          bf:Collection ;
+                          rdfs:subClassOf bf:Collection ,
+                                          ore:Aggregation ;
                           rdfs:label "Aggregatie Nieuw Land Erfgoedcentrum (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-MdbZA_Aggregation
 naa:NL-MdbZA_Aggregation rdf:type owl:Class ;
-                         rdfs:subClassOf ore:Aggregation ,
-                         bf:Collection ;
+                         rdfs:subClassOf bf:Collection ,
+                                         ore:Aggregation ;
                          rdfs:label "Aggregatie Zeeuws Archief (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-MtRHCL_Aggregation
 naa:NL-MtRHCL_Aggregation rdf:type owl:Class ;
-                          rdfs:subClassOf ore:Aggregation ,
-                          bf:Collection ;
+                          rdfs:subClassOf bf:Collection ,
+                                          ore:Aggregation ;
                           rdfs:label "Aggregatie RHC Limburg (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-UtHUA_Aggregation
 naa:NL-UtHUA_Aggregation rdf:type owl:Class ;
-                         rdfs:subClassOf ore:Aggregation ,
-                         bf:Collection ;
+                         rdfs:subClassOf bf:Collection ,
+                                         ore:Aggregation ;
                          rdfs:label "Aggregatie Het Utrechts Archief (ISIL)"@nl .
 
 
 ###  http://archief.nl/def/NL-ZlHCO_Aggregation
 naa:NL-ZlHCO_Aggregation rdf:type owl:Class ;
-                         rdfs:subClassOf ore:Aggregation ,
-                         bf:Collection ;
+                         rdfs:subClassOf bf:Collection ,
+                                         ore:Aggregation ;
                          rdfs:label "Aggregatie Historisch Centrum Overijssel (ISIL)"@nl .
 
 
@@ -2221,7 +2221,8 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
 ###  http://archief.nl/id/plaats/CityAmsterdam
 <http://archief.nl/id/plaats/CityAmsterdam> rdf:type owl:NamedIndividual ,
                                                      hg:PlaceInTime ;
-                                            rdfs:label "Amsterdam (stad)"@nl .
+                                            rdfs:label "Amsterdam (stad)"@nl ;
+                                            skos:prefLabel "Amsterdam (stad)"@nl .
 
 
 ###  http://archief.nl/id/plaats/IslandSuriname
@@ -2230,13 +2231,21 @@ naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                                              dcterms:type naa:Island ;
                                              rdfs:label "Surinam (island)"@en ,
                                                         "Suriname (eiland)"@nl ;
-                                             skos:prefLabel "Suriname"@nl .
+                                             skos:prefLabel "Suriname (eiland)"@nl .
 
 
 ###  http://archief.nl/id/plaats/PlaceAmsterdam
 <http://archief.nl/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
                                                       hg:PlaceInTime ;
                                              rdfs:label "Amsterdam (plaats)"@nl .
+
+
+###  http://archief.nl/id/plaats/PlaceFrankrijk
+<http://archief.nl/id/plaats/PlaceFrankrijk> rdf:type owl:NamedIndividual ,
+                                                      hg:PlaceInTime ;
+                                             rdfs:label "France (place)"@en ,
+                                                        "Frankrijk (plaats)"@nl ;
+                                             skos:prefLabel "Frankrijk (plaats)"@nl .
 
 
 ###  http://archief.nl/id/religie/ReligionEBG
