@@ -837,16 +837,20 @@ pnv:disambiguatingDescription rdf:type owl:DatatypeProperty ;
 pnv:familyName rdf:type owl:DatatypeProperty ;
                rdfs:domain pnv:PersonName ;
                rdfs:range xsd:string ;
-               rdfs:comment "A Family name is the name of the family a person is born into"^^xsd:string ;
-               rdfs:label "Family name"^^xsd:string .
+               rdfs:comment "A Family name is the name of the family a person is born into"@en ;
+               rdfs:label "familienaam"@nl ,
+                          "family name"@en ;
+               skos:prefLabel "familienaam"@nl .
 
 
 ###  http://archief.nl/pnv/def/familyNamePrefix
 pnv:familyNamePrefix rdf:type owl:DatatypeProperty ;
                      rdfs:domain pnv:PersonName ;
                      rdfs:range xsd:string ;
-                     rdfs:comment "A Family name prefix refers to a preceding part of the family name"^^xsd:string ;
-                     rdfs:label "Family name prefix"^^xsd:string .
+                     rdfs:comment "A Family name prefix refers to a preceding part of the family name"@en ;
+                     rdfs:label "familienaam prefix"@nl ,
+                                "family name prefix"@en ;
+                     skos:prefLabel "familienaam prefix"@nl .
 
 
 ###  http://archief.nl/pnv/def/firstName
@@ -854,24 +858,32 @@ pnv:firstName rdf:type owl:DatatypeProperty ;
               owl:equivalentProperty pnv:givenName ;
               rdfs:domain pnv:PersonName ;
               rdfs:range xsd:string ;
-              rdfs:comment "A First name is the same as a Given name"^^xsd:string ;
-              rdfs:label "First name"^^xsd:string .
+              rdfs:comment "A First name is the same as a Given name"@en ;
+              rdfs:label "first name"@en ,
+                         "voornaam"@nl ;
+              skos:altLabel "roepnaam"@nl ;
+              skos:prefLabel "voornaam"@nl .
 
 
 ###  http://archief.nl/pnv/def/fullName
 pnv:fullName rdf:type owl:DatatypeProperty ;
              rdfs:domain pnv:PersonName ;
              rdfs:range xsd:string ;
-             rdfs:comment "Every person has to have a full name. If a name is not known at all, a text like 'Unknown' should be used"^^xsd:string ;
-             rdfs:label "Full name"^^xsd:string .
+             rdfs:comment "Every person has to have a full name. If a name is not known at all, a text like 'Unknown' should be used"@en ,
+                          "volledige naam"@nl ;
+             rdfs:label "full name"@en ;
+             skos:prefLabel "volledige naam"@nl .
 
 
 ###  http://archief.nl/pnv/def/givenName
 pnv:givenName rdf:type owl:DatatypeProperty ;
               rdfs:domain pnv:PersonName ;
               rdfs:range xsd:string ;
-              rdfs:comment "A Given name designates the name(s) given to someone at birth"^^xsd:string ;
-              rdfs:label "Given name"^^xsd:string .
+              rdfs:comment "A Given name designates the name(s) given to someone at birth"@en ;
+              rdfs:label "Given name"^^xsd:string ,
+                         "voornaam"@nl ;
+              skos:altLabel "forename"@en ;
+              skos:prefLabel "voornaam"@nl .
 
 
 ###  http://archief.nl/pnv/def/honorificSuffix
