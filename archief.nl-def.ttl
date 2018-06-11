@@ -20,6 +20,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix iiif: <http://iiif.io/api/image/2#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -459,6 +460,46 @@ ore:isAggregatedBy rdf:type owl:ObjectProperty ;
                    rdfs:range ore:Aggregation .
 
 
+###  http://www.w3.org/ns/odrl/2/action
+odrl:action rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( odrl:Policy
+                                        odrl:Rule
+                                      )
+                        ] ;
+            rdfs:range odrl:Action ;
+            rdfs:label "has action"@en ;
+            skos:definition "The operation relating to the Asset for which the Rule is being subjected."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/hasPolicy
+odrl:hasPolicy rdf:type owl:ObjectProperty ;
+               rdfs:domain odrl:Asset ;
+               rdfs:range odrl:Policy ;
+               rdfs:label "has policy"@en ;
+               skos:definition "Identifies an ODRL Policy for which the identified Asset is the target Asset to all the Rules."@en ;
+               skos:note "The Asset being identified MUST be inferred to be the target Asset of all of the Rules of the Policy."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/includedIn
+odrl:includedIn rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:domain odrl:Action ;
+                rdfs:range odrl:Action ;
+                rdfs:isDefinedBy odrl: ;
+                rdfs:label "included in"@en ;
+                skos:definition "An Action transitively asserts that another Action that encompasses its operational semantics."@en ;
+                skos:note "The purpose is to explicitly assert that the semantics of the referenced instance of an other Action encompasses (includes) the semantics of this instance of Action. The includedIn property is transitive, and as such, the Actions form ancestor relationships."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/permission
+odrl:permission rdf:type owl:ObjectProperty ;
+                rdfs:domain odrl:Policy ;
+                rdfs:range odrl:Permission ;
+                rdfs:label "has permission"@en ;
+                skos:definition "Relates an individual Permission to a Policy."@en .
+
+
 ###  http://www.w3.org/ns/prov#actedOnBehalfOf
 prov:actedOnBehalfOf rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf prov:wasInfluencedBy .
@@ -525,6 +566,13 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
+###  http://archief.nl/def/DUuuid
+naa:DUuuid rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:identifier ;
+           rdfs:label "E-Depot Deliverable Unit UUID"@nl ;
+           skos:note "Identificatie van een object uit het e-Depot."@nl .
+
+
 ###  http://archief.nl/def/additionalDescription
 naa:additionalDescription rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf dc:description ;
@@ -544,6 +592,12 @@ naa:age rdf:type owl:DatatypeProperty ;
         rdfs:seeAlso dbo:age ,
                      foaf:age ;
         skos:prefLabel "leeftijd in jaren"@nl .
+
+
+###  http://archief.nl/def/ahdid
+naa:ahdid rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf dc:identifier ;
+          rdfs:label "MAIS Flexis ahdId"@nl .
 
 
 ###  http://archief.nl/def/alias
@@ -692,6 +746,14 @@ naa:alternativePostpositionTitle rdf:type owl:DatatypeProperty ;
                                                 "titelvariant na de naam"@nl .
 
 
+###  http://archief.nl/def/archivalSelectionNumber
+naa:archivalSelectionNumber rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf dc:identifier ;
+                            rdfs:label "archiefbloknummer"@nl ;
+                            rdfs:seeAlso <https://archiefwiki.org/wiki/Archiefblok> ;
+                            skos:prefLabel "archiefbloknummer"@nl .
+
+
 ###  http://archief.nl/def/archiveLink
 naa:archiveLink rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf dc:identifier ;
@@ -704,10 +766,10 @@ naa:archiveLink rdf:type owl:DatatypeProperty ;
 naa:catalogReferenceNumber rdf:type owl:DatatypeProperty ;
                            owl:equivalentProperty naa:findingAidNumber ;
                            rdfs:subPropertyOf dc:identifier ;
-                           rdfs:label "Nummer archiefinventaris"@nl ;
-                           skos:altLabel "Toegangsnummer"@nl ;
+                           rdfs:label "nummer archiefinventaris"@nl ;
+                           skos:altLabel "toegangsnummer"@nl ;
                            skos:note "MAIS toegangscode"@nl ;
-                           skos:prefLabel "Nummer archiefinventaris"@nl .
+                           skos:prefLabel "nummer archiefinventaris"@nl .
 
 
 ###  http://archief.nl/def/country
@@ -763,6 +825,7 @@ naa:fileNumber rdf:type owl:DatatypeProperty ;
 ###  http://archief.nl/def/findingAidNumber
 naa:findingAidNumber rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dc:identifier ;
+                     owl:deprecated "true"^^xsd:boolean ;
                      skos:prefLabel "Nummer archiefinventaris"@nl .
 
 
@@ -793,7 +856,7 @@ naa:fullname rdf:type owl:DatatypeProperty ;
 ###  http://archief.nl/def/guid
 naa:guid rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf dc:identifier ;
-         rdfs:label "MAIS guid"@nl .
+         rdfs:label "MAIS Flexis guid"@nl .
 
 
 ###  http://archief.nl/def/intraposition
@@ -878,6 +941,20 @@ naa:island rdf:type owl:DatatypeProperty ;
 ###  http://archief.nl/def/lastKnownName
 naa:lastKnownName rdf:type owl:DatatypeProperty ;
                   rdfs:range xsd:string .
+
+
+###  http://archief.nl/def/orgID
+naa:orgID rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf dc:identifier ;
+          rdfs:label "Hub3 tennant code"@nl ;
+          skos:note "Gebruikt door HUB3 voor de tennant of ISIL code"@nl .
+
+
+###  http://archief.nl/def/persistentIdentifier
+naa:persistentIdentifier rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf dc:identifier ;
+                         rdfs:label "persistente identificatie"@nl ;
+                         skos:note "Het Nationaal Archief gebruikt Handles voor persistent identifiers"@nl .
 
 
 ###  http://archief.nl/def/place
@@ -1124,6 +1201,7 @@ dc:description rdf:type owl:DatatypeProperty .
 
 ###  http://purl.org/dc/elements/1.1/identifier
 dc:identifier rdf:type owl:DatatypeProperty ;
+              rdfs:seeAlso <http://www.ukoln.ac.uk/metadata/dcmi-ieee/identifiers/> ;
               skos:note "Bij voorkeur het UUID gebruiken, indien deze niet beschikbaar een andere vorm van (unieke) sleutel die referentie naar deze resource mogelijk maakt."@nl .
 
 
@@ -1530,6 +1608,10 @@ svcs:Service rdf:type owl:Class ;
              rdfs:isDefinedBy svcs: .
 
 
+###  http://schema.org/Action
+schema:Action rdf:type owl:Class .
+
+
 ###  http://schema.org/Demand
 schema:Demand rdf:type owl:Class ;
               rdfs:subClassOf schema:Intangible ;
@@ -1555,6 +1637,10 @@ schema:Offer rdf:type owl:Class ;
                         "Offer"@en ;
              rdfs:seeAlso <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms> ;
              skos:prefLabel "Aanbieding"@nl .
+
+
+###  http://schema.org/Organization
+schema:Organization rdf:type owl:Class .
 
 
 ###  http://schema.org/Person
@@ -1689,6 +1775,84 @@ skos:Concept rdf:type owl:Class .
 skos:ConceptScheme rdf:type owl:Class .
 
 
+###  http://www.w3.org/2006/vcard/ns#Agent
+vcard:Agent rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/vcard/ns#Individual
+vcard:Individual rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/vcard/ns#Organization
+vcard:Organization rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/odrl/2/Action
+odrl:Action rdf:type owl:Class ;
+            rdfs:subClassOf schema:Action .
+
+
+###  http://www.w3.org/ns/odrl/2/Asset
+odrl:Asset rdf:type owl:Class ;
+           owl:equivalentClass fibo-fnd-oac-own:Asset .
+
+
+###  http://www.w3.org/ns/odrl/2/Duty
+odrl:Duty rdf:type owl:Class ;
+          rdfs:subClassOf odrl:Rule ;
+          owl:disjointWith odrl:Permission ,
+                           odrl:Prohibition ;
+          rdfs:isDefinedBy odrl: ;
+          rdfs:label "Duty"@en ;
+          skos:definition "The obligation to perform an Action"@en .
+
+
+###  http://www.w3.org/ns/odrl/2/Party
+odrl:Party rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Class ;
+                             owl:unionOf ( schema:Organization
+                                           schema:Person
+                                           vcard:Agent
+                                           vcard:Individual
+                                           vcard:Organization
+                                           foaf:Agent
+                                           foaf:Organization
+                                           foaf:Person
+                                         )
+                           ] ;
+           rdfs:label "Party"@en ;
+           skos:definition "An entity or a collection of entities that undertake Roles in a Rule."@en ;
+           skos:note "The Party entity could be a person, group of people, organisation, or agent. An agent is a person or thing that takes an active role or produces a specified effect. To describe more details about the Party, it is recommended to use W3C vCard Ontology [[vcard-rdf]] or FOAF Vocabulary [[foaf]]."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/Permission
+odrl:Permission rdf:type owl:Class ;
+                rdfs:subClassOf odrl:Rule ;
+                owl:disjointWith odrl:Prohibition ;
+                rdfs:isDefinedBy odrl: ;
+                rdfs:label "Permission"@en ;
+                skos:definition "The ability to perform an Action over an Asset."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/Policy
+odrl:Policy rdf:type owl:Class ;
+            rdfs:label "Policy"@en ;
+            skos:definition "A non-empty group of Permissions and/or Prohibitions."@en ;
+            skos:note "A Policy may contain multiple Rules."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/Prohibition
+odrl:Prohibition rdf:type owl:Class ;
+                 rdfs:subClassOf odrl:Rule ;
+                 rdfs:isDefinedBy odrl: ;
+                 rdfs:label "Prohibition"@en ;
+                 skos:definition "The inability to perform an Action over an Asset."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/Rule
+odrl:Rule rdf:type owl:Class .
+
+
 ###  http://www.w3.org/ns/org#FormalOrganization
 org:FormalOrganization rdf:type owl:Class ;
                        rdfs:subClassOf org:Organization ,
@@ -1731,7 +1895,9 @@ foaf:Person rdf:type owl:Class .
 
 
 ###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Asset
-fibo-fnd-oac-own:Asset rdf:type owl:Class .
+fibo-fnd-oac-own:Asset rdf:type owl:Class ;
+                       rdfs:isDefinedBy fibo-fnd-oac-own: ;
+                       skos:definition "A thing held by some party and having some value."@en .
 
 
 ###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Owner
@@ -1902,6 +2068,34 @@ Immers, het object Photo:UUID biedt al voldoende mogelijkheid om de metadata te 
                                                                      org:FormalOrganization ;
                                                             rdfs:label "Nationaal Archief"@nl ;
                                                             <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
+
+
+###  http://archief.nl/NL-HaNA/rechten/id/RuleAllowDisplay
+<http://archief.nl/NL-HaNA/rechten/id/RuleAllowDisplay> rdf:type owl:NamedIndividual ,
+                                                                 odrl:Permission ;
+                                                        odrl:action odrl:display ;
+                                                        rdfs:label "(web-) display toegestaan"@nl .
+
+
+###  http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload
+<http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> rdf:type owl:NamedIndividual ,
+                                                                  odrl:Permission ;
+                                                         odrl:action odrl:grantUse ;
+                                                         rdfs:label "download toegestaan"@nl .
+
+
+###  http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay
+<http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> rdf:type owl:NamedIndividual ,
+                                                                    odrl:Prohibition ;
+                                                           odrl:action odrl:display ;
+                                                           rdfs:label "(web-) display niet toegestaan"@nl .
+
+
+###  http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDownload
+<http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDownload> rdf:type owl:NamedIndividual ,
+                                                                     odrl:Prohibition ;
+                                                            odrl:action odrl:grantUse ;
+                                                            rdfs:label "download niet toegestaan"@nl .
 
 
 ###  http://archief.nl/def/AgencyType
@@ -2154,6 +2348,13 @@ naa:TypePhotoRecord rdf:type owl:NamedIndividual ,
                                   "Photograph Record"@en .
 
 
+###  http://archief.nl/def/TypePhotoSeries
+naa:TypePhotoSeries rdf:type owl:NamedIndividual ,
+                             naa:AggregationType ;
+                    rdfs:label "Fotoreeks"@nl ,
+                               "Photo series"@en .
+
+
 ###  http://archief.nl/def/TypePhotograph
 naa:TypePhotograph rdf:type owl:NamedIndividual ,
                             naa:ArchivalEntityType ,
@@ -2341,6 +2542,95 @@ hg:Street rdf:type owl:NamedIndividual ,
                                                                                                                 skos:note "MAIS Webdisplay"@nl .
 
 
+###  http://www.w3.org/ns/odrl/2/Asset
+odrl:Asset rdf:type owl:NamedIndividual ,
+                    skos:Concept .
+
+
+###  http://www.w3.org/ns/odrl/2/copy
+odrl:copy rdf:type owl:NamedIndividual ,
+                   skos:Concept ,
+                   odrl:Action ;
+          owl:sameAs odrl:reproduce ;
+          rdfs:isDefinedBy odrl: ;
+          rdfs:label "copy"@en ;
+          skos:definition "The act of making an exact reproduction of the asset."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/display
+odrl:display rdf:type owl:NamedIndividual ,
+                      skos:Concept ,
+                      odrl:Action ;
+             odrl:includedIn odrl:play ;
+             rdfs:isDefinedBy odrl: ;
+             rdfs:label "display"@en ;
+             skos:definition "To create a static and transient rendition of an Asset."@en ;
+             skos:note "For example, displaying an image on a screen. If the action is to be performed to a wider audience than just the Assignees, then the Recipient constraint is recommended to be used."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/distribute
+odrl:distribute rdf:type owl:NamedIndividual ,
+                         skos:Concept ,
+                         odrl:Action ;
+                odrl:includedIn odrl:use ;
+                rdfs:isDefinedBy odrl: ;
+                rdfs:label "distribute"@en ;
+                skos:definition "To supply the Asset to third-parties."@en ;
+                skos:note "It is recommended to use nextPolicy to express the allowable usages by third-parties."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/grantUse
+odrl:grantUse rdf:type owl:NamedIndividual ,
+                       skos:Concept ,
+                       odrl:Action ;
+              odrl:includedIn odrl:use ;
+              rdfs:label "grant use"@en ;
+              skos:definition "To grant the use of the Asset to third parties."@en ;
+              skos:note "This action enables the assignee to create policies for the use of the Asset for third parties. The nextPolicy is recommended to be agreed with the third party. Use of temporal constraints is recommended."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/play
+odrl:play rdf:type owl:NamedIndividual ,
+                   skos:Concept ,
+                   odrl:Action ;
+          odrl:includedIn odrl:use ;
+          rdfs:isDefinedBy odrl: ;
+          rdfs:label "play"@en ;
+          skos:definition "To create a sequential and transient rendition of an Asset."@en ;
+          skos:note "For example, to play a video or audio track. If the action is to be performed to a wider audience than just the Assignees, then the Recipient constraint is recommended to be used."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/present
+odrl:present rdf:type owl:NamedIndividual ,
+                      skos:Concept ,
+                      odrl:Action ;
+             odrl:includedIn odrl:use ;
+             rdfs:isDefinedBy odrl: ;
+             rdfs:label "present"@en ;
+             skos:definition "To publicly perform the Asset."@en ;
+             skos:note "The asset can be performed (or communicated) in public."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/reproduce
+odrl:reproduce rdf:type owl:NamedIndividual ,
+                        skos:Concept ,
+                        odrl:Action ;
+               odrl:includedIn odrl:use ;
+               rdfs:isDefinedBy odrl: ;
+               rdfs:label "reproduce"@en ;
+               skos:definition "To make duplicate copies the Asset in any material form."@en .
+
+
+###  http://www.w3.org/ns/odrl/2/use
+odrl:use rdf:type owl:NamedIndividual ,
+                  skos:Concept ,
+                  odrl:Action ;
+         rdfs:isDefinedBy odrl: ;
+         rdfs:label "use"@en ;
+         skos:definition "To use the Asset"@en ;
+         skos:note "Use is the most generic action for all non-third-party usage. More specific types of the use action can be expressed by more targetted actions."@en .
+
+
 ###  https://www.nationaalarchief.nl
 <https://www.nationaalarchief.nl> rdf:type owl:NamedIndividual ,
                                            edm:WebResource ;
@@ -2380,6 +2670,12 @@ dc:coverage rdfs:comment "TODO: omzetten naar Places in Time waar mogelijk via e
 
 
 dc:subject skos:note "MAIS Trefwoorden algemeen"@nl .
+
+
+odrl:Asset skos:note "The Asset entity can be any form of identifiable resource, such as data/information, content/media, applications, or services. Furthermore, it can be used to represent other Asset entities that are needed to undertake the Policy expression, such as with the Duty entity. To describe more details about the Asset, it is recommended to use Dublin Core [[dcterms]] elements or other content metadata."@en ;
+           skos:definition "A resource or a collection of resources that are the subject of a Rule."@en ;
+           rdfs:label "Asset"@en ;
+           rdfs:isDefinedBy odrl: .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
