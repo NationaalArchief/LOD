@@ -671,6 +671,10 @@ naa:docketRecordNumber rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dc:source .
 
 
+###  http://archief.nl/def/embursed
+naa:embursed rdf:type owl:DatatypeProperty .
+
+
 ###  http://archief.nl/def/fileId
 naa:fileId rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf dc:identifier ;

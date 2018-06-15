@@ -1,0 +1,31 @@
+@prefix foaf:	<http://xmlns.com/foaf/0.1/> .
+@prefix wikipedia-en:	<http://en.wikipedia.org/wiki/> .
+@prefix dbr:	<http://dbpedia.org/resource/> .
+wikipedia-en:Compensated_emancipation	foaf:primaryTopic	dbr:Compensated_emancipation .
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dbo:	<http://dbpedia.org/ontology/> .
+dbr:Compensated_emancipation	rdf:type	dbo:Software .
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#> .
+dbr:Compensated_emancipation	rdfs:label	"Compensated emancipation"@en ;
+	rdfs:comment	"Compensated emancipation was a method of ending slavery in countries where slavery was legal. This involved the person who was recognized as the owner of a slave being compensated monetarily or by a period of labor (an 'apprenticeship') for releasing the slave."@en .
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+dbr:Compensated_emancipation	owl:sameAs	<http://rdf.freebase.com/ns/m.0byqfv> ,
+		dbr:Compensated_emancipation .
+@prefix wikidata:	<http://www.wikidata.org/entity/> .
+dbr:Compensated_emancipation	owl:sameAs	wikidata:Q5156250 .
+@prefix dbpedia-wikidata:	<http://wikidata.dbpedia.org/resource/> .
+dbr:Compensated_emancipation	owl:sameAs	dbpedia-wikidata:Q5156250 .
+@prefix dct:	<http://purl.org/dc/terms/> .
+@prefix dbc:	<http://dbpedia.org/resource/Category:> .
+dbr:Compensated_emancipation	dct:subject	dbc:Slavery ,
+		dbc:Abolitionism ,
+		dbc:Abolitionism_in_the_United_States ;
+	foaf:isPrimaryTopicOf	wikipedia-en:Compensated_emancipation .
+@prefix prov:	<http://www.w3.org/ns/prov#> .
+dbr:Compensated_emancipation	prov:wasDerivedFrom	<http://en.wikipedia.org/wiki/Compensated_emancipation?oldid=742445409> ;
+	dbo:abstract	"Compensated emancipation was a method of ending slavery in countries where slavery was legal. This involved the person who was recognized as the owner of a slave being compensated monetarily or by a period of labor (an 'apprenticeship') for releasing the slave. The latter was chosen as a compromise between slavery and outright emancipation, the former slaves receiving a nominal salary, while still being bound in their labors for a period of time. This proved unpopular, as for the slaves it amounted to little more than continued mandatory servitude, while it placed an added burden of wages on the former owner."@en ;
+	dbo:wikiPageRevisionID	742445409 ;
+	dbo:wikiPageID	4353300 .
+@prefix ns12:	<http://purl.org/linguistics/gold/> .
+dbr:Compensated_emancipation	ns12:hypernym	dbr:Method .
+dbr:Compensated_Emancipation	dbo:wikiPageRedirects	dbr:Compensated_emancipation .
