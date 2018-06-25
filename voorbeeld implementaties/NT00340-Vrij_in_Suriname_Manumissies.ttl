@@ -1,0 +1,304 @@
+@prefix : <http://archief.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix cs: <http://www.kulttuurisampo.fi/ebkr/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix hg: <http://rdf.histograph.io/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix bgn: <http://biographynet.nl/schema/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix gvp: <http://vocab.getty.edu/ontology/> .
+@prefix naa: <http://archief.nl/def/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pnv: <http://archief.nl/pnv/def/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix iiif: <http://iiif.io/api/image/2#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix svcs: <http://rdfs.org/sioc/services#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+@prefix cidoc-crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
+@base <http://archief.nl/NL-HaNA/doc/Vrij_in_Suriname_Manumissies> .
+
+<http://archief.nl/NL-HaNA/doc/Vrij_in_Suriname_Manumissies> rdf:type owl:Ontology ;
+                                                              owl:imports pnv: ,
+                                                                          naa: ;
+                                                              rdfs:comment """Manumissie is het onder bepaalde voorwaarden vrijgeven van een slaaf. Als varianten gebruiken we hier ook de termen vrijlating en vrijgeving. Het woord zelf is afgeleid van de Latijnse term manumissio, afkomstig uit het Romeinse recht. Die term betekent letterlijk: ‘het uit de hand (van de meester) wegzenden'. Ook in Suriname bestond in de slaventijd (die duurde tot in 1863) de mogelijkheid voor slaven om van rechtswege gemanumitteerd te worden.
+
+Deze database bevat in principe alle Surinaamse gemanumitteerden vanaf 1832 tot aan de afschaffing van de slavernij in 1863. Zelfs een viertal vrijgevingen die pas na de datum van afschaffing van de slavernij hun beslag kregen, zijn in de database opgenomen. Alles bijeen gaat het om 6.781 personen.
+
+Het bestand geeft van elke gemanumitteerde naast een familienaam onder meer gegevens met betrekking tot geslacht, leeftijd, datum van toekenning van de manumissie, naam van de eigenaar en/of vrijgever, gegevens over familierelaties en het beroep dat men bij vrijwording ging uitoefenen. Van de gemanumitteerden werden ook eventuele latere naamsveranderingen (tot 1 juli 1873) genoteerd.
+
+Een compleet overzicht van alle opgenomen gegevens vindt u in Uitleg databasegegevens.
+
+Het gegevensbestand waarvan deze database een digitale versie is, werd samengesteld door de historicus drs. Okke ten Hove in het kader van een door hem verricht archiefonderzoek. Als ‘Lijst van gemanumitteerden’ is dit bestand afgedrukt in het boek van Okke ten Hove en Frank Dragtenstein, Manumissies in Suriname 1832–1863. Meer informatie over de totstandkoming van de database vindt u in het Gebruikte Bronnen.
+
+Behalve het manumissieregister in Paramaribo en de lijsten in het Nationaal Archief zijn over de Surinaamse manumissies 1832–1863 ook nog allerlei andere archiefstukken bewaard. Het gaat hierbij om de originele documenten die een rol speelden in het kader van al de gevoerde vrijlatingsprocedures, zoals de verzoeken om manumissie, eventuele bijlagen daarvan en andere stukken die bij de behandeling van een verzoek om vrijgeving door de koloniale overheid werden ontvangen of opgemaakt. Omdat alle manumissies in de genoemde lijsten bij het Nationaal Archief konden worden teruggevonden, zijn voor de database geen gegevens uit die andere archiefstukken gehaald. De documenten die aan de eigenlijke vrijgeving vooraf gingen, liggen bovendien over verschillende archieven verspreid en bevinden zich slechts ten dele in Nederland: die tot 1846 zijn te vinden in het NA, maar de documenten uit de jaren daarna zijn niet meer naar Nederland overgebracht.
+
+Met deze database als uitgangspunt kan men verder genealogisch onderzoek in Nederlandse, Surinaamse en Antilliaanse archieven plegen. Ook is de database van belang voor nader onderzoek met betrekking tot de sociaal-economische geschiedenis van de vrije zwarte en gekleurde bevolking van Suriname.
+Een aantal archiefbestanden bij het Nationaal Archief die u voor verder onderzoek kunt raadplegen vindt u op de pagina.
+1. Achternaam
+2. Voornamen
+3. Slavennaam
+4. Geslacht 
+5. Beroep
+6. Afkomstig van
+7. Eigenaar/Vrijlater
+8. Datum cautie/borgtocht
+9. Bedrag cautie 
+10. Bedrag borgtocht
+11. Borgen 
+12. Aanmerkingen   
+
+
+1. Achternaam
+Dit gegeven betreft de familienaam die de gemanumitteerde bij vrijwording kreeg toegekend.
+
+2. Voornamen
+Dit zijn de nieuwe voornamen die de gemanumitteerde bij vrijwording kreeg toegekend.
+
+3. Slavennaam
+Dit is de naam waaronder de gemanumitteerde als slaaf bekend stond. Onder deze naam werd de slaaf geregistreerd in de slavenregisters.
+
+4. Geslacht
+Sexe van de vrijgelatene (M/V).
+
+5. Beroep
+Dit gegeven betreft het beroep dat men ging uitoefenen na de vrijlating. Let wel, als slaaf kon men een ander beroep hebben gehad.
+
+6. Afkomstig van 
+Dit geeft aan van welk schip of welke plantage de zogenaamde 'vrije arbeiders' (zie voor meer informatie hierover Wet- en regelgeving) afkomstig waren.
+
+7. Eigenaar/Vrijlater
+Hier vindt u de naamsgegevens van de eigenaar en van de vrijlater van de slaaf. Als de eigenaar en de vrijlater verschillende personen waren, is de eerste naam die van de eigenaar; de tweede naam de vrijlater.
+
+8. Datum cautie/borgtocht
+Om te voorkomen dat een slaaf bij vrijlating wegens armoede ten laste van de armenzorg zou komen, moest bij indiening van een verzoek om manumissie ófwel een cautie (borgsom) worden betaald, ófwel een akte van personele borgtocht worden overhandigd. Dit gegeven betreft de datum waarop het één, dan wel het ander plaatsvond.
+
+9. Bedrag cautie
+Het bedrag van de borgsom die moest worden betaald bij indiening van het verzoek tot manumissie (als er geen akte van personele borgtocht was overhandigd).
+
+10. Bedrag borgtocht
+Het geldbedrag genoemd in de akte van borgtocht, die moest worden overhandigd bij indiening van een verzoek tot manumissie (als er geen borgsom was gestort).
+
+11. Borgen
+Dit betreft de naam van degene(n) die als borg optrad(en).
+
+12. Aanmerkingen
+Hier vindt u datum en volgnummer van de gouvernements-resolutie (GR), waarbij de manumissie werd toegekend. Let wel, een manumissie werd pas van kracht op de datum waarop de manumissiebrief werd uitgereikt aan de betrokkene. In dit veld treft u voorts gegevens aan over eventuele spellingsvarianten in familienamen, toegekende naamsveranderingen (tot 1 juli 1873), familierelaties en toestemming tot emigratie. Het gaat hierbij om gegevens die in latere gouvernements-resoluties zijn aangetroffen, dus niet in de bron waaruit de overige gegevens zijn gehaald.
+
+Geschiedenis van de archiefvormer: 
+In dit onderdeel treft u historische achtergrondinformatie aan over de gegevens in de database Surinaamse manumissies 1832-1863, te weten:
+
+Wet-en regelgeving: over het Manumissiereglement 1832
+Manumissies in de praktijk: over de vrijlatingen in Suriname in de periode 1832-1863 
+Manumissie en vrijheid
+Manumissie is de juridische term voor het volgens bepaalde rechtsregels vrijgeven van slaven. Het woord is afgeleid van manumissio, een begrip in het Romeinse recht, dat letterlijk vertaald betekent: ‘zending uit de hand [van de meester]’. Op deze site gebruiken we in plaats van ‘manumissie’ ook de termen ‘vrijgeving’ en ‘vrijverklaring’."""@nl ;
+                                                              rdfs:label "Vrij in Suriname: Surinaamse manumissies"@nl ;
+                                                              dc:creator "Okke ten Hove" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://archief.nl/def/postpositionName
+naa:postpositionName rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/prepositionName
+naa:prepositionName rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/slaveName
+naa:slaveName rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.nl/NL-HaNA/doc/NT:0202c42e4e-cd6d-102c-9f8b-005056a23d00
+<http://archief.nl/NL-HaNA/doc/NT:0202c42e4e-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                   naa:NL-HaNA_Aggregation ;
+                                                                          naa:isAggregationType naa:TypeDetailedContentDescription ;
+                                                                          dcterms:subject <http://dbpedia.org/resource/Manumission> ;
+                                                                          ore:aggregates <http://archief.nl/NL-HaNA/doc/NTView:00340_Manumissions> ;
+                                                                          dc:identifier "02c42e4e-cd6d-102c-9f8b-005056a23d00" ;
+                                                                          dc:title "Vrij in Suriname: Surinaamse manumissies"@nl ;
+                                                                          dcterms:abstract "Suriname: Vrijgelaten slaven en hun eigenaren (manumissies)"@nl ;
+                                                                          edm:begin 1832 ;
+                                                                          edm:end 1863 ;
+                                                                          rdfs:comment "commentaar"@nl ;
+                                                                          rdfs:label "Vrij in Suriname: Surinaamse manumissies"@nl ;
+                                                                          skos:altLabel "Suriname: Vrijgelaten slaven en hun eigenaren (manumissies)"@nl ;
+                                                                          skos:prefLabel "Vrij in Suriname: Surinaamse manumissies"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001
+<http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> rdf:type owl:NamedIndividual ,
+                                                                    naa:NL-HaNA_Aggregation ;
+                                                           naa:isAggregationType naa:TypeDocketRecord ;
+                                                           schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
+                                                           rdfs:label "Borderel nummer PE001 (NT00341)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NTView:00340_Manumissions
+<http://archief.nl/NL-HaNA/doc/NTView:00340_Manumissions> rdf:type owl:NamedIndividual ,
+                                                                   naa:NL-HaNA_Aggregation ;
+                                                          naa:isAggregationType naa:TypeDetailedContentDescriptionView ;
+                                                          naa:fileId 0 ;
+                                                          naa:guid "425AF5AEEB0C041AE053C900A8C0A739" ;
+                                                          dc:title "Vrij in Suriname. Surinaamse manumissies 1832-1863"@nl ;
+                                                          rdfs:label "NT00340 View: Manumissies"@nl ;
+                                                          skos:prefLabel "NT00340 View: Manumissies"@en ,
+                                                                         "NT00340 View: Manumissies"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/Name:NT00340_1
+<http://archief.nl/NL-HaNA/doc/Name:NT00340_1> rdf:type owl:NamedIndividual ,
+                                                        pnv:PersonName ;
+                                               pnv:familyName "Maarsen" ;
+                                               pnv:firstName "Esther" ;
+                                               pnv:infix "van" ;
+                                               rdfs:label "naam Esther van Maarsen"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/SlaveName:NT00340_1
+<http://archief.nl/NL-HaNA/doc/SlaveName:NT00340_1> rdf:type owl:NamedIndividual ,
+                                                             pnv:PersonName ;
+                                                    pnv:fullName "Esther" ;
+                                                    rdfs:label "Slavennaam Esther"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/SlaveRecord:6508fe44-c2b7-417c-9962-b83baca306c8
+<http://archief.nl/NL-HaNA/doc/SlaveRecord:6508fe44-c2b7-417c-9962-b83baca306c8> rdf:type owl:NamedIndividual ,
+                                                                                          naa:NL-HaNA_Aggregation ;
+                                                                                 naa:isAggregationType naa:TypeSlaveryRecord ;
+                                                                                 dcterms:subject <http://dbpedia.org/resource/Manumission> ;
+                                                                                 ore:aggregates <http://archief.nl/NL-HaNA/doc/SlaveReference:6508fe44-c2b7-417c-9962-b83baca306c8> ,
+                                                                                                <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00340_1> ;
+                                                                                 ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTView:00340_Manumissions> ;
+                                                                                 rdfs:label "Record van vrijverklaarde slaaf"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/SlaveReference:6508fe44-c2b7-417c-9962-b83baca306c8
+<http://archief.nl/NL-HaNA/doc/SlaveReference:6508fe44-c2b7-417c-9962-b83baca306c8> rdf:type owl:NamedIndividual ,
+                                                                                             naa:ArchivalReference ,
+                                                                                             premis:RightsBasis ;
+                                                                                    dcterms:coverage <http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
+                                                                                    dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00340_1> ;
+                                                                                    schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
+                                                                                    ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
+                                                                                    naa:docketRecordNumber "PE001" ;
+                                                                                    rdfs:comment "Onderdeel van het record over de vrijlating van persoon x op locatie y. Deze beschrijving is tevens onderdeel van borderel z. De records van de slaveneigenaren die eigenaar waren van persoon x verwijzen ook naar borderel z."@nl ;
+                                                                                    rdfs:label "Beschrijving over een vrijverklaarde slaaf met naam {naam}"@nl ;
+                                                                                    skos:note "Geboortejaar Emancipatieregister 1806De naam Absent werd ook in 1863 gegeven op pl La Jalousie (Commetewane) en vermoedelijk verwant aan Susanna Absent."@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/Suriname_en_de_Nederlandse_Antillen:Vrijverklaarde_slaven_(Emancipatie_1863)/
+: rdf:type owl:NamedIndividual ;
+  dc:rights "Rechten voorbehouden. De indexrecords uit deze Nadere Toegang zijn niet beschikbaar onder een Creative Commons licentie of CC0 verklaring."@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00340_1
+<http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00340_1> rdf:type owl:NamedIndividual ,
+                                                                     pnv:Person ;
+                                                            naa:hasName <http://archief.nl/NL-HaNA/doc/SlaveName:NT00340_1> ;
+                                                            naa:hasProfession naa:ProfessionServant ;
+                                                            naa:hasReligion naa:ReligionEBG ;
+                                                            naa:hasResidency <http://archief.nl/NL-HaNA/id/plaats/PlaceParamaribo> ;
+                                                            naa:sex naa:GenderFemale ;
+                                                            pnv:hasName <http://archief.nl/NL-HaNA/doc/Name:NT00340_1> ;
+                                                            ebucore:hasRole naa:RoleSlave ;
+                                                            foaf:isPrimaryTopicOf <http://archief.nl/NL-HaNA/doc/SlaveReference:6508fe44-c2b7-417c-9962-b83baca306c8> ;
+                                                            naa:age 56 ;
+                                                            naa:fragmentIdentifier "1"^^xsd:int ;
+                                                            dc:identifier "cec8f77c-8a4b-4049-86b8-15a122772dfb" ;
+                                                            naa:postpositionName "Absent" ;
+                                                            naa:prepositionName "Juliana Susanna" ;
+                                                            naa:slaveName "Susanna" ;
+                                                            rdfs:label "Esther van Maarsen" .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/CountryTheNetherlands
+<http://archief.nl/NL-HaNA/id/plaats/CountryTheNetherlands> rdf:type owl:NamedIndividual .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/IslandSuriname
+<http://archief.nl/NL-HaNA/id/plaats/IslandSuriname> rdf:type owl:NamedIndividual ,
+                                                              hg:PlaceInTime ;
+                                                     dcterms:type naa:Island ;
+                                                     rdfs:label "Surinam (island)"@en ,
+                                                                "Suriname (eiland)"@nl ;
+                                                     rdfs:seeAlso <http://archief.nl/id/plaats/IslandSuriname> ;
+                                                     skos:prefLabel "Suriname"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/PlaceAmsterdam
+<http://archief.nl/NL-HaNA/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
+                                                              hg:PlaceInTime ;
+                                                     rdfs:label "Amsterdam (plaats)"@nl ;
+                                                     rdfs:seeAlso <http://archief.nl/id/plaats/PlaceAmsterdam> .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/PlaceParamaribo
+<http://archief.nl/NL-HaNA/id/plaats/PlaceParamaribo> rdf:type owl:NamedIndividual ,
+                                                               hg:PlaceInTime ;
+                                                      dcterms:type hg:Place .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/PlantationHooyland
+<http://archief.nl/NL-HaNA/id/plaats/PlantationHooyland> rdf:type owl:NamedIndividual ,
+                                                                  hg:PlaceInTime ;
+                                                         dcterms:type naa:Plantation ;
+                                                         rdfs:label "Plantage Hooyland"@nl ,
+                                                                    "Plantation Hooyland"@en ;
+                                                         skos:prefLabel "Plantage Hooyland"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/PlantationHouttuin
+<http://archief.nl/NL-HaNA/id/plaats/PlantationHouttuin> rdf:type owl:NamedIndividual ,
+                                                                  hg:PlaceInTime ;
+                                                         dcterms:type naa:Plantation ;
+                                                         rdfs:label "Plantage Houttuin"@nl ,
+                                                                    "Plantation Houttuin"@en ;
+                                                         skos:prefLabel "Plantage Houttuin"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo
+<http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> rdf:type owl:NamedIndividual ,
+                                                                  hg:PlaceInTime ;
+                                                         dcterms:type hg:Province .
+
+
+###  http://archief.nl/def/ReligionEBG
+naa:ReligionEBG rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/Compensated_emancipation
+<http://dbpedia.org/resource/Compensated_emancipation> rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource/Manumission
+<http://dbpedia.org/resource/Manumission> rdf:type owl:NamedIndividual ;
+                                          rdfs:seeAlso <http://dbpedia.org/page/Manumission> .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

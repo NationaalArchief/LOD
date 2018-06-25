@@ -13,6 +13,7 @@
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pnv: <http://archief.nl/pnv/def/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -66,21 +67,93 @@ naa:slaveName rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/P28_custody_surrendered_by
+cidoc-crm:P28_custody_surrendered_by rdf:type owl:ObjectProperty .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P30_transferred_custody_of
+cidoc-crm:P30_transferred_custody_of rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cidoc-crm.org/cidoc-crm/E10_Transfer_of_Custody
+cidoc-crm:E10_Transfer_of_Custody rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E72_Legal_Object
+cidoc-crm:E72_Legal_Object rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dcat#Dataset
+dcat:Dataset rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class .
+
+
+#################################################################
 #    Individuals
 #################################################################
 
-###  http://archief.nl/NL-HaNA/doc/NT:02c4395c-cd6d-102c-9f8b-005056a23d00
-<http://archief.nl/NL-HaNA/doc/NT:02c4395c-cd6d-102c-9f8b-005056a23d00> rdf:type owl:NamedIndividual ,
-                                                                                 naa:NL-HaNA_Aggregation ;
-                                                                        naa:isAggregationType naa:TypeDetailedContentDescription ;
-                                                                        dcterms:subject <http://dbpedia.org/resource/Compensated_emancipation> ;
-                                                                        ore:aggregates <http://archief.nl/NL-HaNA/doc/NTView:00341_Owners> ,
-                                                                                       <http://archief.nl/NL-HaNA/doc/NTView:00341_Slaves> ;
-                                                                        naa:dating 1863 ;
-                                                                        dc:identifier "02c4395c-cd6d-102c-9f8b-005056a23d00"@nl ;
-                                                                        dc:title "Suriname en Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie in West-Indië 1863)"@nl ;
-                                                                        dcterms:abstract "Suriname en Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie 1863)"@nl ;
-                                                                        rdfs:comment """In navolging van Engeland (1833) en Frankrijk (1848) werd door de Nederlandse regering in 1863 de slavernij afgeschaft. De afschaffing van de slavernij wordt ook wel aangeduid met de term ‘emancipatie’. Deze emancipatie had grote gevolgen voor de Surinaamse maatschappij. De voormalig slaveneigenaren ontvingen voor iedere vrijgelaten slaaf een premie van de Nederlandse overheid, als compensatie voor het wegvallen van het arbeidspotentieel. Als alternatief voor de inzet van slaven werden door de voormalig slaveneigenaren contractarbeiders geworven in Nederlands Indië, India en China (Arbeid op Contract). De voormalige slaven werden voor een periode van tien jaar onder staatstoezicht geplaatst. In deze periode waren vrijgelatenen tussen de 15 en 60 jaar verplicht een arbeidsovereenkomst af te sluiten. Deze maatregel was vooral bedoeld om te voorkomen dat de voormalige slaven massaal de plantages zouden verlaten, waardoor de plantage-economie zou instorten. Pas na de periode van staatstoezicht verworven de voormalige slaven het volledig burgerrecht.
+###  http://archief.nl/NL-HaNA/doc/DocketRecord:NT00341_PE001
+<http://archief.nl/NL-HaNA/doc/DocketRecord:NT00341_PE001> rdf:type owl:NamedIndividual ,
+                                                                    naa:NL-HaNA_Aggregation ,
+                                                                    cidoc-crm:E72_Legal_Object ;
+                                                           naa:isAggregationType naa:TypeDocketRecord ;
+                                                           schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
+                                                           rdfs:label "Borderel nummer PE001 (NT00341)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NT:NT00341_Configuration
+<http://archief.nl/NL-HaNA/doc/NT:NT00341_Configuration> rdf:type owl:NamedIndividual ,
+                                                                  ore:AggregatedResource ;
+                                                         rdfs:label "Configuratie voor het tonen van de data over NT00341."@nl ;
+                                                         skos:altLabel "MAM (Manifestatie Anafhankelijke Metadata)"@nl ,
+                                                                       "Technische metadata"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NT:NT00341_Description
+<http://archief.nl/NL-HaNA/doc/NT:NT00341_Description> rdf:type owl:NamedIndividual ,
+                                                                naa:ArchivalReference ,
+                                                                edm:TimeSpan ;
+                                                       rdfs:label "Beschrijvende metadata over NT00341"@nl ;
+                                                       skos:altLabel "MOM (Manifestatie Onafhankelijke Metadata)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NT:NT00341_Editorial
+<http://archief.nl/NL-HaNA/doc/NT:NT00341_Editorial> rdf:type owl:NamedIndividual ,
+                                                              naa:ArchivalReference ;
+                                                     rdfs:label "Colofon behorende bij NT00341"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NT:NT00341_Rights
+<http://archief.nl/NL-HaNA/doc/NT:NT00341_Rights> rdf:type owl:NamedIndividual ,
+                                                           naa:ArchivalReference ,
+                                                           <http://www.w3.org/ns/odrl/2/Policy> ;
+                                                  rdfs:label "Gebruik van NT00341"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/NT:NT00341_Vrijverklaarde_slaven
+<http://archief.nl/NL-HaNA/doc/NT:NT00341_Vrijverklaarde_slaven> rdf:type owl:NamedIndividual ,
+                                                                          naa:NL-HaNA_Aggregation ,
+                                                                          dcat:Dataset ,
+                                                                          prov:Entity ;
+                                                                 naa:isAggregationType naa:TypeDetailedContentDescription ;
+                                                                 dcterms:subject <http://dbpedia.org/resource/Compensated_emancipation> ;
+                                                                 ore:aggregates <http://archief.nl/NL-HaNA/doc/View:NT00341_Owners> ,
+                                                                                <http://archief.nl/NL-HaNA/doc/View:NT00341_Slaves> ;
+                                                                 naa:dating 1863 ;
+                                                                 dc:identifier "02c4395c-cd6d-102c-9f8b-005056a23d00"@nl ;
+                                                                 dc:title "Suriname en Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie in West-Indië 1863)"@nl ;
+                                                                 dcterms:abstract "Suriname en Nederlandse Antillen: Vrijverklaarde slaven (Emancipatie 1863)"@nl ;
+                                                                 rdfs:comment """In navolging van Engeland (1833) en Frankrijk (1848) werd door de Nederlandse regering in 1863 de slavernij afgeschaft. De afschaffing van de slavernij wordt ook wel aangeduid met de term ‘emancipatie’. Deze emancipatie had grote gevolgen voor de Surinaamse maatschappij. De voormalig slaveneigenaren ontvingen voor iedere vrijgelaten slaaf een premie van de Nederlandse overheid, als compensatie voor het wegvallen van het arbeidspotentieel. Als alternatief voor de inzet van slaven werden door de voormalig slaveneigenaren contractarbeiders geworven in Nederlands Indië, India en China (Arbeid op Contract). De voormalige slaven werden voor een periode van tien jaar onder staatstoezicht geplaatst. In deze periode waren vrijgelatenen tussen de 15 en 60 jaar verplicht een arbeidsovereenkomst af te sluiten. Deze maatregel was vooral bedoeld om te voorkomen dat de voormalige slaven massaal de plantages zouden verlaten, waardoor de plantage-economie zou instorten. Pas na de periode van staatstoezicht verworven de voormalige slaven het volledig burgerrecht.
 
 De database ‘Emancipatie 1863’ bevat gegevens over personen die in 1863 bij de afschaffing van de slavernij in Suriname en de Nederlandse Antillen werden vrijgelaten. Tevens treft u in de database informatie aan over de eigenaren van deze personen. De namen zijn afkomstig uit de emancipatieregisters van Paramaribo, van de overige districten in Suriname en van de Nederlandse Antillen.
 
@@ -143,40 +216,8 @@ Borderelnummer:
 dit is de koppeling met de tabel slaven. Wanneer u het kopje 'Slaven' aanklikt verschijnt een overzicht van slaven die eigendom waren van deze eigenaar.
 Opmerkingen:
 dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Rekenkamer. Het betreft persoonsgegevens over de eigenaar en informatie over familierelaties."""@nl ;
-                                                                        rdfs:label "NT00341 Vrijverklaarde slaven"@nl ;
-                                                                        skos:prefLabel "NT00341 Vrijverklaarde slaven"@nl .
-
-
-###  http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001
-<http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> rdf:type owl:NamedIndividual ,
-                                                                    naa:NL-HaNA_Aggregation ;
-                                                           naa:isAggregationType naa:TypeDocketRecord ;
-                                                           schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
-                                                           rdfs:label "Borderel nummer PE001 (NT00341)"@nl .
-
-
-###  http://archief.nl/NL-HaNA/doc/NTView:00341_Owners
-<http://archief.nl/NL-HaNA/doc/NTView:00341_Owners> rdf:type owl:NamedIndividual ,
-                                                             naa:NL-HaNA_Aggregation ;
-                                                    naa:isAggregationType naa:TypeDetailedContentDescriptionView ;
-                                                    naa:fileId 0 ;
-                                                    naa:guid "425AF5AEEB0B041AE053C900A8C0A739" ;
-                                                    dc:title "Eigenaren van stadsslaven"@nl ;
-                                                    rdfs:label "NT00341 View: Eigenaren"@nl ,
-                                                               "NT00341 View: Owners"@en ;
-                                                    skos:prefLabel "NT00341 View: Eigenaren"@nl .
-
-
-###  http://archief.nl/NL-HaNA/doc/NTView:00341_Slaves
-<http://archief.nl/NL-HaNA/doc/NTView:00341_Slaves> rdf:type owl:NamedIndividual ,
-                                                             naa:NL-HaNA_Aggregation ;
-                                                    naa:isAggregationType naa:TypeDetailedContentDescriptionView ;
-                                                    naa:fileId 1 ;
-                                                    naa:guid "425AF5AEEB0C041AE053C900A8C0A739" ;
-                                                    dc:title "Stadsslaven van eigenaren (inclusief Antillen)"@nl ;
-                                                    rdfs:label "NT00341 View: Stadsslaven"@nl ;
-                                                    skos:prefLabel "NT00341 View: City slaves"@en ,
-                                                                   "NT00341 View: Stadsslaven"@nl .
+                                                                 rdfs:label "Nadere Toegang 00341 Vrijverklaarde slaven"@nl ;
+                                                                 skos:prefLabel "Nadere Toegang 00341 Vrijverklaarde slaven"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/SlaveOwnerRecord:e6a05c41-2777-471d-affa-53768683a658
@@ -187,7 +228,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                      <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ,
                                                                                                      <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerPlantation:NT00341_2176> ,
                                                                                                      <http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerResidency:NT00341_2176> ;
-                                                                                      ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTView:00341_Owners> ;
+                                                                                      ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/View:NT00341_Owners> ;
                                                                                       rdfs:label "Record van slaveneigenaar"@nl .
 
 
@@ -207,7 +248,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                           <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_12665> ;
                                                                                          dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                                          schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
-                                                                                         ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
+                                                                                         ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/DocketRecord:NT00341_PE001> ;
                                                                                          foaf:primaryTopic <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                                          naa:archiveLink "NL-HaNA/2.02.09.08/229" ;
                                                                                          naa:docketRecordNumber "PE001" ;
@@ -225,19 +266,21 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                  dcterms:subject <http://dbpedia.org/resource/Compensated_emancipation> ;
                                                                                  ore:aggregates <http://archief.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> ,
                                                                                                 <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
-                                                                                 ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTView:00341_Slaves> ;
+                                                                                 ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/View:NT00341_Slaves> ;
                                                                                  rdfs:label "Record van vrijverklaarde slaaf"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb
 <http://archief.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
                                                                                              naa:ArchivalReference ,
-                                                                                             premis:RightsBasis ;
-                                                                                    dcterms:coverage <http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> ;
+                                                                                             cidoc-crm:E10_Transfer_of_Custody ;
+                                                                                    dcterms:coverage <http://archief.nl/NL-HaNA/id/plaats/Plantation:Waterland(Beneden_Para)> ;
                                                                                     dcterms:relation <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
                                                                                     dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
                                                                                     schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
-                                                                                    ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/NTDocketRecord:00341_PE001> ;
+                                                                                    cidoc-crm:P28_custody_surrendered_by <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
+                                                                                    cidoc-crm:P30_transferred_custody_of <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
+                                                                                    ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/DocketRecord:NT00341_PE001> ;
                                                                                     naa:docketRecordNumber "PE001" ;
                                                                                     rdfs:comment "Onderdeel van het record over de vrijlating van persoon x op locatie y. Deze beschrijving is tevens onderdeel van borderel z. De records van de slaveneigenaren die eigenaar waren van persoon x verwijzen ook naar borderel z."@nl ;
                                                                                     rdfs:label "Beschrijving over een vrijverklaarde slaaf met naam {naam}"@nl ;
@@ -249,10 +292,34 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                                                               dc:rights "Rechten voorbehouden. De indexrecords uit deze Nadere Toegang zijn niet beschikbaar onder een Creative Commons licentie of CC0 verklaring."@nl .
 
 
+###  http://archief.nl/NL-HaNA/doc/View:NT00341_Owners
+<http://archief.nl/NL-HaNA/doc/View:NT00341_Owners> rdf:type owl:NamedIndividual ,
+                                                             naa:NL-HaNA_Aggregation ;
+                                                    naa:isAggregationType naa:TypeDetailedContentDescriptionView ;
+                                                    naa:fileId 0 ;
+                                                    naa:guid "425AF5AEEB0B041AE053C900A8C0A739" ;
+                                                    dc:title "Eigenaren van stadsslaven"@nl ;
+                                                    rdfs:label "NT00341 View: Eigenaren"@nl ,
+                                                               "NT00341 View: Owners"@en ;
+                                                    skos:prefLabel "NT00341 View: Eigenaren"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/View:NT00341_Slaves
+<http://archief.nl/NL-HaNA/doc/View:NT00341_Slaves> rdf:type owl:NamedIndividual ,
+                                                             naa:NL-HaNA_Aggregation ;
+                                                    naa:isAggregationType naa:TypeDetailedContentDescriptionView ;
+                                                    naa:fileId 1 ;
+                                                    naa:guid "425AF5AEEB0C041AE053C900A8C0A739" ;
+                                                    dc:title "Stadsslaven van eigenaren (inclusief Antillen)"@nl ;
+                                                    rdfs:label "NT00341 View: Stadsslaven"@nl ;
+                                                    skos:prefLabel "NT00341 View: City slaves"@en ,
+                                                                   "NT00341 View: Stadsslaven"@nl .
+
+
 ###  http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1
 <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> rdf:type owl:NamedIndividual ,
-                                                                     <http://archief.nl/pnv/def/Person> ;
-                                                            naa:hasProfession naa:ProfessionServant ;
+                                                                     pnv:Person ;
+                                                            naa:hasProfession <http://archief.nl/NL-HaNA/id/beroep/Bediende> ;
                                                             naa:hasReligion naa:ReligionEBG ;
                                                             naa:hasResidency <http://archief.nl/NL-HaNA/id/plaats/PlaceParamaribo> ;
                                                             naa:sex naa:GenderFemale ;
@@ -302,7 +369,7 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 
 ###  http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176
 <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> rdf:type owl:NamedIndividual ,
-                                                                        <http://archief.nl/pnv/def/Person> ;
+                                                                        pnv:Person ;
                                                                naa:hasProfession naa:ProfessionMerchant ,
                                                                                  naa:ProfessionPlantationKeeper ,
                                                                                  naa:ProfessionRecordKeeper ;
@@ -354,15 +421,6 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                       dcterms:type hg:Place .
 
 
-###  http://archief.nl/NL-HaNA/id/plaats/PlantationHooyland
-<http://archief.nl/NL-HaNA/id/plaats/PlantationHooyland> rdf:type owl:NamedIndividual ,
-                                                                  hg:PlaceInTime ;
-                                                         dcterms:type naa:Plantation ;
-                                                         rdfs:label "Plantage Hooyland"@nl ,
-                                                                    "Plantation Hooyland"@en ;
-                                                         skos:prefLabel "Plantage Hooyland"@nl .
-
-
 ###  http://archief.nl/NL-HaNA/id/plaats/PlantationHouttuin
 <http://archief.nl/NL-HaNA/id/plaats/PlantationHouttuin> rdf:type owl:NamedIndividual ,
                                                                   hg:PlaceInTime ;
@@ -376,6 +434,15 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 <http://archief.nl/NL-HaNA/id/plaats/ProvinceParamaribo> rdf:type owl:NamedIndividual ,
                                                                   hg:PlaceInTime ;
                                                          dcterms:type hg:Province .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/Plantation:Waterland(Beneden_Para)
+<http://archief.nl/NL-HaNA/id/plaats/Plantation:Waterland(Beneden_Para)> rdf:type owl:NamedIndividual ,
+                                                                                  hg:PlaceInTime ;
+                                                                         dcterms:type naa:Plantation ;
+                                                                         rdfs:label "Plantage Hooyland"@nl ,
+                                                                                    "Plantation Hooyland"@en ;
+                                                                         skos:prefLabel "Plantage Hooyland"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/plaats/SlaveOwnerPlantation:NT00341_2176
