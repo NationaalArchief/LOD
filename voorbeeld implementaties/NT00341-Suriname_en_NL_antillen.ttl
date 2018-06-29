@@ -272,15 +272,12 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
 
 ###  http://archief.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb
 <http://archief.nl/NL-HaNA/doc/SlaveReference:cec8f77c-8a4b-4049-86b8-15a122772dfb> rdf:type owl:NamedIndividual ,
-                                                                                             naa:ArchivalReference ,
-                                                                                             cidoc-crm:E10_Transfer_of_Custody ;
+                                                                                             naa:ArchivalReference ;
                                                                                     dcterms:coverage <http://archief.nl/NL-HaNA/id/plaats/Plantation:Waterland(Beneden_Para)> ;
                                                                                     dcterms:relation <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
-                                                                                    dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
                                                                                     schema:category <http://archief.nl/id/persoon/CategorySlaves> ;
-                                                                                    cidoc-crm:P28_custody_surrendered_by <http://archief.nl/NL-HaNA/id/persoon/SlaveOwner:NT00341_2176> ;
-                                                                                    cidoc-crm:P30_transferred_custody_of <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
                                                                                     ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/DocketRecord:NT00341_PE001> ;
+                                                                                    foaf:primaryTopic <http://archief.nl/NL-HaNA/id/persoon/FreedSlave:NT00341_1> ;
                                                                                     naa:docketRecordNumber "PE001" ;
                                                                                     rdfs:comment "Onderdeel van het record over de vrijlating van persoon x op locatie y. Deze beschrijving is tevens onderdeel van borderel z. De records van de slaveneigenaren die eigenaar waren van persoon x verwijzen ook naar borderel z."@nl ;
                                                                                     rdfs:label "Beschrijving over een vrijverklaarde slaaf met naam {naam}"@nl ;
@@ -468,8 +465,16 @@ dit is aanvullende informatie, afkomstig uit de borderellen van de Algemene Reke
                                                                        skos:prefLabel "woonadres van Geertruida Elisabeth Kuvel"@nl .
 
 
+###  http://archief.nl/def/GenderFemale
+naa:GenderFemale rdf:type owl:NamedIndividual .
+
+
 ###  http://archief.nl/def/ReligionEBG
 naa:ReligionEBG rdf:type owl:NamedIndividual .
+
+
+###  http://archief.nl/id/persoon/CategorySlaves
+<http://archief.nl/id/persoon/CategorySlaves> rdf:type owl:NamedIndividual .
 
 
 ###  http://dbpedia.org/resource/Compensated_emancipation

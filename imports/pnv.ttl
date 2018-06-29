@@ -28,68 +28,76 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://archief.nl/pnv/def/hasName
+:hasName rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :PersonName ;
+         rdfs:label "has name"@en ,
+                    "heeft naam"@nl ;
+         skos:prefLabel "heeft naam"@nl .
+
+
+#################################################################
 #    Data properties
 #################################################################
+
+###  http://archief.nl/pnv/def/baseSurname
+:baseSurname rdf:type owl:DatatypeProperty ;
+             rdfs:label "base surname"@en ,
+                        "basis achternaam"@nl ;
+             skos:prefLabel "basis achternaam"@nl .
+
 
 ###  http://archief.nl/pnv/def/disambiguatingDescription
 :disambiguatingDescription rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf :suffix ;
                            rdfs:domain :PersonName ;
                            rdfs:range xsd:string ;
-                           rdfs:comment "A Disambiguating description is a name part that is appended to make sure that the right person is designated"^^xsd:string ;
-                           rdfs:label "Disambiguating description"^^xsd:string .
-
-
-###  http://archief.nl/pnv/def/familyName
-:familyName rdf:type owl:DatatypeProperty ;
-            rdfs:domain :PersonName ;
-            rdfs:range xsd:string ;
-            rdfs:comment "A Family name is the name of the family a person is born into"@en ;
-            rdfs:label "familienaam"@nl ,
-                       "family name"@en ;
-            skos:prefLabel "familienaam"@nl .
-
-
-###  http://archief.nl/pnv/def/familyNamePrefix
-:familyNamePrefix rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :PersonName ;
-                  rdfs:range xsd:string ;
-                  rdfs:comment "A Family name prefix refers to a preceding part of the family name"@en ;
-                  rdfs:label "familienaam prefix"@nl ,
-                             "family name prefix"@en ;
-                  skos:prefLabel "familienaam prefix"@nl .
+                           rdfs:comment """A Disambiguating description is a name part that is appended to make sure that the right person is designated
+For example \"Philips de Goede\", where \"de Goede\" is the disambiguating description."""@en ;
+                           rdfs:label "achtervoegsel (onderscheidend)"@nl ,
+                                      "disambiguating description"@en ;
+                           rdfs:seeAlso <https://schema.org/disambiguatingDescription> ;
+                           skos:altLabel "achtervoegsel (onderscheidend)"@nl .
 
 
 ###  http://archief.nl/pnv/def/firstName
 :firstName rdf:type owl:DatatypeProperty ;
            rdfs:domain :PersonName ;
            rdfs:range xsd:string ;
-           rdfs:comment "A First name is the same as a Given name"@en ;
+           rdfs:comment "A first name is a combination of a given name and a patronym (if any)"@en ;
            rdfs:label "first name"@en ,
                       "voornaam"@nl ;
-           skos:altLabel "roepnaam"@nl ;
            skos:prefLabel "voornaam"@nl .
-
-
-###  http://archief.nl/pnv/def/fullName
-:fullName rdf:type owl:DatatypeProperty ;
-          rdfs:domain :PersonName ;
-          rdfs:range xsd:string ;
-          rdfs:comment "Every person has to have a full name. If a name is not known at all, a text like 'Unknown' should be used"@en ,
-                       "volledige naam"@nl ;
-          rdfs:label "full name"@en ;
-          skos:prefLabel "volledige naam"@nl .
 
 
 ###  http://archief.nl/pnv/def/givenName
 :givenName rdf:type owl:DatatypeProperty ;
+           owl:equivalentProperty foaf:givenName ;
            rdfs:domain :PersonName ;
            rdfs:range xsd:string ;
-           rdfs:comment "A Given name designates the name(s) given to someone at birth"@en ;
-           rdfs:label "Given name"^^xsd:string ,
-                      "voornaam"@nl ;
-           skos:altLabel "forename"@en ;
-           skos:prefLabel "voornaam"@nl .
+           rdfs:comment "A Given name designates the name(s) given to someone at birth or any other name-giving event"@en ,
+                        "A2A:PersonNameFirstName"@en ,
+                        "tei:forename"@en ;
+           rdfs:label "given name"@en ,
+                      "één of meer voornamen"@nl ;
+           rdfs:seeAlso <http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-forename.html> ,
+                        <https://schema.org/givenName> ,
+                        <https://www.wikidata.org/wiki/Property:P735> ;
+           skos:altLabel "Christian name"@en ,
+                         "forename"@en ;
+           skos:prefLabel "één of meer voornamen"@nl .
+
+
+###  http://archief.nl/pnv/def/givenNameSuffix
+:givenNameSuffix rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :givenName ;
+                 rdfs:label "given name suffix"@en ,
+                            "toevoegsel voornaam"@nl ;
+                 skos:prefLabel "toevoegsel voornaam"@nl .
 
 
 ###  http://archief.nl/pnv/def/honorificSuffix
@@ -97,16 +105,21 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
                  rdfs:subPropertyOf :suffix ;
                  rdfs:domain :PersonName ;
                  rdfs:range xsd:string ;
-                 rdfs:comment "A Honorific suffix is a name part that is appended to distinguish someone"^^xsd:string ;
-                 rdfs:label "Honorific suffix"^^xsd:string .
+                 rdfs:comment "A Honorific suffix is a name part that is appended to distinguish someone"@en ;
+                 rdfs:label "honorific suffix"@en ,
+                            "titel (adellijk of burgerlijk) als achtervoegsel"@nl ;
+                 rdfs:seeAlso <https://schema.org/honorificSuffix> ;
+                 skos:prefLabel "titel (adellijk of burgerlijk) als achtervoegsel"@nl .
 
 
 ###  http://archief.nl/pnv/def/infix
 :infix rdf:type owl:DatatypeProperty ;
        rdfs:domain :PersonName ;
        rdfs:range xsd:string ;
-       rdfs:comment "An Infix designates a name part in the middle of a name"^^xsd:string ;
-       rdfs:label "Infix"^^xsd:string .
+       rdfs:comment "An Infix designates a name part in the middle of a name"@en ;
+       rdfs:label "infix"@en ,
+                  "tussenvoegsel"@nl ;
+       skos:prefLabel "tussenvoegsel"@nl .
 
 
 ###  http://archief.nl/pnv/def/infixTitle
@@ -114,32 +127,45 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
             rdfs:subPropertyOf :infix ;
             rdfs:domain :PersonName ;
             rdfs:range xsd:string ;
-            rdfs:comment "An Infix title designates a title in the middle of a name"^^xsd:string ;
-            rdfs:label "Infix title"^^xsd:string .
+            rdfs:comment "An Infix title designates a title in the middle of a name"@en ;
+            rdfs:label "adellijke titel"@nl ,
+                       "infix title"@en ;
+            skos:prefLabel "adellijke titel"@nl .
 
 
-###  http://archief.nl/pnv/def/maidenName
-:maidenName rdf:type owl:DatatypeProperty ;
-            rdfs:domain :PersonName ;
-            rdfs:range xsd:string ;
-            rdfs:comment "A woman's family name preceding the name when after marriage she took the name of her husband, or combined both names"^^xsd:string ;
-            rdfs:label "Maiden name"^^xsd:string .
+###  http://archief.nl/pnv/def/literalName
+:literalName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :PersonName ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Every person has to have a full name. If a name is not known at all, a text like 'Unknown' should be used"@en ,
+                          "volledige naam"@nl ;
+             rdfs:label "full name"@en ,
+                        "letterlijke naam"@nl ;
+             rdfs:seeAlso <https://www.wikidata.org/wiki/Property:P2561> ;
+             skos:prefLabel "volledige naam"@nl .
 
 
 ###  http://archief.nl/pnv/def/patronym
 :patronym rdf:type owl:DatatypeProperty ;
           rdfs:domain :PersonName ;
           rdfs:range xsd:string ;
-          rdfs:comment "A Patronym refers to the father's name"^^xsd:string ;
-          rdfs:label "Patronym"^^xsd:string .
+          rdfs:comment "A Patronym refers to the father's name"^^xsd:string ,
+                       "A2A:PersonNamePatronym"@en ;
+          rdfs:label "patroniem"@nl ,
+                     "patronym"@en ;
+          skos:prefLabel "patroniem"@nl .
 
 
 ###  http://archief.nl/pnv/def/prefix
 :prefix rdf:type owl:DatatypeProperty ;
         rdfs:domain :PersonName ;
         rdfs:range xsd:string ;
-        rdfs:comment "A Prefix designates a title of nobility or a civil grade"^^xsd:string ;
-        rdfs:label "Prefix"^^xsd:string .
+        rdfs:comment "A Prefix designates a title of nobility or a civil grade"^^xsd:string ,
+                     "A2A:PersonNameTitle"@en ,
+                     "A2A:PersonNameTitleOfNobility"@en ;
+        rdfs:label "prefix"@en ,
+                   "voorvoegsel"@nl ;
+        rdfs:seeAlso <https://schema.org/honorificPrefix> .
 
 
 ###  http://archief.nl/pnv/def/suffix
@@ -147,7 +173,38 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
         rdfs:domain :PersonName ;
         rdfs:range xsd:string ;
         rdfs:comment "A Suffix is a name part that is appended to another name part"^^xsd:string ;
-        rdfs:label "Suffix"^^xsd:string .
+        rdfs:label "achtervoegsel"@nl ,
+                   "suffix"@en ;
+        skos:prefLabel "achtervoegsel"@nl .
+
+
+###  http://archief.nl/pnv/def/surname
+:surname rdf:type owl:DatatypeProperty ;
+         owl:equivalentProperty foaf:familyName ;
+         rdfs:domain :PersonName ;
+         rdfs:range xsd:string ;
+         rdfs:comment """A surname is the name of the family a person is born into. In some cases the honorific prefix can be incorporated into the surname.
+For example Van Welderen baron Rengers."""@en ,
+                      "A2A:PersonNameLastName"@en ,
+                      "tei:surname"@en ;
+         rdfs:label "familienaam"@nl ,
+                    "surname"@en ;
+         rdfs:seeAlso <https://schema.org/familyName> ,
+                      <https://www.wikidata.org/wiki/Property:P734> ;
+         skos:altLabel "surname"@en ;
+         skos:prefLabel "familienaam"@nl .
+
+
+###  http://archief.nl/pnv/def/surnamePrefix
+:surnamePrefix rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :PersonName ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A  surname prefix refers to a preceding part of the surname"@en ,
+                            "A2A:PersonNamePrefixLastName"@en ;
+               rdfs:label "familienaam prefix"@nl ,
+                          "surname prefix"@en ;
+               skos:prefLabel "familienaam prefix"@nl .
 
 
 ###  http://archief.nl/pnv/def/trailingPatronym
@@ -156,7 +213,22 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
                   rdfs:domain :PersonName ;
                   rdfs:range xsd:string ;
                   rdfs:comment "A Trailing patronym refers to the father's name at the end of one's own name, mostly for disambiguation"^^xsd:string ;
-                  rdfs:label "Trailing patronym"^^xsd:string .
+                  rdfs:label "patroniem na achternaam"@nl ,
+                             "trailing patronym"@en ;
+                  skos:prefLabel "patroniem na achternaam"@nl .
+
+
+###  http://schema.org/givenName
+schema:givenName rdf:type owl:DatatypeProperty .
+
+
+###  http://xmlns.com/foaf/0.1/familyName
+foaf:familyName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://xmlns.com/foaf/0.1/givenName
+foaf:givenName rdf:type owl:DatatypeProperty .
 
 
 #################################################################
