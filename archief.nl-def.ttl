@@ -5,7 +5,6 @@
 @prefix hg: <http://rdf.histograph.io/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix gvp: <http://vocab.getty.edu/ontology#> .
@@ -78,10 +77,6 @@ dc:relation rdf:type owl:AnnotationProperty .
 dc:type rdf:type owl:AnnotationProperty .
 
 
-###  http://www.europeana.eu/schemas/edm/isShownAt
-edm:isShownAt rdf:type owl:AnnotationProperty .
-
-
 ###  http://www.europeana.eu/schemas/edm/landingPage
 edm:landingPage rdf:type owl:AnnotationProperty .
 
@@ -116,10 +111,6 @@ skos:definition rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2004/02/skos/core#example
 skos:example rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#inScheme
-skos:inScheme rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#label
@@ -303,6 +294,20 @@ dcterms:type rdf:type owl:ObjectProperty .
 svcs:has_service rdf:type owl:ObjectProperty .
 
 
+###  http://schema.org/acquiredFrom
+schema:acquiredFrom rdf:type owl:ObjectProperty ;
+                    rdfs:domain schema:OwnershipInfo ;
+                    rdfs:range [ rdf:type owl:Class ;
+                                 owl:unionOf ( schema:Organization
+                                               schema:Person
+                                             )
+                               ] ;
+                    rdfs:label "acquired from"@en ,
+                               "afkomstig van"@nl ;
+                    rdfs:seeAlso <https://schema.org/acquiredFrom> ;
+                    skos:prefLabel "afkomstig van"@nl .
+
+
 ###  http://schema.org/areaServed
 schema:areaServed rdf:type owl:ObjectProperty ;
                   rdfs:domain schema:Offer ;
@@ -326,6 +331,16 @@ schema:availableAtOrFrom rdf:type owl:ObjectProperty ;
                          skos:prefLabel "beschikbaar op lokatie"@nl .
 
 
+###  http://schema.org/birthPlace
+schema:birthPlace rdf:type owl:ObjectProperty ;
+                  rdfs:domain premis:Person ;
+                  rdfs:range schema:Place ;
+                  rdfs:label "birth place"@en ,
+                             "geboorteplaats"@nl ;
+                  rdfs:seeAlso <https://schema.org/birthPlace> ;
+                  skos:prefLabel "geboorteplaats"@nl .
+
+
 ###  http://schema.org/category
 schema:category rdf:type owl:ObjectProperty ;
                 rdfs:domain [ rdf:type owl:Class ;
@@ -341,6 +356,16 @@ schema:category rdf:type owl:ObjectProperty ;
                            "category"@en ;
                 rdfs:seeAlso <https://nl.wikipedia.org/wiki/Categorisatie> ;
                 skos:prefLabel "categorie"@nl .
+
+
+###  http://schema.org/deathPlace
+schema:deathPlace rdf:type owl:ObjectProperty ;
+                  rdfs:domain premis:Person ;
+                  rdfs:range schema:Place ;
+                  rdfs:label "plaats van overlijden"@nl ,
+                             "place of death"@en ;
+                  rdfs:seeAlso <https://schema.org/deathPlace> ;
+                  skos:prefLabel "plaats van overlijden"@nl .
 
 
 ###  http://schema.org/gender
@@ -423,6 +448,14 @@ abstract and a table of contents. The ORE aggregation may be a Europeana
 Aggregation, in which case the view is an object owned by Europeana (i.e., an instance of edm:EuropeanaObject) or an aggregation contributed by a content provider. In order to capture both these cases, the domain of edm:hasView is ore:Aggregation and its range is edm:WebResource"""@en .
 
 
+###  http://www.europeana.eu/schemas/edm/isShownAt
+edm:isShownAt rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf edm:hasView ;
+              rdfs:range edm:WebResource ;
+              rdfs:label "Is Shown At"@en ;
+              skos:definition "An unambiguous URL reference to the digital object on the provider’s web site in its full information context."@en .
+
+
 ###  http://www.europeana.eu/schemas/edm/isShownBy
 edm:isShownBy rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf edm:hasView ;
@@ -440,6 +473,15 @@ ore:aggregates rdf:type owl:ObjectProperty ;
 ore:isAggregatedBy rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf dcterms:isPartOf ;
                    rdfs:range ore:Aggregation .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty ;
+              rdfs:range skos:ConceptScheme ;
+              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+              rdfs:label "is in scheme"@en ;
+              skos:definition "Relates a resource (for example a concept) to a concept scheme in which it is included."@en ;
+              skos:scopeNote "A concept may be a member of more than one concept scheme."@en .
 
 
 ###  http://www.w3.org/ns/odrl/2/action
@@ -568,7 +610,6 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
      owl:equivalentProperty dbo:age ,
                             foaf:age ;
      rdfs:domain :Agent ;
-     rdfs:range xsd:int ;
      rdfs:label "age in years"@en ,
                 "leeftijd in jaren"@nl ;
      rdfs:seeAlso dbo:age ,
@@ -606,6 +647,15 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
                         skos:altLabel "toegangsnummer"@nl ;
                         skos:note "MAIS toegangscode"@nl ;
                         skos:prefLabel "nummer archiefinventaris"@nl .
+
+
+###  http://archief.nl/def/code
+:code rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf dc:identifier ;
+      rdfs:comment "Codering zoals gebruikt in de configuratie van nadere toegangen."@nl ;
+      rdfs:label "code"@en ,
+                 "codering"@nl ;
+      skos:altLabel "codering"@nl .
 
 
 ###  http://archief.nl/def/country
@@ -751,6 +801,15 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
         rdfs:label "eiland (beschrijving)"@nl ,
                    "island (description)"@en ;
         skos:prefLabel "eiland (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/legacyCode
+:legacyCode rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :code ;
+            rdfs:comment "Verouderde codering zoals gebruikt in de configuratie van nadere toegangen."@nl ;
+            rdfs:label "legacy code"@en ,
+                       "verouderde codering"@nl ;
+            skos:prefLabel "verouderde codering"@nl .
 
 
 ###  http://archief.nl/def/orgID
@@ -934,6 +993,26 @@ dcterms:source rdf:type owl:DatatypeProperty ;
                skos:note "MAIS Download"@nl .
 
 
+###  http://schema.org/birthDate
+schema:birthDate rdf:type owl:DatatypeProperty ;
+                 rdfs:domain schema:Person ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:label "birth date"@en ,
+                            "geboortedatum"@nl ;
+                 rdfs:seeAlso <https://schema.org/birthDate> ;
+                 skos:prefLabel "geboortedatum"@nl .
+
+
+###  http://schema.org/deathDate
+schema:deathDate rdf:type owl:DatatypeProperty ;
+                 rdfs:domain schema:Person ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:label "death date"@en ,
+                            "sterfdatum"@nl ;
+                 rdfs:seeAlso <https://schema.org/deathDate> ;
+                 skos:prefLabel "sterfdatum"@nl .
+
+
 ###  http://schema.org/value
 schema:value rdf:type owl:DatatypeProperty ;
              rdfs:domain schema:QuantitativeValue ;
@@ -1033,7 +1112,7 @@ foaf:age rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.nl/def/CorporateEntity
 :CorporateEntity rdf:type owl:Class ;
-                 owl:equivalentClass edm:Agent ;
+                 owl:equivalentClass foaf:Organization ;
                  rdfs:subClassOf ore:AggregatedResource ;
                  skos:definition "A Corporate Entity is a corporation referred to across a set of archival records."@en ;
                  skos:prefLabel "Corporation in an Archives domain."@en .
@@ -1150,9 +1229,11 @@ foaf:age rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.nl/def/Role
 :Role rdf:type owl:Class ;
-      rdfs:subClassOf ebucore:Role ,
-                      prov:Role ;
-      rdfs:label "Rol"@nl ;
+      owl:equivalentClass ebucore:Role ,
+                          prov:Role ;
+      rdfs:subClassOf skos:Concept ;
+      rdfs:label "Rol"@nl ,
+                 "Role"@en ;
       skos:prefLabel "Rol"@nl .
 
 
@@ -1173,20 +1254,12 @@ foaf:age rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.nl/pnv/def/Person
 
-###  http://biographynet.nl/schema/Name
-bgn:Name rdf:type owl:Class .
-
-
 ###  http://dbpedia.org/ontology/Agent
 dbo:Agent rdf:type owl:Class .
 
 
 ###  http://dbpedia.org/ontology/Name
 dbo:Name rdf:type owl:Class .
-
-
-###  http://dbpedia.org/ontology/Person
-dbo:Person rdf:type owl:Class .
 
 
 ###  http://dbpedia.org/ontology/Reference
@@ -1276,11 +1349,16 @@ schema:Offer rdf:type owl:Class ;
 
 
 ###  http://schema.org/Organization
-schema:Organization rdf:type owl:Class .
+schema:Organization rdf:type owl:Class ;
+                    owl:equivalentClass foaf:Organization .
 
 
-###  http://schema.org/Person
-schema:Person rdf:type owl:Class .
+###  http://schema.org/OwnershipInfo
+schema:OwnershipInfo rdf:type owl:Class ;
+                     rdfs:label "Informatie over eigenaarschap"@nl ,
+                                "Ownership info"@en ;
+                     rdfs:seeAlso <https://schema.org/OwnershipInfo> ;
+                     skos:prefLabel "Informatie over eigenaarschap"@nl .
 
 
 ###  http://schema.org/Place
@@ -1341,10 +1419,6 @@ With the exception of E59 Primitive Value, all other classes within the CRM are 
 """@en .
 
 
-###  http://www.cidoc-crm.org/cidoc-crm/E21_person
-cidoc-crm:E21_person rdf:type owl:Class .
-
-
 ###  http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#Role
 ebucore:Role rdf:type owl:Class ;
              rdfs:subClassOf skos:Concept .
@@ -1380,12 +1454,6 @@ premis:License rdf:type owl:Class ;
 premis:Organization rdf:type owl:Class ;
                     rdfs:subClassOf prov:Organization ,
                                     foaf:Organization .
-
-
-###  http://www.loc.gov/premis/rdf/v3/Person
-premis:Person rdf:type owl:Class ;
-              rdfs:subClassOf prov:Person ,
-                              foaf:Person .
 
 
 ###  http://www.loc.gov/premis/rdf/v3/RightsBasis
@@ -1513,10 +1581,6 @@ prov:Entity rdf:type owl:Class .
 prov:Organization rdf:type owl:Class .
 
 
-###  http://www.w3.org/ns/prov#Person
-prov:Person rdf:type owl:Class .
-
-
 ###  http://www.w3.org/ns/prov#Role
 prov:Role rdf:type owl:Class .
 
@@ -1553,24 +1617,40 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 #################################################################
 
 ###  http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne
-<http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual ,
-                                                            bgn:Name .
+<http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual .
 
 
-###  http://archief.nl/NL-HaNA/id/beroep/Bediende
-<http://archief.nl/NL-HaNA/id/beroep/Bediende> rdf:type owl:NamedIndividual ,
+###  http://archief.nl/NL-HaNA/id/beroep/Merchant
+<http://archief.nl/NL-HaNA/id/beroep/Merchant> rdf:type owl:NamedIndividual ,
                                                         :Profession ;
-                                               rdfs:label "Het beroep van bediende"@nl ,
-                                                          "The profession of servant"@en ;
-                                               skos:prefLabel "Het beroep van bediende"@nl .
+                                               rdfs:label "Het beroep van koopman"@nl ,
+                                                          "The profession of merchant"@en ;
+                                               skos:prefLabel "Het beroep van koopman"@nl .
 
 
-###  http://archief.nl/NL-HaNA/id/conceptschema/Slavernij
-<http://archief.nl/NL-HaNA/id/conceptschema/Slavernij> rdf:type owl:NamedIndividual ,
-                                                                skos:ConceptScheme ;
-                                                       rdfs:comment "This is the category for slaves. It's an instance of of type Slave to enable further content discovery. A slave is a PersonEntity with a role of slave."@en ;
-                                                       rdfs:label "Categorie slaven"@nl ,
-                                                                  "Category slaves"@en .
+###  http://archief.nl/NL-HaNA/id/beroep/Servant
+<http://archief.nl/NL-HaNA/id/beroep/Servant> rdf:type owl:NamedIndividual ,
+                                                       :Profession ;
+                                              rdfs:label "Het beroep van bediende"@nl ,
+                                                         "The profession of servant"@en ;
+                                              skos:prefLabel "Het beroep van bediende"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/concept/Slavernij
+<http://archief.nl/NL-HaNA/id/concept/Slavernij> rdf:type owl:NamedIndividual ,
+                                                          skos:Concept ;
+                                                 skos:inScheme :TypesOfCollectionClassifications ;
+                                                 rdfs:label "Categorie slaven"@nl ,
+                                                            "Category slaves"@en .
+
+
+###  http://archief.nl/NL-HaNA/id/eiland/Suriname
+<http://archief.nl/NL-HaNA/id/eiland/Suriname> rdf:type owl:NamedIndividual ,
+                                                        hg:PlaceInTime ;
+                                               dcterms:type :Island ;
+                                               rdfs:label "Surinam (island)"@en ,
+                                                          "Suriname (eiland)"@nl ;
+                                               skos:prefLabel "Suriname (eiland)"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/geslacht/Man
@@ -1597,53 +1677,123 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
                                               rdfs:label "Vrouw"@nl .
 
 
-###  http://archief.nl/NL-HaNA/id/plaats/StadAmsterdam
-<http://archief.nl/NL-HaNA/id/plaats/StadAmsterdam> rdf:type owl:NamedIndividual ,
-                                                             hg:PlaceInTime ;
-                                                    rdfs:label "Amsterdam (stad)"@nl ;
-                                                    skos:prefLabel "Amsterdam (stad)"@nl .
+###  http://archief.nl/NL-HaNA/id/land/Nederland
+<http://archief.nl/NL-HaNA/id/land/Nederland> rdf:type owl:NamedIndividual ,
+                                                       hg:PlaceInTime ;
+                                              dcterms:type hg:Country ;
+                                              rdfs:label "Nederland (land)"@nl .
 
 
-###  http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief
-<http://archief.nl/NL-HaNA/organisatie/id/NationaalArchief> rdf:type owl:NamedIndividual ,
+###  http://archief.nl/NL-HaNA/id/organisatie/NationaalArchief
+<http://archief.nl/NL-HaNA/id/organisatie/NationaalArchief> rdf:type owl:NamedIndividual ,
                                                                      premis:Organization ,
                                                                      org:FormalOrganization ;
                                                             rdfs:label "Nationaal Archief"@nl ;
                                                             <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
 
 
-###  http://archief.nl/NL-HaNA/rechten/id/RuleAllowDisplay
-<http://archief.nl/NL-HaNA/rechten/id/RuleAllowDisplay> rdf:type owl:NamedIndividual ,
+###  http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne
+<http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne> rdf:type owl:NamedIndividual ,
+                                                              premis:Person ;
+                                                     pnv:hasName <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
+                                                     schema:birthPlace <http://archief.nl/NL-HaNA/id/land/Nederland> ,
+                                                                       <http://archief.nl/NL-HaNA/id/stad/Groningen> ;
+                                                     schema:birthDate "1977-02-25T00:00:00Z"^^xsd:dateTime ;
+                                                     rdfs:label "Elvin Dechesne"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/Amsterdam
+<http://archief.nl/NL-HaNA/id/plaats/Amsterdam> rdf:type owl:NamedIndividual ,
+                                                         hg:PlaceInTime ;
+                                                dcterms:type hg:Place ;
+                                                rdfs:label "Amsterdam (plaats)"@nl ,
+                                                           "Amsterdam (place)"@en ;
+                                                skos:prefLabel "Amsterdam (plaats)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/Frankrijk
+<http://archief.nl/NL-HaNA/id/plaats/Frankrijk> rdf:type owl:NamedIndividual ,
+                                                         hg:PlaceInTime ;
+                                                dcterms:type hg:Place ;
+                                                rdfs:label "France (place)"@en ,
+                                                           "Frankrijk (plaats)"@nl ;
+                                                skos:prefLabel "Frankrijk (plaats)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/rechten/RuleAllowDisplay
+<http://archief.nl/NL-HaNA/id/rechten/RuleAllowDisplay> rdf:type owl:NamedIndividual ,
                                                                  odrl:Permission ;
                                                         odrl:action odrl:display ;
                                                         rdfs:label "(web-) display toegestaan"@nl .
 
 
-###  http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload
-<http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> rdf:type owl:NamedIndividual ,
+###  http://archief.nl/NL-HaNA/id/rechten/RuleAllowDownload
+<http://archief.nl/NL-HaNA/id/rechten/RuleAllowDownload> rdf:type owl:NamedIndividual ,
                                                                   odrl:Permission ;
                                                          odrl:action odrl:grantUse ;
                                                          rdfs:label "download toegestaan"@nl .
 
 
-###  http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay
-<http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> rdf:type owl:NamedIndividual ,
+###  http://archief.nl/NL-HaNA/id/rechten/RuleProhibitDisplay
+<http://archief.nl/NL-HaNA/id/rechten/RuleProhibitDisplay> rdf:type owl:NamedIndividual ,
                                                                     odrl:Prohibition ;
                                                            odrl:action odrl:display ;
                                                            rdfs:label "(web-) display niet toegestaan"@nl .
 
 
-###  http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDownload
-<http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDownload> rdf:type owl:NamedIndividual ,
+###  http://archief.nl/NL-HaNA/id/rechten/RuleProhibitDownload
+<http://archief.nl/NL-HaNA/id/rechten/RuleProhibitDownload> rdf:type owl:NamedIndividual ,
                                                                      odrl:Prohibition ;
                                                             odrl:action odrl:grantUse ;
                                                             rdfs:label "download niet toegestaan"@nl .
 
 
+###  http://archief.nl/NL-HaNA/id/religie/Ebg
+<http://archief.nl/NL-HaNA/id/religie/Ebg> rdf:type owl:NamedIndividual ,
+                                                    skos:Concept ;
+                                           rdfs:comment """Bestand:Broedergemeente.ogv
+De Evangelische Broedergemeente in Suriname in 1968
+De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
+
+In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in Suriname. Ongeveer 40% van de creolen in Suriname is lid van de Evangelische Broedergemeente. Ook internationaal doen de Moravische broeders veel aan zendingswerk."""@nl ;
+                                           rdfs:label "Evangelische Broedergemeente"@nl ;
+                                           rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
+                                           skos:prefLabel "Evangelische Broedergemeente"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/religie/RomanCatholics
+<http://archief.nl/NL-HaNA/id/religie/RomanCatholics> rdf:type owl:NamedIndividual ,
+                                                               skos:Concept ;
+                                                      rdfs:comment """De Rooms-Katholieke Kerk is met meer dan 1,2 miljard volgelingen het grootste kerkgenootschap ter wereld en wordt ook wel kortweg de Kerk genoemd. Het hoofd van de Rooms-Katholieke Kerk is de paus.
+
+De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke boeken) en het Nieuwe Testament van de Bijbel, op de katholieke traditie en op het leergezag van Rome. De Kerk heeft het verloop van de geschiedenis van de mensheid, met name in de westerse wereld, in belangrijke mate mede bepaald. Vanaf de invoering van het leenstelsel in de vroege middeleeuwen, tot aan de Napoleontische tijd, belichaamde ze in West-Europa behalve religieuze ook soms politieke macht. Tegenwoordig is de paus, de bisschop van Rome, ook soeverein van Vaticaanstad en is zijn wereldlijke macht beperkt."""@nl ;
+                                                      rdfs:label "Roman Catholics"@en ,
+                                                                 "Rooms Katholieken"@nl ;
+                                                      rdfs:seeAlso <https://nl.wikipedia.org/wiki/Rooms-Katholieke_Kerk> ;
+                                                      skos:prefLabel "Rooms Katholieken"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/stad/Amsterdam
+<http://archief.nl/NL-HaNA/id/stad/Amsterdam> rdf:type owl:NamedIndividual ,
+                                                       hg:PlaceInTime ;
+                                              dcterms:type hg:City ;
+                                              rdfs:label "Amsterdam (stad)"@nl ;
+                                              skos:prefLabel "Amsterdam (stad)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/stad/Groningen
+<http://archief.nl/NL-HaNA/id/stad/Groningen> rdf:type owl:NamedIndividual ,
+                                                       hg:PlaceInTime ;
+                                              dcterms:type hg:City ;
+                                              rdfs:label "Groningen (city)"@en ,
+                                                         "Groningen (stad)"@nl ;
+                                              skos:prefLabel "Groningen (stad)"@nl .
+
+
 ###  http://archief.nl/def/AgencyType
 :AgencyType rdf:type owl:NamedIndividual ,
                      skos:Concept ;
-            skos:inScheme :OrganisationTypes ;
+            skos:inScheme :TypesOfOrganisations ;
             skos:label "Governmental agency"@en ;
             skos:prefLabel "Agentschap overheid"@nl .
 
@@ -1651,7 +1801,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/def/CorporateType
 :CorporateType rdf:type owl:NamedIndividual ,
                         skos:Concept ;
-               skos:inScheme :OrganisationTypes ;
+               skos:inScheme :TypesOfOrganisations ;
                skos:label "Corporation"@en ;
                skos:prefLabel "Particuliere onderneming"@nl .
 
@@ -1664,37 +1814,6 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
         skos:prefLabel "Eiland"@nl .
 
 
-###  http://archief.nl/def/OrganisationTypes
-:OrganisationTypes rdf:type owl:NamedIndividual ,
-                            skos:ConceptScheme .
-
-
-###  http://archief.nl/def/Photography
-:Photography rdf:type owl:NamedIndividual ,
-                      skos:Concept ;
-             skos:inScheme :TypesOfMaterials ;
-             skos:label "Photography"@en ;
-             skos:prefLabel "Foto"@nl .
-
-
-###  http://archief.nl/def/PhotographyBW
-:PhotographyBW rdf:type owl:NamedIndividual ,
-                        skos:Concept ;
-               skos:broader :Photography ;
-               skos:inScheme :TypesOfMaterials ;
-               skos:label "Photography black and white"@en ;
-               skos:prefLabel "Zwart-wit foto"@nl .
-
-
-###  http://archief.nl/def/PhotographyColour
-:PhotographyColour rdf:type owl:NamedIndividual ,
-                            skos:Concept ;
-                   skos:broader :Photography ;
-                   skos:inScheme :TypesOfMaterials ;
-                   skos:label "Photography in colour"@en ;
-                   skos:prefLabel "Kleurenfoto"@nl .
-
-
 ###  http://archief.nl/def/Plantation
 :Plantation rdf:type owl:NamedIndividual ,
                      hg:PlaceInTimeType ;
@@ -1705,14 +1824,6 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                        "Plantation"@en ;
             rdfs:seeAlso <https://nl.wikipedia.org/wiki/Plantage> ;
             skos:prefLabel "Plantage"@nl .
-
-
-###  http://archief.nl/def/ProfessionMerchant
-:ProfessionMerchant rdf:type owl:NamedIndividual ,
-                             :Profession ;
-                    rdfs:label "Het beroep van koopman"@nl ,
-                               "The profession of merchant"@en ;
-                    skos:prefLabel "Het beroep van koopman"@nl .
 
 
 ###  http://archief.nl/def/ProfessionPlantationKeeper
@@ -1752,48 +1863,74 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                  rdfs:label "CC BY"^^xsd:string .
 
 
+###  http://archief.nl/def/RolePrisonerOfWar
+:RolePrisonerOfWar rdf:type owl:NamedIndividual ,
+                            :Role ;
+                   rdfs:label "Krijgsgevangene (rol)"@nl ,
+                              "Prisoner of war (role)"@en ;
+                   rdfs:seeAlso <https://nl.wikipedia.org/wiki/Krijgsgevangene> ;
+                   skos:prefLabel "Krijgsgevangene (rol)"@nl .
+
+
+###  http://archief.nl/def/RoleResistanceFighter
+:RoleResistanceFighter rdf:type owl:NamedIndividual ,
+                                :Role ;
+                       rdfs:label "Resistance fighter (role)"@en ,
+                                  "Verzetsstrijder (rol)"@nl ;
+                       skos:prefLabel "Verzetsstrijder (role)"@nl .
+
+
 ###  http://archief.nl/def/RoleSlave
 :RoleSlave rdf:type owl:NamedIndividual ,
                     :Role ;
-           rdfs:label "rol van slaaf"@nl ;
+           rdfs:label "Slaaf (rol)"@nl ,
+                      "Slave (role)"@en ;
+           rdfs:seeAlso <http://archief.nl/NL-HaNA/id/concept/Slavernij> ;
            skos:definition "An agent can be assigned the role of slave"@en ;
-           skos:label "rol van slaaf"@nl ;
-           skos:prefLabel "rol van slaaf"@nl .
+           skos:prefLabel "Slaaf (rol)"@nl .
 
 
 ###  http://archief.nl/def/RoleSlaveOwner
 :RoleSlaveOwner rdf:type owl:NamedIndividual ,
-                         ebucore:Role .
+                         ebucore:Role ;
+                rdfs:label "Rol van slaveneigenaar"@nl ,
+                           "Role of slave owner"@en ;
+                skos:prefLabel "Rol van slaveneigenaar"@nl .
 
 
 ###  http://archief.nl/def/TypeAdditionalFindingAid
 :TypeAdditionalFindingAid rdf:type owl:NamedIndividual ,
-                                   :AggregationType ;
+                                   :AggregationType ,
+                                   skos:Concept ;
                           rdfs:label "Methodische ontsluiting van één of meer archieven"@nl ;
                           skos:label "Methodische ontsluiting van één of meer archieven"@nl .
 
 
 ###  http://archief.nl/def/TypeBaptismRecord
 :TypeBaptismRecord rdf:type owl:NamedIndividual ,
-                            :AggregationType ;
+                            :AggregationType ,
+                            skos:Concept ;
                    rdfs:label "Doopregistratie"@nl .
 
 
 ###  http://archief.nl/def/TypeBirthRecord
 :TypeBirthRecord rdf:type owl:NamedIndividual ,
-                          :AggregationType ;
+                          :AggregationType ,
+                          skos:Concept ;
                  rdfs:label "Geboorteregistratie"@nl .
 
 
 ###  http://archief.nl/def/TypeDeathRecord
 :TypeDeathRecord rdf:type owl:NamedIndividual ,
-                          :AggregationType ;
+                          :AggregationType ,
+                          skos:Concept ;
                  rdfs:label "Overlijdensregistratie"@nl .
 
 
 ###  http://archief.nl/def/TypeDetailedContentDescription
 :TypeDetailedContentDescription rdf:type owl:NamedIndividual ,
-                                         :AggregationType ;
+                                         :AggregationType ,
+                                         skos:Concept ;
                                 rdfs:label "Nadere Toegang"@nl ;
                                 rdfs:seeAlso <https://labyrinth.rienkjonker.nl/lexicon/terminologie#letter_n> ;
                                 skos:definition "Een Nadere Toegang bevat verdiepende beschrijving (ofwel, een omschrijving van de stukken op een niveau dieper dan de beschrijving van het inventarisnummer). Nadere Toegangen zijn meer op de inhoud van de stukken gericht."@nl ,
@@ -1803,7 +1940,8 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 
 ###  http://archief.nl/def/TypeDetailedContentDescriptionView
 :TypeDetailedContentDescriptionView rdf:type owl:NamedIndividual ,
-                                             :AggregationType ;
+                                             :AggregationType ,
+                                             skos:Concept ;
                                     rdfs:label "View van een Nadere Toegang"@nl ;
                                     skos:definition "Wanneer een Nadere Toegang is verdeeld over kleinere (data-) sets, noemen we dit 'views'. Een view is een aggregatie van records, en is zelf onderdeel van een bovenliggende aggregatie, de Nadere Toegang zelf."@nl ;
                                     skos:prefLabel "View van een Nadere Toegang"@nl .
@@ -1811,7 +1949,8 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 
 ###  http://archief.nl/def/TypeDocketRecord
 :TypeDocketRecord rdf:type owl:NamedIndividual ,
-                           :AggregationType ;
+                           :AggregationType ,
+                           skos:Concept ;
                   rdfs:label "Borderelnummer"@nl ,
                              "Docket record"@en ;
                   rdfs:seeAlso <https://en.wikipedia.org/wiki/Docket> ,
@@ -1823,40 +1962,63 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                   skos:prefLabel "Borderelnummer"@nl .
 
 
+###  http://archief.nl/def/TypeFinancialTransactionRecord
+:TypeFinancialTransactionRecord rdf:type owl:NamedIndividual ,
+                                         :AggregationType ,
+                                         skos:Concept ;
+                                rdfs:label "Aggregatie van het type financiele transactie"@nl .
+
+
 ###  http://archief.nl/def/TypeFindingAid
 :TypeFindingAid rdf:type owl:NamedIndividual ,
-                         :AggregationType ;
+                         :AggregationType ,
+                         skos:Concept ;
                 rdfs:label "Toegang tot een of meer archieven"@nl ;
                 skos:label "Toegang tot een of meer archieven"@nl .
 
 
 ###  http://archief.nl/def/TypeMarriageRecord
 :TypeMarriageRecord rdf:type owl:NamedIndividual ,
-                             :AggregationType ;
+                             :AggregationType ,
+                             skos:Concept ;
                     rdfs:label "Huwelijksregistratie"@nl .
 
 
 ###  http://archief.nl/def/TypeMembershipRecord
 :TypeMembershipRecord rdf:type owl:NamedIndividual ,
-                               :AggregationType ;
+                               :AggregationType ,
+                               skos:Concept ;
                       rdfs:label "Lidmaatschapsregistratie"@nl .
+
+
+###  http://archief.nl/def/TypePageOnHonoraryList
+:TypePageOnHonoraryList rdf:type owl:NamedIndividual ,
+                                 :AggregationType ,
+                                 skos:Concept ;
+                        rdfs:label "Page on honorary list"@en ,
+                                   "Pagina van erelijst"@nl ;
+                        rdfs:seeAlso <http://www.erelijst.nl/> ;
+                        skos:prefLabel "Pagina van erelijst"@nl .
 
 
 ###  http://archief.nl/def/TypePersonCollection
 :TypePersonCollection rdf:type owl:NamedIndividual ,
-                               :AggregationType ;
+                               :AggregationType ,
+                               skos:Concept ;
                       rdfs:label "Een type verzameling van personen"@nl .
 
 
 ###  http://archief.nl/def/TypePhotoCollection
 :TypePhotoCollection rdf:type owl:NamedIndividual ,
-                              :AggregationType ;
+                              :AggregationType ,
+                              skos:Concept ;
                      rdfs:label "Een type verzameling van foto's"@nl .
 
 
 ###  http://archief.nl/def/TypePhotoRecord
 :TypePhotoRecord rdf:type owl:NamedIndividual ,
-                          :AggregationType ;
+                          :AggregationType ,
+                          skos:Concept ;
                  dc:date "1523361574463"^^xsd:long ;
                  dc:creator "Elvin Dechesne"^^xsd:string ;
                  rdfs:label "Fotoregistratie"@nl ;
@@ -1866,7 +2028,8 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 
 ###  http://archief.nl/def/TypePhotoSeries
 :TypePhotoSeries rdf:type owl:NamedIndividual ,
-                          :AggregationType ;
+                          :AggregationType ,
+                          skos:Concept ;
                  rdfs:label "Fotoreeks"@nl ,
                             "Photo series"@en .
 
@@ -1875,9 +2038,9 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotograph rdf:type owl:NamedIndividual ,
                          :ArchivalEntityType ,
                          skos:Concept ;
+                skos:inScheme :TypesOfMaterials ;
                 dc:date "1523266085887"^^xsd:long ;
                 dc:creator "Elvin Dechesne"^^xsd:string ;
-                skos:inScheme :TypesOfMaterials ;
                 skos:label "Foto"@nl ,
                            "Photograph"@en ;
                 skos:prefLabel "Foto"@nl .
@@ -1887,10 +2050,10 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotographBlackWhite rdf:type owl:NamedIndividual ,
                                    :ArchivalEntityType ,
                                    skos:Concept ;
+                          skos:inScheme :TypesOfMaterials ;
                           dc:date "1523266085887"^^xsd:long ;
                           dc:creator "Elvin Dechesne"^^xsd:string ;
                           skos:broader :TypePhotograph ;
-                          skos:inScheme :TypesOfMaterials ;
                           skos:label "Black and white photograph"@en ,
                                      "Zwartwit foto"@nl ;
                           skos:prefLabel "Zwartwit foto"@nl .
@@ -1900,10 +2063,10 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotographColour rdf:type owl:NamedIndividual ,
                                :ArchivalEntityType ,
                                skos:Concept ;
+                      skos:inScheme :TypesOfMaterials ;
                       dc:date "1523266085887"^^xsd:long ;
                       dc:creator "Elvin Dechesne"^^xsd:string ;
                       skos:broader :TypePhotograph ;
-                      skos:inScheme :TypesOfMaterials ;
                       skos:label "Colour photograph"@en ,
                                  "Kleuren foto"@nl ;
                       skos:prefLabel "Kleuren Foto"@nl .
@@ -1911,13 +2074,30 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 
 ###  http://archief.nl/def/TypePhotographersCollection
 :TypePhotographersCollection rdf:type owl:NamedIndividual ,
-                                      :AggregationType ;
+                                      :AggregationType ,
+                                      skos:Concept ;
                              rdfs:label "Een type verzameling van fotografen"@nl .
 
 
 ###  http://archief.nl/def/TypeSlaveryRecord
 :TypeSlaveryRecord rdf:type owl:NamedIndividual ,
-                            :AggregationType .
+                            :AggregationType ,
+                            skos:Concept ;
+                   rdfs:label "Record about slavery"@en ,
+                              "Record over slavernij"@nl ;
+                   skos:prefLabel "Record over slavernij"@nl .
+
+
+###  http://archief.nl/def/TypesOfAggregations
+:TypesOfAggregations rdf:type owl:NamedIndividual ,
+                              skos:ConceptScheme ;
+                     rdfs:label "Classificatie schema van aggregatie typen"@nl .
+
+
+###  http://archief.nl/def/TypesOfCollectionClassifications
+:TypesOfCollectionClassifications rdf:type owl:NamedIndividual ,
+                                           skos:ConceptScheme ;
+                                  rdfs:label "Classificaties van onderwerpen die voorkomen in collecties"@nl .
 
 
 ###  http://archief.nl/def/TypesOfMaterials
@@ -1927,52 +2107,10 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                   skos:label "Materiaal types"@nl .
 
 
-###  http://archief.nl/id/plaats/IslandSuriname
-<http://archief.nl/id/plaats/IslandSuriname> rdf:type owl:NamedIndividual ,
-                                                      hg:PlaceInTime ;
-                                             dcterms:type :Island ;
-                                             rdfs:label "Surinam (island)"@en ,
-                                                        "Suriname (eiland)"@nl ;
-                                             skos:prefLabel "Suriname (eiland)"@nl .
-
-
-###  http://archief.nl/id/plaats/PlaceAmsterdam
-<http://archief.nl/id/plaats/PlaceAmsterdam> rdf:type owl:NamedIndividual ,
-                                                      hg:PlaceInTime ;
-                                             rdfs:label "Amsterdam (plaats)"@nl .
-
-
-###  http://archief.nl/id/plaats/PlaceFrankrijk
-<http://archief.nl/id/plaats/PlaceFrankrijk> rdf:type owl:NamedIndividual ,
-                                                      hg:PlaceInTime ;
-                                             rdfs:label "France (place)"@en ,
-                                                        "Frankrijk (plaats)"@nl ;
-                                             skos:prefLabel "Frankrijk (plaats)"@nl .
-
-
-###  http://archief.nl/id/religie/ReligionEBG
-<http://archief.nl/id/religie/ReligionEBG> rdf:type owl:NamedIndividual ,
-                                                    skos:Concept ;
-                                           rdfs:comment """Bestand:Broedergemeente.ogv
-De Evangelische Broedergemeente in Suriname in 1968
-De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
-
-In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in Suriname. Ongeveer 40% van de creolen in Suriname is lid van de Evangelische Broedergemeente. Ook internationaal doen de Moravische broeders veel aan zendingswerk."""@nl ;
-                                           rdfs:label "Evangelische Broedergemeente"@nl ;
-                                           rdfs:seeAlso <https://nl.wikipedia.org/wiki/Evangelische_Broedergemeente> ;
-                                           skos:prefLabel "Evangelische Broedergemeente"@nl .
-
-
-###  http://archief.nl/id/religie/ReligionRC
-<http://archief.nl/id/religie/ReligionRC> rdf:type owl:NamedIndividual ,
-                                                   skos:Concept ;
-                                          rdfs:comment """De Rooms-Katholieke Kerk is met meer dan 1,2 miljard volgelingen het grootste kerkgenootschap ter wereld en wordt ook wel kortweg de Kerk genoemd. Het hoofd van de Rooms-Katholieke Kerk is de paus.
-
-De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke boeken) en het Nieuwe Testament van de Bijbel, op de katholieke traditie en op het leergezag van Rome. De Kerk heeft het verloop van de geschiedenis van de mensheid, met name in de westerse wereld, in belangrijke mate mede bepaald. Vanaf de invoering van het leenstelsel in de vroege middeleeuwen, tot aan de Napoleontische tijd, belichaamde ze in West-Europa behalve religieuze ook soms politieke macht. Tegenwoordig is de paus, de bisschop van Rome, ook soeverein van Vaticaanstad en is zijn wereldlijke macht beperkt."""@nl ;
-                                          rdfs:label "Roman Catholics"@en ,
-                                                     "Rooms Katholieken"@nl ;
-                                          rdfs:seeAlso <https://nl.wikipedia.org/wiki/Rooms-Katholieke_Kerk> ;
-                                          skos:prefLabel "Rooms Katholieken"@nl .
+###  http://archief.nl/def/TypesOfOrganisations
+:TypesOfOrganisations rdf:type owl:NamedIndividual ,
+                               skos:ConceptScheme ;
+                      rdfs:label "Classificatie schema t.b.v. organisaties"@nl .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
@@ -2004,7 +2142,10 @@ hg:Address rdf:type owl:NamedIndividual ,
 
 ###  http://rdf.histograph.io/City
 hg:City rdf:type owl:NamedIndividual ,
-                 hg:PlaceInTimeType .
+                 hg:PlaceInTimeType ;
+        rdfs:label "City"@en ,
+                   "Stad"@nl ;
+        skos:prefLabel "Stad"@nl .
 
 
 ###  http://rdf.histograph.io/Country
@@ -2162,36 +2303,14 @@ De IIIF functie is bestemd voor het levereren van zichtexemplaren volgens het In
                                                <http://www.w3.org/ns/adms#relatedWebPage> <http://iiif.io/> .
 
 
-[ rdf:type dcterms:RightsStatement ;
-  dc:description "MAIS Aut.toelichting"@nl ;
-  dc:subject "MAIS  MAIS openb.beperking"@nl ;
-  dcterms:source "MAIS Download URL"@nl ;
-  dc:type "Set B: Rechtenvrij / Publiek Domein"@nl ;
-  skos:note "MAIS openb.beperking"@nl
-] .
-
-[ rdf:type edm:TimeSpan ;
-   dc:coverage "MAIS Datering geschat"@nl ;
-   dc:description "MAIS datumaanduiding (bijvoorbeeld Circa)"@nl ;
-   edm:begin "MAIS Begindatum (bijvoorbeeld 0000-00-00)"^^xsd:string ;
-   edm:end "MAIS Einddatum (bijvoorbeeld 0000-00-00)"^^xsd:string
- ] .
-
-[ rdf:type hg:PlaceInTime ;
-   rdfs:label "Frankrijk"
- ] .
-
-[ rdfs:label "Henrik"
- ] .
-
 #################################################################
 #    Annotations
 #################################################################
 
 odrl:Asset skos:note "The Asset entity can be any form of identifiable resource, such as data/information, content/media, applications, or services. Furthermore, it can be used to represent other Asset entities that are needed to undertake the Policy expression, such as with the Duty entity. To describe more details about the Asset, it is recommended to use Dublin Core [[dcterms]] elements or other content metadata."@en ;
-            skos:definition "A resource or a collection of resources that are the subject of a Rule."@en ;
-            rdfs:label "Asset"@en ;
-            rdfs:isDefinedBy odrl: .
+           skos:definition "A resource or a collection of resources that are the subject of a Rule."@en ;
+           rdfs:label "Asset"@en ;
+           rdfs:isDefinedBy odrl: .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

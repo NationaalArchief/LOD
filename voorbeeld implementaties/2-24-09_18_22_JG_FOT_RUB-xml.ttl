@@ -1,0 +1,293 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sioc: <http://rdfs.org/sioc/services#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix naa: <http://archief.nl/def/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AF98FFBED0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF98FFBED0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 22" ;
+	rdfs:label "Origineel document ontbreekt" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "Origineel document ontbreekt"@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af98ffbe-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-1221" ;
+	dc:identifier "AF98FFBED0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF98FFBED0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
+	dc:description "Origineel document ontbreekt" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over Origineel document ontbreekt" ;
+	dc:subject "eerste wereldoorlog" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AF9B5746D0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF9B5746D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B5746D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5746D0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 26" ;
+	rdfs:label "geen document" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5746D0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "geen document"@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af9b5746-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B5746D0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-1712" ;
+	dc:identifier "AF9B5746D0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF9B5746D0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5746D0B4102DBCF8003048976D84> ;
+	dc:description "geen document" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over geen document" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B5746D0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5746D0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AF9B585ED0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF9B585ED0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B585ED0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B585ED0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 22" ;
+	rdfs:label "geen document" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B585ED0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "geen document"@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af9b585e-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B585ED0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-1713" ;
+	dc:identifier "AF9B585ED0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF9B585ED0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B585ED0B4102DBCF8003048976D84> ;
+	dc:description "geen document" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over geen document" ;
+	dc:subject "eerste wereldoorlog" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B585ED0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B585ED0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AF9B5930D0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF9B5930D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B5930D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5930D0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 52" ;
+	rdfs:label "geen document" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5930D0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "geen document"@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af9b5930-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B5930D0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-1714" ;
+	dc:identifier "AF9B5930D0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF9B5930D0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5930D0B4102DBCF8003048976D84> ;
+	dc:description "geen document" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over geen document" ;
+	dc:subject "eerste wereldoorlog" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AF9B5930D0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF9B5930D0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AF969EA4D0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF969EA4D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF969EA4D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF969EA4D0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 22" ;
+	edm:isShownBy <https://service.nationaalarchief.nl/gaf/image-service/4b48f0fb-40cd-41b8-9d74-9cd7b6183af0> ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoSeries:reisdocumenten-wo-i-van-dr-hc-redeke-directeur-van-het-rijksinstituut-voor-biologisch-visscherijonderzoek> ;
+	rdfs:label "Paspoort van dr. H.C. Redeke, directeur van het Rijksinstituut voor Biologisch Visserijonderzoek  uitgegeven t.b.v. een reis naar Duitsland en Denemarken , 15-2-1918" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AF969EA4D0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "Paspoort van dr. H.C. Redeke, ..."@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af969ea4-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF969EA4D0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-1781" ;
+	dc:identifier "AF969EA4D0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF969EA4D0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF969EA4D0B4102DBCF8003048976D84> .
+
+_:node1chlf3canx1 a edm:TimeSpan ;
+	edm:begin "1918-02-15" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF969EA4D0B4102DBCF8003048976D84> dct:relation _:node1chlf3canx1 ;
+	dc:description "Paspoort van dr. H.C. Redeke, directeur van het Rijksinstituut voor Biologisch Visserijonderzoek  uitgegeven t.b.v. een reis naar Duitsland en Denemarken , 15-2-1918" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over Paspoort van dr. H.C. Redeke, ..." ;
+	dc:subject "eerste wereldoorlog" , "visa" ;
+	rdfs:comment "Origineel document" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AF969EA4D0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF969EA4D0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .
+
+<https://service.nationaalarchief.nl/gaf/image-service/4b48f0fb-40cd-41b8-9d74-9cd7b6183af0> a edm:WebResource ;
+	dc:identifier "4b48f0fb-40cd-41b8-9d74-9cd7b6183af0" ;
+	dct:source <https://service.nationaalarchief.nl/gaf/image-service/4b48f0fb-40cd-41b8-9d74-9cd7b6183af0> ;
+	sioc:has_service <https://service.nationaalarchief.nl/api/iiif> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoSeries:reisdocumenten-wo-i-van-dr-hc-redeke-directeur-van-het-rijksinstituut-voor-biologisch-visscherijonderzoek> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoSeries .
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AF969B48D0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF969B48D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF969B48D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF969B48D0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 22" ;
+	edm:isShownBy <https://service.nationaalarchief.nl/gaf/image-service/81d380de-3b55-4528-9970-f55db78f464d> ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoSeries:reisdocumenten-wo-i-van-dr-hc-redeke-directeur-van-het-rijksinstituut-voor-biologisch-visscherijonderzoek> ;
+	rdfs:label "Paspoort voor dr. H.C. Redeke voor een reis naar Zwitserland t.b.v. onderzoek naar de vermeerdering van zalm, 9-3-1915" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AF969B48D0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "Paspoort voor dr. H.C. Redeke ..."@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af969b48-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF969B48D0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-1782" ;
+	dc:identifier "AF969B48D0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF969B48D0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF969B48D0B4102DBCF8003048976D84> .
+
+_:node1chlf3canx2 a edm:TimeSpan ;
+	edm:begin "1915-03-09" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AF969B48D0B4102DBCF8003048976D84> dct:relation _:node1chlf3canx2 ;
+	dc:description "Paspoort voor dr. H.C. Redeke voor een reis naar Zwitserland t.b.v. onderzoek naar de vermeerdering van zalm, 9-3-1915" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over Paspoort voor dr. H.C. Redeke ..." ;
+	dc:subject "eerste wereldoorlog" , "visserij" ;
+	rdfs:comment "origineel document" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AF969B48D0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF969B48D0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .
+
+<https://service.nationaalarchief.nl/gaf/image-service/81d380de-3b55-4528-9970-f55db78f464d> a edm:WebResource ;
+	dc:identifier "81d380de-3b55-4528-9970-f55db78f464d" ;
+	dct:source <https://service.nationaalarchief.nl/gaf/image-service/81d380de-3b55-4528-9970-f55db78f464d> ;
+	sioc:has_service <https://service.nationaalarchief.nl/api/iiif> .
+
+<http://archief.nl/NL-HaNA/doc/PhotoRecord:AFA4FB16D0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:isAggregationType naa:TypePhotoRecord ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AFA4FB16D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AFA4FB16D0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AFA4FB16D0B4102DBCF8003048976D84> ;
+	dct:created "23-02-2018 23:20 53" ;
+	rdfs:label "Origineel document ontbreekt" .
+
+<http://archief.nl/NL-HaNA/id/beeld/Photo:AFA4FB16D0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
+	naa:isMaterialType naa:TypePhotograph ;
+	dct:type naa:PhotographyBW ;
+	rdfs:label "Origineel document ontbreekt"@nl ;
+	naa:ahdid "53635965" ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/afa4fb16-d0b4-102d-bcf8-003048976d84> ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AFA4FB16D0B4102DBCF8003048976D84> ;
+	naa:catalogReferenceNumber "2.24.09" ;
+	naa:fileNumber "158-2892" ;
+	dc:identifier "AFA4FB16D0B4102DBCF8003048976D84" .
+
+<http://archief.nl/NL-HaNA/doc/PhotoReference:AFA4FB16D0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AFA4FB16D0B4102DBCF8003048976D84> ;
+	dc:description "Origineel document ontbreekt" ;
+	dc:creator "[onbekend]" ;
+	rdfs:label "Beschrijving van foto over Origineel document ontbreekt" ;
+	dc:subject "eerste wereldoorlog" ;
+	dc:coverage "1914-1918" ;
+	edm:begin "1914" ;
+	edm:end "1918" .
+
+<http://archief.nl/NL-HaNA/doc/RightsStatement:AFA4FB16D0B4102DBCF8003048976D84> a dct:RightsStatement , ore:AggregatedResource , odrl:Policy ;
+	dc:type "Set B: Rechtenvrij / Publiek Domein" ;
+	rdfs:label "Set B: Rechtenvrij / Publiek Domein" ;
+	dct:rightsHolder "[ onbekend ]"@nl ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AFA4FB16D0B4102DBCF8003048976D84> ;
+	dc:rights "weergave_levering"@nl ;
+	odrl:permission <http://archief.nl/NL-HaNA/rechten/id/RuleAllowDownload> , <http://archief.nl/NL-HaNA/rechten/id/RuleProhibitDisplay> .

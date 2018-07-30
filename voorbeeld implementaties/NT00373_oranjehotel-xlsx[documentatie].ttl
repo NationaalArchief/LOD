@@ -1,0 +1,283 @@
+@prefix : <http://archief.nl/NL-HaNA/doc/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix hg: <http://rdf.histograph.io/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix naa: <http://archief.nl/def/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pnv: <http://archief.nl/pnv/def/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sioc: <http://rdfs.org/sioc/services#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://archief.nl/NL-HaNA/doc/> .
+
+<http://archief.nl/NL-HaNA/doc/> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://archief.nl/def/catalogReferenceNumber
+naa:catalogReferenceNumber rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/code
+naa:code rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/fileId
+naa:fileId rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/findingAidNumber
+naa:findingAidNumber rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/hasRole
+naa:hasRole rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/def/isAggregationType
+naa:isAggregationType rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/pnv/def/firstName
+pnv:firstName rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/pnv/def/hasName
+pnv:hasName rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/pnv/def/infix
+pnv:infix rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/pnv/def/literalName
+pnv:literalName rdf:type owl:AnnotationProperty .
+
+
+###  http://archief.nl/pnv/def/surname
+pnv:surname rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/type
+dcterms:type rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/sioc/services#has_service
+sioc:has_service rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/birthDate
+schema:birthDate rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/birthPlace
+schema:birthPlace rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/category
+schema:category rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/deathDate
+schema:deathDate rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/deathPlace
+schema:deathPlace rdf:type owl:AnnotationProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/isShownBy
+edm:isShownBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.openarchives.org/ore/terms/aggregates
+ore:aggregates rdf:type owl:AnnotationProperty .
+
+
+###  http://www.openarchives.org/ore/terms/isAggregatedBy
+ore:isAggregatedBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/isPrimaryTopicOf
+foaf:isPrimaryTopicOf rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/primaryTopic
+foaf:primaryTopic rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://archief.nl/def/ArchivalReference
+naa:ArchivalReference rdf:type owl:Class .
+
+
+###  http://archief.nl/def/NL-HaNA_Aggregation
+naa:NL-HaNA_Aggregation rdf:type owl:Class .
+
+
+###  http://archief.nl/pnv/def/Person
+pnv:Person rdf:type owl:Class .
+
+
+###  http://archief.nl/pnv/def/PersonName
+pnv:PersonName rdf:type owl:Class .
+
+
+###  http://rdf.histograph.io/PlaceInTime
+hg:PlaceInTime rdf:type owl:Class .
+
+
+###  http://www.europeana.eu/schemas/edm/WebResource
+edm:WebResource rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dcat#Dataset
+dcat:Dataset rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://archief.nl/NL-HaNA/doc/DeathRecord:b08a82c6-78c6-102d-ba75-005056a23d00
+:b08a82c6-78c6-102d-ba75-005056a23d00 rdf:type owl:NamedIndividual ,
+                                               naa:NL-HaNA_Aggregation ;
+                                      naa:isAggregationType naa:TypeDeathRecord ;
+                                      edm:isShownBy <http://www.gahetna.nl/collectie/archief/inventaris/gahetnascan/eadid/2.19.136/inventarisnr/1/scan-index/10> ;
+                                      ore:aggregates :b08a82c6-78c6-102d-ba75-005056a23d00 ,
+                                                     <http://archief.nl/NL-HaNA/id/persoon/Krijgsgevangene:b08a82c6-78c6-102d-ba75-005056a23d00> ;
+                                      ore:isAggregatedBy :NT00373_Oranjehotel_Dodenboeken ;
+                                      rdfs:label "Record van krijgsgevangene Dirk Arie van den Bosch uit Nadere Toegang 00373" .
+
+
+###  http://archief.nl/NL-HaNA/doc/HonoryListPage:NT00373_V917
+:NT00373_V917 rdf:type owl:NamedIndividual ,
+                       naa:NL-HaNA_Aggregation ;
+              naa:isAggregationType naa:TypePageOnHonoraryList ;
+              dcterms:subject <http://archief.nl/NL-HaNA/id/persoon/Verzetsstrijder:b08a82c6-78c6-102d-ba75-005056a23d00> ;
+              schema:category "3"^^xsd:int ;
+              rdfs:label "Pagina V917 uit de erelijst"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/KrijgsgevangeneBeschrijving:b08a82c6-78c6-102d-ba75-005056a23d00
+:b08a82c6-78c6-102d-ba75-005056a23d00 rdf:type owl:NamedIndividual ,
+                                               naa:ArchivalReference ;
+                                      ore:isAggregatedBy :NT00373_V917 ;
+                                      rdfs:label "Beschrijving van krijgsgevangene Dirk Arie van den Bosch uit Nadere Toegang 00373"@nl ;
+                                      foaf:primaryTopic <http://archief.nl/NL-HaNA/id/persoon/Verzetsstrijder:b08a82c6-78c6-102d-ba75-005056a23d00> .
+
+
+###  http://archief.nl/NL-HaNA/doc/NT:NT00373_Oranjehotel_Dodenboeken
+:NT00373_Oranjehotel_Dodenboeken rdf:type owl:NamedIndividual ,
+                                          naa:NL-HaNA_Aggregation ,
+                                          dcat:Dataset ,
+                                          prov:Entity ;
+                                 naa:catalogReferenceNumber "2.19.136" ;
+                                 naa:code "NT00373" ;
+                                 naa:findingAidNumber "2.19.136" ;
+                                 naa:isAggregationType naa:TypeDetailedContentDescription ;
+                                 dcterms:subject <http://archief.nl/NL-HaNA/id/concept/Tweede-wereldoorlog> ;
+                                 ore:aggregates :NT00373_Oranjehotel_Dodenboeken ;
+                                 rdfs:label "Nadere Toegang 00373 Oranjehotel:Dodenboeken"@nl .
+
+
+###  http://archief.nl/NL-HaNA/doc/View:NT00373_Oranjehotel_Dodenboeken
+:NT00373_Oranjehotel_Dodenboeken rdf:type owl:NamedIndividual ,
+                                          naa:NL-HaNA_Aggregation ;
+                                 naa:fileId "1"^^xsd:int ;
+                                 naa:isAggregationType naa:TypeDetailedContentDescriptionView ;
+                                 dc:identifier "02c8ae06-cd6d-102c-9f8b-005056a23d00" ;
+                                 dc:title "Oranjehotel: Dodenboeken"@nl ;
+                                 rdfs:label "View van NT00373 Oranjehotel:Dodenboeken"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/concept/Tweede-wereldoorlog
+<http://archief.nl/NL-HaNA/id/concept/Tweede-wereldoorlog> rdf:type owl:NamedIndividual ,
+                                                                    skos:Concept ;
+                                                           skos:inScheme naa:TypesOfCollectionClassifications .
+
+
+###  http://archief.nl/NL-HaNA/id/persoon/Krijgsgevangene:b08a82c6-78c6-102d-ba75-005056a23d00
+<http://archief.nl/NL-HaNA/id/persoon/Krijgsgevangene:b08a82c6-78c6-102d-ba75-005056a23d00> rdf:type owl:NamedIndividual ,
+                                                                                                     pnv:Person ;
+                                                                                            naa:hasRole naa:RolePrisonerOfWar ;
+                                                                                            pnv:hasName [ rdf:type pnv:PersonName ;
+                                                                                                          pnv:firstName "Dirk Arie" ;
+                                                                                                          pnv:infix "van den" ;
+                                                                                                          pnv:literalName "Dirk Arie van den Bosch" ;
+                                                                                                          pnv:surname "Bosch"
+                                                                                                        ] ;
+                                                                                            dc:identifier "b08a82c6-78c6-102d-ba75-005056a23d00" ;
+                                                                                            schema:birthDate "Thu Oct 23 00:00:00 CET 1884"^^xsd:dateTime ;
+                                                                                            schema:birthPlace <http://archief.nl/NL-HaNA/id/plaats/Hazerswoude> ;
+                                                                                            schema:deathDate "Fri Mar 20 00:00:00 CEST 1942"^^xsd:dateTime ;
+                                                                                            schema:deathPlace <http://archief.nl/NL-HaNA/id/plaats/Amersfoort> ;
+                                                                                            foaf:isPrimaryTopicOf :b08a82c6-78c6-102d-ba75-005056a23d00 .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/Amersfoort
+<http://archief.nl/NL-HaNA/id/plaats/Amersfoort> rdf:type owl:NamedIndividual ,
+                                                          hg:PlaceInTime ;
+                                                 dcterms:type hg:Place ;
+                                                 rdfs:label "Amersfoort"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/plaats/Hazerswoude
+<http://archief.nl/NL-HaNA/id/plaats/Hazerswoude> rdf:type owl:NamedIndividual ,
+                                                           hg:PlaceInTime ;
+                                                  dcterms:type hg:Place ;
+                                                  rdfs:label "Hazerswoude"@nl .
+
+
+###  http://www.gahetna.nl/collectie/archief/inventaris/gahetnascan/eadid/2.19.136/inventarisnr/1/scan-index/10
+<http://www.gahetna.nl/collectie/archief/inventaris/gahetnascan/eadid/2.19.136/inventarisnr/1/scan-index/10> rdf:type owl:NamedIndividual ,
+                                                                                                                      edm:WebResource ;
+                                                                                                             dc:identifier "8f960d6e-155e-4f13-9ae1-d67df07a5f69" ;
+                                                                                                             dc:source <http://www.gahetna.nl/collectie/archief/inventaris/gahetnascan/eadid/2.19.136/inventarisnr/1/scan-index/10> ;
+                                                                                                             sioc:has_service <https://service.nationaalarchief.nl/api/iiif> ;
+                                                                                                             rdfs:label "Zichtexemplaar van de foto van Dirk Arie van den Bosch" .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

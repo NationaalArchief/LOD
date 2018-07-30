@@ -2,12 +2,12 @@
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri id="Imports Wizard Entry" name="http://archief.nl/pnv/def/" uri="pnv.ttl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="http://id.loc.gov/ontologies/bibframe/" uri="bibframe.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="http://rdf.muninn-project.org/ontologies/military" uri="military.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v6.2-draft-2015August.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v5.0.4_official_release.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="http://www.loc.gov/premis/rdf/v3/" uri="premis3.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="http://www.w3.org/2002/07/owl" uri="owl.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1529660092889" name="http://www.w3.org/ns/dcat" uri="dcat.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="http://id.loc.gov/ontologies/bibframe/" uri="bibframe.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="http://rdf.muninn-project.org/ontologies/military" uri="military.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v6.2-draft-2015August.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="duplicate:http://www.cidoc-crm.org/cidoc-crm/" uri="cidoc_crm_v5.0.4_official_release.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="http://www.loc.gov/premis/rdf/v3/" uri="premis3.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="http://www.w3.org/2002/07/owl" uri="owl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1531400848094" name="http://www.w3.org/ns/dcat" uri="dcat.owl"/>
     </group>
 </catalog>
