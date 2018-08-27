@@ -623,6 +623,14 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
        rdfs:label "MAIS Flexis ahdId"@nl .
 
 
+###  http://archief.nl/def/amountValue
+:amountValue rdf:type owl:DatatypeProperty ;
+             owl:equivalentProperty schema:amount ;
+             rdfs:label "amount"@en ,
+                        "bedrag of hoeveelheid"@nl ;
+             skos:prefLabel "bedrag of hoeveelheid"@nl .
+
+
 ###  http://archief.nl/def/archivalSelectionNumber
 :archivalSelectionNumber rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf dc:identifier ;
@@ -678,6 +686,15 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
         skos:prefLabel "datering"@nl .
 
 
+###  http://archief.nl/def/depositAmountValue
+:depositAmountValue rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :amountValue ;
+                    rdfs:range xsd:double ;
+                    rdfs:label "bedrag borg"@nl ,
+                               "deposit amount"@en ;
+                    skos:prefLabel "bedrag borg"@nl .
+
+
 ###  http://archief.nl/def/deprecatedKeyword
 :deprecatedKeyword rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf dc:description ;
@@ -729,6 +746,14 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
                     rdfs:label "fragment identifier"@en ,
                                "niet-universele identificatie"@nl ;
                     skos:altLabel "context afhankelijke identificatie"@nl .
+
+
+###  http://archief.nl/def/guarantorDescription
+:guarantorDescription rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf dc:description ;
+                      rdfs:label "beschrijving van iemand die borg staat"@nl ,
+                                 "guarantor description"@en ;
+                      skos:prefLabel "beschrijving van iemand die borg staat"@nl .
 
 
 ###  http://archief.nl/def/guid
@@ -819,6 +844,14 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
        skos:note "Gebruikt door HUB3 voor de tennant of ISIL code"@nl .
 
 
+###  http://archief.nl/def/ownerDescription
+:ownerDescription rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf dc:description ;
+                  rdfs:label "beschrijving van een eigenaar"@nl ,
+                             "owner description"@en ;
+                  skos:prefLabel "beschrijving van een eigenaar"@nl .
+
+
 ###  http://archief.nl/def/persistentIdentifier
 :persistentIdentifier rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf dc:identifier ;
@@ -836,6 +869,15 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
                    ] ;
        rdfs:label "plaats (beschrijving)"@nl ;
        skos:prefLabel "plaats (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/pledgeAmountValue
+:pledgeAmountValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :amountValue ;
+                   rdfs:range xsd:double ;
+                   rdfs:label "bedrag cautie"@nl ,
+                              "pledge amount"@en ;
+                   skos:prefLabel "bedrag cautie"@nl .
 
 
 ###  http://archief.nl/def/prepositionDate
@@ -1018,6 +1060,11 @@ dcterms:rightsHolder rdf:type owl:DatatypeProperty ;
 dcterms:source rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf dc:source ;
                skos:note "MAIS Download"@nl .
+
+
+###  http://schema.org/amount
+schema:amount rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:double .
 
 
 ###  http://schema.org/birthDate
