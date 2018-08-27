@@ -13,30 +13,37 @@
 
 
 <http://archief.nl/NL-HaNA/doc/PhotoRecord:AF98FFBED0B4102DBCF8003048976D84> a naa:NL-HaNA_Aggregation ;
+	naa:NL-HaNA_Aggregation ;
 	naa:isAggregationType naa:TypePhotoRecord ;
-	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_fotocollectie-eerste-wereldoorlog> ;
-	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF98FFBED0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> , <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
-	dct:created "23-02-2018 23:20 22" ;
-	rdfs:label "Origineel document ontbreekt" .
+	dct:created "2018-01-23T23:20:22Z"^^xsd:dateTime ;
+	edm:isShownBy <https://service.nationaalarchief.nl/gaf/image-service/d894faf7-c45b-429f-ab6a-509ec7861108> ;
+	ore:aggregates <http://archief.nl/NL-HaNA/doc/PhotoReference:AF98FFBED0B4102DBCF8003048976D84> ,
+				<http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> ,
+				<http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
+	ore:isAggregatedBy <http://archief.nl/NL-HaNA/doc/PhotoCollection:2.24.09_Fotocollectie-eerste-wereldoorlog> ;
+	rdfs:label "Fotorecord over Origineel document ontbreekt" .
 
 <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> a naa:ArchivalEntity , odrl:Asset ;
-	naa:isMaterialType naa:TypePhotograph ;
-	dct:type naa:PhotographyBW ;
-	rdfs:label "Origineel document ontbreekt"@nl ;
+	naa:ArchivalEntity ,
+	odrl:Asset ;
 	naa:ahdid "53635965" ;
-	naa:persistentIdentifier <http://hdl.handle.net/10648/af98ffbe-d0b4-102d-bcf8-003048976d84> ;
-	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> ;
 	naa:catalogReferenceNumber "2.24.09" ;
 	naa:fileNumber "158-1221" ;
-	dc:identifier "AF98FFBED0B4102DBCF8003048976D84" .
+	naa:isMaterialType naa:TypePhotograph ;
+	naa:persistentIdentifier <http://hdl.handle.net/10648/af98ffbe-d0b4-102d-bcf8-003048976d84> ;
+	dc:identifier "AF98FFBED0B4102DBCF8003048976D84" ;
+	dct:type naa:PhotographyBW ;
+	edm:hasView <https://service.nationaalarchief.nl/gaf/image-service/d894faf7-c45b-429f-ab6a-509ec7861108> ;
+	rdfs:label "Foto van Origineel document ontbreekt"@nl ;
+	odrl:hasPolicy <http://archief.nl/NL-HaNA/doc/RightsStatement:AF98FFBED0B4102DBCF8003048976D84> .
 
 <http://archief.nl/NL-HaNA/doc/PhotoReference:AF98FFBED0B4102DBCF8003048976D84> a naa:ArchivalReference , edm:TimeSpan ;
-	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
-	dc:description "Origineel document ontbreekt" ;
-	dc:creator "[onbekend]" ;
-	rdfs:label "Beschrijving van foto over Origineel document ontbreekt" ;
-	dc:subject "eerste wereldoorlog" ;
 	dc:coverage "1914-1918" ;
+	dc:description "Origineel document ontbreekt" ;
+	dct:creator <http://archief.nl/NL-HaNA/id/agent/Vervaardiger:Onbekend> ;
+	dct:subject <http://archief.nl/NL-HaNA/id/onderwerp/Eerste-wereldoorlog> ;
+	rdfs:label "Beschrijving over foto van Origineel document ontbreekt" ;
+	foaf:primaryTopic <http://archief.nl/NL-HaNA/id/beeld/Photo:AF98FFBED0B4102DBCF8003048976D84> ;
 	edm:begin "1914" ;
 	edm:end "1918" .
 

@@ -838,6 +838,33 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
        skos:prefLabel "plaats (beschrijving)"@nl .
 
 
+###  http://archief.nl/def/prepositionDate
+:prepositionDate rdf:type owl:DatatypeProperty ;
+                 rdfs:comment """Een voorzetsel (of: prepositie) is een onverbuigbaar woord zoals aan, bij, door, in, naast, om en tussen, dat de aard van de relatie (bijvoorbeeld tijd of ruimte of middel) tussen verschillende elementen in de zin aangeeft:
+
+(1) De winkel is open om/na/vanaf tien uur.
+
+(2) De computer staat op/onder/naast het bureau.
+
+(3) Schilder je met een roller of een kwast?
+
+De combinatie van voorzetsel en zelfstandig naamwoord of zelfstandig-naamwoordgroep (bijvoorbeeld op het bureau, met een kwast) wordt voorzetselgroep genoemd. Een voorzetsel staat gewoonlijk voor het element waar het bij hoort (zie de voorbeelden (1) t/m (3)), maar het kan er soms ook achter staan (men spreekt dan wel van een achterzetsel), bijvoorbeeld:
+
+(4) Ze reden het tuinpad op.
+
+Een aantal werkwoorden of werkwoordelijke uitdrukkingen wordt verbonden met een zogenaamd vast voorzetsel, bijvoorbeeld: belang hechten aan, grenzen aan, afrekenen met, snakken naar, wachten op, bestand zijn tegen."""@nl ,
+                              """tijdens, gedurende, omstreeks, onder, in, voor, na, sinds.
+Voorbeelden:
+Tijdens de les wordt niet gesnoept.
+Gedurende het examen mocht er niet worden gepraat.
+Hij komt omstreeks drie uur aan.
+Na vieren zijn we vrij."""@nl ;
+                 rdfs:label "datum voorzetsel"@nl ,
+                            "preposition date"@en ;
+                 rdfs:seeAlso <https://taaladvies.net/taal/advies/popup.php?id=101> ;
+                 skos:prefLabel "datum voorzetsel"@nl .
+
+
 ###  http://archief.nl/def/province
 :province rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf dc:description ;
@@ -1595,7 +1622,8 @@ foaf:Organization rdf:type owl:Class .
 
 
 ###  http://xmlns.com/foaf/0.1/Person
-foaf:Person rdf:type owl:Class .
+foaf:Person rdf:type owl:Class ;
+            rdfs:subClassOf foaf:Organization .
 
 
 ###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Asset
@@ -1631,6 +1659,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/beroep/Servant
 <http://archief.nl/NL-HaNA/id/beroep/Servant> rdf:type owl:NamedIndividual ,
                                                        :Profession ;
+                                              skos:inScheme :TypesOfRoles ;
                                               rdfs:label "Het beroep van bediende"@nl ,
                                                          "The profession of servant"@en ;
                                               skos:prefLabel "Het beroep van bediende"@nl .
@@ -1751,6 +1780,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/religie/Ebg
 <http://archief.nl/NL-HaNA/id/religie/Ebg> rdf:type owl:NamedIndividual ,
                                                     skos:Concept ;
+                                           skos:inScheme :TypesOfReligions ;
                                            rdfs:comment """Bestand:Broedergemeente.ogv
 De Evangelische Broedergemeente in Suriname in 1968
 De Evangelische Broedergemeente (Unitas Fratrum), waarvan de leden ook wel de hernhutters of de Moravische broeders worden genoemd, zijn een piëtistische opwekkingsbeweging daterend uit de eerste helft van de 18e eeuw. De Evangelische Broedergemeente had in december 2010 wereldwijd ongeveer 985.000 leden.[1]
@@ -1764,6 +1794,7 @@ In Nederland is de broedergemeente vooral bekend geworden door zendingswerk in S
 ###  http://archief.nl/NL-HaNA/id/religie/RomanCatholics
 <http://archief.nl/NL-HaNA/id/religie/RomanCatholics> rdf:type owl:NamedIndividual ,
                                                                skos:Concept ;
+                                                      skos:inScheme :TypesOfReligions ;
                                                       rdfs:comment """De Rooms-Katholieke Kerk is met meer dan 1,2 miljard volgelingen het grootste kerkgenootschap ter wereld en wordt ook wel kortweg de Kerk genoemd. Het hoofd van de Rooms-Katholieke Kerk is de paus.
 
 De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke boeken) en het Nieuwe Testament van de Bijbel, op de katholieke traditie en op het leergezag van Rome. De Kerk heeft het verloop van de geschiedenis van de mensheid, met name in de westerse wereld, in belangrijke mate mede bepaald. Vanaf de invoering van het leenstelsel in de vroege middeleeuwen, tot aan de Napoleontische tijd, belichaamde ze in West-Europa behalve religieuze ook soms politieke macht. Tegenwoordig is de paus, de bisschop van Rome, ook soeverein van Vaticaanstad en is zijn wereldlijke macht beperkt."""@nl ;
@@ -1834,14 +1865,6 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                             skos:prefLabel "Het beroep van plantagehouder"@nl .
 
 
-###  http://archief.nl/def/ProfessionRecordKeeper
-:ProfessionRecordKeeper rdf:type owl:NamedIndividual ,
-                                 :Profession ;
-                        rdfs:label "Het beroep van administrateur"@nl ,
-                                   "The profession of record keeper"@en ;
-                        skos:prefLabel "Het beroep van administrateur"@nl .
-
-
 ###  http://archief.nl/def/RightsTypePublicDomain
 :RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                                  premis:License ;
@@ -1875,6 +1898,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 ###  http://archief.nl/def/RoleResistanceFighter
 :RoleResistanceFighter rdf:type owl:NamedIndividual ,
                                 :Role ;
+                       skos:inScheme :TypesOfRoles ;
                        rdfs:label "Resistance fighter (role)"@en ,
                                   "Verzetsstrijder (rol)"@nl ;
                        skos:prefLabel "Verzetsstrijder (role)"@nl .
@@ -1883,6 +1907,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 ###  http://archief.nl/def/RoleSlave
 :RoleSlave rdf:type owl:NamedIndividual ,
                     :Role ;
+           skos:inScheme :TypesOfRoles ;
            rdfs:label "Slaaf (rol)"@nl ,
                       "Slave (role)"@en ;
            rdfs:seeAlso <http://archief.nl/NL-HaNA/id/concept/Slavernij> ;
@@ -1893,6 +1918,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 ###  http://archief.nl/def/RoleSlaveOwner
 :RoleSlaveOwner rdf:type owl:NamedIndividual ,
                          ebucore:Role ;
+                skos:inScheme :TypesOfRoles ;
                 rdfs:label "Rol van slaveneigenaar"@nl ,
                            "Role of slave owner"@en ;
                 skos:prefLabel "Rol van slaveneigenaar"@nl .
@@ -1902,6 +1928,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeAdditionalFindingAid rdf:type owl:NamedIndividual ,
                                    :AggregationType ,
                                    skos:Concept ;
+                          skos:inScheme :TypesOfAggregations ;
                           rdfs:label "Methodische ontsluiting van één of meer archieven"@nl ;
                           skos:label "Methodische ontsluiting van één of meer archieven"@nl .
 
@@ -1910,6 +1937,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeBaptismRecord rdf:type owl:NamedIndividual ,
                             :AggregationType ,
                             skos:Concept ;
+                   skos:inScheme :TypesOfAggregations ;
                    rdfs:label "Doopregistratie"@nl .
 
 
@@ -1917,6 +1945,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeBirthRecord rdf:type owl:NamedIndividual ,
                           :AggregationType ,
                           skos:Concept ;
+                 skos:inScheme :TypesOfAggregations ;
                  rdfs:label "Geboorteregistratie"@nl .
 
 
@@ -1924,6 +1953,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeDeathRecord rdf:type owl:NamedIndividual ,
                           :AggregationType ,
                           skos:Concept ;
+                 skos:inScheme :TypesOfAggregations ;
                  rdfs:label "Overlijdensregistratie"@nl .
 
 
@@ -1931,6 +1961,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeDetailedContentDescription rdf:type owl:NamedIndividual ,
                                          :AggregationType ,
                                          skos:Concept ;
+                                skos:inScheme :TypesOfAggregations ;
                                 rdfs:label "Nadere Toegang"@nl ;
                                 rdfs:seeAlso <https://labyrinth.rienkjonker.nl/lexicon/terminologie#letter_n> ;
                                 skos:definition "Een Nadere Toegang bevat verdiepende beschrijving (ofwel, een omschrijving van de stukken op een niveau dieper dan de beschrijving van het inventarisnummer). Nadere Toegangen zijn meer op de inhoud van de stukken gericht."@nl ,
@@ -1942,6 +1973,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeDetailedContentDescriptionView rdf:type owl:NamedIndividual ,
                                              :AggregationType ,
                                              skos:Concept ;
+                                    skos:inScheme :TypesOfAggregations ;
                                     rdfs:label "View van een Nadere Toegang"@nl ;
                                     skos:definition "Wanneer een Nadere Toegang is verdeeld over kleinere (data-) sets, noemen we dit 'views'. Een view is een aggregatie van records, en is zelf onderdeel van een bovenliggende aggregatie, de Nadere Toegang zelf."@nl ;
                                     skos:prefLabel "View van een Nadere Toegang"@nl .
@@ -1951,6 +1983,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeDocketRecord rdf:type owl:NamedIndividual ,
                            :AggregationType ,
                            skos:Concept ;
+                  skos:inScheme :TypesOfAggregations ;
                   rdfs:label "Borderelnummer"@nl ,
                              "Docket record"@en ;
                   rdfs:seeAlso <https://en.wikipedia.org/wiki/Docket> ,
@@ -1966,6 +1999,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeFinancialTransactionRecord rdf:type owl:NamedIndividual ,
                                          :AggregationType ,
                                          skos:Concept ;
+                                skos:inScheme :TypesOfAggregations ;
                                 rdfs:label "Aggregatie van het type financiele transactie"@nl .
 
 
@@ -1973,6 +2007,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeFindingAid rdf:type owl:NamedIndividual ,
                          :AggregationType ,
                          skos:Concept ;
+                skos:inScheme :TypesOfAggregations ;
                 rdfs:label "Toegang tot een of meer archieven"@nl ;
                 skos:label "Toegang tot een of meer archieven"@nl .
 
@@ -1981,6 +2016,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeMarriageRecord rdf:type owl:NamedIndividual ,
                              :AggregationType ,
                              skos:Concept ;
+                    skos:inScheme :TypesOfAggregations ;
                     rdfs:label "Huwelijksregistratie"@nl .
 
 
@@ -1988,6 +2024,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeMembershipRecord rdf:type owl:NamedIndividual ,
                                :AggregationType ,
                                skos:Concept ;
+                      skos:inScheme :TypesOfAggregations ;
                       rdfs:label "Lidmaatschapsregistratie"@nl .
 
 
@@ -1995,6 +2032,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePageOnHonoraryList rdf:type owl:NamedIndividual ,
                                  :AggregationType ,
                                  skos:Concept ;
+                        skos:inScheme :TypesOfAggregations ;
                         rdfs:label "Page on honorary list"@en ,
                                    "Pagina van erelijst"@nl ;
                         rdfs:seeAlso <http://www.erelijst.nl/> ;
@@ -2005,6 +2043,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePersonCollection rdf:type owl:NamedIndividual ,
                                :AggregationType ,
                                skos:Concept ;
+                      skos:inScheme :TypesOfAggregations ;
                       rdfs:label "Een type verzameling van personen"@nl .
 
 
@@ -2012,6 +2051,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotoCollection rdf:type owl:NamedIndividual ,
                               :AggregationType ,
                               skos:Concept ;
+                     skos:inScheme :TypesOfAggregations ;
                      rdfs:label "Een type verzameling van foto's"@nl .
 
 
@@ -2019,7 +2059,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotoRecord rdf:type owl:NamedIndividual ,
                           :AggregationType ,
                           skos:Concept ;
-                 dc:date "1523361574463"^^xsd:long ;
+                 skos:inScheme :TypesOfAggregations ;
                  dc:creator "Elvin Dechesne"^^xsd:string ;
                  rdfs:label "Fotoregistratie"@nl ;
                  skos:altLabel "Aggregatie type van foto (niveau record)"@nl ,
@@ -2030,6 +2070,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotoSeries rdf:type owl:NamedIndividual ,
                           :AggregationType ,
                           skos:Concept ;
+                 skos:inScheme :TypesOfAggregations ;
                  rdfs:label "Fotoreeks"@nl ,
                             "Photo series"@en .
 
@@ -2051,7 +2092,6 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                                    :ArchivalEntityType ,
                                    skos:Concept ;
                           skos:inScheme :TypesOfMaterials ;
-                          dc:date "1523266085887"^^xsd:long ;
                           dc:creator "Elvin Dechesne"^^xsd:string ;
                           skos:broader :TypePhotograph ;
                           skos:label "Black and white photograph"@en ,
@@ -2064,7 +2104,6 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                                :ArchivalEntityType ,
                                skos:Concept ;
                       skos:inScheme :TypesOfMaterials ;
-                      dc:date "1523266085887"^^xsd:long ;
                       dc:creator "Elvin Dechesne"^^xsd:string ;
                       skos:broader :TypePhotograph ;
                       skos:label "Colour photograph"@en ,
@@ -2076,6 +2115,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypePhotographersCollection rdf:type owl:NamedIndividual ,
                                       :AggregationType ,
                                       skos:Concept ;
+                             skos:inScheme :TypesOfAggregations ;
                              rdfs:label "Een type verzameling van fotografen"@nl .
 
 
@@ -2083,6 +2123,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypeSlaveryRecord rdf:type owl:NamedIndividual ,
                             :AggregationType ,
                             skos:Concept ;
+                   skos:inScheme :TypesOfAggregations ;
                    rdfs:label "Record about slavery"@en ,
                               "Record over slavernij"@nl ;
                    skos:prefLabel "Record over slavernij"@nl .
@@ -2111,6 +2152,28 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypesOfOrganisations rdf:type owl:NamedIndividual ,
                                skos:ConceptScheme ;
                       rdfs:label "Classificatie schema t.b.v. organisaties"@nl .
+
+
+###  http://archief.nl/def/TypesOfProfessions
+:TypesOfProfessions rdf:type owl:NamedIndividual ,
+                             skos:ConceptScheme ;
+                    rdfs:label "Classificaties van beroepen"@nl .
+
+
+###  http://archief.nl/def/TypesOfReligions
+:TypesOfReligions rdf:type owl:NamedIndividual ,
+                           skos:ConceptScheme ;
+                  rdfs:label "Classificaties van geloofsovertuigingen"@nl ,
+                             "Classifications of religions"@en ;
+                  skos:prefLabel "Classificaties van geloofsovertuigingen"@nl .
+
+
+###  http://archief.nl/def/TypesOfRoles
+:TypesOfRoles rdf:type owl:NamedIndividual ,
+                       skos:ConceptScheme ;
+              rdfs:label "Classificaties van rollen"@nl ,
+                         "Classifications of rolls"@en ;
+              skos:prefLabel "Classificaties van rollen"@nl .
 
 
 ###  http://data.beeldengeluid.nl/gtaa/GTAAGeoVoorbeeld
