@@ -5,6 +5,7 @@
 @prefix hg: <http://rdf.histograph.io/> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix das: <http://purl.org/collections/nl/dss/das/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix gvp: <http://vocab.getty.edu/ontology#> .
@@ -27,6 +28,7 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix gzmvoc: <http://purl.org/collections/nl/dss/gzmvoc/> .
 @prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -141,9 +143,70 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://archief.nl/def/beginVessel
+:beginVessel rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :passengerOnVessel ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :ArchivalReference
+                                         pnv:Person
+                                       )
+                         ] ;
+             rdfs:range schema:Vehicle ;
+             rdfs:comment "Deze term is gemunt voor het duiden van informatie uit NT00444 VOC Opvarenden waarbij er enkel informatie is over welk schip het begin van een reis gemaakt heeft."@nl ;
+             rdfs:label "schip bij vertrek"@nl ,
+                        "ship at beginning of voyage"@en ;
+             skos:prefLabel "schip bij vertrek"@nl .
+
+
+###  http://archief.nl/def/beginVoyage
+:beginVoyage rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :passengerOnVoyage ;
+             rdfs:domain pnv:Person ;
+             rdfs:range :Voyage ;
+             rdfs:label "beginning of voyage"@en ,
+                        "beginreis"@nl ;
+             skos:prefLabel "beginreis"@nl .
+
+
+###  http://archief.nl/def/beginVoyageFromCape
+:beginVoyageFromCape rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :beginVoyage ;
+                     rdfs:domain pnv:Person ;
+                     rdfs:range :Voyage ;
+                     rdfs:label "beginning of voyage starting from Cape"@en ,
+                                "beginreis vanaf de Kaap"@nl ;
+                     skos:prefLabel "beginreis vanaf de Kaap"@nl .
+
+
+###  http://archief.nl/def/benefactor
+:benefactor rdf:type owl:ObjectProperty ;
+            owl:inverseOf :beneficiary ;
+            rdfs:range pnv:Person ;
+            rdfs:label "benefactor"@en ,
+                       "weldoener"@nl ;
+            skos:prefLabel "weldoener"@nl .
+
+
+###  http://archief.nl/def/beneficiary
+:beneficiary rdf:type owl:ObjectProperty ;
+             rdfs:range pnv:Person ;
+             rdfs:label "begunstigde"@nl ,
+                        "beneficiary"@en ;
+             skos:prefLabel "begunstigde"@nl .
+
+
 ###  http://archief.nl/def/hasConfig
 :hasConfig rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf ore:aggregates .
+
+
+###  http://archief.nl/def/hasDestination
+:hasDestination rdf:type owl:ObjectProperty ;
+                rdfs:domain :Voyage ;
+                rdfs:range hg:PlaceInTime ;
+                rdfs:label "has destination"@en ,
+                           "heeft bestemming"@nl ;
+                skos:prefLabel "heeft bestemming"@nl .
 
 
 ###  http://archief.nl/def/hasEditorial
@@ -227,12 +290,91 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
                skos:prefLabel "is verblijfplaats van"@nl .
 
 
+###  http://archief.nl/def/itenerary
+:itenerary rdf:type owl:ObjectProperty ;
+           owl:equivalentProperty schema:itinerary ;
+           rdfs:domain :Voyage ;
+           rdfs:range [ rdf:type owl:Class ;
+                        owl:unionOf ( hg:PlaceInTime
+                                      edm:TimeSpan
+                                    )
+                      ] ;
+           rdfs:comment "Destination(s) ( PlaceInTime ) that make up a trip. For a trip where destination order is important use edm:TimeSpan to specify that order using edm:Event."@en ;
+           rdfs:label "reisschema"@nl ;
+           skos:prefLabel "reisschema"@nl .
+
+
+###  http://archief.nl/def/meansOfTransport
+:meansOfTransport rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Voyage ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( schema:Vehicle
+                                             skos:Concept
+                                           )
+                             ] ;
+                  rdfs:label "means of transport"@en ,
+                             "transport middel"@nl ;
+                  skos:prefLabel "transport middel"@nl .
+
+
+###  http://archief.nl/def/occupationHistory
+:occupationHistory rdf:type owl:ObjectProperty ;
+                   rdfs:range edm:TimeSpan ;
+                   rdfs:comment "Deze term mag gebruikt worden bij een persoon entiteit of als onderdeel van een beschrijving. De beschrijving moet dan wel over die persoon gaan."@nl ;
+                   rdfs:label "a period describing a person's occupation"@en ,
+                              "periode waarin iemand een beroep heeft uitgeoefend"@nl ;
+                   skos:prefLabel "periode waarin iemand een beroep heeft uitgeoefend"@nl .
+
+
 ###  http://archief.nl/def/owned
 :owned rdf:type owl:ObjectProperty ;
        rdfs:domain fibo-fnd-pty-pty:IndependentParty ;
        rdfs:label "bezat"@nl ;
        skos:definition "To have owned something."@en ;
        skos:note "Deze term is gemunt om overdracht van eigenaarschap te kunnen duiden die in het verleden heeft plaats gevonden."@nl .
+
+
+###  http://archief.nl/def/passengerOnVessel
+:passengerOnVessel rdf:type owl:ObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :ArchivalReference
+                                               pnv:Person
+                                             )
+                               ] ;
+                   rdfs:range schema:Vehicle ;
+                   rdfs:label "passagier op schip"@nl ,
+                              "passenger on ship"@nl ;
+                   skos:prefLabel "passagier op schip"@nl .
+
+
+###  http://archief.nl/def/passengerOnVoyage
+:passengerOnVoyage rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :voyageHasPassenger ;
+                   rdfs:domain pnv:Person ;
+                   rdfs:range :Voyage ;
+                   rdfs:label "passagier op/van (reis)"@nl ,
+                              "passenger on/of (voyage)"@en ;
+                   skos:prefLabel "passagier op/van (reis)"@nl .
+
+
+###  http://archief.nl/def/returnVoyage
+:returnVoyage rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :passengerOnVoyage ;
+              rdfs:domain pnv:Person ;
+              rdfs:range :Voyage ;
+              rdfs:label "return voyage"@en ,
+                         "terugreis"@nl ;
+              skos:prefLabel "terugreis"@nl .
+
+
+###  http://archief.nl/def/returnVoyageFromCape
+:returnVoyageFromCape rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :returnVoyage ;
+                      rdfs:domain pnv:Person ;
+                      rdfs:range :Voyage ;
+                      rdfs:label "return voyage from Cape"@en ,
+                                 "terugreis vanaf de Kaap"@nl ;
+                      skos:prefLabel "terugreis vanaf de Kaap"@nl .
 
 
 ###  http://archief.nl/def/sex
@@ -243,6 +385,34 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
      rdfs:range :GenderType ;
      rdfs:label "geslacht"@nl ;
      skos:prefLabel "geslacht"@nl .
+
+
+###  http://archief.nl/def/vesselOfVoyage
+:vesselOfVoyage rdf:type owl:ObjectProperty ;
+                owl:inverseOf :voyageHasVessel ;
+                rdfs:domain schema:Vehicle ;
+                rdfs:range :Voyage ;
+                rdfs:label "schip van reis"@nl ,
+                           "ship of voyage"@en ;
+                skos:prefLabel "schip van reis"@nl .
+
+
+###  http://archief.nl/def/voyageHasPassenger
+:voyageHasPassenger rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Voyage ;
+                    rdfs:range pnv:Person ;
+                    rdfs:label "reis heeft passagier"@nl ,
+                               "voyage has passenger"@en ;
+                    skos:prefLabel "reis heeft passagier"@nl .
+
+
+###  http://archief.nl/def/voyageHasVessel
+:voyageHasVessel rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Voyage ;
+                 rdfs:range schema:Vehicle ;
+                 rdfs:label "reis heeft schip"@nl ,
+                            "voyage has vessel"@en ;
+                 skos:prefLabel "reis heeft schip"@nl .
 
 
 ###  http://archief.nl/def/wasOwnedBy
@@ -392,6 +562,10 @@ schema:itemOffered rdf:type owl:ObjectProperty ;
                    rdfs:label "aangeboden object"@nl ,
                               "item offered"@en ;
                    skos:prefLabel "aangeboden object"@nl .
+
+
+###  http://schema.org/itinerary
+schema:itinerary rdf:type owl:ObjectProperty .
 
 
 ###  http://schema.org/makesOffer
@@ -762,6 +936,34 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
       rdfs:label "MAIS Flexis guid"@nl .
 
 
+###  http://archief.nl/def/hasDebtLetter
+:hasDebtLetter rdf:type owl:DatatypeProperty ;
+               rdfs:range [ rdf:type rdfs:Datatype ;
+                            owl:unionOf ( xsd:boolean
+                                          xsd:string
+                                        )
+                          ] ;
+               rdfs:comment "Gebruikt bij NT00444 VOC Opvarenden"@nl ;
+               rdfs:label "has debt letter"@en ,
+                          "heeft schuldbrief"@nl ;
+               rdfs:seeAlso :hasMonthLetter ;
+               skos:prefLabel "heeft schuldbrief"@nl .
+
+
+###  http://archief.nl/def/hasMonthLetter
+:hasMonthLetter rdf:type owl:DatatypeProperty ;
+                rdfs:range [ rdf:type rdfs:Datatype ;
+                             owl:unionOf ( xsd:boolean
+                                           xsd:string
+                                         )
+                           ] ;
+                rdfs:comment "Gebruikt bij NT00444 VOC Opvarenden"@nl ;
+                rdfs:label "has month letter"@en ,
+                           "heeft maandbrief"@nl ;
+                rdfs:seeAlso :hasDebtLetter ;
+                skos:prefLabel "heeft maandbrief"@nl .
+
+
 ###  http://archief.nl/def/inventoryEmbursedValue
 :inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf :inventoryLevelValue ;
@@ -835,6 +1037,14 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
             rdfs:label "legacy code"@en ,
                        "verouderde codering"@nl ;
             skos:prefLabel "verouderde codering"@nl .
+
+
+###  http://archief.nl/def/motivationDescription
+:motivationDescription rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf dc:description ;
+                       rdfs:label "beschrijving van reden of motivatie"@nl ,
+                                  "description of motivation"@en ;
+                       skos:prefLabel "beschrijving van reden of motivatie"@nl .
 
 
 ###  http://archief.nl/def/orgID
@@ -1100,14 +1310,6 @@ schema:value rdf:type owl:DatatypeProperty ;
 ebucore:aspectRatio rdf:type owl:DatatypeProperty .
 
 
-###  http://www.europeana.eu/schemas/edm/begin
-edm:begin rdf:type owl:DatatypeProperty .
-
-
-###  http://www.europeana.eu/schemas/edm/end
-edm:end rdf:type owl:DatatypeProperty .
-
-
 ###  http://www.loc.gov/premis/rdf/v3/endDate
 premis:endDate rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf dcterms:date ;
@@ -1182,6 +1384,15 @@ foaf:age rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.nl/def/ArchivalReferenceType
 :ArchivalReferenceType rdf:type owl:Class .
+
+
+###  http://archief.nl/def/Chamber
+:Chamber rdf:type owl:Class ;
+         rdfs:subClassOf schema:Organization ;
+         rdfs:comment "Voor gebruik in de VOC Opvarenden"@nl ;
+         rdfs:label "Chamber"@en ,
+                    "Kamer"@nl ;
+         skos:prefLabel "Kamer"@nl .
 
 
 ###  http://archief.nl/def/CorporateEntity
@@ -1301,6 +1512,14 @@ foaf:age rdf:type owl:DatatypeProperty ;
             skos:prefLabel "Beroep"@nl .
 
 
+###  http://archief.nl/def/RecordAggregation
+:RecordAggregation rdf:type owl:Class ;
+                   rdfs:subClassOf ore:Aggregation ;
+                   rdfs:label "Record (aggregatieniveau)"@nl ,
+                              "Record (aggregation)"@en ;
+                   skos:prefLabel "Record (aggregatieniveau)"@nl .
+
+
 ###  http://archief.nl/def/Role
 :Role rdf:type owl:Class ;
       owl:equivalentClass ebucore:Role ,
@@ -1309,6 +1528,17 @@ foaf:age rdf:type owl:DatatypeProperty ;
       rdfs:label "Rol"@nl ,
                  "Role"@en ;
       skos:prefLabel "Rol"@nl .
+
+
+###  http://archief.nl/def/Ship
+:Ship rdf:type owl:Class ;
+      owl:equivalentClass dbo:Ship ,
+                          das:Ship ,
+                          gzmvoc:Schip ;
+      rdfs:subClassOf schema:Vehicle ;
+      rdfs:label "Schip"@nl ,
+                 "Ship"@en ;
+      skos:prefLabel "Schip"@nl .
 
 
 ###  http://archief.nl/def/Slave
@@ -1326,6 +1556,15 @@ foaf:age rdf:type owl:DatatypeProperty ;
        skos:prefLabel "Slaaf"@nl .
 
 
+###  http://archief.nl/def/Voyage
+:Voyage rdf:type owl:Class ;
+        owl:equivalentClass das:Voyage ,
+                            schema:Trip ;
+        rdfs:label "Reis"@nl ,
+                   "Voyage"@en ;
+        skos:prefLabel "Reis"@nl .
+
+
 ###  http://archief.nl/pnv/def/Person
 
 ###  http://dbpedia.org/ontology/Agent
@@ -1338,6 +1577,10 @@ dbo:Name rdf:type owl:Class .
 
 ###  http://dbpedia.org/ontology/Reference
 dbo:Reference rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Ship
+dbo:Ship rdf:type owl:Class .
 
 
 ###  http://dbpedia.org/resource/Place
@@ -1363,6 +1606,23 @@ bf:Organization rdf:type owl:Class ;
 bf:Place rdf:type owl:Class ;
          owl:equivalentClass hg:PlaceInTime ,
                              schema:Place .
+
+
+###  http://purl.org/collections/nl/dss/das/Chamber
+das:Chamber rdf:type owl:Class ;
+            owl:equivalentClass foaf:Organization .
+
+
+###  http://purl.org/collections/nl/dss/das/Ship
+das:Ship rdf:type owl:Class .
+
+
+###  http://purl.org/collections/nl/dss/das/Voyage
+das:Voyage rdf:type owl:Class .
+
+
+###  http://purl.org/collections/nl/dss/gzmvoc/Schip
+gzmvoc:Schip rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/dcmitype/Collection
@@ -1471,6 +1731,14 @@ schema:StructuredValue rdf:type owl:Class ;
                        rdfs:label "Gestructureerde waarde"@nl ,
                                   "Structured value"@en ;
                        skos:prefLabel "Gestructureerde waarde"@nl .
+
+
+###  http://schema.org/Trip
+schema:Trip rdf:type owl:Class .
+
+
+###  http://schema.org/Vehicle
+schema:Vehicle rdf:type owl:Class .
 
 
 ###  http://semanticweb.cs.vu.nl/2009/11/sem/Place
@@ -2084,6 +2352,15 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                                    "Pagina van erelijst"@nl ;
                         rdfs:seeAlso <http://www.erelijst.nl/> ;
                         skos:prefLabel "Pagina van erelijst"@nl .
+
+
+###  http://archief.nl/def/TypePayRegisterRecord
+:TypePayRegisterRecord rdf:type owl:NamedIndividual ,
+                                :AggregationType ;
+                       rdfs:label "Pay book"@en ,
+                                  "Soldijboek"@nl ;
+                       skos:altLabel "Pay-register"@en ;
+                       skos:prefLabel "Soldijboek"@nl .
 
 
 ###  http://archief.nl/def/TypePersonCollection

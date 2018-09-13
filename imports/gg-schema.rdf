@@ -1,0 +1,141 @@
+# -------------------------------------
+# Ontology for Dutch (former) municipalities
+# for: 	http://www.gemeentegeschiedenis.nl/
+# by: 	Hic Sunt Leones (http://www.hicsuntleones.nl/) (with thanks to Victor de Boer)
+# date: 2014-09-19
+# parsed with Jena (http://jena.apache.org)
+# > turtle gg-schema.ttl
+# converted into RDF/XML with rdf2rdf (http://www.l3s.de/~minack/rdf2rdf/)
+# > java -jar rdf2rdf-1.0.1-2.3.1.jar gg-schema.ttl gg-schema.rdf
+# -------------------------------------
+
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#>.
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#>.
+@prefix :	<http://www.gemeentegeschiedenis.nl/gg-schema#>.
+
+
+# -------------------------------------
+# The Dutch administrative unit "gemeente" (dut) or "municipality" (eng)
+# -------------------------------------
+
+:Municipality a rdfs:Class;
+	rdfs:comment "(voormalige) administratieve eenheid genaamd 'gemeente', als administratief concept geintroduceerd rond 1812 en tot op heden in gebruik. Meer informatie: http://nl.wikipedia.org/wiki/Nederlandse_gemeente."@nl;
+	rdfs:label "gemeente"@nl;
+	rdfs:label "municipality"@en.
+
+:name a rdf:Property;
+	rdfs:comment "Naam van de gemeente."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range rdfs:Literal.
+
+
+# -------------------------------------
+# Relations with (french) département or provincie
+# -------------------------------------
+
+:inDepartement a rdf:Property;
+	rdfs:subPropertyOf skos:broader;
+	rdfs:comment "Franse département waarin de (voormalige) gemeente lag."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range rdfs:Literal.
+
+:inProvince a rdf:Property;
+	rdfs:subPropertyOf skos:broader;
+	rdfs:comment "Provincie waarin de (voormalige) gemeente ligt of lag."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range rdfs:Literal.
+
+
+# -------------------------------------
+# Identifying codes
+# -------------------------------------
+
+:MunicipalityCode a rdfs:Class;
+	rdfs:comment "Code waarmee (voormalige) gemeentes worden geidentificeerd, zoals Amsterdamse Code of CBS Code"@nl.
+
+:AmsterdamCode a rdfs:Class;
+	rdfs:subClassOf :MunicipalityCode;
+	rdfs:comment "Amsterdamse Code, zoals toegekend door Boonstra en Van der Meer [http://www.worldcat.org/oclc/71745782] "@nl.
+
+:amsterdamCode a rdf:Property;
+	rdfs:comment "Relatie tussen de gemeente en de Amsterdamse Code."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range :AmsterdamCode.
+
+:CbsCode a rdfs:Class;
+	rdfs:subClassOf :MunicipalityCode;
+	rdfs:comment "CBS Code, zoals toegekend door het Centraal Bureau voor de Statistiek."@nl.
+
+:cbsCode a rdf:Property;
+	rdfs:comment "Relatie tussen de gemeente en de CBS Code."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range :CbsCode.
+
+:identifies a rdf:Property;
+	rdfs:comment "Inverse functie van zowel amsterdamCode en cbsCode"@nl;
+	rdfs:domain :MunicipalityCode;
+	rdfs:range :Municipality.
+
+
+# -------------------------------------
+# Relations between municipalities
+# -------------------------------------
+
+:absorbedBy a rdf:Property;
+	rdfs:comment "toegevoegd; inverse van :absorbed"@nl;
+	rdfs:domain :Municipality;
+	rdfs:range :Municipality.
+
+:absorbed a rdf:Property;
+	rdfs:comment "opgegaan in; inverse van :absorbedBy"@nl;
+	rdfs:domain :Municipality;
+	rdfs:range :Municipality.
+
+:originated a rdf:Property;
+	rdfs:comment "afgesplitst; inverse van :originatedFrom"@nl;
+	rdfs:domain :Municipality;
+	rdfs:range :Municipality.
+
+:originatedFrom	a rdf:Property;
+	rdfs:comment "ontstaan uit; inverse van :originated"@nl;
+	rdfs:domain :Municipality;
+	rdfs:range :Municipality.
+
+
+# -------------------------------------
+# Dates of existence of the former :Municipality
+# -------------------------------------
+
+:startDate a rdf:Property;
+	rdfs:comment "Datum van ontstaan van de (voormalige) gemeente."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range xsd:date.
+
+:endDate a rdf:Property;
+	rdfs:comment "Datum waarop de (voormalige) gemeente ophield te bestaan."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range xsd:date.
+
+
+# -------------------------------------
+# References to others resources :Municipality
+# -------------------------------------
+
+:resourceWikipedia a rdf:Property;
+	rdfs:comment "Verwijzing naar een wikipedia-pagina."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range rdfs:Literal.
+
+:resourceDbpedia a rdf:Property;
+	rdfs:comment "Verwijzing naar een dbpedia-pagina."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range rdfs:Literal.
+
+:resourceGeonames a rdf:Property;
+	rdfs:comment "Verwijzing naar een geonames-uri."@nl;
+	rdfs:domain :Municipality;
+	rdfs:range rdfs:Literal.
+
+

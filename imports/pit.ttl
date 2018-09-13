@@ -1,0 +1,219 @@
+@prefix : <http://rdf.histograph.io/> .
+@prefix hg: <http://rdf.histograph.io/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@base <http://rdf.histograph.io/> .
+
+<http://rdf.histograph.io/> rdf:type owl:Ontology ;
+                             owl:imports <http://www.opengis.net/ont/geosparql> ,
+                                         <http://www.w3.org/2006/time> ,
+                                         <http://www.w3.org/ns/prov> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rdf.histograph.io/absorbed
+hg:absorbed rdf:type owl:ObjectProperty ;
+            rdfs:domain hg:PlaceInTime ;
+            rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/absorbedBy
+hg:absorbedBy rdf:type owl:ObjectProperty ;
+              rdfs:domain hg:PlaceInTime ;
+              rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/contains
+hg:contains rdf:type owl:ObjectProperty ;
+            rdfs:domain hg:PlaceInTime ;
+            rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/containsHgConcept
+hg:containsHgConcept rdf:type owl:ObjectProperty ;
+                     rdfs:domain hg:PlaceInTime ;
+                     rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/intersectsHgConcept
+hg:intersectsHgConcept rdf:type owl:ObjectProperty ;
+                       rdfs:domain hg:PlaceInTime ;
+                       rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/liesIn
+hg:liesIn rdf:type owl:ObjectProperty ;
+          rdfs:domain hg:PlaceInTime ;
+          rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/originated
+hg:originated rdf:type owl:ObjectProperty ;
+              rdfs:domain hg:PlaceInTime ;
+              rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/originatedFrom
+hg:originatedFrom rdf:type owl:ObjectProperty ;
+                  rdfs:domain hg:PlaceInTime ;
+                  rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/sameHgConcept
+hg:sameHgConcept rdf:type owl:ObjectProperty ;
+                 rdfs:domain hg:PlaceInTime ;
+                 rdfs:range hg:PlaceInTime .
+
+
+###  http://rdf.histograph.io/withinHgConcept
+hg:withinHgConcept rdf:type owl:ObjectProperty ;
+                   rdfs:domain hg:PlaceInTime ;
+                   rdfs:range hg:PlaceInTime .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rdf.histograph.io/PlaceInTime
+hg:PlaceInTime rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing .
+
+
+###  http://rdf.histograph.io/PlaceInTimeType
+hg:PlaceInTimeType rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://rdf.histograph.io/Address
+hg:Address rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType ;
+           rdfs:label "Address" .
+
+
+###  http://rdf.histograph.io/Area
+hg:Area rdf:type owl:NamedIndividual ,
+                 hg:PlaceInTimeType ;
+        rdfs:label "Area" .
+
+
+###  http://rdf.histograph.io/Baljuwschap
+hg:Baljuwschap rdf:type owl:NamedIndividual ,
+                        hg:PlaceInTimeType ;
+               rdfs:label "Baljuwschap" .
+
+
+###  http://rdf.histograph.io/Barony
+hg:Barony rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType ;
+          rdfs:label "Barony" .
+
+
+###  http://rdf.histograph.io/Borough
+hg:Borough rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType ;
+           rdfs:label "Borough" .
+
+
+###  http://rdf.histograph.io/Building
+hg:Building rdf:type owl:NamedIndividual ,
+                     hg:PlaceInTimeType ;
+            rdfs:label "Building" .
+
+
+###  http://rdf.histograph.io/Country
+hg:Country rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType ;
+           rdfs:label "Country" .
+
+
+###  http://rdf.histograph.io/Countship
+hg:Countship rdf:type owl:NamedIndividual ,
+                      hg:PlaceInTimeType ;
+             rdfs:label "Countship" .
+
+
+###  http://rdf.histograph.io/Departement
+hg:Departement rdf:type owl:NamedIndividual ,
+                        hg:PlaceInTimeType ;
+               rdfs:label "Departement" .
+
+
+###  http://rdf.histograph.io/Fort
+hg:Fort rdf:type owl:NamedIndividual ,
+                 hg:PlaceInTimeType ;
+        rdfs:label "Fort" .
+
+
+###  http://rdf.histograph.io/Heerlijkheid
+hg:Heerlijkheid rdf:type owl:NamedIndividual ,
+                         hg:PlaceInTimeType ;
+                rdfs:label "Heerlijkheid" .
+
+
+###  http://rdf.histograph.io/Monument
+hg:Monument rdf:type owl:NamedIndividual ,
+                     hg:PlaceInTimeType ;
+            rdfs:label "Monument" .
+
+
+###  http://rdf.histograph.io/Municipality
+hg:Municipality rdf:type owl:NamedIndividual ,
+                         hg:PlaceInTimeType ;
+                rdfs:label "Municipality" .
+
+
+###  http://rdf.histograph.io/Neighbourhood
+hg:Neighbourhood rdf:type owl:NamedIndividual ,
+                          hg:PlaceInTimeType ;
+                 rdfs:label "Neighbourhood" .
+
+
+###  http://rdf.histograph.io/Place
+hg:Place rdf:type owl:NamedIndividual ,
+                  hg:PlaceInTimeType ;
+         rdfs:label "Place" .
+
+
+###  http://rdf.histograph.io/Polder
+hg:Polder rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType ;
+          rdfs:label "Polder" .
+
+
+###  http://rdf.histograph.io/Province
+hg:Province rdf:type owl:NamedIndividual ,
+                     hg:PlaceInTimeType ;
+            rdfs:label "Province" .
+
+
+###  http://rdf.histograph.io/Region
+hg:Region rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType ;
+          rdfs:label "Region" .
+
+
+###  http://rdf.histograph.io/Street
+hg:Street rdf:type owl:NamedIndividual ,
+                   hg:PlaceInTimeType ;
+          rdfs:label "Street" .
+
+
+###  http://rdf.histograph.io/Water
+hg:Water rdf:type owl:NamedIndividual ,
+                  hg:PlaceInTimeType ;
+         rdfs:label "Water" .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
