@@ -2356,7 +2356,9 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 
 ###  http://archief.nl/def/TypePayRegisterRecord
 :TypePayRegisterRecord rdf:type owl:NamedIndividual ,
-                                :AggregationType ;
+                                :AggregationType ,
+                                skos:Concept ;
+                       skos:inScheme :TypesOfAggregations ;
                        rdfs:label "Pay book"@en ,
                                   "Soldijboek"@nl ;
                        skos:altLabel "Pay-register"@en ;
@@ -2441,6 +2443,17 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                                       skos:Concept ;
                              skos:inScheme :TypesOfAggregations ;
                              rdfs:label "Een type verzameling van fotografen"@nl .
+
+
+###  http://archief.nl/def/TypeShippingRecord
+:TypeShippingRecord rdf:type owl:NamedIndividual ,
+                             :AggregationType ,
+                             skos:Concept ;
+                    skos:inScheme :TypesOfAggregations ;
+                    rdfs:label "Shipping record"@en ,
+                               "Verzendingsbewijs"@nl ;
+                    skos:altLabel "Travel record"@en ;
+                    skos:prefLabel "Record over scheepsreis"@en .
 
 
 ###  http://archief.nl/def/TypeSlaveryRecord
