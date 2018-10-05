@@ -36,10 +36,10 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 ###  http://archief.nl/pnv/def/hasName
 :hasName rdf:type owl:ObjectProperty ;
          rdfs:domain :Person ;
+         rdfs:range :PersonName ;
          rdfs:label "has name"@en ,
                     "heeft naam"@nl ;
-         skos:prefLabel "heeft naam"@nl ;
-         rdfs:range :PersonName .
+         skos:prefLabel "heeft naam"@nl .
 
 
 #################################################################
@@ -78,7 +78,8 @@ For example \"Philips de Goede\", where \"de Goede\" is the disambiguating descr
 
 ###  http://archief.nl/pnv/def/givenName
 :givenName rdf:type owl:DatatypeProperty ;
-           owl:equivalentProperty foaf:givenName ;
+           owl:equivalentProperty schema:givenName ,
+                                  foaf:givenName ;
            rdfs:domain :PersonName ;
            rdfs:range xsd:string ;
            rdfs:comment "A Given name designates the name(s) given to someone at birth or any other name-giving event"@en ,

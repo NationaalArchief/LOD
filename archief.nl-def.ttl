@@ -964,6 +964,15 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
                 skos:prefLabel "heeft maandbrief"@nl .
 
 
+###  http://archief.nl/def/id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf dc:identifier ;
+    rdfs:comment "Kan gebruikt worden voor mappen van MAIS id."@en ;
+    rdfs:label "id"@en ,
+               "id"@nl ;
+    skos:altLabel "identificatie"@nl .
+
+
 ###  http://archief.nl/def/inventoryEmbursedValue
 :inventoryEmbursedValue rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf :inventoryLevelValue ;
@@ -1032,7 +1041,7 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
 
 ###  http://archief.nl/def/legacyCode
 :legacyCode rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf :code ;
+            rdfs:subPropertyOf dc:identifier ;
             rdfs:comment "Verouderde codering zoals gebruikt in de configuratie van nadere toegangen."@nl ;
             rdfs:label "legacy code"@en ,
                        "verouderde codering"@nl ;
@@ -1140,6 +1149,24 @@ Na vieren zijn we vrij."""@nl ;
                     ] ;
         rdfs:label "straat (beschrijving)"@nl ;
         skos:prefLabel "straat (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/uuid
+:uuid rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf dc:identifier ;
+      rdfs:comment """Universally Unique Identifier (UUID) is een ID die wordt gebruikt in de software-architectuur, gestandaardiseerd door de 'Open Software Foundation' (OSF) als onderdeel van de 'Distributed Computing Environment' (DCE).
+
+Definitie
+Een UUID is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ​​hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12
+
+In zijn geheel wordt een UUID dus door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes:
+
+550e8400-e29b-41d4-a716-446655440000
+RFC 4122[1] beschrijft de structuur van een UUID.
+
+Er bestaan diverse implementaties van verschillende softwarebedrijven van het UUID. Microsoft GUID is een variant van UUID."""@nl ;
+      rdfs:label "uuid"@nl ;
+      rdfs:seeAlso <https://nl.wikipedia.org/wiki/Universally_unique_identifier> .
 
 
 ###  http://dbpedia.org/ontology/age
@@ -1368,7 +1395,8 @@ foaf:age rdf:type owl:DatatypeProperty ;
 
 ###  http://archief.nl/def/ArchivalEntityType
 :ArchivalEntityType rdf:type owl:Class ;
-                    skos:note "Classe om de typologie voor archief objecten te duiden. Een voorbeeld is een foto welke een object (naa:ArchivalEntity) is van het type (naa:isEntityType) naa:TypePhotograph."@nl .
+                    skos:note "Classe om de typologie voor archief objecten te duiden. Een voorbeeld is een foto welke een object (naa:ArchivalEntity) is van het type (naa:isEntityType) naa:TypePhotograph."@nl ,
+                              "Deze class wordt uitgefaseerd t.b.v eenvoud. Materiaal typen worden enkel skos:Concept met een skos:inScheme naa:TypesOfMaterials."@nl .
 
 
 ###  http://archief.nl/def/ArchivalReference
@@ -1539,21 +1567,6 @@ foaf:age rdf:type owl:DatatypeProperty ;
       rdfs:label "Schip"@nl ,
                  "Ship"@en ;
       skos:prefLabel "Schip"@nl .
-
-
-###  http://archief.nl/def/Slave
-:Slave rdf:type owl:Class ;
-       owl:equivalentClass [ owl:intersectionOf ( pnv:Person
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasRole ;
-                                                    owl:hasValue :RoleSlave
-                                                  ]
-                                                ) ;
-                             rdf:type owl:Class
-                           ] ;
-       rdfs:label "Slaaf"@nl ,
-                  "Slave"@en ;
-       skos:prefLabel "Slaaf"@nl .
 
 
 ###  http://archief.nl/def/Voyage
@@ -1938,7 +1951,7 @@ foaf:Organization rdf:type owl:Class .
 
 ###  http://xmlns.com/foaf/0.1/Person
 foaf:Person rdf:type owl:Class ;
-            rdfs:subClassOf foaf:Organization .
+            rdfs:subClassOf foaf:Agent .
 
 
 ###  https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Asset
@@ -1980,14 +1993,6 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
                                               skos:prefLabel "Het beroep van bediende"@nl .
 
 
-###  http://archief.nl/NL-HaNA/id/concept/Slavernij
-<http://archief.nl/NL-HaNA/id/concept/Slavernij> rdf:type owl:NamedIndividual ,
-                                                          skos:Concept ;
-                                                 skos:inScheme :TypesOfCollectionClassifications ;
-                                                 rdfs:label "Categorie slaven"@nl ,
-                                                            "Category slaves"@en .
-
-
 ###  http://archief.nl/NL-HaNA/id/eiland/Suriname
 <http://archief.nl/NL-HaNA/id/eiland/Suriname> rdf:type owl:NamedIndividual ,
                                                         hg:PlaceInTime ;
@@ -2026,6 +2031,14 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
                                                        hg:PlaceInTime ;
                                               dcterms:type hg:Country ;
                                               rdfs:label "Nederland (land)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/onderwerp/Slavernij
+<http://archief.nl/NL-HaNA/id/onderwerp/Slavernij> rdf:type owl:NamedIndividual ,
+                                                            skos:Concept ;
+                                                   skos:inScheme :TypesOfCollectionClassifications ;
+                                                   rdfs:label "Categorie slaven"@nl ,
+                                                              "Category slaves"@en .
 
 
 ###  http://archief.nl/NL-HaNA/id/organisatie/NationaalArchief
@@ -2201,9 +2214,30 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                  rdfs:label "CC BY"^^xsd:string .
 
 
+###  http://archief.nl/def/RoleMemberResistanceMovement
+:RoleMemberResistanceMovement rdf:type owl:NamedIndividual ,
+                                       :Role ;
+                              skos:inScheme :TypesOfRoles ;
+                              rdfs:label "lid van een verzetsorganisatie"@nl ,
+                                         "member of a resistance movement"@en ;
+                              rdfs:seeAlso <http://live.dbpedia.org/ontology/MemberResistanceMovement> ;
+                              skos:prefLabel "lid van een verzetsorganisatie"@nl .
+
+
+###  http://archief.nl/def/RolePassenger
+:RolePassenger rdf:type owl:NamedIndividual ,
+                        :Role ;
+               skos:inScheme :TypesOfRoles ;
+               rdfs:comment "Gemunt voor gebruik bij VOC Opvarenden (NT00444)"@nl ;
+               rdfs:label "Opvarende (rol)"@nl ,
+                          "Passenger (role)"@en ;
+               skos:prefLabel "Opvarende (rol)"@nl .
+
+
 ###  http://archief.nl/def/RolePrisonerOfWar
 :RolePrisonerOfWar rdf:type owl:NamedIndividual ,
                             :Role ;
+                   skos:inScheme :TypesOfRoles ;
                    rdfs:label "Krijgsgevangene (rol)"@nl ,
                               "Prisoner of war (role)"@en ;
                    rdfs:seeAlso <https://nl.wikipedia.org/wiki/Krijgsgevangene> ;
@@ -2225,7 +2259,7 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
            skos:inScheme :TypesOfRoles ;
            rdfs:label "Slaaf (rol)"@nl ,
                       "Slave (role)"@en ;
-           rdfs:seeAlso <http://archief.nl/NL-HaNA/id/concept/Slavernij> ;
+           rdfs:seeAlso <http://archief.nl/NL-HaNA/id/onderwerp/Slavernij> ;
            skos:definition "An agent can be assigned the role of slave"@en ;
            skos:prefLabel "Slaaf (rol)"@nl .
 
