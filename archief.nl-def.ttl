@@ -237,7 +237,8 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
 
 ###  http://archief.nl/def/hasResidency
 :hasResidency rdf:type owl:ObjectProperty ;
-              owl:equivalentProperty cidoc-crm:P74_has_current_or_former_residence ;
+              owl:equivalentProperty dbo:residence ,
+                                     cidoc-crm:P74_has_current_or_former_residence ;
               owl:inverseOf :isResidencyOf ;
               rdfs:domain :Agent ;
               rdfs:range hg:PlaceInTime ;
@@ -421,6 +422,10 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
             rdfs:label "is het bezit geweest van"@nl ,
                        "was owned by"@en ;
             skos:prefLabel "is het bezit geweest van"@nl .
+
+
+###  http://dbpedia.org/ontology/residence
+dbo:residence rdf:type owl:ObjectProperty .
 
 
 ###  http://dbpedia.org/ontology/sex
@@ -838,6 +843,14 @@ fibo-fnd-oac-own:owns rdf:type owl:ObjectProperty ;
       rdfs:label "code"@en ,
                  "codering"@nl ;
       skos:altLabel "codering"@nl .
+
+
+###  http://archief.nl/def/consecutiveNumber
+:consecutiveNumber rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf dc:identifier ;
+                   rdfs:label "consecutive number"@en ,
+                              "volgnummer"@nl ;
+                   skos:prefLabel "volgnummer"@nl .
 
 
 ###  http://archief.nl/def/country
@@ -1407,7 +1420,8 @@ foaf:age rdf:type owl:DatatypeProperty ;
                                    ore:AggregatedResource ;
                    rdfs:label "ArchiefVerwijzing"@nl ;
                    skos:definition "An Archival Reference is the document-bound stand-in for archival entities referred to in archival records. May also be a dataset."@en ,
-                                   "Een archivalreferentie is de documentgebonden standaard voor archivistische entiteiten waarnaar wordt verwezen in archiefdocumenten. Kan ook een dataset zijn."@nl .
+                                   "Een archivalreferentie is de documentgebonden standaard voor archivistische entiteiten waarnaar wordt verwezen in archiefdocumenten. Kan ook een dataset zijn."@nl ;
+                   skos:prefLabel "Beschrijving"@nl .
 
 
 ###  http://archief.nl/def/ArchivalReferenceType
@@ -2005,25 +2019,35 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/geslacht/Man
 <http://archief.nl/NL-HaNA/id/geslacht/Man> rdf:type owl:NamedIndividual ,
                                                      :GenderType ;
-                                            rdfs:label "Man"@nl .
+                                            owl:sameAs :GenderMale ;
+                                            rdfs:label "Man"@nl ;
+                                            skos:prefLabel "Man"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/geslacht/Neutraal
 <http://archief.nl/NL-HaNA/id/geslacht/Neutraal> rdf:type owl:NamedIndividual ,
                                                           :GenderType ;
-                                                 rdfs:label "Gender neutraal"@nl .
+                                                 owl:sameAs :GenderNeutral ;
+                                                 rdfs:label "Gender neutraal"@nl ;
+                                                 skos:prefLabel "Gender neutraal"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/geslacht/Onbekend
 <http://archief.nl/NL-HaNA/id/geslacht/Onbekend> rdf:type owl:NamedIndividual ,
-                                                          :GenderType ;
-                                                 rdfs:label "Geslacht onbekend"@nl .
+                                                          :GenderType ,
+                                                          skos:Concept ;
+                                                 owl:sameAs :GenderUnknown ;
+                                                 skos:inScheme :TypesOfHumanProperties ;
+                                                 rdfs:label "Geslacht onbekend"@nl ;
+                                                 skos:prefLabel "Onbekend"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/geslacht/Vrouw
 <http://archief.nl/NL-HaNA/id/geslacht/Vrouw> rdf:type owl:NamedIndividual ,
                                                        :GenderType ;
-                                              rdfs:label "Vrouw"@nl .
+                                              owl:sameAs :GenderFemale ;
+                                              rdfs:label "Vrouw"@nl ;
+                                              skos:prefLabel "Vrouw"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/land/Nederland
@@ -2165,6 +2189,46 @@ De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke
                skos:prefLabel "Particuliere onderneming"@nl .
 
 
+###  http://archief.nl/def/GenderFemale
+:GenderFemale rdf:type owl:NamedIndividual ,
+                       :GenderType ,
+                       skos:Concept ;
+              skos:inScheme :TypesOfHumanProperties ;
+              rdfs:label "Female (gender)"@en ,
+                         "Vrouwelijk (geslacht)"@nl ;
+              skos:prefLabel "Vrouwelijk"@nl .
+
+
+###  http://archief.nl/def/GenderMale
+:GenderMale rdf:type owl:NamedIndividual ,
+                     :GenderType ,
+                     skos:Concept ;
+            skos:inScheme :TypesOfHumanProperties ;
+            rdfs:label "Male (gender)"@en ,
+                       "Mannelijk (geslacht)"@nl ;
+            skos:prefLabel "Mannelijk"@nl .
+
+
+###  http://archief.nl/def/GenderNeutral
+:GenderNeutral rdf:type owl:NamedIndividual ,
+                        :GenderType ,
+                        skos:Concept ;
+               skos:inScheme :TypesOfHumanProperties ;
+               rdfs:label "Neutraal (geslacht)"@nl ,
+                          "Neutral (gender)"@nl ;
+               skos:prefLabel "Neutraal"@nl .
+
+
+###  http://archief.nl/def/GenderUnknown
+:GenderUnknown rdf:type owl:NamedIndividual ,
+                        :GenderType ,
+                        skos:Concept ;
+               skos:inScheme :TypesOfHumanProperties ;
+               rdfs:label "Onbekend (geslacht)"@nl ,
+                          "Unknown (gender)"@en ;
+               skos:prefLabel "Onbekend"@nl .
+
+
 ###  http://archief.nl/def/Island
 :Island rdf:type owl:NamedIndividual ,
                  hg:PlaceInTimeType ;
@@ -2282,6 +2346,23 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                           skos:label "Methodische ontsluiting van één of meer archieven"@nl .
 
 
+###  http://archief.nl/def/TypeAdditionalFindingAidRecord
+:TypeAdditionalFindingAidRecord rdf:type owl:NamedIndividual ,
+                                         :AggregationType ,
+                                         skos:Concept ;
+                                skos:inScheme :TypesOfAggregations .
+
+
+###  http://archief.nl/def/TypeAdditionalFindingAidView
+:TypeAdditionalFindingAidView rdf:type owl:NamedIndividual ,
+                                       :AggregationType ,
+                                       skos:Concept ;
+                              skos:inScheme :TypesOfAggregations ;
+                              rdfs:label "View van methodische ontsluiting van één of meer archieven"@nl ;
+                              skos:definition "Een view is in deze context een subdataset."@nl ;
+                              skos:prefLabel "View van methodische ontsluiting van één of meer archieven"@nl .
+
+
 ###  http://archief.nl/def/TypeBaptismRecord
 :TypeBaptismRecord rdf:type owl:NamedIndividual ,
                             :AggregationType ,
@@ -2316,6 +2397,15 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                                 skos:definition "Een Nadere Toegang bevat verdiepende beschrijving (ofwel, een omschrijving van de stukken op een niveau dieper dan de beschrijving van het inventarisnummer). Nadere Toegangen zijn meer op de inhoud van de stukken gericht."@nl ,
                                                 "Staat van specificaties van: 1. Gegevens in een archiefstuk of in een archiefbestanddeel, dat als geheel in een beschrijving is opgenomen. 2. Archiefbestanddelen binnen een archiefafdeling of een archief."@nl ;
                                 skos:label "Nadere Toegang"@nl .
+
+
+###  http://archief.nl/def/TypeDetailedContentDescriptionRecord
+:TypeDetailedContentDescriptionRecord rdf:type owl:NamedIndividual ,
+                                               :AggregationType ,
+                                               skos:Concept ;
+                                      skos:inScheme :TypesOfAggregations ;
+                                      rdfs:label "Record uit Nadere Toegang"@nl ;
+                                      skos:prefLabel "Record uit Nadere Toegang"@nl .
 
 
 ###  http://archief.nl/def/TypeDetailedContentDescriptionView
@@ -2359,6 +2449,35 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                 skos:inScheme :TypesOfAggregations ;
                 rdfs:label "Toegang tot een of meer archieven"@nl ;
                 skos:label "Toegang tot een of meer archieven"@nl .
+
+
+###  http://archief.nl/def/TypeGuideToArchives
+:TypeGuideToArchives rdf:type owl:NamedIndividual ,
+                              :AggregationType ,
+                              skos:Concept ;
+                     skos:inScheme :TypesOfAggregations ;
+                     rdfs:label "Archiefgids"@nl ;
+                     skos:definition "Een archiefgids/index is een verzameling beschrijvingen op thema samengesteld die verwijst naar materiaal uit meer dan één archief."@nl ;
+                     skos:prefLabel "Archiefgids"@nl .
+
+
+###  http://archief.nl/def/TypeGuideToArchivesRecord
+:TypeGuideToArchivesRecord rdf:type owl:NamedIndividual ,
+                                    :AggregationType ,
+                                    skos:Concept ;
+                           skos:inScheme :TypesOfAggregations ;
+                           rdfs:label "Record uit archiefgids"@nl ;
+                           skos:prefLabel "Record uit archiefgids"@nl .
+
+
+###  http://archief.nl/def/TypeGuideToArchivesView
+:TypeGuideToArchivesView rdf:type owl:NamedIndividual ,
+                                  :AggregationType ,
+                                  skos:Concept ;
+                         skos:inScheme :TypesOfAggregations ;
+                         rdfs:label "View van archiefgids"@nl ;
+                         skos:definition "Een view is in deze context een subdataset."@nl ;
+                         skos:prefLabel "View van archiefgids"@nl .
 
 
 ###  http://archief.nl/def/TypeMarriageRecord
@@ -2510,6 +2629,21 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
 :TypesOfCollectionClassifications rdf:type owl:NamedIndividual ,
                                            skos:ConceptScheme ;
                                   rdfs:label "Classificaties van onderwerpen die voorkomen in collecties"@nl .
+
+
+###  http://archief.nl/def/TypesOfGTAAConcepts
+:TypesOfGTAAConcepts rdf:type owl:NamedIndividual ,
+                              skos:ConceptScheme ;
+                     rdfs:label "Onderwerpen die voorkomen in de GTAA Thesaurus"@nl ;
+                     rdfs:seeAlso <http://data.beeldengeluid.nl/> .
+
+
+###  http://archief.nl/def/TypesOfHumanProperties
+:TypesOfHumanProperties rdf:type owl:NamedIndividual ,
+                                 skos:ConceptScheme ;
+                        rdfs:label "Eigenschappen van mensen"@nl ,
+                                   "Human properties"@en ;
+                        skos:prefLabel "Eigenschappen van mensen"@nl .
 
 
 ###  http://archief.nl/def/TypesOfMaterials
