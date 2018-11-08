@@ -7,6 +7,7 @@
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix das: <http://purl.org/collections/nl/dss/das/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix gvp: <http://vocab.getty.edu/ontology#> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
@@ -31,7 +32,6 @@
 @prefix gzmvoc: <http://purl.org/collections/nl/dss/gzmvoc/> .
 @prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 @prefix schema: <http://schema.org/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eac-cpf: <http://www3.iath.virginia.edu/eac/cpf/> .
 @prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
 @prefix dctypens: <http://purl.org/dc/dcmitype/> .
@@ -43,6 +43,9 @@
 
 <http://archief.nl/def/> rdf:type owl:Ontology ;
                           owl:imports pnv: ;
+                          rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
+Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
+Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl ;
                           skos:note """Testserver: http://svr0153.test.rad.lan/narthex/
 
 Globale aanroep: http://svr0153.test.rad.lan/api/search/v2/
@@ -54,14 +57,15 @@ Dataset statistics: http://svr0153.test.rad.lan/api/datasets/2-24-09/stats/
 
 Fragments:http://svr0153.test.rad.lan/api/fragments
 
-API documentatie: http://svr0153.test.rad.lan/api/search/v2/_docs"""@nl ;
-                          rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
-Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
-Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl .
+API documentatie: http://svr0153.test.rad.lan/api/search/v2/_docs"""@nl .
 
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://archief.nl/pnv/def/hasName
+pnv:hasName rdf:type owl:AnnotationProperty .
+
 
 ###  http://purl.org/dc/elements/1.1/creator
 dc:creator rdf:type owl:AnnotationProperty .
@@ -195,6 +199,14 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
              skos:prefLabel "begunstigde"@nl .
 
 
+###  http://archief.nl/def/coverageEstimated
+:coverageEstimated rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dct:coverage ;
+                   rdfs:label "datering geschat"@nl ,
+                              "estimated coverage"@en ;
+                   skos:prefLabel "datering geschat"@nl .
+
+
 ###  http://archief.nl/def/hasConfig
 :hasConfig rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf ore:aggregates .
@@ -260,14 +272,14 @@ org:relatedWebPage rdf:type owl:AnnotationProperty .
 
 ###  http://archief.nl/def/isAggregationType
 :isAggregationType rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf dcterms:type ;
+                   rdfs:subPropertyOf dct:type ;
                    rdfs:domain ore:Aggregation ;
                    rdfs:range :AggregationType .
 
 
 ###  http://archief.nl/def/isEntityType
 :isEntityType rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf dcterms:type ;
+              rdfs:subPropertyOf dct:type ;
               rdfs:domain :ArchivalEntity ;
               rdfs:range :ArchivalEntityType ;
               skos:label "is van het type"@nl .
@@ -433,36 +445,40 @@ dbo:sex rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/dc/terms/accessRights
-dcterms:accessRights rdf:type owl:ObjectProperty ;
-                     skos:note "MAIS openb.beperking"@nl .
+dct:accessRights rdf:type owl:ObjectProperty ;
+                 skos:note "MAIS openb.beperking"@nl .
+
+
+###  http://purl.org/dc/terms/coverage
+dct:coverage rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/dc/terms/identifier
-dcterms:identifier rdf:type owl:ObjectProperty .
+dct:identifier rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/dc/terms/isPartOf
-dcterms:isPartOf rdf:type owl:ObjectProperty .
+dct:isPartOf rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/dc/terms/license
-dcterms:license rdf:type owl:ObjectProperty ;
-                skos:note "MAIS Licentie methode"@nl .
+dct:license rdf:type owl:ObjectProperty ;
+            skos:note "MAIS Licentie methode"@nl .
 
 
 ###  http://purl.org/dc/terms/relation
-dcterms:relation rdf:type owl:ObjectProperty .
+dct:relation rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/dc/terms/rights
-dcterms:rights rdf:type owl:ObjectProperty ;
-               rdfs:range dcterms:RightsStatement ;
-               skos:note "TODO: een gecontrolleerde vocabulaire (naa) zodat we naar geclassificeerde begrippen kunnen verwijzen met eigen URI's."@nl ;
-               skos:scopeNote "MAIS Rechten"@nl .
+dct:rights rdf:type owl:ObjectProperty ;
+           rdfs:range dct:RightsStatement ;
+           skos:note "TODO: een gecontrolleerde vocabulaire (naa) zodat we naar geclassificeerde begrippen kunnen verwijzen met eigen URI's."@nl ;
+           skos:scopeNote "MAIS Rechten"@nl .
 
 
 ###  http://purl.org/dc/terms/type
-dcterms:type rdf:type owl:ObjectProperty .
+dct:type rdf:type owl:ObjectProperty .
 
 
 ###  http://rdfs.org/sioc/services#has_service
@@ -650,7 +666,7 @@ ore:aggregates rdf:type owl:ObjectProperty ;
 
 ###  http://www.openarchives.org/ore/terms/isAggregatedBy
 ore:isAggregatedBy rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf dcterms:isPartOf ;
+                   rdfs:subPropertyOf dct:isPartOf ;
                    rdfs:range ore:Aggregation .
 
 
@@ -1258,58 +1274,58 @@ dc:title rdf:type owl:DatatypeProperty ;
 
 
 ###  http://purl.org/dc/terms/abstract
-dcterms:abstract rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf dc:description ;
-                 rdfs:comment "A summary of the resource."@en ;
-                 rdfs:label "abstract"@en ,
-                            "overzicht"@nl ;
-                 skos:prefLabel "overzicht"@nl .
+dct:abstract rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf dc:description ;
+             rdfs:comment "A summary of the resource."@en ;
+             rdfs:label "abstract"@en ,
+                        "overzicht"@nl ;
+             skos:prefLabel "overzicht"@nl .
 
 
 ###  http://purl.org/dc/terms/created
-dcterms:created rdf:type owl:DatatypeProperty ;
-                skos:note "MAIS Aanmaakdatum"@nl .
+dct:created rdf:type owl:DatatypeProperty ;
+            skos:note "MAIS Aanmaakdatum"@nl .
 
 
 ###  http://purl.org/dc/terms/creator
-dcterms:creator rdf:type owl:DatatypeProperty ;
-                skos:note "MAIS Vervaardiger"@nl .
+dct:creator rdf:type owl:DatatypeProperty ;
+            skos:note "MAIS Vervaardiger"@nl .
 
 
 ###  http://purl.org/dc/terms/date
-dcterms:date rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf dc:date ;
-             rdfs:range rdfs:Literal .
+dct:date rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf dc:date ;
+         rdfs:range rdfs:Literal .
 
 
 ###  http://purl.org/dc/terms/description
-dcterms:description rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf dc:description ;
-                    rdfs:comment "An account of the resource."@en ;
-                    rdfs:label "beschrijving"@nl ,
-                               "description"@en ;
-                    skos:prefLabel "beschrijving"@nl .
+dct:description rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf dc:description ;
+                rdfs:comment "An account of the resource."@en ;
+                rdfs:label "beschrijving"@nl ,
+                           "description"@en ;
+                skos:prefLabel "beschrijving"@nl .
 
 
 ###  http://purl.org/dc/terms/hasVersion
-dcterms:hasVersion rdf:type owl:DatatypeProperty ;
-                   skos:note "MAIS Editie"@nl .
+dct:hasVersion rdf:type owl:DatatypeProperty ;
+               skos:note "MAIS Editie"@nl .
 
 
 ###  http://purl.org/dc/terms/modified
-dcterms:modified rdf:type owl:DatatypeProperty ;
-                 skos:note "MAIS Wijzigingsdatum"@nl .
+dct:modified rdf:type owl:DatatypeProperty ;
+             skos:note "MAIS Wijzigingsdatum"@nl .
 
 
 ###  http://purl.org/dc/terms/rightsHolder
-dcterms:rightsHolder rdf:type owl:DatatypeProperty ;
-                     skos:note "MAIS Auteursrechthouder"@nl .
+dct:rightsHolder rdf:type owl:DatatypeProperty ;
+                 skos:note "MAIS Auteursrechthouder"@nl .
 
 
 ###  http://purl.org/dc/terms/source
-dcterms:source rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf dc:source ;
-               skos:note "MAIS Download"@nl .
+dct:source rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:source ;
+           skos:note "MAIS Download"@nl .
 
 
 ###  http://schema.org/amount
@@ -1352,20 +1368,20 @@ ebucore:aspectRatio rdf:type owl:DatatypeProperty .
 
 ###  http://www.loc.gov/premis/rdf/v3/endDate
 premis:endDate rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf dcterms:date ;
+               rdfs:subPropertyOf dct:date ;
                rdfs:domain premis:RightsBasis ;
                rdfs:range rdfs:Literal .
 
 
 ###  http://www.loc.gov/premis/rdf/v3/hasDeterminationDate
 premis:hasDeterminationDate rdf:type owl:DatatypeProperty ;
-                            rdfs:subPropertyOf dcterms:date ;
+                            rdfs:subPropertyOf dct:date ;
                             rdfs:domain premis:RightsBasis .
 
 
 ###  http://www.loc.gov/premis/rdf/v3/startDate
 premis:startDate rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf dcterms:date ;
+                 rdfs:subPropertyOf dct:date ;
                  rdfs:domain premis:RightsBasis ;
                  rdfs:range rdfs:Literal .
 
@@ -1416,7 +1432,7 @@ foaf:age rdf:type owl:DatatypeProperty ;
 :ArchivalReference rdf:type owl:Class ;
                    owl:equivalentClass edm:InformationResource ;
                    rdfs:subClassOf dbo:Reference ,
-                                   dcterms:BibliographicResource ,
+                                   dct:BibliographicResource ,
                                    ore:AggregatedResource ;
                    rdfs:label "ArchiefVerwijzing"@nl ;
                    skos:definition "An Archival Reference is the document-bound stand-in for archival entities referred to in archival records. May also be a dataset."@en ,
@@ -1593,6 +1609,8 @@ foaf:age rdf:type owl:DatatypeProperty ;
 
 
 ###  http://archief.nl/pnv/def/Person
+pnv:Person rdf:type owl:Class .
+
 
 ###  http://dbpedia.org/ontology/Agent
 dbo:Agent rdf:type owl:Class .
@@ -1657,11 +1675,11 @@ dctypens:Collection rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/terms/BibliographicResource
-dcterms:BibliographicResource rdf:type owl:Class .
+dct:BibliographicResource rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/terms/RightsStatement
-dcterms:RightsStatement rdf:type owl:Class .
+dct:RightsStatement rdf:type owl:Class .
 
 
 ###  http://rdf.histograph.io/PlaceInTime
@@ -1720,6 +1738,10 @@ schema:OwnershipInfo rdf:type owl:Class ;
                                 "Ownership info"@en ;
                      rdfs:seeAlso <https://schema.org/OwnershipInfo> ;
                      skos:prefLabel "Informatie over eigenaarschap"@nl .
+
+
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class .
 
 
 ###  http://schema.org/Place
@@ -1823,6 +1845,10 @@ premis:License rdf:type owl:Class ;
 premis:Organization rdf:type owl:Class ;
                     rdfs:subClassOf prov:Organization ,
                                     foaf:Organization .
+
+
+###  http://www.loc.gov/premis/rdf/v3/Person
+premis:Person rdf:type owl:Class .
 
 
 ###  http://www.loc.gov/premis/rdf/v3/RightsBasis
@@ -1990,6 +2016,14 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual .
 
 
+###  http://archief.nl/NL-HaNA/doc/Periods:WorldWar2
+<http://archief.nl/NL-HaNA/doc/Periods:WorldWar2> rdf:type owl:NamedIndividual ,
+                                                           skos:ConceptScheme ;
+                                                  rdfs:label "Perioden tijdens WO2"@nl ,
+                                                             "Periods during WW2"@en ;
+                                                  skos:prefLabel "Perioden tijdens WO2"@nl .
+
+
 ###  http://archief.nl/NL-HaNA/id/beroep/Merchant
 <http://archief.nl/NL-HaNA/id/beroep/Merchant> rdf:type owl:NamedIndividual ,
                                                         :Profession ;
@@ -2010,7 +2044,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/eiland/Suriname
 <http://archief.nl/NL-HaNA/id/eiland/Suriname> rdf:type owl:NamedIndividual ,
                                                         hg:PlaceInTime ;
-                                               dcterms:type :Island ;
+                                               dct:type :Island ;
                                                rdfs:label "Surinam (island)"@en ,
                                                           "Suriname (eiland)"@nl ;
                                                skos:prefLabel "Suriname (eiland)"@nl .
@@ -2053,7 +2087,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/land/Nederland
 <http://archief.nl/NL-HaNA/id/land/Nederland> rdf:type owl:NamedIndividual ,
                                                        hg:PlaceInTime ;
-                                              dcterms:type hg:Country ;
+                                              dct:type hg:Country ;
                                               rdfs:label "Nederland (land)"@nl .
 
 
@@ -2076,17 +2110,17 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne
 <http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne> rdf:type owl:NamedIndividual ,
                                                               premis:Person ;
-                                                     pnv:hasName <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
                                                      schema:birthPlace <http://archief.nl/NL-HaNA/id/land/Nederland> ,
                                                                        <http://archief.nl/NL-HaNA/id/stad/Groningen> ;
                                                      schema:birthDate "1977-02-25T00:00:00Z"^^xsd:dateTime ;
+                                                     pnv:hasName <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> ;
                                                      rdfs:label "Elvin Dechesne"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/plaats/Amsterdam
 <http://archief.nl/NL-HaNA/id/plaats/Amsterdam> rdf:type owl:NamedIndividual ,
                                                          hg:PlaceInTime ;
-                                                dcterms:type hg:Place ;
+                                                dct:type hg:Place ;
                                                 rdfs:label "Amsterdam (plaats)"@nl ,
                                                            "Amsterdam (place)"@en ;
                                                 skos:prefLabel "Amsterdam (plaats)"@nl .
@@ -2095,7 +2129,7 @@ fibo-fnd-pty-pty:IndependentParty rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/plaats/Frankrijk
 <http://archief.nl/NL-HaNA/id/plaats/Frankrijk> rdf:type owl:NamedIndividual ,
                                                          hg:PlaceInTime ;
-                                                dcterms:type hg:Place ;
+                                                dct:type hg:Place ;
                                                 rdfs:label "France (place)"@en ,
                                                            "Frankrijk (plaats)"@nl ;
                                                 skos:prefLabel "Frankrijk (plaats)"@nl .
@@ -2159,7 +2193,7 @@ De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke
 ###  http://archief.nl/NL-HaNA/id/stad/Amsterdam
 <http://archief.nl/NL-HaNA/id/stad/Amsterdam> rdf:type owl:NamedIndividual ,
                                                        hg:PlaceInTime ;
-                                              dcterms:type hg:City ;
+                                              dct:type hg:City ;
                                               rdfs:label "Amsterdam (stad)"@nl ;
                                               skos:prefLabel "Amsterdam (stad)"@nl .
 
@@ -2167,7 +2201,7 @@ De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke
 ###  http://archief.nl/NL-HaNA/id/stad/Groningen
 <http://archief.nl/NL-HaNA/id/stad/Groningen> rdf:type owl:NamedIndividual ,
                                                        hg:PlaceInTime ;
-                                              dcterms:type hg:City ;
+                                              dct:type hg:City ;
                                               rdfs:label "Groningen (city)"@en ,
                                                          "Groningen (stad)"@nl ;
                                               skos:prefLabel "Groningen (stad)"@nl .
@@ -2877,8 +2911,8 @@ De IIIF functie is bestemd voor het levereren van zichtexemplaren volgens het In
 
 odrl:Asset skos:note "The Asset entity can be any form of identifiable resource, such as data/information, content/media, applications, or services. Furthermore, it can be used to represent other Asset entities that are needed to undertake the Policy expression, such as with the Duty entity. To describe more details about the Asset, it is recommended to use Dublin Core [[dcterms]] elements or other content metadata."@en ;
            skos:definition "A resource or a collection of resources that are the subject of a Rule."@en ;
-           rdfs:label "Asset"@en ;
-           rdfs:isDefinedBy odrl: .
+           rdfs:isDefinedBy odrl: ;
+           rdfs:label "Asset"@en .
 
 
-###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
