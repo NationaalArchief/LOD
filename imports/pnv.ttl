@@ -2,7 +2,7 @@
 @prefix bgn: <http://biographynet.nl/schema/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix pnv: <https://w3id.org/pnv/> .
+@prefix pnv: <https://w3id.org/pnv#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -67,7 +67,7 @@ foaf:givenName rdf:type owl:DatatypeProperty ;
                owl:equivalentProperty pnv:givenName ,
                						  schema:givenName ,
                						  wikidata:P735 .
-               						  
+
 ### http://xmlns.com/foaf/0.1/name
 foaf:name rdf:type owl:DatatypeProperty ;
           owl:equivalentProperty pnv:literalName ,
@@ -348,12 +348,12 @@ pnv:PersonName rdf:type owl:Class ;
                rdfs:label "A Person's name"@en ,
                           "Naam van een persoon"@nl ;
                skos:prefLabel "Naam van een persoon"@nl .
-               
+
 
 ### https://www.wikidata.org/wiki/Q5
 wikidata:Q5 rdf:type owl:Class ;
                      owl:equivalentClass pnv:Person .
-                     
+
 ### https://www.wikidata.org/wiki/Q1071027
 wikidata:Q1071027 rdf:type owl:Class ;
                      owl:equivalentClass pnv:PersonName .
