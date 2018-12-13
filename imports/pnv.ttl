@@ -68,50 +68,50 @@ foaf:givenName rdf:type owl:DatatypeProperty ;
                						  schema:givenName ,
                						  wikidata:P735 .
 
-### http://xmlns.com/foaf/0.1/name
+###  http://xmlns.com/foaf/0.1/name
 foaf:name rdf:type owl:DatatypeProperty ;
           owl:equivalentProperty pnv:literalName ,
                					 wikidata:P2561 .
 
 
-### https://www.wikidata.org/wiki/Property:P2561
+###  https://www.wikidata.org/wiki/Property:P2561
 wikidata:P2561 rdf:type owl:DatatypeProperty ;
                owl:equivalentProperty pnv:literalName ,
                					      foaf:name .
 
 
-### https://schema.org/familyName
+###  https://schema.org/familyName
 schema:familyName rdf:type owl:DatatypeProperty ;
                   owl:equivalentProperty pnv:surname ,
                 					     foaf:familyName ,
                 					     wikidata:P734 .
 
 
-### https://www.wikidata.org/wiki/Property:P734
+###  https://www.wikidata.org/wiki/Property:P734
 wikidata:P734 rdf:type owl:DatatypeProperty ;
               owl:equivalentProperty pnv:surname ,
                 					 foaf:familyName ,
                 					 schema:familyName .
 
 
-### https://www.wikidata.org/wiki/Property:P735
+###  https://www.wikidata.org/wiki/Property:P735
 wikidata:P735 rdf:type owl:DatatypeProperty ;
               owl:equivalentProperty pnv:givenName ,
                  					 foaf:givenName ,
                  					 schema:givenName .
 
 
-### https://schema.org/honorificPrefix
+###  https://schema.org/honorificPrefix
 schema:honorificPrefix rdf:type owl:DatatypeProperty ;
               		   owl:equivalentProperty pnv:prefix .
 
 
-### https://schema.org/honorificSuffix
+###  https://schema.org/honorificSuffix
 schema:honorificSuffix rdf:type owl:DatatypeProperty ;
               		   owl:equivalentProperty pnv:honorificSuffix .
 
 
-### https://schema.org/disambiguatingDescription
+###  https://schema.org/disambiguatingDescription
 schema:disambiguatingDescription rdf:type owl:DatatypeProperty ;
               		   			 owl:equivalentProperty pnv:disambiguatingDescription .
 
@@ -120,7 +120,7 @@ schema:disambiguatingDescription rdf:type owl:DatatypeProperty ;
 pnv:baseSurname rdf:type owl:DatatypeProperty ;
                 rdfs:domain pnv:PersonName ;
                 rdfs:range xsd:string ;
-                rdfs:comment """A Base surname is a family name without any prefixes, if those prefixes need to be ignored in sorting. If the family name is e.g. \"de Vries\" and it needs to be sorted under \"V\", the Base surname is \"Vries\". Base surname is equivalent to BioDes:geslachtsnaam."""@en ;
+                rdfs:comment "A Base surname is a family name without any prefixes, if those prefixes need to be ignored in sorting. If the family name is e.g. \"de Vries\" and it needs to be sorted under \"V\", the Base surname is \"Vries\". Base surname is equivalent to BioDes:geslachtsnaam."@en ;
                 rdfs:label "base surname"@en ,
                            "basis achternaam"@nl ;
                 skos:prefLabel "basis achternaam"@nl .
@@ -131,8 +131,7 @@ pnv:disambiguatingDescription rdf:type owl:DatatypeProperty ;
                               rdfs:subPropertyOf pnv:suffix ;
                               rdfs:domain pnv:PersonName ;
                               rdfs:range xsd:string ;
-                              rdfs:comment """A Disambiguating description is a name part that is appended to make sure that the right person is designated
-For example \"Philips de Goede\", where \"de Goede\" is the disambiguating description. Suffixes like \"Sr.\" and \"Jr.\", used to distinguish a child from his parent, are als disambiguating descriptions."""@en ;
+                              rdfs:comment "A Disambiguating description is a name part that is appended to make sure that the right person is designated. Name parts like \"Sr.\" and \"Jr.\", used to distinguish a child from his parent, are disambiguating descriptions."@en ;
                               rdfs:label "onderscheidend achtervoegsel"@nl ,
                                          "disambiguating description"@en ;
                               owl:equivalentProperty schema:disambiguatingDescription ;
@@ -171,6 +170,7 @@ pnv:givenNameSuffix rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf pnv:givenName ;
                     rdfs:domain pnv:PersonName ;
                     rdfs:range xsd:string ;
+                    rdfs:comment "A Given name suffix is a name part that is appended to a given name. In the name of the fifteenth-century Duke of Burgundy Philip the Good, for example, \"the Good\" is the Given name suffix."@en ;
                     rdfs:label "given name suffix"@en ,
                                "toevoegsel voornaam"@nl ;
                     skos:prefLabel "toevoegsel voornaam"@nl .
@@ -260,7 +260,7 @@ pnv:suffix rdf:type owl:DatatypeProperty ;
 pnv:surname rdf:type owl:DatatypeProperty ;
             rdfs:domain pnv:PersonName ;
             rdfs:range xsd:string ;
-            rdfs:comment """A surname is the name of the family a person is born into, including one or more prefixes. In some cases the honorific prefix can be incorporated into the surname (e.g. Van Welderen baron Rengers)."""@en ;
+            rdfs:comment "A surname is the name of the family a person is born into, including one or more prefixes. In some cases the honorific prefix can be incorporated into the surname (e.g. Van Welderen baron Rengers)."@en ;
             rdfs:label "familienaam"@nl ,
                        "surname"@en ;
             owl:equivalentProperty foaf:familyName ,
@@ -350,11 +350,11 @@ pnv:PersonName rdf:type owl:Class ;
                skos:prefLabel "Naam van een persoon"@nl .
 
 
-### https://www.wikidata.org/wiki/Q5
+###  https://www.wikidata.org/wiki/Q5
 wikidata:Q5 rdf:type owl:Class ;
                      owl:equivalentClass pnv:Person .
 
-### https://www.wikidata.org/wiki/Q1071027
+###  https://www.wikidata.org/wiki/Q1071027
 wikidata:Q1071027 rdf:type owl:Class ;
                      owl:equivalentClass pnv:PersonName .
 
