@@ -132,16 +132,16 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 skos:scopeNote rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2006/vcard/ns#hasEmail
+vcard:hasEmail rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/ns/adms#relatedWebPage
 <http://www.w3.org/ns/adms#relatedWebPage> rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/ns/org#relatedWebPage
 org:relatedWebPage rdf:type owl:AnnotationProperty .
-
-
-###  https://w3id.org/pnv#hasName
-pnv:hasName rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -482,6 +482,10 @@ dct:rights rdf:type owl:ObjectProperty ;
 dct:type rdf:type owl:ObjectProperty .
 
 
+###  http://rdf.histograph.io/contains
+hg:contains rdf:type owl:ObjectProperty .
+
+
 ###  http://rdfs.org/sioc/services#has_service
 svcs:has_service rdf:type owl:ObjectProperty .
 
@@ -678,6 +682,14 @@ skos:inScheme rdf:type owl:ObjectProperty ;
               rdfs:label "is in scheme"@en ;
               skos:definition "Relates a resource (for example a concept) to a concept scheme in which it is included."@en ;
               skos:scopeNote "A concept may be a member of more than one concept scheme."@en .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasAddress
+vcard:hasAddress rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasURL
+vcard:hasURL rdf:type owl:ObjectProperty .
 
 
 ###  http://www.w3.org/ns/odrl/2/action
@@ -1387,6 +1399,22 @@ premis:startDate rdf:type owl:DatatypeProperty ;
                  rdfs:range rdfs:Literal .
 
 
+###  http://www.w3.org/2006/vcard/ns#country-name
+vcard:country-name rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#locality
+vcard:locality rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#postal-code
+vcard:postal-code rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2006/vcard/ns#street-address
+vcard:street-address rdf:type owl:DatatypeProperty .
+
+
 ###  http://xmlns.com/foaf/0.1/age
 foaf:age rdf:type owl:DatatypeProperty ;
          rdfs:domain foaf:Agent .
@@ -1824,6 +1852,10 @@ vcard:Individual rdf:type owl:Class .
 vcard:Organization rdf:type owl:Class .
 
 
+###  http://www.w3.org/2006/vcard/ns#VCard
+vcard:VCard rdf:type owl:Class .
+
+
 ###  http://www.w3.org/ns/odrl/2/Action
 odrl:Action rdf:type owl:Class ;
             rdfs:subClassOf schema:Action .
@@ -1954,18 +1986,45 @@ pnv:Person rdf:type owl:Class .
 <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual .
 
 
+###  http://archief.nl/NL-HaNA/doc/VCard:NationaalArchief
+<http://archief.nl/NL-HaNA/doc/VCard:NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                hg:PlaceInTime ,
+                                                                vcard:VCard ;
+                                                       dct:type hg:Address ;
+                                                       hg:contains <http://archief.nl/NL-HaNA/id/gemeente/Den_Haag> ,
+                                                                   <http://archief.nl/NL-HaNA/id/land/Nederland> ,
+                                                                   <http://archief.nl/NL-HaNA/id/straat/Prins_Willem-Alexanderhof> ;
+                                                       vcard:hasURL <https://www.nationaalarchief.nl> ;
+                                                       vcard:country-name "Nederland"@nl ;
+                                                       vcard:locality "Den Haag"@nl ;
+                                                       vcard:postal-code "2595 BE"^^xsd:string ;
+                                                       vcard:street-address "Prins Willem-Alexanderhof 20"^^xsd:string ;
+                                                       rdfs:label "Contact information for the National Archives of The Netherlands"@en ,
+                                                                  "Contactgegevens van het Nationaal Archief"@nl ;
+                                                       vcard:hasEmail <info@nationaalarchief.nl> ;
+                                                       org:relatedWebPage <https://wiki.duraspace.org/display/VTDA/VCard+usage+diagram> .
+
+
+###  http://archief.nl/NL-HaNA/id/beroep/Koopman
+<http://archief.nl/NL-HaNA/id/beroep/Koopman> rdf:type owl:NamedIndividual ;
+                                              owl:sameAs <http://archief.nl/NL-HaNA/id/beroep/Merchant> .
+
+
 ###  http://archief.nl/NL-HaNA/id/beroep/Merchant
 <http://archief.nl/NL-HaNA/id/beroep/Merchant> rdf:type owl:NamedIndividual ,
-                                                        naa:Profession ;
+                                                        naa:Profession ,
+                                                        skos:Concept ;
+                                               skos:inScheme naa:TypesOfProfessions ;
                                                rdfs:label "Het beroep van koopman"@nl ,
                                                           "The profession of merchant"@en ;
-                                               skos:prefLabel "Het beroep van koopman"@nl .
+                                               skos:prefLabel "Koopman"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/beroep/Servant
 <http://archief.nl/NL-HaNA/id/beroep/Servant> rdf:type owl:NamedIndividual ,
-                                                       naa:Profession ;
-                                              skos:inScheme naa:TypesOfRoles ;
+                                                       naa:Profession ,
+                                                       skos:Concept ;
+                                              skos:inScheme naa:TypesOfProfessions ;
                                               rdfs:label "Het beroep van bediende"@nl ,
                                                          "The profession of servant"@en ;
                                               skos:prefLabel "Het beroep van bediende"@nl .
@@ -1978,6 +2037,14 @@ pnv:Person rdf:type owl:Class .
                                                rdfs:label "Surinam (island)"@en ,
                                                           "Suriname (eiland)"@nl ;
                                                skos:prefLabel "Suriname (eiland)"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/gemeente/Den_Haag
+<http://archief.nl/NL-HaNA/id/gemeente/Den_Haag> rdf:type owl:NamedIndividual ,
+                                                          hg:PlaceInTime ;
+                                                 dct:type hg:Municipality ;
+                                                 rdfs:label "Gemeente Den Haag"@nl ;
+                                                 skos:prefLabel "Den Haag"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/geslacht/Man
@@ -2032,7 +2099,10 @@ pnv:Person rdf:type owl:Class .
 ###  http://archief.nl/NL-HaNA/id/organisatie/NationaalArchief
 <http://archief.nl/NL-HaNA/id/organisatie/NationaalArchief> rdf:type owl:NamedIndividual ,
                                                                      premis:Organization ,
+                                                                     vcard:Organization ,
                                                                      org:FormalOrganization ;
+                                                            vcard:hasAddress <http://archief.nl/NL-HaNA/doc/VCard:NationaalArchief> ;
+                                                            vcard:hasURL <https://www.nationaalarchief.nl> ;
                                                             rdfs:label "Nationaal Archief"@nl ;
                                                             <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
 
@@ -2043,8 +2113,7 @@ pnv:Person rdf:type owl:Class .
                                                      schema:birthPlace <http://archief.nl/NL-HaNA/id/land/Nederland> ,
                                                                        <http://archief.nl/NL-HaNA/id/stad/Groningen> ;
                                                      schema:birthDate "1977-02-25T00:00:00Z"^^xsd:dateTime ;
-                                                     rdfs:label "Elvin Dechesne"@nl ;
-                                                     pnv:hasName <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> .
+                                                     rdfs:label "Elvin Dechesne"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/plaats/Amsterdam
@@ -2137,12 +2206,28 @@ De Rooms-Katholieke Kerk beroept zich op het Oude (inclusief de Deuterocanonieke
                                               skos:prefLabel "Groningen (stad)"@nl .
 
 
+###  http://archief.nl/NL-HaNA/id/straat/Prins_Willem-Alexanderhof
+<http://archief.nl/NL-HaNA/id/straat/Prins_Willem-Alexanderhof> rdf:type owl:NamedIndividual ,
+                                                                         hg:PlaceInTime ;
+                                                                dct:type hg:Street .
+
+
 ###  http://archief.nl/def/AgencyType
 naa:AgencyType rdf:type owl:NamedIndividual ,
                         skos:Concept ;
                skos:inScheme naa:TypesOfOrganisations ;
                skos:label "Governmental agency"@en ;
                skos:prefLabel "Agentschap overheid"@nl .
+
+
+###  http://archief.nl/def/Ambtenaar
+naa:Ambtenaar rdf:type owl:NamedIndividual ,
+                       naa:Profession ,
+                       skos:Concept ;
+              skos:inScheme naa:TypesOfProfessions ;
+              rdfs:label "Civil servant (profession)"@en ,
+                         "Het beroep van ambtenaar"@nl ;
+              skos:prefLabel "Ambtenaar"@nl .
 
 
 ###  http://archief.nl/def/CorporateType
@@ -2201,6 +2286,16 @@ naa:Island rdf:type owl:NamedIndividual ,
            skos:prefLabel "Eiland"@nl .
 
 
+###  http://archief.nl/def/Plantagehouder
+naa:Plantagehouder rdf:type owl:NamedIndividual ,
+                            naa:Profession ,
+                            skos:Concept ;
+                   skos:inScheme naa:TypesOfProfessions ;
+                   rdfs:label "Het beroep van plantagehouder"@nl ,
+                              "The profession of plantation keeper"@en ;
+                   skos:prefLabel "Plantagehouder"@nl .
+
+
 ###  http://archief.nl/def/Plantation
 naa:Plantation rdf:type owl:NamedIndividual ,
                         hg:PlaceInTimeType ;
@@ -2211,14 +2306,6 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                           "Plantation"@en ;
                rdfs:seeAlso <https://nl.wikipedia.org/wiki/Plantage> ;
                skos:prefLabel "Plantage"@nl .
-
-
-###  http://archief.nl/def/ProfessionPlantationKeeper
-naa:ProfessionPlantationKeeper rdf:type owl:NamedIndividual ,
-                                        naa:Profession ;
-                               rdfs:label "Het beroep van plantagehouder"@nl ,
-                                          "The profession of plantation keeper"@en ;
-                               skos:prefLabel "Het beroep van plantagehouder"@nl .
 
 
 ###  http://archief.nl/def/RightsTypePublicDomain
@@ -2398,6 +2485,18 @@ naa:TypeDocketRecord rdf:type owl:NamedIndividual ,
                      skos:prefLabel "Borderelnummer"@nl .
 
 
+###  http://archief.nl/def/TypeEmigrationRecord
+naa:TypeEmigrationRecord rdf:type owl:NamedIndividual ,
+                                  naa:AggregationType ,
+                                  skos:Concept ;
+                         skos:inScheme naa:TypesOfAggregations ;
+                         rdfs:label "Emigration record"@en ,
+                                    "Record van emigratie"@nl ;
+                         rdfs:seeAlso <https://en.wikipedia.org/wiki/Emigration> ;
+                         skos:definition "Emigration is the act of leaving a resident country or place of residence  with the intent to settle elsewhere. Conversely, immigration describes the movement of persons into one country from another. Both are acts of migration across national or other geographical boundaries."@en ;
+                         skos:prefLabel "Record van emigratie"@nl .
+
+
 ###  http://archief.nl/def/TypeFinancialTransactionRecord
 naa:TypeFinancialTransactionRecord rdf:type owl:NamedIndividual ,
                                             naa:AggregationType ,
@@ -2488,6 +2587,16 @@ naa:TypePersonCollection rdf:type owl:NamedIndividual ,
                                   skos:Concept ;
                          skos:inScheme naa:TypesOfAggregations ;
                          rdfs:label "Een type verzameling van personen"@nl .
+
+
+###  http://archief.nl/def/TypePersonRecord
+naa:TypePersonRecord rdf:type owl:NamedIndividual ,
+                              naa:AggregationType ,
+                              skos:Concept ;
+                     skos:inScheme naa:TypesOfAggregations ;
+                     rdfs:label "Personal record"@en ,
+                                "Personeelsgegevens (record)"@nl ;
+                     skos:prefLabel "Personeelsgegevens"@nl .
 
 
 ###  http://archief.nl/def/TypePhotoCollection
@@ -2706,6 +2815,12 @@ hg:Departement rdf:type owl:NamedIndividual ,
                         hg:PlaceInTimeType .
 
 
+###  http://rdf.histograph.io/Municipality
+hg:Municipality rdf:type owl:NamedIndividual ,
+                         hg:PlaceInTimeType ;
+                rdfs:label "Gemeente"@nl .
+
+
 ###  http://rdf.histograph.io/Place
 hg:Place rdf:type owl:NamedIndividual ,
                   hg:PlaceInTimeType .
@@ -2825,6 +2940,7 @@ odrl:use rdf:type owl:NamedIndividual ,
 <https://www.nationaalarchief.nl> rdf:type owl:NamedIndividual ,
                                            edm:WebResource ;
                                   rdfs:comment "In het Nationaal Archief vind je antwoorden op vragen over jouw leven, onze geschiedenis en onze samenleving. We helpen je aan nieuwe inzichten door je altijd en overal toegang te geven tot ons nationaal geheugen."@nl ;
+                                  rdfs:label "Website van het Nationaal Archief"@nl ;
                                   rdfs:seeAlso "https://www.nationaalarchief.nl/over-het-na"^^xsd:anyURI .
 
 
@@ -2851,14 +2967,20 @@ De IIIF functie is bestemd voor het levereren van zichtexemplaren volgens het In
                                                <http://www.w3.org/ns/adms#relatedWebPage> <http://iiif.io/> .
 
 
+###  https://www.nationaalarchief.nl/over-het-na/contact
+<https://www.nationaalarchief.nl/over-het-na/contact> rdf:type owl:NamedIndividual ,
+                                                               edm:WebResource ;
+                                                      rdfs:label "Contactformulier van het Nationaal Archief"@nl .
+
+
 #################################################################
 #    Annotations
 #################################################################
 
 odrl:Asset skos:note "The Asset entity can be any form of identifiable resource, such as data/information, content/media, applications, or services. Furthermore, it can be used to represent other Asset entities that are needed to undertake the Policy expression, such as with the Duty entity. To describe more details about the Asset, it is recommended to use Dublin Core [[dcterms]] elements or other content metadata."@en ;
            skos:definition "A resource or a collection of resources that are the subject of a Rule."@en ;
-           rdfs:isDefinedBy odrl: ;
-           rdfs:label "Asset"@en .
+           rdfs:label "Asset"@en ;
+           rdfs:isDefinedBy odrl: .
 
 
 ###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
