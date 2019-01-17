@@ -43,7 +43,7 @@
 @base <http://archief.nl/def/> .
 
 <http://archief.nl/def/> rdf:type owl:Ontology ;
-                          owl:imports <https://w3id.org/pnv#> ;
+                          owl:imports pnv: ;
                           rdfs:comment """Essentieel voor Linked Open Data is het definiëren van de concepten die je gebruikt.
 Het Nationaal Archief maakt zoveel mogelijk gebruik van concepten uit bestaande vocabulaires, maar zal ook een aantal eigen specifieke (archief)termen moeten definiëren, bijvoorbeeld “Nadere Toegang”
 Alle termen die we in Linked Open Data zelf munten, worden beschikbaar gesteld als URI’s met de prefix 'naa'."""@nl ;
@@ -208,6 +208,15 @@ naa:coverageEstimated rdf:type owl:ObjectProperty ;
                       skos:prefLabel "datering geschat"@nl .
 
 
+###  http://archief.nl/def/hasCargo
+naa:hasCargo rdf:type owl:ObjectProperty ;
+             rdfs:domain naa:Voyage ;
+             rdfs:range skos:Concept ;
+             rdfs:label "has cargo"@en ,
+                        "heeft lading"@nl ;
+             skos:prefLabel "lading"@nl .
+
+
 ###  http://archief.nl/def/hasConfig
 naa:hasConfig rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf ore:aggregates .
@@ -215,6 +224,7 @@ naa:hasConfig rdf:type owl:ObjectProperty ;
 
 ###  http://archief.nl/def/hasDestination
 naa:hasDestination rdf:type owl:ObjectProperty ;
+                   owl:equivalentProperty dbo:destination ;
                    rdfs:domain naa:Voyage ;
                    rdfs:range hg:PlaceInTime ;
                    rdfs:label "has destination"@en ,
@@ -371,6 +381,26 @@ naa:passengerOnVoyage rdf:type owl:ObjectProperty ;
                       skos:prefLabel "passagier op/van (reis)"@nl .
 
 
+###  http://archief.nl/def/placeOfArrival
+naa:placeOfArrival rdf:type owl:ObjectProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain naa:Voyage ;
+                   rdfs:range hg:PlaceInTime ;
+                   rdfs:label "plaats van aankomst"@nl ,
+                              "place of arrival"@nl ;
+                   skos:prefLabel "plaats van aankomst"@nl .
+
+
+###  http://archief.nl/def/placeOfDeparture
+naa:placeOfDeparture rdf:type owl:ObjectProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain naa:Voyage ;
+                     rdfs:range hg:PlaceInTime ;
+                     rdfs:label "place of departure"@en ,
+                                "vertrekplaats"@nl ;
+                     skos:prefLabel "vertrekplaats"@nl .
+
+
 ###  http://archief.nl/def/returnVoyage
 naa:returnVoyage rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf naa:passengerOnVoyage ;
@@ -435,6 +465,10 @@ naa:wasOwnedBy rdf:type owl:ObjectProperty ;
                rdfs:label "is het bezit geweest van"@nl ,
                           "was owned by"@en ;
                skos:prefLabel "is het bezit geweest van"@nl .
+
+
+###  http://dbpedia.org/ontology/destination
+dbo:destination rdf:type owl:ObjectProperty .
 
 
 ###  http://dbpedia.org/ontology/residence
@@ -1491,7 +1525,9 @@ naa:CorporateEntity rdf:type owl:Class ;
 
 
 ###  http://archief.nl/def/GenderType
-naa:GenderType rdf:type owl:Class .
+naa:GenderType rdf:type owl:Class ;
+               rdfs:label "Type sexe"@nl ;
+               rdfs:seeAlso naa:sex .
 
 
 ###  http://archief.nl/def/MultipleOffers
@@ -1840,6 +1876,10 @@ skos:Concept rdf:type owl:Class .
 skos:ConceptScheme rdf:type owl:Class .
 
 
+###  http://www.w3.org/2006/vcard/ns#Address
+vcard:Address rdf:type owl:Class .
+
+
 ###  http://www.w3.org/2006/vcard/ns#Agent
 vcard:Agent rdf:type owl:Class .
 
@@ -1982,27 +2022,27 @@ pnv:Person rdf:type owl:Class .
 #    Individuals
 #################################################################
 
+###  http://archief.nl/NL-HaNA/doc/Address:NationaalArchief
+<http://archief.nl/NL-HaNA/doc/Address:NationaalArchief> rdf:type owl:NamedIndividual ,
+                                                                  hg:PlaceInTime ,
+                                                                  vcard:Address ;
+                                                         dct:type hg:Address ;
+                                                         hg:contains <http://archief.nl/NL-HaNA/id/gemeente/Den_Haag> ,
+                                                                     <http://archief.nl/NL-HaNA/id/land/Nederland> ,
+                                                                     <http://archief.nl/NL-HaNA/id/straat/Prins_Willem-Alexanderhof> ;
+                                                         vcard:hasURL <https://www.nationaalarchief.nl> ;
+                                                         vcard:country-name "Nederland"@nl ;
+                                                         vcard:locality "Den Haag"@nl ;
+                                                         vcard:postal-code "2595 BE"^^xsd:string ;
+                                                         vcard:street-address "Prins Willem-Alexanderhof 20"^^xsd:string ;
+                                                         rdfs:label "Contact information for the National Archives of The Netherlands"@en ,
+                                                                    "Contactgegevens van het Nationaal Archief"@nl ;
+                                                         vcard:hasEmail naa:nationaalarchief.nl ;
+                                                         org:relatedWebPage <https://wiki.duraspace.org/display/VTDA/VCard+usage+diagram> .
+
+
 ###  http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne
 <http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual .
-
-
-###  http://archief.nl/NL-HaNA/doc/VCard:NationaalArchief
-<http://archief.nl/NL-HaNA/doc/VCard:NationaalArchief> rdf:type owl:NamedIndividual ,
-                                                                hg:PlaceInTime ,
-                                                                vcard:VCard ;
-                                                       dct:type hg:Address ;
-                                                       hg:contains <http://archief.nl/NL-HaNA/id/gemeente/Den_Haag> ,
-                                                                   <http://archief.nl/NL-HaNA/id/land/Nederland> ,
-                                                                   <http://archief.nl/NL-HaNA/id/straat/Prins_Willem-Alexanderhof> ;
-                                                       vcard:hasURL <https://www.nationaalarchief.nl> ;
-                                                       vcard:country-name "Nederland"@nl ;
-                                                       vcard:locality "Den Haag"@nl ;
-                                                       vcard:postal-code "2595 BE"^^xsd:string ;
-                                                       vcard:street-address "Prins Willem-Alexanderhof 20"^^xsd:string ;
-                                                       rdfs:label "Contact information for the National Archives of The Netherlands"@en ,
-                                                                  "Contactgegevens van het Nationaal Archief"@nl ;
-                                                       vcard:hasEmail <info@nationaalarchief.nl> ;
-                                                       org:relatedWebPage <https://wiki.duraspace.org/display/VTDA/VCard+usage+diagram> .
 
 
 ###  http://archief.nl/NL-HaNA/id/beroep/Koopman
@@ -2018,6 +2058,12 @@ pnv:Person rdf:type owl:Class .
                                                rdfs:label "Het beroep van koopman"@nl ,
                                                           "The profession of merchant"@en ;
                                                skos:prefLabel "Koopman"@nl .
+
+
+###  http://archief.nl/NL-HaNA/id/beroep/Schipper
+<http://archief.nl/NL-HaNA/id/beroep/Schipper> rdf:type owl:NamedIndividual ,
+                                                        naa:Profession ;
+                                               owl:sameAs naa:Schipper .
 
 
 ###  http://archief.nl/NL-HaNA/id/beroep/Servant
@@ -2101,7 +2147,7 @@ pnv:Person rdf:type owl:Class .
                                                                      premis:Organization ,
                                                                      vcard:Organization ,
                                                                      org:FormalOrganization ;
-                                                            vcard:hasAddress <http://archief.nl/NL-HaNA/doc/VCard:NationaalArchief> ;
+                                                            vcard:hasAddress <http://archief.nl/NL-HaNA/doc/Address:NationaalArchief> ;
                                                             vcard:hasURL <https://www.nationaalarchief.nl> ;
                                                             rdfs:label "Nationaal Archief"@nl ;
                                                             <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
@@ -2286,6 +2332,16 @@ naa:Island rdf:type owl:NamedIndividual ,
            skos:prefLabel "Eiland"@nl .
 
 
+###  http://archief.nl/def/Notary
+naa:Notary rdf:type owl:NamedIndividual ,
+                    naa:Profession ,
+                    skos:Concept ;
+           skos:inScheme naa:TypesOfProfessions ;
+           rdfs:label "Notaris (beroep)"@nl ,
+                      "Notary (profession)"@en ;
+           skos:prefLabel "Notaris"@nl .
+
+
 ###  http://archief.nl/def/Plantagehouder
 naa:Plantagehouder rdf:type owl:NamedIndividual ,
                             naa:Profession ,
@@ -2329,6 +2385,16 @@ naa:RightsType_CCBY rdf:type owl:NamedIndividual ,
                     rdfs:label "CC BY"^^xsd:string .
 
 
+###  http://archief.nl/def/RoleBuyingParty
+naa:RoleBuyingParty rdf:type owl:NamedIndividual ,
+                             naa:Role ;
+                    skos:inScheme naa:TypesOfRoles ;
+                    rdfs:label "Buying party (role)"@en ,
+                               "Kopende partij (rol)"@nl ;
+                    skos:prefLabel "Kopende partij"@nl ;
+                    skos:scopeNote "Gebruikt bij de Verkaufsbucher om de kopers van een rol te voorzien."@nl .
+
+
 ###  http://archief.nl/def/RoleMemberResistanceMovement
 naa:RoleMemberResistanceMovement rdf:type owl:NamedIndividual ,
                                           naa:Role ;
@@ -2368,6 +2434,16 @@ naa:RoleResistanceFighter rdf:type owl:NamedIndividual ,
                           skos:prefLabel "Verzetsstrijder (role)"@nl .
 
 
+###  http://archief.nl/def/RoleSellingParty
+naa:RoleSellingParty rdf:type owl:NamedIndividual ,
+                              naa:Role ;
+                     skos:inScheme naa:TypesOfRoles ;
+                     rdfs:label "Selling party"@en ,
+                                "Verkopende partij (rol)"@nl ;
+                     skos:prefLabel "Verkopende partij"@nl ;
+                     skos:scopeNote "Gebruikt bij de Verkaufsbucher om de pand eigenaars van een rol te voorzien."@nl .
+
+
 ###  http://archief.nl/def/RoleSlave
 naa:RoleSlave rdf:type owl:NamedIndividual ,
                        naa:Role ;
@@ -2386,6 +2462,32 @@ naa:RoleSlaveOwner rdf:type owl:NamedIndividual ,
                    rdfs:label "Rol van slaveneigenaar"@nl ,
                               "Role of slave owner"@en ;
                    skos:prefLabel "Rol van slaveneigenaar"@nl .
+
+
+###  http://archief.nl/def/Schipper
+naa:Schipper rdf:type owl:NamedIndividual ,
+                      naa:Profession ;
+             skos:inScheme naa:TypesOfProfessions ;
+             rdfs:label "Het beroep van schipper"@nl ;
+             skos:prefLabel "Schipper"@nl ,
+                            "Skipper"@en .
+
+
+###  http://archief.nl/def/Sea
+naa:Sea rdf:type owl:NamedIndividual ,
+                 hg:PlaceInTimeType ;
+        rdfs:label "Sea"@en ,
+                   "Zee (type)"@nl ;
+        skos:prefLabel "Zee"@nl .
+
+
+###  http://archief.nl/def/Strait
+naa:Strait rdf:type owl:NamedIndividual ,
+                    hg:PlaceInTimeType ;
+           rdfs:label "Strait"@en ,
+                      "Zeestraat (type)"@nl ;
+           rdfs:seeAlso <https://nl.wikipedia.org/wiki/Zeestraat> ;
+           skos:prefLabel "Zeestraat"@nl .
 
 
 ###  http://archief.nl/def/TypeAdditionalFindingAid
@@ -2692,16 +2794,41 @@ naa:TypeSlaveryRecord rdf:type owl:NamedIndividual ,
                       skos:prefLabel "Record over slavernij"@nl .
 
 
+###  http://archief.nl/def/TypeVoyage
+naa:TypeVoyage rdf:type owl:NamedIndividual ,
+                        naa:ArchivalEntityType ,
+                        skos:Concept ;
+               skos:inScheme naa:TypesOfArchivalEntities ;
+               rdfs:label "Reis (type archiefentiteit)"@nl .
+
+
 ###  http://archief.nl/def/TypesOfAggregations
 naa:TypesOfAggregations rdf:type owl:NamedIndividual ,
                                  skos:ConceptScheme ;
-                        rdfs:label "Classificatie schema van aggregatie typen"@nl .
+                        rdfs:label "Classificatie schema van aggregatie typen"@nl ;
+                        rdfs:seeAlso naa:RecordAggregation ,
+                                     naa:isAggregationType ,
+                                     ore:Aggregation .
+
+
+###  http://archief.nl/def/TypesOfArchivalEntities
+naa:TypesOfArchivalEntities rdf:type owl:NamedIndividual ,
+                                     skos:ConceptScheme ;
+                            rdfs:label "Classificaties van type entiteiten uit de archieven (naa:ArchivalEntity)"@nl ;
+                            rdfs:seeAlso naa:ArchivalEntity ,
+                                         naa:ArchivalEntityType ,
+                                         naa:isEntityType ;
+                            skos:scopeNote """Gebruik naa:isEntitype <Type> om een naa:ArchivalEntity nader te duiden indien voor dit begrip geen gechikte klasse beschikbaar is. Er moet dan een instantie van naa:ArchivalEntityType gemunt worden die onderdeel wordt van de ontologie.
+
+Bijvoorbeeld: entity1 naa:isEntityType naa:TypeVoyage
+betekent hetzelfde als reis1 rdf:type naa:Voyage"""@nl .
 
 
 ###  http://archief.nl/def/TypesOfCollectionClassifications
 naa:TypesOfCollectionClassifications rdf:type owl:NamedIndividual ,
                                               skos:ConceptScheme ;
-                                     rdfs:label "Classificaties van onderwerpen die voorkomen in collecties"@nl .
+                                     rdfs:label "Classificaties van onderwerpen die voorkomen in collecties"@nl ;
+                                     rdfs:seeAlso skos:Concept .
 
 
 ###  http://archief.nl/def/TypesOfGTAAConcepts
@@ -2711,11 +2838,21 @@ naa:TypesOfGTAAConcepts rdf:type owl:NamedIndividual ,
                         rdfs:seeAlso <http://data.beeldengeluid.nl/> .
 
 
+###  http://archief.nl/def/TypesOfGoods
+naa:TypesOfGoods rdf:type owl:NamedIndividual ,
+                          skos:ConceptScheme ;
+                 rdfs:label "Classificaties van goederen"@nl ;
+                 rdfs:seeAlso naa:hasCargo ;
+                 skos:prefLabel "Classificaties van goederen"@nl ,
+                                "Classifications of goods"@en .
+
+
 ###  http://archief.nl/def/TypesOfHumanProperties
 naa:TypesOfHumanProperties rdf:type owl:NamedIndividual ,
                                     skos:ConceptScheme ;
                            rdfs:label "Eigenschappen van mensen"@nl ,
                                       "Human properties"@en ;
+                           rdfs:seeAlso naa:GenderType ;
                            skos:prefLabel "Eigenschappen van mensen"@nl .
 
 
@@ -2723,6 +2860,7 @@ naa:TypesOfHumanProperties rdf:type owl:NamedIndividual ,
 naa:TypesOfMaterials rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:comment "Classificatie schema t.b.v. ArchivalEntities (Foto's, boeken, etc)"@en ;
+                     rdfs:seeAlso naa:isMaterialType ;
                      skos:label "Materiaal types"@nl .
 
 
@@ -2735,7 +2873,10 @@ naa:TypesOfOrganisations rdf:type owl:NamedIndividual ,
 ###  http://archief.nl/def/TypesOfProfessions
 naa:TypesOfProfessions rdf:type owl:NamedIndividual ,
                                 skos:ConceptScheme ;
-                       rdfs:label "Classificaties van beroepen"@nl .
+                       rdfs:label "Classificaties van beroepen"@nl ,
+                                  "Classifications of professions"@en ;
+                       rdfs:seeAlso naa:Profession ,
+                                    naa:hasProfession .
 
 
 ###  http://archief.nl/def/TypesOfReligions
@@ -2743,6 +2884,7 @@ naa:TypesOfReligions rdf:type owl:NamedIndividual ,
                               skos:ConceptScheme ;
                      rdfs:label "Classificaties van geloofsovertuigingen"@nl ,
                                 "Classifications of religions"@en ;
+                     rdfs:seeAlso naa:hasReligion ;
                      skos:prefLabel "Classificaties van geloofsovertuigingen"@nl .
 
 
@@ -2751,6 +2893,8 @@ naa:TypesOfRoles rdf:type owl:NamedIndividual ,
                           skos:ConceptScheme ;
                  rdfs:label "Classificaties van rollen"@nl ,
                             "Classifications of rolls"@en ;
+                 rdfs:seeAlso naa:Role ,
+                              naa:hasRole ;
                  skos:prefLabel "Classificaties van rollen"@nl .
 
 
@@ -2983,4 +3127,4 @@ odrl:Asset skos:note "The Asset entity can be any form of identifiable resource,
            rdfs:isDefinedBy odrl: .
 
 
-###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi
