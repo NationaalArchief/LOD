@@ -431,6 +431,14 @@ naa:sex rdf:type owl:ObjectProperty ;
         skos:prefLabel "geslacht"@nl .
 
 
+###  http://archief.nl/def/transferTo
+naa:transferTo rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf edm:hasMet ;
+               rdfs:label "overschrijving aan"@nl ,
+                          "transfer to"@en ;
+               skos:prefLabel "overschrijving aan"@nl .
+
+
 ###  http://archief.nl/def/vesselOfVoyage
 naa:vesselOfVoyage rdf:type owl:ObjectProperty ;
                    owl:inverseOf naa:voyageHasVessel ;
@@ -477,6 +485,16 @@ dbo:residence rdf:type owl:ObjectProperty .
 
 ###  http://dbpedia.org/ontology/sex
 dbo:sex rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf edm:isRelatedTo .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf edm:isRelatedTo .
 
 
 ###  http://purl.org/dc/terms/accessRights
@@ -670,6 +688,43 @@ cidoc-crm:P74i_is_current_or_former_residence_of rdf:type owl:ObjectProperty ;
 ebucore:hasRole rdf:type owl:ObjectProperty .
 
 
+###  http://www.europeana.eu/schemas/edm/aggregatedCHO
+edm:aggregatedCHO rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dc:subject .
+
+
+###  http://www.europeana.eu/schemas/edm/begin
+edm:begin rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf edm:isRelatedTo ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( edm:Agent
+                                      edm:TimeSpan
+                                    )
+                      ] .
+
+
+###  http://www.europeana.eu/schemas/edm/end
+edm:end rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf edm:isRelatedTo ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( edm:Agent
+                                    edm:TimeSpan
+                                  )
+                    ] .
+
+
+###  http://www.europeana.eu/schemas/edm/happenedAt
+edm:happenedAt rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf dc:relation ;
+               rdfs:domain edm:Event ;
+               rdfs:range hg:PlaceInTime .
+
+
+###  http://www.europeana.eu/schemas/edm/hasMet
+edm:hasMet rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf dc:relation .
+
+
 ###  http://www.europeana.eu/schemas/edm/hasView
 edm:hasView rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf ore:aggregates ;
@@ -680,6 +735,20 @@ edm:hasView rdf:type owl:ObjectProperty ;
 providing a view of that CHO. Examples of view are: a thumbnail, a textual
 abstract and a table of contents. The ORE aggregation may be a Europeana
 Aggregation, in which case the view is an object owned by Europeana (i.e., an instance of edm:EuropeanaObject) or an aggregation contributed by a content provider. In order to capture both these cases, the domain of edm:hasView is ore:Aggregation and its range is edm:WebResource"""@en .
+
+
+###  http://www.europeana.eu/schemas/edm/isNextInSequence
+edm:isNextInSequence rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dc:relation .
+
+
+###  http://www.europeana.eu/schemas/edm/isRelatedTo
+edm:isRelatedTo rdf:type owl:ObjectProperty .
+
+
+###  http://www.europeana.eu/schemas/edm/isRepresentationOf
+edm:isRepresentationOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf dc:subject .
 
 
 ###  http://www.europeana.eu/schemas/edm/isShownAt
@@ -694,6 +763,26 @@ edm:isShownAt rdf:type owl:ObjectProperty ;
 edm:isShownBy rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf edm:hasView ;
               rdfs:range edm:WebResource .
+
+
+###  http://www.europeana.eu/schemas/edm/occurredAt
+edm:occurredAt rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf dc:relation ;
+               rdfs:domain edm:Event ;
+               rdfs:range edm:TimeSpan .
+
+
+###  http://www.europeana.eu/schemas/edm/realizes
+edm:realizes rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf edm:isRelatedTo ;
+             rdfs:domain edm:NonInformationResource ;
+             rdfs:range edm:InformationResource .
+
+
+###  http://www.europeana.eu/schemas/edm/wasPresentAt
+edm:wasPresentAt rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf dc:relation ;
+                 rdfs:range edm:Event .
 
 
 ###  http://www.openarchives.org/ore/terms/aggregates
@@ -916,6 +1005,13 @@ naa:consecutiveNumber rdf:type owl:DatatypeProperty ;
                       skos:prefLabel "volgnummer"@nl .
 
 
+###  http://archief.nl/def/costOfSale
+naa:costOfSale rdf:type owl:DatatypeProperty ;
+               rdfs:label "cost of sale"@en ,
+                          "verkoopkosten"@nl ;
+               skos:prefLabel "verkoopkosten"@nl .
+
+
 ###  http://archief.nl/def/country
 naa:country rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf dc:description ;
@@ -928,6 +1024,57 @@ naa:country rdf:type owl:DatatypeProperty ;
             skos:prefLabel "land (beschrijving)"@nl .
 
 
+###  http://archief.nl/def/dateOfAdministrativeInput
+naa:dateOfAdministrativeInput rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf dct:date ;
+                              owl:propertyDisjointWith naa:dateOfAdministrativeRemoval ;
+                              rdfs:label "date of administrative input"@en ,
+                                         "datum administratieve invoer"@nl ;
+                              skos:prefLabel "datum administratieve invoer"@nl .
+
+
+###  http://archief.nl/def/dateOfAdministrativeRemoval
+naa:dateOfAdministrativeRemoval rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf dct:date ;
+                                rdfs:label "date of administrative removal"@en ,
+                                           "datum van administratieve verwijdering"@nl ;
+                                skos:prefLabel "datum van administratieve verwijdering"@nl .
+
+
+###  http://archief.nl/def/dateOfFinalSale
+naa:dateOfFinalSale rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf dct:date ;
+                    rdfs:range rdfs:Literal ;
+                    rdfs:label "date of final sale"@en ,
+                               "definitieve koopdatum"@nl ;
+                    skos:prefLabel "definitieve koopdatum"@nl .
+
+
+###  http://archief.nl/def/dateOfNotification
+naa:dateOfNotification rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf dct:date ;
+                       rdfs:label "date of notification"@en ,
+                                  "datum meegedeeld"@nl ;
+                       skos:prefLabel "datum meegedeeld"@nl .
+
+
+###  http://archief.nl/def/dateOfProvisionalSale
+naa:dateOfProvisionalSale rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf dct:date ;
+                          rdfs:range rdfs:Literal ;
+                          rdfs:label "date of provisional sale"@en ,
+                                     "voorlopige koopdatum"@nl ;
+                          skos:prefLabel "voorlopige koopdatum"@nl .
+
+
+###  http://archief.nl/def/dateOfTransfer
+naa:dateOfTransfer rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf dct:date ;
+                   rdfs:label "datum van overschrijving"@nl ;
+                   skos:prefLabel "date of transfer"@nl ,
+                                  "datum van overschrijving"@nl .
+
+
 ###  http://archief.nl/def/dating
 naa:dating rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf dc:date ;
@@ -936,10 +1083,17 @@ naa:dating rdf:type owl:DatatypeProperty ;
            skos:prefLabel "datering"@nl .
 
 
+###  http://archief.nl/def/depositAmount
+naa:depositAmount rdf:type owl:DatatypeProperty ;
+                  rdfs:label "aanbetaling"@nl ,
+                             "deposit"@en ;
+                  skos:prefLabel "aanbetaling"@nl .
+
+
 ###  http://archief.nl/def/depositAmountValue
 naa:depositAmountValue rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf naa:amountValue ;
-                       rdfs:range xsd:double ;
+                       rdfs:range xsd:float ;
                        rdfs:label "bedrag borg"@nl ,
                                   "deposit amount"@en ;
                        skos:prefLabel "bedrag borg"@nl .
@@ -1132,6 +1286,13 @@ naa:motivationDescription rdf:type owl:DatatypeProperty ;
                           skos:prefLabel "beschrijving van reden of motivatie"@nl .
 
 
+###  http://archief.nl/def/netAmount
+naa:netAmount rdf:type owl:DatatypeProperty ;
+              rdfs:label "net amount"@en ,
+                         "netto bedrag"@nl ;
+              skos:prefLabel "netto bedrag"@en .
+
+
 ###  http://archief.nl/def/orgID
 naa:orgID rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf dc:identifier ;
@@ -1169,7 +1330,7 @@ naa:place rdf:type owl:DatatypeProperty ;
 ###  http://archief.nl/def/pledgeAmountValue
 naa:pledgeAmountValue rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf naa:amountValue ;
-                      rdfs:range xsd:double ;
+                      rdfs:range xsd:float ;
                       rdfs:label "bedrag cautie"@nl ,
                                  "pledge amount"@en ;
                       skos:prefLabel "bedrag cautie"@nl .
@@ -1213,6 +1374,20 @@ naa:province rdf:type owl:DatatypeProperty ;
              rdfs:label "province (description)"@en ,
                         "provincie (beschrijving)"@nl ;
              skos:prefLabel "provincie (beschrijving)"@nl .
+
+
+###  http://archief.nl/def/salesTax
+naa:salesTax rdf:type owl:DatatypeProperty ;
+             rdfs:label "omzetbelasting"@nl ,
+                        "sales tax"@nl ;
+             skos:prefLabel "omzetbelasting"@nl .
+
+
+###  http://archief.nl/def/sellingPrice
+naa:sellingPrice rdf:type owl:DatatypeProperty ;
+                 rdfs:label "selling price"@en ,
+                            "verkoopprijs"@nl ;
+                 skos:prefLabel "verkoopprijs"@nl .
 
 
 ###  http://archief.nl/def/street
@@ -1814,7 +1989,13 @@ ebucore:Role rdf:type owl:Class ;
 
 
 ###  http://www.europeana.eu/schemas/edm/Agent
-edm:Agent rdf:type owl:Class .
+edm:Agent rdf:type owl:Class ;
+          rdfs:subClassOf edm:NonInformationResource .
+
+
+###  http://www.europeana.eu/schemas/edm/Event
+edm:Event rdf:type owl:Class ;
+          rdfs:subClassOf edm:NonInformationResource .
 
 
 ###  http://www.europeana.eu/schemas/edm/InformationResource
@@ -1826,7 +2007,8 @@ edm:NonInformationResource rdf:type owl:Class .
 
 
 ###  http://www.europeana.eu/schemas/edm/TimeSpan
-edm:TimeSpan rdf:type owl:Class .
+edm:TimeSpan rdf:type owl:Class ;
+             rdfs:subClassOf edm:NonInformationResource .
 
 
 ###  http://www.europeana.eu/schemas/edm/WebResource
@@ -2364,6 +2546,16 @@ Plantages zijn op grote schaal aangelegd in de 16de en 17de eeuw door de Portuge
                skos:prefLabel "Plantage"@nl .
 
 
+###  http://archief.nl/def/PropertyManager
+naa:PropertyManager rdf:type owl:NamedIndividual ,
+                             naa:Profession ,
+                             skos:Concept ;
+                    skos:inScheme naa:TypesOfProfessions ;
+                    rdfs:label "Property manager"@en ,
+                               "Vastgoedbeheerder (beroep)"@nl ;
+                    skos:prefLabel "Vastgoedbeheerder"@nl .
+
+
 ###  http://archief.nl/def/RightsTypePublicDomain
 naa:RightsTypePublicDomain rdf:type owl:NamedIndividual ,
                                     premis:License ;
@@ -2393,6 +2585,15 @@ naa:RoleBuyingParty rdf:type owl:NamedIndividual ,
                                "Kopende partij (rol)"@nl ;
                     skos:prefLabel "Kopende partij"@nl ;
                     skos:scopeNote "Gebruikt bij de Verkaufsbucher om de kopers van een rol te voorzien."@nl .
+
+
+###  http://archief.nl/def/RoleCreditor
+naa:RoleCreditor rdf:type owl:NamedIndividual ,
+                          naa:Role ;
+                 skos:inScheme naa:TypesOfRoles ;
+                 rdfs:label "rol van crediteur"@nl ,
+                            "role of creditor"@en ;
+                 skos:prefLabel "crediteur"@nl .
 
 
 ###  http://archief.nl/def/RoleMemberResistanceMovement
