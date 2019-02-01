@@ -200,6 +200,16 @@ naa:beneficiary rdf:type owl:ObjectProperty ;
                 skos:prefLabel "begunstigde"@nl .
 
 
+###  http://archief.nl/def/countryOfOrigin
+naa:countryOfOrigin rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf dc:relation ;
+                    rdfs:domain pnv:Person ;
+                    rdfs:range hg:PlaceInTime ;
+                    rdfs:label "country of origin"@en ,
+                               "land van herkomst"@nl ;
+                    skos:prefLabel "land van herkomst"@nl .
+
+
 ###  http://archief.nl/def/coverageEstimated
 naa:coverageEstimated rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf dct:coverage ;
