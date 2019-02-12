@@ -100,6 +100,10 @@ premis:hasNote rdf:type owl:AnnotationProperty .
 premis:hasTerms rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#
+skos: rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#altLabel
 skos:altLabel rdf:type owl:AnnotationProperty .
 
@@ -198,6 +202,16 @@ naa:beneficiary rdf:type owl:ObjectProperty ;
                 rdfs:label "begunstigde"@nl ,
                            "beneficiary"@en ;
                 skos:prefLabel "begunstigde"@nl .
+
+
+###  http://archief.nl/def/convictedOf
+naa:convictedOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf dc:relation ;
+                rdfs:domain pnv:Person ;
+                rdfs:range naa:Felony ;
+                rdfs:label "convited of"@en ,
+                           "veroordeeld voor"@nl ;
+                skos:prefLabel "veroordeeld voor"@nl .
 
 
 ###  http://archief.nl/def/countryOfOrigin
@@ -429,6 +443,16 @@ naa:returnVoyageFromCape rdf:type owl:ObjectProperty ;
                          rdfs:label "return voyage from Cape"@en ,
                                     "terugreis vanaf de Kaap"@nl ;
                          skos:prefLabel "terugreis vanaf de Kaap"@nl .
+
+
+###  http://archief.nl/def/sentenceReceived
+naa:sentenceReceived rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dc:relation ;
+                     rdfs:domain pnv:Person ;
+                     rdfs:range naa:Sentence ;
+                     rdfs:label "sentence received"@en ,
+                                "vonnis ontvangen"@nl ;
+                     skos:prefLabel "vonnis ontvangen"@nl .
 
 
 ###  http://archief.nl/def/sex
@@ -1709,6 +1733,14 @@ naa:CorporateEntity rdf:type owl:Class ;
                     skos:prefLabel "Corporation in an Archives domain."@en .
 
 
+###  http://archief.nl/def/Felony
+naa:Felony rdf:type owl:Class ;
+           rdfs:subClassOf skos:Concept ;
+           rdfs:label "Felony"@en ,
+                      "Misdrijf"@nl ;
+           skos:prefLabel "Misdrijf"@nl .
+
+
 ###  http://archief.nl/def/GenderType
 naa:GenderType rdf:type owl:Class ;
                rdfs:label "Type sexe"@nl ;
@@ -1773,6 +1805,16 @@ naa:Role rdf:type owl:Class ;
          rdfs:label "Rol"@nl ,
                     "Role"@en ;
          skos:prefLabel "Rol"@nl .
+
+
+###  http://archief.nl/def/Sentence
+naa:Sentence rdf:type owl:Class ;
+             rdfs:subClassOf skos:Concept ;
+             rdfs:label "Sentence"@en ,
+                        "Vonnis"@nl ;
+             skos: "Judgement"@en ,
+                   "Verdict"@en ;
+             skos:prefLabel "Vonnis"@nl .
 
 
 ###  http://archief.nl/def/Ship
@@ -2233,10 +2275,6 @@ pnv:Person rdf:type owl:Class .
                                                          org:relatedWebPage <https://wiki.duraspace.org/display/VTDA/VCard+usage+diagram> .
 
 
-###  http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne
-<http://archief.nl/NL-HaNA/doc/Name:ElvinDechesne> rdf:type owl:NamedIndividual .
-
-
 ###  http://archief.nl/NL-HaNA/id/beroep/Koopman
 <http://archief.nl/NL-HaNA/id/beroep/Koopman> rdf:type owl:NamedIndividual ;
                                               owl:sameAs <http://archief.nl/NL-HaNA/id/beroep/Merchant> .
@@ -2343,15 +2381,6 @@ pnv:Person rdf:type owl:Class .
                                                             vcard:hasURL <https://www.nationaalarchief.nl> ;
                                                             rdfs:label "Nationaal Archief"@nl ;
                                                             <http://www.w3.org/ns/adms#relatedWebPage> <https://www.nationaalarchief.nl/> .
-
-
-###  http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne
-<http://archief.nl/NL-HaNA/id/persoon/ElvinDechesne> rdf:type owl:NamedIndividual ,
-                                                              premis:Person ;
-                                                     schema:birthPlace <http://archief.nl/NL-HaNA/id/land/Nederland> ,
-                                                                       <http://archief.nl/NL-HaNA/id/stad/Groningen> ;
-                                                     schema:birthDate "1977-02-25T00:00:00Z"^^xsd:dateTime ;
-                                                     rdfs:label "Elvin Dechesne"@nl .
 
 
 ###  http://archief.nl/NL-HaNA/id/plaats/Amsterdam
@@ -2595,6 +2624,11 @@ naa:RoleBuyingParty rdf:type owl:NamedIndividual ,
                                "Kopende partij (rol)"@nl ;
                     skos:prefLabel "Kopende partij"@nl ;
                     skos:scopeNote "Gebruikt bij de Verkaufsbucher om de kopers van een rol te voorzien."@nl .
+
+
+###  http://archief.nl/def/RoleConvicted
+naa:RoleConvicted rdf:type owl:NamedIndividual ,
+                           naa:Role .
 
 
 ###  http://archief.nl/def/RoleCreditor
@@ -2856,6 +2890,20 @@ naa:TypeGuideToArchivesView rdf:type owl:NamedIndividual ,
                             skos:prefLabel "View van archiefgids"@nl .
 
 
+###  http://archief.nl/def/TypeLegalCase
+naa:TypeLegalCase rdf:type owl:NamedIndividual ,
+                           naa:ArchivalEntityType .
+
+
+###  http://archief.nl/def/TypeLegalRecord
+naa:TypeLegalRecord rdf:type owl:NamedIndividual ,
+                             naa:AggregationType ;
+                    skos:inScheme naa:TypesOfAggregations ;
+                    rdfs:label "Record about legal sentence"@en ,
+                               "Record over rechterlijke uitspraak"@nl ;
+                    skos:prefLabel "Record over rechterlijke uitspraak"@nl .
+
+
 ###  http://archief.nl/def/TypeMarriageRecord
 naa:TypeMarriageRecord rdf:type owl:NamedIndividual ,
                                 naa:AggregationType ,
@@ -3042,6 +3090,16 @@ naa:TypesOfCollectionClassifications rdf:type owl:NamedIndividual ,
                                      rdfs:seeAlso skos:Concept .
 
 
+###  http://archief.nl/def/TypesOfFelonies
+naa:TypesOfFelonies rdf:type owl:NamedIndividual ,
+                             skos:ConceptScheme ;
+                    rdfs:label "Classificaties van misdrijven"@nl ,
+                               "Classifications of felonies"@en ;
+                    rdfs:seeAlso naa:Felony ,
+                                 naa:convictedOf ;
+                    skos:prefLabel "Classificaties van misdrijven"@nl .
+
+
 ###  http://archief.nl/def/TypesOfGTAAConcepts
 naa:TypesOfGTAAConcepts rdf:type owl:NamedIndividual ,
                                  skos:ConceptScheme ;
@@ -3107,6 +3165,16 @@ naa:TypesOfRoles rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso naa:Role ,
                               naa:hasRole ;
                  skos:prefLabel "Classificaties van rollen"@nl .
+
+
+###  http://archief.nl/def/TypesOfSentences
+naa:TypesOfSentences rdf:type owl:NamedIndividual ,
+                              skos:ConceptScheme ;
+                     rdfs:label "Classificaties van vonnissen"@nl ,
+                                "Classifications of sentences"@en ;
+                     rdfs:seeAlso naa:Sentence ,
+                                  naa:sentenceReceived ;
+                     skos:prefLabel "Classificaties van vonnissen"@nl .
 
 
 ###  http://archief.nl/doc/Periods:WorldWar1
