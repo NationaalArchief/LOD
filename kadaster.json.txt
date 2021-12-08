@@ -1,0 +1,2247 @@
+[ {
+  "@id" : "_:bnodenode1er8qma83x1",
+  "http://www.w3.org/ns/shacl#hasValue" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/collectie/StatusWoonplaats"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "_:bnodenode1er8qma83x2"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x10",
+  "http://www.w3.org/ns/shacl#inversePath" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#member"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x11",
+  "http://www.w3.org/ns/shacl#hasValue" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/collectie/StatusVerblijfsobject"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "_:bnodenode1er8qma83x12"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x12",
+  "http://www.w3.org/ns/shacl#inversePath" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#member"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x2",
+  "http://www.w3.org/ns/shacl#inversePath" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#member"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x5",
+  "http://www.w3.org/ns/shacl#hasValue" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/collectie/StatusNaamgeving"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "_:bnodenode1er8qma83x6"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x6",
+  "http://www.w3.org/ns/shacl#inversePath" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#member"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x7",
+  "http://www.w3.org/ns/shacl#hasValue" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/collectie/StatusPand"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "_:bnodenode1er8qma83x8"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x8",
+  "http://www.w3.org/ns/shacl#inversePath" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#member"
+  } ]
+}, {
+  "@id" : "_:bnodenode1er8qma83x9",
+  "http://www.w3.org/ns/shacl#hasValue" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/collectie/StatusPlaats"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "_:bnodenode1er8qma83x10"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Basisregistraties adressen en gebouwen vocabulaire"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdministratiefGebied",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/RegistratiefGebied"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Administratief gebied"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/AdresseerbaarObject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Adresseerbaar object"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Object"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "BAG-object"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Brondocument",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Brondocument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Brondocument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Entity"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Kunstwerk",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Kunstwerk"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Kunstwerk"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#LandschappelijkGebied",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/LandschappelijkGebied"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Landschappelijk gebied"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Ligplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Ligplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Ligplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject"
+  }, {
+    "@id" : "http://www.opengis.net/ont/geosparql#Feature"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/OpenbareRuimte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Openbare ruimte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Pand",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Pand"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Pand"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  }, {
+    "@id" : "http://www.opengis.net/ont/geosparql#Feature"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Spoorbaan",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Spoorbaan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Spoorbaan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Standplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Standplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Standplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject"
+  }, {
+    "@id" : "http://www.opengis.net/ont/geosparql#Feature"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Terrein",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Terrein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Terrein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Verblijfsobject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject"
+  }, {
+    "@id" : "http://www.opengis.net/ont/geosparql#Feature"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectBijeenkomstfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Bijeenkomstfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met bijeenkomstfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectCelfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Celfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met celfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectGezondheidszorgfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Gezondheidszorgfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met gezondheidszorgfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectIndustriefunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Industriefunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met industriefunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectKantoorfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Kantoorfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met kantoorfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectLogiesfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Logiesfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met logiesfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectOnderwijsfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Onderwijsfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met onderwijsfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectOverigeGebruiksfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/OverigeGebruiksfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met overige gebruiksfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectSportfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Sportfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met sportfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectWinkelfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Winkelfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met winkelfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#VerblijfsobjectWoonfunctie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Woonfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Verblijfsobject met woonfunctie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Entity"
+  }, {
+    "@id" : "http://www.w3.org/ns/sparql-service-description#Graph"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Water",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Water"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Water"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Weg",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Weg"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Weg"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Woonplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "Woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  }, {
+    "@id" : "http://www.opengis.net/ont/geosparql#Feature"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#aanduidingCorrectie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/AanduidingRecordCorrectie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "aanduiding correctie"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#aanduidingInactief",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/AanduidingRecordInactief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "aanduiding inactief"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#beginGeldigheid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Ingangsdatum"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "begin geldigheid"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bijbehorendeOpenbareRuimte",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/OpenbareRuimte_Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "bijbehorende openbare ruimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bijbehorendeWoonplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Woonplaats_Nummeraanduiding"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Woonplaats_OpenbareRuimte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "bijbehorende woonplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bron",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Bronrelatering"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "bron"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Brondocument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/ns/prov#wasDerivedFrom"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#documentdatum",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Documentdatum"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Brondocument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "documentdatum"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#documentnummer",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Documentnummer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Brondocument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "documentnummer"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#eindGeldigheid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Einddatum"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "eind geldigheid"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geconstateerd",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Geconstateerd"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "geconstateerd"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieLigplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Geometrie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Ligplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "geometrie ligplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#hasGeometry"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometriePand",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Geometrie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Pand"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "geometrie pand"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#hasGeometry"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieStandplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Geometrie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Standplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "geometrie standplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#hasGeometry"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieVerblijfsobject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Geometrie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "geometrie verblijfsobject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#hasGeometry"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieWoonplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Geometrie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "geometrie woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#hasGeometry"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#hoofdadres",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Hoofdadres"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "hoofdadres"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#huisletter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Huisletter"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "huisletter"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#huisnummer",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Huisnummer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "huisnummer"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#huisnummertoevoeging",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Huisnummertoevoeging"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "huisnummertoevoeging"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#identificatiecode",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_Ligplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_Nummeraanduiding"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_OpenbareRuimte"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_Pand"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_Standplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_Verblijfsobject"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Identificatiecode_Woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "identificatiecode"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#inOnderzoek",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/InOnderzoek"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "in onderzoek"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#naamOpenbareRuimte",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Naam_OpenbareRuimte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "naam openbare ruimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#naamWoonplaats",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Naam_Woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Woonplaats"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "naam woonplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#nevenadres",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Nevenadres"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "nevenadres"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#oorspronkelijkBouwjaar",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Bouwjaar"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Pand"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "oorspronkelijk bouwjaar"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#oppervlakte",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Oppervlakte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "oppervlakte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#pandrelatering",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Pandrelatering"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "pandrelatering"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Pand"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#postcode",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Postcode"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "postcode"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.org/dc/terms/subject" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/id/begrip/Status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/AdresseerbaarObject",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Abstract objecttype."
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/AdresseerbaarObject_hoofdadres"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/AdresseerbaarObject_nevenadres"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#AdresseerbaarObject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/AdresseerbaarObject_hoofdadres",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#hoofdadres"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/AdresseerbaarObject_nevenadres",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#nevenadres"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/BAG-object",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Abstract objecttype."
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/BAG-object_identificatiecode"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/BAG-object_isDefinedBy"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#BAG-object"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/BAG-object_identificatiecode",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "16"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#identificatiecode"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/BAG-object_isDefinedBy",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "rdfs:isDefinedBy"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#isDefinedBy"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Brondocument",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Brondocument_documentdatum"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Brondocument_documentnummer"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Brondocument"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Brondocument_documentdatum",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#date"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#documentdatum"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Brondocument_documentnummer",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "20"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#documentnummer"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Geometry",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "ogc:Geometry"
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Geometry_asWKT"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Geometry_asWKT-RD"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#Geometry"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Geometry_asWKT",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#wktLiteral"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#asWKT"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Geometry_asWKT-RD",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://data.pdok.nl/def/pdok#asWKT-RD"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Ligplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Ligplaats_geometrieLigplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Ligplaats_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Ligplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Ligplaats_geometrieLigplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#Surface"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieLigplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Ligplaats_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusPlaats"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/MultiSurface",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "gml:MultiSurface"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#MultiSurface"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_bijbehorendeOpenbareRuimte"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_bijbehorendeWoonplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_huisletter"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_huisnummer"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_huisnummertoevoeging"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_postcode"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_bijbehorendeOpenbareRuimte",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bijbehorendeOpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_bijbehorendeWoonplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Woonplaats"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bijbehorendeWoonplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_huisletter",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Alfabetische string met een lengte van 1."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#huisletter"
+  } ],
+  "http://www.w3.org/ns/shacl#pattern" : [ {
+    "@value" : "^[a-zA-Z]$"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_huisnummer",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Natuurlijk getal tussen 1 en 99999."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#integer"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxInclusive" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "99999"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minInclusive" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#huisnummer"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_huisnummertoevoeging",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Alfanumerieke string met een maximale lengte van 4."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "4"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#huisnummertoevoeging"
+  } ],
+  "http://www.w3.org/ns/shacl#pattern" : [ {
+    "@value" : "^[a-zA-Z0-9]+$"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_postcode",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Alfanumerieke string bestaande uit vier cijfers en twee letters."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#postcode"
+  } ],
+  "http://www.w3.org/ns/shacl#pattern" : [ {
+    "@value" : "^[1-9][0-9][0-9][0-9][A-Z][A-Z]$"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Nummeraanduiding_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusNaamgeving"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte_bijbehorendeWoonplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte_naamOpenbareRuimte"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#OpenbareRuimte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte_bijbehorendeWoonplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Woonplaats"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bijbehorendeWoonplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte_naamOpenbareRuimte",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Alfanumerieke string met een maximale lengte van 80."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "80"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#naamOpenbareRuimte"
+  } ],
+  "http://www.w3.org/ns/shacl#pattern" : [ {
+    "@value" : "^[a-zA-Z0-9 ]+$"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/OpenbareRuimte_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusNaamgeving"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand_geometriePand"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand_oorspronkelijkBouwjaar"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Pand"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand_geometriePand",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#Surface"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometriePand"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand_oorspronkelijkBouwjaar",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#integer"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxInclusive" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "9999"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minInclusive" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "0"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#oorspronkelijkBouwjaar"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Pand_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusPand"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Point",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "gml:Point"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#Point"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Standplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Standplaats_geometrieStandplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Standplaats_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Standplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Standplaats_geometrieStandplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#Surface"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieStandplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Standplaats_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusPlaats"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusNaamgeving",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "Status naamgeving"
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "_:bnodenode1er8qma83x5"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusPand",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "Status pand"
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "_:bnodenode1er8qma83x7"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusPlaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "Status plaats"
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "_:bnodenode1er8qma83x9"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusVerblijfsobject",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "Status verblijfsobject"
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "_:bnodenode1er8qma83x11"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusWoonplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "Status woonplaats"
+  } ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "_:bnodenode1er8qma83x1"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Surface",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#name" : [ {
+    "@value" : "gml:Surface"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#Surface"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_geometrieVerblijfsobject"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_oppervlakte"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_pandrelatering"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Verblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_geometrieVerblijfsobject",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#or" : [ {
+    "@list" : [ {
+      "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Point"
+    }, {
+      "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Surface"
+    } ]
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieVerblijfsobject"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_oppervlakte",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Numerieke waarde met een maximale lengte van 6."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#integer"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxInclusive" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "999999"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minInclusive" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#oppervlakte"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_pandrelatering",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Pand"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#pandrelatering"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Verblijfsobject_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusVerblijfsobject"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_aanduidingCorrectie"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_aanduidingInactief"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_beginGeldigheid"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_bron"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_eindGeldigheid"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_geconstateerd"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_inOnderzoek"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Voorkomen"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_aanduidingCorrectie",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#integer"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#aanduidingCorrectie"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_aanduidingInactief",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#aanduidingInactief"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_beginGeldigheid",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#beginGeldigheid"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_bron",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Brondocument"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#bron"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_eindGeldigheid",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#eindGeldigheid"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_geconstateerd",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geconstateerd"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Voorkomen_inOnderzoek",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#boolean"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#inOnderzoek"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#NodeShape" ],
+  "http://www.w3.org/ns/shacl#property" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_geometrieWoonplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_identificatiecode"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_naamWoonplaats"
+  }, {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_status"
+  } ],
+  "http://www.w3.org/ns/shacl#targetClass" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#Woonplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_geometrieWoonplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#or" : [ {
+    "@list" : [ {
+      "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Surface"
+    }, {
+      "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/MultiSurface"
+    } ]
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#geometrieWoonplaats"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_identificatiecode",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Nauwere restrictie van identificatiecode dan die op de BAG-object superklasse."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "4"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#identificatiecode"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_naamWoonplaats",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Alfanumerieke string met een maximale lengte van 80."
+  } ],
+  "http://www.w3.org/ns/shacl#datatype" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#maxLength" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "80"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#Literal"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#naamWoonplaats"
+  } ],
+  "http://www.w3.org/ns/shacl#pattern" : [ {
+    "@value" : "^[a-zA-Z0-9 ]+$"
+  } ]
+}, {
+  "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/Woonplaats_status",
+  "@type" : [ "http://www.w3.org/ns/shacl#PropertyShape" ],
+  "http://www.w3.org/ns/shacl#class" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+  } ],
+  "http://www.w3.org/ns/shacl#maxCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#minCount" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/ns/shacl#node" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag/StatusWoonplaats"
+  } ],
+  "http://www.w3.org/ns/shacl#nodeKind" : [ {
+    "@id" : "http://www.w3.org/ns/shacl#IRI"
+  } ],
+  "http://www.w3.org/ns/shacl#path" : [ {
+    "@id" : "http://bag.basisregistraties.overheid.nl/def/bag#status"
+  } ]
+}, {
+  "@id" : "http://www.opengis.net/ont/geosparql#Feature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#"
+  } ]
+}, {
+  "@id" : "http://www.opengis.net/ont/geosparql#Geometry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#"
+  } ]
+}, {
+  "@id" : "http://www.opengis.net/ont/geosparql#hasGeometry",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#"
+  } ]
+}, {
+  "@id" : "http://www.opengis.net/ont/gml#MultiSurface",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#Geometry"
+  } ]
+}, {
+  "@id" : "http://www.opengis.net/ont/gml#Point",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#Geometry"
+  } ]
+}, {
+  "@id" : "http://www.opengis.net/ont/gml#Surface",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.opengis.net/ont/gml#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.opengis.net/ont/geosparql#Geometry"
+  } ]
+}, {
+  "@id" : "http://www.w3.org/ns/prov#Entity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/ns/prov-o#"
+  } ]
+}, {
+  "@id" : "http://www.w3.org/ns/prov#wasDerivedFrom",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/ns/prov-o#"
+  } ]
+}, {
+  "@id" : "http://www.w3.org/ns/sparql-service-description#Graph",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/ns/sparql-service-description#"
+  } ]
+} ]
