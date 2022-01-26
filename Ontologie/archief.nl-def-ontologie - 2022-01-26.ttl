@@ -1,0 +1,692 @@
+@prefix : <https://archief.nl/def/ontologie/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix nao: <https://archief.nl/def/ontologie/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <https://archief.nl/def/ontologie/> .
+
+<https://archief.nl/def/ontologie/> rdf:type owl:Ontology ;
+                                     dc:abstract "Ontologie van het Nationaal Archief. Deze ontologie beschrijft de termen die nodig zijn om de Nadere Toegangen en de Fotocollectie om te zetten naar Linked Open Data. De termen in deze ontologie worden (standaard) gebruikt voor al de Nadere Toegangen en Fotocollecties en zijn generiek toepasbaar voor datasets in het archiefdomein."@nl ;
+                                     dc:contributor """Ed de Heer - Adviseur/Projectleider Linked Open Data
+Fairoesh Nanhekhan - Informatieanalist/Projectleider 
+Joep Jacobs - Collectiebeheerder 
+Eva Dapperen - Collectiebeheerder"""@nl ;
+                                     dc:creator "Nationaal Archief"@nl ;
+                                     dc:description """Ontologie van het Nationaal Archief. Deze ontologie definieert de termen die nodig zijn voor het omzetten van datasets in het archiefdomein. De termen in deze ontologie worden (standaard) gebruikt voor de Nadere Toegangen en Fotocollecties en zijn generiek toepasbaar voor datasets in het archiefdomein. de termen zijn gebaseerd op de ore en edm ontologie.
+
+Deze ontologie bestaat naast het Nationaal Archief Vocabulaire. Het NA Vocabulaire betreft termen die specifiek zijn voor de fotocollectie en de Nadere Toegangen."""@nl ;
+                                     dc:rights "Copyright 2022 - Nationaal Archief"@nl ;
+                                     dct:publisher """Nationaal Archief
+Willem Alexanderhof 20
+2595BE Den Haag"""@nl ;
+                                     dct:title "Nationaal Archief Ontologie"@nl ;
+                                     rdfs:comment "Ontologie van het NA. HIerin staan de NA-termen die voor de Nadere Toegangen en Fotocollectie worden gebruikt. Deze termen zijn generiek toepasbaar voor een dataset in het archiefdomein."@nl ;
+                                     rdfs:label "Nationaal Archief Ontologie"@nl ;
+                                     owl:versionInfo "Versie 1 - 25 januari 2022"@nl .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+<http://creativecommons.org/ns#license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/abstract
+dc:abstract rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/hasPart
+dct:hasPart rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dct:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.openarchives.org/ore/terms/aggregates
+ore:aggregates rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf dct:hasPart ;
+               rdfs:range ore:AggregatedResource .
+
+
+###  http://www.openarchives.org/ore/terms/similarTo
+ore:similarTo rdf:type owl:AnnotationProperty ;
+              rdfs:comment "The subject of this relationship MUST be an Aggregation.  This Aggregation should be considered an expression within the ORE context of the object of the relationship, as it is broadly equivalent to the resource. For example, the Aggregation may consist of the resources which, together, make up a journal article which has a DOI assigned to it. The Aggregation is not the article to which the DOI was assigned, but is a representation of it in some manner." ;
+              rdfs:isDefinedBy ore: ;
+              rdfs:label "Similar To" ;
+              rdfs:domain ore:Aggregation .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#label
+skos:label rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/isPartOf
+dct:isPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/type
+dct:type rdf:type owl:ObjectProperty .
+
+
+###  http://www.openarchives.org/ore/terms/aggregates
+ore:aggregates rdf:type owl:ObjectProperty ;
+               owl:inverseOf ore:isAggregatedBy ;
+               rdfs:domain ore:Aggregation .
+
+
+###  http://www.openarchives.org/ore/terms/describes
+ore:describes rdf:type owl:ObjectProperty ;
+              owl:inverseOf ore:isDescribedBy ;
+              rdfs:range ore:Aggregation ;
+              rdfs:comment "This relationship asserts that the subject (a Resource Map) describes the object (an Aggregation)." ;
+              rdfs:isDefinedBy ore: ;
+              rdfs:label "Describes" .
+
+
+###  http://www.openarchives.org/ore/terms/isAggregatedBy
+ore:isAggregatedBy rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dct:isPartOf ;
+                   rdfs:range ore:Aggregation ;
+                   rdfs:comment "The inverse relationship of ore:aggregates, ore:isAggregatedBy asserts that an Aggregated Resource is aggregated by an Aggregation." ;
+                   rdfs:isDefinedBy ore: ;
+                   rdfs:label "Is Aggregated By" .
+
+
+###  http://www.openarchives.org/ore/terms/isDescribedBy
+ore:isDescribedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain ore:Aggregation ;
+                  rdfs:comment "The inverse relationship of ore:describes, in this case the object of the relationship is the Resource Map and the subject is the Aggregation which it describes." ;
+                  rdfs:isDefinedBy ore: ;
+                  rdfs:label "Is Described By" .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty .
+
+
+###  https://archief.nl/def/ontologie/isAggregatietype
+nao:isAggregatietype rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dct:type ;
+                     rdfs:domain ore:Aggregation ;
+                     rdfs:comment "Deze eigenschap geeft de relatie aan tussen de aggregatie en welk type aggregatie het is zoals Fotocollectie of Nadere Toegang. Deze eigenschap is gemunt zodat het onderscheid wel duidelijk is voor de gebruiker."@nl ;
+                     rdfs:label "is aggregatietype"@nl ;
+                     skos:definition "Deze eigenschap geeft de relatie aan tussen de vrzameling van de aggregatie en het type aggregatie. Zijnde Nadere Toegang, Fotocollectie of Toegang"@nl ;
+                     skos:prefLabel "is aggregatietype"@nl .
+
+
+###  https://archief.nl/def/ontologie/isArchiefeenheidtype
+nao:isArchiefeenheidtype rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain nao:Archiefeenheid ;
+                         rdfs:comment "deze eigenschap geeft de relatie aan tussen de archiefeenheid en het mogelijke type deze archiefeenheid zijn kan zoals foto, akte enz."@nl ;
+                         rdfs:label "is archiefeenheidtype"@nl ;
+                         skos:definition "Deze term geeft de relatie aan tussen de archiefeenheid en het type eenheid zoals bijv. foto, akte of document."@nl ;
+                         skos:prefLabel "isarchiefeenheidtype"@nl .
+
+
+###  https://archief.nl/def/ontologie/isMateriaaltype
+nao:isMateriaaltype rdf:type owl:ObjectProperty ;
+                    rdfs:domain nao:Archiefeenheid ;
+                    rdfs:comment "Deze term is gemunt om informatie te duiden uit de fotocollectie"@nl ;
+                    rdfs:label "is materiaaltype"@nl ;
+                    skos:definition "is van een type/soort materiaal"@nl ;
+                    skos:prefLabel "is materiaaltype"@nl .
+
+
+###  https://archief.nl/def/ontologie/verwijstNaar
+nao:verwijstNaar rdf:type owl:ObjectProperty ;
+                 rdfs:domain nao:Archiefbeschrijving ;
+                 rdfs:label "verwijst naar"@nl ;
+                 skos:definition "Deze term geeft de relatie aan tussen de archiefbeschrijving en een entiteit die wordt beschreven in de dataset."@nl ;
+                 skos:note "Het gebruik van deze term is beperkt tot tweede of derde relaties  t.o.v. de archiefbeschrijving om zo de doorzoekbaarheid op dieper gelegen data toch mogelijk te maken."@nl ;
+                 skos:prefLabel "verwijst naar"@nl .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:DatatypeProperty .
+
+
+###  https://archief.nl/def/ontologie/aet
+nao:aet rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf dc:description ;
+        rdfs:domain nao:Recordaggregatie ;
+        rdfs:label "aet"@nl ;
+        skos:definition "Deze dataproperty wordt gebruikt voor het beschrijven van de Archiefeenheidsoort zoals deze in MaisFlexis geregistreerd wordt."@nl ;
+        skos:prefLabel "aet"@nl .
+
+
+###  https://archief.nl/def/ontologie/ahdid
+nao:ahdid rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf dc:identifier ;
+          rdfs:label "ahdId"@nl ;
+          skos:definition "Identificatiecode van een toegang in het Collectiebeheersysteem MAIS Flexis."@nl ;
+          skos:prefLabel "ahdid"@nl .
+
+
+###  https://archief.nl/def/ontologie/archiefLink
+nao:archiefLink rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf dc:identifier ;
+                rdfs:domain nao:Archiefeenheid ;
+                rdfs:label "archieflink"@nl ;
+                skos:definition "Verwijzing naar de URL van het archiefstuk"@nl ;
+                skos:prefLabel "archieflink"@nl .
+
+
+###  https://archief.nl/def/ontologie/archiefbloknummer
+nao:archiefbloknummer rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf dc:identifier ;
+                      rdfs:comment "het nummer van het (papieren of digitale) fysieke archief."@nl ;
+                      rdfs:label "archiefbloknummer"@nl ;
+                      rdfs:seeAlso <https://archiefwiki.org/wiki/Archiefblok> ;
+                      skos:definition "Nummer van het archiefblok"@nl ;
+                      skos:prefLabel "archiefbloknummer"@nl .
+
+
+###  https://archief.nl/def/ontologie/beeldbankId
+nao:beeldbankId rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf dc:identifier ;
+                rdfs:comment "De beeldbank id verwijst naar de scan van de inschrijving van de ondertrouw (NT00392)" ,
+                             "Deze term is gemunt om informatie te duiden uit NT00392" ;
+                rdfs:label "beeldbank id" ;
+                skos:prefLabel "beeldbank id" .
+
+
+###  https://archief.nl/def/ontologie/bestanddeelnummer
+nao:bestanddeelnummer rdf:type owl:DatatypeProperty ;
+                      owl:equivalentProperty nao:inventarisnummer ;
+                      rdfs:subPropertyOf dc:identifier ;
+                      rdfs:label "bestanddeelnummer"@nl ;
+                      skos:definition "Uniek nummer waaronder een archiefstuk of een bestanddeel in een toegang is opgenomen. Een bestanddeel is een fysieke groepering van één of meer archiefstukken."@nl ;
+                      skos:prefLabel "bestanddeelnummer"@nl .
+
+
+###  https://archief.nl/def/ontologie/dossiernummer
+nao:dossiernummer rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf dc:identifier ;
+                  rdfs:label "dossiernummer"@nl ;
+                  skos:definition "Nummer van het dossier"@nl ;
+                  skos:prefLabel "dossiernummer"@nl .
+
+
+###  https://archief.nl/def/ontologie/download
+nao:download rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief. Per foto kan de beschikbaarheid worden aangegeven. Hiervoor gelden de waarden \"Direct beschikbaar\" en \"Op aanvraag\"."@nl ;
+             rdfs:label "download" ;
+             skos:definition "Mate van beschikbaarheid van een foto"@nl ;
+             skos:prefLabel "download" .
+
+
+###  https://archief.nl/def/ontologie/du-uuid
+nao:du-uuid rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf nao:uuid ;
+            rdfs:domain edm:WebResource ;
+            rdfs:comment "Identificatie van een object uit het e-Depot."@nl ;
+            rdfs:label "du-uuid"@nl ;
+            skos:definition "Unieke identificatiecode van een deliverable unit (bijvoorbeeld een dossier of een digitaal object) in het e-Depot, te vergelijken met een aanvraagbare eenheid (inventarisnummer) in een analoog archief"@nl ;
+            skos:prefLabel "du-uuid"@nl .
+
+
+###  https://archief.nl/def/ontologie/file-uuid
+nao:file-uuid rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf nao:uuid ;
+              rdfs:domain edm:WebResource ;
+              rdfs:comment "De file-uuid wordt gebruikt voor het identificeren van een foto uit het edepot"@nl ;
+              rdfs:label "file-uuid"@nl ;
+              skos:definition "Een identificatiekenmerk o.b.v. een UUID van een digitaal object"@nl ;
+              skos:prefLabel "file-uuid"@nl .
+
+
+###  https://archief.nl/def/ontologie/fragmentIdentifier
+nao:fragmentIdentifier rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf dc:identifier ;
+                       rdfs:range xsd:int ;
+                       rdfs:comment "Gebruik voor het identificieren van entiteiten binnen een bepaalde context. Buiten de context (zoals de bijbehorende aggregatie) zal deze referentie sleutel niet uniek zijn, maar binnen de context, of scope - wel. Een voorbeeld is de Prsid van Mais Flexis die volgnummers gebruikt voor het refereren van personen in een index (Nadere Toegang). Indien er voor een Person geen unieke referentie (UUID) bekend is, munten we een dergelijke entiteit op basis van de beschikbare gegevens. In het geval van een NT weten we dan wel de naam van de NT en combineren we deze met de naa:fragmentIdentifier. Op deze manier kunnen de interne verwijzingen van records uit verschillende NTViews naar elkaar verwijzen."@nl ;
+                       rdfs:label "fragment identifier"@en ,
+                                  "niet-universele identificatie"@nl ;
+                       skos:altLabel "context afhankelijke identificatie"@nl ;
+                       skos:definition "Identifier die binnen een bepaalde context uniek is maar daarbuiten waarschijnlijk niet."@nl .
+
+
+###  https://archief.nl/def/ontologie/guid
+nao:guid rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf dc:identifier ;
+         rdfs:label "MAIS Flexis guid"@nl ;
+         skos:definition "Globally Unique Identifier die gebruikt wordt in Mais Flexis"@nl ;
+         skos:prefLabel "MAIS Flexis guid"@nl .
+
+
+###  https://archief.nl/def/ontologie/handle-uuid
+nao:handle-uuid rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf nao:uuid ;
+                rdfs:domain edm:WebResource ;
+                rdfs:comment "Middels de handle-uuid wordt verwezen naar het digitale object op de website"@nl ;
+                rdfs:label "handle-uuid"@nl ;
+                skos:definition "Een identificatiekenmerk o.b.v. een UUID die wordt gebruikt voor het opbouwen van een handle"@nl ;
+                skos:prefLabel "handle-uuid"@nl .
+
+
+###  https://archief.nl/def/ontologie/id
+nao:id rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf dc:identifier ;
+       rdfs:comment "Kan gebruikt worden voor mappen van MAIS id."@en ;
+       rdfs:label "id"@en ,
+                  "id"@nl ;
+       skos:altLabel "identificatie"@nl ;
+       skos:definition "Id"@nl .
+
+
+###  https://archief.nl/def/ontologie/inventarisnummer
+nao:inventarisnummer rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf dc:identifier ;
+                     rdfs:domain nao:Archiefbeschrijving ,
+                                 nao:Archiefeenheid ;
+                     rdfs:comment "Het nummer van een inventaris"@nl ;
+                     rdfs:label "nummer archiefinventaris"@nl ;
+                     skos:definition "Uniek nummer waaronder een archiefstuk of archiefbestanddeel in een toegang is opgenomen."@nl ;
+                     skos:prefLabel "nummer archiefinventaris"@nl .
+
+
+###  https://archief.nl/def/ontologie/ntCode
+nao:ntCode rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf dc:identifier ;
+           rdfs:comment "Het identificatiekernmerk van een Nadere Toegang"@nl ;
+           rdfs:label "ntCode"@nl ;
+           skos:definition "Identificatiekenmerk van een Nadere Toegang"@nl ;
+           skos:prefLabel "ntCode"@nl .
+
+
+###  https://archief.nl/def/ontologie/orgID
+nao:orgID rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf dc:identifier ;
+          rdfs:label "Hub3 tennant code"@nl ;
+          skos:definition "Code voor een gebruiker (tennant) van HUB3. Dit is in de meeste gevallen de ISIL code."@nl ;
+          skos:note "Gebruikt door HUB3 voor de tennant of ISIL code"@nl ;
+          skos:prefLabel "HUB3 tennant code"@nl .
+
+
+###  https://archief.nl/def/ontologie/origineleVerwijzing
+nao:origineleVerwijzing rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf dc:identifier ;
+                        rdfs:comment "Deze term is gemunt om informatie te duiden uit NT00376" ,
+                                     "Verwijst naar originele verwijzing" ;
+                        rdfs:label "orginele verwijzing" ;
+                        skos:prefLabel "originele verwijzing" .
+
+
+###  https://archief.nl/def/ontologie/persistentIdentifier
+nao:persistentIdentifier rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf dc:identifier ;
+                         rdfs:label "persistente identificatie"@nl ;
+                         skos:definition "Persistente identificatie"@nl ;
+                         skos:note "Het Nationaal Archief gebruikt Handles voor persistent identifiers"@nl ;
+                         skos:prefLabel "Persistente identificatie"@nl .
+
+
+###  https://archief.nl/def/ontologie/scan
+nao:scan rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf dc:identifier ;
+         rdfs:comment "Deze term is gemunt om informatie te duiden uit NT00213" ;
+         rdfs:label "scan" ;
+         skos:definition "Verwijst naar de link naar eventuele scan" ;
+         skos:prefLabel "scan" .
+
+
+###  https://archief.nl/def/ontologie/titelFotocollectie
+nao:titelFotocollectie rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"@nl ;
+                       skos:definition "Titel van een fotocollectie"@nl ;
+                       skos:label "titel fotocollectie"@nl ;
+                       skos:prefLabel "titel fotocollectie"@nl .
+
+
+###  https://archief.nl/def/ontologie/titelFotoserie
+nao:titelFotoserie rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"@nl ;
+                   rdfs:label "titel fotoserie"@nl ;
+                   skos:definition "Titel van een serie aan foto's"@nl ;
+                   skos:prefLabel "titel fotoserie"@nl .
+
+
+###  https://archief.nl/def/ontologie/toegangsnummer
+nao:toegangsnummer rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf dc:identifier ;
+                   rdfs:label "toegangsnummer"@nl ;
+                   skos:definition "het nummer van de toegang (inventaris) op een fysiek archief. Een toegang is een al dan niet systematische beschrijving van de bestanddelen van een collectie."@nl ;
+                   skos:prefLabel "toegangsnummer"@nl .
+
+
+###  https://archief.nl/def/ontologie/toelichting
+nao:toelichting rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf dc:description ;
+                rdfs:label "toelichting"@nl ;
+                skos:definition "Dit is een toelichting"@nl ;
+                skos:note "MAIS Annotatie"@nl ;
+                skos:prefLabel "toelichting"@nl .
+
+
+###  https://archief.nl/def/ontologie/trefwoordAlgemeen
+nao:trefwoordAlgemeen rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf dc:subject ;
+                      rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"@nl ;
+                      rdfs:label "trefwoord algemeen"@nl ;
+                      skos:definition "Een trefwoord van de categorie \"algemeen\""@nl ;
+                      skos:prefLabel "trefwoord algemeen"@nl .
+
+
+###  https://archief.nl/def/ontologie/trefwoordLocatie
+nao:trefwoordLocatie rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf dc:subject ;
+                     rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"@nl ;
+                     rdfs:label "trefwoord locatie"@nl ;
+                     skos:definition "Een trefwoord van de categorie \"locatie\""@nl ;
+                     skos:prefLabel "trefwoord locatie"@nl .
+
+
+###  https://archief.nl/def/ontologie/trefwoordOrganisatie
+nao:trefwoordOrganisatie rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf dc:subject ;
+                         rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"@nl ;
+                         rdfs:label "trefwoord organisatie"@nl ;
+                         skos:definition "Een trefwoord van de categorie \"organisatie\""@nl ;
+                         skos:prefLabel "trefwoord organisatie"@nl .
+
+
+###  https://archief.nl/def/ontologie/trefwoordPersoon
+nao:trefwoordPersoon rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf dc:subject ;
+                     rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"@nl ;
+                     rdfs:label "trefwoord persoon"@nl ;
+                     skos:definition "Een trefwoord van de categorie \"persoon\""@nl ;
+                     skos:prefLabel "trefwoord persoon"@nl .
+
+
+###  https://archief.nl/def/ontologie/uuid
+nao:uuid rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf dc:identifier ;
+         rdfs:domain ore:Aggregation ;
+         rdfs:comment """Universally Unique Identifier (UUID) is een ID die wordt gebruikt in de software-architectuur, gestandaardiseerd door de 'Open Software Foundation' (OSF) als onderdeel van de 'Distributed Computing Environment' (DCE).
+
+In zijn geheel wordt een UUID door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes:
+
+550e8400-e29b-41d4-a716-446655440000
+RFC 4122[1] beschrijft de structuur van een UUID.
+
+Er bestaan diverse implementaties van verschillende softwarebedrijven van het UUID. Microsoft GUID is een variant van UUID."""@nl ;
+         rdfs:label "uuid"@nl ;
+         rdfs:seeAlso <https://nl.wikipedia.org/wiki/Universally_unique_identifier> ;
+         skos:definition "Een Universally Unique Identifier (UUID) is een nummer van 128 bits (= 16 bytes). UUID wordt weergegeven in 32 ​​hexadecimale cijfers. Deze cijfers zijn ingedeeld in vijf groepen, in ongelijk aantal en gescheiden door koppeltekens: 8-4-4-4-12."@nl .
+
+
+###  https://archief.nl/def/ontologie/volgnummer
+nao:volgnummer rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf dc:identifier ;
+               rdfs:domain edm:WebResource ;
+               rdfs:comment "Deze term is gemunt om informatie te duiden uit NT00213. Let op dit is een ander property dan nav:volgnummer." ;
+               rdfs:label "volgnummer" ;
+               skos:definition "nog na te vragen bij Eva of Joep" ;
+               skos:prefLabel "volgnummer" .
+
+
+###  https://archief.nl/def/ontologie/webserviceDefault
+nao:webserviceDefault rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain edm:WebResource ;
+                      rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."@nl ;
+                      rdfs:label "webservice default"@nl ;
+                      skos:definition "Verwijzing naar de default (complete file) van het digitale object"@nl ;
+                      skos:prefLabel "webservice default"@nl .
+
+
+###  https://archief.nl/def/ontologie/webserviceIIIF
+nao:webserviceIIIF rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain edm:WebResource ;
+                   rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."@nl ;
+                   rdfs:label "webservice IIIF"@nl ;
+                   skos:prefLabel "webservice IIIF"@nl .
+
+
+###  https://archief.nl/def/ontologie/webserviceIcon
+nao:webserviceIcon rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain edm:WebResource ;
+                   rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."@nl ;
+                   rdfs:label "webservice icon"@nl ;
+                   skos:definition "Verwijzing naar de icon van het digitale object"@nl ;
+                   skos:prefLabel "webservice icon"@nl .
+
+
+###  https://archief.nl/def/ontologie/webserviceImage
+nao:webserviceImage rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain edm:WebResource ;
+                    rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."@nl ;
+                    rdfs:label "webservice image"@nl ;
+                    skos:definition "Verwijzing naar de image (max 1000 pixels hoog) van het digitale object"@nl ;
+                    skos:prefLabel "webservice image"@nl .
+
+
+###  https://archief.nl/def/ontologie/webserviceOriginal
+nao:webserviceOriginal rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain edm:WebResource ;
+                       rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."@nl ;
+                       rdfs:label "webservice original"@nl ;
+                       skos:definition "Verwijzing naar het orgineel van het digitale object. Bijv. een .tiff in geval van een foto."@nl ;
+                       skos:prefLabel "webservice original"@nl .
+
+
+###  https://archief.nl/def/ontologie/webserviceThumbnail
+nao:webserviceThumbnail rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain edm:WebResource ;
+                        rdfs:comment "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."@nl ;
+                        rdfs:label "webservice thumbnail"@nl ;
+                        skos:definition "Verwijzing naar de thumbnail van het digitale object"@nl ;
+                        skos:prefLabel "webservice thumbnail"@nl .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.europeana.eu/schemas/edm/WebResource
+edm:WebResource rdf:type owl:Class .
+
+
+###  http://www.openarchives.org/ore/terms/Aggregation
+ore:Aggregation rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class .
+
+
+###  https://archief.nl/def/ontologie/Archiefbeschrijving
+nao:Archiefbeschrijving rdf:type owl:Class ;
+                        rdfs:subClassOf owl:Thing ;
+                        rdfs:comment "Deze klasse wordt gebruikt om een Archiefbeschrijving aan te geven. Dit is een information resource."@nl ;
+                        rdfs:label "Archiefbeschrijving"@nl ;
+                        skos:definition "Een archiefbeschrijving bevat alle elementen die beschrijvend zijn voor dat archief. Het betreft niet de eigenschappen van een archiefeenheid (foto, akte, enz) zoals formaat en materiaal maar juist de informatie over de resterende elementen die genoemd worden in een archiefbeschrijving."@nl ;
+                        skos:note "Komt overeen met edm:InformationResource"@nl ;
+                        skos:prefLabel "Archiefbeschrijving"@nl .
+
+
+###  https://archief.nl/def/ontologie/Archiefeenheid
+nao:Archiefeenheid rdf:type owl:Class ;
+                   rdfs:label "Archiefeenheid"@nl ;
+                   skos:altLabel "Stuksoort"@nl ;
+                   skos:definition "Een archiefeenheid of stuk is de kleinste, logisch ondeelbare, archivistische eenheid, b.v. een brief, een memorandum, een rapport, een foto, een geluidsopname."@nl ;
+                   skos:note "Komt overeen met edm:NonInformationResource"@nl ;
+                   skos:prefLabel "Archiefeenheid"@nl .
+
+
+###  https://archief.nl/def/ontologie/Recordaggregatie
+nao:Recordaggregatie rdf:type owl:Class ;
+                     rdfs:subClassOf ore:Aggregation ;
+                     rdfs:comment "Recordaggregatie"@nl ;
+                     rdfs:label "Recordaggregatie"@nl ;
+                     skos:definition "Een recordaggregatie is de verzameling van alle elementen in een record."@nl ;
+                     skos:prefLabel "Recordaggregatie"@nl .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://archief.nl/def/ontologie/Aggregatietype
+nao:Aggregatietype rdf:type owl:NamedIndividual ,
+                            skos:ConceptScheme .
+
+
+###  https://archief.nl/def/ontologie/FotoCollectie
+nao:FotoCollectie rdf:type owl:NamedIndividual ,
+                           skos:Concept ;
+                  skos:inScheme nao:Aggregatietype ;
+                  rdfs:label "Fotocollectie"@nl ;
+                  skos:definition "Groep van fotodocumenten, volgens een bepaald criterium bijeengebracht en op of vanuit één plaats beheerd."@nl ;
+                  skos:prefLabel "Fotocollectie"@nl .
+
+
+###  https://archief.nl/def/ontologie/FotoRecord
+nao:FotoRecord rdf:type owl:NamedIndividual ,
+                        skos:Concept ;
+               skos:inScheme nao:Aggregatietype ;
+               rdfs:label "Fotorecord"@nl ;
+               skos:definition "is een record of rij uit een index op een fotocollectie of fotoserie, waarin één enkele foto wordt beschreven."@nl ;
+               skos:prefLabel "Fotorecord"@nl .
+
+
+###  https://archief.nl/def/ontologie/FotoSerie
+nao:FotoSerie rdf:type owl:NamedIndividual ,
+                       skos:Concept ;
+              skos:inScheme nao:Aggregatietype ;
+              rdfs:label "Fotoserie"@nl ;
+              skos:definition "groep van fotodocumenten die op de een of andere manier met elkaar samenhangen."@nl ;
+              skos:prefLabel "Fotoserie"@nl .
+
+
+###  https://archief.nl/def/ontologie/Index
+nao:Index rdf:type owl:NamedIndividual ,
+                   skos:Concept ;
+          skos:inScheme nao:Aggregatietype ;
+          rdfs:label "Index"@nl ;
+          skos:definition "Een index is een opgave van gegevens uit één of meer archiefbestanddelen in een andere volgorde dan die, waarin zij in die bestanddelen voorkomen, met verwijzing naar de vindplaatsen."@nl ;
+          skos:prefLabel "Index"@nl .
+
+
+###  https://archief.nl/def/ontologie/IndexRecord
+nao:IndexRecord rdf:type owl:NamedIndividual ,
+                         skos:Concept ;
+                skos:inScheme nao:Aggregatietype ;
+                rdfs:label "Indexrecord"@nl ;
+                skos:definition "is een record of rij uit een index, waarin één data-item wordt beschreven."@nl ;
+                skos:prefLabel "Indexrecord"@nl .
+
+
+###  https://archief.nl/def/ontologie/Toegang
+nao:Toegang rdf:type owl:NamedIndividual ,
+                     skos:Concept ;
+            skos:inScheme nao:Aggregatietype ;
+            rdfs:label "Toegang"@nl ;
+            skos:definition "Een toegang is een al dan niet systematische beschrijving van de bestanddelen van een archief of collectie."@nl ;
+            skos:prefLabel "Toegang"@nl .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+edm:end rdfs:comment "du-uuid"@nl .
+
+
+ore: rdfs:seeAlso <http://www.openarchives.org/ore/toc> ;
+     dct:title "The OAI ORE terms vocabulary" ;
+     rdfs:label "The OAI ORE terms vocabulary" ;
+     dct:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                   ] ;
+     dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
+     dct:publisher [ rdfs:label "The Open Archives Initiative ORE Project"
+                   ] ;
+     rdfs:comment "The set of terms provided by the OAI ORE initiative" .
+
+
+ore:aggregates rdfs:isDefinedBy ore: ;
+               rdfs:label "Aggregates" ;
+               rdfs:comment "Aggregations, by definition, aggregate resources. The ore:aggregates relationship expresses that the object resource is a member of the set of Aggregated Resources of the subject (the Aggregation). This relationship between the Aggregation and its Aggregated Resources is thus more specific than a simple part/whole relationship, as expressed by dcterms:hasPart for example." .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
