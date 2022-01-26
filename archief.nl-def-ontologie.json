@@ -30,6 +30,9 @@
   "@id" : "http://purl.org/dc/elements/1.1/rights",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
+  "@id" : "http://purl.org/dc/elements/1.1/subject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
+}, {
   "@id" : "http://purl.org/dc/terms/hasPart",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
@@ -48,11 +51,14 @@
   "@id" : "http://purl.org/dc/terms/type",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
 }, {
-  "@id" : "http://www.europeana.eu/schemas/edm/InformationResource",
+  "@id" : "http://www.europeana.eu/schemas/edm/WebResource",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
-  "@id" : "http://www.europeana.eu/schemas/edm/NonInformationResource",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@id" : "http://www.europeana.eu/schemas/edm/end",
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "du-uuid"
+  } ]
 }, {
   "@id" : "http://www.openarchives.org/ore/terms/",
   "http://purl.org/dc/terms/license" : [ {
@@ -195,17 +201,13 @@
 }, {
   "@id" : "https://archief.nl/def/ontologie/",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
-  "http://creativecommons.org/ns#license" : [ {
-    "@language" : "nl",
-    "@value" : "???"
-  } ],
   "http://purl.org/dc/elements/1.1/abstract" : [ {
     "@language" : "nl",
     "@value" : "Ontologie van het Nationaal Archief. Deze ontologie beschrijft de termen die nodig zijn om de Nadere Toegangen en de Fotocollectie om te zetten naar Linked Open Data. De termen in deze ontologie worden (standaard) gebruikt voor al de Nadere Toegangen en Fotocollecties en zijn generiek toepasbaar voor datasets in het archiefdomein."
   } ],
   "http://purl.org/dc/elements/1.1/contributor" : [ {
     "@language" : "nl",
-    "@value" : "Fairoesh Nanhekhan - Informatieanalist/Projectleider \nVincent Sleebe - Senior Medewerker Verwerven en Beheren Digitale Archieven\nEd de Heer - Adviseur/Ptojectleider Linked Open Data\nGijsbert Kruithof - Enterprise Architect\nElvin Dechesne - Consultant Ordina"
+    "@value" : "Ed de Heer - Adviseur/Projectleider Linked Open Data\nFairoesh Nanhekhan - Informatieanalist/Projectleider \nJoep Jacobs - Collectiebeheerder \nEva Dapperen - Collectiebeheerder"
   } ],
   "http://purl.org/dc/elements/1.1/creator" : [ {
     "@language" : "nl",
@@ -217,7 +219,7 @@
   } ],
   "http://purl.org/dc/elements/1.1/rights" : [ {
     "@language" : "nl",
-    "@value" : "Copyright 2021 - Nationaal Archief"
+    "@value" : "Copyright 2022 - Nationaal Archief"
   } ],
   "http://purl.org/dc/terms/publisher" : [ {
     "@language" : "nl",
@@ -237,29 +239,11 @@
   } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
     "@language" : "nl",
-    "@value" : "Versie 0.1 - 3 maart 2020"
+    "@value" : "Versie 1 - 25 januari 2022"
   } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/Aggregatietype",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#ConceptScheme" ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Akte",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Akte"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Archiefstuk opgemaakt om als bewijs van het daarin gestelde te dienen."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Akte"
-  } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/Archiefbeschrijving",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
@@ -271,15 +255,16 @@
     "@language" : "nl",
     "@value" : "Archiefbeschrijving"
   } ],
-  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
-    "@id" : "http://www.europeana.eu/schemas/edm/InformationResource"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://www.europeana.eu/schemas/edm/InformationResource"
+    "@id" : "http://www.w3.org/2002/07/owl#Thing"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@language" : "nl",
     "@value" : "Een archiefbeschrijving bevat alle elementen die beschrijvend zijn voor dat archief. Het betreft niet de eigenschappen van een archiefeenheid (foto, akte, enz) zoals formaat en materiaal maar juist de informatie over de resterende elementen die genoemd worden in een archiefbeschrijving."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "nl",
+    "@value" : "Komt overeen met edm:InformationResource"
   } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
@@ -291,15 +276,6 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
     "@value" : "Archiefeenheid"
-  }, {
-    "@language" : "en",
-    "@value" : "ArchivalEntity"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
-    "@id" : "http://www.europeana.eu/schemas/edm/NonInformationResource"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://www.europeana.eu/schemas/edm/NonInformationResource"
   } ],
   "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
     "@language" : "nl",
@@ -309,70 +285,13 @@
     "@language" : "nl",
     "@value" : "Een archiefeenheid of stuk is de kleinste, logisch ondeelbare, archivistische eenheid, b.v. een brief, een memorandum, een rapport, een foto, een geluidsopname."
   } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@language" : "nl",
+    "@value" : "Komt overeen met edm:NonInformationResource"
+  } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
     "@value" : "Archiefeenheid"
-  } ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#ConceptScheme" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Archiefeenheidtype"
-  } ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Document",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Document"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Geheel van samenhangende gegevens, vastgelegd op een of meer gegevensdragers."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Document"
-  } ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Dossier",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Dossier"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Archiefbestanddeel bestaande uit alle archiefbescheiden in één archief, die dezelfde zaak betreffen."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Dossier"
-  } ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Foto",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Foto"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Afbeelding vervaardigd door chemische of fysische inwerking van weerkaatst of uitgestraald licht op een gegevensdrager."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Foto"
   } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/FotoCollectie",
@@ -429,17 +348,6 @@
     "@value" : "Fotoserie"
   } ]
 }, {
-  "@id" : "https://archief.nl/def/ontologie/Illustratie",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Illustratie"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Illustratie"
-  } ]
-}, {
   "@id" : "https://archief.nl/def/ontologie/Index",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
@@ -476,42 +384,6 @@
     "@value" : "Indexrecord"
   } ]
 }, {
-  "@id" : "https://archief.nl/def/ontologie/Journaal",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Journaal"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Register waarin een persoon in chronologische volgorde zijn handelingen, belevenissen of gevoelens vastlegt."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Journaal"
-  } ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Rapport",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Rapport"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Verslag of nota, in opdracht of ambtshalve uitgebracht."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Rapport"
-  } ]
-}, {
   "@id" : "https://archief.nl/def/ontologie/Recordaggregatie",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -534,42 +406,6 @@
     "@value" : "Recordaggregatie"
   } ]
 }, {
-  "@id" : "https://archief.nl/def/ontologie/Regest",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Regest"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Een regest is een analyse of samenvatting van een akte."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Regest"
-  } ]
-}, {
-  "@id" : "https://archief.nl/def/ontologie/Register",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "nl",
-    "@value" : "Register"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@language" : "nl",
-    "@value" : "Staat waarin gegevens betreffende personen, organisaties of goederen zijn vastgelegd."
-  } ],
-  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
-    "@id" : "https://archief.nl/def/ontologie/Archiefeenheidtype"
-  } ],
-  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
-    "@language" : "nl",
-    "@value" : "Register"
-  } ]
-}, {
   "@id" : "https://archief.nl/def/ontologie/Toegang",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#Concept" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
@@ -590,6 +426,9 @@
 }, {
   "@id" : "https://archief.nl/def/ontologie/aet",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://archief.nl/def/ontologie/Recordaggregatie"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
     "@value" : "aet"
@@ -610,7 +449,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
-    "@value" : "MAIS Flexis ahdId"
+    "@value" : "ahdId"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://purl.org/dc/elements/1.1/identifier"
@@ -621,7 +460,7 @@
   } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
-    "@value" : "Mais Flexis Ahdid"
+    "@value" : "ahdid"
   } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/archiefLink",
@@ -631,10 +470,7 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
-    "@value" : "Archieflink"
-  }, {
-    "@language" : "en",
-    "@value" : "link to archive"
+    "@value" : "archieflink"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://purl.org/dc/elements/1.1/identifier"
@@ -645,7 +481,7 @@
   } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
-    "@value" : "Archieflink"
+    "@value" : "archieflink"
   } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/archiefbloknummer",
@@ -673,6 +509,23 @@
     "@value" : "archiefbloknummer"
   } ]
 }, {
+  "@id" : "https://archief.nl/def/ontologie/beeldbankId",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "De beeldbank id verwijst naar de scan van de inschrijving van de ondertrouw (NT00392)"
+  }, {
+    "@value" : "Deze term is gemunt om informatie te duiden uit NT00392"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "beeldbank id"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/identifier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "beeldbank id"
+  } ]
+}, {
   "@id" : "https://archief.nl/def/ontologie/bestanddeelnummer",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
@@ -681,6 +534,9 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://purl.org/dc/elements/1.1/identifier"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentProperty" : [ {
+    "@id" : "https://archief.nl/def/ontologie/inventarisnummer"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@language" : "nl",
@@ -709,26 +565,74 @@
     "@value" : "dossiernummer"
   } ]
 }, {
-  "@id" : "https://archief.nl/def/ontologie/duuid",
+  "@id" : "https://archief.nl/def/ontologie/download",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "nl",
-    "@value" : "E-Depot Deliverable Unit UUID"
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief. Per foto kan de beschikbaarheid worden aangegeven. Hiervoor gelden de waarden \"Direct beschikbaar\" en \"Op aanvraag\"."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "download"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
-    "@id" : "http://purl.org/dc/elements/1.1/identifier"
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@language" : "nl",
-    "@value" : "unieke identificatiecode van een deliverable unit (bijvoorbeeld een dossier of een digitaal object) in het e-Depot, te vergelijken met een aanvraagbare eenheid (inventarisnummer) in een analoog archief"
+    "@value" : "Mate van beschikbaarheid van een foto"
   } ],
-  "http://www.w3.org/2004/02/skos/core#note" : [ {
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "download"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/du-uuid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "nl",
     "@value" : "Identificatie van een object uit het e-Depot."
   } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "du-uuid"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "https://archief.nl/def/ontologie/uuid"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Unieke identificatiecode van een deliverable unit (bijvoorbeeld een dossier of een digitaal object) in het e-Depot, te vergelijken met een aanvraagbare eenheid (inventarisnummer) in een analoog archief"
+  } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
-    "@value" : "E depot deliverable unit UUID"
+    "@value" : "du-uuid"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/file-uuid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "De file-uuid wordt gebruikt voor het identificeren van een foto uit het edepot"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "file-uuid"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "https://archief.nl/def/ontologie/uuid"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Een identificatiekenmerk o.b.v. een UUID van een digitaal object"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "file-uuid"
   } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/fragmentIdentifier",
@@ -777,6 +681,31 @@
     "@value" : "MAIS Flexis guid"
   } ]
 }, {
+  "@id" : "https://archief.nl/def/ontologie/handle-uuid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Middels de handle-uuid wordt verwezen naar het digitale object op de website"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "handle-uuid"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "https://archief.nl/def/ontologie/uuid"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Een identificatiekenmerk o.b.v. een UUID die wordt gebruikt voor het opbouwen van een handle"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "handle-uuid"
+  } ]
+}, {
   "@id" : "https://archief.nl/def/ontologie/id",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -804,12 +733,18 @@
 }, {
   "@id" : "https://archief.nl/def/ontologie/inventarisnummer",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Het nummer van een inventaris"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://archief.nl/def/ontologie/Archiefbeschrijving"
+  }, {
+    "@id" : "https://archief.nl/def/ontologie/Archiefeenheid"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
-    "@value" : "inventarisnummer"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
-    "@value" : "https://archiefwiki.org/wiki/Inventarisnummer"
+    "@value" : "nummer archiefinventaris"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
     "@id" : "http://purl.org/dc/elements/1.1/identifier"
@@ -820,7 +755,7 @@
   } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
-    "@value" : "inventarisnummer"
+    "@value" : "nummer archiefinventaris"
   } ]
 }, {
   "@id" : "https://archief.nl/def/ontologie/isAggregatietype",
@@ -897,6 +832,10 @@
 }, {
   "@id" : "https://archief.nl/def/ontologie/ntCode",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Het identificatiekernmerk van een Nadere Toegang"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
     "@value" : "ntCode"
@@ -906,7 +845,7 @@
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@language" : "nl",
-    "@value" : "Code van de Nadere Toegang"
+    "@value" : "Identificatiekenmerk van een Nadere Toegang"
   } ],
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
@@ -935,6 +874,23 @@
     "@value" : "HUB3 tennant code"
   } ]
 }, {
+  "@id" : "https://archief.nl/def/ontologie/origineleVerwijzing",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Deze term is gemunt om informatie te duiden uit NT00376"
+  }, {
+    "@value" : "Verwijst naar originele verwijzing"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "orginele verwijzing"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/identifier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "originele verwijzing"
+  } ]
+}, {
   "@id" : "https://archief.nl/def/ontologie/persistentIdentifier",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
@@ -957,11 +913,70 @@
     "@value" : "Persistente identificatie"
   } ]
 }, {
+  "@id" : "https://archief.nl/def/ontologie/scan",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Deze term is gemunt om informatie te duiden uit NT00213"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "scan"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/identifier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Verwijst naar de link naar eventuele scan"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "scan"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/titelFotocollectie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Titel van een fotocollectie"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#label" : [ {
+    "@language" : "nl",
+    "@value" : "titel fotocollectie"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "titel fotocollectie"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/titelFotoserie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "titel fotoserie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Titel van een serie aan foto's"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "titel fotoserie"
+  } ]
+}, {
   "@id" : "https://archief.nl/def/ontologie/toegangsnummer",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://www.openarchives.org/ore/terms/Aggregation"
-  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
     "@value" : "toegangsnummer"
@@ -1000,11 +1015,102 @@
     "@value" : "toelichting"
   } ]
 }, {
+  "@id" : "https://archief.nl/def/ontologie/trefwoordAlgemeen",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord algemeen"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/subject"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Een trefwoord van de categorie \"algemeen\""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord algemeen"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/trefwoordLocatie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord locatie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/subject"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Een trefwoord van de categorie \"locatie\""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord locatie"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/trefwoordOrganisatie",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord organisatie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/subject"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Een trefwoord van de categorie \"organisatie\""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord organisatie"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/trefwoordPersoon",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord persoon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/subject"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Een trefwoord van de categorie \"persoon\""
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "trefwoord persoon"
+  } ]
+}, {
   "@id" : "https://archief.nl/def/ontologie/uuid",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "nl",
     "@value" : "Universally Unique Identifier (UUID) is een ID die wordt gebruikt in de software-architectuur, gestandaardiseerd door de 'Open Software Foundation' (OSF) als onderdeel van de 'Distributed Computing Environment' (DCE).\n\nIn zijn geheel wordt een UUID door 36 tekens gevormd, waarvan 32 hexadecimale karakters en vier streepjes:\n\n550e8400-e29b-41d4-a716-446655440000\nRFC 4122[1] beschrijft de structuur van een UUID.\n\nEr bestaan diverse implementaties van verschillende softwarebedrijven van het UUID. Microsoft GUID is een variant van UUID."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.openarchives.org/ore/terms/Aggregation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "nl",
@@ -1041,5 +1147,172 @@
   "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
     "@language" : "nl",
     "@value" : "verwijst naar"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/volgnummer",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Deze term is gemunt om informatie te duiden uit NT00213. Let op dit is een ander property dan nav:volgnummer."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "volgnummer"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/identifier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "nog na te vragen bij Eva of Joep"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "volgnummer"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/webserviceDefault",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "webservice default"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Verwijzing naar de default (complete file) van het digitale object"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "webservice default"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/webserviceIIIF",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "webservice IIIF"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "webservice IIIF"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/webserviceIcon",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "webservice icon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Verwijzing naar de icon van het digitale object"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "webservice icon"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/webserviceImage",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "webservice image"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Verwijzing naar de image (max 1000 pixels hoog) van het digitale object"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "webservice image"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/webserviceOriginal",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "webservice original"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Verwijzing naar het orgineel van het digitale object. Bijv. een .tiff in geval van een foto."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "webservice original"
+  } ]
+}, {
+  "@id" : "https://archief.nl/def/ontologie/webserviceThumbnail",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "nl",
+    "@value" : "Deze term wordt gebruikt om informatie te duiden uit de fotocollectie van het Nationaal Archief."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.europeana.eu/schemas/edm/WebResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "nl",
+    "@value" : "webservice thumbnail"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "nl",
+    "@value" : "Verwijzing naar de thumbnail van het digitale object"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@language" : "nl",
+    "@value" : "webservice thumbnail"
   } ]
 } ]
