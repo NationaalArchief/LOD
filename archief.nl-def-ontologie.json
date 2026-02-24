@@ -1,8 +1,5 @@
 [ {
-  "@id" : "_:genid1",
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@value" : "The Open Archives Initiative ORE Project"
-  } ]
+  "@i
 }, {
   "@id" : "_:genid2",
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
@@ -1315,4 +1312,5 @@
     "@language" : "nl",
     "@value" : "webservice thumbnail"
   } ]
+
 } ]
