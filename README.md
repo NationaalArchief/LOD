@@ -1,4 +1,4 @@
-# LOD7878
+# LOD
 Linked Open Data
 
 .json files are meant for presentation purposes on the website.
